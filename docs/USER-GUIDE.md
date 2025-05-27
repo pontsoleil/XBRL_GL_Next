@@ -188,10 +188,6 @@ cd XBRL-GL-2025/
 
 ---
 
-```
-
----
-
 ## 🚀 Quick VS Code Launch
 - Open the folder in Visual Studio Code
 - Use `launch.json` to run any workflow (preconfigured examples)
