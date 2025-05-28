@@ -29,8 +29,8 @@ xBRL-GL
 │   └── user-guide.adoc  # Contains the full AsciiDoc user guide
 ├─scripts                # Directory for Python scripts used in various processes.
 ├─semantic-model         # Equivalent to UML Class Diagram in Single Sheet Format
-│  ├─FSM                 # Foundational Semantic Model in CSV 
-│  ├─BSM                 # Business Semantic Model in CSV
+│  ├─FSM                 # Foundational Semantic Model 
+│  ├─BSM                 # Business Semantic Model
 │  └─LHM                 # Logical Hierarchical Model
 ├─tests
 │  └─Windows11           # Batch scripts related to testing.
