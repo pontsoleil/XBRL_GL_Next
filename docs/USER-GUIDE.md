@@ -156,10 +156,10 @@ xBRL-GL
 └─XBRL-GL-2016-PWD       # Public Working Draft published in 2016
    This taxonomy provides a standardized format for representing data fields from accounting and operational systems. It consists of modular sets:
    - COR (Core): Foundational module including essential data fields for all types of information in XBRL GL.
-   - BUS (Business): Augments CORE with additional accounting and operational details, including inventory, business metrics, and organizational information.
+   - BUS (Business): Augments COR with additional accounting and operational details, including inventory, business metrics, and organizational information.
    - MUC (Multicurrency): Adds detailed fields for handling multicurrency information and additional entity details.
    - TAF (Tax Audit File): Includes fields required for tax and audit purposes, developed with input from international tax agencies.
-   - SRCD (Source Data): Facilitates linking detailed XBRL GL data to final reporting using XBRL taxonomies or other XML schemas.
+   - SRCD (Summary Reporting Contextual Data): Facilitates linking detailed XBRL GL data to final reporting using XBRL taxonomies or other XML schemas.
    - EHM (Enhanced Measurable): Provides fields specific to inventory and fixed assets representation.
    Each module extends the Core but can be used independently. The taxonomy structure compiles schemas into a cohesive set via a "palette" schema (e.g., gl-plt-2016-12-01.xsd).
 ```
