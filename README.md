@@ -4,12 +4,22 @@ This project modernizes **XBRL Global Ledger (XBRL GL)** by enabling it to be ex
 
 ## 🔧 Key Features
 
-- Converts **PWD 2016 XBRL GL** definitions into a semantic model.
-- Generates both **palette schema taxonomy** and **OIM dimensional taxonomy** (hypercube-based).
-- Transforms **XML instance documents** into structured **xBRL-CSV**.
+- Converts PWD 2016 XBRL GL definitions into a semantic model.
+- Generates both palette schema taxonomy and OIM dimensional taxonomy (hypercube-based).
+- Transforms XML instance documents into structured xBRL-CSV.
 - Supports two authoring paths:
-  - **Palette-based reverse modeling**
-  - **Semantic model-driven generation** via FSM → BSM → LHM
+  - Palette-based reverse modeling
+  - Semantic model-driven generation via Foundational Semantic Model (FSM) → Business Semantic Model (BSM) → Logical Hierarchical Model (LHM)
+
+Explanation:
+
+FSM (Foundational Semantic Model): Defines basic, foundational elements and relationships essential for understanding all types of information within XBRL GL.
+
+BSM (Business Semantic Model): Extends FSM by adding specific business-related concepts, enhancing detail and structure for organizational operations and accounting processes.
+
+LHM (Logical Hierarchical Model): Builds upon BSM to create a structured hierarchy that organizes and connects data elements logically, facilitating comprehensive and detailed reporting capabilities.
+
+Explore these paths to tailor your XBRL GL implementation to best fit your organizational needs and reporting requirements.
 
 ## 📁 Repository Contents
 
