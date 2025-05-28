@@ -64,4 +64,4 @@ See [docs/USER-GUIDE.md](docs/USER-GUIDE.md) for a full walkthrough, including M
 ## 🚀 Quick Start
 
 Open the project in VS Code and run the included launch configurations via `launch.json`.  
-Use sample instance files in the `ids/` directory and start generating structured xBRL-CSV output.
+Use sample instance files in the `xBRL-CSV_instance/` directory and start generating structured xBRL-CSV output.
