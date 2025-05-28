@@ -49,7 +49,6 @@ Reportable member concepts (e.g., cor_entryNumber, cor_amount) are attached to t
 Cube-specific dimensions are defined as typed dimensions (e.g., d_cor_accountingEntries, d_cor_entryHeader, etc.) and associated with the cube using hypercube-dimension arcs.
 
 This layered model aligns directly with XBRL Dimensions 1.0, while offering a hierarchical tidy data representation well-suited for xBRL-CSV serialization.
-We recommend including the corresponding figure as an informative annex to illustrate this pattern and support practical implementations.
 ---
 
 ### **4. Modularization and Extensibility**
