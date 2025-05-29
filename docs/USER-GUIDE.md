@@ -4,7 +4,7 @@ This guide describes how to use the provided Python scripts and data to define a
 
 ---
 
-## 🔁 Two Alternative Workflows
+## Two Alternative Workflows
 
 ### ◼ Approach 1: From Existing Palette Taxonomy
 
@@ -35,7 +35,7 @@ python xBRLGL_TaxonomyGenerator.py \
 
 ---
 
-### ◼ Approach 2: From FSM → BSM → LHM via Graph Walk
+### Approach 2: From FSM → BSM → LHM via Graph Walk
 
 **Best for:** Creating a new taxonomy from semantic model definitions.
 
@@ -74,7 +74,7 @@ python xBRLGL_TaxonomyGenerator.py \
 
 ---
 
-## 🔧 Flow Chart
+## Flow Chart
 
 ### Process Overview (Mermaid Format)
 
@@ -106,7 +106,7 @@ Convert XML to structured CSV"]
   Common --> Convert --> Output
 ```
 
-## 📤 Structured CSV Conversion (xBRL-CSV)
+## Structured CSV Conversion (xBRL-CSV)
 
 Convert XBRL GL instance XML into structured xBRL-CSV:
 ```bash
@@ -121,7 +121,7 @@ python xBRLGL_StructuredCSV.py \
 
 ---
 
-## 📦 GitHub Repository Directory Structure
+## GitHub Repository Directory Structure
 
 This guide assumes you are working from a GitHub repository with the following structure:
 
@@ -166,7 +166,7 @@ xBRL-GL
 
 ---
 
-## 🛠 Script Functions Explained
+## Script Functions Explained
 
 ### `specialization.py`
 - **Input:** FSM CSV, optional extension FSM
@@ -198,6 +198,6 @@ xBRL-GL
 
 ---
 
-## 🚀 Quick VS Code Launch
+## Quick VS Code Launch
 - Open the folder in Visual Studio Code
 - Use `launch.json` to run any workflow (preconfigured examples)
