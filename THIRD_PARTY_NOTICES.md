@@ -1,3 +1,5 @@
+**English** | [日本語](THIRD_PARTY_NOTICES_ja.md)
+
 # Third-party material and licensing review
 
 This project combines project-authored work with historical and external

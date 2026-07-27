@@ -1,3 +1,5 @@
+**English** | [日本語](workspace-integration_ja.md)
+
 # Workspace integration
 
 ## Purpose and status

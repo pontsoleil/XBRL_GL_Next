@@ -1,3 +1,5 @@
+**English** | [日本語](architecture_ja.md)
+
 # Architecture baseline
 
 ## 1. Semantic pipeline
@@ -118,22 +120,30 @@ version.
 
 ### Shared
 
-Stable concepts and classes used across many domains. Shared entries should have
-syntax-neutral identifiers, definitions, datatype/representation terms and
-semantic paths. Changes require central review and strong compatibility rules.
+World-common standard concepts and structures that are used across countries,
+legal and institutional systems, industries, and implementations. A concept is
+not Shared merely because it originates in an international standard or
+UN/CEFACT CCL. Broad cross-domain use is required. Invoice, Shipment, and
+Customs may be Shared root Classes, while only their genuinely cross-domain
+ASBIEs and BBIEs belong in Shared. Shared entries should have syntax-neutral
+identifiers, definitions, datatype/representation terms and semantic paths.
+Changes require central review and strong compatibility rules.
 
 ### Aligned
 
-Reusable domain components aligned to a recognized external model such as
-UN/CEFACT CCL. Aligned entries retain explicit provenance and mappings to their
-upstream identifiers and releases. They are selected by profiles and do not
-automatically become part of every instance.
+Standard definitions aligned with regional standards, national standards,
+laws, regulations, or published industry standards. International-standard or
+CCL components whose use is limited to a particular domain also belong here.
+Aligned entries retain explicit provenance and mappings to upstream identifiers
+and releases. They are selected by profiles and do not automatically become
+part of every instance.
 
 ### Distinct
 
-Jurisdictional, programme-specific or private semantics that cannot be safely
-merged with Shared or Aligned entries. Distinct entries use separate namespaces
-and declare alignment relationships without redefining the core.
+Definitions specific to an enterprise, enterprise group, product, individual
+trading relationship, or other closed community. Distinct is not the location
+for public legal, regulatory, national, regional, or published industry
+standards; those belong in Aligned.
 
 ## 3. Module responsibilities
 

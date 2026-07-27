@@ -24,7 +24,7 @@ XBRL GLタクソノミを検討・実装するための作業環境です。
 scriptだけに、CC BY 4.0は特定されたproject-authored文書及び成果物だけに適用します。
 外部原本及び派生成果物には各権利者の条件が適用され、権利未解決の間はPrivate
 repositoryにも登録しません。詳細は
-[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)を参照してください。
+[`THIRD_PARTY_NOTICES_ja.md`](THIRD_PARTY_NOTICES_ja.md)を参照してください。
 
 対象を会計帳簿だけに限定せず、UN/CEFACT Core Component Library（CCL）と
 各分野の取引電文を参照しながら、次のデータを一貫した意味モデルで表現できる
@@ -229,7 +229,7 @@ namespace、審査、版管理及び廃止手順を含むガバナンス区分�
 | `tests/` | JSON、XML、CSV及びOIM entry pointの構造検査 | repository検査実装済み、Arelle自動化は残作業 |
 
 コピー元、採用理由、除外対象及び既知の品質問題は
-[`docs/source-inventory.md`](docs/source-inventory.md)に記録しています。
+[`docs/source-inventory_ja.md`](docs/source-inventory_ja.md)に記録しています。
 
 ## 6. Taxonomy Framework文書
 
@@ -400,7 +400,7 @@ new semantic path / OIM concept QName / dimensions
 一括置換は行いません。既存LHMと新profileを並行実行し、semantic fact、
 cardinality、datatype、unit、repeated row scope及びround trip結果を比較してから
 切り替えます。詳細は
-[`docs/workspace-integration.md`](docs/workspace-integration.md)を参照してください。
+[`docs/workspace-integration_ja.md`](docs/workspace-integration_ja.md)を参照してください。
 
 ## 10. 現在の進行状況
 
@@ -815,11 +815,11 @@ drill-up及びdrill-throughの往復可能性を確認します。
   生成manifestへの依存を含む**
 - `TaxonomyFramework/DEPENDENCIES.md` — **未登録。生成された依存関係証跡を
   再評価中**
-- [`TaxonomyFramework/OPEN_ISSUES.md`](TaxonomyFramework/OPEN_ISSUES.md)
-- [`TaxonomyFramework/COPY_PLAN.md`](TaxonomyFramework/COPY_PLAN.md)
-- [`docs/architecture.md`](docs/architecture.md)
-- [`docs/work-plan.md`](docs/work-plan.md)
-- [`docs/workspace-integration.md`](docs/workspace-integration.md)
-- [`docs/source-inventory.md`](docs/source-inventory.md)
-- [`contracts/README.md`](contracts/README.md)
-- [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)
+- [`TaxonomyFramework/OPEN_ISSUES_ja.md`](TaxonomyFramework/OPEN_ISSUES_ja.md)
+- [`TaxonomyFramework/COPY_PLAN_ja.md`](TaxonomyFramework/COPY_PLAN_ja.md)
+- [`docs/architecture_ja.md`](docs/architecture_ja.md)
+- [`docs/work-plan_ja.md`](docs/work-plan_ja.md)
+- [`docs/workspace-integration_ja.md`](docs/workspace-integration_ja.md)
+- [`docs/source-inventory_ja.md`](docs/source-inventory_ja.md)
+- [`contracts/README_ja.md`](contracts/README_ja.md)
+- [`THIRD_PARTY_NOTICES_ja.md`](THIRD_PARTY_NOTICES_ja.md)

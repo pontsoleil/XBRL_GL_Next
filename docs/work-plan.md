@@ -1,10 +1,14 @@
+**English** | [日本語](work-plan_ja.md)
+
 # Recommended work plan
 
 ## Phase 0 — Repository and provenance baseline
 
 - Status: completed 2026-07-25.
-- Target Git repository has no remote; owner, visibility and push remain an
-  explicit publication gate rather than an assumed value.
+- The target Git repository now has an `origin` remote on the dedicated
+  rearchitecture branch. Repository ownership, visibility, publication
+  authority, and each push remain explicit governance gates rather than
+  inferred permission.
 - Consumer LHM checksums for UADC_PoC and LedgerExplorer are frozen in
   `TaxonomyFramework/inventory/consumer-lhm-baseline.csv`.
 - Exact XBRL GL 2015/2017 package URLs, file counts, checksums and licence

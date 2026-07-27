@@ -1,3 +1,5 @@
+**English** | [日本語](README_ja.md)
+
 # Integration contracts
 
 This directory contains project-authored draft contracts for the boundary

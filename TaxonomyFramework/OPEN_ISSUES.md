@@ -1,54 +1,62 @@
+**English** | [日本語](OPEN_ISSUES_ja.md)
+
 # Open issues
 
-Phase 0で論点の所在、影響、処置及び実施phaseを確定しました。未解決であることを
-理由に出典又は公開区分を曖昧にせず、該当成果物は公開保留とします。
+Phase 0 fixed the location, impact, disposition, and implementation phase for
+each issue. An unresolved issue never justifies ambiguous provenance or
+publication scope; the affected artifact remains on registration or
+publication hold.
 
-| ID | Priority | 論点 | 現在の判断 | 次の処置 | Phase |
+| ID | Priority | Issue | Current decision | Next action | Phase |
 | --- | --- | --- | --- | --- | --- |
-| P0-01 | Blocker | GitHub remote、owner、visibility及びpublication authority | targetにはremoteがない。pushしない | repository ownerがremoteとprivate/publicを明示し、公開候補一覧を承認する | Publication gate |
-| P0-02 | Blocker | XBRL由来prototypeが`xbrl.org` namespaceを使用 | 技術検証には保持するが、公式taxonomyとして公開できない | 公式taxonomyをimportする構成又はproject-owned namespaceへ移行し、attributionを保持する | Phase 1–3 |
-| P0-03 | Blocker | XBRL GL licenseはtaxonomy本体の改変を制限 | 現在のTuple/OIM treeは公開保留 | XBRL International termsに適合するextension／reimplementation境界をlegal reviewする | Publication gate |
-| P0-04 | Blocker | UN/CEFACT D25A派生CSVの再配布権限 | free-of-charge useと再配布・派生物公開を同一視しない | official download recipeへ置換するか、書面許可を取得する | Publication gate |
-| P0-05 | High | CCL D25A元fileのURLとchecksumを復元できない | release identifierのみ確認済み | row unique ID、official package、取得日及びchecksumをprovenance tableへ追加する | Phase 3 |
-| P0-06 | High | Tuple experimentにlocal missing dependencyが5件ある | 正式entry pointから除外 | self-contained fixture又はprofile resolverへ再構成する | Phase 1 |
-| P0-07 | High | `FSM_btx`のmodule空欄640件 | `(module, class_term)`を作れないためcanonical FSMへ移行不能 | 出典に基づく明示mapping又はsource訂正をreviewし、確定不能行は除外reportへ記録する。命名規則から推測しない | Phase 3 |
-| P0-08 | High | generatorがvalid baselineを決定的に再生成できない | baselineは手編集済み完成例 | ADR-0003のassemblyをgenerator受入testにする | Phase 1–5 |
-| P0-09 | High | Tuple 2015／2017 concept差分が未作成 | 公式packageとchecksumは確定 | concept、type、tuple path、role及びlinkbase差分を生成する | Phase 2 |
-| P0-10 | Medium | `tools/semantic/bie_to_fsm.py`に明示licenseがない | private working限定 | author、copyright及びlicenseを記録する | Phase 1 |
-| P0-11 | Medium | Framework DOCXの公開権限 | user-supplied開始点 | repository ownerが著作者・公開権限を承認する | Publication gate |
-| P0-12 | Medium | DOCX/XLSX binary metadata検査 | text secret scanはpass | author property、hidden sheet、comment、embedded objectをrelease前に検査する | Phase 7 |
-| P0-13 | Medium | OIM exampleのend-to-end検証 | taxonomy rootのみvalidity確認済み | vendor invoice metadata、CSV、facts及びround tripを検証する | Phase 5–6 |
-| P0-14 | Medium | Shared／Aligned heuristic | governance approvalではない | provenanceと適用範囲に基づくreview registryを作成する | Phase 3／7 |
-| P0-15 | Resolved | LHM/HMD用語 | LHMは全体、HMDはroot Class単位の識別・抽出。共通17列契約と`(module, class_term)` identityを使用 | 実装及びfixtureへ反映する | Phase 1 |
-| P0-16 | Medium | consumer migration | baseline checksumのみ固定 | crosswalk、shadow generation及びrollback gateを実施する | Phase 6 |
-| P0-18 | Blocker | WORK specialization 18列出力とgraphwalk旧15列入力の不整合 | FSM 14列、BSM 15列、LHM/HMD 17列をPoC実装基準とした。現行実装は未対応 | 基準仕様、program、fixture、期待結果及び試験を対応する一式としてPrivate GitHub登録候補化し、承認後に専用branchで改訂する | Phase 1 |
-| P0-19 | High | DNM `-o`の残存実装 | DNMは非サポートと決定 | option、分岐、出力、help、例及びDNM専用testを後続実装で削除 | Phase 1 |
-| P0-20 | High | WORK版18列の追加項目 | 5種の責務別sidecarとmanifest案を定義 | 既存FSMでID衝突、欠落、join多重度及びconsumer影響を試験 | Phase 1 |
-| P0-21 | High | Association同一keyの重複 | 重複入力エラーとして報告するが、PoCではモデル全体を停止しない | super／child対比、曖昧property未反映、他Class継続及び診断項目を実装・試験 | Phase 1 |
-| P0-22 | High | semantic toolの版統合 | WORK、4件及び28件に独立機能が分散 | 一版の上書きを禁止し、機能単位統合案を承認する | Phase 1 |
-| P0-23 | Medium | `xBRL-GL2.0_btx`と`taxonomy/oim/prototype`の重複 | taxonomy 46件が相対path・SHAとも全件一致 | DTS、sample、tool、生成物及びprovenanceへ分離する配置案を承認する | Phase 1 |
-| P0-24 | High | semantic_pathからのelement生成 | semantic_pathを意味識別子とし、module内で一意な最短suffix由来のlowerCamelCase NCNameを生成。C／A／REF必須、Rはmultiplicity上限で要否を判定。実装未改訂 | AT-074～AT-094をfixture化し、Graph Walkの再現性まで検証する。taxonomy generator／consumer実装は後続 | Phase 1 |
-| P0-25 | High | エラーを含むPoC BSMの状態管理 | 15列coreへ処理状態を追加せずmanifestを状態の正本とする | `processing_status`、件数、report path／hash、property状態sidecar及びconsumer拒否条件をschema化 | Phase 1 |
-| P0-26 | Blocker | `associated_module`を持たない既存FSM／BSM／LHMの移行 | Class identityを`(module, class_term)`、参照先を`(associated_module, associated_class)`とするADR-0006案を作成 | 既存全参照の明示mapping、review、移行時診断及びrollbackを承認する。推測補完は禁止 | Phase 1 |
-| P0-27 | Resolved | Specializationのsuper Class参照不能時の隔離単位 | child全体を正常BSMから隔離し、child固有propertyを診断reportへ記録 | 実装及び試験へ反映する | Phase 1 |
-| P0-28 | Resolved | module台帳とsyntax binding対応表 | `bindings/taxonomy/module-namespace-bindings.csv`の7列案と管理責任を確定 | 現行taxonomyでentry point列の必要性を実装前確認 | Phase 1 |
-| P0-29 | High | 旧・新LHM/HMD契約の識別 | taxonomy version 2026-12-31から17列契約とmanifestのcontract name／versionを必須化 | schemaとconsumer拒否条件を実装前に承認する | Phase 1 |
-| P0-30 | Resolved | 既存FSM移行の作成者・確認者 | PoC実施作業者（三分一）が作成・確認し、監査可能な明示mappingを保持 | 移行時に記録項目を検証する | Phase 1 |
-| P0-31 | High | QName形式の意味モデル値 | 自動分割・module推測・警告受理を禁止し、影響scopeを隔離する | 診断schemaと旧QName移行mappingの承認手順を確定する | Phase 1 |
-| P0-32 | High | 一つのHMDにおける異なるmoduleの同名Class混在 | FSM／BSMには候補を保持できるが、HMDは`(selected_module, class_term)`で一moduleだけを明示選択。混在は選択エラー | profile実装へ進む前に、最小fixtureで選択、競合、Aligned特殊化及びsemantic_path一意性を検証する | Phase 1 |
+| P0-01 | Blocker | GitHub owner, visibility, publication authority, and push approval | The target now has an `origin` remote and a dedicated branch; this does not itself authorize publication or each push | Repository owner confirms visibility and publication authority and approves each registration set | Publication gate |
+| P0-02 | Blocker | XBRL-derived prototypes use an `xbrl.org` namespace | Retain for technical analysis; do not represent them as official taxonomies | Import an official taxonomy or migrate independently governed concepts to a project-owned namespace while preserving attribution | Phase 1–3 |
+| P0-03 | Blocker | XBRL GL licence restricts modification of taxonomy content | Current Tuple/OIM trees remain on publication hold | Obtain legal review of the XBRL International-compliant extension/reimplementation boundary | Publication gate |
+| P0-04 | Blocker | Redistribution rights for UN/CEFACT D25A-derived CSV | Free-of-charge use is not treated as redistribution or derivative-publication permission | Replace copied data with an official download recipe or obtain written permission | Publication gate |
+| P0-05 | High | Original CCL D25A URL and checksum cannot be reconstructed | Only the release identifier is confirmed | Add row unique ID, official package, acquisition date, and checksum to the provenance table | Phase 3 |
+| P0-06 | High | Tuple experiment has five local missing dependencies | Excluded from formal entry points | Rebuild as a self-contained fixture or profile resolver | Phase 1 |
+| P0-07 | High | `FSM_btx` has 640 blank `module` values | Canonical `(module, class_term)` identity cannot be created | Review an explicit source-based mapping or source correction; record unresolved rows in the exclusion report and do not infer from names | Phase 3 |
+| P0-08 | High | Generator cannot deterministically reproduce the valid baseline | Baseline is a completed example with manual edits | Use ADR-0003 assembly as a generator acceptance test after reevaluation | Phase 1–5 |
+| P0-09 | High | No concept-level comparison of 2015 and 2017 Tuple models | Official packages and checksums are fixed | Generate concept, type, tuple-path, role, and linkbase comparisons | Phase 2 |
+| P0-10 | Medium | `tools/semantic/bie_to_fsm.py` has no explicit licence | Private WORK analysis only | Record author, copyright, and licence | Phase 1 |
+| P0-11 | Medium | Publication authority for Framework DOCX | User-supplied starting point | Repository owner confirms authorship and publication authority | Publication gate |
+| P0-12 | Medium | DOCX/XLSX binary metadata review | Text secret scan passed | Inspect author properties, hidden sheets, comments, and embedded objects before release | Phase 7 |
+| P0-13 | Medium | End-to-end OIM example validation | Only taxonomy-root validity has been checked | Validate vendor-invoice metadata, CSV, facts, and round trip | Phase 5–6 |
+| P0-14 | Medium | Shared/Aligned heuristic | Not a governance approval | Create a review registry based on provenance and scope of use | Phase 3/7 |
+| P0-15 | Resolved | LHM/HMD terminology | LHM is the whole table; HMD identifies or extracts one root Class; both use the common 17-column contract and `(module, class_term)` identity | Apply to implementation and fixtures | Phase 1 |
+| P0-16 | Medium | Consumer migration | Only baseline checksums are frozen | Complete crosswalk, shadow generation, and rollback gates | Phase 6 |
+| P0-18 | Blocker | WORK specialization 18-column output conflicts with old 15-column Graph Walk input | FSM 14, BSM 15, and LHM/HMD 17 columns are the PoC implementation baseline; current programs do not yet implement it | Register the specification, programs, fixtures, expected results, and tests as a matched candidate set after approval | Phase 1 |
+| P0-19 | High | DNM `-o` remains implemented | DNM is not supported | Remove option, branches, output, help, examples, and DNM-only tests in the later implementation task | Phase 1 |
+| P0-20 | High | Additional fields in the WORK 18-column output | Five responsibility-specific sidecar/manifest categories are proposed | Test ID collisions, missing joins, join multiplicity, and consumer impact on existing FSM data | Phase 1 |
+| P0-21 | High | Duplicate Association identity keys | Report as input errors, but do not stop the entire PoC model | Implement and test super/child comparison, omission of ambiguous properties, continuation of other Classes, and diagnostics | Phase 1 |
+| P0-22 | High | Semantic-tool generation integration | Independent features are distributed across WORK, 4-test, and 28-test generations | Prohibit whole-version overwrite and approve a feature-level integration plan | Phase 1 |
+| P0-23 | Medium | Duplication between `xBRL-GL2.0_btx` and `taxonomy/oim/prototype` | All 46 taxonomy files match by relative path and SHA-256 | Approve responsibility-based placement for DTS, samples, tools, generated files, and provenance | Phase 1 |
+| P0-24 | High | `element` generation from `semantic_path` | `semantic_path` is the semantic identity; generate a module-unique lowerCamelCase NCName from the shortest unique suffix. C/A/REF require it; R depends on maximum multiplicity. Programs are not updated | Convert AT-074–AT-094 into fixtures and verify Graph Walk reproducibility; generator/consumer work follows later | Phase 1 |
+| P0-25 | High | Status of a PoC BSM containing errors | Keep status outside the 15-column core; manifest is authoritative | Define schema for processing status, counts, report path/hash, property-status sidecar, and consumer rejection | Phase 1 |
+| P0-26 | Blocker | Migration of existing models without `associated_module` | ADR-0006 defines Class and referenced-Class identities | Approve explicit mapping, review, migration diagnostics, and rollback for every reference; inference is forbidden | Phase 1 |
+| P0-27 | Resolved | Isolation when a Specialization superclass cannot be resolved | Exclude the child from the normal BSM and record child-only properties in diagnostics | Apply to implementation and tests | Phase 1 |
+| P0-28 | Resolved | Module registry and syntax-binding table | A seven-column binding table and management responsibility are defined; `taxonomy_entry_point` belongs in the release manifest | Confirm the final registry location and implement manifest/binding validation later | Phase 1 |
+| P0-29 | High | Distinguishing legacy and new LHM/HMD contracts | The 17-column contract applies from taxonomy version `2026-12-31`; manifest contract name/version are mandatory | Approve schema and consumer rejection rules before implementation | Phase 1 |
+| P0-30 | Resolved | Author and reviewer of existing-FSM migration | The PoC operator prepares and reviews an auditable explicit mapping | Validate required migration records during implementation | Phase 1 |
+| P0-31 | High | QName-form values in the semantic model | Automatic split, module inference, and warning-only acceptance are prohibited | Confirm diagnostic schema and approval procedure for legacy-QName mappings | Phase 1 |
+| P0-32 | High | Same-named Classes from different modules in one HMD | FSM/BSM may retain candidates; an HMD explicitly selects one `(selected_module, class_term)` and prohibits mixing | Test selection, conflict, Aligned specialization, and `semantic_path` uniqueness before profile implementation | Phase 1 |
+| P0-33 | High | `LICENSE.md` can be read as applying CC BY 4.0 to all generated artifacts | Do not change the existing licence file without owner approval; narrower README and notice text applies only to identified project-authored material | Obtain a file-level licensing decision and then align `LICENSE.md` without relicensing external originals, derivatives, or consumer data | Publication gate |
 
-## Phase 0で解決した事項
+## Items resolved in Phase 0
 
-- 2015公式packageをRecommendation `2015-03-25`として特定した。
-- 2017 work productをPWD `2016-12-01`として特定した。
-- 公式ZIPのURL、size、file count及びSHA-256を固定した。
-- UADAから選択コピーした99ファイルがコピー時点ですべて同一であることを確認した。
-  現在は97件同一、WORK側で意図的に改訂した2件をdifferentとして追跡している。
-- UADA側とWORK側のGit rootを区別した。
-- DTS dependency 478 edgeとlocal missing 5件を特定した。
-- consumer LHM baseline 8件のchecksumを固定した。
-- GitHub登録候補、private限定、公開保留及び対象外を区分した。
-- high-confidence secret scanで検出0件を確認した。
-- full `tools` compileで既存prototypeの構文エラー1件を検出し、P0-17へ登録した。
-- P0-17の`specialization.py`をWORK側で改訂し、property同一性、変更、追加、
-  multiplicity `0`による削除、循環検出及びCLIをunit testで固定した。
+- Identified the 2015 official package as Recommendation `2015-03-25`.
+- Identified the 2017 work product as PWD `2016-12-01`.
+- Fixed official ZIP URLs, sizes, file counts, and SHA-256 values.
+- Verified all 99 selected UADA copies at import time; 97 remain identical and
+  two intentional WORK revisions are tracked as different.
+- Distinguished the UADA and WORK Git roots.
+- Identified 478 DTS dependency edges and five local missing references.
+- Froze checksums for eight consumer LHM baselines.
+- Separated GitHub candidates, Private-only material, publication holds, and
+  excluded material.
+- Confirmed zero findings in the high-confidence secret scan.
+- Found one pre-existing prototype syntax error in the full tools compile and
+  recorded it as P0-17.
+- Revised WORK `specialization.py` for P0-17 and fixed property identity,
+  modification, addition, multiplicity-`0` deletion, cycle detection, and CLI
+  behavior in unit tests.

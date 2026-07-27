@@ -1,3 +1,5 @@
+**English** | [日本語](source-inventory_ja.md)
+
 # Source inventory
 
 ## Purpose and status
