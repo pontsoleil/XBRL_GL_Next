@@ -25,7 +25,11 @@ The present sharing scope is private technical collaboration. This repository
 does not currently provide a repository-wide license that can be assumed to
 cover every artifact. Absence of a license notice is not permission to copy,
 modify, or redistribute a file. External and derived materials remain on hold
-until their provenance and rights are confirmed; see
+until their provenance and rights are confirmed. MIT applies only to
+identified project-authored scripts, and CC BY 4.0 applies only to identified
+project-authored documentation and artifacts. External originals and
+derivatives remain subject to their respective owners' terms and are not
+registered, even in the Private repository, while rights are unresolved. See
 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
 
 The intended scope is broader than general ledgers. The project uses the
@@ -349,10 +353,12 @@ Status as of 25 July 2026:
 | xBRL-CSV end to end | Incomplete | Vendor-invoice assets exist, but taxonomy/metadata/instance/lineage consistency is unverified |
 | Consumer migration | Not started | Crosswalk, shadow execution, and switch criteria remain |
 
-Relevant decisions:
+Earlier review records:
 
-- [`docs/decisions/0003-validated-dual-support-taxonomy-baseline.md`](docs/decisions/0003-validated-dual-support-taxonomy-baseline.md)
-- [`docs/decisions/0004-chatgpt-generator-model-review-disposition.md`](docs/decisions/0004-chatgpt-generator-model-review-disposition.md)
+- `docs/decisions/0003-validated-dual-support-taxonomy-baseline.md` —
+  **not registered; under reevaluation**
+- `docs/decisions/0004-chatgpt-generator-model-review-disposition.md` —
+  **not registered; registration on hold**
 
 ## 11. Remaining work and plan
 
@@ -580,8 +586,10 @@ lineage and verify drill-down, drill-up, and drill-through in both directions.
 
 ## 16. Related documents
 
-- [`TaxonomyFramework/INVENTORY.md`](TaxonomyFramework/INVENTORY.md)
-- [`TaxonomyFramework/DEPENDENCIES.md`](TaxonomyFramework/DEPENDENCIES.md)
+- `TaxonomyFramework/INVENTORY.md` — **not registered; contains WORK-specific
+  inventory and generated-manifest dependencies**
+- `TaxonomyFramework/DEPENDENCIES.md` — **not registered; generated dependency
+  evidence is under review**
 - [`TaxonomyFramework/OPEN_ISSUES.md`](TaxonomyFramework/OPEN_ISSUES.md)
 - [`TaxonomyFramework/COPY_PLAN.md`](TaxonomyFramework/COPY_PLAN.md)
 - [`docs/architecture.md`](docs/architecture.md)

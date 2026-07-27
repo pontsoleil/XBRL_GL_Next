@@ -20,7 +20,10 @@ XBRL GLタクソノミを検討・実装するための作業環境です。
 現在の共有範囲は、非公開の技術共同検討です。本リポジトリには、すべての成果物へ
 一律に適用できるrepository全体のlicenseが現在設定されていません。license表示が
 ないことは、複製、改変又は再配布の許可を意味しません。外部由来及び派生成果物は、
-由来と権利を確認するまで共有・公開を保留します。詳細は
+由来と権利を確認するまで共有・公開を保留します。MITは特定されたproject-authored
+scriptだけに、CC BY 4.0は特定されたproject-authored文書及び成果物だけに適用します。
+外部原本及び派生成果物には各権利者の条件が適用され、権利未解決の間はPrivate
+repositoryにも登録しません。詳細は
 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)を参照してください。
 
 対象を会計帳簿だけに限定せず、UN/CEFACT Core Component Library（CCL）と
@@ -419,10 +422,12 @@ cardinality、datatype、unit、repeated row scope及びround trip結果を比�
 | xBRL-CSV end-to-end | 未完了 | vendor invoice例は存在するが、生成taxonomy、metadata、instance及びlineageの一貫検証が必要 |
 | consumer移行 | 未着手 | UADC_PoC及びLedgerExplorerのLHM crosswalk、shadow execution及び切替判定が必要 |
 
-現在の適合性基準とレビュー判断は、次のADRを参照してください。
+以前のレビュー記録：
 
-- [`docs/decisions/0003-validated-dual-support-taxonomy-baseline.md`](docs/decisions/0003-validated-dual-support-taxonomy-baseline.md)
-- [`docs/decisions/0004-chatgpt-generator-model-review-disposition.md`](docs/decisions/0004-chatgpt-generator-model-review-disposition.md)
+- `docs/decisions/0003-validated-dual-support-taxonomy-baseline.md` —
+  **未登録・再評価中**
+- `docs/decisions/0004-chatgpt-generator-model-review-disposition.md` —
+  **未登録・登録保留**
 
 ## 11. 残作業と作業計画
 
@@ -806,8 +811,10 @@ drill-up及びdrill-throughの往復可能性を確認します。
 
 ## 16. 関連文書
 
-- [`TaxonomyFramework/INVENTORY.md`](TaxonomyFramework/INVENTORY.md)
-- [`TaxonomyFramework/DEPENDENCIES.md`](TaxonomyFramework/DEPENDENCIES.md)
+- `TaxonomyFramework/INVENTORY.md` — **未登録。WORK固有の台帳及び
+  生成manifestへの依存を含む**
+- `TaxonomyFramework/DEPENDENCIES.md` — **未登録。生成された依存関係証跡を
+  再評価中**
 - [`TaxonomyFramework/OPEN_ISSUES.md`](TaxonomyFramework/OPEN_ISSUES.md)
 - [`TaxonomyFramework/COPY_PLAN.md`](TaxonomyFramework/COPY_PLAN.md)
 - [`docs/architecture.md`](docs/architecture.md)
