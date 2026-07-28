@@ -62,7 +62,7 @@ Association及びSpecialization行は、同一module内参照でも`associated_m
 継続できても、無効AssociationはBSMへ反映しません。
 
 child ClassのFSM行でmultiplicity `0`を指定すると、一致する継承propertyの削除指示と
-なります。削除property及び指示行自体は、有効child BSM、LHM/HMD又はtaxonomyへ出力
+なります。削除property及び指示行自体は、有効child BSM、LHM又はtaxonomyへ出力
 しません。一致するsuper propertyのない新規Associationで`0`又は`0..0`を指定した
 場合も有効propertyとして出力しません。
 
@@ -82,11 +82,12 @@ model errorを含むPoC BSMを正常成果物として表示しません。manif
 diagnostic reportにproperty level詳細を記録します。任意のstatus sidecarで行level
 dispositionを管理できますが、15列semantic coreへ追加しません。
 
-LHMは完全なlogical hierarchy table、HMDは一つのroot Classについて識別又は抽出した
-部分です。両者は同じ17列契約と用語を使用します。契約は`path`、
+Graph Walkは一つ以上のroot Classからlogical hierarchy tableであるLHMを生成します。
+HMDはbinding段階でLHMから選択するメッセージ単位の部分集合であり、別semantic model
+又は別Graph Walk生成物ではありません。選択HMDはLHM行の17列内容を変更しません。
+単一root LHMは、そのrootのHMDと内容上同一です。契約は`path`、
 `abbreviation_path`、`xpath`及び`associated_class`を除外し、`semantic_path`、
-`associated_module`及び`class_term`を保持し、HMDを`(module, class_term)`で識別
-します。Reference traversalはR行と参照先PK由来の
+`associated_module`及び`class_term`を保持します。Reference traversalはR行と参照先PK由来の
 `type=A, identifier=REF`行を出力し、RからREFへ参照先moduleを引き継いで探索を停止
 します。REF名をparseして参照先を推測しません。XML配置はsyntax bindingの責務です。
 
@@ -97,7 +98,7 @@ Graph Walkはsemantic path確定後に`element`を生成します。末端名の
 
 DNM出力及びGraph Walkの`-o` optionはtarget architectureに含めません。
 
-14列FSM、15列BSM及び17列LHM/HMD契約はtaxonomy version `2026-12-31`から適用し、
+14列FSM、15列BSM及び17列LHM契約はtaxonomy version `2026-12-31`から適用し、
 manifestのcontract name及びversionで識別します。
 
 ## 2. Governance layers

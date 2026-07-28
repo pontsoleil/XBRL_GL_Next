@@ -6,18 +6,21 @@ Accepted for design documentation on 2026-07-26. Program implementation is
 deferred to a separately approved task.
 
 Partially superseded by ADR-0006 for Class identity, Association identity,
-logical module references and FSM／BSM／LHM/HMD column counts. The remaining
+logical module references, FSM／BSM／LHM column counts and binding-stage HMD
+selection. The remaining
 decisions below continue to apply where they do not conflict with ADR-0006.
 
 ## Decision
 
 1. BSM uses the semantic core defined by ADR-0006. It consists of the fourteen
    FSM columns followed by `id` and does not contain `element`.
-2. LHM and HMD use the same 17-column semantic core defined by ADR-0006.
+2. Graph Walk produces the 17-column LHM defined by ADR-0006. HMD is the
+   message-level subset selected from that LHM during binding, not a separate
+   Graph Walk product. A single-root LHM is content-identical to that root's HMD.
    `path`, `abbreviation_path`, `xpath` and `associated_class` are removed.
    XML placement is a syntax-binding concern.
 3. `semantic_path` is the human-readable identity used to allocate
-   `element`, and every `semantic_path` in one LHM/HMD must be unique. Graph
+   `element`, and every `semantic_path` in one LHM or selected HMD must be unique. Graph
    Walk generates a prefix-free lowerCamelCase XML Schema NCName after the
    path is fixed. It starts with the terminal path segment and prepends the
    nearest ancestor segments until the name is unique within the logical
@@ -26,7 +29,10 @@ decisions below continue to apply where they do not conflict with ADR-0006.
    collision. A collision that remains after all segments are used requires
    an explicitly approved element mapping.
 4. DNM and Graph Walk `-o` are not supported by the target architecture.
-5. Association and Class identity are defined by ADR-0006. `property_type`,
+5. Association and Class identity are defined by ADR-0006. Association property
+   identity is `(property_term, associated_module, associated_class)`.
+   `property_term` may be empty and is compared as empty; it is never inferred
+   or generated from `associated_class` or other fields. `property_type`,
    multiplicity, property ID and sequence remain outside the identity key.
    QName, prefix and namespace URI are assigned and validated only by a
    syntax binding.

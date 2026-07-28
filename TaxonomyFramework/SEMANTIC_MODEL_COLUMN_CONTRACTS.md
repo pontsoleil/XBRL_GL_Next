@@ -1,15 +1,17 @@
-# FSM／BSM／LHM/HMD列契約（Phase 1改訂案）
+# FSM／BSM／LHM列契約とbinding段階のHMD（Phase 1改訂案）
 
 ## 1. 位置付け
 
 本書は、XBRL GL Nextのsemantic modelに`associated_module`を導入するための
-実装前列契約案である。2026-07-26時点では設計文書だけを改訂しており、FSM、BSM、
-LHM/HMD、fixture、program及びtaxonomy generatorは未改訂である。
+実装前列契約案である。Semantic処理programはFSM 14列、BSM 15列及びLHM 17列へ
+改定済みであるが、正規データ、binding、HMD、taxonomy generator及びconsumerは
+継続確認中である。
 
 列数を固定値から決めない。意味上必要な列を定義した結果として、FSM 14列、BSM
-15列、LHM/HMD 17列を改訂案とする。BSMはFSMの14列に末尾`id`だけを追加する。
-LHMとHMDは同一列契約及び同一用語を使用し、`path`、`abbreviation_path`、`xpath`
-及び`associated_class`を保持しない。
+15列、LHM 17列を改訂案とする。BSMはFSMの14列に末尾`id`だけを追加する。
+Graph Walkの生成物はLHMである。HMDはbinding段階で利用するLHMのメッセージ単位の
+部分集合であり、別のSemantic処理生成物ではない。HMDの行はLHMの17列を内容変更せず
+使用し、`path`、`abbreviation_path`、`xpath`及び`associated_class`を保持しない。
 
 ## 2. 文字列セルの共通入力前提
 
@@ -19,7 +21,7 @@ LHMとHMDは同一列契約及び同一用語を使用し、`path`、`abbreviati
 | モデル | 管理文字列 |
 |---|---|
 | FSM／BSM | `property_type`, `identifier`, `module`, `class_term`, `property_term`, `representation_term`, `associated_module`, `associated_class`, `multiplicity`, `label_local`, `id` |
-| LHM/HMD | `type`, `identifier`, `name`, `datatype`, `multiplicity`, `domain_name`, `module`, `class_term`, `associated_module`, `id`, `semantic_path`, `label_local`, `element` |
+| LHM及びそのHMD部分集合 | `type`, `identifier`, `name`, `datatype`, `multiplicity`, `domain_name`, `module`, `class_term`, `associated_module`, `id`, `semantic_path`, `label_local`, `element` |
 
 `definition`及び`definition_local`（`Documentation`、`LocalDocumentation`、
 `local_definition`等の同等列を含む）は自由記述である。collapseを適用せず、原文の
@@ -59,6 +61,9 @@ Association property identity
 = (property_term, associated_module, associated_class)
 ```
 
+`property_term`は空欄を許容する。空欄は空欄のままidentityの一要素として比較し、
+`associated_class`、Class名、module、QName、ID又は入力順から推測又は生成しない。
+
 `property_type`、`multiplicity`、property ID、FSM ID、`sequence`及び入力順は
 Association property identityへ含めない。同じClass内で同じAssociation property
 identityが複数あれば重複入力エラーとする。`associated_module`が異なれば、
@@ -68,7 +73,7 @@ identityが複数あれば重複入力エラーとする。`associated_module`�
 XML namespace prefix又はnamespace URIではない。QName、prefix及びnamespace URIとの
 対応はsyntax bindingで管理する。
 
-FSM、BSM及びLHM/HMDの意味モデル名又はClass参照セルへQNameを単一値として記載しては
+FSM、BSM及びLHMの意味モデル名又はClass参照セルへQNameを単一値として記載しては
 ならない。コロンをQName区切りとして含む値は入力エラーとし、自動分割、prefixから
 module／namespaceへの変換、local nameだけの採用及び警告だけでの受理を禁止する。
 
@@ -95,7 +100,7 @@ module／namespaceへの変換、local nameだけの採用及び警告だけで�
 |---|---:|---:|---|---|
 | FSM | 13 | 14 | `representation_term`と`associated_class`の間 | 全列をcanonical nameへ揃える |
 | BSM | 15 | 15 | `representation_term`と`associated_class`の間 | FSM 14列＋末尾`id`。`element`を削除 |
-| LHM/HMD | 19 | 17 | 16番目 | `path`、`associated_class`、`abbreviation_path`及び`xpath`を除く |
+| LHM | 19 | 17 | 16番目 | `path`、`associated_class`、`abbreviation_path`及び`xpath`を除く。HMDはbinding時にこのLHMから選択する |
 
 ### 4.3 FSM canonical input：14列
 
@@ -160,7 +165,7 @@ Specializationで生成、保持又は更新しない。WORK固有のprovenance�
 external reference、context及びpresentation項目はこの15列へ混在させず、
 責務別sidecarとmanifestで管理する。
 
-### 4.5 LHM/HMD canonical semantic core：17列
+### 4.5 LHM canonical semantic core：17列
 
 ```text
 sequence
@@ -188,16 +193,19 @@ class_term
   探索を停止する。REF行は`type=A`かつ`identifier=REF`である。
 - Attribute及びREFのdatatypeを保持する。
 - R行は参照先moduleを`associated_module`へ保持する。参照先ClassはBSMから解決した
-  Graph Walk処理状態及び階層関係で管理し、LHM/HMDへ`associated_class`列を追加しない。
+  Graph Walk処理状態及び階層関係で管理し、LHMへ`associated_class`列を追加しない。
 - R行の`name`はroleありなら`property_term + "_ " + associated_class`、空roleなら
   `associated_class`とし、QName prefixを含めない。
 - REF行の`associated_module`は直前R行の参照先moduleを継承する。参照先はR行との
   階層及びGraph Walkの処理状態で追跡し、REF名又はQNameから再推測しない。
 - 参照先Classが不正ならR行及び配下REF行を出力しない。
-- `class_term`は各行の所属Class及びHMD単位を表し、HMD identityを
-  `(module, class_term)`で判定する。
-- LHMは複数rootを含み得る全体、HMDはroot Class単位で識別又は抽出した部分であり、
-  両者は同じ17列契約を使用する。
+- `class_term`は各行の所属Classを表す。
+- LHMはGraph Walkが一つ以上のroot Classから生成する論理階層表である。
+- HMDはbinding段階でLHMから選択する一つのメッセージ又はroot Class単位の部分集合で
+  あり、同じ17列の行を内容変更なしで使用する。
+- BSMのroot Classを一つに限定してGraph Walkを実行したLHMは、そのroot Classに対応する
+  HMDと行内容、列順及び行順が同一である。HMDとしての識別情報、profile及びtarget
+  syntaxとの対応はbinding manifest又はsidecarで付与し、LHM行へ混在させない。
 - 旧LHM行数又は列位置へ合わせる例外を加えない。
 
 ### 4.6 HMDにおける同名Classのmodule選択
@@ -217,7 +225,7 @@ Association順、Class名、QName又は命名慣行から推測しない。Align
 具体的な特殊化Classだけを出力する。
 
 選択を一意にできない場合は当該HMDを正常成果物として生成せず、競合する
-`(module, class_term)`及び到達経路を診断へ記録する。選択後のLHM/HMDでは
+`(module, class_term)`及び到達経路を診断へ記録する。選択後のHMD部分集合では
 `semantic_path`を一意とし、重複を命名処理で隠さない。
 
 ## 5. 行種別ごとの必須条件
@@ -228,12 +236,12 @@ Association順、Class名、QName又は命名慣行から推測しない。Align
 | Attribute／Attribute(PK) | 必須 | 必須 | 空欄 | 空欄 | 参照先Classなし |
 | Composition／Aggregation／Reference Association | 必須 | 必須 | 必須 | 必須 | Referenced Class identityを検証 |
 | Specialization | 必須 | 必須 | 必須 | 必須 | childは`(module, class_term)`、superは`(associated_module, associated_class)` |
-| LHM/HMD C | 必須 | 必須 | 所有Classのmodule | 列なし | Class行のmoduleを明示 |
-| LHM/HMD 通常A | 必須 | 必須 | 所有Classのmodule | 列なし | 所有Class配下のAttribute |
-| LHM/HMD R | 必須 | 必須 | 参照先module | 列なし | 参照先ClassはGraph Walk状態で保持 |
-| LHM/HMD REF（`type=A`, `identifier=REF`） | 必須 | 必須 | 直前Rの参照先module | 列なし | 参照先PK由来。名前を再解析しない |
+| LHM C | 必須 | 必須 | 所有Classのmodule | 列なし | Class行のmoduleを明示 |
+| LHM 通常A | 必須 | 必須 | 所有Classのmodule | 列なし | 所有Class配下のAttribute |
+| LHM R | 必須 | 必須 | 参照先module | 列なし | 参照先ClassはGraph Walk状態で保持 |
+| LHM REF（`type=A`, `identifier=REF`） | 必須 | 必須 | 直前Rの参照先module | 列なし | 参照先PK由来。名前を再解析しない |
 
-LHM/HMDの`element`必須条件は次のとおりとする。
+LHM及びそのHMD部分集合の`element`必須条件は次のとおりとする。
 
 | 行種別 | `element` | 規則 |
 |---|---|---|
@@ -243,13 +251,13 @@ LHM/HMDの`element`必須条件は次のとおりとする。
 | R（multiplicity上限が1） | 空欄 | taxonomy conceptを生成しない |
 | R（multiplicity上限が1を超える又は無制限） | 必須 | dimensionを生成する |
 
-`0`及び`0..0`は削除指示でありLHM/HMDへ出力しない。R行の上限判定では、`1`、
+`0`及び`0..0`は削除指示でありLHMへ出力しない。R行の上限判定では、`1`、
 `0..1`及び`1..1`を「上限1」とし、上限が2以上又は`*`を「上限1超」とする。
 空欄又は解釈不能なmultiplicityは入力エラーとし、elementの要否を推測しない。
 
 ### 5.1 semantic_pathからelementを生成する規則
 
-`element`を割り当てる意味概念は`semantic_path`で識別する。一つのLHM/HMD内で
+`element`を割り当てる意味概念は`semantic_path`で識別する。一つのLHM内で
 `semantic_path`は一意でなければならない。同じ`semantic_path`が重複した場合は、
 element名の補正ではなくHMDのmodule選択又は入力モデルのエラーとして扱う。
 
@@ -304,7 +312,7 @@ child側の`property_type`及び`multiplicity`で上書きする。`property_typ
 別Associationの追加ではない。
 
 child側の`multiplicity`が`0`又は`0..0`なら継承Associationを削除し、BSM、
-LHM/HMD及びtaxonomyへ出力しない。一致するsuper propertyがない新規Associationで
+LHM及びtaxonomyへ出力しない。一致するsuper propertyがない新規Associationで
 `0`又は`0..0`を指定した場合も有効propertyとして出力しない。
 
 同一Class内の重複Associationは入力エラーとして報告する。PoCではモデル全体を
@@ -376,7 +384,7 @@ HMD単位で作成する。今回は台帳データを作成しない。
 |---|---|---|---:|
 | FSM | `xbrl-gl-next-fsm` | `2026-12-31` | 14 |
 | BSM | `xbrl-gl-next-bsm` | `2026-12-31` | 15 |
-| LHM/HMD | `xbrl-gl-next-lhm-hmd` | `2026-12-31` | 17 |
+| LHM | `xbrl-gl-next-lhm` | `2026-12-31` | 17 |
 
 旧・新契約はfile名だけで識別せず、manifestのcontract name、version、列順及び
 SHA-256を必須とする。HMDはLHMと別形式ではなく、LHMからroot Class単位で識別又は
@@ -387,11 +395,11 @@ SHA-256を必須とする。HMDはLHMと別形式ではなく、LHMからroot Cl
 | 対象 | 現状 | 必要な改訂 |
 |---|---|---|
 | `tools/semantic/specialization.py` | Classを`class_term`だけで登録し、Associationを`(property_term, associated_class)`で照合。moduleを補完しQName形式へ修飾 | 14列FSMを必須検査し、Classを複合keyで登録。`element`なし15列BSMを出力。super参照不能child全体を隔離 |
-| `tools/semantic/graphwalk.py` | 15列BSMを入力し、Class名／QName表記を中心に参照。19列LHMを出力 | 新15列BSMを入力し、複合Class keyで探索。17列LHM/HMDを出力 |
+| `tools/semantic/graphwalk.py` | 15列BSMを入力し、Class名／QName表記を中心に参照。19列LHMを出力 | 新15列BSMを入力し、複合Class keyで探索。17列LHMを出力 |
 | `tools/semantic/bie_to_fsm.py` | CCL確認用でpipeline外 | 使用再開時に14列FSM契約を適用 |
 | `tools/taxonomy/xBRLGL_TaxonomyGenerator.py` | 旧19列LHM、`abbreviation_path`、`xpath`及び文字列からのmodule抽出へ依存 | 17列HMDを`(module, class_term)`単位で読み、QName／namespace割当をbinding内で実行 |
 | `tests/test_specialization.py` | 既存header及び旧identityをfixture化 | 14／15列、複合Class key、必須`associated_module`、child隔離、重複及びPoC継続を追加 |
-| `tests/test_graphwalk.py` | 15列BSMと旧19列LHMをfixture化 | 新15列BSMと17列LHM/HMDへ改訂 |
+| `tests/test_graphwalk.py` | 15列BSMと旧19列LHMをfixture化 | 新15列BSMと17列LHMへ改訂 |
 | 既存FSM／BSM／LHM CSV | `associated_module`なし | 別工程で明示的なmigration mappingを作成。今回は変更しない |
 | downstream consumer | 旧列順又はQName表記へ依存する可能性 | header名で読み、manifestのcontract versionを検査 |
 
@@ -424,8 +432,8 @@ SHA-256を必須とする。HMDはLHMと別形式ではなく、LHMからroot Cl
 | 一部ClassにAssociation重複がある | 曖昧propertyを未反映とし、他のClassを処理してBSMを生成 |
 | 入力ファイルを解析できない | 対象ファイルを生成不能として停止 |
 | BSM headerが15列契約と異なる又は`element`を含む | consumerは入力契約エラーを報告 |
-| LHM/HMD headerが17列契約と異なる又は`path`を含む | taxonomy generatorは入力契約エラーを報告 |
-| semantic_pathがLHM/HMD内で重複 | module選択又は入力モデルのエラー。elementの連番等で隠さない |
+| LHM headerが17列契約と異なる又は`path`を含む | Graph Walk consumerは入力契約エラーを報告 |
+| semantic_pathがLHM又は選択HMD内で重複 | module選択又は入力モデルのエラー。elementの連番等で隠さない |
 | C、A又はREFのelementが空欄 | 出力契約エラー |
 | Rのmultiplicity上限が1でelementがある | 出力契約エラー |
 | Rのmultiplicity上限が1を超えるのにelementが空欄 | dimension生成に必要なelement欠落としてエラー |
@@ -436,7 +444,7 @@ SHA-256を必須とする。HMDはLHMと別形式ではなく、LHMからroot Cl
 
 ## 13. extension／sidecarとmanifest
 
-canonical `id`はBSM／LHM/HMDのClass又はpropertyを版を越えて参照する安定識別子とし、
+canonical `id`はBSM／LHMのClass又はpropertyを版を越えて参照する安定識別子とし、
 core内で必須かつ一意とする。物理入力順だけからIDを生成しない。
 
 WORK固有の`fsmid`、`inherited`、`UNID`、`TDED`、`context`及び`short_name`は、
@@ -478,8 +486,8 @@ manifestのcore情報にはcontract version、path、columns及びSHA-256を含�
    空白collapseをunit testで固定する。
 5. Reference AssociationのR／REF停止、datatype、semantic path及びelementを検証する。
 6. 同じ承認済み入力を2回処理し、core、sidecar及びmanifestのSHA-256一致を確認する。
-7. BSMの`element`、LHM/HMDの`path`、`associated_class`、
+7. BSMの`element`、LHMの`path`、`associated_class`、
    `abbreviation_path`、`xpath`、DNM及び`-o`が正式出力・CLI・試験に残らない。
-8. `FSM → Specialization → BSM → Graph Walk → LHM/HMD → taxonomy →
+8. `FSM → Specialization → BSM → Graph Walk → LHM → HMD選択／binding → taxonomy →
    instance/sample → Arelle等の検証`を最終受入単位とし、段階試験の合格だけを
    最終受入完了としない。

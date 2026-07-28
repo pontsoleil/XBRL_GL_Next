@@ -68,7 +68,7 @@ but the invalid Association is not reflected in the BSM.
 
 A child-class FSM row with multiplicity `0` is a removal directive for the
 matching inherited property. The removed property is not defined in the
-effective child-class BSM and is not emitted to the LHM/HMD or taxonomy. The
+effective child-class BSM and is not emitted to the LHM or taxonomy. The
 FSM row carrying multiplicity `0` is not itself an effective property
 definition.
 
@@ -93,11 +93,13 @@ The diagnostic report carries property-level details; an optional status
 sidecar may carry machine-readable row-level disposition. These fields are not
 added to the 15-column semantic core.
 
-LHM is the complete logical hierarchy table; HMD is the portion identified or
-extracted for one root Class. Both use the same 17-column contract and
-terminology. The contract excludes `path`, `abbreviation_path`, `xpath` and
-`associated_class`, retains `semantic_path`, `associated_module` and
-`class_term`, and identifies an HMD by `(module, class_term)`.
+Graph Walk produces LHM as the logical hierarchy table for one or more root
+Classes. HMD is a message-level subset selected from LHM during binding, not a
+separate semantic model or Graph Walk product. Selected HMD rows retain the
+same 17-column content. A single-root LHM is content-identical to that root's
+HMD. The contract excludes `path`, `abbreviation_path`, `xpath` and
+`associated_class`, and retains `semantic_path`, `associated_module` and
+`class_term`.
 Reference traversal emits an R row and target-PK-derived
 `type=A, identifier=REF` rows, copies the target module from R to REF, and then
 stops. REF names are never parsed to infer a target. XML placement belongs to a
@@ -112,7 +114,7 @@ an automatic number.
 DNM output and the Graph Walk `-o` option are not part of the target
 architecture.
 
-The 14-column FSM, 15-column BSM and 17-column LHM/HMD contracts apply from
+The 14-column FSM, 15-column BSM and 17-column LHM contracts apply from
 taxonomy version `2026-12-31` and are identified by manifest contract name and
 version.
 

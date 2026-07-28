@@ -24,6 +24,9 @@ would make multi-binding support ambiguous.
    `(associated_module, associated_class)`.
 3. Association property identity is
    `(property_term, associated_module, associated_class)`.
+   `property_term` may be empty and is compared as empty. It is not inferred or
+   generated from `associated_class`, Class names, modules, QName, IDs,
+   sequence or input order.
 4. `property_type`, `multiplicity`, property ID, FSM ID, `sequence` and input
    order are not Association identity fields.
 5. `module` and `associated_module` are logical module identifiers. They are
@@ -31,7 +34,7 @@ would make multi-binding support ambiguous.
 6. QName, prefix and namespace URI mapping is performed only by syntax
    bindings.
 7. FSM and BSM add `associated_module` and retain `associated_class`.
-   LHM/HMD retains `associated_module` but does not carry `associated_class`;
+   LHM retains `associated_module` but does not carry `associated_class`;
    Graph Walk resolves the target from BSM and preserves it in traversal state
    and hierarchy.
 8. Both reference fields are required for Association and Specialization rows,
@@ -55,9 +58,12 @@ would make multi-binding support ambiguous.
 16. The contracts apply from taxonomy version `2026-12-31`.
 17. BSM consists of the fourteen FSM columns followed only by `id`; it has no
     `element` column.
-18. LHM is the complete logical hierarchy table. HMD is the part identified or
-    extracted for one root Class. Both use the same 17-column contract, and
-    HMD identity is `(module, class_term)`.
+18. Graph Walk produces LHM as the logical hierarchy table for one or more root
+    Classes. HMD is the message-level subset selected from LHM during binding.
+    HMD reuses selected LHM rows without changing their 17-column content.
+    When Graph Walk is run for exactly one BSM root Class, the resulting LHM is
+    content-identical to that root's HMD. HMD identity and binding metadata are
+    maintained outside the LHM rows.
 19. If a Specialization super Class cannot be resolved uniquely, the complete
     child Class and all its properties are excluded from normal BSM output.
     Child-local properties remain visible only in diagnostics.
@@ -73,16 +79,16 @@ would make multi-binding support ambiguous.
     used during Specialization but is not emitted as a second same-named Class
     in that HMD.
 23. After module selection and hierarchy expansion, `semantic_path` must be
-    unique in the LHM/HMD. A duplicate is an input-selection or modeling
+    unique in the LHM and each selected HMD. A duplicate is an input-selection or modeling
     error; it is not repaired by `element` suffixing.
 
 ## Consequences
 
-- The proposed contracts are FSM 14 columns, BSM 15 columns and LHM/HMD 17
+- The proposed contracts are FSM 14 columns, BSM 15 columns and LHM 17
   columns.
-- LHM/HMD removes `path`, `abbreviation_path`, `xpath` and `associated_class`
+- LHM removes `path`, `abbreviation_path`, `xpath` and `associated_class`
   and retains `semantic_path`, `associated_module` and `class_term`.
-- Existing FSM, BSM and LHM/HMD require an explicit reviewed migration. No
+- Existing FSM, BSM and LHM require an explicit reviewed migration. No
   owner-module fallback or name-based inference is permitted.
 - `specialization.py`, `graphwalk.py`, their fixtures and the taxonomy
   generator require coordinated but separately approved implementation work.
