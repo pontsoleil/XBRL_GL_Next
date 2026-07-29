@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 # coding: utf-8
 # SPDX-License-Identifier: MIT
-"""Expand the canonical XBRL GL Next BSM into a 17-column LHM."""
+"""Expand a canonical 16-column BSM into a 17-column LHM or HMD."""
 
 from __future__ import annotations
 
 import argparse
 import csv
+import json
 import os
 import re
 import sys
@@ -25,6 +26,7 @@ BSM_HEADER = [
     "module",
     "class_term",
     "property_term",
+    "association_role",
     "representation_term",
     "associated_module",
     "associated_class",
@@ -159,14 +161,43 @@ class GraphWalk:
         roots: Sequence[str],
         *,
         encoding: str = "utf-8-sig",
+        diagnostics_file: str | Path | None = None,
     ) -> None:
         self.bsm_file = Path(bsm_file)
         self.lhm_file = Path(lhm_file)
         self.root_selectors = list(roots)
         self.encoding = encoding
+        self.diagnostics_file = (
+            Path(diagnostics_file)
+            if diagnostics_file
+            else self.lhm_file.with_name(
+                f"{self.lhm_file.stem}_graphwalk_diagnostics.json"
+            )
+        )
         self.classes: OrderedDict[tuple[str, str], BSMClass] = OrderedDict()
         self.rows: list[dict[str, str]] = []
         self._semantic_segments: list[list[str]] = []
+        self.diagnostics: list[dict[str, object]] = []
+
+    def diagnostic(
+        self,
+        severity: str,
+        code: str,
+        message: str,
+        *,
+        bsm_line: int | None = None,
+        **details: object,
+    ) -> None:
+        item: dict[str, object] = {
+            "severity": severity,
+            "code": code,
+            "message": message,
+        }
+        if bsm_line is not None:
+            item["bsm_file"] = str(self.bsm_file)
+            item["bsm_line"] = bsm_line
+        item.update(details)
+        self.diagnostics.append(item)
 
     def load(self) -> None:
         if not self.bsm_file.is_file():
@@ -382,7 +413,7 @@ class GraphWalk:
                 values["associated_module"], values["associated_class"]
             )
             association_name = display_association(
-                values["property_term"], values["associated_class"]
+                values["association_role"], values["associated_class"]
             )
             if kind in COMPOSITION_TYPES:
                 target = self.classes[target_key]
@@ -433,10 +464,33 @@ class GraphWalk:
             )
             reference_segments = [*segments, association_name]
             self.append_row(row, reference_segments)
-            for pk in target.properties:
+            primary_keys = [
+                pk
+                for pk in target.properties
+                if pk.values["property_type"] == "Attribute"
+                and pk.values["identifier"] == "PK"
+            ]
+            if not primary_keys:
+                self.diagnostic(
+                    "error",
+                    "reference-target-pk-missing",
+                    (
+                        "Reference Association target has no Attribute with "
+                        "identifier=PK; emitted the R row, skipped all rows below "
+                        "that reference occurrence, and resumed the originating Class"
+                    ),
+                    bsm_line=item.line,
+                    originating_module=key[0],
+                    originating_class=key[1],
+                    association_role=values["association_role"],
+                    associated_module=target_key[0],
+                    associated_class=target_key[1],
+                    reference_id=values["id"],
+                    reference_semantic_path=row["semantic_path"],
+                )
+                continue
+            for pk in primary_keys:
                 pk_values = pk.values
-                if pk_values["property_type"] != "Attribute" or pk_values["identifier"] != "PK":
-                    continue
                 ref = self.base_row(
                     module=target_key[0],
                     level=level + 1,
@@ -584,17 +638,56 @@ class GraphWalk:
         self.load()
         rows = self.generate()
         self.write()
+        self.write_diagnostics()
         return rows
+
+    def write_diagnostics(self) -> None:
+        self.diagnostics_file.parent.mkdir(parents=True, exist_ok=True)
+        fd, temporary_name = tempfile.mkstemp(
+            prefix=f".{self.diagnostics_file.name}.",
+            suffix=".tmp",
+            dir=self.diagnostics_file.parent,
+        )
+        os.close(fd)
+        temporary = Path(temporary_name)
+        try:
+            payload = {
+                "bsm_file": str(self.bsm_file),
+                "output_file": str(self.lhm_file),
+                "diagnostic_count": len(self.diagnostics),
+                "error_count": sum(
+                    item["severity"] == "error" for item in self.diagnostics
+                ),
+                "diagnostics": self.diagnostics,
+            }
+            temporary.write_text(
+                json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            os.replace(temporary, self.diagnostics_file)
+        finally:
+            if temporary.exists():
+                temporary.unlink()
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Generate a canonical 17-column LHM from a 15-column BSM."
+        description=(
+            "Generate a canonical 17-column root-specific HMD, or a combined "
+            "LHM when multiple roots are supplied, from a 16-column BSM."
+        )
     )
     parser.add_argument("BSM_file")
     parser.add_argument("LHM_file")
     parser.add_argument("-r", "--root", action="append", required=True)
     parser.add_argument("-e", "--encoding", default="utf-8-sig")
+    parser.add_argument(
+        "--diagnostics",
+        help=(
+            "JSON diagnostics path; defaults to "
+            "<LHM_file_stem>_graphwalk_diagnostics.json"
+        ),
+    )
     return parser
 
 
@@ -606,12 +699,24 @@ def main(argv: Sequence[str] | None = None) -> int:
             args.LHM_file,
             args.root,
             encoding=args.encoding,
+            diagnostics_file=args.diagnostics,
         )
         rows = processor.graph_walk()
     except (OSError, csv.Error, GraphWalkError) as exc:
         print(f"graphwalk.py: error: {exc}", file=sys.stderr)
         return 2
-    print(f"Wrote {len(rows)} LHM row(s) to {args.LHM_file}")
+    root_count = len(processor.resolve_roots())
+    output_kind = "HMD" if root_count == 1 else "combined LHM"
+    print(f"Wrote {len(rows)} {output_kind} row(s) to {args.LHM_file}")
+    error_count = sum(
+        item["severity"] == "error" for item in processor.diagnostics
+    )
+    if error_count:
+        print(
+            f"graphwalk.py: completed with {error_count} non-fatal error "
+            f"diagnostic(s); see {processor.diagnostics_file}",
+            file=sys.stderr,
+        )
     return 0
 
 

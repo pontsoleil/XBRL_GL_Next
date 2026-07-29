@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import importlib.util
+import json
 import sys
 import tempfile
 import unittest
@@ -58,7 +59,8 @@ class GraphWalkTests(unittest.TestCase):
                 module="tst", class_term="Root", property_term="Root ID",
                 representation_term="Identifier", multiplicity="1", id="TS01-01"),
             row(sequence="3", level="2", property_type="Composition", module="tst",
-                class_term="Root", property_term="Child", associated_module="tst",
+                class_term="Root", property_term="Child property",
+                association_role="Child", associated_module="tst",
                 associated_class="Child", multiplicity="0..*", id="TS01-02"),
             row(sequence="4", level="1", property_type="Class", module="tst",
                 class_term="Child", multiplicity="0..*", id="TS02"),
@@ -84,7 +86,8 @@ class GraphWalkTests(unittest.TestCase):
         rows.insert(
             3,
             row(sequence="3a", level="2", property_type="Composition", module="tst",
-                class_term="Root", property_term="Second Child", associated_module="tst",
+                class_term="Root", property_term="Second child property",
+                association_role="Second Child", associated_module="tst",
                 associated_class="Child", multiplicity="0..1", id="TS01-03"),
         )
         _, output, _ = self.run_model(rows)
@@ -105,7 +108,8 @@ class GraphWalkTests(unittest.TestCase):
             row(sequence="1", level="1", property_type="Class", module="tst",
                 class_term="Root", multiplicity="1", id="TS01"),
             row(sequence="2", level="2", property_type="Composition", module="tst",
-                class_term="Root", property_term="Child", associated_module="alt",
+                class_term="Root", property_term="Child property",
+                association_role="Child", associated_module="alt",
                 associated_class="Child", multiplicity="0..1", id="TS01-01"),
             row(sequence="3", level="1", property_type="Class", module="alt",
                 class_term="Child", multiplicity="1", id="AL01"),
@@ -131,7 +135,8 @@ class GraphWalkTests(unittest.TestCase):
             row(sequence="1", level="1", property_type="Class", module="tst",
                 class_term="Root", multiplicity="1", id="TS01"),
             row(sequence="2", level="2", property_type="Reference", module="tst",
-                class_term="Root", property_term="Original", associated_module="tst",
+                class_term="Root", property_term="Reference property",
+                association_role="Original", associated_module="tst",
                 associated_class="Target", multiplicity="0..1", id="TS01-01"),
             row(sequence="3", level="1", property_type="Class", module="tst",
                 class_term="Target", multiplicity="1", id="TS02"),
@@ -157,7 +162,8 @@ class GraphWalkTests(unittest.TestCase):
             row(sequence="1", level="1", property_type="Class", module="tst",
                 class_term="Root", multiplicity="1", id="TS01"),
             row(sequence="2", level="2", property_type="Reference", module="tst",
-                class_term="Root", property_term="Original", associated_module="alt",
+                class_term="Root", property_term="Reference property",
+                association_role="Original", associated_module="alt",
                 associated_class="Target", multiplicity="0..1", id="TS01-01"),
             row(sequence="3", level="1", property_type="Class", module="alt",
                 class_term="Target", multiplicity="1", id="AL01"),
@@ -219,7 +225,8 @@ class GraphWalkTests(unittest.TestCase):
         rows.insert(
             3,
             row(sequence="3a", level="2", property_type="Composition", module="tst",
-                class_term="Root", property_term="Child", associated_module="tst",
+                class_term="Root", property_term="Duplicate child property",
+                association_role="Child", associated_module="tst",
                 associated_class="Child", multiplicity="1", id="TS01-03"),
         )
         with self.assertRaisesRegex(MODULE.GraphWalkError, "Duplicate semantic_path"):
@@ -252,10 +259,12 @@ class GraphWalkTests(unittest.TestCase):
             row(sequence="1", level="1", property_type="Class", module="tst",
                 class_term="Root", multiplicity="1", id="TS01"),
             row(sequence="2", level="2", property_type="Composition", module="tst",
-                class_term="Root", property_term="First", associated_module="tst",
+                class_term="Root", property_term="First property",
+                association_role="First", associated_module="tst",
                 associated_class="Same", multiplicity="1", id="TS01-01"),
             row(sequence="3", level="2", property_type="Composition", module="tst",
-                class_term="Root", property_term="Second", associated_module="alt",
+                class_term="Root", property_term="Second property",
+                association_role="Second", associated_module="alt",
                 associated_class="Same", multiplicity="1", id="TS01-02"),
             row(sequence="4", level="1", property_type="Class", module="tst",
                 class_term="Same", multiplicity="1", id="TS02"),
@@ -277,6 +286,92 @@ class GraphWalkTests(unittest.TestCase):
             with self.assertRaisesRegex(MODULE.GraphWalkError, "header mismatch"):
                 processor.graph_walk()
             self.assertEqual(lhm.read_text(encoding="utf-8"), "preserve-me")
+
+    def test_legacy_15_column_bsm_header_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            bsm = root / "legacy.csv"
+            lhm = root / "output.csv"
+            legacy_header = [
+                name for name in BSM_HEADER if name != "association_role"
+            ]
+            self.write(bsm, self.model(), legacy_header)
+            with self.assertRaisesRegex(MODULE.GraphWalkError, "header mismatch"):
+                MODULE.GraphWalk(bsm, lhm, ["tst:Root"]).graph_walk()
+            self.assertFalse(lhm.exists())
+
+    def test_bsm_header_element_duplicate_and_id_order_are_rejected(self):
+        id_index = BSM_HEADER.index("id")
+        variants = [
+            [*BSM_HEADER, "element"],
+            [BSM_HEADER[0], *BSM_HEADER],
+            [
+                *BSM_HEADER[: id_index - 1],
+                "id",
+                BSM_HEADER[id_index - 1],
+            ],
+        ]
+        for header in variants:
+            with self.subTest(header=header):
+                with tempfile.TemporaryDirectory() as directory:
+                    root = Path(directory)
+                    bsm = root / "bsm.csv"
+                    lhm = root / "lhm.csv"
+                    self.write(bsm, self.model(), header)
+                    with self.assertRaisesRegex(MODULE.GraphWalkError, "header mismatch"):
+                        MODULE.GraphWalk(bsm, lhm, ["tst:Root"]).graph_walk()
+
+    def test_root_selector_rejects_unknown_prefix_undefined_and_ambiguous(self):
+        for selector in ("bad:Root", "Missing"):
+            with self.subTest(selector=selector):
+                with self.assertRaisesRegex(
+                    MODULE.GraphWalkError,
+                    "Unknown root Class selector|resolves to 0 Classes",
+                ):
+                    self.run_model(self.model(), roots=(selector,))
+
+        rows = self.model()
+        rows.extend(
+            [
+                row(sequence="6", level="1", property_type="Class", module="tst",
+                    class_term="Shared", multiplicity="1", id="TS03"),
+                row(sequence="7", level="1", property_type="Class", module="alt",
+                    class_term="Shared", multiplicity="1", id="AL01"),
+            ]
+        )
+        with self.assertRaisesRegex(MODULE.GraphWalkError, "resolves to 2 Classes"):
+            self.run_model(rows, roots=("Shared",))
+
+    def test_reference_without_pk_is_nonfatal_and_diagnostic(self):
+        rows = [
+            row(sequence="1", level="1", property_type="Class", module="tst",
+                class_term="Root", multiplicity="1", id="TS01"),
+            row(sequence="2", level="2", property_type="Reference", module="tst",
+                class_term="Root", property_term="Reference property",
+                association_role="Original", associated_module="tst",
+                associated_class="Target", multiplicity="0..1", id="TS01-01"),
+            row(sequence="3", level="2", property_type="Attribute", module="tst",
+                class_term="Root", property_term="After Reference",
+                representation_term="Text", multiplicity="1", id="TS01-02"),
+            row(sequence="4", level="1", property_type="Class", module="tst",
+                class_term="Target", multiplicity="1", id="TS02"),
+            row(sequence="5", level="2", property_type="Attribute", module="tst",
+                class_term="Target", property_term="Not A Key",
+                representation_term="Text", multiplicity="1", id="TS02-01"),
+        ]
+        processor, output, _ = self.run_model(rows)
+        self.assertEqual(
+            [item["type"] for item in output],
+            ["C", "R", "A"],
+        )
+        self.assertEqual(output[-1]["name"], "After Reference")
+        self.assertNotIn("Not A Key", [item["name"] for item in output])
+        self.assertEqual(
+            [item["code"] for item in processor.diagnostics],
+            ["reference-target-pk-missing"],
+        )
+        payload = json.loads(processor.diagnostics_file.read_text(encoding="utf-8"))
+        self.assertEqual(payload["error_count"], 1)
 
     def test_deterministic_sha256(self):
         with tempfile.TemporaryDirectory() as directory:

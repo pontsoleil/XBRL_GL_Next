@@ -127,7 +127,8 @@ class SpecializationTests(unittest.TestCase):
                 property_type="Composition",
                 module="alt",
                 class_term="Customer",
-                property_term="",
+                property_term="Address property",
+                association_role="",
                 associated_module="tst",
                 associated_class="Address",
                 multiplicity="0..1",
@@ -141,13 +142,14 @@ class SpecializationTests(unittest.TestCase):
             rows = list(reader)
         self.assertEqual(reader.fieldnames, BSM_HEADER)
         self.assertNotIn("element", reader.fieldnames)
-        self.assertTrue(all(len(item) == 15 for item in rows))
+        self.assertTrue(all(len(item) == 16 for item in rows))
         customer = [item for item in rows if item["class_term"] == "Customer"]
         self.assertEqual(customer[0]["id"], "AL01")
         self.assertEqual([item["id"] for item in customer[1:]], ["AL01-01", "AL01-02"])
         self.assertTrue(all(item["module"] == "alt" for item in customer))
         self.assertEqual(customer[1]["module"], "alt")
-        self.assertEqual(customer[2]["property_term"], "")
+        self.assertEqual(customer[2]["property_term"], "Address property")
+        self.assertEqual(customer[2]["association_role"], "")
         self.assertEqual(customer[2]["associated_module"], "tst")
         self.assertEqual(processor.diagnostics, [])
 
@@ -295,6 +297,12 @@ class SpecializationTests(unittest.TestCase):
             FSM_HEADER[:-1],
             [*FSM_HEADER, "extra"],
             [FSM_HEADER[1], FSM_HEADER[0], *FSM_HEADER[2:]],
+            [name for name in FSM_HEADER if name != "association_role"],
+            [
+                *FSM_HEADER[: FSM_HEADER.index("association_role")],
+                "property_term",
+                *FSM_HEADER[FSM_HEADER.index("association_role") + 1 :],
+            ],
         ]
         for header in variants:
             with self.subTest(header=header):
@@ -374,7 +382,8 @@ class SpecializationTests(unittest.TestCase):
             row(sequence="2", level="1", property_type="Abstract Class", module="tst",
                 class_term="Base", multiplicity="1"),
             row(sequence="3", level="2", property_type="Composition", module="tst",
-                class_term="Base", property_term="Role", associated_module="tst",
+                class_term="Base", property_term="Base wording",
+                association_role="Role", associated_module="tst",
                 associated_class="Target", multiplicity="0..1"),
             row(sequence="4", level="1", property_type="Class", module="tst",
                 class_term="Child", multiplicity="1"),
@@ -382,13 +391,50 @@ class SpecializationTests(unittest.TestCase):
                 class_term="Child", associated_module="tst", associated_class="Base",
                 multiplicity="1"),
             row(sequence="6", level="2", property_type="Reference", module="tst",
-                class_term="Child", property_term="Role", associated_module="tst",
+                class_term="Child", property_term="Child wording",
+                association_role="Role", associated_module="tst",
                 associated_class="Target", multiplicity="1"),
         ]
         _, output, _ = self.run_model(rows)
         child = [item for item in output if item["class_term"] == "Child"][1]
         self.assertEqual(child["property_type"], "Reference")
         self.assertEqual(child["multiplicity"], "1")
+        self.assertEqual(child["property_term"], "Child wording")
+        self.assertEqual(child["association_role"], "Role")
+
+    def test_association_identity_ignores_property_term(self):
+        rows = [
+            row(sequence="1", level="1", property_type="Class", module="tst",
+                class_term="Target", multiplicity="1"),
+            row(sequence="2", level="1", property_type="Class", module="tst",
+                class_term="Owner", multiplicity="1"),
+            row(sequence="3", level="2", property_type="Composition", module="tst",
+                class_term="Owner", property_term="First wording",
+                association_role="Role", associated_module="tst",
+                associated_class="Target", multiplicity="1"),
+            row(sequence="4", level="2", property_type="Reference", module="tst",
+                class_term="Owner", property_term="Second wording",
+                association_role="Role", associated_module="tst",
+                associated_class="Target", multiplicity="0..1"),
+        ]
+        with self.assertRaisesRegex(
+            MODULE.SpecializationError, "duplicate property identity"
+        ):
+            self.run_model(rows)
+
+    def test_attribute_rejects_association_role(self):
+        rows = [
+            row(sequence="1", level="1", property_type="Class", module="tst",
+                class_term="Owner", multiplicity="1"),
+            row(sequence="2", level="2", property_type="Attribute", module="tst",
+                class_term="Owner", property_term="Name",
+                association_role="Not allowed", representation_term="Text",
+                multiplicity="1"),
+        ]
+        with self.assertRaisesRegex(
+            MODULE.SpecializationError, "must not define association_role"
+        ):
+            self.run_model(rows)
 
     def test_specialization_cycle_is_rejected(self):
         rows = [

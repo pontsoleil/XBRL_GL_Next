@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # coding: utf-8
 # SPDX-License-Identifier: MIT
-"""Generate the canonical 15-column XBRL GL Next BSM from 14-column FSM CSVs."""
+"""Generate the canonical 16-column XBRL GL Next BSM from 15-column FSM CSVs."""
 
 from __future__ import annotations
 
@@ -27,6 +27,7 @@ FSM_HEADER = [
     "module",
     "class_term",
     "property_term",
+    "association_role",
     "representation_term",
     "associated_module",
     "associated_class",
@@ -104,6 +105,7 @@ def class_key(module: str, class_term: str) -> tuple[str, str]:
 def property_identity(row: Mapping[str, str]) -> tuple[str, ...]:
     kind = row.get("property_type", "")
     term = collapse(row.get("property_term", ""))
+    role = collapse(row.get("association_role", ""))
     if kind == "Attribute":
         if not term:
             raise SpecializationError("Attribute property_term is required")
@@ -111,7 +113,7 @@ def property_identity(row: Mapping[str, str]) -> tuple[str, ...]:
     if kind in ASSOCIATION_TYPES:
         return (
             "Association",
-            term,
+            role,
             module_value(row.get("associated_module", "")),
             collapse(row.get("associated_class", "")),
         )
@@ -287,9 +289,14 @@ class Specialization:
                 elif kind in PROPERTY_TYPES:
                     if kind in ASSOCIATION_TYPES:
                         self._validate_reference(source_row)
-                    elif row["associated_module"] or row["associated_class"]:
+                    elif (
+                        row["association_role"]
+                        or row["associated_module"]
+                        or row["associated_class"]
+                    ):
                         raise SpecializationError(
-                            f"{source_row.location}: Attribute must not define associated Class"
+                            f"{source_row.location}: Attribute must not define association_role "
+                            "or associated Class"
                         )
                     elif not row["property_term"] or not row["representation_term"]:
                         raise SpecializationError(
@@ -600,7 +607,7 @@ def parse_abbreviations(values: Sequence[str]) -> dict[str, str]:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Convert canonical 14-column FSM CSV files to a 15-column BSM."
+        description="Convert canonical 15-column FSM CSV files to a 16-column BSM."
     )
     parser.add_argument("fsm_files", nargs="*", help="FSM input CSV file(s).")
     parser.add_argument("bsm_file", nargs="?", help="BSM output CSV.")

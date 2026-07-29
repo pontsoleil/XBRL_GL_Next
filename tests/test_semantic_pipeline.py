@@ -10,13 +10,19 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
+from xml.etree import ElementTree as ET
 
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[0]
 SPECIALIZATION = HERE / "specialization.py"
 GRAPHWALK = HERE / "graphwalk.py"
+FORMAL_FSM = (
+    ROOT / "TaxonomyFramework" / "docs" / "framework"
+    / "working-drafts" / "FSM.xlsx"
+)
 if not SPECIALIZATION.is_file():
     SPECIALIZATION = ROOT / "tools" / "semantic" / "specialization.py"
 if not GRAPHWALK.is_file():
@@ -24,7 +30,7 @@ if not GRAPHWALK.is_file():
 
 FSM_HEADER = [
     "sequence", "level", "property_type", "identifier", "module",
-    "class_term", "property_term", "representation_term",
+    "class_term", "property_term", "association_role", "representation_term",
     "associated_module", "associated_class", "multiplicity", "definition",
     "label_local", "definition_local",
 ]
@@ -35,6 +41,79 @@ LHM_HEADER = [
     "definition_local", "element", "id", "semantic_path",
     "associated_module", "class_term",
 ]
+
+MAIN_NS = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+REL_NS = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+PACKAGE_REL_NS = "http://schemas.openxmlformats.org/package/2006/relationships"
+
+
+def _column_index(reference: str) -> int:
+    letters = reference.rstrip("0123456789")
+    result = 0
+    for letter in letters:
+        result = result * 26 + ord(letter.upper()) - ord("A") + 1
+    return result - 1
+
+
+def extract_fsm_sheet(workbook: Path, sheet_name: str, output: Path) -> None:
+    """Export one formal FSM workbook sheet using only the Python standard library."""
+    with zipfile.ZipFile(workbook) as archive:
+        shared_strings: list[str] = []
+        if "xl/sharedStrings.xml" in archive.namelist():
+            shared_root = ET.fromstring(archive.read("xl/sharedStrings.xml"))
+            for item in shared_root.findall(f"{{{MAIN_NS}}}si"):
+                shared_strings.append(
+                    "".join(node.text or "" for node in item.iter(f"{{{MAIN_NS}}}t"))
+                )
+
+        workbook_root = ET.fromstring(archive.read("xl/workbook.xml"))
+        relation_root = ET.fromstring(archive.read("xl/_rels/workbook.xml.rels"))
+        relation_targets = {
+            item.attrib["Id"]: item.attrib["Target"]
+            for item in relation_root.findall(f"{{{PACKAGE_REL_NS}}}Relationship")
+        }
+        sheet = next(
+            item
+            for item in workbook_root.findall(
+                f".//{{{MAIN_NS}}}sheet"
+            )
+            if item.attrib["name"] == sheet_name
+        )
+        target = relation_targets[sheet.attrib[f"{{{REL_NS}}}id"]]
+        sheet_path = "xl/" + target.lstrip("/")
+        sheet_root = ET.fromstring(archive.read(sheet_path))
+
+        rows: list[list[str]] = []
+        for row_element in sheet_root.findall(f".//{{{MAIN_NS}}}row"):
+            values = [""] * len(FSM_HEADER)
+            has_value = False
+            for cell in row_element.findall(f"{{{MAIN_NS}}}c"):
+                index = _column_index(cell.attrib["r"])
+                if index >= len(values):
+                    continue
+                cell_type = cell.attrib.get("t")
+                value_node = cell.find(f"{{{MAIN_NS}}}v")
+                if cell_type == "inlineStr":
+                    value = "".join(
+                        node.text or ""
+                        for node in cell.iter(f"{{{MAIN_NS}}}t")
+                    )
+                elif value_node is None:
+                    value = ""
+                elif cell_type == "s":
+                    value = shared_strings[int(value_node.text or "0")]
+                else:
+                    value = value_node.text or ""
+                values[index] = value
+                has_value = has_value or bool(value)
+            if has_value:
+                rows.append(values)
+
+    if not rows or rows[0] != FSM_HEADER:
+        raise AssertionError(f"{sheet_name} does not use the formal 15-column FSM header")
+    with output.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.writer(handle, lineterminator="\n")
+        writer.writerows(rows)
 
 
 def row(**values: str) -> dict[str, str]:
@@ -73,11 +152,13 @@ class SemanticPipelineTests(unittest.TestCase):
                 module="tst", class_term="Root", property_term="Status",
                 representation_term="Token", multiplicity="1"),
             row(sequence="11", level="2", property_type="Composition",
-                module="tst", class_term="Root", property_term="",
+                module="tst", class_term="Root", property_term="Line property",
+                association_role="",
                 associated_module="tst", associated_class="Line",
                 multiplicity="1..*"),
             row(sequence="12", level="2", property_type="Reference",
-                module="tst", class_term="Root", property_term="Original",
+                module="tst", class_term="Root", property_term="Address reference",
+                association_role="Original",
                 associated_module="tst", associated_class="Address",
                 multiplicity="0..1"),
         ]
@@ -143,6 +224,83 @@ class SemanticPipelineTests(unittest.TestCase):
                     )
                 )
             self.assertEqual(hashes[0], hashes[1])
+
+    def test_full_accounting_and_business_transactions_combined_lhm(self):
+        """The reviewed 2026-07-29 FSM must produce the full combined LHM."""
+        self.assertTrue(FORMAL_FSM.is_file())
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            fsm = root / "fsm.csv"
+            fsm_btx = root / "fsm-btx.csv"
+            bsm = root / "bsm.csv"
+            lhm = root / "combined-lhm.csv"
+            extract_fsm_sheet(FORMAL_FSM, "FSM", fsm)
+            extract_fsm_sheet(FORMAL_FSM, "FSM_btx", fsm_btx)
+            specialized = subprocess.run(
+                [
+                    sys.executable, str(SPECIALIZATION),
+                    "--in", str(fsm), "--in", str(fsm_btx),
+                    "--out", str(bsm),
+                ],
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(specialized.returncode, 0, specialized.stderr)
+            walked = subprocess.run(
+                [
+                    sys.executable, str(GRAPHWALK), str(bsm), str(lhm),
+                    "--root", "cor:Accounting Entries",
+                    "--root", "btx:Business Transactions",
+                ],
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(walked.returncode, 0, walked.stderr)
+
+            with bsm.open(encoding="utf-8-sig", newline="") as handle:
+                bsm_reader = csv.DictReader(handle)
+                bsm_rows = list(bsm_reader)
+            with lhm.open(encoding="utf-8-sig", newline="") as handle:
+                lhm_reader = csv.DictReader(handle)
+                lhm_rows = list(lhm_reader)
+
+            self.assertEqual(bsm_reader.fieldnames, BSM_HEADER)
+            self.assertEqual(lhm_reader.fieldnames, LHM_HEADER)
+            self.assertEqual(len(bsm_rows), 713)
+            self.assertEqual(len(lhm_rows), 498)
+            self.assertFalse(
+                any(
+                    item["module"] == "cor"
+                    and item["class_term"] == "Entity_ Party"
+                    and item["property_term"] == "Business Description"
+                    for item in bsm_rows
+                )
+            )
+            inherited_party_descriptions = [
+                item for item in bsm_rows
+                if item["module"] == "cor"
+                and item["class_term"] == "Entity_ Party"
+                and item["property_term"] == "Party Business Description"
+            ]
+            self.assertEqual(len(inherited_party_descriptions), 1)
+            self.assertEqual(inherited_party_descriptions[0]["id"], "CO14-03")
+
+            paths = [item["semantic_path"] for item in lhm_rows]
+            self.assertEqual(len(paths), len(set(paths)))
+            element_identities: dict[tuple[str, str], str] = {}
+            for item in lhm_rows:
+                if not item["element"]:
+                    continue
+                key = (item["module"], item["element"])
+                previous = element_identities.setdefault(key, item["id"])
+                self.assertEqual(previous, item["id"])
+            self.assertEqual(
+                sum(
+                    item["id"] == "CO14-03"
+                    and item["name"] == "Party Business Description"
+                    for item in lhm_rows
+                ),
+                2,
+            )
 
 
 if __name__ == "__main__":
