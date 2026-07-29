@@ -17,6 +17,14 @@ These project-authored documents are working drafts for private collaborative re
 |---|---|---|
 | [FSM.xlsx](FSM.xlsx) | `A22F37E69168341F38F77987FD4B0D38BF732527C418A700CE766D45D991F3E2` | Reviewed 15-column FSM/FSM_btx input; `for-review`; `license-hold`; redundant `cor:Entity_ Party / Business Description` removed and sequence values normalised |
 
+Review and reproducibility CSV derivatives are registered under
+[`generated/`](generated/README.md). `FSM.csv` (500 rows) and `FSM_btx.csv`
+(77 rows) use the 15-column FSM contract, `BSM.csv` (713 rows) uses the
+16-column BSM contract, and the full combined `LHM.csv` (498 rows) uses the
+17-column LHM/HMD contract for Accounting Entries and Business Transactions.
+The authoritative source remains `FSM.xlsx`; all CSV derivatives are
+`for-review`, `license-hold`, and must not be edited manually.
+
 ## Document register
 
 All documents have status `for-review`. Most documents are collaborative-review revisions dated 2026-07-27. Part 1 was revised on 2026-07-29 and is provided in both DOCX and PDF formats. The taxonomy target version discussed by the project is 2026-12-31.
@@ -41,7 +49,7 @@ The sharing and redistribution status of Part 1 remains `license-hold`.
 
 ## Git registration status
 
-This directory contains six logical working-draft documents in seven distribution files: six DOCX files and one PDF. The Part 1 DOCX and PDF are two distribution formats of the same logical document. Together with the reviewed `FSM.xlsx` semantic input, `README.md`, and `COPY_REPORT.md`, all ten files in this directory are tracked in Git.
+This directory contains six logical working-draft documents in seven distribution files: six DOCX files and one PDF. The Part 1 DOCX and PDF are two distribution formats of the same logical document. Together with the reviewed `FSM.xlsx` semantic input, `README.md`, `COPY_REPORT.md`, the five review artifacts in `generated/`, and its `.gitattributes` byte-preservation rule, all sixteen files in this directory tree are tracked in Git.
 
 ## Verification note
 

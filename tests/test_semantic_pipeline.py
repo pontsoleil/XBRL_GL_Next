@@ -23,6 +23,7 @@ FORMAL_FSM = (
     ROOT / "TaxonomyFramework" / "docs" / "framework"
     / "working-drafts" / "FSM.xlsx"
 )
+REGISTERED_GENERATED = FORMAL_FSM.parent / "generated"
 if not SPECIALIZATION.is_file():
     SPECIALIZATION = ROOT / "tools" / "semantic" / "specialization.py"
 if not GRAPHWALK.is_file():
@@ -301,6 +302,18 @@ class SemanticPipelineTests(unittest.TestCase):
                 ),
                 2,
             )
+
+            # These review artifacts are derived snapshots. Regenerate all four
+            # together and update the expected files whenever FORMAL_FSM changes.
+            for actual, registered_name in (
+                (fsm, "FSM.csv"),
+                (fsm_btx, "FSM_btx.csv"),
+                (bsm, "BSM.csv"),
+                (lhm, "LHM.csv"),
+            ):
+                registered = REGISTERED_GENERATED / registered_name
+                self.assertTrue(registered.is_file())
+                self.assertEqual(actual.read_bytes(), registered.read_bytes())
 
 
 if __name__ == "__main__":
