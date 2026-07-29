@@ -46,7 +46,7 @@ Exit condition：保持する2015／2017 conceptごとに明示的なsemantic di
   付与し、Aligned specialization作成時にも対応provenanceを保持する。
 - XML QNameから独立したstable concept ID及びsemantic pathを割り当てる。
 - Association property identity keyを
-  `(property_term, associated_module, associated_class)`として決定的なsuperclass
+  `(association_role, associated_module, associated_class)`として決定的なsuperclass
   specializationを定義する。
 - Classを`(module, class_term)`、参照先Classを
   `(associated_module, associated_class)`で識別する。同一module内でも両参照列を必須
@@ -71,10 +71,11 @@ PoC exit condition：FSM validationが未解決Class、duplicate stable ID及び
 - Shared definitionを直接編集せず、child propertyの削除、変更及び追加によりFSMをBSMへ特殊化する。
 - multiplicity `0`を削除指示とし、一致する継承property及び指示行を有効BSMへ出力しない。
   super propertyに一致しない新規Associationの`0`又は`0..0`も有効propertyとしない。
-- 宣言済みroot及びassociation選択からLHM/HMDを決定的に生成する。
+- 宣言済みroot群から統合LHMを、単一の明示的root Class QNameからroot固有HMDを
+  決定的に生成する。
 - Reference AssociationではR行及び参照先PK由来REF行を出力し、RからREFへtarget moduleを
   引き継ぎ、nameをparseせず探索を停止する。
-- 14列FSMを読み、15列BSM semantic core及び17列LHM/HMD semantic coreを出力する。
+- 15列FSMを読み、16列BSM semantic core及び17列LHM/HMD semantic coreを出力する。
   BSM `element`を除外し、LHM/HMDの`path`、`abbreviation_path`、`xpath`及び
   `associated_class`を除外する。`semantic_path`、`associated_module`及びHMD identity
   `class_term`を保持し、確定semantic pathからLHM/HMD `element`を生成する。
@@ -82,7 +83,7 @@ PoC exit condition：FSM validationが未解決Class、duplicate stable ID及び
   ancestryで一意化できない場合、自動連番を付けずerrorとする。
 - target CLI及びtest planからDNMとGraph Walk `-o`を除く。
 - 各変換のchange reportを生成する。
-- PoC結果状態を15列coreでなくmanifestへ記録する。model errorが残る場合は
+- PoC結果状態を16列coreでなくmanifestへ記録する。model errorが残る場合は
   `processing_status=poc-with-errors`、件数及びdiagnostic-report参照を使用する。
 - 三つの変換toolをCLI利用可能にし、固定fixtureでtestする。
 - taxonomy version `2026-12-31`から新契約を適用し、manifest contract name／versionで

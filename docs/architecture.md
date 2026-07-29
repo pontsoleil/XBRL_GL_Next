@@ -40,9 +40,9 @@ base and may remove, modify or add properties.
 
 Class identity is `(module, class_term)`. A referenced Class is identified by
 `(associated_module, associated_class)`. Association property identity is
-`(property_term, associated_module, associated_class)`. Association kind and
-multiplicity are not part of the identity key and may be changed by the child
-class. For example, a matching association may be changed
+`(association_role, associated_module, associated_class)`. `property_term` is
+not part of Association identity. Association kind and multiplicity are not
+part of the identity key and may be changed by the child class. For example, a matching association may be changed
 from reference to aggregation and its multiplicity may be changed.
 
 Managed strings use XML Schema `token`-equivalent `whiteSpace="collapse"`;
@@ -82,8 +82,9 @@ processing continues for unaffected classes.
 
 ### Canonical semantic tables
 
-The BSM semantic core has 15 columns: the 14 FSM columns followed only by
-`id`. It has no `element` column. WORK-specific provenance, external-reference,
+The FSM semantic core has 15 columns, with `association_role` immediately after
+`property_term`. The BSM semantic core has 16 columns: the 15 FSM columns
+followed only by `id`. It has no `element` column. WORK-specific provenance, external-reference,
 context and presentation fields are held in responsibility-specific extensions
 or sidecars.
 
@@ -91,13 +92,13 @@ A PoC BSM with model errors is not presented as a clean result. Its manifest
 records `processing_status`, `error_count`, `warning_count` and `report_file`.
 The diagnostic report carries property-level details; an optional status
 sidecar may carry machine-readable row-level disposition. These fields are not
-added to the 15-column semantic core.
+added to the 16-column semantic core.
 
-Graph Walk produces LHM as the logical hierarchy table for one or more root
-Classes. HMD is a message-level subset selected from LHM during binding, not a
-separate semantic model or Graph Walk product. Selected HMD rows retain the
-same 17-column content. A single-root LHM is content-identical to that root's
-HMD. The contract excludes `path`, `abbreviation_path`, `xpath` and
+Graph Walk over the declared root Class set produces the combined LHM. Graph
+Walk from one explicitly supplied root Class QName produces the root-specific
+HMD directly from the BSM. HMD is not a separate semantic model. LHM and HMD
+use the same 17-column output header. The contract excludes `path`,
+`abbreviation_path`, `xpath` and
 `associated_class`, and retains `semantic_path`, `associated_module` and
 `class_term`.
 Reference traversal emits an R row and target-PK-derived
@@ -114,7 +115,7 @@ an automatic number.
 DNM output and the Graph Walk `-o` option are not part of the target
 architecture.
 
-The 14-column FSM, 15-column BSM and 17-column LHM contracts apply from
+The 15-column FSM, 16-column BSM and 17-column LHM/HMD contracts apply from
 taxonomy version `2026-12-31` and are identified by manifest contract name and
 version.
 

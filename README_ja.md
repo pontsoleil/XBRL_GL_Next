@@ -63,7 +63,8 @@ flowchart TB
 アーキテクチャ図及び今後追加する処理フロー図は、原則として上から下へ進む
 `TB`配置とし、文書及び画面で追いやすい縦長の構成を基本とします。
 
-FSM、BSM及びLHM/HMDは意味モデル側の成果物です。XSD、linkbase、
+FSM、BSM及びLHMは意味モデル側の成果物です。HMDは単一root固有の17列Graph
+Walk出力であり、第4の意味モデルではありません。XSD、linkbase、
 xBRL-CSV metadata及びCSV tableは構文側の成果物です。構文が変わっても
 概念の意味、stable ID及びsemantic pathが変わらない設計を基本とします。
 
@@ -271,7 +272,8 @@ FSMで定義されたスーパークラスは、その子クラスをFSMに定�
 
 Classは`(module, class_term)`、Associationの参照先Classは
 `(associated_module, associated_class)`で識別します。Association propertyの
-同一性は`(property_term, associated_module, associated_class)`で判定します。
+同一性は`(association_role, associated_module, associated_class)`で判定し、
+`property_term`はAssociation identityに含めません。
 `module`及び`associated_module`は論理module識別子であり、QName、prefix及び
 namespace URIではありません。これらはXSD等のsyntax bindingで割り当てます。
 空roleは空欄のまま有効ですが、同一Class内に同じAssociation property identityを
@@ -334,11 +336,11 @@ Business Semantic Modelは、profile及びbusiness contextに応じてFSMを特�
 
 ### LHM/HMD
 
-Logical Hierarchical Model又はHierarchical Message Definitionは、選択したrootと
-associationをgraph walkで階層展開した構文binding直前のモデルです。
-LHMは全体の階層、HMDは一つのrootについて識別又は抽出した階層として扱います。
-正式なPoC実装基準はFSM 14列、BSM 15列及びLHM/HMD 17列ですが、現行program及び
-正規データはまだこの契約へ一体として対応していません。
+Graph Walkが宣言済みroot Class群を対象として生成する統合階層をLHMとし、単一の
+明示的なroot Class QNameから到達可能な階層だけを生成する出力をHMDとします。
+両者は同じ17列headerを使用します。正式なPoC実装基準はFSM 15列、BSM 16列及び
+LHM/HMD 17列です。FSM／BSMでは`property_term`と`association_role`を別列とし、
+BSMは末尾`id`だけを追加し`element`列を持ちません。
 
 FSM／BSMには異なるmoduleに属する同名Classを候補として保持できますが、一つの
 HMDでは同じ`class_term`について一つのmoduleのClassだけを明示選択し、混在させません。
@@ -350,6 +352,8 @@ dimension用elementを必須とします。
 `source/models/business-transactions/xBRL-GL2.0_FSM_btx.csv`には`module`が空の行が
 640件あります。このファイルは正式FSMではなく、検討経過を示す資料として
 扱います。
+review済み`working-drafts/FSM.xlsx`は、module空欄のない明示的な77行
+`FSM_btx` sheetを正式な現行PoC入力として使用します。
 
 ## 8. Taxonomyモジュール
 
@@ -438,8 +442,9 @@ cardinality、datatype、unit、repeated row scope及びround trip結果を比�
 
 残作業の優先順位は次のとおりです。
 
-1. FSM、BSM及びLHM/HMDの正規入力schemaとvalidation ruleを確定し、
-   `FSM_btx`のmodule空欄640件を解消又は明示的に除外する。
+1. FSM、BSM及びLHM/HMDの正規入力schemaとvalidation ruleを維持し、
+   review済み77行`FSM_btx`をfull combined回帰試験で検証する。旧640行を
+   将来移行する場合は明示mappingを作成する。
 2. generatorをADR-0003のinclude/import/linkbase構成へ適合させ、valid baseline
    46ファイルを同一入力から再生成する。
 3. 公式2015／2017 packageからconcept、tuple path、type、role及びlinkbaseの
@@ -512,7 +517,7 @@ directoryへ保存できる。
   associated module及びassociated classによって照合し、子クラスによる削除、変更及び追加を
   決定的に適用する。
 - 同一Class内のAssociationを
-  `(property_term, associated_module, associated_class)`で事前検証し、同じ組合せが
+  `(association_role, associated_module, associated_class)`で事前検証し、同じ組合せが
   複数あればextension処理前に入力エラーとする。
 - Association kind及びmultiplicityをproperty identityとは分離して扱う。
 - 対象領域で不要なShared propertyは、Aligned Extensionの特殊化定義で
@@ -589,7 +594,9 @@ round-trip比較を含めます。
 
 1. 公式2015／2017 packageとの関係は確定しましたが、現在の改変prototypeが
    `xbrl.org` namespaceを使用しているためpublic releaseを保留しています。
-2. `FSM_btx`にmodule空欄が640件あります。
+2. 旧検討用CSVにはmodule空欄の`FSM_btx`行が640件残ります。現行PoCの
+   review済み`working-drafts/FSM.xlsx`はmoduleを明示した77行を使用し、
+   旧行の将来移行には承認済みmappingを必要とします。
 3. Shared／Aligned分類の一部が出現回数等のheuristicに依存しています。
 4. 変換programの一部はCLIが無効で、local default pathを使用します。
 5. OIM/Palette taxonomyは暫定日`2026-12-31`に統一済みですが、Tuple taxonomy等には
@@ -607,8 +614,8 @@ round-trip比較を含めます。
     管理主体と初期採用範囲が未確定です。
 13. `EntryHeader`の合計金額と`EntryDetail`の明細金額に適用する計算、丸め、
     通貨及び符号規則が未確定です。
-14. 現行semantic programは、FSM 14列、BSM 15列及びLHM/HMD 17列のPoC契約に
-    対応する一体的で再現可能なtoolchainになっていません。
+14. 過去のsemantic-model snapshotは、現行15／16／17列契約への明示的な移行が
+    引き続き必要です。
 
 ## 13. 検証環境とローカル検査
 
@@ -663,11 +670,11 @@ python -m py_compile .\tools\inventory\generate_phase0_manifests.py
 - XML/XSDのwell-formedness
 - Phase 0 manifestの公式package、source比較及びconsumer baseline
 
-`tools/semantic/specialization.py`の統合候補は、14列FSMのheaderを名前で読み取り、
+`tools/semantic/specialization.py`は、15列FSMのheaderを名前で読み取り、
 Classを`(module, class_term)`、Association propertyを
-`(property_term, associated_module, associated_class)`で識別し、Association重複の
+`(association_role, associated_module, associated_class)`で識別し、Association重複の
 検出とPoC継続、Aligned Extensionの特殊化定義におけるmultiplicity `0`による
-継承property削除及び15列BSM生成へ一致させます。BSMはFSM 14列の末尾に`id`だけを
+継承property削除及び16列BSM生成へ一致させます。BSMはFSM 15列の末尾に`id`だけを
 追加し、`element`列を持ちません。
 重複又は解決不能なpropertyは
 暗黙に選択せず未反映／要確認とし、処理可能なClassを含むBSMと診断reportを一組の
@@ -680,9 +687,10 @@ local nameへの分割又はmodule推測を行いません。管理文字列に�
 を適用しますが、definition等の自由記述は改行と内部空白を保持します。module識別子
 だけはcollapse後にASCII小文字化します。
 
-`tools/semantic/graphwalk.py`の統合候補は、canonical BSMの15列を実際のCSV
+`tools/semantic/graphwalk.py`は、canonical BSMの16列を実際のCSV
 header名で読み取り、`(module, class_term)`で指定したroot Classからgraph walkを
-行って17列のLHM/HMD CSVを生成します。`path`、`abbreviation_path`、`xpath`及び
+行います。単一rootでは17列HMD、複数rootでは統合17列LHMを生成します。
+`path`、`abbreviation_path`、`xpath`及び
 `associated_class`は出力せず、R／REF行には参照先`associated_module`を保持します。
 `class_term`は`(module, class_term)`によるHMD単位の識別に使用します。一つの
 HMDでは同名Classを一つのmoduleからだけ選択します。`element`はsemantic path確定後に

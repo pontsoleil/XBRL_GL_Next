@@ -68,7 +68,8 @@ flowchart TB
 ```
 
 Architecture and process diagrams normally use a top-to-bottom (`TB`) layout.
-FSM, BSM, and LHM/HMD are semantic artifacts. XML Schema, linkbases,
+FSM, BSM, and LHM are semantic-model artifacts. HMD is the root-specific
+17-column Graph Walk output, not a fourth semantic model. XML Schema, linkbases,
 xBRL-CSV metadata, and CSV tables are syntax artifacts. A syntax change should
 not change the intended meaning, stable identity, or semantic path.
 
@@ -226,7 +227,8 @@ candidates for Shared, Aligned, and Distinct definitions.
 
 Class identity is `(module, class_term)`. A referenced Class is identified by
 `(associated_module, associated_class)`. Association property identity is
-`(property_term, associated_module, associated_class)`. Logical modules are
+`(association_role, associated_module, associated_class)`; `property_term` is
+not part of Association identity. Logical modules are
 not QName prefixes or namespace URIs; syntax bindings assign those later.
 
 A child Class specializes a superclass by deleting, changing, or adding
@@ -273,11 +275,13 @@ inherited deletions, changes, and additions.
 
 ### LHM/HMD
 
-The Logical Hierarchical Model is the complete hierarchy produced by Graph
-Walk; a Hierarchical Message Definition is the hierarchy selected or extracted
-for one root. The PoC target contracts are FSM 14 columns, BSM 15 columns, and
-LHM/HMD 17 columns. Current programs and data do not yet implement this
-contract consistently.
+Graph Walk over the declared root Class set produces the combined Logical
+Hierarchical Model. Graph Walk from one explicitly supplied root Class QName
+produces the root-specific Hierarchical Message Definition directly from the
+BSM. Both LHM and HMD use the same 17-column output header. The current
+contracts are FSM 15 columns, BSM 16 columns, and LHM/HMD 17 columns.
+`property_term` and `association_role` are separate FSM/BSM columns, and BSM
+adds only terminal `id` without an `element` column.
 
 One HMD may select only one module's Class for a given `class_term`; same-named
 Classes from different modules must not be mixed in one hierarchy.
@@ -288,6 +292,8 @@ a dimension element when the upper cardinality exceeds one or is unbounded.
 
 `source/models/business-transactions/xBRL-GL2.0_FSM_btx.csv` contains 640 rows
 without a module. It is study evidence, not a conforming FSM.
+The reviewed `working-drafts/FSM.xlsx` input instead contains an explicit
+77-row `FSM_btx` sheet with no blank module values.
 
 ## 8. Taxonomy modules
 
@@ -426,7 +432,10 @@ package.
 ## 12. Known issues
 
 1. Modified prototypes still use `xbrl.org` namespaces; public release is on hold.
-2. `FSM_btx` has 640 rows with no module.
+2. The legacy study CSV retains 640 `FSM_btx` rows with no module; the reviewed
+   `working-drafts/FSM.xlsx` input resolves the current PoC scope with an
+   explicit 77-row sheet, while any later legacy-row migration still requires
+   an approved mapping.
 3. Some Shared/Aligned classifications still rely on frequency heuristics.
 4. Some transformation candidates lack a complete CLI and use local defaults.
 5. Tuple material still contains `2026-MM-DD` placeholders.
@@ -442,8 +451,8 @@ package.
 12. Governance and initial scope for document type/purpose/status codes remain open.
 13. Calculation, rounding, currency, and sign rules for header and detail
     amounts remain open.
-14. Current semantic programs do not yet implement the 14/15/17-column PoC
-    contracts as one integrated, reproducible toolchain.
+14. Historical semantic-model snapshots still require explicit migration to
+    the current 15/16/17-column contracts.
 
 ## 13. Validation environment and local checks
 
@@ -489,16 +498,16 @@ They check required paths, basic model headers, JSON syntax, XML/XSD
 well-formedness, package/source manifests, and consumer baselines. They do not
 establish XBRL, OIM, semantic, or external-standard conformance.
 
-The target Specialization implementation reads the 14-column FSM by header,
+The target Specialization implementation reads the 15-column FSM by header,
 uses module-qualified identities, reports duplicate or unresolved properties,
 supports PoC continuation without silent selection, applies inherited
-deletions, and emits a 15-column BSM without `element`.
+deletions, and emits a 16-column BSM without `element`.
 
-The target Graph Walk implementation reads that BSM by header and emits the
-17-column LHM/HMD. It preserves datatype and R/REF semantics, stops traversal
-after Reference PK materialization, uses no DNM `-o`, and generates
+The target Graph Walk implementation reads that BSM by header and emits a
+17-column HMD for one explicit root or a combined 17-column LHM for multiple
+roots. It preserves datatype and R/REF semantics, records a non-fatal diagnostic
+and continues when a Reference target has no PK, uses no DNM `-o`, and generates
 deterministic semantic paths and elements under the rules in Section 7.
-These are target requirements, not claims about the present programs.
 
 ### 13.3 XBRL/OIM validation with Arelle
 

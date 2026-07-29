@@ -20,8 +20,8 @@ Git tree.
 
 | Current GIT path | Role | Registration status |
 | --- | --- | --- |
-| `semantic-model/FSM/` | Historical 2025 FSM snapshots | Reference only; not the 14-column PoC contract |
-| `semantic-model/BSM/` | Historical 2025 BSM snapshots | Reference only; not the 15-column PoC contract |
+| `semantic-model/FSM/` | Historical 2025 FSM snapshots | Reference only; not the current 15-column contract |
+| `semantic-model/BSM/` | Historical 2025 BSM snapshots | Reference only; not the current 16-column contract |
 | `semantic-model/LHM/` | Historical 2025 LHM snapshots | Reference only; not the 17-column LHM/HMD contract |
 | `scripts/` | Historical transformation and taxonomy scripts | Functional and licence review required before reuse |
 | `xBRL-CSV_taxonomy/` | Historical xBRL-CSV taxonomy material | Reference only; provenance and namespace review required |
@@ -32,7 +32,7 @@ Git tree.
 
 Existing files are not automatically accepted as the conformance baseline or
 as regression expected values. Their provenance, licence, data sensitivity,
-and relationship to the new 14/15/17-column contracts are reviewed
+and relationship to the current 15/16/17-column contracts are reviewed
 independently.
 
 ## Planned, not yet registered

@@ -58,7 +58,7 @@ disposition.
   Aligned specialization is created.
 - Assign stable concept IDs and semantic paths independent of XML QName.
 - Define deterministic superclass specialization using
-  `(property_term, associated_module, associated_class)` as the Association
+  `(association_role, associated_module, associated_class)` as the Association
   property identity key.
 - Identify Classes by `(module, class_term)` and referenced Classes by
   `(associated_module, associated_class)`. Require both reference fields even
@@ -92,10 +92,11 @@ release still requires zero unresolved model errors.
   inherited property or the directive row to the effective BSM. A new
   Association with no matching superclass property and multiplicity `0` or
   `0..0` is also not effective and is not emitted.
-- Generate LHM/HMD deterministically by declared roots and association choices.
+- Generate a combined LHM from the declared root set and a root-specific HMD
+  from one explicit root Class QName.
 - For Reference Associations, emit R and target-PK-derived REF rows, inherit
   the target module from R to REF, and stop traversal without parsing names.
-- Read the 14-column FSM, emit the 15-column BSM semantic core and emit the
+- Read the 15-column FSM, emit the 16-column BSM semantic core and emit the
   17-column LHM/HMD semantic core. Omit BSM `element`; omit LHM/HMD `path`,
   `abbreviation_path`, `xpath` and `associated_class`; retain
   `semantic_path`, `associated_module` and HMD identity `class_term`,
@@ -105,7 +106,7 @@ release still requires zero unresolved model errors.
   number when ancestry cannot make the name unique.
 - Remove DNM and Graph Walk `-o` from the target CLI and test plan.
 - Produce a change report for each transformation.
-- Record PoC result status in the manifest rather than the 15-column core.
+- Record PoC result status in the manifest rather than the 16-column core.
   Use `processing_status=poc-with-errors`, counts and a diagnostic-report
   reference when model errors remain.
 - Make all three transformation tools usable from the command line and test

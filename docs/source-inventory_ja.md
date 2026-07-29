@@ -17,8 +17,8 @@ WORKで説明されている新しい`source/`、`taxonomy/`、`examples/`、
 
 | 現在のGIT path | 役割 | 登録状態 |
 | --- | --- | --- |
-| `semantic-model/FSM/` | 2025年のFSM snapshot | 参照専用。14列PoC契約ではない |
-| `semantic-model/BSM/` | 2025年のBSM snapshot | 参照専用。15列PoC契約ではない |
+| `semantic-model/FSM/` | 2025年のFSM snapshot | 参照専用。現行15列契約ではない |
+| `semantic-model/BSM/` | 2025年のBSM snapshot | 参照専用。現行16列契約ではない |
 | `semantic-model/LHM/` | 2025年のLHM snapshot | 参照専用。17列LHM/HMD契約ではない |
 | `scripts/` | 過去の変換及びtaxonomy script | 再利用前に機能・ライセンスreviewが必要 |
 | `xBRL-CSV_taxonomy/` | 過去のxBRL-CSV taxonomy資料 | 参照専用。来歴・namespace reviewが必要 |
@@ -28,7 +28,7 @@ WORKで説明されている新しい`source/`、`taxonomy/`、`examples/`、
 | `TaxonomyFramework/` | branch用に選定した再構築契約及び計画 | Working Draft |
 
 既存ファイルは、適合性baseline又は回帰試験の期待値として自動的に採用しません。
-来歴、ライセンス、データ機密性及び新14／15／17列契約との関係を個別にreviewします。
+来歴、ライセンス、データ機密性及び現行15／16／17列契約との関係を個別にreviewします。
 
 ## 計画中・未登録
 

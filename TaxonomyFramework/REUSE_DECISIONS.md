@@ -37,7 +37,7 @@ C:\Users\nobuy\GitHub\GIT\XBRL_GL_Next_BACKUP\20260725_4172d5f
 判定: `adapt_and_reuse`
 
 旧FSM 418行及びJPN拡張84行は、概念、定義、association及び地域固有定義の比較元として
-使用する。今回の正式入力であるShared FSM 849行＋FSM_btx 180行へ直接連結しない。
+使用する。今回の正式入力であるreview済みFSM 500行＋FSM_btx 77行へ直接連結しない。
 
 必要な作業:
 
@@ -57,12 +57,12 @@ WORK版、単独4件版及び28件版を機能単位で比較する。いずれ�
 |---|---|---|---|---|
 | FSMヘッダー正規化 | 基本header | 部分候補 | formal header alias | 28件版機能を移植候補 |
 | Specialization | 実装あり | 実装あり | 実装・広い回帰あり | JIS規則で3版を比較 |
-| Association同一性 | 空roleを拒否 | 空role fixtureあり | role＋associated class | 新契約の`(property_term, associated_module, associated_class)`へ置換。空roleを許容し、同一key重複を報告。PoCでは曖昧propertyを未反映として他を継続 |
+| Association同一性 | 空roleを拒否 | 空role fixtureあり | role＋associated class | 新契約の`(association_role, associated_module, associated_class)`へ置換し、`property_term`をidentityから除外。空roleを許容し、同一key重複を報告。PoCでは曖昧propertyを未反映として他を継続 |
 | multiplicity 0削除 | 実装あり | 実装あり | `0`及び`0..0`対応 | 共通機能として回帰 |
 | Abstract Class | 基本処理 | 検査あり | 参照を報告・除外 | 28件版機能を移植候補 |
 | 未定義Class参照 | 世代依存 | 検査あり | 事前検査あり | 入力エラー契約へ統合 |
 | extension FSM/BSM | 個別CLIあり | なし | 統合入力中心 | 要件決定後に必要部分のみ移植 |
-| CLI/入出力 | 18列BSM | 15列BSM | 15列BSM | FSM 14列／BSM 15列へ移行し、追加項目はsidecarへ分離 |
+| CLI/入出力 | 18列BSM | 15列BSM | 15列BSM | FSM 15列／BSM 16列へ移行し、追加項目はsidecarへ分離 |
 
 ### 3.3 graphwalk.py
 
@@ -70,7 +70,7 @@ WORK版、単独4件版及び28件版を機能単位で比較する。いずれ�
 
 | 機能 | WORK版 | 4件版 | 28件版 | 判断 |
 |---|---|---|---|---|
-| BSMヘッダー | 15列入力だがspecialization 18列出力と不整合 | 15列 | 15列 | FSM 14列＋`id`の15列canonical契約承認後に接続 |
+| BSMヘッダー | 15列入力だがspecialization 18列出力と不整合 | 15列 | 15列 | FSM 15列＋`id`の16列canonical契約承認後に接続 |
 | module／logical class | QName／先頭3文字推測あり | 推測が残る | 厳密QName処理 | QName処理は移植せず、`(module, class_term)`及び`(associated_module, associated_class)`検査へ置換 |
 | syntax binding QName | graph walkへ混在 | 一部混在 | 厳密処理 | taxonomy generator側のsyntax binding責務として再設計 |
 | 未定義参照 | 探索時依存 | 改善途中 | 到達不能を含む事前検査 | 入力エラー契約へ統合 |
@@ -184,7 +184,7 @@ C:\Users\nobuy\GitHub\WORK\XBRL-GL-Next\docs\ChatGPT\20260725_153459
 1. 旧FSM及び生成taxonomyに含まれるXBRL GL定義の再配布条件。
 2. 旧BSM/LHMの機械生成後の手修正有無。
 3. 旧extension FSM/BSM及び複数rootを新正式CLIに含める範囲。
-4. FSM 14列、BSM 15列、LHM 17列契約、HMD選択及びtaxonomy generator入力契約。
+4. FSM 15列、BSM 16列、LHM/HMD 17列契約、HMD選択及びtaxonomy generator入力契約。
 5. 新OIM taxonomyのnamespace、2026-12-31 URI及びentry point命名。
 6. 旧instanceを公開回帰試験として使用できるか。
 7. WORK版、4件版及び28件版から作る統合候補の作業場所とfixture配置。

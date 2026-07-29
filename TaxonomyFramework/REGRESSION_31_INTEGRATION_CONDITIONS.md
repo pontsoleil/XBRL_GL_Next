@@ -34,10 +34,10 @@ docs/testing/semantic-functional-integration-conditions.md
 
 | 機能 | 統合条件 |
 |---|---|
-| FSM header alias | 値を変更せずheaderだけcanonical nameへ正規化。改訂契約は14列 |
-| BSM | FSM 14列＋末尾`id`の15列canonical semantic core。`element`なし |
+| FSM header alias | 値を変更せずheaderだけcanonical nameへ正規化。改訂契約は15列 |
+| BSM | FSM 15列＋末尾`id`の16列canonical semantic core。`element`なし |
 | LHM/HMD | 共通17列。`semantic_path`、`associated_module`、HMD identity用`class_term`を保持し、`path`、`associated_class`、`abbreviation_path`、`xpath`を除く |
-| Association | keyは`(property_term, associated_module, associated_class)`。空roleを保持し、同一key重複を報告してPoC処理を継続 |
+| Association | keyは`(association_role, associated_module, associated_class)`。`property_term`はidentityに含めない。空roleを保持し、同一key重複を報告してPoC処理を継続 |
 | Abstract Class | 通常Classからの参照を報告・除外し、Abstract Class自体をBSMへ出力しない |
 | module／logical class | Classは`(module, class_term)`、参照先は`(associated_module, associated_class)`で検査。QNameはsyntax bindingだけで扱う |
 | Reference | R／REFを出力して探索停止し、datatypeを保持 |
@@ -63,7 +63,7 @@ docs/testing/semantic-functional-integration-conditions.md
 - Reference AssociationでR／REFを出力して探索を停止する。
 - 未定義module、未定義associated module、未定義associated class及び論理Class参照の曖昧性を入力エラーとする。
 - `Accountant_ Contact_ Phone`から`Acc:Phone`を生成しない。
-- 14列FSM、15列BSM及び17列LHM/HMDのheaderと順序が契約に一致する。
+- 15列FSM、16列BSM及び17列LHM/HMDのheaderと順序が契約に一致する。
 - BSMの`element`、LHM/HMDの`path`、`associated_class`、`abbreviation_path`、
   `xpath`、DNM及び`-o`が正式出力・CLI・testに存在しない。
 - 3版から移植した各試験について、由来、fixture、期待値及び列契約を記録する。
@@ -149,8 +149,8 @@ docs/testing/semantic-functional-integration-conditions.md
 | AT-055 | taxonomyと代表sample | Arelle等で妥当、module／namespace対応一致 | E2E | 最終 |
 | AT-056 | 同一承認入力を2回処理 | BSM、LHM/HMD、taxonomy、manifestのSHA-256一致 | E2E | 最終 |
 | AT-057 | 部分生成 | status、除外scope、error件数、reportをmanifestへ記録 | diagnostics | 最終gate |
-| AT-058 | FSM header | 確定14列と完全一致 | contract | 前提 |
-| AT-059 | BSM header | FSM 14列と同順＋15列目`id` | contract | 前提 |
+| AT-058 | FSM header | 確定15列と完全一致 | contract | 前提 |
+| AT-059 | BSM header | FSM 15列と同順＋16列目`id` | contract | 前提 |
 | AT-060 | BSM | `element`列が存在せずSpecializationも生成しない | Specialization | 前提 |
 | AT-061 | LHMとHMD | 同じ17列契約及び用語を使用 | contract | 前提 |
 | AT-062 | LHM/HMD | `path`列なし、`semantic_path`あり | Graph Walk | 前提 |
@@ -194,13 +194,13 @@ docs/testing/semantic-functional-integration-conditions.md
 
 ## 6. 実データ再現性
 
-正式入力候補はShared FSM 849行＋FSM_btx 180行とし、FSM_btx単独実行を合否に
-使用しない。統合候補で次を2回実行する。
+正式入力はreview済みFSM 500行＋FSM_btx 77行とし、FSM_btx単独実行を合否に
+使用しない。統合入力で次を2回実行する。
 
 ```text
 FSM + FSM_btx
     ↓ specialization.py
-15列BSM
+16列BSM
     ↓ graphwalk.py
 17列LHM/HMD
 ```
@@ -210,6 +210,11 @@ Abstract Class参照、未定義associated module／class、
 R／REF、Reference配下の非REF子孫、datatype空欄、semantic path重複、element重複、
 sidecar join、診断report、終了コード及びSHA-256を記録する。
 
+2026-07-29 review入力では、`cor:Entity_ Party / Business Description`の継承重複を
+除き、`cor:Party / Party Business Description`を保持する。Accounting Entriesと
+Business Transactionsを同時rootとするfull combined LHMが498行・17列で生成され、
+同一module・異IDのelement collisionが0件であることを固定回帰試験にする。
+
 ## 7. 実装開始gate
 
 次を確認するまで、候補プログラムの統合、改変又は正式配置を行わない。
@@ -217,6 +222,6 @@ sidecar join、診断report、終了コード及びSHA-256を記録する。
 1. sidecar／manifest及び診断report schemaの実装形式、配置、終了コード及び
    `poc-with-errors`に対するconsumerの扱い。
 2. canonical `id`生成規則を既存FSMへ適用したときの衝突件数。
-3. 14列FSM、15列BSM及び17列LHM/HMDへ対応するproducer、taxonomy generator及びconsumer migration範囲。
+3. 15列FSM、16列BSM及び17列LHM/HMDへ対応するproducer、taxonomy generator及びconsumer migration範囲。
 4. 既存データへ`associated_module`を明示するreview済みmappingの作成方法。
 5. 統合候補を作る別作業領域及び試験fixtureの配置。

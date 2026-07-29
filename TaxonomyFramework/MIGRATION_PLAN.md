@@ -82,7 +82,7 @@ XBRL_GL_Next/
 
 - `AGENTS.md`、README、LICENSE/NOTICE及びディレクトリ責務を確定する。
 - Shared、Aligned及びDistinctの定義を正式文書化する。
-- ADR-0006承認後、FSM 14列、BSM 15列及びLHM 17列をcanonical semantic
+- ADR-0007承認後、FSM 15列、BSM 16列及びLHM/HMD 17列をcanonical semantic
   coreとして版管理する。
 - WORK追加項目をprovenance、inheritance、external reference、semantic context及び
   label／presentationのextension又はsidecarへ分離する。
@@ -106,18 +106,18 @@ XBRL_GL_Next/
 
 - 3版から採用した全機能の試験が成功する。
 - 未定義module、未定義associated module、未定義associated class及び異module同名Classを個別に確認できる。
-- Association重複の報告とPoC継続、14列／15列／17列、LHM element生成、HMD選択、WORK追加項目sidecar及び
+- Association重複の報告とPoC継続、15列／16列／17列、LHM/HMD element生成、HMD選択、WORK追加項目sidecar及び
   DNM非サポート方針が試験化される。
 - 正式入力を2回処理したBSM/LHMのSHA-256が一致する。
 
 ### Stage 3: FSM移行
 
-- Shared FSM 849行及びFSM_btx 180行を正式入力集合として登録する。
+- review済みFSM 500行及びFSM_btx 77行を正式入力集合として登録する。
 - 旧FSM 418行及びJPN 84行との概念対応表を作成する。
 - JPN及び公開された地域・国家・業界標準をAligned poolへ分類する。
 - 未定義module／associated module／associated class、Abstract Class及びmultiplicity削除指示を検査する。
 - 各Classを`(module, class_term)`、Associationを
-  `(property_term, associated_module, associated_class)`で事前検証し、
+  `(association_role, associated_module, associated_class)`で事前検証し、
   重複を入力エラーとして報告する。PoCでは重複のないClass及び一意なpropertyを
   継続処理し、曖昧なpropertyを未反映／要確認としてBSMと対になる診断reportへ記録する。
 
@@ -125,6 +125,8 @@ XBRL_GL_Next/
 
 - 旧FSMの全概念に採用、統合、分割、廃止又は保留の判断がある。
 - FSM＋FSM_btx → BSMが、clean又は`poc-with-errors`の状態をmanifestへ記録して完了する。
+- Accounting Entries及びBusiness Transactionsのcombined Graph Walkが17列LHMを
+  element collisionなしで生成する。
 - `poc-with-errors`では、Abstract Class参照、未定義associated module／class及び重複Associationが
   BSMへ暗黙反映されず、診断reportから入力行と処置を追跡できる。
 
@@ -244,7 +246,7 @@ pre-2026-rearchitecture-20260725をcheckoutする。
 1. branch名`rearchitecture/oim-taxonomy-2026`
 2. 新ディレクトリ構成
 3. FSM/BSM/LHM列契約
-4. 14列FSM／15列BSM／17列LHM契約、HMD選択及びWORK追加項目sidecar schemaの実装順序
+4. 15列FSM／16列BSM／17列LHM/HMD契約、HMD選択及びWORK追加項目sidecar schemaの実装順序
 5. extension及び複数rootの正式CLI範囲
 6. XBRL International由来資産のライセンス方針
 7. 旧instanceの公開可否

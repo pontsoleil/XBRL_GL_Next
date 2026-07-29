@@ -40,8 +40,9 @@ FSMで定義されたsuperclassは、そのchild ClassをFSMで定義するこ�
 
 Class identityは`(module, class_term)`、参照先Class identityは
 `(associated_module, associated_class)`、Association property identityは
-`(property_term, associated_module, associated_class)`です。Association kindと
-multiplicityはidentity keyに含めず、child Classで変更できます。
+`(association_role, associated_module, associated_class)`です。`property_term`は
+Association identityに含めません。Association kindとmultiplicityはidentity keyに
+含めず、child Classで変更できます。
 
 管理文字列にはXML Schema `token`相当の`whiteSpace="collapse"`を適用し、自由記述
 definitionは改行と内部空白を保持します。collapse後、`module`及び
@@ -73,19 +74,20 @@ child ClassのFSM行でmultiplicity `0`を指定すると、一致する継承pr
 
 ### Canonical semantic tables
 
-BSM semantic coreはFSM 14列の末尾に`id`だけを追加した15列で、`element`列を持ちません。
+FSM semantic coreは`property_term`の直後に`association_role`を置く15列です。
+BSM semantic coreはFSM 15列の末尾に`id`だけを追加した16列で、`element`列を持ちません。
 WORK固有のprovenance、external reference、context及びpresentation項目は、責務別
 extension又はsidecarで管理します。
 
 model errorを含むPoC BSMを正常成果物として表示しません。manifestに
 `processing_status`、`error_count`、`warning_count`及び`report_file`を記録し、
 diagnostic reportにproperty level詳細を記録します。任意のstatus sidecarで行level
-dispositionを管理できますが、15列semantic coreへ追加しません。
+dispositionを管理できますが、16列semantic coreへ追加しません。
 
-Graph Walkは一つ以上のroot Classからlogical hierarchy tableであるLHMを生成します。
-HMDはbinding段階でLHMから選択するメッセージ単位の部分集合であり、別semantic model
-又は別Graph Walk生成物ではありません。選択HMDはLHM行の17列内容を変更しません。
-単一root LHMは、そのrootのHMDと内容上同一です。契約は`path`、
+Graph Walkが宣言済みroot Class群から生成する統合階層をLHMとします。単一の
+明示的なroot Class QNameからGraph Walkしたroot固有出力を、BSMから直接生成される
+HMDとします。HMDは別semantic modelではなく、LHMとHMDは同じ17列headerを使います。
+契約は`path`、
 `abbreviation_path`、`xpath`及び`associated_class`を除外し、`semantic_path`、
 `associated_module`及び`class_term`を保持します。Reference traversalはR行と参照先PK由来の
 `type=A, identifier=REF`行を出力し、RからREFへ参照先moduleを引き継いで探索を停止
@@ -98,7 +100,7 @@ Graph Walkはsemantic path確定後に`element`を生成します。末端名の
 
 DNM出力及びGraph Walkの`-o` optionはtarget architectureに含めません。
 
-14列FSM、15列BSM及び17列LHM契約はtaxonomy version `2026-12-31`から適用し、
+15列FSM、16列BSM及び17列LHM/HMD契約はtaxonomy version `2026-12-31`から適用し、
 manifestのcontract name及びversionで識別します。
 
 ## 2. Governance layers
