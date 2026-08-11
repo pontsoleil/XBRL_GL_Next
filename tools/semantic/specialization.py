@@ -39,6 +39,8 @@ FSM_HEADER = [
 BSM_HEADER = [*FSM_HEADER, "id"]
 
 CLASS_TYPES = {"Class", "Abstract Class"}
+SPECIALISATION_TYPE = "Specialisation"
+LEGACY_SPECIALIZATION_TYPE = "Specialization"
 ASSOCIATION_TYPES = {
     "Composition",
     "Aggregation",
@@ -118,6 +120,46 @@ def property_identity(row: Mapping[str, str]) -> tuple[str, ...]:
             collapse(row.get("associated_class", "")),
         )
     raise SpecializationError(f"Unsupported property_type for identity: {kind!r}")
+
+
+def multiplicity_bounds(value: str) -> tuple[int, int | None]:
+    """Return inclusive lower/upper bounds; None represents unbounded."""
+    if value in {"0", "0..0"}:
+        return 0, 0
+    if value == "0..1":
+        return 0, 1
+    if value == "0..*":
+        return 0, None
+    if value in {"1", "1..1"}:
+        return 1, 1
+    if value == "1..*":
+        return 1, None
+    raise SpecializationError(f"Unsupported multiplicity: {value!r}")
+
+
+def encompassing_multiplicity(left: str, right: str) -> str:
+    """Return the least restrictive range encompassing both multiplicities."""
+    left_lower, left_upper = multiplicity_bounds(left)
+    right_lower, right_upper = multiplicity_bounds(right)
+    lower = min(left_lower, right_lower)
+    upper = (
+        None
+        if left_upper is None or right_upper is None
+        else max(left_upper, right_upper)
+    )
+    if lower == 0 and upper == 0:
+        return "0..0"
+    if lower == 0 and upper == 1:
+        return "0..1"
+    if lower == 0 and upper is None:
+        return "0..*"
+    if lower == 1 and upper == 1:
+        return "1..1"
+    if lower == 1 and upper is None:
+        return "1..*"
+    raise SpecializationError(
+        f"Cannot represent encompassing multiplicity for {left!r} and {right!r}"
+    )
 
 
 @dataclass
@@ -209,11 +251,29 @@ class Specialization:
                 raise SpecializationError(
                     f"{path}: FSM header mismatch; expected {FSM_HEADER!r}, got {actual!r}"
                 )
-            return [
-                SourceRow(normalize_row(row), path, line)
-                for line, row in enumerate(reader, start=2)
-                if any("" if value is None else str(value) for value in row.values())
-            ]
+            rows: list[SourceRow] = []
+            for line, raw_row in enumerate(reader, start=2):
+                if not any(
+                    "" if value is None else str(value)
+                    for value in raw_row.values()
+                ):
+                    continue
+                values = normalize_row(raw_row)
+                source_row = SourceRow(values, path, line)
+                if values["property_type"] == LEGACY_SPECIALIZATION_TYPE:
+                    values["property_type"] = SPECIALISATION_TYPE
+                    self.diagnostic(
+                        "warning",
+                        "NON_CANONICAL_ASSOCIATION_TYPE",
+                        "'Specialization' was accepted as an alias of the "
+                        "canonical value 'Specialisation' and normalised to "
+                        "'Specialisation'.",
+                        source_row,
+                        supplied_value=LEGACY_SPECIALIZATION_TYPE,
+                        canonical_value=SPECIALISATION_TYPE,
+                    )
+                rows.append(source_row)
+            return rows
 
     def load(self) -> None:
         all_keys: set[tuple[str, str]] = set()
@@ -278,17 +338,27 @@ class Specialization:
                 row["class_term"] = current.key[1]
                 row["module"] = current.key[0]
 
-                if kind == "Specialization":
+                if kind == SPECIALISATION_TYPE:
                     self._validate_reference(source_row)
+                    if row["representation_term"]:
+                        raise SpecializationError(
+                            f"{source_row.location}: Specialisation Association "
+                            "representation_term must be empty"
+                        )
                     parent = class_key(row["associated_module"], row["associated_class"])
                     if parent in current.parents:
                         raise SpecializationError(
-                            f"{source_row.location}: duplicate Specialization {parent!r}"
+                            f"{source_row.location}: duplicate Specialisation {parent!r}"
                         )
                     current.parents.append(parent)
                 elif kind in PROPERTY_TYPES:
                     if kind in ASSOCIATION_TYPES:
                         self._validate_reference(source_row)
+                        if row["representation_term"]:
+                            raise SpecializationError(
+                                f"{source_row.location}: Association "
+                                "representation_term must be empty"
+                            )
                     elif (
                         row["association_role"]
                         or row["associated_module"]
@@ -382,29 +452,56 @@ class Specialization:
             return copy.deepcopy(self._resolved[key])
         if key in self._resolving:
             cycle = " -> ".join(f"{module}:{term}" for module, term in [*self._resolving, key])
-            raise SpecializationError(f"Specialization cycle detected: {cycle}")
+            raise SpecializationError(f"Specialisation cycle detected: {cycle}")
         self._resolving.append(key)
         definition = self.classes[key]
         result: OrderedDict[tuple[str, ...], SourceRow] = OrderedDict()
+        representation_conflicts: dict[tuple[str, ...], list[SourceRow]] = {}
 
         for parent in definition.parents:
             for identity, item in self.resolve_class(parent).items():
-                if identity in result:
-                    raise SpecializationError(
-                        f"{definition.row.location}: inherited property identity "
-                        f"{identity!r} is supplied by multiple super Classes of "
-                        f"{definition.key!r}"
-                    )
                 inherited = copy.deepcopy(item)
                 inherited.owner = key
                 inherited.values["module"] = key[0]
                 inherited.values["class_term"] = key[1]
-                result[identity] = inherited
+                if identity not in result:
+                    result[identity] = inherited
+                    continue
+
+                current = result[identity]
+                if identity[0] == "Attribute" and (
+                    current.values["representation_term"]
+                    != inherited.values["representation_term"]
+                ):
+                    conflict_rows = representation_conflicts.setdefault(
+                        identity, [copy.deepcopy(current)]
+                    )
+                    conflict_rows.append(inherited)
+                    current.values["multiplicity"] = encompassing_multiplicity(
+                        current.values["multiplicity"],
+                        inherited.values["multiplicity"],
+                    )
+                    continue
+
+                current.values["multiplicity"] = encompassing_multiplicity(
+                    current.values["multiplicity"],
+                    inherited.values["multiplicity"],
+                )
+                self.diagnostic(
+                    "info",
+                    "inherited-property-merged",
+                    f"Merged inherited property {identity!r} in {definition.key!r}",
+                    inherited,
+                    child_class={"module": key[0], "class_term": key[1]},
+                    property_identity=list(identity),
+                    merged_multiplicity=current.values["multiplicity"],
+                )
 
         for item in definition.properties:
             identity = property_identity(item.values)
             deletion = item.values["multiplicity"] in DELETION_MULTIPLICITIES
             if deletion:
+                representation_conflicts.pop(identity, None)
                 if identity in result:
                     removed = result.pop(identity)
                     origin = removed.origin or removed.owner
@@ -439,12 +536,26 @@ class Specialization:
                 continue
             if identity in result:
                 result[identity] = self._merge(result[identity], item)
+                representation_conflicts.pop(identity, None)
             else:
                 direct = copy.deepcopy(item)
                 direct.owner = key
                 direct.values["module"] = key[0]
                 direct.values["class_term"] = key[1]
                 result[identity] = direct
+
+        if representation_conflicts:
+            identity, rows = next(iter(representation_conflicts.items()))
+            representations = sorted(
+                {row.values["representation_term"] for row in rows}
+            )
+            sources = ", ".join(row.location for row in rows)
+            raise SpecializationError(
+                f"{definition.row.location}: unresolved inherited Attribute "
+                f"representation_term conflict for {identity!r} in "
+                f"{definition.key!r}: {representations!r}; inherited from {sources}; "
+                "add a child override or deletion directive"
+            )
 
         self._resolving.pop()
         self._resolved[key] = copy.deepcopy(result)

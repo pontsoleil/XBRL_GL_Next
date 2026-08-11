@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 # coding: utf-8
 # SPDX-License-Identifier: MIT
-"""Expand a canonical 16-column BSM into a 17-column LHM or HMD."""
+"""Expand a canonical 16-column BSM into an 18-column candidate LHM.
+
+Graph Walk generates the initial ``local_name`` and physical ``xpath`` for
+every emitted occurrence.  QName values are assembled internally from each
+row's ``module`` and ``local_name`` and are not stored as a CSV column.  It
+never creates or modifies an LHM reviewed.
+"""
 
 from __future__ import annotations
 
@@ -12,7 +18,8 @@ import os
 import re
 import sys
 import tempfile
-from collections import OrderedDict, defaultdict
+import unicodedata
+from collections import OrderedDict
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Mapping, Sequence
@@ -45,16 +52,28 @@ LHM_HEADER = [
     "name",
     "datatype",
     "multiplicity",
-    "domain_name",
+    "association_role",
     "definition",
     "label_local",
     "definition_local",
-    "element",
-    "id",
+    "source_bsm_id",
     "semantic_path",
     "associated_module",
     "class_term",
+    "local_name",
+    "xpath",
 ]
+
+MODULE_PREFIX = {
+    "btx": "gl-btx",
+    "bus": "gl-bus",
+    "cor": "gl-cor",
+    "ehm": "gl-ehm",
+    "lnk": "gl-lnk",
+    "muc": "gl-muc",
+    "taf": "gl-taf",
+    "usk": "gl-usk",
+}
 
 ASSOCIATION_TYPES = {
     "Composition",
@@ -67,6 +86,12 @@ COMPOSITION_TYPES = {"Composition", "Aggregation"}
 UPPER_ONE = {"1", "0..1", "1..1"}
 MULTIPLICITIES = {"0..1", "0..*", "1", "1..1", "1..*"}
 NCNAME = re.compile(r"^[A-Za-z_][A-Za-z0-9._-]*$")
+CAMEL_BOUNDARIES = (
+    (re.compile(r"([A-Z]+)([A-Z][a-z])"), r"\1 \2"),
+    (re.compile(r"([a-z0-9])([A-Z])"), r"\1 \2"),
+    (re.compile(r"([A-Za-z])([0-9])"), r"\1 \2"),
+    (re.compile(r"([0-9])([A-Za-z])"), r"\1 \2"),
+)
 
 
 class GraphWalkError(ValueError):
@@ -103,40 +128,60 @@ def display_association(role: str, associated_class: str) -> str:
     return f"{role}_ {associated_class}" if role else associated_class
 
 
-def split_words(value: str) -> list[str]:
-    words: list[str] = []
-    for chunk in re.split(r"[^A-Za-z0-9]+", value):
-        if not chunk:
-            continue
-        pieces = re.findall(
-            r"[A-Z]+(?=[A-Z][a-z]|\d|\Z)|[A-Z]?[a-z]+|\d+",
-            chunk,
-        )
-        words.extend(pieces or [chunk])
-    return words
+def semantic_path_term(module: str, term: str) -> str:
+    """Return a module-qualified semantic-model identifier path segment."""
+    collapsed_term = re.sub(r"\s+", "", term)
+    return f"{module_value(module)}_{collapsed_term}"
 
 
-def lower_camel(words: Sequence[str]) -> str:
+def semantic_path_association(
+    module: str, role: str, associated_class: str
+) -> str:
+    """Return the Association segment used only in semantic_path."""
+    role_segment = re.sub(r"\s+", "", role)
+    class_segment = re.sub(r"\s+", "", associated_class)
+    term = f"{role_segment}_{class_segment}" if role_segment else class_segment
+    return f"{module_value(module)}_{term}"
+
+
+def name_words(value: str) -> list[str]:
+    """Return deterministic words for the initial lower-camel local name."""
+    text = unicodedata.normalize("NFKC", collapse(value))
+    text = re.sub(r"[^\w]+", " ", text, flags=re.UNICODE).replace("_", " ")
+    for pattern, replacement in CAMEL_BOUNDARIES:
+        text = pattern.sub(replacement, text)
+    return [word for word in text.split() if word]
+
+
+def local_name_from_name(name: str) -> str:
+    words = name_words(name)
     if not words:
-        raise GraphWalkError("Cannot generate element from an empty semantic path segment")
-    first = words[0].lower()
-    tail = "".join(word[:1].upper() + word[1:].lower() for word in words[1:])
-    candidate = first + tail
-    if candidate and candidate[0].isdigit():
-        candidate = "n" + candidate
-    if not NCNAME.fullmatch(candidate):
-        raise GraphWalkError(f"Generated element is not an XML Schema NCName: {candidate!r}")
-    return candidate
+        raise GraphWalkError("name does not contain a usable local-name word")
+    local = words[0].lower() + "".join(
+        word.lower()[:1].upper() + word.lower()[1:] for word in words[1:]
+    )
+    if not NCNAME.fullmatch(local):
+        raise GraphWalkError(
+            f"name generates an invalid XML Schema NCName: {name!r} -> {local!r}"
+        )
+    return local
 
 
-def combine_segments(segments: Sequence[str]) -> str:
-    words: list[str] = []
-    for segment in segments:
-        current = split_words(segment)
-        if words and current and words[-1].casefold() == current[0].casefold():
-            current = current[1:]
-        words.extend(current)
-    return lower_camel(words)
+def qualified_name(
+    module: str, local_name: str, module_prefixes: Mapping[str, str]
+) -> str:
+    """Build a QName internally without adding a QName column to the LHM."""
+    try:
+        prefix = module_prefixes[module]
+    except KeyError as exc:
+        raise GraphWalkError(
+            f"module has no registered taxonomy prefix: {module!r}"
+        ) from exc
+    if not local_name or ":" in local_name or not NCNAME.fullmatch(local_name):
+        raise GraphWalkError(
+            f"local_name is not a valid XML Schema NCName: {local_name!r}"
+        )
+    return f"{prefix}:{local_name}"
 
 
 @dataclass
@@ -162,6 +207,7 @@ class GraphWalk:
         *,
         encoding: str = "utf-8-sig",
         diagnostics_file: str | Path | None = None,
+        module_prefixes: Mapping[str, str] | None = None,
     ) -> None:
         self.bsm_file = Path(bsm_file)
         self.lhm_file = Path(lhm_file)
@@ -174,10 +220,29 @@ class GraphWalk:
                 f"{self.lhm_file.stem}_graphwalk_diagnostics.json"
             )
         )
+        self.module_prefixes = dict(
+            MODULE_PREFIX if module_prefixes is None else module_prefixes
+        )
         self.classes: OrderedDict[tuple[str, str], BSMClass] = OrderedDict()
         self.rows: list[dict[str, str]] = []
-        self._semantic_segments: list[list[str]] = []
+        self._semantic_paths: dict[str, int] = {}
+        self._source_bsm_ids: dict[str, tuple[int, str]] = {}
+        self._local_name_occurrences: dict[
+            tuple[str, str], list[dict[str, object]]
+        ] = {}
         self.diagnostics: list[dict[str, object]] = []
+
+    def validate_paths(self) -> None:
+        paths = [
+            self.bsm_file.resolve(),
+            self.lhm_file.resolve(),
+            self.diagnostics_file.resolve(),
+        ]
+        if len(set(paths)) != len(paths):
+            raise GraphWalkError(
+                "BSM input, candidate LHM output, and diagnostics must use "
+                "three different paths"
+            )
 
     def diagnostic(
         self,
@@ -322,11 +387,61 @@ class GraphWalk:
             raise GraphWalkError("At least one --root is required")
         return roots
 
-    def append_row(self, row: dict[str, str], segments: list[str]) -> None:
+    def append_row(
+        self,
+        row: dict[str, str],
+        segments: list[str],
+    ) -> None:
         row["sequence"] = str(len(self.rows) + 1)
         row["semantic_path"] = "$." + ".".join(segments)
+        if row["semantic_path"] in self._semantic_paths:
+            first = self._semantic_paths[row["semantic_path"]]
+            self.diagnostic(
+                "error", "SEMANTIC_PATH_DUPLICATE",
+                "semantic_path is duplicated",
+                first_output_row=first,
+                output_row=len(self.rows) + 1,
+                semantic_path=row["semantic_path"],
+            )
+            raise GraphWalkError(
+                f"Duplicate semantic_path {row['semantic_path']!r} at output rows "
+                f"{first} and {len(self.rows) + 1}"
+            )
+        local = local_name_from_name(row["name"])
+        qname = qualified_name(row["module"], local, self.module_prefixes)
+        row["local_name"] = local
+        row["xpath"] = ""
+        occurrence = {
+            "output_row": len(self.rows) + 1,
+            "module": row["module"],
+            "local_name": local,
+            "qname": qname,
+            "semantic_path": row["semantic_path"],
+            "source_bsm_id": row["source_bsm_id"],
+        }
+        self._local_name_occurrences.setdefault((row["module"], local), []).append(
+            occurrence
+        )
+
+        source_bsm_id = row["source_bsm_id"]
+        prior = self._source_bsm_ids.get(source_bsm_id)
+        if prior is not None:
+            prior_row, prior_path = prior
+            self.diagnostic(
+                "info", "SOURCE_BSM_ID_REUSED",
+                "source_bsm_id is reused in another traversal context",
+                source_bsm_id=source_bsm_id,
+                first_output_row=prior_row,
+                first_semantic_path=prior_path,
+                output_row=len(self.rows) + 1,
+                semantic_path=row["semantic_path"],
+            )
         self.rows.append(row)
-        self._semantic_segments.append(list(segments))
+        self._semantic_paths[row["semantic_path"]] = len(self.rows)
+        if prior is None:
+            self._source_bsm_ids[source_bsm_id] = (
+                len(self.rows), row["semantic_path"]
+            )
 
     def base_row(
         self,
@@ -338,10 +453,11 @@ class GraphWalk:
         name: str,
         datatype: str,
         multiplicity: str,
+        association_role: str,
         definition: str,
         label_local: str,
         definition_local: str,
-        row_id: str,
+        source_bsm_id: str,
         associated_module: str,
         class_term: str,
     ) -> dict[str, str]:
@@ -354,16 +470,84 @@ class GraphWalk:
             "name": name,
             "datatype": datatype,
             "multiplicity": multiplicity,
-            "domain_name": "",
+            "association_role": association_role,
             "definition": definition,
             "label_local": label_local,
             "definition_local": definition_local,
-            "element": "",
-            "id": row_id,
+            "source_bsm_id": source_bsm_id,
             "semantic_path": "",
             "associated_module": associated_module,
             "class_term": class_term,
+            "local_name": "",
+            "xpath": "",
         }
+
+    def assign_xpaths(self) -> None:
+        """Build every initial XPath from the emitted C/R occurrence hierarchy."""
+        ancestors: list[tuple[int, str, str, str]] = []
+        assigned: dict[str, tuple[int, str]] = {}
+        for index, row in enumerate(self.rows, start=1):
+            level = int(row["level"])
+            while ancestors and ancestors[-1][0] >= level:
+                ancestors.pop()
+            if level == 1:
+                if row["type"] != "C":
+                    raise GraphWalkError(
+                        f"Output row {index}: level 1 must be type C"
+                    )
+                ancestors.clear()
+            elif not ancestors or ancestors[-1][0] != level - 1:
+                raise GraphWalkError(
+                    f"Output row {index}: level {level} has no unique immediate "
+                    "C/R parent"
+                )
+            current_qname = qualified_name(
+                row["module"], row["local_name"], self.module_prefixes
+            )
+            ancestor_qnames = [
+                qualified_name(item[1], item[2], self.module_prefixes)
+                for item in ancestors
+            ]
+            row["xpath"] = "/xbrli:xbrl/" + "/".join(
+                ancestor_qnames + [current_qname]
+            )
+            prior = assigned.get(row["xpath"])
+            if prior is not None and prior[1] != row["semantic_path"]:
+                self.diagnostic(
+                    "error",
+                    "XPATH_COLLISION",
+                    "initial xpath is assigned to different semantic_path values",
+                    xpath=row["xpath"],
+                    first_output_row=prior[0],
+                    first_semantic_path=prior[1],
+                    output_row=index,
+                    semantic_path=row["semantic_path"],
+                )
+                raise GraphWalkError(
+                    f"XPath collision {row['xpath']!r}: {prior[1]!r} and "
+                    f"{row['semantic_path']!r}"
+                )
+            assigned[row["xpath"]] = (index, row["semantic_path"])
+            if row["type"] in {"C", "R"}:
+                ancestors.append(
+                    (level, row["module"], row["local_name"], row["type"])
+                )
+
+    def diagnose_local_name_duplicates(self) -> None:
+        """Report initial taxonomy-name collisions without blocking generation."""
+        for (module, local), occurrences in self._local_name_occurrences.items():
+            if len(occurrences) < 2:
+                continue
+            self.diagnostic(
+                "warning",
+                "LOCAL_NAME_DUPLICATE",
+                "initial (module, local_name) is reused; model-definer "
+                "review is required before post-Graph Walk processing",
+                module=module,
+                local_name=local,
+                occurrence_count=len(occurrences),
+                occurrences=occurrences,
+            )
 
     def walk_class(
         self,
@@ -399,14 +583,21 @@ class GraphWalk:
                     name=values["property_term"],
                     datatype=values["representation_term"],
                     multiplicity=values["multiplicity"],
+                    association_role="",
                     definition=values["definition"],
                     label_local=values["label_local"],
                     definition_local=values["definition_local"],
-                    row_id=values["id"],
+                    source_bsm_id=values["id"],
                     associated_module=key[0],
                     class_term=key[1],
                 )
-                self.append_row(row, [*segments, values["property_term"]])
+                self.append_row(
+                    row,
+                    [
+                        *segments,
+                        semantic_path_term(values["module"], values["property_term"]),
+                    ],
+                )
                 continue
 
             target_key = class_key(
@@ -414,6 +605,10 @@ class GraphWalk:
             )
             association_name = display_association(
                 values["association_role"], values["associated_class"]
+            )
+            association_path_segment = semantic_path_association(
+                values["module"], values["association_role"],
+                values["associated_class"]
             )
             if kind in COMPOSITION_TYPES:
                 target = self.classes[target_key]
@@ -426,17 +621,21 @@ class GraphWalk:
                     name=association_name,
                     datatype="",
                     multiplicity=values["multiplicity"],
+                    association_role=values["association_role"],
                     definition=values["definition"] or class_values["definition"],
                     label_local=values["label_local"] or class_values["label_local"],
                     definition_local=(
                         values["definition_local"] or class_values["definition_local"]
                     ),
-                    row_id=values["id"],
+                    source_bsm_id=values["id"],
                     associated_module=target_key[0],
                     class_term=target_key[1],
                 )
-                child_segments = [*segments, association_name]
-                self.append_row(row, child_segments)
+                child_segments = [*segments, association_path_segment]
+                self.append_row(
+                    row,
+                    child_segments,
+                )
                 self.walk_class(
                     target_key,
                     level=level + 1,
@@ -455,14 +654,15 @@ class GraphWalk:
                 name=association_name,
                 datatype="",
                 multiplicity=values["multiplicity"],
+                association_role=values["association_role"],
                 definition=values["definition"],
                 label_local=values["label_local"],
                 definition_local=values["definition_local"],
-                row_id=values["id"],
+                source_bsm_id=values["id"],
                 associated_module=target_key[0],
                 class_term=target_key[1],
             )
-            reference_segments = [*segments, association_name]
+            reference_segments = [*segments, association_path_segment]
             self.append_row(row, reference_segments)
             primary_keys = [
                 pk
@@ -499,14 +699,23 @@ class GraphWalk:
                     name=pk_values["property_term"],
                     datatype=pk_values["representation_term"],
                     multiplicity=pk_values["multiplicity"],
+                    association_role="",
                     definition=pk_values["definition"],
                     label_local=pk_values["label_local"],
                     definition_local=pk_values["definition_local"],
-                    row_id=pk_values["id"],
+                    source_bsm_id=pk_values["id"],
                     associated_module=target_key[0],
                     class_term=target_key[1],
                 )
-                self.append_row(ref, [*reference_segments, pk_values["property_term"]])
+                self.append_row(
+                    ref,
+                    [
+                        *reference_segments,
+                        semantic_path_term(
+                            pk_values["module"], pk_values["property_term"]
+                        ),
+                    ],
+                )
 
         stack.pop()
 
@@ -514,7 +723,7 @@ class GraphWalk:
         for root_key in self.resolve_roots():
             definition = self.classes[root_key]
             values = definition.row.values
-            root_segments = [root_key[1]]
+            root_segments = [semantic_path_term(root_key[0], root_key[1])]
             root = self.base_row(
                 module=root_key[0],
                 level=1,
@@ -523,14 +732,18 @@ class GraphWalk:
                 name=root_key[1],
                 datatype="",
                 multiplicity=values["multiplicity"],
+                association_role="",
                 definition=values["definition"],
                 label_local=values["label_local"],
                 definition_local=values["definition_local"],
-                row_id=values["id"],
+                source_bsm_id=values["id"],
                 associated_module=root_key[0],
                 class_term=root_key[1],
             )
-            self.append_row(root, root_segments)
+            self.append_row(
+                root,
+                root_segments,
+            )
             self.walk_class(
                 root_key,
                 level=2,
@@ -538,79 +751,7 @@ class GraphWalk:
                 selected_modules={},
                 stack=[],
             )
-        self.assign_elements()
         return self.rows
-
-    def assign_elements(self) -> None:
-        semantic_paths: dict[str, int] = {}
-        for index, row in enumerate(self.rows):
-            path = row["semantic_path"]
-            if path in semantic_paths:
-                raise GraphWalkError(
-                    f"Duplicate semantic_path {path!r} at output rows "
-                    f"{semantic_paths[path] + 1} and {index + 1}"
-                )
-            semantic_paths[path] = index
-
-        required: list[int] = []
-        for index, row in enumerate(self.rows):
-            if row["type"] in {"C", "A"}:
-                required.append(index)
-            elif row["type"] == "R" and row["multiplicity"] not in UPPER_ONE:
-                required.append(index)
-
-        candidates_by_index: dict[int, list[str]] = {}
-        for index in required:
-            segments = self._semantic_segments[index]
-            candidates_by_index[index] = [
-                combine_segments(segments[-length:])
-                for length in range(1, len(segments) + 1)
-            ]
-
-        assigned: dict[int, str] = {}
-        used: set[tuple[str, str]] = set()
-        unresolved = set(required)
-        max_depth = max((len(candidates_by_index[index]) for index in unresolved), default=0)
-        for depth in range(max_depth):
-            groups: defaultdict[tuple[str, str], list[int]] = defaultdict(list)
-            for index in unresolved:
-                choices = candidates_by_index[index]
-                candidate = choices[min(depth, len(choices) - 1)]
-                groups[(self.rows[index]["module"], candidate)].append(index)
-            newly_resolved: set[int] = set()
-            for (module, candidate), indexes in groups.items():
-                if len(indexes) == 1 and (module, candidate) not in used:
-                    assigned[indexes[0]] = candidate
-                    newly_resolved.add(indexes[0])
-                    used.add((module, candidate))
-            unresolved -= newly_resolved
-            if not unresolved:
-                break
-
-        if unresolved:
-            details = [
-                {
-                    "module": self.rows[index]["module"],
-                    "semantic_path": self.rows[index]["semantic_path"],
-                    "candidate": candidates_by_index[index][-1],
-                }
-                for index in sorted(unresolved)
-            ]
-            raise GraphWalkError(
-                "Element collision remains after all semantic path segments: "
-                f"{details!r}"
-            )
-
-        uniqueness: dict[tuple[str, str], str] = {}
-        for index, element in assigned.items():
-            key = (self.rows[index]["module"], element)
-            path = self.rows[index]["semantic_path"]
-            if key in uniqueness and uniqueness[key] != path:
-                raise GraphWalkError(
-                    f"Duplicate element {key!r} for {uniqueness[key]!r} and {path!r}"
-                )
-            uniqueness[key] = path
-            self.rows[index]["element"] = element
 
     def write(self) -> None:
         self.lhm_file.parent.mkdir(parents=True, exist_ok=True)
@@ -635,8 +776,11 @@ class GraphWalk:
                 temporary.unlink()
 
     def graph_walk(self) -> list[dict[str, str]]:
+        self.validate_paths()
         self.load()
         rows = self.generate()
+        self.assign_xpaths()
+        self.diagnose_local_name_duplicates()
         self.write()
         self.write_diagnostics()
         return rows
@@ -673,8 +817,8 @@ class GraphWalk:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
-            "Generate a canonical 17-column root-specific HMD, or a combined "
-            "LHM when multiple roots are supplied, from a 16-column BSM."
+            "Generate the canonical Part 1 v8 18-column candidate LHM from "
+            "a 16-column BSM and one or more ordered roots."
         )
     )
     parser.add_argument("BSM_file")
@@ -693,21 +837,30 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    processor = GraphWalk(
+        args.BSM_file,
+        args.LHM_file,
+        args.root,
+        encoding=args.encoding,
+        diagnostics_file=args.diagnostics,
+    )
     try:
-        processor = GraphWalk(
-            args.BSM_file,
-            args.LHM_file,
-            args.root,
-            encoding=args.encoding,
-            diagnostics_file=args.diagnostics,
-        )
         rows = processor.graph_walk()
     except (OSError, csv.Error, GraphWalkError) as exc:
+        processor.diagnostic("error", "GRAPHWALK_ABORTED", str(exc))
+        try:
+            processor.write_diagnostics()
+        except OSError as diagnostics_exc:
+            print(
+                f"graphwalk.py: warning: could not write diagnostics: "
+                f"{diagnostics_exc}", file=sys.stderr,
+            )
         print(f"graphwalk.py: error: {exc}", file=sys.stderr)
         return 2
     root_count = len(processor.resolve_roots())
-    output_kind = "HMD" if root_count == 1 else "combined LHM"
-    print(f"Wrote {len(rows)} {output_kind} row(s) to {args.LHM_file}")
+    output_kind = "candidate LHM"
+    print(f"Wrote {len(rows)} {output_kind} row(s) for {root_count} root(s) "
+          f"to {args.LHM_file}")
     error_count = sum(
         item["severity"] == "error" for item in processor.diagnostics
     )
