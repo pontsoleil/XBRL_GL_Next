@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.xbrl.org/int/gl/cor/2026-12-31" elementFormDefault="qualified" attributeFormDefault="unqualified"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:cor="http://www.xbrl.org/int/gl/cor/2026-12-31"
+  xmlns:bus="http://www.xbrl.org/int/gl/bus/2026-12-31"
+  xmlns:lnk="http://www.xbrl.org/int/gl/lnk/2026-12-31"
+  xmlns:taf="http://www.xbrl.org/int/gl/taf/2026-12-31"
+>
+  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <include schemaLocation="../../cor/cor-2026-12-31.xsd"/>
+  <import namespace="http://www.xbrl.org/int/gl/bus/2026-12-31" schemaLocation="bus-content-2026-12-31.xsd"/>
+  <import namespace="http://www.xbrl.org/int/gl/lnk/2026-12-31" schemaLocation="lnk-content-2026-12-31.xsd"/>
+  <import namespace="http://www.xbrl.org/int/gl/taf/2026-12-31" schemaLocation="taf-content-2026-12-31.xsd"/>
+  <!-- HMD-specific Tuple element -->
+  <element name="accountingEntries" id="cor_accountingEntries" type="cor:accountingEntriesComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="documentInformation" id="cor_documentInformation" type="cor:documentInformationComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityParty" id="cor_entityParty" type="cor:entityPartyComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entryHeader" id="cor_entryHeader" type="cor:entryHeaderComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entryDetail" id="cor_entryDetail" type="cor:entryDetailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="detailDocument" id="cor_detailDocument" type="cor:detailDocumentComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <!-- HMD-specific structural type -->
+  <complexType name="accountingEntriesComplexType">
+    <sequence>
+      <element ref="cor:documentInformation"/>
+      <element ref="cor:entityParty" minOccurs="0"/>
+      <element ref="cor:entryHeader" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="documentInformationComplexType">
+    <sequence>
+      <element ref="cor:documentType"/>
+      <element ref="cor:auditNumber" minOccurs="0"/>
+      <element ref="cor:revisesAuditNumber" minOccurs="0"/>
+      <element ref="cor:actionToTakeWithPreviousData" minOccurs="0"/>
+      <element ref="cor:language" minOccurs="0"/>
+      <element ref="cor:creationDate" minOccurs="0"/>
+      <element ref="cor:creator" minOccurs="0"/>
+      <element ref="cor:documentComment" minOccurs="0"/>
+      <element ref="cor:periodCoveredStart" minOccurs="0"/>
+      <element ref="cor:periodCoveredEnd" minOccurs="0"/>
+      <element ref="cor:periodCount" minOccurs="0"/>
+      <element ref="cor:periodUnit" minOccurs="0"/>
+      <element ref="cor:periodUnitDescription" minOccurs="0"/>
+      <element ref="cor:sourceApplication" minOccurs="0"/>
+      <element ref="cor:targetApplication" minOccurs="0"/>
+      <element ref="cor:defaultCurrency" minOccurs="0"/>
+      <element ref="lnk:documentSummaryReportingTaxonomies" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityPartyComplexType">
+    <sequence>
+      <element ref="cor:entityPartyName" minOccurs="0"/>
+      <element ref="cor:entityPartyId" minOccurs="0"/>
+      <element ref="cor:entityPartyBusinessDescription" minOccurs="0"/>
+      <element ref="bus:entityPartyPhone" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityPartyFax" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityPartyEmail" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityPartyRegisteredOrganizationIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityPartyAddress" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityPartyWebSite" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityPartyContact" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:entityDefaultAccountingMethodPurpose" minOccurs="0"/>
+      <element ref="cor:entityDefaultAccountingMethodPurposeDescription" minOccurs="0"/>
+      <element ref="cor:entityFiscalYearStart" minOccurs="0"/>
+      <element ref="cor:entityFiscalYearEnd" minOccurs="0"/>
+      <element ref="bus:entitySpecifiedAccountingMethodStructure" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityAssignedAccountant" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entitySpecifiedReportingCalendar" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entryHeaderComplexType">
+    <sequence>
+      <element ref="cor:datePosted" minOccurs="0"/>
+      <element ref="cor:headerCreator" minOccurs="0"/>
+      <element ref="cor:lastModifier" minOccurs="0"/>
+      <element ref="cor:responsiblePerson" minOccurs="0"/>
+      <element ref="cor:typeCode" minOccurs="0"/>
+      <element ref="cor:postingCode" minOccurs="0"/>
+      <element ref="cor:numberOfEntries" minOccurs="0"/>
+      <element ref="cor:comment" minOccurs="0"/>
+      <element ref="cor:headerEntryDate" minOccurs="0"/>
+      <element ref="cor:sourceJournal" minOccurs="0"/>
+      <element ref="cor:journalDescription" minOccurs="0"/>
+      <element ref="cor:entryOrigin" minOccurs="0"/>
+      <element ref="cor:entryId" minOccurs="0"/>
+      <element ref="cor:entryDescription" minOccurs="0"/>
+      <element ref="cor:entryQualifier" minOccurs="0"/>
+      <element ref="cor:entryQualifierDescription" minOccurs="0"/>
+      <element ref="cor:batchIdForEntryGroup" minOccurs="0"/>
+      <element ref="cor:batchDescription" minOccurs="0"/>
+      <element ref="cor:totalDebits" minOccurs="0"/>
+      <element ref="cor:totalCredits" minOccurs="0"/>
+      <element ref="cor:typeOfDifferenceBetweenBookAndTax" minOccurs="0"/>
+      <element ref="cor:eliminationCode" minOccurs="0"/>
+      <element ref="cor:budgetScenarioPeriodStart" minOccurs="0"/>
+      <element ref="cor:budgetScenarioPeriodEnd" minOccurs="0"/>
+      <element ref="cor:scenarioDescription" minOccurs="0"/>
+      <element ref="cor:scenarioCode" minOccurs="0"/>
+      <element ref="cor:budgetAllocationCode" minOccurs="0"/>
+      <element ref="cor:idForReversingStandardOrMasterEntry" minOccurs="0"/>
+      <element ref="cor:recurringStandardDescription" minOccurs="0"/>
+      <element ref="cor:frequencyInterval" minOccurs="0"/>
+      <element ref="cor:frequencyUnit" minOccurs="0"/>
+      <element ref="cor:repetitionsRemaining" minOccurs="0"/>
+      <element ref="cor:nextDateRepeat" minOccurs="0"/>
+      <element ref="cor:lastDateRepeat" minOccurs="0"/>
+      <element ref="cor:endDateOfRepeatingEntry" minOccurs="0"/>
+      <element ref="cor:reverse" minOccurs="0"/>
+      <element ref="cor:reversingDate" minOccurs="0"/>
+      <element ref="cor:entryNumberCounter" minOccurs="0"/>
+      <element ref="cor:entryDetail" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entryDetailComplexType">
+    <sequence>
+      <element ref="cor:lineNumber" minOccurs="0"/>
+      <element ref="cor:lineNumberCounter" minOccurs="0"/>
+      <element ref="cor:postingDate" minOccurs="0"/>
+      <element ref="cor:memoLine" minOccurs="0"/>
+      <element ref="cor:detailDocumentType" minOccurs="0"/>
+      <element ref="cor:documentTypeDescription" minOccurs="0"/>
+      <element ref="cor:detailDocument" minOccurs="0"/>
+      <element ref="cor:documentDate" minOccurs="0"/>
+      <element ref="cor:receivedDate" minOccurs="0"/>
+      <element ref="cor:documentLocation" minOccurs="0"/>
+      <element ref="cor:postingStatus" minOccurs="0"/>
+      <element ref="cor:postingStatusDescription" minOccurs="0"/>
+      <element ref="cor:headerDescription" minOccurs="0"/>
+      <element ref="cor:acknowledgementDate" minOccurs="0"/>
+      <element ref="cor:confirmationDate" minOccurs="0"/>
+      <element ref="cor:measurableClassId" minOccurs="0"/>
+      <element ref="cor:measurableClassDescription" minOccurs="0"/>
+      <element ref="cor:geospatialCoordinate" minOccurs="0"/>
+      <element ref="taf:detailOriginatingDriginatingDocument" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:detailDescription" minOccurs="0"/>
+      <element ref="cor:monetaryAmount" minOccurs="0"/>
+      <element ref="cor:currency" minOccurs="0"/>
+      <element ref="cor:signIndicationForAmount" minOccurs="0"/>
+      <element ref="cor:debitCreditIndicator" minOccurs="0"/>
+      <element ref="cor:allocationCode" minOccurs="0"/>
+      <element ref="cor:invoiceType" minOccurs="0"/>
+      <element ref="cor:chargeableOrReimbursable" minOccurs="0"/>
+      <element ref="cor:paymentMethod" minOccurs="0"/>
+      <element ref="cor:shipFrom" minOccurs="0"/>
+      <element ref="cor:dateShippedReceived" minOccurs="0"/>
+      <element ref="cor:maturityDateOrDateDue" minOccurs="0"/>
+      <element ref="cor:paymentTerms" minOccurs="0"/>
+      <element ref="cor:costingMethodCode" minOccurs="0"/>
+      <element ref="cor:costingMethodDescription" minOccurs="0"/>
+      <element ref="cor:tickingField" minOccurs="0"/>
+      <element ref="cor:documentRemainingBalance" minOccurs="0"/>
+      <element ref="cor:ucr" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="detailDocumentComplexType">
+    <sequence>
+      <element ref="cor:detailDocumentNumber" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+</schema>

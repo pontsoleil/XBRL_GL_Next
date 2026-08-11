@@ -31,6 +31,7 @@ Thumbs.db
 # Files or directories with date suffixes like 2025-04-17
 *20[0-9][0-9]-[01][0-9]-[0-3][0-9]*/
 *20[0-9][0-9]-[01][0-9]-[0-3][0-9]*
+!taxonomy/**
 !TaxonomyFramework/docs/framework/working-drafts/XBRL_GL_Next_Requirements_Specification_revised_collaborative-review_2026-07-27.docx
 !TaxonomyFramework/docs/framework/working-drafts/XBRL_GL_Next_Taxonomy_Framework_How_to_extend_the_taxonomy_revised_collaborative-review_2026-07-27.docx
 !TaxonomyFramework/docs/framework/working-drafts/XBRL_GL_Next_Taxonomy_Framework_Part_1_General_rules_revised_collaborative-review_2026-07-27.docx

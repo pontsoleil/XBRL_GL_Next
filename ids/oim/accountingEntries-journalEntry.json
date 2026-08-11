@@ -1,0 +1,166 @@
+{
+  "documentInfo": {
+    "documentType": "https://xbrl.org/2021/xbrl-csv",
+    "namespaces": {
+      "plt": "http://www.xbrl.org/int/gl/plt/2026-12-31",
+      "cor": "http://www.xbrl.org/int/gl/cor/2026-12-31",
+      "bus": "http://www.xbrl.org/int/gl/bus/2026-12-31",
+      "btx": "http://www.xbrl.org/int/gl/btx/2026-12-31",
+      "lnk": "http://www.xbrl.org/int/gl/lnk/2026-12-31",
+      "taf": "http://www.xbrl.org/int/gl/taf/2026-12-31",
+      "xbrli": "http://www.xbrl.org/2003/instance",
+      "iso4217": "http://www.xbrl.org/2003/iso4217",
+      "ent": "https://example.com/entity/"
+    },
+    "taxonomy": [
+      "../../taxonomy/oim/cor_accountingEntries/cor-all-oim-2026-12-31.xsd"
+    ]
+  },
+  "dimensions": {
+    "entity": "ent:EXAMPLE-BUYER-001",
+    "period": "2026-08-11T00:00:00"
+  },
+  "tableTemplates": {
+    "structured": {
+      "columns": {
+        "record_type": {
+          "comment": true
+        },
+        "dAccountingEntries": {},
+        "dDocumentInformation": {},
+        "dEntityParty": {},
+        "dEntryHeader": {},
+        "dEntryDetail": {},
+        "documentType": {
+          "dimensions": {
+            "concept": "cor:documentType"
+          }
+        },
+        "creationDate": {
+          "dimensions": {
+            "concept": "cor:creationDate"
+          }
+        },
+        "creator": {
+          "dimensions": {
+            "concept": "cor:creator"
+          }
+        },
+        "documentComment": {
+          "dimensions": {
+            "concept": "cor:documentComment"
+          }
+        },
+        "defaultCurrency": {
+          "dimensions": {
+            "concept": "cor:defaultCurrency"
+          }
+        },
+        "entityPartyName": {
+          "dimensions": {
+            "concept": "cor:entityPartyName"
+          }
+        },
+        "entityPartyId": {
+          "dimensions": {
+            "concept": "cor:entityPartyId"
+          }
+        },
+        "datePosted": {
+          "dimensions": {
+            "concept": "cor:datePosted"
+          }
+        },
+        "headerEntryDate": {
+          "dimensions": {
+            "concept": "cor:headerEntryDate"
+          }
+        },
+        "sourceJournal": {
+          "dimensions": {
+            "concept": "cor:sourceJournal"
+          }
+        },
+        "entryId": {
+          "dimensions": {
+            "concept": "cor:entryId"
+          }
+        },
+        "entryDescription": {
+          "dimensions": {
+            "concept": "cor:entryDescription"
+          }
+        },
+        "totalDebits": {
+          "dimensions": {
+            "concept": "cor:totalDebits",
+            "unit": "iso4217:JPY"
+          },
+          "decimals": 0
+        },
+        "totalCredits": {
+          "dimensions": {
+            "concept": "cor:totalCredits",
+            "unit": "iso4217:JPY"
+          },
+          "decimals": 0
+        },
+        "lineNumber": {
+          "dimensions": {
+            "concept": "cor:lineNumber"
+          }
+        },
+        "detailDocumentType": {
+          "dimensions": {
+            "concept": "cor:detailDocumentType"
+          }
+        },
+        "detailDocumentNumber": {
+          "dimensions": {
+            "concept": "cor:detailDocumentNumber"
+          }
+        },
+        "documentDate": {
+          "dimensions": {
+            "concept": "cor:documentDate"
+          }
+        },
+        "detailDescription": {
+          "dimensions": {
+            "concept": "cor:detailDescription"
+          }
+        },
+        "monetaryAmount": {
+          "dimensions": {
+            "concept": "cor:monetaryAmount",
+            "unit": "iso4217:JPY"
+          },
+          "decimals": 0
+        },
+        "currency": {
+          "dimensions": {
+            "concept": "cor:currency"
+          }
+        },
+        "debitCreditIndicator": {
+          "dimensions": {
+            "concept": "cor:debitCreditIndicator"
+          }
+        }
+      },
+      "dimensions": {
+        "plt:d_cor_accountingEntries": "$dAccountingEntries",
+        "plt:d_cor_documentInformation": "$dDocumentInformation",
+        "plt:d_cor_entityParty": "$dEntityParty",
+        "plt:d_cor_entryHeader": "$dEntryHeader",
+        "plt:d_cor_entryDetail": "$dEntryDetail"
+      }
+    }
+  },
+  "tables": {
+    "structured": {
+      "template": "structured",
+      "url": "accountingEntries-journalEntry.csv"
+    }
+  }
+}

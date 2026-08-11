@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xbrli:xbrl xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:cor="http://www.xbrl.org/int/gl/cor/2026-12-31" xmlns:bus="http://www.xbrl.org/int/gl/bus/2026-12-31" xmlns:btx="http://www.xbrl.org/int/gl/btx/2026-12-31" xmlns:lnk="http://www.xbrl.org/int/gl/lnk/2026-12-31" xmlns:taf="http://www.xbrl.org/int/gl/taf/2026-12-31" xmlns:plt="http://www.xbrl.org/int/gl/plt/2026-12-31">
+  <link:schemaRef xlink:type="simple" xlink:href="../../taxonomy/tuple/btx_businessTransactions/btx-all-2026-12-31.xsd"/>
+  <xbrli:context id="c1">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://example.com/entity">EXAMPLE-BUYER-001</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2026-08-11</xbrli:instant>
+    </xbrli:period>
+  </xbrli:context>
+  <xbrli:unit id="JPY">
+    <xbrli:measure>iso4217:JPY</xbrli:measure>
+  </xbrli:unit>
+  <xbrli:unit id="pure">
+    <xbrli:measure>xbrli:pure</xbrli:measure>
+  </xbrli:unit>
+  <btx:businessTransactions id="BT-001">
+    <cor:transactionDocumentInformation id="BT-DOC-001">
+      <cor:transactionDocumentType contextRef="c1">vendorInvoice</cor:transactionDocumentType>
+      <cor:transactionCreationDate contextRef="c1">2026-08-11T00:00:00</cor:transactionCreationDate>
+      <cor:transactionCreator contextRef="c1">XBRL GL Next sample</cor:transactionCreator>
+      <cor:transactionDocumentComment contextRef="c1">Vendor invoice sample corresponding to JE-2026-0811-001</cor:transactionDocumentComment>
+      <cor:transactionDefaultCurrency contextRef="c1">iso4217:JPY</cor:transactionDefaultCurrency>
+    </cor:transactionDocumentInformation>
+    <cor:entityParty id="BT-ENTITY-001">
+      <cor:entityPartyName contextRef="c1">Example Buyer Co.</cor:entityPartyName>
+      <cor:entityPartyId contextRef="c1">EXAMPLE-BUYER-001</cor:entityPartyId>
+    </cor:entityParty>
+    <btx:transactionHeader id="BT-HDR-001">
+      <btx:datePosted contextRef="c1">2026-08-11T00:00:00</btx:datePosted>
+      <btx:headerDocumentType contextRef="c1">invoice</btx:headerDocumentType>
+      <btx:headerInvoiceType contextRef="c1">vendorInvoice</btx:headerInvoiceType>
+      <btx:headerDocumentNumber contextRef="c1">INV-2026-0811-001</btx:headerDocumentNumber>
+      <btx:headerMaturityDateOrDateDue contextRef="c1">2026-09-10T00:00:00</btx:headerMaturityDateOrDateDue>
+      <btx:headerPaymentTerms contextRef="c1">Net 30 days</btx:headerPaymentTerms>
+      <btx:headerTax id="BT-TAX-001">
+        <btx:taxAuthority contextRef="c1">JP</btx:taxAuthority>
+        <btx:amountOfTaxes contextRef="c1" unitRef="JPY" decimals="0">1000</btx:amountOfTaxes>
+        <btx:basisForTaxation contextRef="c1" unitRef="JPY" decimals="0">10000</btx:basisForTaxation>
+        <btx:taxPercentageRate contextRef="c1" unitRef="pure" decimals="2">0.10</btx:taxPercentageRate>
+        <btx:taxCategory contextRef="c1">standard</btx:taxCategory>
+      </btx:headerTax>
+      <btx:headerAmountStructure id="BT-HAMT-001">
+        <btx:headerAmount contextRef="c1" unitRef="JPY" decimals="0">11000</btx:headerAmount>
+        <btx:headerAurrencyCode contextRef="c1">JPY</btx:headerAurrencyCode>
+        <btx:headerAmountType contextRef="c1">invoiceTotal</btx:headerAmountType>
+      </btx:headerAmountStructure>
+      <btx:transactionDetail id="BT-DET-001">
+        <btx:lineNumber contextRef="c1">1</btx:lineNumber>
+        <btx:documentType contextRef="c1">invoice</btx:documentType>
+        <cor:document id="BT-DOCREF-001">
+          <cor:documentNumber contextRef="c1">INV-2026-0811-001</cor:documentNumber>
+        </cor:document>
+        <btx:documentDate contextRef="c1">2026-08-11T00:00:00</btx:documentDate>
+        <btx:detailDescription contextRef="c1">Office supplies</btx:detailDescription>
+        <btx:detailAmountStructure id="BT-DAMT-001">
+          <btx:amount contextRef="c1" unitRef="JPY" decimals="0">10000</btx:amount>
+          <btx:currencyCode contextRef="c1">JPY</btx:currencyCode>
+          <btx:detailAmountType contextRef="c1">lineNetAmount</btx:detailAmountType>
+        </btx:detailAmountStructure>
+      </btx:transactionDetail>
+    </btx:transactionHeader>
+  </btx:businessTransactions>
+</xbrli:xbrl>

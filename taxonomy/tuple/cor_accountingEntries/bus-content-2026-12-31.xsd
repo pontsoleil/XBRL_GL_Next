@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.xbrl.org/int/gl/bus/2026-12-31" elementFormDefault="qualified" attributeFormDefault="unqualified"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:bus="http://www.xbrl.org/int/gl/bus/2026-12-31"
+>
+  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <include schemaLocation="../../bus/bus-2026-12-31.xsd"/>
+  <!-- HMD-specific Tuple element -->
+  <element name="entityPartyPhone" id="bus_entityPartyPhone" type="bus:entityPartyPhoneComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityPartyFax" id="bus_entityPartyFax" type="bus:entityPartyFaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityPartyEmail" id="bus_entityPartyEmail" type="bus:entityPartyEmailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityPartyRegisteredOrganizationIdentifier" id="bus_entityPartyRegisteredOrganizationIdentifier" type="bus:entityPartyRegisteredOrganizationIdentifierComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityPartyAddress" id="bus_entityPartyAddress" type="bus:entityPartyAddressComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityPartyWebSite" id="bus_entityPartyWebSite" type="bus:entityPartyWebSiteComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityPartyContact" id="bus_entityPartyContact" type="bus:entityPartyContactComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entitySpecifiedAccountingMethodStructure" id="bus_entitySpecifiedAccountingMethodStructure" type="bus:entitySpecifiedAccountingMethodStructureComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityAssignedAccountant" id="bus_entityAssignedAccountant" type="bus:entityAssignedAccountantComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entitySpecifiedReportingCalendar" id="bus_entitySpecifiedReportingCalendar" type="bus:entitySpecifiedReportingCalendarComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityPartyContactPhone" id="bus_entityPartyContactPhone" type="bus:entityPartyContactPhoneComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityPartyContactFax" id="bus_entityPartyContactFax" type="bus:entityPartyContactFaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityPartyContactEmail" id="bus_entityPartyContactEmail" type="bus:entityPartyContactEmailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityAccountantAddress" id="bus_entityAccountantAddress" type="bus:entityAccountantAddressComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityAccountantContact" id="bus_entityAccountantContact" type="bus:entityAccountantContactComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityAccountantContactPhone" id="bus_entityAccountantContactPhone" type="bus:entityAccountantContactPhoneComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityAccountantContactFax" id="bus_entityAccountantContactFax" type="bus:entityAccountantContactFaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityAccountantContactEmail" id="bus_entityAccountantContactEmail" type="bus:entityAccountantContactEmailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entitySpecifiedReportingCalendarPeriod" id="bus_entitySpecifiedReportingCalendarPeriod" type="bus:entitySpecifiedReportingCalendarPeriodComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <!-- HMD-specific structural type -->
+  <complexType name="entityPartyPhoneComplexType">
+    <sequence>
+      <element ref="bus:entityPartyPhoneNumber" minOccurs="0"/>
+      <element ref="bus:entityPartyPhoneNumberDescription" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityPartyFaxComplexType">
+    <sequence>
+      <element ref="bus:entityPartyFaxNumber" minOccurs="0"/>
+      <element ref="bus:entityPartyFaxNumberUsage" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityPartyEmailComplexType">
+    <sequence>
+      <element ref="bus:entityPartyEmailAddress" minOccurs="0"/>
+      <element ref="bus:entityPartyEmailAddressUsage" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityPartyRegisteredOrganizationIdentifierComplexType">
+    <sequence>
+      <element ref="bus:entityPartyRegisteredOrganizationIdentifierCode" minOccurs="0"/>
+      <element ref="bus:entityPartyRegisteredOrganizationIdentifierDescription" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityPartyAddressComplexType">
+    <sequence>
+      <element ref="bus:entityPartyAddressName" minOccurs="0"/>
+      <element ref="bus:entityPartyAddressDescription" minOccurs="0"/>
+      <element ref="bus:entityPartyAddressPurpose" minOccurs="0"/>
+      <element ref="bus:entityPartyAddressLocationId" minOccurs="0"/>
+      <element ref="bus:entityPartyAddressBuildingNumber" minOccurs="0"/>
+      <element ref="bus:entityPartyAddressStreet" minOccurs="0"/>
+      <element ref="bus:entityPartyAddressAddressDetail" minOccurs="0"/>
+      <element ref="bus:entityPartyAddressCity" minOccurs="0"/>
+      <element ref="bus:entityPartyAddressStateOrProvince" minOccurs="0"/>
+      <element ref="bus:entityPartyAddressCountry" minOccurs="0"/>
+      <element ref="bus:entityPartyAddressZipOrPostalCode" minOccurs="0"/>
+      <element ref="bus:entityPartyAddressActiveIndicator" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityPartyWebSiteComplexType">
+    <sequence>
+      <element ref="bus:entityPartyWebSiteUrl" minOccurs="0"/>
+      <element ref="bus:entityPartyWebSiteDescription" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityPartyContactComplexType">
+    <sequence>
+      <element ref="bus:entityPartyContactPrefix" minOccurs="0"/>
+      <element ref="bus:entityPartyContactLastName" minOccurs="0"/>
+      <element ref="bus:entityPartyContactFirstName" minOccurs="0"/>
+      <element ref="bus:entityPartyContactSuffix" minOccurs="0"/>
+      <element ref="bus:entityPartyContactAttentionLine" minOccurs="0"/>
+      <element ref="bus:entityPartyContactPositionRole" minOccurs="0"/>
+      <element ref="bus:entityPartyContactContactType" minOccurs="0"/>
+      <element ref="bus:entityPartyContactLocationIdCrossReference" minOccurs="0"/>
+      <element ref="bus:entityPartyContactActive" minOccurs="0"/>
+      <element ref="bus:entityPartyContactPhone" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityPartyContactFax" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityPartyContactEmail" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entitySpecifiedAccountingMethodStructureComplexType">
+    <sequence>
+      <element ref="bus:entityAccountingMethod" minOccurs="0"/>
+      <element ref="bus:entityAccountingMethodDescription" minOccurs="0"/>
+      <element ref="bus:entityAccountingMethodPurpose" minOccurs="0"/>
+      <element ref="bus:entityAccountingMethodPurposeDescription" minOccurs="0"/>
+      <element ref="bus:entityAccountingMethodStartDate" minOccurs="0"/>
+      <element ref="bus:entityAccountingMethodEndDate" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityAssignedAccountantComplexType">
+    <sequence>
+      <element ref="bus:entityAccountantName" minOccurs="0"/>
+      <element ref="bus:entityAccountantTypeOfEngagement" minOccurs="0"/>
+      <element ref="bus:entityAccountantTypeOfEngagementDescription" minOccurs="0"/>
+      <element ref="bus:entityAccountantAddress" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityAccountantContact" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entitySpecifiedReportingCalendarComplexType">
+    <sequence>
+      <element ref="bus:entitySpecifiedReportingCalendarCode" minOccurs="0"/>
+      <element ref="bus:entitySpecifiedReportingCalendarDescription" minOccurs="0"/>
+      <element ref="bus:entitySpecifiedReportingCalendarTitle" minOccurs="0"/>
+      <element ref="bus:entitySpecifiedReportingCalendarPeriodType" minOccurs="0"/>
+      <element ref="bus:entitySpecifiedReportingCalendarPeriodTypeDescription" minOccurs="0"/>
+      <element ref="bus:entitySpecifiedReportingCalendarClosedStatus" minOccurs="0"/>
+      <element ref="bus:entitySpecifiedReportingCalendarPurpose" minOccurs="0"/>
+      <element ref="bus:entitySpecifiedReportingCalendarPurposeDescription" minOccurs="0"/>
+      <element ref="bus:entitySpecifiedReportingCalendarPeriod" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityPartyContactPhoneComplexType">
+    <sequence>
+      <element ref="bus:entityPartyContactPhoneNumber" minOccurs="0"/>
+      <element ref="bus:entityPartyContactPhoneNumberDescription" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityPartyContactFaxComplexType">
+    <sequence>
+      <element ref="bus:entityPartyContactFaxNumber" minOccurs="0"/>
+      <element ref="bus:entityPartyContactFaxNumberUsage" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityPartyContactEmailComplexType">
+    <sequence>
+      <element ref="bus:entityPartyContactEmailAddress" minOccurs="0"/>
+      <element ref="bus:entityPartyContactEmailAddressUsage" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityAccountantAddressComplexType">
+    <sequence>
+      <element ref="bus:entityAccountantAddressName" minOccurs="0"/>
+      <element ref="bus:entityAccountantAddressDescription" minOccurs="0"/>
+      <element ref="bus:entityAccountantAddressPurpose" minOccurs="0"/>
+      <element ref="bus:entityAccountantAddressLocationId" minOccurs="0"/>
+      <element ref="bus:entityAccountantAddressBuildingNumber" minOccurs="0"/>
+      <element ref="bus:entityAccountantAddressStreet" minOccurs="0"/>
+      <element ref="bus:entityAccountantAddressAddressDetail" minOccurs="0"/>
+      <element ref="bus:entityAccountantAddressCity" minOccurs="0"/>
+      <element ref="bus:entityAccountantAddressStateOrProvince" minOccurs="0"/>
+      <element ref="bus:entityAccountantAddressCountry" minOccurs="0"/>
+      <element ref="bus:entityAccountantAddressZipOrPostalCode" minOccurs="0"/>
+      <element ref="bus:entityAccountantAddressActiveIndicator" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityAccountantContactComplexType">
+    <sequence>
+      <element ref="bus:entityAccountantContactPrefix" minOccurs="0"/>
+      <element ref="bus:entityAccountantContactLastName" minOccurs="0"/>
+      <element ref="bus:entityAccountantContactFirstName" minOccurs="0"/>
+      <element ref="bus:entityAccountantContactSuffix" minOccurs="0"/>
+      <element ref="bus:entityAccountantContactAttentionLine" minOccurs="0"/>
+      <element ref="bus:entityAccountantContactPositionRole" minOccurs="0"/>
+      <element ref="bus:entityAccountantContactContactType" minOccurs="0"/>
+      <element ref="bus:entityAccountantContactLocationIdCrossReference" minOccurs="0"/>
+      <element ref="bus:entityAccountantContactActive" minOccurs="0"/>
+      <element ref="bus:entityAccountantContactPhone" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityAccountantContactFax" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityAccountantContactEmail" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityAccountantContactPhoneComplexType">
+    <sequence>
+      <element ref="bus:entityAccountantContactPhoneNumber" minOccurs="0"/>
+      <element ref="bus:entityAccountantContactPhoneNumberDescription" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityAccountantContactFaxComplexType">
+    <sequence>
+      <element ref="bus:entityAccountantContactFaxNumber" minOccurs="0"/>
+      <element ref="bus:entityAccountantContactFaxNumberUsage" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityAccountantContactEmailComplexType">
+    <sequence>
+      <element ref="bus:entityAccountantContactEmailAddress" minOccurs="0"/>
+      <element ref="bus:entityAccountantContactEmailAddressUsage" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entitySpecifiedReportingCalendarPeriodComplexType">
+    <sequence>
+      <element ref="bus:entitySpecifiedReportingPeriodId" minOccurs="0"/>
+      <element ref="bus:entitySpecifiedReportingPeriodDescription" minOccurs="0"/>
+      <element ref="bus:entitySpecifiedReportingPeriodStartDate" minOccurs="0"/>
+      <element ref="bus:entitySpecifiedReportingPeriodEndDate" minOccurs="0"/>
+      <element ref="bus:entitySpecifiedReportingPeportingCalendarPeriodClosedDate" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+</schema>

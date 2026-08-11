@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.xbrl.org/int/gl/taf/2026-12-31" elementFormDefault="qualified" attributeFormDefault="unqualified"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:taf="http://www.xbrl.org/int/gl/taf/2026-12-31"
+>
+  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <include schemaLocation="../../taf/taf-2026-12-31.xsd"/>
+  <!-- HMD-specific Tuple element -->
+  <element name="originatingDocument" id="taf_originatingDocument" type="taf:originatingDocumentComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <!-- HMD-specific structural type -->
+  <complexType name="originatingDocumentComplexType">
+    <sequence>
+      <element ref="taf:documentType" minOccurs="0"/>
+      <element ref="taf:documentNumber" minOccurs="0"/>
+      <element ref="taf:documentDate" minOccurs="0"/>
+      <element ref="taf:documentIdentifierType" minOccurs="0"/>
+      <element ref="taf:documentIdentifierCode" minOccurs="0"/>
+      <element ref="taf:documentIdentifierTaxCode" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+</schema>

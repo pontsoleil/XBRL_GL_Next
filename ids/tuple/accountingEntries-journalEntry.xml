@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xbrli:xbrl xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:cor="http://www.xbrl.org/int/gl/cor/2026-12-31" xmlns:bus="http://www.xbrl.org/int/gl/bus/2026-12-31" xmlns:btx="http://www.xbrl.org/int/gl/btx/2026-12-31" xmlns:lnk="http://www.xbrl.org/int/gl/lnk/2026-12-31" xmlns:taf="http://www.xbrl.org/int/gl/taf/2026-12-31" xmlns:plt="http://www.xbrl.org/int/gl/plt/2026-12-31">
+  <link:schemaRef xlink:type="simple" xlink:href="../../taxonomy/tuple/cor_accountingEntries/cor-all-2026-12-31.xsd"/>
+  <xbrli:context id="c1">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://example.com/entity">EXAMPLE-BUYER-001</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2026-08-11</xbrli:instant>
+    </xbrli:period>
+  </xbrli:context>
+  <xbrli:unit id="JPY">
+    <xbrli:measure>iso4217:JPY</xbrli:measure>
+  </xbrli:unit>
+  <xbrli:unit id="pure">
+    <xbrli:measure>xbrli:pure</xbrli:measure>
+  </xbrli:unit>
+  <cor:accountingEntries id="AE-001">
+    <cor:documentInformation id="AE-DOC-001">
+      <cor:documentType contextRef="c1">journalEntry</cor:documentType>
+      <cor:creationDate contextRef="c1">2026-08-11T00:00:00</cor:creationDate>
+      <cor:creator contextRef="c1">XBRL GL Next sample</cor:creator>
+      <cor:documentComment contextRef="c1">Vendor invoice recognition sample</cor:documentComment>
+      <cor:defaultCurrency contextRef="c1">iso4217:JPY</cor:defaultCurrency>
+    </cor:documentInformation>
+    <cor:entityParty id="AE-ENTITY-001">
+      <cor:entityPartyName contextRef="c1">Example Buyer Co.</cor:entityPartyName>
+      <cor:entityPartyId contextRef="c1">EXAMPLE-BUYER-001</cor:entityPartyId>
+    </cor:entityParty>
+    <cor:entryHeader id="AE-HDR-001">
+      <cor:datePosted contextRef="c1">2026-08-11T00:00:00</cor:datePosted>
+      <cor:headerEntryDate contextRef="c1">2026-08-11T00:00:00</cor:headerEntryDate>
+      <cor:sourceJournal contextRef="c1">AP</cor:sourceJournal>
+      <cor:entryId contextRef="c1">JE-2026-0811-001</cor:entryId>
+      <cor:entryDescription contextRef="c1">Record vendor invoice INV-2026-0811-001</cor:entryDescription>
+      <cor:totalDebits contextRef="c1" unitRef="JPY" decimals="0">11000</cor:totalDebits>
+      <cor:totalCredits contextRef="c1" unitRef="JPY" decimals="0">11000</cor:totalCredits>
+      <cor:entryDetail id="AE-DET-1">
+        <cor:lineNumber contextRef="c1">1</cor:lineNumber>
+        <cor:postingDate contextRef="c1">2026-08-11T00:00:00</cor:postingDate>
+        <cor:detailDocumentType contextRef="c1">invoice</cor:detailDocumentType>
+        <cor:detailDocument id="AE-DOCREF-1">
+          <cor:detailDocumentNumber contextRef="c1">INV-2026-0811-001</cor:detailDocumentNumber>
+        </cor:detailDocument>
+        <cor:documentDate contextRef="c1">2026-08-11T00:00:00</cor:documentDate>
+        <cor:detailDescription contextRef="c1">Office supplies expense</cor:detailDescription>
+        <cor:monetaryAmount contextRef="c1" unitRef="JPY" decimals="0">10000</cor:monetaryAmount>
+        <cor:currency contextRef="c1">iso4217:JPY</cor:currency>
+        <cor:debitCreditIndicator contextRef="c1">D</cor:debitCreditIndicator>
+      </cor:entryDetail>
+      <cor:entryDetail id="AE-DET-2">
+        <cor:lineNumber contextRef="c1">2</cor:lineNumber>
+        <cor:postingDate contextRef="c1">2026-08-11T00:00:00</cor:postingDate>
+        <cor:detailDocumentType contextRef="c1">invoice</cor:detailDocumentType>
+        <cor:detailDocument id="AE-DOCREF-2">
+          <cor:detailDocumentNumber contextRef="c1">INV-2026-0811-001</cor:detailDocumentNumber>
+        </cor:detailDocument>
+        <cor:documentDate contextRef="c1">2026-08-11T00:00:00</cor:documentDate>
+        <cor:detailDescription contextRef="c1">Input consumption tax</cor:detailDescription>
+        <cor:monetaryAmount contextRef="c1" unitRef="JPY" decimals="0">1000</cor:monetaryAmount>
+        <cor:currency contextRef="c1">iso4217:JPY</cor:currency>
+        <cor:debitCreditIndicator contextRef="c1">D</cor:debitCreditIndicator>
+      </cor:entryDetail>
+      <cor:entryDetail id="AE-DET-3">
+        <cor:lineNumber contextRef="c1">3</cor:lineNumber>
+        <cor:postingDate contextRef="c1">2026-08-11T00:00:00</cor:postingDate>
+        <cor:detailDocumentType contextRef="c1">invoice</cor:detailDocumentType>
+        <cor:detailDocument id="AE-DOCREF-3">
+          <cor:detailDocumentNumber contextRef="c1">INV-2026-0811-001</cor:detailDocumentNumber>
+        </cor:detailDocument>
+        <cor:documentDate contextRef="c1">2026-08-11T00:00:00</cor:documentDate>
+        <cor:detailDescription contextRef="c1">Accounts payable</cor:detailDescription>
+        <cor:monetaryAmount contextRef="c1" unitRef="JPY" decimals="0">11000</cor:monetaryAmount>
+        <cor:currency contextRef="c1">iso4217:JPY</cor:currency>
+        <cor:debitCreditIndicator contextRef="c1">C</cor:debitCreditIndicator>
+      </cor:entryDetail>
+    </cor:entryHeader>
+  </cor:accountingEntries>
+</xbrli:xbrl>

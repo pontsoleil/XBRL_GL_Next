@@ -1,0 +1,7 @@
+record_type,dAccountingEntries,dDocumentInformation,dEntityParty,dEntryHeader,dEntryDetail,documentType,creationDate,creator,documentComment,defaultCurrency,entityPartyName,entityPartyId,datePosted,headerEntryDate,sourceJournal,entryId,entryDescription,totalDebits,totalCredits,lineNumber,detailDocumentType,detailDocumentNumber,documentDate,detailDescription,monetaryAmount,currency,debitCreditIndicator
+DocumentInformation,AE-001,AE-DOC-001,,,,journalEntry,2026-08-11T00:00:00,XBRL GL Next sample,Vendor invoice recognition sample,iso4217:JPY,,,,,,,,,,,,,,,,,
+EntityParty,AE-001,,AE-ENTITY-001,,,,,,,,Example Buyer Co.,EXAMPLE-BUYER-001,,,,,,,,,,,,,,,
+EntryHeader,AE-001,,,AE-HDR-001,,,,,,,,,2026-08-11T00:00:00,2026-08-11T00:00:00,AP,JE-2026-0811-001,Record vendor invoice INV-2026-0811-001,11000,11000,,,,,,,,
+EntryDetail,AE-001,,,AE-HDR-001,AE-DET-1,,,,,,,,,,,,,,,1,invoice,INV-2026-0811-001,2026-08-11T00:00:00,Office supplies expense,10000,iso4217:JPY,D
+EntryDetail,AE-001,,,AE-HDR-001,AE-DET-2,,,,,,,,,,,,,,,2,invoice,INV-2026-0811-001,2026-08-11T00:00:00,Input consumption tax,1000,iso4217:JPY,D
+EntryDetail,AE-001,,,AE-HDR-001,AE-DET-3,,,,,,,,,,,,,,,3,invoice,INV-2026-0811-001,2026-08-11T00:00:00,Accounts payable,11000,iso4217:JPY,C

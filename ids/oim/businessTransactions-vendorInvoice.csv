@@ -1,0 +1,8 @@
+record_type,dBusinessTransactions,dTransactionDocumentInformation,dEntityParty,dTransactionHeader,dHeaderTax,dHeaderAmountStructure,dTransactionDetail,dDetailAmountStructure,transactionDocumentType,transactionCreationDate,transactionCreator,transactionDocumentComment,transactionDefaultCurrency,entityPartyName,entityPartyId,datePosted,headerDocumentType,headerInvoiceType,headerDocumentNumber,headerMaturityDateOrDateDue,headerPaymentTerms,taxAuthority,amountOfTaxes,basisForTaxation,taxPercentageRate,taxCategory,headerAmount,headerAurrencyCode,headerAmountType,lineNumber,documentType,documentNumber,documentDate,detailDescription,amount,currencyCode,detailAmountType
+TransactionDocumentInformation,BT-001,BT-DOC-001,,,,,,,vendorInvoice,2026-08-11T00:00:00,XBRL GL Next sample,Vendor invoice sample corresponding to JE-2026-0811-001,iso4217:JPY,,,,,,,,,,,,,,,,,,,,,,,,
+EntityParty,BT-001,,BT-ENTITY-001,,,,,,,,,,,Example Buyer Co.,EXAMPLE-BUYER-001,,,,,,,,,,,,,,,,,,,,,,
+TransactionHeader,BT-001,,,BT-HDR-001,,,,,,,,,,,,2026-08-11T00:00:00,invoice,vendorInvoice,INV-2026-0811-001,2026-09-10T00:00:00,Net 30 days,,,,,,,,,,,,,,,,
+HeaderTax,BT-001,,,BT-HDR-001,BT-TAX-001,,,,,,,,,,,,,,,,,JP,1000,10000,0.10,standard,,,,,,,,,,,
+HeaderAmountStructure,BT-001,,,BT-HDR-001,,BT-HAMT-001,,,,,,,,,,,,,,,,,,,,,11000,JPY,invoiceTotal,,,,,,,,
+TransactionDetail,BT-001,,,BT-HDR-001,,,BT-DET-001,,,,,,,,,,,,,,,,,,,,,,,1,invoice,INV-2026-0811-001,2026-08-11T00:00:00,Office supplies,,,
+DetailAmountStructure,BT-001,,,BT-HDR-001,,,BT-DET-001,BT-DAMT-001,,,,,,,,,,,,,,,,,,,,,,,,,,,10000,JPY,lineNetAmount

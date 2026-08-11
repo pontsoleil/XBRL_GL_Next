@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.xbrl.org/int/gl/lnk/2026-12-31" elementFormDefault="qualified" attributeFormDefault="unqualified"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:lnk="http://www.xbrl.org/int/gl/lnk/2026-12-31"
+>
+  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <include schemaLocation="../../lnk/lnk-2026-12-31.xsd"/>
+  <!-- HMD-specific Tuple element -->
+  <element name="transactionSummaryReportingTaxonomies" id="lnk_transactionSummaryReportingTaxonomies" type="lnk:transactionSummaryReportingTaxonomiesComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <!-- HMD-specific structural type -->
+  <complexType name="transactionSummaryReportingTaxonomiesComplexType">
+    <sequence>
+      <element ref="lnk:transactionSummaryReportingTaxonomyId" minOccurs="0"/>
+      <element ref="lnk:transactionSummaryReportingTaxonomySchemaReferenceHrefAttribute" minOccurs="0"/>
+      <element ref="lnk:transactionSummaryReportingTaxonomyHeader" minOccurs="0"/>
+      <element ref="lnk:transactionSummaryReportingTaxonomyDescription" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+</schema>

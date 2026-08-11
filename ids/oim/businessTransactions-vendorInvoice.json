@@ -1,0 +1,210 @@
+{
+  "documentInfo": {
+    "documentType": "https://xbrl.org/2021/xbrl-csv",
+    "namespaces": {
+      "plt": "http://www.xbrl.org/int/gl/plt/2026-12-31",
+      "cor": "http://www.xbrl.org/int/gl/cor/2026-12-31",
+      "bus": "http://www.xbrl.org/int/gl/bus/2026-12-31",
+      "btx": "http://www.xbrl.org/int/gl/btx/2026-12-31",
+      "lnk": "http://www.xbrl.org/int/gl/lnk/2026-12-31",
+      "taf": "http://www.xbrl.org/int/gl/taf/2026-12-31",
+      "xbrli": "http://www.xbrl.org/2003/instance",
+      "iso4217": "http://www.xbrl.org/2003/iso4217",
+      "ent": "https://example.com/entity/"
+    },
+    "taxonomy": [
+      "../../taxonomy/oim/btx_businessTransactions/btx-all-oim-2026-12-31.xsd"
+    ]
+  },
+  "dimensions": {
+    "entity": "ent:EXAMPLE-BUYER-001",
+    "period": "2026-08-11T00:00:00"
+  },
+  "tableTemplates": {
+    "structured": {
+      "columns": {
+        "record_type": {
+          "comment": true
+        },
+        "dBusinessTransactions": {},
+        "dTransactionDocumentInformation": {},
+        "dEntityParty": {},
+        "dTransactionHeader": {},
+        "dHeaderTax": {},
+        "dHeaderAmountStructure": {},
+        "dTransactionDetail": {},
+        "dDetailAmountStructure": {},
+        "transactionDocumentType": {
+          "dimensions": {
+            "concept": "cor:transactionDocumentType"
+          }
+        },
+        "transactionCreationDate": {
+          "dimensions": {
+            "concept": "cor:transactionCreationDate"
+          }
+        },
+        "transactionCreator": {
+          "dimensions": {
+            "concept": "cor:transactionCreator"
+          }
+        },
+        "transactionDocumentComment": {
+          "dimensions": {
+            "concept": "cor:transactionDocumentComment"
+          }
+        },
+        "transactionDefaultCurrency": {
+          "dimensions": {
+            "concept": "cor:transactionDefaultCurrency"
+          }
+        },
+        "entityPartyName": {
+          "dimensions": {
+            "concept": "cor:entityPartyName"
+          }
+        },
+        "entityPartyId": {
+          "dimensions": {
+            "concept": "cor:entityPartyId"
+          }
+        },
+        "datePosted": {
+          "dimensions": {
+            "concept": "btx:datePosted"
+          }
+        },
+        "headerDocumentType": {
+          "dimensions": {
+            "concept": "btx:headerDocumentType"
+          }
+        },
+        "headerInvoiceType": {
+          "dimensions": {
+            "concept": "btx:headerInvoiceType"
+          }
+        },
+        "headerDocumentNumber": {
+          "dimensions": {
+            "concept": "btx:headerDocumentNumber"
+          }
+        },
+        "headerMaturityDateOrDateDue": {
+          "dimensions": {
+            "concept": "btx:headerMaturityDateOrDateDue"
+          }
+        },
+        "headerPaymentTerms": {
+          "dimensions": {
+            "concept": "btx:headerPaymentTerms"
+          }
+        },
+        "taxAuthority": {
+          "dimensions": {
+            "concept": "btx:taxAuthority"
+          }
+        },
+        "amountOfTaxes": {
+          "dimensions": {
+            "concept": "btx:amountOfTaxes",
+            "unit": "iso4217:JPY"
+          },
+          "decimals": 0
+        },
+        "basisForTaxation": {
+          "dimensions": {
+            "concept": "btx:basisForTaxation",
+            "unit": "iso4217:JPY"
+          },
+          "decimals": 0
+        },
+        "taxPercentageRate": {
+          "dimensions": {
+            "concept": "btx:taxPercentageRate"
+          },
+          "decimals": 2
+        },
+        "taxCategory": {
+          "dimensions": {
+            "concept": "btx:taxCategory"
+          }
+        },
+        "headerAmount": {
+          "dimensions": {
+            "concept": "btx:headerAmount",
+            "unit": "iso4217:JPY"
+          },
+          "decimals": 0
+        },
+        "headerAurrencyCode": {
+          "dimensions": {
+            "concept": "btx:headerAurrencyCode"
+          }
+        },
+        "headerAmountType": {
+          "dimensions": {
+            "concept": "btx:headerAmountType"
+          }
+        },
+        "lineNumber": {
+          "dimensions": {
+            "concept": "btx:lineNumber"
+          }
+        },
+        "documentType": {
+          "dimensions": {
+            "concept": "btx:documentType"
+          }
+        },
+        "documentNumber": {
+          "dimensions": {
+            "concept": "cor:documentNumber"
+          }
+        },
+        "documentDate": {
+          "dimensions": {
+            "concept": "btx:documentDate"
+          }
+        },
+        "detailDescription": {
+          "dimensions": {
+            "concept": "btx:detailDescription"
+          }
+        },
+        "amount": {
+          "dimensions": {
+            "concept": "btx:amount",
+            "unit": "iso4217:JPY"
+          },
+          "decimals": 0
+        },
+        "currencyCode": {
+          "dimensions": {
+            "concept": "btx:currencyCode"
+          }
+        },
+        "detailAmountType": {
+          "dimensions": {
+            "concept": "btx:detailAmountType"
+          }
+        }
+      },
+      "dimensions": {
+        "plt:d_btx_businessTransactions": "$dBusinessTransactions",
+        "plt:d_cor_transactionDocumentInformation": "$dTransactionDocumentInformation",
+        "plt:d_cor_entityParty": "$dEntityParty",
+        "plt:d_btx_transactionHeader": "$dTransactionHeader",
+        "plt:d_btx_headerTax": "$dHeaderTax",
+        "plt:d_btx_headerAmountStructure": "$dHeaderAmountStructure",
+        "plt:d_btx_transactionDetail": "$dTransactionDetail",
+        "plt:d_btx_detailAmountStructure": "$dDetailAmountStructure"
+      }
+    }
+  },
+  "tables": {
+    "structured": {
+      "template": "structured",
+      "url": "businessTransactions-vendorInvoice.csv"
+    }
+  }
+}
