@@ -9,7 +9,7 @@ designed by SAMBUICHI, Nobuyuki (Sambuichi Professional Engineers Office)
 written by SAMBUICHI, Nobuyuki (Sambuichi Professional Engineers Office)
 
 Creation Date: 2025-04-03
-Last Modified: 2026-08-10
+Last Modified: 2026-08-11
 
 2026-08-08 revised-to-formal integration:
     The input contract is the formal 18-column HMD generated and validated by
@@ -22,6 +22,17 @@ Last Modified: 2026-08-10
     Rows whose
     reviewed multiplicity is ``0..0`` and structural subtrees below such rows
     remain in the input CSV but are excluded from generated taxonomy content.
+
+2026-08-11 LHM for taxonomy input set:
+    This is the first-edition formal input contract. Taxonomy generation accepts
+    exactly one ``LHM_for_taxonomy`` directory and discovers the formal 18-column
+    HMD-for-taxonomy CSV files contained directly in that directory.
+    ``manifest.csv`` is an execution-confirmation artefact only: it is neither
+    required nor read by the generator and does not determine taxonomy content.
+    HMD inputs are validated by their formal column contract and single-root
+    identity, then processed in deterministic root-identifier order. Direct HMD
+    CSV input, standalone Tuple generation and standalone OIM generation are not
+    part of this edition and are not accepted by the CLI.
 
 2026-08-11 HMD package layout:
     Formal package output separates shared module declarations from HMD-bound
@@ -105,6 +116,115 @@ DEBUG = False
 
 PRESENTATION_ROLE = "http://www.xbrl.org/2003/role/link"
 PARENT_CHILD_ARCROLE = "http://www.xbrl.org/2003/arcrole/parent-child"
+
+FORMAL_HMD_HEADER = [
+    "sequence",
+    "module",
+    "level",
+    "type",
+    "identifier",
+    "name",
+    "datatype",
+    "multiplicity",
+    "association_role",
+    "definition",
+    "label_local",
+    "definition_local",
+    "source_bsm_id",
+    "semantic_path",
+    "associated_module",
+    "class_term",
+    "local_name",
+    "xpath",
+]
+
+
+def _formal_hmd_identity(path, encoding="utf-8-sig"):
+    """Return the single formal root identifier for one HMD CSV.
+
+    The HMD itself is the taxonomy-generation input.  File names and any
+    execution-confirmation manifest do not determine the HMD identity.
+    """
+    path = Path(path)
+    with path.open("r", encoding=encoding, newline="") as handle:
+        reader = csv.DictReader(handle)
+        actual_header = [
+            name.lstrip("\ufeff") for name in (reader.fieldnames or [])
+        ]
+        if actual_header != FORMAL_HMD_HEADER:
+            raise ValueError(
+                f"Formal HMD header mismatch in {path.name!r}. "
+                f"Expected {FORMAL_HMD_HEADER!r}, got {actual_header!r}."
+            )
+        roots = []
+        for raw in reader:
+            if not any((value or "").strip() for value in raw.values()):
+                continue
+            row = {
+                (key or "").lstrip("\ufeff"): (value or "").strip()
+                for key, value in raw.items()
+            }
+            if row.get("level") != "1":
+                continue
+            if row.get("type") != "C":
+                raise ValueError(
+                    f"Formal HMD level-1 row must be Class (C) in {path.name!r}."
+                )
+            module = row.get("module", "")
+            local_name = row.get("local_name", "")
+            if not module or not local_name:
+                raise ValueError(
+                    f"Formal HMD root module/local_name is blank in {path.name!r}."
+                )
+            roots.append(f"{module}_{local_name}")
+    if len(roots) != 1:
+        raise ValueError(
+            f"Each HMD for taxonomy must contain exactly one level-1 root; "
+            f"found {len(roots)} in {path.name!r}."
+        )
+    return roots[0]
+
+
+def resolve_lhm_for_taxonomy_input(lhm_for_taxonomy_dir, encoding="utf-8-sig"):
+    """Discover formal HMD inputs from one ``LHM_for_taxonomy`` directory.
+
+    ``manifest.csv`` may coexist in the directory as an execution-confirmation
+    artefact, but it is intentionally ignored.  The HMD CSVs themselves are
+    the sole taxonomy-generation inputs.
+    """
+    value = str(lhm_for_taxonomy_dir).strip()
+    if not value:
+        raise ValueError("LHM_for_taxonomy directory is required.")
+
+    input_dir = Path(file_path(value)).resolve()
+    if not input_dir.is_dir():
+        raise ValueError(
+            "Formal taxonomy generation requires one LHM_for_taxonomy directory; "
+            f"got {input_dir}."
+        )
+
+    candidates = sorted(
+        path for path in input_dir.glob("*.csv")
+        if path.name.casefold() != "manifest.csv"
+    )
+    if not candidates:
+        raise ValueError(
+            f"LHM_for_taxonomy contains no HMD-for-taxonomy CSV files: {input_dir}"
+        )
+
+    resolved = []
+    seen_identifiers = set()
+    for candidate in candidates:
+        identifier = _formal_hmd_identity(candidate, encoding)
+        folded = identifier.casefold()
+        if folded in seen_identifiers:
+            raise ValueError(
+                f"Duplicate HMD root identifier in LHM_for_taxonomy: {identifier}"
+            )
+        seen_identifiers.add(folded)
+        resolved.append((folded, identifier, str(candidate.resolve())))
+
+    return [item[2] for item in sorted(resolved)]
 
 
 @dataclass(frozen=True, order=True)
@@ -653,26 +773,7 @@ class xBRLGL_TaxonomyGenerator:
         self.parent_dict = OrderedDict()
         self.presentation_dict = OrderedDict()
 
-        header = [
-            "sequence",
-            "module",
-            "level",
-            "type",
-            "identifier",
-            "name",
-            "datatype",
-            "multiplicity",
-            "association_role",
-            "definition",
-            "label_local",
-            "definition_local",
-            "source_bsm_id",
-            "semantic_path",
-            "associated_module",
-            "class_term",
-            "local_name",
-            "xpath",
-        ]
+        header = FORMAL_HMD_HEADER
         datatype_map = {
             "DECIMAL": "xbrli:decimalItemType",
             "FLOAT": "xbrli:floatItemType",
@@ -2148,10 +2249,10 @@ def _generator_for_file(in_file, base_dir, args, taxonomy_type):
     generator = xBRLGL_TaxonomyGenerator(
         in_file=in_file,
         base_dir=str(base_dir),
-        palette=args.palette,
-        root=args.root,
+        palette=None,
+        root=None,
         lang=args.lang,
-        currency=args.currency,
+        currency="JPY",
         namespace=args.namespace,
         encoding=args.encoding,
         trace=args.trace,
@@ -2221,7 +2322,16 @@ def _copy_hmd_content_schema(source, target, module, version):
 
 
 def generate_formal_hmd_package(args):
-    """Generate shared modules plus one Tuple and OIM entry point per HMD."""
+    """Generate the first-edition formal Tuple/OIM taxonomy package.
+
+    ``args.lhm_for_taxonomy`` MUST name one ``LHM_for_taxonomy`` directory.
+    Formal HMD-for-taxonomy CSVs are discovered directly from that directory.
+    Any ``manifest.csv`` present there is execution-confirmation only and is
+    not consumed by taxonomy generation.
+    """
+    hmd_inputs = resolve_lhm_for_taxonomy_input(
+        args.lhm_for_taxonomy, args.encoding
+    )
     output_root = Path(args.base_dir).resolve()
     if output_root.exists() and any(output_root.iterdir()):
         raise ValueError(
@@ -2242,7 +2352,7 @@ def generate_formal_hmd_package(args):
                 args,
                 "tuple",
             )
-            for in_file in args.inFile
+            for in_file in hmd_inputs
         ]
         validate_shared_qnames(merged_items)
         merged = merge_hmd_generators(merged_items[0], merged_items[1:])
@@ -2259,7 +2369,7 @@ def generate_formal_hmd_package(args):
         )
 
         package_ids = set()
-        for index, in_file in enumerate(args.inFile):
+        for index, in_file in enumerate(hmd_inputs):
             tuple_generator = _generator_for_file(
                 in_file,
                 temporary / f"hmd-{index}-tuple",
@@ -2413,130 +2523,48 @@ def generate_formal_hmd_package(args):
 
 def main():
     global DEBUG, TRACE
-    """
-    Main function to execute the script
-    """
-    RAESER = len(sys.argv) > 1
-    if RAESER:    
-        parser = argparse.ArgumentParser()
-        parser.add_argument(
-            "inFile", nargs="+",
-            help="One or more formal 18-column HMD-for-taxonomy CSV files",
+
+    parser = argparse.ArgumentParser(
+        description=(
+            "Generate the XBRL GL Next formal Tuple/OIM taxonomy package "
+            "from one LHM_for_taxonomy input-set directory."
         )
-        parser.add_argument("-b", "--base_dir", help="Base output directory", default=".")
-        parser.add_argument("-p", "--palette")
-        parser.add_argument("-r", "--root")
-        parser.add_argument("-l", "--lang", default="ja")
-        parser.add_argument("-c", "--currency", default="JPY")
-        parser.add_argument("-n", "--namespace", default="http://www.xbrl.org/int/gl/plt/2026-MM-DD")
-        parser.add_argument(
-            "--taxonomy-type",
-            choices=("tuple", "oim", "package"),
-            required=True,
-            help=(
-                "Generate a legacy-layout Tuple or OIM DTS, or a formal "
-                "package with shared modules and HMD-specific tuple/oim roots."
-            ),
-        )
-        parser.add_argument("-e", "--encoding", default="utf-8-sig")
-        parser.add_argument("-t", "--trace", action="store_true")
-        parser.add_argument("-d", "--debug", action="store_true")
+    )
+    parser.add_argument(
+        "lhm_for_taxonomy",
+        help=(
+            "Formal LHM_for_taxonomy directory containing the formal "
+            "HMD-for-taxonomy CSV files"
+        ),
+    )
+    parser.add_argument(
+        "-b", "--base-dir", dest="base_dir", required=True,
+        help="Empty output directory for the generated formal taxonomy package",
+    )
+    parser.add_argument("-l", "--lang", default="ja")
+    parser.add_argument(
+        "-n", "--namespace", required=True,
+        help=(
+            "Palette namespace ending in the explicit taxonomy version date, "
+            "for example http://www.xbrl.org/int/gl/plt/2026-12-31"
+        ),
+    )
+    parser.add_argument("-e", "--encoding", default="utf-8-sig")
+    parser.add_argument("-t", "--trace", action="store_true")
+    parser.add_argument("-d", "--debug", action="store_true")
 
-        args = parser.parse_args()
+    args = parser.parse_args()
+    DEBUG = args.debug
+    TRACE = args.trace
 
-        DEBUG = args.debug
-        TRACE = args.trace
+    try:
+        package_ids = generate_formal_hmd_package(args)
+    except (OSError, ValueError) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        raise SystemExit(1)
 
-        if args.taxonomy_type == "package":
-            try:
-                package_ids = generate_formal_hmd_package(args)
-            except (OSError, ValueError) as exc:
-                print(f"ERROR: {exc}", file=sys.stderr)
-                raise SystemExit(1)
-            print("Generated formal HMD packages: " + ", ".join(package_ids))
-            return
+    print("Generated formal HMD packages: " + ", ".join(package_ids))
 
-        generator = xBRLGL_TaxonomyGenerator(
-            in_file=args.inFile[0],
-            base_dir=args.base_dir,
-            palette=args.palette,
-            root=args.root,
-            lang=args.lang,
-            currency=args.currency,
-            namespace=args.namespace,
-            encoding=args.encoding,
-            trace=args.trace,
-            debug=args.debug,
-            instance=True,
-            taxonomy_type=args.taxonomy_type,
-        )
-
-        # "../EU-Extension/XBRL-GL-REC-2015-03-25_case-c-b-m-e.csv",
-        # "-b", "../EU-Extension/XBRL-GL",
-        # "-n", "http://www.xbrl.org/int/gl/plt/2015-03-25",
-        # "-r", "AccntgEntrs",// for pased LHM
-        # // "-r Accntg Entrs",// for graphwalk LHM
-        # "-l", "ja",
-        # "-c", "usd",
-        # "-e", "utf-8-sig",
-        # // "-d",
-        # "-t"
-        # version = args.namespace[-10:]
-    else:
-        args = {
-            "in_file": "xBRL-GL2.0_LHM_btx.csv",
-            "base_dir": "xBRL-GL2.0_btx_2026-02-20",
-            "palette": "btx",
-            "root": "BusnTran",
-            "lang": "ja",
-            "currency": "usd",
-            "namespace": "http://www.xbrl.org/int/gl/plt/2026-12-31",
-            "encoding": "utf-8-sig",
-            "taxonomy_type": "oim",
-        }
-
-        generator = xBRLGL_TaxonomyGenerator(
-            in_file=args['in_file'],
-            base_dir=args['base_dir'],
-            palette=args['palette'],
-            root=args['root'],
-            lang=args['lang'],
-            currency=args['currency'],
-            namespace=args['namespace'],
-            encoding=args['encoding'],
-            trace=True,
-            debug=True,
-            instance = True,
-            taxonomy_type=args["taxonomy_type"],
-        )
-
-    generator.load_csv_data()
-    if RAESER and len(args.inFile) > 1:
-        additional = []
-        for in_file in args.inFile[1:]:
-            item = xBRLGL_TaxonomyGenerator(
-                in_file=in_file,
-                base_dir=args.base_dir,
-                palette=args.palette,
-                root=args.root,
-                lang=args.lang,
-                currency=args.currency,
-                namespace=args.namespace,
-                encoding=args.encoding,
-                trace=args.trace,
-                debug=args.debug,
-                instance=True,
-                taxonomy_type=args.taxonomy_type,
-            )
-            item.load_csv_data()
-            additional.append(item)
-        generator = merge_hmd_generators(generator, additional)
-    generator.process_records()
-    generator.generate_taxonomy_files(generator.xbrl_base)
-
-    version = generator.namespace[-10:]
-    if generator.taxonomy_type == "oim":
-        generator.json_meta_file(f"plt/plt-oim-{version}.xsd", generator.xbrl_base)
 
 if __name__ == "__main__":
     main()
