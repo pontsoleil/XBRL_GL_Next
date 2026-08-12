@@ -1,4 +1,4 @@
-# XBRL GL Next instance validation — v4
+# XBRL GL Next instance validation — v0
 
 ## OIM layout
 
