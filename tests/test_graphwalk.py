@@ -47,7 +47,10 @@ class GraphWalkTests(unittest.TestCase):
         bsm = root / "bsm.csv"
         lhm = root / "lhm.csv"
         self.write(bsm, rows)
-        processor = MODULE.GraphWalk(bsm, lhm, roots)
+        processor = MODULE.GraphWalk(
+            bsm, lhm, roots,
+            module_prefixes={**MODULE.MODULE_PREFIX, "tst": "gl-tst", "alt": "gl-alt"},
+        )
         output = processor.graph_walk()
         return processor, output, lhm
 
@@ -69,19 +72,32 @@ class GraphWalkTests(unittest.TestCase):
                 multiplicity="0..1", id="TS02-01"),
         ]
 
-    def test_canonical_17_columns_without_legacy_columns(self):
+    def test_canonical_18_columns_with_initial_local_name_and_xpath(self):
         _, rows, lhm = self.run_model(self.model())
         with lhm.open(encoding="utf-8-sig", newline="") as handle:
             reader = csv.DictReader(handle)
             loaded = list(reader)
         self.assertEqual(reader.fieldnames, LHM_HEADER)
-        for excluded in ("path", "abbreviation_path", "xpath", "associated_class"):
+        self.assertEqual(reader.fieldnames[16:], ["local_name", "xpath"])
+        self.assertNotIn("element", reader.fieldnames)
+        self.assertNotIn("local-name", reader.fieldnames)
+        for excluded in (
+            "domain_name",
+            "id",
+            "path",
+            "abbreviation_path",
+            "associated_class",
+        ):
             self.assertNotIn(excluded, reader.fieldnames)
         self.assertEqual(len(rows), 4)
-        self.assertTrue(all(len(item) == 17 for item in loaded))
-        self.assertTrue(all(item["element"] for item in loaded))
+        self.assertTrue(all(len(item) == 18 for item in loaded))
+        self.assertTrue(all(item["local_name"] for item in loaded))
+        self.assertTrue(all(":" not in item["local_name"] for item in loaded))
+        self.assertTrue(all(MODULE.NCNAME.fullmatch(item["local_name"])
+                            for item in loaded))
+        self.assertTrue(all(item["xpath"].startswith("/xbrli:xbrl/") for item in loaded))
 
-    def test_composition_recurses_and_preserves_occurrence_id(self):
+    def test_repeated_source_bsm_id_on_multiple_paths_is_informational(self):
         rows = self.model()
         rows.insert(
             3,
@@ -90,18 +106,18 @@ class GraphWalkTests(unittest.TestCase):
                 association_role="Second Child", associated_module="tst",
                 associated_class="Child", multiplicity="0..1", id="TS01-03"),
         )
-        _, output, _ = self.run_model(rows)
-        names = [item["name"] for item in output]
-        self.assertIn("Child_ Child", names)
-        self.assertIn("Second Child_ Child", names)
-        child_attribute_ids = [
-            item["id"] for item in output if item["name"] == "Name"
+        processor, output, _ = self.run_model(rows)
+        paths = [item["semantic_path"] for item in output]
+        self.assertEqual(len(paths), len(set(paths)))
+        reused = [item for item in output if item["source_bsm_id"] == "TS02-01"]
+        self.assertEqual(len(reused), 2)
+        self.assertNotEqual(reused[0]["semantic_path"], reused[1]["semantic_path"])
+        reuse_diagnostics = [
+            item for item in processor.diagnostics
+            if item["code"] == "SOURCE_BSM_ID_REUSED"
         ]
-        self.assertEqual(child_attribute_ids, ["TS02-01", "TS02-01"])
-        child_paths = [
-            item["semantic_path"] for item in output if item["name"] == "Name"
-        ]
-        self.assertEqual(len(set(child_paths)), 2)
+        self.assertTrue(reuse_diagnostics)
+        self.assertTrue(all(item["severity"] == "info" for item in reuse_diagnostics))
 
     def test_cross_module_composition_uses_target_module_for_class_and_attributes(self):
         rows = [
@@ -124,11 +140,19 @@ class GraphWalkTests(unittest.TestCase):
             ("C", "alt", "Child"),
         )
         self.assertEqual(child["associated_module"], "alt")
+        self.assertEqual(child["association_role"], "Child")
+        self.assertEqual(child["source_bsm_id"], "TS01-01")
         self.assertEqual(
             (attribute["type"], attribute["module"], attribute["class_term"]),
             ("A", "alt", "Child"),
         )
         self.assertEqual(attribute["associated_module"], "alt")
+        self.assertEqual(attribute["association_role"], "")
+        self.assertEqual(attribute["source_bsm_id"], "AL01-01")
+        self.assertEqual(
+            attribute["xpath"],
+            "/xbrli:xbrl/gl-tst:root/gl-alt:childChild/gl-alt:name",
+        )
 
     def test_reference_emits_r_and_ref_then_stops(self):
         rows = [
@@ -150,11 +174,13 @@ class GraphWalkTests(unittest.TestCase):
         _, output, _ = self.run_model(rows)
         self.assertEqual([item["type"] for item in output], ["C", "R", "A"])
         self.assertEqual(output[1]["name"], "Original_ Target")
-        self.assertEqual(output[1]["element"], "")
         self.assertEqual(output[1]["associated_module"], "tst")
+        self.assertEqual(output[1]["association_role"], "Original")
+        self.assertEqual(output[1]["source_bsm_id"], "TS01-01")
         self.assertEqual(output[2]["identifier"], "REF")
         self.assertEqual(output[2]["datatype"], "Identifier")
         self.assertEqual(output[2]["associated_module"], "tst")
+        self.assertEqual(output[2]["source_bsm_id"], "TS02-01")
         self.assertNotIn("Not Traversed", [item["name"] for item in output])
 
     def test_cross_module_reference_uses_target_module_for_r_and_ref(self):
@@ -196,29 +222,14 @@ class GraphWalkTests(unittest.TestCase):
         with self.assertRaisesRegex(MODULE.GraphWalkError, "invalid multiplicity"):
             self.run_model(rows)
 
-    def test_reference_many_gets_dimension_element(self):
+    def test_reference_many_remains_in_semantic_lhm(self):
         rows = self.model()
         rows[2]["property_type"] = "Reference"
         _, output, _ = self.run_model(rows)
         reference = [item for item in output if item["type"] == "R"][0]
-        self.assertTrue(reference["element"])
-
-    def test_element_collision_uses_shortest_unique_suffix(self):
-        rows = self.model()
-        rows.extend(
-            [
-                row(sequence="6", level="1", property_type="Class", module="tst",
-                    class_term="Other", multiplicity="1", id="TS03"),
-                row(sequence="7", level="2", property_type="Attribute", module="tst",
-                    class_term="Other", property_term="Name", representation_term="Text",
-                    multiplicity="1", id="TS03-01"),
-            ]
-        )
-        _, output, _ = self.run_model(rows, roots=("tst:Root", "tst:Other"))
-        names = {item["semantic_path"]: item["element"] for item in output if item["name"] == "Name"}
-        self.assertEqual(len(set(names.values())), 2)
-        self.assertIn("childChildName", names.values())
-        self.assertIn("otherName", names.values())
+        self.assertEqual(reference["multiplicity"], "0..*")
+        self.assertEqual(reference["local_name"], "childChild")
+        self.assertTrue(reference["xpath"].endswith("/gl-tst:childChild"))
 
     def test_duplicate_semantic_path_is_rejected(self):
         rows = self.model()
@@ -286,6 +297,28 @@ class GraphWalkTests(unittest.TestCase):
             with self.assertRaisesRegex(MODULE.GraphWalkError, "header mismatch"):
                 processor.graph_walk()
             self.assertEqual(lhm.read_text(encoding="utf-8"), "preserve-me")
+
+    def test_input_output_and_diagnostics_path_aliases_are_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            bsm = root / "model.csv"
+            output = root / "candidate.csv"
+            self.write(bsm, self.model())
+            cases = [
+                MODULE.GraphWalk(bsm, bsm, ["tst:Root"]),
+                MODULE.GraphWalk(
+                    bsm, output, ["tst:Root"], diagnostics_file=bsm
+                ),
+                MODULE.GraphWalk(
+                    bsm, output, ["tst:Root"], diagnostics_file=output
+                ),
+            ]
+            for processor in cases:
+                with self.subTest(processor=processor):
+                    with self.assertRaisesRegex(
+                        MODULE.GraphWalkError, "three different paths"
+                    ):
+                        processor.graph_walk()
 
     def test_legacy_15_column_bsm_header_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -380,12 +413,123 @@ class GraphWalkTests(unittest.TestCase):
             out1 = root / "lhm1.csv"
             out2 = root / "lhm2.csv"
             self.write(bsm, self.model())
-            MODULE.GraphWalk(bsm, out1, ["tst:Root"]).graph_walk()
-            MODULE.GraphWalk(bsm, out2, ["tst:Root"]).graph_walk()
+            prefixes = {**MODULE.MODULE_PREFIX, "tst": "gl-tst"}
+            MODULE.GraphWalk(
+                bsm, out1, ["tst:Root"], module_prefixes=prefixes
+            ).graph_walk()
+            MODULE.GraphWalk(
+                bsm, out2, ["tst:Root"], module_prefixes=prefixes
+            ).graph_walk()
             self.assertEqual(
                 hashlib.sha256(out1.read_bytes()).digest(),
                 hashlib.sha256(out2.read_bytes()).digest(),
             )
+
+    def test_semantic_path_uses_module_qualified_identifiers(self):
+        _, output, _ = self.run_model(self.model())
+        self.assertEqual(output[0]["semantic_path"], "$.tst_Root")
+        self.assertEqual(output[1]["semantic_path"], "$.tst_Root.tst_RootID")
+        self.assertEqual(
+            output[2]["semantic_path"], "$.tst_Root.tst_Child_Child"
+        )
+
+    def test_initial_lower_camel_local_names_and_hierarchical_xpaths(self):
+        _, output, _ = self.run_model(self.model())
+        self.assertEqual(output[0]["local_name"], "root")
+        self.assertEqual(output[1]["local_name"], "rootId")
+        self.assertEqual(output[2]["local_name"], "childChild")
+        self.assertEqual(
+            MODULE.qualified_name("tst", output[2]["local_name"], {"tst": "gl-tst"}),
+            "gl-tst:childChild",
+        )
+        self.assertEqual(
+            output[3]["xpath"],
+            "/xbrli:xbrl/gl-tst:root/gl-tst:childChild/gl-tst:name",
+        )
+        self.assertEqual(
+            [item["name"] for item in output],
+            ["Root", "Root ID", "Child_ Child", "Name"],
+        )
+
+    def test_name_word_rules_moved_to_graphwalk(self):
+        cases = {
+            "Party Address Name": "partyAddressName",
+            "Audit_Number-value": "auditNumberValue",
+            "VATCategory 21378 ID": "vatCategory21378Id",
+            "  consecutive   spaces ": "consecutiveSpaces",
+        }
+        for source, expected in cases.items():
+            with self.subTest(source=source):
+                self.assertEqual(MODULE.local_name_from_name(source), expected)
+
+    def test_unregistered_module_and_invalid_ncname_are_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            bsm = root / "bsm.csv"
+            lhm = root / "lhm.csv"
+            self.write(bsm, self.model())
+            with self.assertRaisesRegex(MODULE.GraphWalkError, "registered taxonomy prefix"):
+                MODULE.GraphWalk(bsm, lhm, ["tst:Root"]).graph_walk()
+        rows = self.model()
+        rows[0]["class_term"] = "21378 Root"
+        rows[1]["class_term"] = "21378 Root"
+        rows[2]["class_term"] = "21378 Root"
+        with self.assertRaisesRegex(MODULE.GraphWalkError, "NCName"):
+            self.run_model(rows, roots=("tst:21378 Root",))
+
+    def test_association_display_name_keeps_space_but_path_removes_it(self):
+        rows = self.model()
+        rows[2]["association_role"] = "Seller Party"
+        _, output, _ = self.run_model(rows)
+        association = output[2]
+        self.assertEqual(association["name"], "Seller Party_ Child")
+        self.assertEqual(
+            association["semantic_path"], "$.tst_Root.tst_SellerParty_Child"
+        )
+
+    def test_duplicate_local_name_is_nonblocking_review_diagnostic(self):
+        rows = self.model()
+        rows.extend([
+            row(sequence="6", level="1", property_type="Class", module="tst",
+                class_term="Other", multiplicity="1", id="TS03"),
+            row(sequence="7", level="2", property_type="Attribute", module="tst",
+                class_term="Other", property_term="Name", representation_term="Text",
+                multiplicity="1", id="TS03-01"),
+        ])
+        processor, output, _ = self.run_model(rows, roots=("tst:Root", "tst:Other"))
+        self.assertEqual(len(output), 6)
+        duplicate = [
+            item for item in processor.diagnostics
+            if item["code"] == "LOCAL_NAME_DUPLICATE"
+        ]
+        self.assertEqual(len(duplicate), 1)
+        self.assertEqual(duplicate[0]["severity"], "warning")
+        self.assertEqual(duplicate[0]["occurrence_count"], 2)
+
+    def test_level_jump_parent_missing_root_type_and_xpath_collision_fail(self):
+        cases = [
+            ([{"level": "1", "type": "A", "module": "tst", "local_name": "root",
+               "semantic_path": "$.tst_Root"}], "level 1 must be type C"),
+            ([{"level": "1", "type": "C", "module": "tst", "local_name": "root",
+               "semantic_path": "$.tst_Root"},
+              {"level": "3", "type": "A", "module": "tst", "local_name": "value",
+               "semantic_path": "$.tst_Root.tst_Value"}], "immediate C/R parent"),
+            ([{"level": "1", "type": "C", "module": "tst", "local_name": "root",
+               "semantic_path": "$.tst_Root"},
+              {"level": "2", "type": "A", "module": "tst", "local_name": "value",
+               "semantic_path": "$.tst_Root.tst_First"},
+              {"level": "2", "type": "A", "module": "tst", "local_name": "value",
+               "semantic_path": "$.tst_Root.tst_Second"}], "XPath collision"),
+        ]
+        for rows, message in cases:
+            with self.subTest(message=message):
+                processor = MODULE.GraphWalk(
+                    "unused.csv", "unused-output.csv", ["tst:Root"],
+                    module_prefixes={"tst": "gl-tst"},
+                )
+                processor.rows = rows
+                with self.assertRaisesRegex(MODULE.GraphWalkError, message):
+                    processor.assign_xpaths()
 
 
 if __name__ == "__main__":

@@ -104,7 +104,7 @@ class SpecializationTests(unittest.TestCase):
             row(
                 sequence="6",
                 level="2",
-                property_type="Specialization",
+                property_type="Specialisation",
                 module="alt",
                 class_term="Customer",
                 associated_module="tst",
@@ -152,6 +152,50 @@ class SpecializationTests(unittest.TestCase):
         self.assertEqual(customer[2]["association_role"], "")
         self.assertEqual(customer[2]["associated_module"], "tst")
         self.assertEqual(processor.diagnostics, [])
+
+    def test_canonical_specialisation_is_accepted_without_alias_warning(self):
+        processor, output, _ = self.run_model(self.basic_rows())
+        self.assertTrue(output)
+        self.assertFalse(
+            any(
+                item["code"] == "NON_CANONICAL_ASSOCIATION_TYPE"
+                for item in processor.diagnostics
+            )
+        )
+
+    def test_legacy_specialization_warns_normalizes_and_matches_bsm(self):
+        canonical_rows = self.basic_rows()
+        _, canonical_output, canonical_bsm = self.run_model(canonical_rows)
+
+        legacy_rows = [dict(item) for item in canonical_rows]
+        legacy_rows[5]["property_type"] = "Specialization"
+        processor, legacy_output, legacy_bsm = self.run_model(legacy_rows)
+
+        alias_warnings = [
+            item
+            for item in processor.diagnostics
+            if item["code"] == "NON_CANONICAL_ASSOCIATION_TYPE"
+        ]
+        self.assertEqual(len(alias_warnings), 1)
+        self.assertEqual(alias_warnings[0]["severity"], "warning")
+        self.assertEqual(alias_warnings[0]["supplied_value"], "Specialization")
+        self.assertEqual(alias_warnings[0]["canonical_value"], "Specialisation")
+        self.assertIn("normalised to 'Specialisation'", alias_warnings[0]["message"])
+        self.assertEqual(canonical_output, legacy_output)
+        self.assertEqual(canonical_bsm.read_bytes(), legacy_bsm.read_bytes())
+        self.assertTrue(
+            all(item["property_type"] != "Specialization" for item in legacy_output)
+        )
+
+    def test_non_exact_specialisation_spellings_are_rejected(self):
+        for value in ("specialisation", "SPECIALISATION", "Specializtion"):
+            with self.subTest(value=value):
+                rows = self.basic_rows()
+                rows[5]["property_type"] = value
+                with self.assertRaisesRegex(
+                    MODULE.SpecializationError, "unsupported property_type"
+                ):
+                    self.run_model(rows)
 
     def test_free_text_carriage_returns_are_preserved_as_quoted_csv_newlines(self):
         rows = self.basic_rows()
@@ -232,7 +276,7 @@ class SpecializationTests(unittest.TestCase):
             [
                 row(sequence="9", level="1", property_type="Class", module="alt",
                     class_term="Preferred Customer", multiplicity="1"),
-                row(sequence="10", level="2", property_type="Specialization",
+                row(sequence="10", level="2", property_type="Specialisation",
                     module="alt", class_term="Preferred Customer",
                     associated_module="alt", associated_class="Customer",
                     multiplicity="1"),
@@ -387,7 +431,7 @@ class SpecializationTests(unittest.TestCase):
                 associated_class="Target", multiplicity="0..1"),
             row(sequence="4", level="1", property_type="Class", module="tst",
                 class_term="Child", multiplicity="1"),
-            row(sequence="5", level="2", property_type="Specialization", module="tst",
+            row(sequence="5", level="2", property_type="Specialisation", module="tst",
                 class_term="Child", associated_module="tst", associated_class="Base",
                 multiplicity="1"),
             row(sequence="6", level="2", property_type="Reference", module="tst",
@@ -440,12 +484,12 @@ class SpecializationTests(unittest.TestCase):
         rows = [
             row(sequence="1", level="1", property_type="Class", module="tst",
                 class_term="A", multiplicity="1"),
-            row(sequence="2", level="2", property_type="Specialization", module="tst",
+            row(sequence="2", level="2", property_type="Specialisation", module="tst",
                 class_term="A", associated_module="tst", associated_class="B",
                 multiplicity="1"),
             row(sequence="3", level="1", property_type="Class", module="tst",
                 class_term="B", multiplicity="1"),
-            row(sequence="4", level="2", property_type="Specialization", module="tst",
+            row(sequence="4", level="2", property_type="Specialisation", module="tst",
                 class_term="B", associated_module="tst", associated_class="A",
                 multiplicity="1"),
         ]
