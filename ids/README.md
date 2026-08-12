@@ -1,4 +1,4 @@
-# XBRL GL Next sample instances — v4
+# XBRL GL Next sample instances — v0
 
 Date: 2026-08-11
 
