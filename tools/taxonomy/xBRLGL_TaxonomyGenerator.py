@@ -92,6 +92,20 @@ Last Modified: 2026-08-12
     Traversal continues across module boundaries, and locators always target
     the global declaration in the owning ``<module>-<V>.xsd``.
 
+2026-08-12 binding-specific module presentation and OIM module schemas:
+    Tuple and OIM presentation linkbases are now separate module-level
+    artefacts. Tuple continues to use ``<module>-pre-<V>.xml`` and locates
+    A/C/R global declarations in the Tuple module schema
+    ``<module>-<V>.xsd``. OIM uses
+    ``<module>-oim-pre-<V>.xml`` and locates Attribute items and Class
+    ``p_<module>_*`` primary-item anchors in the standalone-valid
+    ``<module>-oim-<V>.xsd``. Reference rows remain transparent in the OIM
+    presentation binding. OIM-specific label linkbases locate concepts in the
+    OIM module schemas, so an OIM DTS does not discover the intentionally
+    incomplete Tuple module schemas or Tuple content schemas. Hypercubes,
+    typed dimensions and role declarations remain HMD-specific in the OIM
+    entry-point schema.
+
 MIT License
 
 (c) 2025 SAMBUICHI, Nobuyuki (Sambuichi Professional Engineers Office)
@@ -517,7 +531,7 @@ class xBRLGL_TaxonomyGenerator:
                 if not target_id in self.locs_defined[primary_id]:
                     self.locs_defined[primary_id].add(target_id)
                     lines.append(
-                        f'    <link:loc xlink:type="locator" xlink:href="plt-oim-{self.version}.xsd#{target_id}" xlink:label="{target_id}" xlink:title="{target_id} {child_name}"/>\n'
+                        f'    <link:loc xlink:type="locator" xlink:href="{self.oim_module_schema_href(target_id)}#{target_id}" xlink:label="{target_id}" xlink:title="{target_id} {child_name}"/>\n'
                     )
                 self.count += 1
                 arc_id = f"{primary_id} TO {target_link}"
@@ -585,7 +599,7 @@ class xBRLGL_TaxonomyGenerator:
             f'  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/{link_id}">\n',
             # all (has-hypercube)
             f"    <!-- {primary_id} all (has-hypercube) {hypercube_id} {link_id} -->\n",
-            f'    <link:loc xlink:type="locator" xlink:href="plt-oim-{self.version}.xsd#{primary_id}" xlink:label="{primary_id}" xlink:title="{primary_id}"/>\n',
+            f'    <link:loc xlink:type="locator" xlink:href="{self.oim_module_schema_href(primary_id)}#{primary_id}" xlink:label="{primary_id}" xlink:title="{primary_id}"/>\n',
             f'    <link:loc xlink:type="locator" xlink:href="plt-oim-{self.version}.xsd#{hypercube_id}" xlink:label="{hypercube_id}" xlink:title="{hypercube_id}"/>\n',
             f'    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="{primary_id}" xlink:to="{hypercube_id}" xlink:title="all (has-hypercube): {primary_id} to {hypercube_id}" order="1" xbrldt:closed="true" xbrldt:contextElement="segment"/>\n',
         ]
@@ -617,10 +631,19 @@ class xBRLGL_TaxonomyGenerator:
         record = self.getRecord(_element_id)
         element_id = record["element_id"]
         module = element_id[:element_id.index("_")]
-        taxonomy_schema = f"../{module}/{module}-{self.version}.xsd"
+        if self.taxonomy_type == "oim":
+            taxonomy_schema = f"../{module}/{module}-oim-{self.version}.xsd"
+        else:
+            taxonomy_schema = f"../{module}/{module}-{self.version}.xsd"
         link_id = f"link_{element_id}"
         href = f"{taxonomy_schema}/{link_id}"
         return taxonomy_schema, link_id, href
+
+    def oim_module_schema_href(self, element_id):
+        """Return the module-level OIM schema href for an A or p_ concept."""
+        raw_id = element_id[2:] if element_id.startswith("p_") else element_id
+        module = raw_id[: raw_id.index("_")]
+        return f"../{module}/{module}-oim-{self.version}.xsd"
 
     def linkPresentation(self, _module, element_id, children, n, visited):
         """Write one reusable module presentation subtree.
@@ -718,6 +741,101 @@ class xBRLGL_TaxonomyGenerator:
                     grand_children,
                     n + 1,
                     visited,
+                )
+
+    def oim_presentation_locator_href(self, current_module, concept_id):
+        """Return the relative href for one module-level OIM presentation concept."""
+        raw_id = concept_id[2:] if concept_id.startswith("p_") else concept_id
+        owner_module = raw_id[: raw_id.index("_")]
+        filename = f"{owner_module}-oim-{self.version}.xsd#{concept_id}"
+        if current_module == owner_module:
+            return filename
+        return f"../{owner_module}/{filename}"
+
+    def oim_visible_presentation_children(self, element_id, active=()):
+        """Return OIM-visible descendants, traversing Reference rows transparently."""
+        if element_id in active:
+            self.error_print(
+                f"OIM presentation traversal cycle at {element_id!r}."
+            )
+        visible = []
+        for child_element_id in self.presentation_dict.get(element_id, []):
+            child = self.getRecord(child_element_id)
+            if not child:
+                continue
+            if child["type"] == "R":
+                visible.extend(
+                    self.oim_visible_presentation_children(
+                        child_element_id, (*active, element_id)
+                    )
+                )
+            elif child["type"] in {"C", "A"}:
+                visible.append(child)
+        return visible
+
+    def linkOimPresentation(self, _module, element_id, visited):
+        """Write one reusable OIM presentation subtree rooted at a Class.
+
+        Class occurrences are represented by module-level ``p_<module>_*``
+        primary items. Attribute occurrences are represented by the same
+        semantic item QName in the module-level OIM schema. Reference rows are
+        transparent, consistent with the Part 3 dimensional binding.
+
+        ``visited`` suppresses repeated expansion of the same Class subtree,
+        while distinct incoming arcs remain in the presentation network.
+        """
+        if not element_id:
+            return
+        record = self.getRecord(element_id)
+        if not record or record["type"] != "C":
+            return
+
+        primary_id = f'p_{record["element_id"]}'
+        if primary_id not in self.locs_defined:
+            self.locs_defined[primary_id] = record["name"]
+            href = self.oim_presentation_locator_href(_module, primary_id)
+            self.lines.append(f"    <!-- {record['name']} -->\n")
+            self.lines.append(
+                f'    <loc xlink:type="locator" xlink:href="{href}" '
+                f'xlink:label="{primary_id}" xlink:title="loc: {primary_id}"/>\n'
+            )
+
+        if element_id in visited:
+            return
+        visited.add(element_id)
+
+        order = 0
+        for child in self.oim_visible_presentation_children(element_id):
+            target_id = self.oim_presentation_concept_id(child)
+            if not target_id:
+                continue
+            order += 10
+            if target_id not in self.locs_defined:
+                self.locs_defined[target_id] = child["name"]
+                href = self.oim_presentation_locator_href(_module, target_id)
+                self.lines.append(
+                    f'    <loc xlink:type="locator" xlink:href="{href}" '
+                    f'xlink:label="{target_id}" '
+                    f'xlink:title="presentation: {primary_id} to '
+                    f'{target_id} {child["name"]}"/>\n'
+                )
+
+            arc_id = f"{primary_id} to {target_id}"
+            if arc_id not in self.arcs_defined:
+                self.arcs_defined[arc_id] = (
+                    f"presentation: {primary_id} to {target_id}"
+                )
+                self.lines.append(
+                    f'    <presentationArc xlink:type="arc" '
+                    f'xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" '
+                    f'xlink:from="{primary_id}" xlink:to="{target_id}" '
+                    f'xlink:title="presentation: {primary_id} to {target_id}" '
+                    f'use="optional" order="{order}"/>\n'
+                )
+
+            if child["type"] == "C":
+                self.linkOimPresentation(
+                    _module, child["element_id"], visited
                 )
 
     @staticmethod
@@ -1242,6 +1360,202 @@ class xBRLGL_TaxonomyGenerator:
             with open(target, "w", encoding=self.encoding, newline="") as f:
                 f.writelines(self.lines)
 
+    def write_oim_module_components(self, element_dict, xbrl_base):
+        """Write module-level OIM schemas, labels, and presentation forests.
+
+        Each ``<module>-oim-<V>.xsd`` is a standalone-valid OIM module schema
+        for the semantic module namespace. It contains reusable Attribute item
+        declarations and module-owned ``p_<module>_*`` primary-item anchors for
+        Class rows. Tuple C/R declarations and their structural ComplexTypes
+        are deliberately excluded.
+
+        OIM presentation linkbases are binding-specific. They use the
+        module-level OIM schemas for both Attribute and ``p_`` locators and
+        traverse Reference rows transparently.
+        """
+        for module, data in element_dict.items():
+            module_directory = file_path(f"{xbrl_base}/{module}")
+            os.makedirs(module_directory, exist_ok=True)
+
+            html = [
+                '<?xml version="1.0" encoding="UTF-8"?>\n',
+                "<!-- (c) XBRL International.  See http://www.xbrl.org/legal -->\n",
+                f'<schema targetNamespace="http://www.xbrl.org/int/gl/{module}/{self.version}" '
+                'attributeFormDefault="unqualified" elementFormDefault="qualified"\n',
+                '  xmlns="http://www.w3.org/2001/XMLSchema"\n',
+                '  xmlns:xbrli="http://www.xbrl.org/2003/instance"\n',
+                f'  xmlns:{module}="http://www.xbrl.org/int/gl/{module}/{self.version}"\n',
+                f'  xmlns:gen="http://www.xbrl.org/int/gl/gen/{self.version}">\n',
+                '  <import namespace="http://www.xbrl.org/2003/instance" '
+                'schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>\n',
+                f'  <import namespace="http://www.xbrl.org/int/gl/gen/{self.version}" '
+                f'schemaLocation="{self.gl_gen_schema_location(module_directory)}"/>\n',
+                "  <!-- reusable OIM Attribute item type -->\n",
+            ]
+
+            defined_item_types = {}
+            for record in data:
+                if record["type"] != "A":
+                    continue
+                element = record["element"]
+                local_name = element.split(":", 1)[1]
+                type_name = local_name + "ItemType"
+                base_type = record["datatype"]
+                signature = ("A", base_type)
+                if (
+                    type_name in defined_item_types
+                    and defined_item_types[type_name] != signature
+                ):
+                    self.error_print(
+                        f"Conflicting OIM module item types for {element!r}."
+                    )
+                if type_name in defined_item_types:
+                    continue
+                defined_item_types[type_name] = signature
+                html += [
+                    f'  <complexType name="{type_name}">\n',
+                    "    <simpleContent>\n",
+                    f'      <restriction base="{base_type}"/>\n',
+                    "    </simpleContent>\n",
+                    "  </complexType>\n",
+                ]
+
+            html.append("  <!-- reusable OIM Attribute item element -->\n")
+            declared_ids = set()
+            for record in data:
+                if record["type"] != "A":
+                    continue
+                element = record["element"]
+                local_name = element.split(":", 1)[1]
+                element_id = element.replace(":", "_")
+                if element_id in declared_ids:
+                    continue
+                declared_ids.add(element_id)
+                html.append(
+                    f'  <element name="{local_name}" id="{element_id}" '
+                    f'type="{module}:{local_name}ItemType" '
+                    'substitutionGroup="xbrli:item" nillable="true" '
+                    'xbrli:periodType="instant"/>\n'
+                )
+
+            html.append("  <!-- reusable OIM Class primary-item anchor -->\n")
+            for record in data:
+                if record["type"] != "C":
+                    continue
+                element_id = record["element"].replace(":", "_")
+                primary_id = f"p_{element_id}"
+                if primary_id in declared_ids:
+                    self.error_print(
+                        f"OIM primary-item identifier collision: {primary_id!r}."
+                    )
+                declared_ids.add(primary_id)
+                html.append(
+                    f'  <element name="{primary_id}" id="{primary_id}" '
+                    'substitutionGroup="xbrli:item" '
+                    'type="xbrli:stringItemType" nillable="true" '
+                    'xbrli:periodType="instant"/>\n'
+                )
+            html.append("</schema>\n")
+
+            target = file_path(
+                f"{module_directory}/{module}-oim-{self.version}.xsd"
+            )
+            with open(target, "w", encoding=self.encoding, newline="") as f:
+                f.writelines(html)
+
+            # Binding-specific OIM labels. A labels retain their semantic item
+            # QName; Class labels are attached to p_ primary-item anchors.
+            for language, suffix, label_field, definition_field in (
+                ("en", "", "name", "definition"),
+                (self.lang, f"-{self.lang}", "label_local", "definition_local"),
+            ):
+                lines = [
+                    '<?xml version="1.0" encoding="UTF-8"?>\n',
+                    '<linkbase xmlns="http://www.xbrl.org/2003/linkbase"\n',
+                    '  xmlns:xlink="http://www.w3.org/1999/xlink">\n',
+                    '  <labelLink xlink:type="extended" '
+                    'xlink:role="http://www.xbrl.org/2003/role/link">\n',
+                ]
+                emitted = set()
+                for record in data:
+                    if record["type"] == "A":
+                        concept_id = record["element"].replace(":", "_")
+                        local_name = record["element"].split(":", 1)[1]
+                    elif record["type"] == "C":
+                        concept_id = (
+                            "p_" + record["element"].replace(":", "_")
+                        )
+                        local_name = concept_id
+                    else:
+                        continue
+                    if concept_id in emitted:
+                        continue
+                    emitted.add(concept_id)
+                    label = (
+                        record.get(label_field)
+                        or record.get("name")
+                        or local_name
+                    )
+                    definition = record.get(definition_field) or ""
+                    lines += [
+                        f'    <loc xlink:type="locator" '
+                        f'xlink:href="../{module}-oim-{self.version}.xsd#{concept_id}" '
+                        f'xlink:label="loc_{concept_id}"/>\n',
+                        f'    <label xlink:type="resource" '
+                        f'xlink:label="lab_{concept_id}" '
+                        f'xlink:role="http://www.xbrl.org/2003/role/label" '
+                        f'xml:lang="{language}">{self.escape_text(label)}</label>\n',
+                        f'    <labelArc xlink:type="arc" '
+                        f'xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" '
+                        f'xlink:from="loc_{concept_id}" '
+                        f'xlink:to="lab_{concept_id}"/>\n',
+                    ]
+                    if definition:
+                        lines += [
+                            f'    <label xlink:type="resource" '
+                            f'xlink:label="doc_{concept_id}" '
+                            f'xlink:role="http://www.xbrl.org/2003/role/documentation" '
+                            f'xml:lang="{language}">{self.escape_text(definition)}</label>\n',
+                            f'    <labelArc xlink:type="arc" '
+                            f'xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" '
+                            f'xlink:from="loc_{concept_id}" '
+                            f'xlink:to="doc_{concept_id}"/>\n',
+                        ]
+                lines += ["  </labelLink>\n", "</linkbase>\n"]
+                directory = file_path(f"{xbrl_base}/{module}/lang")
+                os.makedirs(directory, exist_ok=True)
+                target = file_path(
+                    f"{directory}/{module}-oim-{self.version}-label{suffix}.xml"
+                )
+                with open(target, "w", encoding=self.encoding, newline="") as f:
+                    f.writelines(lines)
+
+        # OIM module presentation forests are generated from Class roots.
+        # Reference rows are intentionally transparent in the OIM binding.
+        for module, data in element_dict.items():
+            self.locs_defined = {}
+            self.arcs_defined = {}
+            visited = set()
+            self.lines = [
+                '<?xml version="1.0" encoding="UTF-8"?>\n',
+                '<linkbase xmlns="http://www.xbrl.org/2003/linkbase"\n',
+                '  xmlns:xlink="http://www.w3.org/1999/xlink">\n',
+                '  <presentationLink xlink:type="extended" '
+                'xlink:role="http://www.xbrl.org/2003/role/link">\n',
+            ]
+            class_records = [
+                record for record in data if record["type"] == "C"
+            ]
+            for record in class_records:
+                element_id = record["element"].replace(":", "_")
+                self.linkOimPresentation(module, element_id, visited)
+            self.lines += ["  </presentationLink>\n", "</linkbase>\n"]
+            target = file_path(
+                f"{xbrl_base}/{module}/{module}-oim-{self.version}-presentation.xml"
+            )
+            with open(target, "w", encoding=self.encoding, newline="") as f:
+                f.writelines(self.lines)
+
     def generate_taxonomy_files(self, xbrl_base):
         if not xbrl_base:
             xbrl_base = self.xbrl_base
@@ -1464,6 +1778,7 @@ class xBRLGL_TaxonomyGenerator:
             # ItemTypes, labels and Palette presentation linkbases. Structural
             # ComplexTypes remain HMD-specific.
             self.write_tuple_linkbases(element_dict, xbrl_base)
+            self.write_oim_module_components(element_dict, xbrl_base)
             return
 
         if self.taxonomy_type == "tuple":
@@ -1628,6 +1943,7 @@ class xBRLGL_TaxonomyGenerator:
         """
         OIM schema
         """
+        self.write_oim_module_components(element_dict, xbrl_base)
         os.makedirs(file_path(f"{xbrl_base}/plt"), exist_ok=True)
         modules = element_dict.keys()
         html = [
@@ -1647,6 +1963,11 @@ class xBRLGL_TaxonomyGenerator:
             '  <import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>\n',
             '  <import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>\n'
         ]
+        for module in sorted(modules):
+            html.append(
+                f'  <import namespace="http://www.xbrl.org/int/gl/{module}/{self.version}" '
+                f'schemaLocation="../{module}/{module}-oim-{self.version}.xsd"/>\n'
+            )
 
         html += [
             "  <annotation>\n",
@@ -1710,12 +2031,10 @@ class xBRLGL_TaxonomyGenerator:
                 f'  <element name="d_{element_name}" id="d_{element_name}" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" abstract="true" xbrli:periodType="instant" xbrldt:typedDomainRef="#_v"/>\n'
             )
 
-        html.append("  <!-- Primary -->\n")
-        for element_id in self.roleMap.keys():
-            element_name = element_id
-            html.append(
-                f'  <element name="p_{element_name}" id="p_{element_name}" substitutionGroup="xbrli:item" type="xbrli:stringItemType" nillable="true" xbrli:periodType="instant"/>\n'
-            )
+        html.append(
+            "  <!-- Class primary-item anchors are declared in "
+            "module-level OIM schemas -->\n"
+        )
 
         html.append(
             "</schema>\n"
@@ -2256,6 +2575,22 @@ def _copy_shared_module_files(generated_root, package_root, modules, version):
                 presentation,
                 target / f"{module}-pre-{version}.xml",
             )
+
+        oim_schema = source / f"{module}-oim-{version}.xsd"
+        if oim_schema.exists():
+            shutil.copy2(
+                oim_schema,
+                target / f"{module}-oim-{version}.xsd",
+            )
+        oim_presentation = (
+            source / f"{module}-oim-{version}-presentation.xml"
+        )
+        if oim_presentation.exists():
+            shutil.copy2(
+                oim_presentation,
+                target / f"{module}-oim-pre-{version}.xml",
+            )
+
         label_target = target / "label"
         label_target.mkdir(exist_ok=True)
         shutil.copy2(
@@ -2266,6 +2601,22 @@ def _copy_shared_module_files(generated_root, package_root, modules, version):
             source / "lang" / f"{module}-{version}-label-ja.xml",
             label_target / f"{module}-lab-ja-{version}.xml",
         )
+        oim_label_en = (
+            source / "lang" / f"{module}-oim-{version}-label.xml"
+        )
+        oim_label_local = (
+            source / "lang" / f"{module}-oim-{version}-label-ja.xml"
+        )
+        if oim_label_en.exists():
+            shutil.copy2(
+                oim_label_en,
+                label_target / f"{module}-oim-lab-en-{version}.xml",
+            )
+        if oim_label_local.exists():
+            shutil.copy2(
+                oim_label_local,
+                label_target / f"{module}-oim-lab-ja-{version}.xml",
+            )
 
 
 def _copy_hmd_content_schema(source, target, module, version):
@@ -2420,13 +2771,19 @@ def generate_formal_hmd_package(args):
                 [
                     (
                         f"../{module}/lang/{module}-{version}-label.xml",
-                        f"../../{module}/label/{module}-lab-en-{version}.xml",
+                        f"../../{module}/label/{module}-oim-lab-en-{version}.xml",
                     )
                     for module in sorted(hmd_modules)
                 ] + [
                     (
                         f"../{module}/lang/{module}-{version}-label-ja.xml",
-                        f"../../{module}/label/{module}-lab-ja-{version}.xml",
+                        f"../../{module}/label/{module}-oim-lab-ja-{version}.xml",
+                    )
+                    for module in sorted(hmd_modules)
+                ] + [
+                    (
+                        f"../{module}/{module}-oim-{version}.xsd",
+                        f"../../{module}/{module}-oim-{version}.xsd",
                     )
                     for module in sorted(hmd_modules)
                 ] + [(f"plt-def-{version}.xml", dim_name)],
@@ -2441,7 +2798,10 @@ def generate_formal_hmd_package(args):
             )
             set_schema_presentation_linkbase_refs(
                 oim_target / oim_entry_name,
-                [f"../../{hmd_prefix}/{hmd_prefix}-pre-{version}.xml"],
+                [
+                    f"../../{hmd_prefix}/"
+                    f"{hmd_prefix}-oim-pre-{version}.xml"
+                ],
             )
 
         # Publish only after every HMD and both bindings have been generated.
