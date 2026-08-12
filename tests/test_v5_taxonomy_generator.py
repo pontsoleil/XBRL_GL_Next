@@ -121,7 +121,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
                  ("cor:headerDocument", "cor:headerDocumentComplexType")],
             )
 
-    def test_shared_qname_identity_separates_declaration_from_hmd_content(self):
+    def test_shared_qname_requires_one_module_declaration_and_content_model(self):
         def rows(child: str, source_id: str):
             return [
                 row(sequence="1", module="bus", level="1", type="C", name="Party",
@@ -142,26 +142,30 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             left.process_records()
             left.generate_taxonomy_files(left.xbrl_base)
             schema = ET.parse(Path(left.xbrl_base) / "bus" / "bus-2026-08-08.xsd")
-            declarations = schema.findall(
+            item = schema.findall(
                 "./{http://www.w3.org/2001/XMLSchema}element[@name='partyName']"
             )
-            self.assertEqual(len(declarations), 1)
+            self.assertEqual(len(item), 1)
             structural = schema.findall(
                 "./{http://www.w3.org/2001/XMLSchema}element[@name='party']"
             )
-            self.assertEqual(structural, [])
-            conflict = self.make_generator(Path(right_dir) / "conflict", rows("legalName", "RIGHT"))
-            # bus:party is the same reusable declaration, but its effective
-            # direct-child model belongs to each independent HMD content
-            # schema and is therefore allowed to differ.
-            validation_left = self.make_generator(
-                Path(left_dir) / "validation-left",
-                rows("partyName", "LEFT"),
-            )
+            self.assertEqual(len(structural), 1)
             self.assertEqual(
-                MODULE.validate_shared_qnames([validation_left, conflict]),
-                1,
+                structural[0].attrib.get("type"), "bus:partyComplexType"
             )
+
+            # Same structural QName with a different direct-child signature is
+            # not a shared Palette declaration and must be rejected.
+            conflict = self.make_generator(
+                Path(right_dir) / "content-conflict", rows("legalName", "RIGHT")
+            )
+            validation_left = self.make_generator(
+                Path(left_dir) / "validation-left", rows("partyName", "LEFT")
+            )
+            with self.assertRaisesRegex(
+                ValueError, "Shared QName declaration/content conflict"
+            ):
+                MODULE.validate_shared_qnames([validation_left, conflict])
 
             declaration_conflict_rows = rows("partyName", "RIGHT")
             declaration_conflict_rows[0]["definition"] = "Different definition"
@@ -169,7 +173,9 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
                 Path(right_dir) / "declaration-conflict",
                 declaration_conflict_rows,
             )
-            with self.assertRaisesRegex(ValueError, "Shared QName declaration conflict"):
+            with self.assertRaisesRegex(
+                ValueError, "Shared QName declaration/content conflict"
+            ):
                 MODULE.validate_shared_qnames(
                     [validation_left, declaration_conflict]
                 )
@@ -251,97 +257,198 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             self.assertEqual(value["parent_id"], "cor_first")
             self.assertEqual(value["class_ancestors"], ["cor_root", "cor_first"])
 
-    def test_presentation_difference_identical_extra_and_missing(self):
-        rel = MODULE.PresentationRelationship(
-            MODULE.PRESENTATION_ROLE, MODULE.PARENT_CHILD_ARCROLE,
-            "cor_parent", "cor_child", 10,
-        )
-        self.assertEqual(
-            MODULE.presentation_difference({rel}, {rel}),
-            MODULE.PresentationDifference((), (), 0),
-        )
-        extra = MODULE.presentation_difference({rel}, set())
-        self.assertEqual(extra.prohibited, (rel,))
-        self.assertEqual(extra.optional, ())
-        missing = MODULE.presentation_difference(set(), {rel})
-        self.assertEqual(missing.prohibited, ())
-        self.assertEqual(missing.optional, (rel,))
+    def test_module_presentation_recurses_from_module_C_and_R_and_uses_module_schemas(self):
+        rows = [
+            row(sequence="1", module="cor", level="1", type="C", name="Root",
+                multiplicity="1", local_name="root", source_bsm_id="C1",
+                semantic_path="$.root", class_term="Root",
+                xpath="/xbrli:xbrl/gl-cor:root"),
+            row(sequence="2", module="bus", level="2", type="R", name="Party Reference",
+                multiplicity="0..1", local_name="partyReference", source_bsm_id="R1",
+                semantic_path="$.root.partyReference", class_term="Party",
+                xpath="/xbrli:xbrl/gl-cor:root/gl-bus:partyReference"),
+            row(sequence="3", module="bus", level="3", type="A", name="Party Identifier",
+                datatype="String", multiplicity="1", local_name="partyIdentifier",
+                source_bsm_id="A1", semantic_path="$.root.partyReference.partyIdentifier",
+                class_term="Party",
+                xpath=("/xbrli:xbrl/gl-cor:root/gl-bus:partyReference/"
+                       "gl-bus:partyIdentifier")),
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            generator = self.make_generator(Path(directory), rows)
+            generator.process_records()
+            generator.generate_taxonomy_files(generator.xbrl_base)
 
-    def test_parent_and_order_changes_prohibit_then_add(self):
-        base = MODULE.PresentationRelationship(
-            MODULE.PRESENTATION_ROLE, MODULE.PARENT_CHILD_ARCROLE,
-            "cor_oldParent", "cor_child", 10,
-        )
-        expected = MODULE.PresentationRelationship(
-            MODULE.PRESENTATION_ROLE, MODULE.PARENT_CHILD_ARCROLE,
-            "cor_newParent", "cor_child", 20,
-        )
-        difference = MODULE.presentation_difference({base}, {expected})
-        self.assertEqual(difference.prohibited, (base,))
-        self.assertEqual(difference.optional, (expected,))
-        self.assertEqual(difference.override_count, 1)
+            cor_pre = (
+                Path(generator.xbrl_base) / "cor" /
+                "cor-2026-08-08-presentation.xml"
+            ).read_text(encoding="utf-8")
+            bus_pre = (
+                Path(generator.xbrl_base) / "bus" /
+                "bus-2026-08-08-presentation.xml"
+            ).read_text(encoding="utf-8")
 
-        order_only = MODULE.PresentationRelationship(
-            MODULE.PRESENTATION_ROLE, MODULE.PARENT_CHILD_ARCROLE,
-            "cor_oldParent", "cor_child", 20,
-        )
-        difference = MODULE.presentation_difference({base}, {order_only})
-        self.assertEqual(difference.prohibited, (base,))
-        self.assertEqual(difference.optional, (order_only,))
-        self.assertEqual(difference.override_count, 1)
+            # C-root traversal continues across a module boundary through R.
+            self.assertIn('cor-2026-08-08.xsd#cor_root', cor_pre)
+            self.assertIn(
+                '../bus/bus-2026-08-08.xsd#bus_partyReference', cor_pre
+            )
+            self.assertIn(
+                '../bus/bus-2026-08-08.xsd#bus_partyIdentifier', cor_pre
+            )
+            self.assertIn(
+                'xlink:from="cor_root" xlink:to="bus_partyReference"', cor_pre
+            )
+            self.assertIn(
+                'xlink:from="bus_partyReference" '
+                'xlink:to="bus_partyIdentifier"', cor_pre
+            )
+            self.assertNotIn('-content-', cor_pre)
 
-    def test_non_exempt_attributes_and_base_set_affect_equivalence(self):
-        base = MODULE.PresentationRelationship(
-            MODULE.PRESENTATION_ROLE, MODULE.PARENT_CHILD_ARCROLE,
-            "cor_parent", "cor_child", 10, "http://example/old",
-        )
-        preferred_changed = MODULE.PresentationRelationship(
-            MODULE.PRESENTATION_ROLE, MODULE.PARENT_CHILD_ARCROLE,
-            "cor_parent", "cor_child", 10, "http://example/new",
-        )
-        different_role = MODULE.PresentationRelationship(
-            "http://example/other-role", MODULE.PARENT_CHILD_ARCROLE,
-            "cor_parent", "cor_child", 10, "http://example/old",
-        )
-        self.assertEqual(
-            MODULE.presentation_difference({base}, {preferred_changed}).override_count,
-            1,
-        )
-        role_difference = MODULE.presentation_difference({base}, {different_role})
-        self.assertEqual(role_difference.prohibited, (base,))
-        self.assertEqual(role_difference.optional, (different_role,))
+            # R is itself a starting candidate in its owning module forest.
+            self.assertIn(
+                'bus-2026-08-08.xsd#bus_partyReference', bus_pre
+            )
+            self.assertIn(
+                'bus-2026-08-08.xsd#bus_partyIdentifier', bus_pre
+            )
+            self.assertIn(
+                'xlink:from="bus_partyReference" '
+                'xlink:to="bus_partyIdentifier"', bus_pre
+            )
+            self.assertNotIn('-content-', bus_pre)
 
-    def test_priority_and_extension_serialization_are_deterministic(self):
-        self.assertEqual(MODULE.next_presentation_priority([]), 1)
-        self.assertEqual(MODULE.next_presentation_priority([0, 4, 2]), 5)
-        rel = MODULE.PresentationRelationship(
-            MODULE.PRESENTATION_ROLE, MODULE.PARENT_CHILD_ARCROLE,
-            "cor_parent", "bus_child", 10,
-        )
-        difference = MODULE.PresentationDifference((rel,), (), 0)
-        first = MODULE.serialize_presentation_extension(
-            difference, "2026-12-31"
-        )
-        second = MODULE.serialize_presentation_extension(
-            difference, "2026-12-31"
-        )
-        self.assertEqual(first, second)
-        text = first.decode("utf-8")
-        self.assertIn('use="prohibited" priority="1" order="10"', text)
-        self.assertIn("../../cor/cor-2026-12-31.xsd#cor_parent", text)
-        self.assertIn("../../bus/bus-2026-12-31.xsd#bus_child", text)
-        self.assertNotIn("\\", text)
-        higher_priority = MODULE.PresentationRelationship(
-            MODULE.PRESENTATION_ROLE, MODULE.PARENT_CHILD_ARCROLE,
-            "cor_parent", "bus_child", 10, priority=4,
-        )
-        overridden = MODULE.serialize_presentation_extension(
-            MODULE.PresentationDifference((higher_priority,), (), 0),
-            "2026-12-31",
-        ).decode("utf-8")
-        self.assertIn('use="prohibited" priority="5" order="10"', overridden)
+    def test_link_presentation_visited_keeps_distinct_incoming_arcs_and_one_subtree(self):
+        rows = [
+            row(sequence="1", module="cor", level="1", type="C", name="Parent A",
+                multiplicity="1", local_name="parentA", source_bsm_id="C1",
+                semantic_path="$.parentA", class_term="Parent A",
+                xpath="/xbrli:xbrl/gl-cor:parentA"),
+            row(sequence="2", module="cor", level="2", type="C", name="Parent B",
+                multiplicity="0..1", local_name="parentB", source_bsm_id="C2",
+                semantic_path="$.parentA.parentB", class_term="Parent B",
+                xpath="/xbrli:xbrl/gl-cor:parentA/gl-cor:parentB"),
+            row(sequence="3", module="cor", level="3", type="C", name="Shared Child",
+                multiplicity="0..1", local_name="sharedChild", source_bsm_id="C3",
+                semantic_path="$.parentA.parentB.sharedChild",
+                class_term="Shared Child",
+                xpath=("/xbrli:xbrl/gl-cor:parentA/gl-cor:parentB/"
+                       "gl-cor:sharedChild")),
+            row(sequence="4", module="cor", level="4", type="A", name="Leaf",
+                datatype="String", multiplicity="0..1", local_name="leaf",
+                source_bsm_id="A1",
+                semantic_path="$.parentA.parentB.sharedChild.leaf",
+                class_term="Shared Child",
+                xpath=("/xbrli:xbrl/gl-cor:parentA/gl-cor:parentB/"
+                       "gl-cor:sharedChild/gl-cor:leaf")),
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            generator = self.make_generator(Path(directory), rows)
 
-    def test_oim_presentation_reuses_domain_member_concept_resolution(self):
+            # Exercise linkPresentation directly with two different incoming
+            # arcs to the same structural child.  The child subtree is expanded
+            # once by visited, but both incoming arcs remain.
+            generator.presentation_dict = {
+                "cor_sharedChild": ["cor_leaf"],
+            }
+            generator.lines = []
+            generator.locs_defined = {}
+            generator.arcs_defined = {}
+            visited = set()
+
+            generator.linkPresentation(
+                "cor", "cor_parentA", ["cor_sharedChild"], 1, visited
+            )
+            generator.linkPresentation(
+                "cor", "cor_parentB", ["cor_sharedChild"], 1, visited
+            )
+            rendered = "".join(generator.lines)
+
+            self.assertEqual(
+                rendered.count('xlink:href="cor-2026-08-08.xsd#cor_sharedChild"'),
+                1,
+            )
+            self.assertEqual(
+                rendered.count('xlink:href="cor-2026-08-08.xsd#cor_leaf"'),
+                1,
+            )
+            self.assertEqual(
+                rendered.count(
+                    'xlink:from="cor_parentA" xlink:to="cor_sharedChild"'
+                ),
+                1,
+            )
+            self.assertEqual(
+                rendered.count(
+                    'xlink:from="cor_parentB" xlink:to="cor_sharedChild"'
+                ),
+                1,
+            )
+            self.assertEqual(
+                rendered.count(
+                    'xlink:from="cor_sharedChild" xlink:to="cor_leaf"'
+                ),
+                1,
+            )
+
+    def test_oim_module_presentation_uses_p_items_and_traverses_R_transparently(self):
+        rows = [
+            row(sequence="1", module="cor", level="1", type="C", name="Root",
+                multiplicity="1", local_name="root", source_bsm_id="C1",
+                semantic_path="$.root", class_term="Root",
+                xpath="/xbrli:xbrl/gl-cor:root"),
+            row(sequence="2", module="bus", level="2", type="R",
+                name="Party Reference", multiplicity="0..1",
+                local_name="partyReference", source_bsm_id="R1",
+                semantic_path="$.root.partyReference", class_term="Party",
+                xpath="/xbrli:xbrl/gl-cor:root/gl-bus:partyReference"),
+            row(sequence="3", module="bus", level="3", type="A",
+                name="Party Identifier", datatype="String", multiplicity="1",
+                local_name="partyIdentifier", source_bsm_id="A1",
+                semantic_path="$.root.partyReference.partyIdentifier",
+                class_term="Party",
+                xpath=("/xbrli:xbrl/gl-cor:root/gl-bus:partyReference/"
+                       "gl-bus:partyIdentifier")),
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            generator = self.make_generator(Path(directory), rows)
+            generator.taxonomy_type = "shared"
+            generator.process_records()
+            generator.generate_taxonomy_files(generator.xbrl_base)
+
+            cor_oim = (
+                Path(generator.xbrl_base) / "cor" /
+                "cor-oim-2026-08-08.xsd"
+            ).read_text(encoding="utf-8-sig")
+            self.assertIn('name="p_cor_root"', cor_oim)
+            self.assertNotIn('substitutionGroup="xbrli:tuple"', cor_oim)
+
+            cor_oim_pre = (
+                Path(generator.xbrl_base) / "cor" /
+                "cor-oim-2026-08-08-presentation.xml"
+            ).read_text(encoding="utf-8")
+            self.assertIn(
+                'cor-oim-2026-08-08.xsd#p_cor_root',
+                cor_oim_pre,
+            )
+            self.assertIn(
+                '../bus/bus-oim-2026-08-08.xsd#bus_partyIdentifier',
+                cor_oim_pre,
+            )
+            self.assertNotIn("bus_partyReference", cor_oim_pre)
+            self.assertIn(
+                'xlink:from="p_cor_root" xlink:to="bus_partyIdentifier"',
+                cor_oim_pre,
+            )
+
+            bus_oim = (
+                Path(generator.xbrl_base) / "bus" /
+                "bus-oim-2026-08-08.xsd"
+            ).read_text(encoding="utf-8-sig")
+            self.assertNotIn("p_bus_partyReference", bus_oim)
+            self.assertNotIn('substitutionGroup="xbrli:tuple"', bus_oim)
+
+    def test_module_schema_owns_structural_declaration_content_schema_owns_type(self):
         rows = [
             row(sequence="1", module="cor", level="1", type="C", name="Root",
                 multiplicity="1", local_name="root", source_bsm_id="C1",
@@ -350,61 +457,25 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             row(sequence="2", module="cor", level="2", type="A", name="Code",
                 datatype="String", multiplicity="0..1", local_name="code",
                 source_bsm_id="A1", semantic_path="$.root.code",
-                class_term="Root",
-                xpath="/xbrli:xbrl/gl-cor:root/gl-cor:code"),
-            row(sequence="3", module="bus", level="2", type="R", name="Party",
-                multiplicity="0..1", local_name="party", source_bsm_id="R1",
-                semantic_path="$.root.party", class_term="Party",
-                xpath="/xbrli:xbrl/gl-cor:root/gl-bus:party"),
-            row(sequence="4", module="bus", level="3", type="A", name="Name",
-                datatype="String", multiplicity="0..1", local_name="name",
-                source_bsm_id="A2", semantic_path="$.root.party.name",
-                class_term="Party",
-                xpath=("/xbrli:xbrl/gl-cor:root/gl-bus:party/"
-                       "gl-bus:name")),
-            row(sequence="5", module="bus", level="3", type="C", name="Address",
-                multiplicity="0..*", local_name="address", source_bsm_id="C2",
-                semantic_path="$.root.party.address", class_term="Address",
-                xpath=("/xbrli:xbrl/gl-cor:root/gl-bus:party/"
-                       "gl-bus:address")),
-            row(sequence="6", module="bus", level="4", type="A", name="City",
-                datatype="String", multiplicity="0..1", local_name="city",
-                source_bsm_id="A3", semantic_path="$.root.party.address.city",
-                class_term="Address",
-                xpath=("/xbrli:xbrl/gl-cor:root/gl-bus:party/"
-                       "gl-bus:address/gl-bus:city")),
+                class_term="Root", xpath="/xbrli:xbrl/gl-cor:root/gl-cor:code"),
         ]
         with tempfile.TemporaryDirectory() as directory:
             generator = self.make_generator(Path(directory), rows)
-            relationships = MODULE.oim_presentation_relationships(generator)
-            pairs = {
-                (item.parent_id, item.child_id, item.order)
-                for item in relationships
-            }
-            self.assertEqual(
-                pairs,
-                {
-                    ("p_cor_root", "cor_code", 10),
-                    ("p_cor_root", "bus_name", 20),
-                    ("p_cor_root", "p_bus_address", 30),
-                    ("p_bus_address", "bus_city", 10),
-                },
-            )
-            self.assertFalse(any("bus_party" in value for pair in pairs
-                                 for value in pair[:2]))
-            content = MODULE.serialize_presentation_extension(
-                MODULE.presentation_difference(frozenset(), relationships),
-                "2026-12-31",
-                binding="oim",
-            ).decode("utf-8")
+            generator.shared_structural_type_models = MODULE.collect_shared_structural_type_models(generator)
+            generator.process_records()
+            generator.generate_taxonomy_files(generator.xbrl_base)
+            module_schema = (Path(generator.xbrl_base) / "cor" /
+                             "cor-2026-08-08.xsd").read_text(encoding="utf-8-sig")
+            content_schema = (Path(generator.xbrl_base) / "plt" /
+                              "cor-content-2026-08-08.xsd").read_text(encoding="utf-8")
             self.assertIn(
-                "{HMD_PREFIX}-all-oim-2026-12-31.xsd#p_cor_root", content
+                'name="root" id="cor_root" type="cor:rootComplexType" '
+                'substitutionGroup="xbrli:tuple"', module_schema
             )
-            self.assertIn(
-                "../../bus/bus-2026-12-31.xsd#bus_name", content
-            )
-            self.assertNotIn("-content-", content)
-            self.assertNotIn("p_bus_party", content)
+            self.assertNotIn('<complexType name="rootComplexType">', module_schema)
+            self.assertIn('<include schemaLocation="../cor/cor-2026-08-08.xsd"/>', content_schema)
+            self.assertIn('<complexType name="rootComplexType">', content_schema)
+            self.assertNotIn('name="root" id="cor_root"', content_schema)
 
     def test_formal_package_uses_shared_modules_and_hmd_specific_roots(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -476,18 +547,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
                 (output / "oim" / "btx_businessTransactions" /
                  "btx-all-dim-2026-12-31.xml").is_file()
             )
-            self.assertTrue(
-                (output / "oim" / "btx_businessTransactions" /
-                 "btx-all-pre-2026-12-31.xml").is_file()
-            )
-            self.assertTrue(
-                (output / "tuple" / "cor_accountingEntries" /
-                 "cor-all-pre-2026-12-31.xml").is_file()
-            )
-            self.assertTrue(
-                (output / "tuple" / "btx_businessTransactions" /
-                 "btx-all-pre-2026-12-31.xml").is_file()
-            )
+            self.assertFalse(any(output.rglob("*-all-pre-2026-12-31.xml")))
             self.assertFalse((output / "all").exists())
             self.assertFalse((output / "presentation").exists())
             shared_cor_schema = (
@@ -496,8 +556,16 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             self.assertIn(
                 '<complexType name="identifierItemType">', shared_cor_schema
             )
-            self.assertNotIn("accountingEntriesComplexType", shared_cor_schema)
-            self.assertNotIn('name="accountingEntries"', shared_cor_schema)
+            self.assertIn(
+                'name="accountingEntries" id="cor_accountingEntries" '
+                'type="cor:accountingEntriesComplexType" '
+                'substitutionGroup="xbrli:tuple"',
+                shared_cor_schema,
+            )
+            self.assertNotIn(
+                '<complexType name="accountingEntriesComplexType">',
+                shared_cor_schema,
+            )
             self.assertIn('type="cor:identifierItemType"', shared_cor_schema)
 
             accounting_content = (
@@ -533,7 +601,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
                 '<complexType name="accountingEntriesComplexType">',
                 accounting_content,
             )
-            self.assertIn(
+            self.assertNotIn(
                 'name="accountingEntries" id="cor_accountingEntries"',
                 accounting_content,
             )
@@ -544,7 +612,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
                 "cor-content-2026-12-31.xsd"
             ).read_text(encoding="utf-8")
             self.assertNotIn('identifierItemType', transactions_cor_content)
-            self.assertNotIn(
+            self.assertIn(
                 '<complexType name="accountingEntriesComplexType">',
                 transactions_cor_content,
             )
@@ -552,7 +620,8 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
                          "cor-all-2026-12-31.xsd")
             entry_text = all_entry.read_text(encoding="utf-8")
             self.assertIn("../../cor/cor-pre-2026-12-31.xml", entry_text)
-            self.assertIn("cor-all-pre-2026-12-31.xml", entry_text)
+            self.assertNotIn("-all-pre-2026-12-31.xml", entry_text)
+            self.assertNotIn("../../bus/bus-pre-2026-12-31.xml", entry_text)
             self.assertNotIn("../../presentation/", entry_text)
             self.assertNotIn("../../all/", entry_text)
             self.assertIn("../../cor/label/cor-lab-en-2026-12-31.xml", entry_text)
@@ -565,24 +634,188 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             self.assertNotIn("ComplexType", oim_entry)
             self.assertIn('name="h_cor_accountingEntries"', oim_entry)
             self.assertIn('name="d_cor_accountingEntries"', oim_entry)
-            self.assertIn('name="p_cor_accountingEntries"', oim_entry)
-            self.assertIn("../../cor/cor-pre-2026-12-31.xml", oim_entry)
-            self.assertIn("cor-all-pre-2026-12-31.xml", oim_entry)
+            # HMD-specific OIM entry points retain h_/d_ declarations,
+            # while Class primary-item anchors move to module-level OIM schemas.
+            self.assertNotIn('name="p_cor_accountingEntries"', oim_entry)
+            self.assertIn(
+                'schemaLocation="../../cor/cor-oim-2026-12-31.xsd"',
+                oim_entry,
+            )
+            self.assertIn(
+                "../../cor/label/cor-oim-lab-en-2026-12-31.xml",
+                oim_entry,
+            )
+            self.assertIn(
+                "../../cor/label/cor-oim-lab-ja-2026-12-31.xml",
+                oim_entry,
+            )
+            self.assertIn(
+                "../../cor/cor-oim-pre-2026-12-31.xml",
+                oim_entry,
+            )
+            self.assertNotIn("../../cor/cor-pre-2026-12-31.xml", oim_entry)
+            self.assertNotIn("-all-pre-2026-12-31.xml", oim_entry)
             self.assertNotIn("../../presentation/", oim_entry)
             self.assertNotIn("-content-", oim_entry)
-            oim_presentation = (
-                output / "oim" / "cor_accountingEntries" /
-                "cor-all-pre-2026-12-31.xml"
+
+            self.assertTrue(
+                (output / "cor" / "cor-oim-2026-12-31.xsd").is_file()
+            )
+            self.assertTrue(
+                (output / "cor" / "cor-oim-pre-2026-12-31.xml").is_file()
+            )
+            self.assertTrue(
+                (output / "cor" / "label" /
+                 "cor-oim-lab-en-2026-12-31.xml").is_file()
+            )
+            self.assertTrue(
+                (output / "cor" / "label" /
+                 "cor-oim-lab-ja-2026-12-31.xml").is_file()
+            )
+
+            tuple_module_presentation = (
+                output / "cor" / "cor-pre-2026-12-31.xml"
             ).read_text(encoding="utf-8")
             self.assertIn(
-                "cor-all-oim-2026-12-31.xsd#p_cor_accountingEntries",
-                oim_presentation,
+                "cor-2026-12-31.xsd#cor_accountingEntries",
+                tuple_module_presentation,
             )
+            self.assertNotIn("-content-", tuple_module_presentation)
+
+            oim_module_schema_text = (
+                output / "cor" / "cor-oim-2026-12-31.xsd"
+            ).read_text(encoding="utf-8-sig")
             self.assertIn(
-                "../../cor/cor-2026-12-31.xsd#cor_identifier",
-                oim_presentation,
+                'name="p_cor_accountingEntries" id="p_cor_accountingEntries" '
+                'substitutionGroup="xbrli:item"',
+                oim_module_schema_text,
             )
-            self.assertNotIn("-content-", oim_presentation)
+            self.assertNotIn('substitutionGroup="xbrli:tuple"', oim_module_schema_text)
+            self.assertNotIn("accountingEntriesComplexType", oim_module_schema_text)
+
+            oim_module_presentation = (
+                output / "cor" / "cor-oim-pre-2026-12-31.xml"
+            ).read_text(encoding="utf-8")
+            self.assertIn(
+                "cor-oim-2026-12-31.xsd#p_cor_accountingEntries",
+                oim_module_presentation,
+            )
+            self.assertNotIn("cor-2026-12-31.xsd#cor_accountingEntries", oim_module_presentation)
+            self.assertNotIn("-content-", oim_module_presentation)
+
+            # Binding-specific Presentation Linkbase Set contract.
+            ns = {
+                "link": "http://www.xbrl.org/2003/linkbase",
+                "xlink": "http://www.w3.org/1999/xlink",
+                "xs": "http://www.w3.org/2001/XMLSchema",
+            }
+
+            def assert_no_duplicates(pre):
+                tree = ET.parse(pre)
+                for presentation_link in tree.findall(
+                    ".//link:presentationLink", ns
+                ):
+                    locator_keys = [
+                        (
+                            locator.attrib.get(
+                                "{http://www.w3.org/1999/xlink}label", ""
+                            ),
+                            locator.attrib.get(
+                                "{http://www.w3.org/1999/xlink}href", ""
+                            ),
+                        )
+                        for locator in presentation_link.findall("link:loc", ns)
+                    ]
+                    arc_keys = [
+                        (
+                            arc.attrib.get(
+                                "{http://www.w3.org/1999/xlink}arcrole", ""
+                            ),
+                            arc.attrib.get(
+                                "{http://www.w3.org/1999/xlink}from", ""
+                            ),
+                            arc.attrib.get(
+                                "{http://www.w3.org/1999/xlink}to", ""
+                            ),
+                            arc.attrib.get("order", ""),
+                            arc.attrib.get("use", ""),
+                        )
+                        for arc in presentation_link.findall(
+                            "link:presentationArc", ns
+                        )
+                    ]
+                    self.assertEqual(len(locator_keys), len(set(locator_keys)))
+                    self.assertEqual(len(arc_keys), len(set(arc_keys)))
+                return tree
+
+            # Tuple module presentation: C/R global tuple declarations are
+            # locatable in the owning Tuple module forest.
+            tuple_pres = sorted(
+                pre for pre in output.glob("*/*-pre-2026-12-31.xml")
+                if "-oim-pre-" not in pre.name
+            )
+            for pre in tuple_pres:
+                with self.subTest(tuple_presentation=pre.relative_to(output)):
+                    tree = assert_no_duplicates(pre)
+                    module = pre.parent.name
+                    schema = ET.parse(
+                        output / module / f"{module}-2026-12-31.xsd"
+                    )
+                    structural_ids = {
+                        element.attrib["id"]
+                        for element in schema.findall("./xs:element", ns)
+                        if element.attrib.get("substitutionGroup") == "xbrli:tuple"
+                        and element.attrib.get("id")
+                    }
+                    locator_labels = {
+                        locator.attrib.get(
+                            "{http://www.w3.org/1999/xlink}label", ""
+                        )
+                        for locator in tree.findall(".//link:loc", ns)
+                    }
+                    self.assertTrue(
+                        structural_ids.issubset(locator_labels),
+                        (module, sorted(structural_ids - locator_labels)),
+                    )
+
+            # OIM module presentation: module-owned Class p_* anchors are
+            # locatable and every locator targets an xbrli:item concept in an
+            # OIM module schema.  Tuple module schemas are not used.
+            oim_pres = sorted(
+                output.glob("*/*-oim-pre-2026-12-31.xml")
+            )
+            for pre in oim_pres:
+                with self.subTest(oim_presentation=pre.relative_to(output)):
+                    tree = assert_no_duplicates(pre)
+                    module = pre.parent.name
+                    oim_schema = ET.parse(
+                        output / module / f"{module}-oim-2026-12-31.xsd"
+                    )
+                    p_ids = {
+                        element.attrib["id"]
+                        for element in oim_schema.findall("./xs:element", ns)
+                        if element.attrib.get("id", "").startswith("p_")
+                    }
+                    locator_labels = {
+                        locator.attrib.get(
+                            "{http://www.w3.org/1999/xlink}label", ""
+                        )
+                        for locator in tree.findall(".//link:loc", ns)
+                    }
+                    self.assertTrue(
+                        p_ids.issubset(locator_labels),
+                        (module, sorted(p_ids - locator_labels)),
+                    )
+                    for locator in tree.findall(".//link:loc", ns):
+                        href = locator.attrib.get(
+                            "{http://www.w3.org/1999/xlink}href", ""
+                        )
+                        self.assertIn("-oim-2026-12-31.xsd#", href)
+                        self.assertNotIn("-content-", href)
+                        self.assertNotRegex(
+                            href,
+                            r"(?<!-oim)-2026-12-31\.xsd#",
+                        )
 
     def test_lhm_for_taxonomy_directory_is_the_only_formal_package_input(self):
         """The first edition accepts one directory and reads HMDs directly."""
