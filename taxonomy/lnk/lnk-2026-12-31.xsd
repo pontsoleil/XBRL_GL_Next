@@ -54,11 +54,13 @@
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <!-- reusable item element -->
+  <!-- reusable global element declaration -->
+  <element name="transactionSummaryReportingTaxonomies" id="lnk_transactionSummaryReportingTaxonomies" type="lnk:transactionSummaryReportingTaxonomiesComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="transactionSummaryReportingTaxonomyId" id="lnk_transactionSummaryReportingTaxonomyId" type="lnk:transactionSummaryReportingTaxonomyIdItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="transactionSummaryReportingTaxonomySchemaReferenceHrefAttribute" id="lnk_transactionSummaryReportingTaxonomySchemaReferenceHrefAttribute" type="lnk:transactionSummaryReportingTaxonomySchemaReferenceHrefAttributeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="transactionSummaryReportingTaxonomyHeader" id="lnk_transactionSummaryReportingTaxonomyHeader" type="lnk:transactionSummaryReportingTaxonomyHeaderItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="transactionSummaryReportingTaxonomyDescription" id="lnk_transactionSummaryReportingTaxonomyDescription" type="lnk:transactionSummaryReportingTaxonomyDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="documentSummaryReportingTaxonomies" id="lnk_documentSummaryReportingTaxonomies" type="lnk:documentSummaryReportingTaxonomiesComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="documentSummaryReportingTaxonomyId" id="lnk_documentSummaryReportingTaxonomyId" type="lnk:documentSummaryReportingTaxonomyIdItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="documentSummaryReportingTaxonomySchemaReferenceHrefAttribute" id="lnk_documentSummaryReportingTaxonomySchemaReferenceHrefAttribute" type="lnk:documentSummaryReportingTaxonomySchemaReferenceHrefAttributeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="documentSummaryReportingTaxonomyHeader" id="lnk_documentSummaryReportingTaxonomyHeader" type="lnk:documentSummaryReportingTaxonomyHeaderItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>

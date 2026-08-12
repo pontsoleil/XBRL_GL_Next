@@ -6,27 +6,7 @@
 >
   <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
   <include schemaLocation="../../bus/bus-2026-12-31.xsd"/>
-  <!-- HMD-specific Tuple element -->
-  <element name="entityPartyPhone" id="bus_entityPartyPhone" type="bus:entityPartyPhoneComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyFax" id="bus_entityPartyFax" type="bus:entityPartyFaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyEmail" id="bus_entityPartyEmail" type="bus:entityPartyEmailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyRegisteredOrganizationIdentifier" id="bus_entityPartyRegisteredOrganizationIdentifier" type="bus:entityPartyRegisteredOrganizationIdentifierComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyAddress" id="bus_entityPartyAddress" type="bus:entityPartyAddressComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyWebSite" id="bus_entityPartyWebSite" type="bus:entityPartyWebSiteComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyContact" id="bus_entityPartyContact" type="bus:entityPartyContactComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entitySpecifiedAccountingMethodStructure" id="bus_entitySpecifiedAccountingMethodStructure" type="bus:entitySpecifiedAccountingMethodStructureComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityAssignedAccountant" id="bus_entityAssignedAccountant" type="bus:entityAssignedAccountantComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entitySpecifiedReportingCalendar" id="bus_entitySpecifiedReportingCalendar" type="bus:entitySpecifiedReportingCalendarComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyContactPhone" id="bus_entityPartyContactPhone" type="bus:entityPartyContactPhoneComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyContactFax" id="bus_entityPartyContactFax" type="bus:entityPartyContactFaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyContactEmail" id="bus_entityPartyContactEmail" type="bus:entityPartyContactEmailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityAccountantAddress" id="bus_entityAccountantAddress" type="bus:entityAccountantAddressComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityAccountantContact" id="bus_entityAccountantContact" type="bus:entityAccountantContactComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityAccountantContactPhone" id="bus_entityAccountantContactPhone" type="bus:entityAccountantContactPhoneComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityAccountantContactFax" id="bus_entityAccountantContactFax" type="bus:entityAccountantContactFaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityAccountantContactEmail" id="bus_entityAccountantContactEmail" type="bus:entityAccountantContactEmailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entitySpecifiedReportingCalendarPeriod" id="bus_entitySpecifiedReportingCalendarPeriod" type="bus:entitySpecifiedReportingCalendarPeriodComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <!-- HMD-specific structural type -->
+  <!-- structural ComplexType supplied for the Palette module -->
   <complexType name="entityPartyPhoneComplexType">
     <sequence>
       <element ref="bus:entityPartyPhoneNumber" minOccurs="0"/>
@@ -214,6 +194,27 @@
       <element ref="bus:entitySpecifiedReportingPeriodStartDate" minOccurs="0"/>
       <element ref="bus:entitySpecifiedReportingPeriodEndDate" minOccurs="0"/>
       <element ref="bus:entitySpecifiedReportingPeportingCalendarPeriodClosedDate" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="contactPhoneComplexType">
+    <sequence>
+      <element ref="bus:phoneNumber" minOccurs="0"/>
+      <element ref="bus:phoneNumberDescription" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="contactFaxComplexType">
+    <sequence>
+      <element ref="bus:faxNumber" minOccurs="0"/>
+      <element ref="bus:faxNumberUsage" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="contactEmailComplexType">
+    <sequence>
+      <element ref="bus:emailAddress" minOccurs="0"/>
+      <element ref="bus:emailAddressUsage" minOccurs="0"/>
     </sequence>
     <attribute name="id" type="ID"/>
   </complexType>

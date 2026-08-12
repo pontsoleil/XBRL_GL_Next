@@ -10,17 +10,7 @@
   <include schemaLocation="../../btx/btx-2026-12-31.xsd"/>
   <import namespace="http://www.xbrl.org/int/gl/cor/2026-12-31" schemaLocation="cor-content-2026-12-31.xsd"/>
   <import namespace="http://www.xbrl.org/int/gl/taf/2026-12-31" schemaLocation="taf-content-2026-12-31.xsd"/>
-  <!-- HMD-specific Tuple element -->
-  <element name="businessTransactions" id="btx_businessTransactions" type="btx:businessTransactionsComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="transactionHeader" id="btx_transactionHeader" type="btx:transactionHeaderComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="headerAppliedInvoiceReferencedDocument" id="btx_headerAppliedInvoiceReferencedDocument" type="btx:headerAppliedInvoiceReferencedDocumentComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="headerReferencedDocument" id="btx_headerReferencedDocument" type="btx:headerReferencedDocumentComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="headerIdentifierReference" id="btx_headerIdentifierReference" type="btx:headerIdentifierReferenceComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="headerTax" id="btx_headerTax" type="btx:headerTaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="headerAmountStructure" id="btx_headerAmountStructure" type="btx:headerAmountStructureComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="transactionDetail" id="btx_transactionDetail" type="btx:transactionDetailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="detailAmountStructure" id="btx_detailAmountStructure" type="btx:detailAmountStructureComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <!-- HMD-specific structural type -->
+  <!-- structural ComplexType supplied for the Palette module -->
   <complexType name="businessTransactionsComplexType">
     <sequence>
       <element ref="cor:transactionDocumentInformation"/>

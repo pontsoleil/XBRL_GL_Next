@@ -7,17 +7,13 @@
   <annotation><appinfo>
     <link:linkbaseRef xlink:type="simple" xlink:href="../../bus/label/bus-lab-en-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
     <link:linkbaseRef xlink:type="simple" xlink:href="../../bus/label/bus-lab-ja-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
-    <link:linkbaseRef xlink:type="simple" xlink:href="../../bus/bus-pre-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
     <link:linkbaseRef xlink:type="simple" xlink:href="../../cor/label/cor-lab-en-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
     <link:linkbaseRef xlink:type="simple" xlink:href="../../cor/label/cor-lab-ja-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
-    <link:linkbaseRef xlink:type="simple" xlink:href="../../cor/cor-pre-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
     <link:linkbaseRef xlink:type="simple" xlink:href="../../lnk/label/lnk-lab-en-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
     <link:linkbaseRef xlink:type="simple" xlink:href="../../lnk/label/lnk-lab-ja-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
-    <link:linkbaseRef xlink:type="simple" xlink:href="../../lnk/lnk-pre-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
     <link:linkbaseRef xlink:type="simple" xlink:href="../../taf/label/taf-lab-en-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
     <link:linkbaseRef xlink:type="simple" xlink:href="../../taf/label/taf-lab-ja-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
-    <link:linkbaseRef xlink:type="simple" xlink:href="../../taf/taf-pre-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
-      <link:linkbaseRef xlink:type="simple" xlink:href="cor-all-pre-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="../../cor/cor-pre-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
 </appinfo></annotation>
   <import namespace="http://www.xbrl.org/int/gl/cor/2026-12-31" schemaLocation="cor-content-2026-12-31.xsd"/>
 </schema>

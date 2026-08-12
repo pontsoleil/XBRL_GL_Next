@@ -9,7 +9,7 @@ designed by SAMBUICHI, Nobuyuki (Sambuichi Professional Engineers Office)
 written by SAMBUICHI, Nobuyuki (Sambuichi Professional Engineers Office)
 
 Creation Date: 2025-04-03
-Last Modified: 2026-08-11
+Last Modified: 2026-08-12
 
 2026-08-08 revised-to-formal integration:
     The input contract is the formal 18-column HMD generated and validated by
@@ -34,33 +34,46 @@ Last Modified: 2026-08-11
     CSV input, standalone Tuple generation and standalone OIM generation are not
     part of this edition and are not accepted by the CLI.
 
+2026-08-12 module-distributed presentation and Palette assembly:
+    HMD-specific presentation linkbases such as ``cor-all-pre-<V>.xml`` and
+    ``btx-all-pre-<V>.xml`` are abolished.  Presentation relationships are
+    carried by the reusable module linkbases ``<module>/<module>-pre-<V>.xml``.
+    The implementation follows the original Palette linkbase design: for each
+    module, every Class or Reference structural concept (C or R) owned by that
+    module is a presentation-subtree anchor,
+    and its reachable HMD hierarchy is serialised recursively in that module
+    linkbase.  Thus the root-module presentation file (for example
+    ``cor/cor-pre-<V>.xml`` or ``btx/btx-pre-<V>.xml``) contains the complete
+    presentation hierarchy reachable from the HMD root and is the presentation
+    linkbase discovered by that HMD entry point.  Other module presentation
+    files carry reusable subtrees rooted in C or R structural concepts owned by
+    those modules.
+    Every presentation locator points to the global element
+    declaration in the owning ``<module>-<V>.xsd``; it never points to an
+    HMD-specific ``<module>-content-<V>.xsd``.
+
+2026-08-12 Palette declaration/type separation:
+    Reusable module schemas again own the global element declarations for A, C
+    and R rows.  Attribute item types remain reusable in the module schema.
+    C/R Tuple declarations reference named structural ComplexTypes that are
+    intentionally supplied only by the selected HMD-specific content schemas.
+    A QName reused across HMDs has one validated authoritative direct-child
+    signature; each selected content schema supplies the complete module type
+    set required to resolve the included module declaration schema.
+    A module schema can therefore be incomplete in isolation; the HMD Tuple
+    entry point is the XML Schema/DTS assembly boundary.  This separation is
+    the key Palette mechanism: concept identity and linkbase locators remain
+    module-owned, while structural content models remain HMD-specific.
+
 2026-08-11 HMD package layout:
-    Formal package output separates shared module declarations from HMD-bound
-    entry points.  Shared schemas, presentation linkbases and labels are
-    written once below the package root.  Tuple and OIM entry points are
-    written below ``tuple/<root-module>_<root-local-name>`` and
-    ``oim/<root-module>_<root-local-name>`` respectively.  HMD-level artefacts
-    use the root module prefix plus ``all``: for example ``btx-all-<V>.xsd``
-    and ``btx-all-pre-<V>.xml`` for Tuple, and ``btx-all-oim-<V>.xsd``,
-    ``btx-all-dim-<V>.xml`` and ``btx-all-pre-<V>.xml`` for OIM.  This layout
-    keeps the choice of Tuple versus OIM explicit without duplicating shared
-    concept declarations.
-
-2026-08-11 HMD presentation extensions:
-    The former top-level ``presentation/<HMD>`` directory is abolished.
-    Shared module presentation linkbases remain the base network.  Each
-    Tuple HMD writes its deterministic difference linkbase directly below
-    ``tuple/<HMD>`` as ``<prefix>-all-pre-<V>.xml``; each OIM HMD writes its
-    own binding-specific presentation linkbase below ``oim/<HMD>`` with the
-    same ``<prefix>-all-pre-<V>.xml`` naming convention.
-
-2026-08-09 Palette declaration/type separation:
-    Shared module schemas contain only reusable item declarations and their
-    QName-derived ItemTypes.  HMD-specific content schemas contain Tuple C/R
-    declarations and structural ComplexTypes.  OIM entry points use h_, d_
-    and p_ concepts plus the reusable item modules and never discover Tuple
-    content schemas.  A Tuple structural QName is therefore resolved only in
-    its selected HMD DTS, while every item QName is valid in both bindings.
+    Formal package output separates reusable module components from HMD-bound
+    content schemas and entry points.  Tuple and OIM entry points are written
+    below ``tuple/<root-module>_<root-local-name>`` and
+    ``oim/<root-module>_<root-local-name>`` respectively.  Tuple entry points
+    use ``<prefix>-all-<V>.xsd``; OIM entry points use
+    ``<prefix>-all-oim-<V>.xsd`` and ``<prefix>-all-dim-<V>.xml``.
+    Presentation is discovered only through module-level
+    ``<module>-pre-<V>.xml`` linkbases.
 
 2026-08-09 XMLSpy Tuple validation compatibility:
     Every HMD-specific content schema directly imports the XBRL 2.1 instance
@@ -68,13 +81,16 @@ Last Modified: 2026-08-11
     generator no longer relies on the same-namespace included module schema
     to make that external namespace visible to schema validators.
 
-2026-08-10 binding-specific HMD presentation:
-    Tuple and OIM entry points discover separate HMD presentation linkbases.
-    The OIM presentation reuses the dimensional domain-member concept
-    resolution: a Class is represented by its ``p_`` primary item, an
-    Attribute by the shared module element, and an Association is traversed
-    transparently.  OIM presentation locators never discover Tuple content
-    schemas.
+2026-08-12 module presentation C/R roots and visited traversal:
+    Module presentation generation follows the original recursive
+    ``linkPresentation()`` Palette processing.  Both C and R structural
+    concepts are presentation-tree starting candidates.  A ``visited`` set is
+    shared by all starting candidates in one module presentation linkbase so
+    a structural subtree is expanded only once, while ``locs_defined`` and
+    ``arcs_defined`` independently suppress duplicate locators and duplicate
+    arcs.  Distinct incoming arcs to an already visited child are preserved.
+    Traversal continues across module boundaries, and locators always target
+    the global declaration in the owning ``<module>-<V>.xsd``.
 
 MIT License
 
@@ -244,14 +260,6 @@ class PresentationRelationship:
         return self.link_role, self.arcrole, self.parent_id, self.child_id
 
 
-@dataclass(frozen=True)
-class PresentationDifference:
-    """Difference between a shared module network and one HMD network."""
-
-    prohibited: tuple
-    optional: tuple
-    override_count: int
-
 def file_path(pathname):
     _pathname = pathname.replace("/", os.sep)
     if os.sep == _pathname[0]:
@@ -300,6 +308,7 @@ class xBRLGL_TaxonomyGenerator:
         self.parent_dict = OrderedDict()
         self.element_dict = OrderedDict()
         self.role_map = OrderedDict()
+        self.shared_structural_type_models = OrderedDict()
 
         self.lines = None
         self.locs_defined = None
@@ -613,19 +622,36 @@ class xBRLGL_TaxonomyGenerator:
         href = f"{taxonomy_schema}/{link_id}"
         return taxonomy_schema, link_id, href
 
-    def linkPresentation(self, _module, element_id, children, n):
+    def linkPresentation(self, _module, element_id, children, n, visited):
+        """Write one reusable module presentation subtree.
+
+        ``visited`` is shared by every C/R starting candidate in one module
+        presentation linkbase.  It prevents the same structural subtree from
+        being expanded more than once and terminates recursive cycles.  It
+        does not suppress a parent-child arc: each caller emits its own arc
+        before deciding whether the child subtree still needs expansion.
+
+        ``locs_defined`` suppresses duplicate locators and ``arcs_defined``
+        suppresses duplicate presentationArc elements within the same
+        presentationLink.  Traversal continues across module boundaries;
+        ``_module`` identifies only the module whose presentation linkbase is
+        currently being written and therefore determines locator relative
+        paths.
+        """
         if not element_id:
             return
-        order = 0
-        record = next((x for x in self.records if element_id == x["element_id"]), None)
+        record = next(
+            (x for x in self.records if element_id == x["element_id"]), None
+        )
         if not record:
             return
+
         module = element_id[: element_id.index("_")]
         name = record["name"]
-        if not element_id in self.locs_defined:
+        if element_id not in self.locs_defined:
             self.locs_defined[element_id] = name
             self.lines.append(f"    <!-- {name} -->\n")
-            if _module==module:
+            if _module == module:
                 self.lines.append(
                     f'    <loc xlink:type="locator" xlink:href="{module}-{self.version}.xsd#{element_id}" xlink:label="{element_id}" xlink:title="loc: {element_id}"/>\n'
                 )
@@ -633,34 +659,66 @@ class xBRLGL_TaxonomyGenerator:
                 self.lines.append(
                     f'    <loc xlink:type="locator" xlink:href="../{module}/{module}-{self.version}.xsd#{element_id}" xlink:label="{element_id}" xlink:title="loc: {element_id}"/>\n'
                 )
+
+        # A structural concept may be reached from more than one parent or
+        # selected again as another C/R starting candidate.  Its incoming arc
+        # is emitted by the caller, but its descendants need to be expanded
+        # only once in this module presentation linkbase.
+        if element_id in visited:
+            return
+        visited.add(element_id)
+
+        order = 0
         for child_element_id in children:
             if not child_element_id:
                 continue
-            child = next((x for x in self.records if child_element_id == x["element_id"]), None)
+            child = next(
+                (x for x in self.records if child_element_id == x["element_id"]),
+                None,
+            )
             if not child:
                 continue
-            child_module = child_element_id[:child_element_id.index("_")]
+
+            child_module = child_element_id[: child_element_id.index("_")]
             child_name = child["name"]
             order += 10
+
+            # A child locator may later become the parent locator of a
+            # recursive call.  Register it immediately so the same locator is
+            # never serialized twice within this presentationLink.
+            if child_element_id not in self.locs_defined:
+                self.locs_defined[child_element_id] = child_name
+                if _module == child_module:
+                    self.lines.append(
+                        f'    <loc xlink:type="locator" xlink:href="{child_module}-{self.version}.xsd#{child_element_id}" xlink:label="{child_element_id}" xlink:title="presentation: {element_id} to {child_element_id} {child_name}"/>\n'
+                    )
+                else:
+                    self.lines.append(
+                        f'    <loc xlink:type="locator" xlink:href="../{child_module}/{child_module}-{self.version}.xsd#{child_element_id}" xlink:label="{child_element_id}" xlink:title="presentation: {element_id} to {child_element_id} {child_name}"/>\n'
+                    )
+
+            # Arc identity is parent + child.  Keep all distinct incoming
+            # arcs even when the child subtree has already been visited.
             arc_id = f"{element_id} to {child_element_id}"
             if arc_id not in self.arcs_defined:
-                self.arcs_defined[arc_id] = f"presentation: {element_id} to {child_element_id}"
-                if _module==child_module:
-                    self.lines += [
-                        f'    <loc xlink:type="locator" xlink:href="{child_module}-{self.version}.xsd#{child_element_id}" xlink:label="{child_element_id}" xlink:title="presentation: {element_id} to {child_element_id} {child_name}"/>\n',
-                        f'    <presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="{element_id}" xlink:to="{child_element_id}" xlink:title="presentation: {element_id} to {child_element_id}" use="optional" order="{order}"/>\n',
-                    ]
-                else:
-                    self.lines += [
-                        f'    <loc xlink:type="locator" xlink:href="../{child_module}/{child_module}-{self.version}.xsd#{child_element_id}" xlink:label="{child_element_id}" xlink:title="presentation: {element_id} to {child_element_id} {child_name}"/>\n',
-                        f'    <presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="{element_id}" xlink:to="{child_element_id}" xlink:title="presentation: {element_id} to {child_element_id}" use="optional" order="{order}"/>\n',
-                    ]
+                self.arcs_defined[arc_id] = (
+                    f"presentation: {element_id} to {child_element_id}"
+                )
+                self.lines.append(
+                    f'    <presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="{element_id}" xlink:to="{child_element_id}" xlink:title="presentation: {element_id} to {child_element_id}" use="optional" order="{order}"/>\n'
+                )
+
             if child_element_id in self.presentation_dict:
                 grand_children = self.presentation_dict[child_element_id]
                 if n > 10:
                     self.error_print(f"linkPresentation exceeds depth {n}")
-                self.linkPresentation(_module, child_element_id, grand_children, n + 1)
-        children = None
+                self.linkPresentation(
+                    _module,
+                    child_element_id,
+                    grand_children,
+                    n + 1,
+                    visited,
+                )
 
     @staticmethod
     def escape_text(text):
@@ -1095,11 +1153,15 @@ class xBRLGL_TaxonomyGenerator:
         return (" " + " ".join(attributes)) if attributes else ""
 
     def write_tuple_linkbases(self, element_dict, xbrl_base):
-        """Write reusable item labels and the shared item presentation base.
+        """Write module labels and module-owned Palette presentation networks.
 
-        Structural C/R concepts live in HMD content schemas and cannot have a
-        reusable locator in a module-level linkbase.  Their HMD presentation
-        locators are written by ``write_presentation_extension``.
+        Presentation locators always resolve to the global element declaration
+        in ``<module>-<V>.xsd``.  They never point at an HMD content schema.
+        For each module, every C or R structural concept owned by that module is used as a subtree
+        anchor and ``linkPresentation`` recursively serialises its reachable
+        presentation hierarchy.  This is the original Palette decomposition:
+        root-module linkbases contain the complete root hierarchy, while other
+        module linkbases provide reusable module subtrees.
         """
         for module, data in element_dict.items():
             for language, suffix, label_field, definition_field in (
@@ -1157,6 +1219,7 @@ class xBRLGL_TaxonomyGenerator:
         for module, data in element_dict.items():
             self.locs_defined = {}
             self.arcs_defined = {}
+            visited = set()
             self.lines = [
                 '<?xml version="1.0" encoding="UTF-8"?>\n',
                 '<linkbase xmlns="http://www.xbrl.org/2003/linkbase"\n',
@@ -1164,9 +1227,14 @@ class xBRLGL_TaxonomyGenerator:
                 '  <presentationLink xlink:type="extended" '
                 'xlink:role="http://www.xbrl.org/2003/role/link">\n',
             ]
-            # A rows do not encode structural parent-child relationships.
-            # Keep a deterministic, empty shared base; each Tuple HMD writes
-            # its complete structural presentation as an extension.
+            class_records = [record for record in data if record["type"] in {"C", "R"}]  # presentation roots: Class or Reference
+            for record in class_records:
+                element_id = record["element"].replace(":", "_")
+                self.count = 0
+                # Always emit the Class locator, including a root with no child.
+                self.linkPresentation(
+                    module, element_id, record.get("children", []), 1, visited
+                )
             self.lines += ["  </presentationLink>\n", "</linkbase>\n"]
             target = file_path(
                 f"{xbrl_base}/{module}/{module}-{self.version}-presentation.xml"
@@ -1356,7 +1424,7 @@ class xBRLGL_TaxonomyGenerator:
                     "  </complexType>\n",
                 ]
 
-            html.append("  <!-- reusable item element -->\n")
+            html.append("  <!-- reusable global element declaration -->\n")
             for line in data:
                 element = line["element"]
                 line_type = line['type']
@@ -1370,6 +1438,10 @@ class xBRLGL_TaxonomyGenerator:
                 if 'A' == line_type:
                     html.append(
                         f'  <element name="{name}" id="{element_id}" type="{element_type}" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>\n'
+                    )
+                elif line_type in {"C", "R"}:
+                    html.append(
+                        f'  <element name="{name}" id="{element_id}" type="{element_type}" substitutionGroup="xbrli:tuple" nillable="false"/>\n'
                     )
             html.append("</schema>")
 
@@ -1388,25 +1460,61 @@ class xBRLGL_TaxonomyGenerator:
             self.trace_print(f"-- {xsd_file}")
 
         if self.taxonomy_type == "shared":
-            # Shared output owns reusable item declarations, ItemTypes and
-            # item-only linkbases. Tuple declarations remain HMD-specific.
+            # Shared output owns module-level global declarations, Attribute
+            # ItemTypes, labels and Palette presentation linkbases. Structural
+            # ComplexTypes remain HMD-specific.
             self.write_tuple_linkbases(element_dict, xbrl_base)
             return
 
         if self.taxonomy_type == "tuple":
             """
-            Module content-model schemas.  C and R rows are structural Tuple
-            elements; their immediate LHM children are assembled in LHM order.
+            HMD content-model schemas.  Global A/C/R element declarations are
+            included from the module schema; only structural ComplexTypes are
+            HMD-specific and assembled in LHM order.
             """
             content_directory = file_path(f"{xbrl_base}/plt")
             os.makedirs(content_directory, exist_ok=True)
             for module, data in element_dict.items():
-                dependencies = set()
+                current_models = OrderedDict()
                 for record in data:
+                    if record["type"] not in {"C", "R"}:
+                        continue
+                    local_name = record["element"].split(":", 1)[1]
+                    children = []
                     for child_id in record.get("children", []):
                         child = self.getRecord(child_id)
-                        if child:
-                            dependencies.add(child["element"].split(":", 1)[0])
+                        if not child:
+                            self.error_print(
+                                f"Unresolved LHM child {child_id!r} of "
+                                f"{record['element']!r}."
+                            )
+                        children.append((child["element"], child["multiplicity"]))
+                    current_models[local_name] = (
+                        record["type"], tuple(children)
+                    )
+
+                # The reusable module schema contains the union of module-owned
+                # C/R declarations across the formal LHM-for-taxonomy set.  The
+                # HMD content schema must therefore provide every named type
+                # referenced by that included module schema.  Types used by
+                # this HMD retain their exact HMD model; additional module types
+                # use the validated canonical shared model.
+                structural_models = OrderedDict(current_models)
+                for local_name, signature in self.shared_structural_type_models.get(
+                    module, OrderedDict()
+                ).items():
+                    previous = structural_models.get(local_name)
+                    if previous is not None and previous != signature:
+                        self.error_print(
+                            f"HMD structural type conflicts with shared Palette "
+                            f"model for {module}:{local_name}."
+                        )
+                    structural_models.setdefault(local_name, signature)
+
+                dependencies = set()
+                for _local_name, (_row_type, children) in structural_models.items():
+                    for child_element, _multiplicity in children:
+                        dependencies.add(child_element.split(":", 1)[0])
 
                 html = [
                     '<?xml version="1.0" encoding="UTF-8"?>\n',
@@ -1438,61 +1546,17 @@ class xBRLGL_TaxonomyGenerator:
                             f'schemaLocation="{dependency}-content-{self.version}.xsd"/>\n'
                         )
 
-                html.append("  <!-- HMD-specific Tuple element -->\n")
-                for record in data:
-                    if record["type"] not in {"C", "R"}:
-                        continue
-                    element = record["element"]
-                    local_name = element.split(":", 1)[1]
-                    element_id = element.replace(":", "_")
-                    html.append(
-                        f'  <element name="{local_name}" id="{element_id}" '
-                        f'type="{module}:{local_name}ComplexType" '
-                        'substitutionGroup="xbrli:tuple" nillable="false"/>\n'
-                    )
-
-                html.append("  <!-- HMD-specific structural type -->\n")
-                defined_types = {}
-                for record in data:
-                    element = record["element"]
-                    local_name = element.split(":", 1)[1]
-                    if record["type"] == "A":
-                        continue
-                    if record["type"] not in {"C", "R"}:
-                        continue
+                html.append("  <!-- structural ComplexType supplied for the Palette module -->\n")
+                for local_name, (_row_type, children) in structural_models.items():
                     type_name = local_name + "ComplexType"
-                    content_signature = tuple(
-                        (
-                            self.getRecord(child_id)["element"],
-                            self.getRecord(child_id)["multiplicity"],
-                        )
-                        for child_id in record.get("children", [])
-                        if self.getRecord(child_id)
-                    )
-                    type_signature = (record["type"], content_signature)
-                    if (
-                        type_name in defined_types
-                        and defined_types[type_name] != type_signature
-                    ):
-                        self.error_print(
-                            f"Conflicting Tuple content models for {element!r}."
-                        )
-                    if type_name in defined_types:
-                        continue
-                    defined_types[type_name] = type_signature
                     html += [
                         f'  <complexType name="{type_name}">\n',
                         "    <sequence>\n",
                     ]
-                    for child_id in record.get("children", []):
-                        child = self.getRecord(child_id)
-                        if not child:
-                            self.error_print(
-                                f"Unresolved LHM child {child_id!r} of {element!r}."
-                            )
-                        occurs = self.occurrence_attributes(child["multiplicity"])
+                    for child_element, multiplicity in children:
+                        occurs = self.occurrence_attributes(multiplicity)
                         html.append(
-                            f'      <element ref="{child["element"]}"{occurs}/>\n'
+                            f'      <element ref="{child_element}"{occurs}/>\n'
                         )
                     html += [
                         "    </sequence>\n",
@@ -1771,6 +1835,7 @@ class xBRLGL_TaxonomyGenerator:
         for module, data in presentation_items:
             self.locs_defined = {}
             self.arcs_defined = {}
+            visited = set()
             self.lines = [
                 '<?xml version="1.0" encoding="UTF-8"?>\n',
                 "<!-- (c) XBRL International.  See http://www.xbrl.org/legal -->\n",
@@ -1779,14 +1844,14 @@ class xBRLGL_TaxonomyGenerator:
                 '  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">\n',
                 '  <presentationLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">\n',
             ]
-            class_records = [x for x in data if 'C'==x["type"]]
+            class_records = [x for x in data if x["type"] in {"C", "R"}]
             for record in class_records:
                 element = record["element"]
                 element_id = element.replace(":", "_")
                 self.count = 0
                 if "children" in record:
                     children = record["children"]
-                    self.linkPresentation(module, element_id, children, 1)
+                    self.linkPresentation(module, element_id, children, 1, visited)
 
             self.lines.append("  </presentationLink>\n")
             self.lines.append("</linkbase>\n")
@@ -1992,172 +2057,17 @@ def presentation_relationships(presentation_dict):
     return frozenset(relationships)
 
 
-def oim_presentation_relationships(generator):
-    """Return the HMD presentation expressed with OIM concepts.
-
-    C rows are replaced by their ``p_`` primary items. A rows continue to
-    reference the shared module elements. R rows are not OIM facts and are
-    traversed transparently, matching ``domainMember``.
-    """
-    relationships = set()
-
-    def visible_children(parent_id, active=()):
-        if parent_id in active:
-            raise ValueError(
-                f"Cyclic HMD presentation traversal at {parent_id!r}."
-            )
-        result = []
-        for child_id in generator.presentation_dict.get(parent_id, []):
-            child = generator.getRecord(child_id)
-            if not child:
-                raise ValueError(
-                    f"Unresolved HMD presentation child: {child_id!r}."
-                )
-            concept_id = generator.oim_presentation_concept_id(child)
-            if concept_id is None:
-                result.extend(
-                    visible_children(child["element_id"], (*active, parent_id))
-                )
-            else:
-                result.append(concept_id)
-        return result
-
-    for record in generator.records:
-        if record["type"] != "C":
-            continue
-        parent_id = generator.oim_presentation_concept_id(record)
-        for index, child_id in enumerate(
-            visible_children(record["element_id"]), 1
-        ):
-            relationships.add(
-                PresentationRelationship(
-                    PRESENTATION_ROLE,
-                    PARENT_CHILD_ARCROLE,
-                    parent_id,
-                    child_id,
-                    index * 10,
-                )
-            )
-    return frozenset(relationships)
-
-
-def module_presentation_relationships(generator, modules):
-    """Return the reusable module presentation base.
-
-    Module schemas now contain A concepts only.  Structural relationships are
-    HMD-specific, so the reusable base is intentionally empty.
-    """
-    return frozenset()
-
-
-def presentation_difference(base, expected):
-    """Return deterministic prohibited and optional extension relationships."""
-    base = frozenset(base)
-    expected = frozenset(expected)
-    prohibited = tuple(sorted(base - expected))
-    optional = tuple(sorted(expected - base))
-    base_by_child = {relationship.child_id for relationship in base}
-    base_pairs = {relationship.pair_key for relationship in base}
-    override_count = sum(
-        relationship.child_id in base_by_child
-        or relationship.pair_key in base_pairs
-        for relationship in optional
-    )
-    return PresentationDifference(prohibited, optional, override_count)
-
-
-def next_presentation_priority(existing_priorities):
-    """Choose a deterministic priority above every equivalent base arc."""
-    priorities = tuple(existing_priorities)
-    return max(priorities, default=0) + 1
-
-
-def _xml_attribute(value):
-    return str(value).replace("&", "&amp;").replace('"', "&quot;")
-
-
-def serialize_presentation_extension(
-    difference, version, structural_ids=(), binding="tuple"
-):
-    """Serialize one HMD presentation difference as an XBRL linkbase."""
-    if binding not in {"tuple", "oim"}:
-        raise ValueError(f"Unsupported presentation binding: {binding!r}")
-    relationships = (*difference.prohibited, *difference.optional)
-    concept_ids = sorted(
-        {item.parent_id for item in relationships}
-        | {item.child_id for item in relationships}
-    )
-    lines = [
-        '<?xml version="1.0" encoding="UTF-8"?>\n',
-        '<linkbase xmlns="http://www.xbrl.org/2003/linkbase"\n',
-        '  xmlns:xlink="http://www.w3.org/1999/xlink">\n',
-        f'  <presentationLink xlink:type="extended" '
-        f'xlink:role="{PRESENTATION_ROLE}">\n',
-    ]
-    structural_ids = frozenset(structural_ids)
-    for element_id in concept_ids:
-        if binding == "oim" and element_id.startswith("p_"):
-            href = f"{{HMD_PREFIX}}-all-oim-{version}.xsd#{element_id}"
-        else:
-            module = element_id.split("_", 1)[0]
-        if binding == "tuple" and element_id in structural_ids:
-            # The HMD presentation linkbase now lives beside the HMD content
-            # schemas below tuple/<HMD>, so structural locators are local.
-            href = f"{module}-content-{version}.xsd#{element_id}"
-        elif binding == "tuple" or not element_id.startswith("p_"):
-            href = f"../../{module}/{module}-{version}.xsd#{element_id}"
-        lines.append(
-            f'    <loc xlink:type="locator" xlink:href="{href}" '
-            f'xlink:label="loc_{element_id}" '
-            f'xlink:title="loc: {element_id}"/>\n'
-        )
-    priority = next_presentation_priority(
-        item.priority for item in difference.prohibited
-    )
-    for use, items in (
-        ("prohibited", difference.prohibited),
-        ("optional", difference.optional),
-    ):
-        for item in items:
-            preferred = (
-                f' preferredLabel="{_xml_attribute(item.preferred_label)}"'
-                if item.preferred_label else ""
-            )
-            lines.append(
-                f'    <presentationArc xlink:type="arc" '
-                f'xlink:arcrole="{item.arcrole}" '
-                f'xlink:from="loc_{item.parent_id}" '
-                f'xlink:to="loc_{item.child_id}" '
-                f'xlink:title="presentation: {item.parent_id} to '
-                f'{item.child_id}" use="{use}" priority="{priority}" '
-                f'order="{item.order}"{preferred}/>\n'
-            )
-    lines += ["  </presentationLink>\n", "</linkbase>\n"]
-    return "".join(lines).encode("utf-8")
-
-
-def write_presentation_extension(
-    target, difference, version, structural_ids=(), binding="tuple"
-):
-    target = Path(target)
-    target.parent.mkdir(parents=True, exist_ok=True)
-    package_id = target.parent.name
-    hmd_prefix = package_id.split("_", 1)[0]
-    content = serialize_presentation_extension(
-        difference, version, structural_ids, binding
-    ).replace(b"{HMD_PREFIX}", hmd_prefix.encode("utf-8"))
-    target.write_bytes(content)
-
-
-def add_schema_linkbase_refs(schema_file, hrefs):
-    """Add sorted presentation linkbaseRefs to one generated entry point."""
+def set_schema_presentation_linkbase_refs(schema_file, hrefs):
+    """Replace presentation linkbaseRefs with the exact supplied set."""
     schema_file = Path(schema_file)
     text = schema_file.read_text(encoding="utf-8-sig")
-    unique_hrefs = sorted(set(hrefs))
+    lines = [
+        line for line in text.splitlines(keepends=True)
+        if "presentationLinkbaseRef" not in line
+    ]
+    text = "".join(lines)
     additions = []
-    for href in unique_hrefs:
-        if f'xlink:href="{href}"' in text:
-            continue
+    for href in sorted(set(hrefs)):
         additions.append(
             '    <link:linkbaseRef xlink:type="simple" '
             f'xlink:href="{href}" '
@@ -2166,22 +2076,39 @@ def add_schema_linkbase_refs(schema_file, hrefs):
             'xlink:arcrole="http://www.w3.org/1999/xlink/properties/'
             'linkbase"/>\n'
         )
-    if additions:
-        marker = "</appinfo>"
-        if marker not in text:
+    marker = "</appinfo>"
+    if marker not in text:
+        raise ValueError(
+            f"Generated entry point has no appinfo marker: {schema_file}"
+        )
+    text = text.replace(marker, "".join(additions) + marker, 1)
+    schema_file.write_text(text, encoding="utf-8", newline="")
+
+
+def _record_direct_child_signature(generator, record):
+    """Return ordered direct-child QName/multiplicity signature for C/R."""
+    if record["type"] not in {"C", "R"}:
+        return tuple()
+    signature = []
+    for child_id in generator.presentation_dict.get(record["element_id"], []):
+        child = generator.getRecord(child_id)
+        if not child:
             raise ValueError(
-                f"Generated entry point has no appinfo marker: {schema_file}"
+                f"Unresolved presentation child {child_id!r} of "
+                f"{record['element']!r}."
             )
-        text = text.replace(marker, "".join(additions) + marker, 1)
-        schema_file.write_text(text, encoding="utf-8", newline="")
+        signature.append((child["expanded_name"], child["multiplicity"]))
+    return tuple(signature)
 
 
 def validate_shared_qnames(generators):
-    """Validate explicit shared declarations by QName, never by provenance ID.
+    """Validate module-owned shared declarations across formal HMDs.
 
-    Returns the number of QNames present in more than one supplied HMD.
-    Ordered direct-child QNames and multiplicities are intentionally excluded:
-    they belong to the effective ComplexType in each independent HMD DTS.
+    A shared A QName must have identical declaration properties.  A shared
+    C/R QName must additionally have one identical ordered direct-child
+    content model.  This is required because the global C/R declaration lives
+    in one reusable module schema and every HMD content schema supplies the
+    same named ComplexType QName for that declaration.
     """
     declarations = {}
     shared = set()
@@ -2192,17 +2119,51 @@ def validate_shared_qnames(generators):
                 record["type"], record["datatype"], record["element_type"],
                 record["definition"], record["name"], record["label_local"],
                 record["definition_local"], record["element_id"],
+                _record_direct_child_signature(generator, record),
             )
             if qname in declarations:
                 shared.add(qname)
                 if declarations[qname] != signature:
                     raise ValueError(
-                        f"Shared QName declaration conflict for {qname!r}: "
+                        f"Shared QName declaration/content conflict for {qname!r}: "
                         f"{declarations[qname]!r} != {signature!r}"
                     )
             else:
                 declarations[qname] = signature
     return len(shared)
+
+
+def collect_shared_structural_type_models(generator):
+    """Collect canonical C/R ComplexType models from the merged HMD set.
+
+    The result is keyed by module and local name.  Every selected HMD content
+    schema for that module uses this model set so that the included reusable
+    module schema can resolve all of its C/R type references.
+    """
+    models = OrderedDict()
+    for record in generator.records:
+        if record["type"] not in {"C", "R"}:
+            continue
+        module, local_name = record["element"].split(":", 1)
+        children = []
+        for child_id in generator.presentation_dict.get(record["element_id"], []):
+            child = generator.getRecord(child_id)
+            if not child:
+                raise ValueError(
+                    f"Unresolved presentation child {child_id!r} of "
+                    f"{record['element']!r}."
+                )
+            children.append((child["element"], child["multiplicity"]))
+        module_models = models.setdefault(module, OrderedDict())
+        signature = (record["type"], tuple(children))
+        previous = module_models.get(local_name)
+        if previous is not None and previous != signature:
+            raise ValueError(
+                f"Conflicting shared structural type model for "
+                f"{module}:{local_name}."
+            )
+        module_models[local_name] = signature
+    return models
 
 
 def merge_hmd_generators(primary, additional):
@@ -2274,7 +2235,7 @@ def _write_transformed(source, target, replacements):
 
 
 def _copy_shared_module_files(generated_root, package_root, modules, version):
-    """Copy stable shared declarations once; never move HMD types into them."""
+    """Copy module declarations/linkbases once; HMD structural types stay local."""
     generated_root = Path(generated_root)
     package_root = Path(package_root)
     gen_source = generated_root / "gen"
@@ -2359,6 +2320,7 @@ def generate_formal_hmd_package(args):
         merged.taxonomy_type = "shared"
         merged.process_records()
         merged.generate_taxonomy_files(merged.xbrl_base)
+        shared_structural_models = collect_shared_structural_type_models(merged)
         version = merged.namespace[-10:]
         modules = {
             record["element"].split(":", 1)[0]
@@ -2380,22 +2342,19 @@ def generate_formal_hmd_package(args):
             if package_id in package_ids:
                 raise ValueError(f"Duplicate HMD package identifier: {package_id}")
             package_ids.add(package_id)
+            tuple_generator.shared_structural_type_models = shared_structural_models
             tuple_generator.process_records()
             tuple_generator.generate_taxonomy_files(tuple_generator.xbrl_base)
             hmd_modules = {
                 record["element"].split(":", 1)[0]
                 for record in tuple_generator.records
             }
-            expected_network = presentation_relationships(
-                tuple_generator.presentation_dict
-            )
-            base_network = module_presentation_relationships(
-                merged, hmd_modules
-            )
-            presentation_diff = presentation_difference(
-                base_network, expected_network
-            )
             hmd_prefix = package_id.split("_", 1)[0]
+
+            # Module presentation linkbases were generated once from the complete
+            # validated LHM-for-taxonomy input set.  Keep those reusable forests
+            # unchanged; the root module forest contains the complete tree rooted
+            # at this HMD root, while it may also contain other C/R-rooted trees.
             tuple_plt = Path(tuple_generator.xbrl_base) / "plt"
             tuple_target = package_root / "tuple" / package_id
             tuple_target.mkdir(parents=True, exist_ok=True)
@@ -2428,22 +2387,10 @@ def generate_formal_hmd_package(args):
                     for module in sorted(hmd_modules)
                 ],
             )
-            tuple_presentation_name = f"{hmd_prefix}-all-pre-{version}.xml"
-            write_presentation_extension(
-                tuple_target / tuple_presentation_name,
-                presentation_diff,
-                version,
-                {
-                    record["element_id"]
-                    for record in tuple_generator.records
-                    if record["type"] in {"C", "R"}
-                },
+            set_schema_presentation_linkbase_refs(
+                tuple_entry,
+                [f"../../{hmd_prefix}/{hmd_prefix}-pre-{version}.xml"],
             )
-            tuple_presentation_refs = [
-                f"../../{module}/{module}-pre-{version}.xml"
-                for module in sorted(hmd_modules)
-            ] + [tuple_presentation_name]
-            add_schema_linkbase_refs(tuple_entry, tuple_presentation_refs)
 
             oim_generator = _generator_for_file(
                 in_file,
@@ -2492,23 +2439,9 @@ def generate_formal_hmd_package(args):
                     ('xlink:href="../', 'xlink:href="../../'),
                 ],
             )
-            oim_presentation_name = f"{hmd_prefix}-all-pre-{version}.xml"
-            oim_presentation_diff = presentation_difference(
-                frozenset(),
-                oim_presentation_relationships(oim_generator),
-            )
-            write_presentation_extension(
-                oim_target / oim_presentation_name,
-                oim_presentation_diff,
-                version,
-                binding="oim",
-            )
-            add_schema_linkbase_refs(
+            set_schema_presentation_linkbase_refs(
                 oim_target / oim_entry_name,
-                [
-                    f"../../{module}/{module}-pre-{version}.xml"
-                    for module in sorted(hmd_modules)
-                ] + [oim_presentation_name],
+                [f"../../{hmd_prefix}/{hmd_prefix}-pre-{version}.xml"],
             )
 
         # Publish only after every HMD and both bindings have been generated.
