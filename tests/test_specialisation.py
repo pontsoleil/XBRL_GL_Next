@@ -11,9 +11,9 @@ from pathlib import Path
 
 
 HERE = Path(__file__).resolve().parent
-SCRIPT = HERE / "specialization.py"
+SCRIPT = HERE / "specialisation.py"
 if not SCRIPT.is_file():
-    SCRIPT = HERE.parent / "tools" / "semantic" / "specialization.py"
+    SCRIPT = HERE.parent / "tools" / "semantic" / "specialisation.py"
 SPEC = importlib.util.spec_from_file_location("specialization_revised", SCRIPT)
 assert SPEC and SPEC.loader
 MODULE = importlib.util.module_from_spec(SPEC)

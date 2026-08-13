@@ -53,6 +53,7 @@ HMD_OIM_MODULE_COUNTS = {
 }
 EXPECTED_FILE_COUNT = 56
 RESERVED_TOP_LEVEL = {"gen", "tuple", "oim"}
+REPOSITORY_DOCUMENTATION = {"README.md", "README_ja.md"}
 
 
 def lname(tag: str) -> str:
@@ -180,7 +181,11 @@ def main() -> int:
         print(f"ERROR: package root not found: {root}")
         return 1
 
-    all_files = sorted(p for p in root.rglob("*") if p.is_file())
+    all_files = sorted(
+        p for p in root.rglob("*")
+        if p.is_file()
+        and p.relative_to(root).as_posix() not in REPOSITORY_DOCUMENTATION
+    )
     if len(all_files) != EXPECTED_FILE_COUNT:
         failures.append(
             f"formal package file count must be {EXPECTED_FILE_COUNT}; "
@@ -465,7 +470,7 @@ def main() -> int:
                 )
 
     print(f"package: {root}")
-    print(f"files: {len(all_files)}")
+    print(f"formal taxonomy files: {len(all_files)}")
     print(f"local references checked: {local_refs}")
     print(f"unresolved local files: {unresolved_files}")
     print(f"unresolved local fragments: {unresolved_fragments}")

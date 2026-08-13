@@ -761,7 +761,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         )
         rows = processor.specialization()
     except (OSError, csv.Error, SpecializationError) as exc:
-        print(f"specialization.py: error: {exc}", file=sys.stderr)
+        print(f"specialisation.py: error: {exc}", file=sys.stderr)
         return 2
     print(
         f"Wrote {len(rows)} BSM row(s) to {output}; "

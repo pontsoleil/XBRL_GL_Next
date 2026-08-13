@@ -17,7 +17,7 @@ from xml.etree import ElementTree as ET
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[0]
-SPECIALIZATION = ROOT / "tools" / "semantic" / "specialization.py"
+SPECIALIZATION = ROOT / "tools" / "semantic" / "specialisation.py"
 GRAPHWALK = ROOT / "tools" / "semantic" / "graphwalk.py"
 POST_GRAPHWALK = ROOT / "tools" / "semantic" / "post_graphwalk.py"
 VALIDATE_LHM = ROOT / "tools" / "semantic" / "validate_lhm.py"
@@ -124,11 +124,12 @@ def extract_fsm_sheet(workbook: Path, sheet_name: str, output: Path) -> None:
         writer.writerows(rows)
 
 
-def file_hashes(root: Path) -> dict[str, str]:
+def file_hashes(root: Path, exclude: set[str] | None = None) -> dict[str, str]:
+    excluded = exclude or set()
     return {
         path.relative_to(root).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
         for path in root.rglob("*")
-        if path.is_file()
+        if path.is_file() and path.relative_to(root).as_posix() not in excluded
     }
 
 
@@ -359,7 +360,11 @@ class SemanticPipelineTests(unittest.TestCase):
                 capture_output=True, text=True,
             )
             self.assertEqual(generated.returncode, 0, generated.stderr)
-            self.assertEqual(file_hashes(taxonomy_directory), file_hashes(FORMAL_TAXONOMY))
+            taxonomy_documentation = {"README.md", "README_ja.md"}
+            self.assertEqual(
+                file_hashes(taxonomy_directory, exclude=taxonomy_documentation),
+                file_hashes(FORMAL_TAXONOMY, exclude=taxonomy_documentation),
+            )
 
         self.assertEqual(
             hashlib.sha256(FORMAL_REVIEWED.read_bytes()).hexdigest(),

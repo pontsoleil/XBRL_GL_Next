@@ -1,0 +1,16 @@
+# XBRL GL Next repository text files use LF.
+* text=auto eol=lf
+
+# Binary files
+*.docx -text
+*.xlsx -text
+*.xls -text
+*.zip -text
+*.pdf -text
+*.png -text
+*.jpg -text
+*.jpeg -text
+*.gif -text
+
+# Preserve the reviewed LHM byte-for-byte.
+semantic-model/LHM/XBRL_GL_Next_LHM_reviewed.csv -text -eol
