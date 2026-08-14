@@ -425,6 +425,11 @@
 ・度と小数分 (DMM): 41 24.2028, 2 10.4418
 ・10進度 (DD): 41.40338, 2.17403</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_geospatialCoordinate" xlink:to="doc_btx_geospatialCoordinate"/>
+    <loc xlink:type="locator" xlink:href="../btx-oim-2026-12-31.xsd#p_btx_detailIdentifierReference" xlink:label="loc_p_btx_detailIdentifierReference"/>
+    <label xlink:type="resource" xlink:label="lab_p_btx_detailIdentifierReference" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">【CVE情報】</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_btx_detailIdentifierReference" xlink:to="lab_p_btx_detailIdentifierReference"/>
+    <label xlink:type="resource" xlink:label="doc_p_btx_detailIdentifierReference" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">顧客、仕入先、従業員のための識別子。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_btx_detailIdentifierReference" xlink:to="doc_p_btx_detailIdentifierReference"/>
     <loc xlink:type="locator" xlink:href="../btx-oim-2026-12-31.xsd#btx_detailDescription" xlink:label="loc_btx_detailDescription"/>
     <label xlink:type="resource" xlink:label="lab_btx_detailDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">説明</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailDescription" xlink:to="lab_btx_detailDescription"/>
@@ -440,6 +445,48 @@
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_btx_detailAmountStructure" xlink:to="lab_p_btx_detailAmountStructure"/>
     <label xlink:type="resource" xlink:label="doc_p_btx_detailAmountStructure" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">個々の明細行に適用される金額や通貨情報（行レベルの正味金額、税計算基礎額、値引または追加請求など）を表現する構造。</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_btx_detailAmountStructure" xlink:to="doc_p_btx_detailAmountStructure"/>
+    <loc xlink:type="locator" xlink:href="../btx-oim-2026-12-31.xsd#btx_detailIdentifierCode" xlink:label="loc_btx_detailIdentifierCode"/>
+    <label xlink:type="resource" xlink:label="lab_btx_detailIdentifierCode" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">CVE識別番号（内部）</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailIdentifierCode" xlink:to="lab_btx_detailIdentifierCode"/>
+    <label xlink:type="resource" xlink:label="doc_btx_detailIdentifierCode" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">identifierReferenceに関係付けられた、内部ID番号。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailIdentifierCode" xlink:to="doc_btx_detailIdentifierCode"/>
+    <loc xlink:type="locator" xlink:href="../btx-oim-2026-12-31.xsd#btx_detailIdentifierPurpose" xlink:label="loc_btx_detailIdentifierPurpose"/>
+    <label xlink:type="resource" xlink:label="lab_btx_detailIdentifierPurpose" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">CVE目的</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailIdentifierPurpose" xlink:to="lab_btx_detailIdentifierPurpose"/>
+    <label xlink:type="resource" xlink:label="doc_btx_detailIdentifierPurpose" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">購買、請求、製造などの、CVE識別子のレベルのコードの自由記述。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailIdentifierPurpose" xlink:to="doc_btx_detailIdentifierPurpose"/>
+    <loc xlink:type="locator" xlink:href="../btx-oim-2026-12-31.xsd#btx_detailIdentifierActive" xlink:label="loc_btx_detailIdentifierActive"/>
+    <label xlink:type="resource" xlink:label="lab_btx_detailIdentifierActive" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">CVE有効性</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailIdentifierActive" xlink:to="lab_btx_detailIdentifierActive"/>
+    <label xlink:type="resource" xlink:label="doc_btx_detailIdentifierActive" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">CVE識別子が有効か無効かを示すブール値。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailIdentifierActive" xlink:to="doc_btx_detailIdentifierActive"/>
+    <loc xlink:type="locator" xlink:href="../btx-oim-2026-12-31.xsd#btx_detailIdentifierOrganizationType" xlink:label="loc_btx_detailIdentifierOrganizationType"/>
+    <label xlink:type="resource" xlink:label="lab_btx_detailIdentifierOrganizationType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">CVE組織種別</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailIdentifierOrganizationType" xlink:to="lab_btx_detailIdentifierOrganizationType"/>
+    <label xlink:type="resource" xlink:label="doc_btx_detailIdentifierOrganizationType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">CVE識別子の組織種別。_x000D_
+[設定値のリスト]_x000D_
+(individual：個人)、(organization：組織)、(other：その他)</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailIdentifierOrganizationType" xlink:to="doc_btx_detailIdentifierOrganizationType"/>
+    <loc xlink:type="locator" xlink:href="../btx-oim-2026-12-31.xsd#btx_detailIdentifierOrganizationTypeDescription" xlink:label="loc_btx_detailIdentifierOrganizationTypeDescription"/>
+    <label xlink:type="resource" xlink:label="lab_btx_detailIdentifierOrganizationTypeDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">CVE組織種別説明</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailIdentifierOrganizationTypeDescription" xlink:to="lab_btx_detailIdentifierOrganizationTypeDescription"/>
+    <label xlink:type="resource" xlink:label="doc_btx_detailIdentifierOrganizationTypeDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">CVE識別子の組織種別の説明。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailIdentifierOrganizationTypeDescription" xlink:to="doc_btx_detailIdentifierOrganizationTypeDescription"/>
+    <loc xlink:type="locator" xlink:href="../btx-oim-2026-12-31.xsd#btx_detailIdentifierDescription" xlink:label="loc_btx_detailIdentifierDescription"/>
+    <label xlink:type="resource" xlink:label="lab_btx_detailIdentifierDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">CVE説明</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailIdentifierDescription" xlink:to="lab_btx_detailIdentifierDescription"/>
+    <label xlink:type="resource" xlink:label="doc_btx_detailIdentifierDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">identifierReferenceの説明。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailIdentifierDescription" xlink:to="doc_btx_detailIdentifierDescription"/>
+    <loc xlink:type="locator" xlink:href="../btx-oim-2026-12-31.xsd#btx_detailIdentifierType" xlink:label="loc_btx_detailIdentifierType"/>
+    <label xlink:type="resource" xlink:label="lab_btx_detailIdentifierType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">CVE種別</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailIdentifierType" xlink:to="lab_btx_detailIdentifierType"/>
+    <label xlink:type="resource" xlink:label="doc_btx_detailIdentifierType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">実体の種別。_x000D_ [設定値のリスト]_x000D_ (C)、(customer：顧客)、(E)、(employee：従業員)、(V)、(vendor：仕入先)、(O)、(other：その他)、(I)、(salesperson-internal：店舗内販売員)、(X)、(salesperson-external：外交販売員)、(N)、(contractor：請負者)</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailIdentifierType" xlink:to="doc_btx_detailIdentifierType"/>
+    <loc xlink:type="locator" xlink:href="../btx-oim-2026-12-31.xsd#btx_detailIdentifierCategory" xlink:label="loc_btx_detailIdentifierCategory"/>
+    <label xlink:type="resource" xlink:label="lab_btx_detailIdentifierCategory" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">CVEカテゴリ</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailIdentifierCategory" xlink:to="lab_btx_detailIdentifierCategory"/>
+    <label xlink:type="resource" xlink:label="doc_btx_detailIdentifierCategory" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">顧客、仕入先、従業員の分類に使用する。　（住居/商業/機関/政府や、小売/卸や、ビジネスで使用されるその他の分類）。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_detailIdentifierCategory" xlink:to="doc_btx_detailIdentifierCategory"/>
     <loc xlink:type="locator" xlink:href="../btx-oim-2026-12-31.xsd#btx_amount" xlink:label="loc_btx_amount"/>
     <label xlink:type="resource" xlink:label="lab_btx_amount" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">金額</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_amount" xlink:to="lab_btx_amount"/>

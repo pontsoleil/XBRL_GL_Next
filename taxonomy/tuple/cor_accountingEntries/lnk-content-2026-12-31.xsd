@@ -16,6 +16,15 @@
     </sequence>
     <attribute name="id" type="ID"/>
   </complexType>
+  <complexType name="detailRichTextCommentComplexType">
+    <sequence>
+      <element ref="lnk:commentCode" minOccurs="0"/>
+      <element ref="lnk:commentDescription" minOccurs="0"/>
+      <element ref="lnk:commentContent" minOccurs="0"/>
+      <element ref="lnk:commentLocator" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
   <complexType name="transactionSummaryReportingTaxonomiesComplexType">
     <sequence>
       <element ref="lnk:transactionSummaryReportingTaxonomyId" minOccurs="0"/>

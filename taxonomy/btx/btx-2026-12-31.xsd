@@ -394,6 +394,46 @@
       <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
   </complexType>
+  <complexType name="detailIdentifierCodeItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="detailIdentifierPurposeItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="detailIdentifierActiveItemType">
+    <simpleContent>
+      <restriction base="xbrli:booleanItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="detailIdentifierOrganizationTypeItemType">
+    <simpleContent>
+      <restriction base="xbrli:tokenItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="detailIdentifierOrganizationTypeDescriptionItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="detailIdentifierDescriptionItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="detailIdentifierTypeItemType">
+    <simpleContent>
+      <restriction base="xbrli:tokenItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="detailIdentifierCategoryItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
   <complexType name="amountItemType">
     <simpleContent>
       <restriction base="xbrli:monetaryItemType"/>
@@ -497,9 +537,18 @@
   <element name="confirmationDate" id="btx_confirmationDate" type="btx:confirmationDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="measurableClassDescription" id="btx_measurableClassDescription" type="btx:measurableClassDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="geospatialCoordinate" id="btx_geospatialCoordinate" type="btx:geospatialCoordinateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailIdentifierReference" id="btx_detailIdentifierReference" type="btx:detailIdentifierReferenceComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="detailDescription" id="btx_detailDescription" type="btx:detailDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="detailMeasurableClassIdentifier" id="btx_detailMeasurableClassIdentifier" type="btx:detailMeasurableClassIdentifierItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="detailAmountStructure" id="btx_detailAmountStructure" type="btx:detailAmountStructureComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="detailIdentifierCode" id="btx_detailIdentifierCode" type="btx:detailIdentifierCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailIdentifierPurpose" id="btx_detailIdentifierPurpose" type="btx:detailIdentifierPurposeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailIdentifierActive" id="btx_detailIdentifierActive" type="btx:detailIdentifierActiveItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailIdentifierOrganizationType" id="btx_detailIdentifierOrganizationType" type="btx:detailIdentifierOrganizationTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailIdentifierOrganizationTypeDescription" id="btx_detailIdentifierOrganizationTypeDescription" type="btx:detailIdentifierOrganizationTypeDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailIdentifierDescription" id="btx_detailIdentifierDescription" type="btx:detailIdentifierDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailIdentifierType" id="btx_detailIdentifierType" type="btx:detailIdentifierTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailIdentifierCategory" id="btx_detailIdentifierCategory" type="btx:detailIdentifierCategoryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="amount" id="btx_amount" type="btx:amountItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="currencyCode" id="btx_currencyCode" type="btx:currencyCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="currencyCodeType" id="btx_currencyCodeType" type="btx:currencyCodeTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>

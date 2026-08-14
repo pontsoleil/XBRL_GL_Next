@@ -277,6 +277,311 @@ Often sorted by date or by account, these terms have specific, and sometimes dif
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_documentNumber" xlink:to="lab_cor_documentNumber"/>
     <label xlink:type="resource" xlink:label="doc_cor_documentNumber" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Document number</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_documentNumber" xlink:to="doc_cor_documentNumber"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailExternalAuthorityCode" xlink:label="loc_cor_detailExternalAuthorityCode"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailExternalAuthorityCode" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">External Authority Code</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailExternalAuthorityCode" xlink:to="lab_cor_detailExternalAuthorityCode"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailExternalAuthorityCode" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">External Authority (e,g, Tax Authority) ID Number associated with identifierReference</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailExternalAuthorityCode" xlink:to="doc_cor_detailExternalAuthorityCode"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailExternalAuthorityName" xlink:label="loc_cor_detailExternalAuthorityName"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailExternalAuthorityName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">External Authority Name</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailExternalAuthorityName" xlink:to="lab_cor_detailExternalAuthorityName"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailExternalAuthorityName" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Name of External Authority (e.g. Tax Authority)</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailExternalAuthorityName" xlink:to="doc_cor_detailExternalAuthorityName"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailExternalAuthorityVerificationDate" xlink:label="loc_cor_detailExternalAuthorityVerificationDate"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailExternalAuthorityVerificationDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">External Authority Verification Date</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailExternalAuthorityVerificationDate" xlink:to="lab_cor_detailExternalAuthorityVerificationDate"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailExternalAuthorityVerificationDate" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Date on which the External Authority last performed a verification</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailExternalAuthorityVerificationDate" xlink:to="doc_cor_detailExternalAuthorityVerificationDate"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailPhoneNumber" xlink:label="loc_cor_detailPhoneNumber"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailPhoneNumber" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Phone Number</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailPhoneNumber" xlink:to="lab_cor_detailPhoneNumber"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailPhoneNumber" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Phone number referred to in Phone Number Description'\.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailPhoneNumber" xlink:to="doc_cor_detailPhoneNumber"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailPhoneNumberDescription" xlink:label="loc_cor_detailPhoneNumberDescription"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailPhoneNumberDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Phone Number Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailPhoneNumberDescription" xlink:to="lab_cor_detailPhoneNumberDescription"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailPhoneNumberDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Entity Phone Number Description such as Main, Investor relations. Enumerated as: bookkeeper, controller, direct, fax, investor-relations, main, switchboard, other.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailPhoneNumberDescription" xlink:to="doc_cor_detailPhoneNumberDescription"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailFaxNumber" xlink:label="loc_cor_detailFaxNumber"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailFaxNumber" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Fax Number</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailFaxNumber" xlink:to="lab_cor_detailFaxNumber"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailFaxNumber" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Fax Number</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailFaxNumber" xlink:to="doc_cor_detailFaxNumber"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailFaxNumberUsage" xlink:label="loc_cor_detailFaxNumberUsage"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailFaxNumberUsage" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Fax Number Usage</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailFaxNumberUsage" xlink:to="lab_cor_detailFaxNumberUsage"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailFaxNumberUsage" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Fax number usage (e.g. orders, head office, IR)</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailFaxNumberUsage" xlink:to="doc_cor_detailFaxNumberUsage"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailEmailAddress" xlink:label="loc_cor_detailEmailAddress"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailEmailAddress" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Email Address</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailEmailAddress" xlink:to="lab_cor_detailEmailAddress"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailEmailAddress" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Email Address</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailEmailAddress" xlink:to="doc_cor_detailEmailAddress"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailEmailAddressUsage" xlink:label="loc_cor_detailEmailAddressUsage"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailEmailAddressUsage" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Email Address Usage</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailEmailAddressUsage" xlink:to="lab_cor_detailEmailAddressUsage"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailEmailAddressUsage" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Email address usage (e.g. orders, head office, IR)</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailEmailAddressUsage" xlink:to="doc_cor_detailEmailAddressUsage"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailIdentifierAddressDescription" xlink:label="loc_cor_detailIdentifierAddressDescription"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailIdentifierAddressDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailIdentifierAddressDescription" xlink:to="lab_cor_detailIdentifierAddressDescription"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailIdentifierAddressDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Address Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailIdentifierAddressDescription" xlink:to="doc_cor_detailIdentifierAddressDescription"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailPurpose" xlink:label="loc_cor_detailPurpose"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailPurpose" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Purpose</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailPurpose" xlink:to="lab_cor_detailPurpose"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailPurpose" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Address Purpose</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailPurpose" xlink:to="doc_cor_detailPurpose"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailLocationId" xlink:label="loc_cor_detailLocationId"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailLocationId" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Location ID</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailLocationId" xlink:to="lab_cor_detailLocationId"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailLocationId" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">A code used to identify the location and to associate it with contacts and transactions</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailLocationId" xlink:to="doc_cor_detailLocationId"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailBuildingNumber" xlink:label="loc_cor_detailBuildingNumber"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailBuildingNumber" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Building Number</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailBuildingNumber" xlink:to="lab_cor_detailBuildingNumber"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailBuildingNumber" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Building Number</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailBuildingNumber" xlink:to="doc_cor_detailBuildingNumber"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailStreet" xlink:label="loc_cor_detailStreet"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailStreet" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Street</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailStreet" xlink:to="lab_cor_detailStreet"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailStreet" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Street address</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailStreet" xlink:to="doc_cor_detailStreet"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailAddressDetail" xlink:label="loc_cor_detailAddressDetail"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailAddressDetail" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Address Detail</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailAddressDetail" xlink:to="lab_cor_detailAddressDetail"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailAddressDetail" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Address Detail</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailAddressDetail" xlink:to="doc_cor_detailAddressDetail"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailCity" xlink:label="loc_cor_detailCity"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailCity" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">City</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailCity" xlink:to="lab_cor_detailCity"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailCity" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">City</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailCity" xlink:to="doc_cor_detailCity"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailStateOrProvince" xlink:label="loc_cor_detailStateOrProvince"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailStateOrProvince" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">State or Province</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailStateOrProvince" xlink:to="lab_cor_detailStateOrProvince"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailStateOrProvince" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">State, province or region</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailStateOrProvince" xlink:to="doc_cor_detailStateOrProvince"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailCountry" xlink:label="loc_cor_detailCountry"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailCountry" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Country</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailCountry" xlink:to="lab_cor_detailCountry"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailCountry" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Country</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailCountry" xlink:to="doc_cor_detailCountry"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailZipOrPostalCode" xlink:label="loc_cor_detailZipOrPostalCode"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailZipOrPostalCode" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Zip or Postal Code</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailZipOrPostalCode" xlink:to="lab_cor_detailZipOrPostalCode"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailZipOrPostalCode" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Zip or other postal code</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailZipOrPostalCode" xlink:to="doc_cor_detailZipOrPostalCode"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailContactPrefix" xlink:label="loc_cor_detailContactPrefix"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailContactPrefix" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Contact Prefix</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactPrefix" xlink:to="lab_cor_detailContactPrefix"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailContactPrefix" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Prefix (e.g. Dr., Mr., Mrs.)</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactPrefix" xlink:to="doc_cor_detailContactPrefix"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailContactLastName" xlink:label="loc_cor_detailContactLastName"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailContactLastName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Contact Last Name</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactLastName" xlink:to="lab_cor_detailContactLastName"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailContactLastName" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Last or family name</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactLastName" xlink:to="doc_cor_detailContactLastName"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailContactFirstName" xlink:label="loc_cor_detailContactFirstName"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailContactFirstName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Contact First Name</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactFirstName" xlink:to="lab_cor_detailContactFirstName"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailContactFirstName" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">First or given name</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactFirstName" xlink:to="doc_cor_detailContactFirstName"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailContactSuffix" xlink:label="loc_cor_detailContactSuffix"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailContactSuffix" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Contact Suffix</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactSuffix" xlink:to="lab_cor_detailContactSuffix"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailContactSuffix" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Suffix (e.g. MD, CPA, Jr.)</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactSuffix" xlink:to="doc_cor_detailContactSuffix"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailContactAttentionLine" xlink:label="loc_cor_detailContactAttentionLine"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailContactAttentionLine" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Contact Attention Line</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactAttentionLine" xlink:to="lab_cor_detailContactAttentionLine"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailContactAttentionLine" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Attention Line</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactAttentionLine" xlink:to="doc_cor_detailContactAttentionLine"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailContactPositionRole" xlink:label="loc_cor_detailContactPositionRole"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailContactPositionRole" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Contact Position Role</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactPositionRole" xlink:to="lab_cor_detailContactPositionRole"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailContactPositionRole" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Position or role</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactPositionRole" xlink:to="doc_cor_detailContactPositionRole"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailContactContactType" xlink:label="loc_cor_detailContactContactType"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailContactContactType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Contact Contact Type</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactContactType" xlink:to="lab_cor_detailContactContactType"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailContactContactType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Role of contact. Examples include: Source Service, Sender, Recipient, Invoicer, Auditor, Accountant</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactContactType" xlink:to="doc_cor_detailContactContactType"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailContactLocationIdCrossReference" xlink:label="loc_cor_detailContactLocationIdCrossReference"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailContactLocationIdCrossReference" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Contact Location ID cross reference</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactLocationIdCrossReference" xlink:to="lab_cor_detailContactLocationIdCrossReference"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailContactLocationIdCrossReference" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">This code is used to associate the contact with a specific location for the Entity. Its value should be the same as that of the organizationAddressLocationIdentifier</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactLocationIdCrossReference" xlink:to="doc_cor_detailContactLocationIdCrossReference"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_detailContactActive" xlink:label="loc_cor_detailContactActive"/>
+    <label xlink:type="resource" xlink:label="lab_cor_detailContactActive" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Contact Active</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactActive" xlink:to="lab_cor_detailContactActive"/>
+    <label xlink:type="resource" xlink:label="doc_cor_detailContactActive" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Boolean to indicate whether the contact is active (="true") or inactive (="false")</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailContactActive" xlink:to="doc_cor_detailContactActive"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_xbrlAllocation" xlink:label="loc_cor_xbrlAllocation"/>
+    <label xlink:type="resource" xlink:label="lab_cor_xbrlAllocation" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">XBRL Allocation</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlAllocation" xlink:to="lab_cor_xbrlAllocation"/>
+    <label xlink:type="resource" xlink:label="doc_cor_xbrlAllocation" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Indicates that the information being given is beginning_balance, ending_balance, period_change.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlAllocation" xlink:to="doc_cor_xbrlAllocation"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_xbrlSummaryReportingElement" xlink:label="loc_cor_xbrlSummaryReportingElement"/>
+    <label xlink:type="resource" xlink:label="lab_cor_xbrlSummaryReportingElement" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">XBRL Summary Reporting Element</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlSummaryReportingElement" xlink:to="lab_cor_xbrlSummaryReportingElement"/>
+    <label xlink:type="resource" xlink:label="doc_cor_xbrlSummaryReportingElement" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Associated XBRL element or XML element within an XML taxonomy - mapping to an XBRL concept.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlSummaryReportingElement" xlink:to="doc_cor_xbrlSummaryReportingElement"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_xbrlDetailMatchingElement" xlink:label="loc_cor_xbrlDetailMatchingElement"/>
+    <label xlink:type="resource" xlink:label="lab_cor_xbrlDetailMatchingElement" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">XBRL Detail Matching Element</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlDetailMatchingElement" xlink:to="lab_cor_xbrlDetailMatchingElement"/>
+    <label xlink:type="resource" xlink:label="doc_cor_xbrlDetailMatchingElement" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Associated XBRL element in XBRL-GL instance.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlDetailMatchingElement" xlink:to="doc_cor_xbrlDetailMatchingElement"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_xbrlSummaryTuplePath" xlink:label="loc_cor_xbrlSummaryTuplePath"/>
+    <label xlink:type="resource" xlink:label="lab_cor_xbrlSummaryTuplePath" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">XBRL Summary Tuple Path</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlSummaryTuplePath" xlink:to="lab_cor_xbrlSummaryTuplePath"/>
+    <label xlink:type="resource" xlink:label="doc_cor_xbrlSummaryTuplePath" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Specific filter for parent class class. This value must be valid XPath. And the result of the XPath must be resolved to a node.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlSummaryTuplePath" xlink:to="doc_cor_xbrlSummaryTuplePath"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_xbrlDetailedContentFilter" xlink:label="loc_cor_xbrlDetailedContentFilter"/>
+    <label xlink:type="resource" xlink:label="lab_cor_xbrlDetailedContentFilter" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">XBRL Detailed Content Filter</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlDetailedContentFilter" xlink:to="lab_cor_xbrlDetailedContentFilter"/>
+    <label xlink:type="resource" xlink:label="doc_cor_xbrlDetailedContentFilter" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Filtering mechanism. This value must be valid XPath. And the result of the XPath must be resolved to boolean. If the resulting value is false, the entry  must not mapped into specified facts in F/S.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlDetailedContentFilter" xlink:to="doc_cor_xbrlDetailedContentFilter"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_xbrlReportingDateSelector" xlink:label="loc_cor_xbrlReportingDateSelector"/>
+    <label xlink:type="resource" xlink:label="lab_cor_xbrlReportingDateSelector" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">XBRL Reporting Date Selector</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlReportingDateSelector" xlink:to="lab_cor_xbrlReportingDateSelector"/>
+    <label xlink:type="resource" xlink:label="doc_cor_xbrlReportingDateSelector" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">This holds the concepts in GL data to create FS contexts.  The value must be a list of QName. Each QName must be resolved to GL items. Order of the items defines priority to access.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlReportingDateSelector" xlink:to="doc_cor_xbrlReportingDateSelector"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_xbrlSummaryOperator" xlink:label="loc_cor_xbrlSummaryOperator"/>
+    <label xlink:type="resource" xlink:label="lab_cor_xbrlSummaryOperator" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">XBRL Summary Operator</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlSummaryOperator" xlink:to="lab_cor_xbrlSummaryOperator"/>
+    <label xlink:type="resource" xlink:label="doc_cor_xbrlSummaryOperator" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">The operator applied to the amount or quantity when it is rolled up to a summary reporting element.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlSummaryOperator" xlink:to="doc_cor_xbrlSummaryOperator"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_xbrlSummaryUnitNumerator" xlink:label="loc_cor_xbrlSummaryUnitNumerator"/>
+    <label xlink:type="resource" xlink:label="lab_cor_xbrlSummaryUnitNumerator" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">XBRL Summary Unit Numerator</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlSummaryUnitNumerator" xlink:to="lab_cor_xbrlSummaryUnitNumerator"/>
+    <label xlink:type="resource" xlink:label="doc_cor_xbrlSummaryUnitNumerator" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">This holds the list of measure information for unit numerator. The value must be a list of QName. Each QName must be resolved to be measure information such as iso4217:usd.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlSummaryUnitNumerator" xlink:to="doc_cor_xbrlSummaryUnitNumerator"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_xbrlSummaryUnitDenominator" xlink:label="loc_cor_xbrlSummaryUnitDenominator"/>
+    <label xlink:type="resource" xlink:label="lab_cor_xbrlSummaryUnitDenominator" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">XBRL Summary Unit Denominator</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlSummaryUnitDenominator" xlink:to="lab_cor_xbrlSummaryUnitDenominator"/>
+    <label xlink:type="resource" xlink:label="doc_cor_xbrlSummaryUnitDenominator" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">This holds the list of measure information for unit denominator. The value must be a list of QName. Each QName must be resolved to be measure information such as iso4217:usd.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlSummaryUnitDenominator" xlink:to="doc_cor_xbrlSummaryUnitDenominator"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_xbrlSummaryReportingTaxonomyIdReference" xlink:label="loc_cor_xbrlSummaryReportingTaxonomyIdReference"/>
+    <label xlink:type="resource" xlink:label="lab_cor_xbrlSummaryReportingTaxonomyIdReference" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">XBRL Summary Reporting Taxonomy ID Reference</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlSummaryReportingTaxonomyIdReference" xlink:to="lab_cor_xbrlSummaryReportingTaxonomyIdReference"/>
+    <label xlink:type="resource" xlink:label="doc_cor_xbrlSummaryReportingTaxonomyIdReference" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Reference to the ID of the relevant target reporting taxonomy, defined in the [summaryReportingTaxonomies] class at [documentInfo] level. Allows consuming applications to identify sets of [xbrlInfo] classs that point to a specific taxonomy.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_xbrlSummaryReportingTaxonomyIdReference" xlink:to="doc_cor_xbrlSummaryReportingTaxonomyIdReference"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxAuthority" xlink:label="loc_cor_taxAuthority"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxAuthority" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Authority</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxAuthority" xlink:to="lab_cor_taxAuthority"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxAuthority" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Name of the relevant tax authority</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxAuthority" xlink:to="doc_cor_taxAuthority"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxTableCode" xlink:label="loc_cor_taxTableCode"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxTableCode" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Table Code</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxTableCode" xlink:to="lab_cor_taxTableCode"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxTableCode" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Tax table code used by the relevant tax authority</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxTableCode" xlink:to="doc_cor_taxTableCode"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxDescription" xlink:label="loc_cor_taxDescription"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxDescription" xlink:to="lab_cor_taxDescription"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Description of tax authority</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxDescription" xlink:to="doc_cor_taxDescription"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_amountOfTaxes" xlink:label="loc_cor_amountOfTaxes"/>
+    <label xlink:type="resource" xlink:label="lab_cor_amountOfTaxes" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Amount of Taxes</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_amountOfTaxes" xlink:to="lab_cor_amountOfTaxes"/>
+    <label xlink:type="resource" xlink:label="doc_cor_amountOfTaxes" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Amount of taxes</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_amountOfTaxes" xlink:to="doc_cor_amountOfTaxes"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_basisForTaxation" xlink:label="loc_cor_basisForTaxation"/>
+    <label xlink:type="resource" xlink:label="lab_cor_basisForTaxation" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Basis for Taxation</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_basisForTaxation" xlink:to="lab_cor_basisForTaxation"/>
+    <label xlink:type="resource" xlink:label="doc_cor_basisForTaxation" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Basis for taxation</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_basisForTaxation" xlink:to="doc_cor_basisForTaxation"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxPercentageRate" xlink:label="loc_cor_taxPercentageRate"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxPercentageRate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Percentage Rate</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxPercentageRate" xlink:to="lab_cor_taxPercentageRate"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxPercentageRate" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Percent rate for VAT or other taxes normally a number between 0 and 1.0 - e.g. 50% is represented as 0.5</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxPercentageRate" xlink:to="doc_cor_taxPercentageRate"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxCategory" xlink:label="loc_cor_taxCategory"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxCategory" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Category</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxCategory" xlink:to="lab_cor_taxCategory"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxCategory" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">A class or category of taxes</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxCategory" xlink:to="doc_cor_taxCategory"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxCommentExemptionReason" xlink:label="loc_cor_taxCommentExemptionReason"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxCommentExemptionReason" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Comment/Exemption Reason</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxCommentExemptionReason" xlink:to="lab_cor_taxCommentExemptionReason"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxCommentExemptionReason" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Additional text/code for exemption reasons or other comments.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxCommentExemptionReason" xlink:to="doc_cor_taxCommentExemptionReason"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxAmountInForeignCurrency" xlink:label="loc_cor_taxAmountInForeignCurrency"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxAmountInForeignCurrency" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Amount in Foreign Currency</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxAmountInForeignCurrency" xlink:to="lab_cor_taxAmountInForeignCurrency"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxAmountInForeignCurrency" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">If the tax is in a foreign currency, the amount of tax in that currency</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxAmountInForeignCurrency" xlink:to="doc_cor_taxAmountInForeignCurrency"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxForeignCurrency" xlink:label="loc_cor_taxForeignCurrency"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxForeignCurrency" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Foreign Currency</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxForeignCurrency" xlink:to="lab_cor_taxForeignCurrency"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxForeignCurrency" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">If the tax is in a foreign currency, that currency</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxForeignCurrency" xlink:to="doc_cor_taxForeignCurrency"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxExchangeRateDate" xlink:label="loc_cor_taxExchangeRateDate"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxExchangeRateDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Exchange Rate Date</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxExchangeRateDate" xlink:to="lab_cor_taxExchangeRateDate"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxExchangeRateDate" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">If the tax is in a foreign currency, the date or date and time of the exchange rate used</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxExchangeRateDate" xlink:to="doc_cor_taxExchangeRateDate"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxExchangeRate" xlink:label="loc_cor_taxExchangeRate"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxExchangeRate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Exchange Rate</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxExchangeRate" xlink:to="lab_cor_taxExchangeRate"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxExchangeRate" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">If the tax is in a foreign currency, the exchange rate used expressed as national currency divided by foreign currency</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxExchangeRate" xlink:to="doc_cor_taxExchangeRate"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxExchangeRateSource" xlink:label="loc_cor_taxExchangeRateSource"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxExchangeRateSource" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Exchange Rate Source</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxExchangeRateSource" xlink:to="lab_cor_taxExchangeRateSource"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxExchangeRateSource" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">If the tax is in a foreign currency, source of exchange rate - for example, Reuters, Bloomberg</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxExchangeRateSource" xlink:to="doc_cor_taxExchangeRateSource"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxExchangeRateType" xlink:label="loc_cor_taxExchangeRateType"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxExchangeRateType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Exchange Rate Type</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxExchangeRateType" xlink:to="lab_cor_taxExchangeRateType"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxExchangeRateType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">If the tax is in a foreign currency, type of exchange rate - for example, spot rate, forward contract etc.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxExchangeRateType" xlink:to="doc_cor_taxExchangeRateType"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxExchangeRateComment" xlink:label="loc_cor_taxExchangeRateComment"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxExchangeRateComment" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Exchange Rate Comment</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxExchangeRateComment" xlink:to="lab_cor_taxExchangeRateComment"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxExchangeRateComment" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">If the tax is in a foreign currency, comment about exchange rate used</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxExchangeRateComment" xlink:to="doc_cor_taxExchangeRateComment"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxAmountInTriangulationCurrency" xlink:label="loc_cor_taxAmountInTriangulationCurrency"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxAmountInTriangulationCurrency" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Amount in Triangulation Currency</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxAmountInTriangulationCurrency" xlink:to="lab_cor_taxAmountInTriangulationCurrency"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxAmountInTriangulationCurrency" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">If the tax is in a foreign currency and triangulation is used, the amount of that tax in the triangulation currency</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxAmountInTriangulationCurrency" xlink:to="doc_cor_taxAmountInTriangulationCurrency"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxTriangulationCurrency" xlink:label="loc_cor_taxTriangulationCurrency"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxTriangulationCurrency" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Triangulation Currency</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxTriangulationCurrency" xlink:to="lab_cor_taxTriangulationCurrency"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxTriangulationCurrency" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">If the tax is in a foreign currency and triangulation is used, the triangulation currency</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxTriangulationCurrency" xlink:to="doc_cor_taxTriangulationCurrency"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxTriangulationCurrencyExchangeRate" xlink:label="loc_cor_taxTriangulationCurrencyExchangeRate"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxTriangulationCurrencyExchangeRate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Triangulation Currency Exchange Rate</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxTriangulationCurrencyExchangeRate" xlink:to="lab_cor_taxTriangulationCurrencyExchangeRate"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxTriangulationCurrencyExchangeRate" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">If the tax is in a foreign currency and triangulation is used, the exchange rate used expressed as national currency divided by triangulation currency</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxTriangulationCurrencyExchangeRate" xlink:to="doc_cor_taxTriangulationCurrencyExchangeRate"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxTriangulationCurrencyExchangeRateSource" xlink:label="loc_cor_taxTriangulationCurrencyExchangeRateSource"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxTriangulationCurrencyExchangeRateSource" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Triangulation Currency Exchange Rate Source</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxTriangulationCurrencyExchangeRateSource" xlink:to="lab_cor_taxTriangulationCurrencyExchangeRateSource"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxTriangulationCurrencyExchangeRateSource" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">If the tax is in a foreign currency and triangulation is used, source of exchange rate - for example, Reuters, Bloomberg</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxTriangulationCurrencyExchangeRateSource" xlink:to="doc_cor_taxTriangulationCurrencyExchangeRateSource"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxTriangulationCurrencyExchangeRateType" xlink:label="loc_cor_taxTriangulationCurrencyExchangeRateType"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxTriangulationCurrencyExchangeRateType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Triangulation Currency Exchange Rate Type</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxTriangulationCurrencyExchangeRateType" xlink:to="lab_cor_taxTriangulationCurrencyExchangeRateType"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxTriangulationCurrencyExchangeRateType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">If the tax is in a foreign currency and triangulation is used, type of exchange rate - for example, spot rate, forward contract etc.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxTriangulationCurrencyExchangeRateType" xlink:to="doc_cor_taxTriangulationCurrencyExchangeRateType"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxForeignToTriangulationCurrencyExchangeRate" xlink:label="loc_cor_taxForeignToTriangulationCurrencyExchangeRate"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxForeignToTriangulationCurrencyExchangeRate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Foreign to Triangulation Currency Exchange Rate</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxForeignToTriangulationCurrencyExchangeRate" xlink:to="lab_cor_taxForeignToTriangulationCurrencyExchangeRate"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxForeignToTriangulationCurrencyExchangeRate" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">If the tax is in a foreign currency and triangulation is used,  the exchange rate used expressed as foreign currency divided by triangulation currency</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxForeignToTriangulationCurrencyExchangeRate" xlink:to="doc_cor_taxForeignToTriangulationCurrencyExchangeRate"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxForeignToTriangulationCurrencyExchangeRateSource" xlink:label="loc_cor_taxForeignToTriangulationCurrencyExchangeRateSource"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxForeignToTriangulationCurrencyExchangeRateSource" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Foreign to Triangulation Currency Exchange Rate Source</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxForeignToTriangulationCurrencyExchangeRateSource" xlink:to="lab_cor_taxForeignToTriangulationCurrencyExchangeRateSource"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxForeignToTriangulationCurrencyExchangeRateSource" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">If the tax is in a foreign currency and triangulation is used, source of exchange rate - for example, Reuters, Bloomberg</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxForeignToTriangulationCurrencyExchangeRateSource" xlink:to="doc_cor_taxForeignToTriangulationCurrencyExchangeRateSource"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_taxForeignToTriangulationCurrencyExchangeRateType" xlink:label="loc_cor_taxForeignToTriangulationCurrencyExchangeRateType"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxForeignToTriangulationCurrencyExchangeRateType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Tax Foreign to Triangulation Currency Exchange Rate Type</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxForeignToTriangulationCurrencyExchangeRateType" xlink:to="lab_cor_taxForeignToTriangulationCurrencyExchangeRateType"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxForeignToTriangulationCurrencyExchangeRateType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">If the tax is in a foreign currency and triangulation is used, type of exchange rate - for example, spot rate, forward contract etc.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxForeignToTriangulationCurrencyExchangeRateType" xlink:to="doc_cor_taxForeignToTriangulationCurrencyExchangeRateType"/>
     <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_documentType" xlink:label="loc_cor_documentType"/>
     <label xlink:type="resource" xlink:label="lab_cor_documentType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Document Type</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_documentType" xlink:to="lab_cor_documentType"/>
@@ -767,5 +1072,135 @@ original document against which a payment or DR/CR memo applies has been reconci
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailDocumentNumber" xlink:to="lab_cor_detailDocumentNumber"/>
     <label xlink:type="resource" xlink:label="doc_cor_detailDocumentNumber" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Document number</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_detailDocumentNumber" xlink:to="doc_cor_detailDocumentNumber"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_identifierCode" xlink:label="loc_cor_identifierCode"/>
+    <label xlink:type="resource" xlink:label="lab_cor_identifierCode" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Identifier Code</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_identifierCode" xlink:to="lab_cor_identifierCode"/>
+    <label xlink:type="resource" xlink:label="doc_cor_identifierCode" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Unique ID Number associated with identifierReference</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_identifierCode" xlink:to="doc_cor_identifierCode"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_identifierPurpose" xlink:label="loc_cor_identifierPurpose"/>
+    <label xlink:type="resource" xlink:label="lab_cor_identifierPurpose" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Identifier Purpose</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_identifierPurpose" xlink:to="lab_cor_identifierPurpose"/>
+    <label xlink:type="resource" xlink:label="doc_cor_identifierPurpose" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Freeform for codes like purchasing, billing, manufacturing at identifier level.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_identifierPurpose" xlink:to="doc_cor_identifierPurpose"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_identifierActive" xlink:label="loc_cor_identifierActive"/>
+    <label xlink:type="resource" xlink:label="lab_cor_identifierActive" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Identifier Active</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_identifierActive" xlink:to="lab_cor_identifierActive"/>
+    <label xlink:type="resource" xlink:label="doc_cor_identifierActive" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Boolean to indicate whether the identifier is active (="true") or inactive (="false")</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_identifierActive" xlink:to="doc_cor_identifierActive"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_identifierOrganizationType" xlink:label="loc_cor_identifierOrganizationType"/>
+    <label xlink:type="resource" xlink:label="lab_cor_identifierOrganizationType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Identifier Organization Type</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_identifierOrganizationType" xlink:to="lab_cor_identifierOrganizationType"/>
+    <label xlink:type="resource" xlink:label="doc_cor_identifierOrganizationType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Identifier Organization Type. Enumerated as: individual, organization, other.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_identifierOrganizationType" xlink:to="doc_cor_identifierOrganizationType"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_identifierOrganizationTypeDescription" xlink:label="loc_cor_identifierOrganizationTypeDescription"/>
+    <label xlink:type="resource" xlink:label="lab_cor_identifierOrganizationTypeDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Identifier Organization Type Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_identifierOrganizationTypeDescription" xlink:to="lab_cor_identifierOrganizationTypeDescription"/>
+    <label xlink:type="resource" xlink:label="doc_cor_identifierOrganizationTypeDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Free format description of the identifier organization type</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_identifierOrganizationTypeDescription" xlink:to="doc_cor_identifierOrganizationTypeDescription"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_identifierDescription" xlink:label="loc_cor_identifierDescription"/>
+    <label xlink:type="resource" xlink:label="lab_cor_identifierDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Identifier Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_identifierDescription" xlink:to="lab_cor_identifierDescription"/>
+    <label xlink:type="resource" xlink:label="doc_cor_identifierDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Textual description of identifierReference.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_identifierDescription" xlink:to="doc_cor_identifierDescription"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_identifierType" xlink:label="loc_cor_identifierType"/>
+    <label xlink:type="resource" xlink:label="lab_cor_identifierType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Identifier Type</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_identifierType" xlink:to="lab_cor_identifierType"/>
+    <label xlink:type="resource" xlink:label="doc_cor_identifierType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Entity type (enumerated): C, customer, E, employee, V, vendor, O, other, I, salesperson-internal, X, salesperson-external, N, contractor.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_identifierType" xlink:to="doc_cor_identifierType"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_identifierCategory" xlink:label="loc_cor_identifierCategory"/>
+    <label xlink:type="resource" xlink:label="lab_cor_identifierCategory" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Identifier Category</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_identifierCategory" xlink:to="lab_cor_identifierCategory"/>
+    <label xlink:type="resource" xlink:label="doc_cor_identifierCategory" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">For use as Customer, Vendor or Employee Class (such as Residential/Commercial/Institutional/Government or Retail/Wholesale or other classifications used by business).</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_identifierCategory" xlink:to="doc_cor_identifierCategory"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_accountNumber" xlink:label="loc_cor_accountNumber"/>
+    <label xlink:type="resource" xlink:label="lab_cor_accountNumber" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Account Number</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountNumber" xlink:to="lab_cor_accountNumber"/>
+    <label xlink:type="resource" xlink:label="doc_cor_accountNumber" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Main account - the code used to identify the accounting bucket the entry has been assigned to. Examples might be 1000 for Cash, 567GAAZ for Sales Expense or Z for tax payments. Identifiers such as department, branch, division, manager, or other modifiers are noted in the Subaccount area. Before needing to post, account is not necessary. Posting to the general ledger almost always requires an entry here.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountNumber" xlink:to="doc_cor_accountNumber"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_accountDescription" xlink:label="loc_cor_accountDescription"/>
+    <label xlink:type="resource" xlink:label="lab_cor_accountDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Account Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountDescription" xlink:to="lab_cor_accountDescription"/>
+    <label xlink:type="resource" xlink:label="doc_cor_accountDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Description of accountMainID - the human readable describer that accompanies the code used in accountMainID</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountDescription" xlink:to="doc_cor_accountDescription"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_accountClassification" xlink:label="loc_cor_accountClassification"/>
+    <label xlink:type="resource" xlink:label="lab_cor_accountClassification" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Account Classification</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountClassification" xlink:to="lab_cor_accountClassification"/>
+    <label xlink:type="resource" xlink:label="doc_cor_accountClassification" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Account type - FASB Concepts 6 and similar international designs. When xbrlInfo is used to associated other XBRL reporting items, this field is more suited to representing existing systems (audit) than data interchange. Enumerated as: asset, liability, equity, income, gain, expense, loss, contr-to-equity, distr-from-equity, comprehensive-income, other.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountClassification" xlink:to="doc_cor_accountClassification"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_accountClassificationDescription" xlink:label="loc_cor_accountClassificationDescription"/>
+    <label xlink:type="resource" xlink:label="lab_cor_accountClassificationDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Account Classification Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountClassificationDescription" xlink:to="lab_cor_accountClassificationDescription"/>
+    <label xlink:type="resource" xlink:label="doc_cor_accountClassificationDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Free format description of the account classification</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountClassificationDescription" xlink:to="doc_cor_accountClassificationDescription"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_parentAccountNumber" xlink:label="loc_cor_parentAccountNumber"/>
+    <label xlink:type="resource" xlink:label="lab_cor_parentAccountNumber" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Parent Account Number</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_parentAccountNumber" xlink:to="lab_cor_parentAccountNumber"/>
+    <label xlink:type="resource" xlink:label="doc_cor_parentAccountNumber" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Roll up item from child natural account to parent natural account.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_parentAccountNumber" xlink:to="doc_cor_parentAccountNumber"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_purposeOfAccount" xlink:label="loc_cor_purposeOfAccount"/>
+    <label xlink:type="resource" xlink:label="lab_cor_purposeOfAccount" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Purpose of Account</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_purposeOfAccount" xlink:to="lab_cor_purposeOfAccount"/>
+    <label xlink:type="resource" xlink:label="doc_cor_purposeOfAccount" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Code related to usage for account aggregate - Consolidating, European, IFRS, Offsetting, Primary, Tax, USGAAP, Japanese, Other. Japanese companies will use this for the tax required offsetting entry. If left blank, assumes default accounting method for company.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_purposeOfAccount" xlink:to="doc_cor_purposeOfAccount"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_purposeOfAccountDescription" xlink:label="loc_cor_purposeOfAccountDescription"/>
+    <label xlink:type="resource" xlink:label="lab_cor_purposeOfAccountDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Purpose of Account Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_purposeOfAccountDescription" xlink:to="lab_cor_purposeOfAccountDescription"/>
+    <label xlink:type="resource" xlink:label="doc_cor_purposeOfAccountDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Description of usage for aggregate account</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_purposeOfAccountDescription" xlink:to="doc_cor_purposeOfAccountDescription"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_accountType" xlink:label="loc_cor_accountType"/>
+    <label xlink:type="resource" xlink:label="lab_cor_accountType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Account Type</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountType" xlink:to="lab_cor_accountType"/>
+    <label xlink:type="resource" xlink:label="doc_cor_accountType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Type of account. Enumerated as: account, bank, employee, customer, job, vendor, measurable, statistical, other.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountType" xlink:to="doc_cor_accountType"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_accountTypeDescription" xlink:label="loc_cor_accountTypeDescription"/>
+    <label xlink:type="resource" xlink:label="lab_cor_accountTypeDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Account Type Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountTypeDescription" xlink:to="lab_cor_accountTypeDescription"/>
+    <label xlink:type="resource" xlink:label="doc_cor_accountTypeDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Free format description of the account type</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountTypeDescription" xlink:to="doc_cor_accountTypeDescription"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_accountingMethod" xlink:label="loc_cor_accountingMethod"/>
+    <label xlink:type="resource" xlink:label="lab_cor_accountingMethod" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Accounting Method</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountingMethod" xlink:to="lab_cor_accountingMethod"/>
+    <label xlink:type="resource" xlink:label="doc_cor_accountingMethod" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">For this entry, the method of accounting represented - from: accrual, cash, modified cash, modified accrual, encumbrance, special methods, hybrid methods, other</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountingMethod" xlink:to="doc_cor_accountingMethod"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_accountingMethodDescription" xlink:label="loc_cor_accountingMethodDescription"/>
+    <label xlink:type="resource" xlink:label="lab_cor_accountingMethodDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Accounting Method Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountingMethodDescription" xlink:to="lab_cor_accountingMethodDescription"/>
+    <label xlink:type="resource" xlink:label="doc_cor_accountingMethodDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Free format description of the entry accounting method</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountingMethodDescription" xlink:to="doc_cor_accountingMethodDescription"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_accountingMethodPurpose" xlink:label="loc_cor_accountingMethodPurpose"/>
+    <label xlink:type="resource" xlink:label="lab_cor_accountingMethodPurpose" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Accounting Method Purpose</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountingMethodPurpose" xlink:to="lab_cor_accountingMethodPurpose"/>
+    <label xlink:type="resource" xlink:label="doc_cor_accountingMethodPurpose" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">For this entry, the reporting purpose represented - from book, tax, management, statutory, other</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountingMethodPurpose" xlink:to="doc_cor_accountingMethodPurpose"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_accountingMethodPurposeDescription" xlink:label="loc_cor_accountingMethodPurposeDescription"/>
+    <label xlink:type="resource" xlink:label="lab_cor_accountingMethodPurposeDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Accounting Method Purpose Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountingMethodPurposeDescription" xlink:to="lab_cor_accountingMethodPurposeDescription"/>
+    <label xlink:type="resource" xlink:label="doc_cor_accountingMethodPurposeDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Free format description of the entry accounting method purpose</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountingMethodPurposeDescription" xlink:to="doc_cor_accountingMethodPurposeDescription"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_accountActive" xlink:label="loc_cor_accountActive"/>
+    <label xlink:type="resource" xlink:label="lab_cor_accountActive" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Account Active</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountActive" xlink:to="lab_cor_accountActive"/>
+    <label xlink:type="resource" xlink:label="doc_cor_accountActive" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Boolean to indicate whether the account is active (="true") or inactive (="false")</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountActive" xlink:to="doc_cor_accountActive"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_subaccountDescription" xlink:label="loc_cor_subaccountDescription"/>
+    <label xlink:type="resource" xlink:label="lab_cor_subaccountDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Subaccount Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_subaccountDescription" xlink:to="lab_cor_subaccountDescription"/>
+    <label xlink:type="resource" xlink:label="doc_cor_subaccountDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">The description that accompanies accountSubID belongs here.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_subaccountDescription" xlink:to="doc_cor_subaccountDescription"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_subaccountId" xlink:label="loc_cor_subaccountId"/>
+    <label xlink:type="resource" xlink:label="lab_cor_subaccountId" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Subaccount ID</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_subaccountId" xlink:to="lab_cor_subaccountId"/>
+    <label xlink:type="resource" xlink:label="doc_cor_subaccountId" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Where the primary account was placed in accountMainID, the code used for each profit center, division, business unit, fund, program, branch, project, class, su-class or other modifier is placed here.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_subaccountId" xlink:to="doc_cor_subaccountId"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_type" xlink:label="loc_cor_type"/>
+    <label xlink:type="resource" xlink:label="lab_cor_type" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Type</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_type" xlink:to="lab_cor_type"/>
+    <label xlink:type="resource" xlink:label="doc_cor_type" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Type of sub-account - profit center, division, business unit, fund, program, branch, project, class, su-class or other modifier is placed here. For example:: Accountability center: Business unit: Class:Department: Project: Fund: Program:Job: Profit center: Branch: Setup class: Division: Unit</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_type" xlink:to="doc_cor_type"/>
+    <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_parentSubaccountCode" xlink:label="loc_cor_parentSubaccountCode"/>
+    <label xlink:type="resource" xlink:label="lab_cor_parentSubaccountCode" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Parent Subaccount Code</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_parentSubaccountCode" xlink:to="lab_cor_parentSubaccountCode"/>
+    <label xlink:type="resource" xlink:label="doc_cor_parentSubaccountCode" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Subaccount NUMBER this subaccount rolls up to - see also subaccount type it rolls up to.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_parentSubaccountCode" xlink:to="doc_cor_parentSubaccountCode"/>
   </labelLink>
 </linkbase>

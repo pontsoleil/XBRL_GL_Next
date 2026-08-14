@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: MIT
-"""Static conformance checks for the accepted 56-file XBRL GL Next package.
+"""Static conformance checks for the accepted XBRL GL Next package.
 
 2026-08-12 binding-specific module presentation contract:
 
@@ -42,16 +42,25 @@ XLINK_ARCROLE = f"{{{XLINK}}}arcrole"
 PRESENTATION_REF_ROLE = "http://www.xbrl.org/2003/role/presentationLinkbaseRef"
 
 VERSION_DEFAULT = "2026-12-31"
-MODULES = ("btx", "bus", "cor", "lnk", "taf")
+MODULES = ("btx", "bus", "cor", "ehm", "lnk", "muc", "taf")
 HMD_PREFIXES = {
     "cor_accountingEntries": "cor",
     "btx_businessTransactions": "btx",
 }
-HMD_OIM_MODULE_COUNTS = {
-    "cor_accountingEntries": 4,
-    "btx_businessTransactions": 5,
+HMD_MODULES = {
+    "cor_accountingEntries": ("bus", "cor", "ehm", "lnk", "muc", "taf"),
+    "btx_businessTransactions": (
+        "btx", "bus", "cor", "ehm", "lnk", "muc", "taf",
+    ),
 }
-EXPECTED_FILE_COUNT = 56
+# One generic schema, eight binding-specific artefacts per module, and for each
+# HMD one Tuple entry point, one Tuple content schema per used module, one OIM
+# entry point, and one dimensional linkbase.
+EXPECTED_FILE_COUNT = (
+    1
+    + 8 * len(MODULES)
+    + sum(len(modules) + 3 for modules in HMD_MODULES.values())
+)
 RESERVED_TOP_LEVEL = {"gen", "tuple", "oim"}
 
 
@@ -404,8 +413,8 @@ def main() -> int:
                             f"dimensional-only concept {href!r}"
                         )
 
-    # OIM entry-point imports must use only OIM module schemas (besides remote
-    # standard imports).  Current formal HMDs discover 4 and 5 module schemas.
+    # OIM entry-point imports must use exactly the OIM schemas for the modules
+    # declared by the current formal HMD contract (besides remote imports).
     for hmd, prefix in HMD_PREFIXES.items():
         oim_entry = entries[f"oim:{hmd}"]
         if not oim_entry.exists():
@@ -423,11 +432,14 @@ def main() -> int:
                 f"{oim_entry.relative_to(root)} imports Tuple module schema(s): "
                 f"{tuple_module_imports}"
             )
-        expected_count = HMD_OIM_MODULE_COUNTS[hmd]
-        if len(oim_module_imports) != expected_count:
+        expected_imports = [
+            f"../../{module}/{module}-oim-{version}.xsd"
+            for module in HMD_MODULES[hmd]
+        ]
+        if sorted(oim_module_imports) != sorted(expected_imports):
             failures.append(
-                f"{oim_entry.relative_to(root)} OIM module import count "
-                f"{len(oim_module_imports)} != {expected_count}"
+                f"{oim_entry.relative_to(root)} OIM module imports "
+                f"{sorted(oim_module_imports)!r} != {sorted(expected_imports)!r}"
             )
 
     # Tuple entry points must not import module OIM schemas.

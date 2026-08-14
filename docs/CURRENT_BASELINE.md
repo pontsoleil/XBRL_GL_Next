@@ -6,26 +6,26 @@
 
 - branch: `main`
 - upstream: `origin/main`
-- code baseline commit: `ce18a50c67c18ac2b5df0d71c429097c210b4f80`
-- subject: `Fix semantic path normalization and update Part 1`
+- pre-sync baseline commit: `479d50fba73800c53e4439708f407b5de4b3eb24`
+- pre-sync subject: `Add project baseline and handoff records`
 - 記録時点のahead/behind: `0/0`
-- 本文書を追加するdocumentation commitは自己参照を避けるため固定値として記録しない。最新値は`git rev-parse HEAD`で確認する。
+- 本更新を含むcommitは自己参照を避けるため固定値として記録しない。最新値は`git rev-parse HEAD`で確認する。
 
 ## 正式入力
 
 |相対パス|用途|SHA-256|
 |---|---|---|
-|`semantic-model/LHM/LHM_candidate.csv`|Graph Walk candidate LHM|`7679BAA3BEC60B187ACD033239FF6D3B1A2CC3092171A7F3FFEA07F7B2694721`|
-|`semantic-model/LHM/XBRL_GL_Next_LHM_reviewed.csv`|設計者reviewed LHM|`ECDBE773CCB6408BFE702AAAF495F56049FEFB4D0A1A14D72FAB142BB8A87FB9`|
-|`semantic-model/LHM_for_taxonomy/XBRL_GL_Next_HMD_AccountingEntries_for_taxonomy.csv`|Accounting Entries HMD|`E9481DAF7A3403771FCD9F67FC078229354CEE697A7199F0943AA883648D4B29`|
-|`semantic-model/LHM_for_taxonomy/XBRL_GL_Next_HMD_BusinessTransactions_for_taxonomy.csv`|Business Transactions HMD|`A1FE079A36EB38D15911BFDE28A37FBF6470767E349FC4241AC8D632EF1D70CA`|
-|`semantic-model/LHM_for_taxonomy/manifest.csv`|正式HMD manifest|`7E96458955EB8123031D47E3039D9ECD6B06F687BB2D6AD111E5C16C52807BBA`|
+|`semantic-model/LHM/LHM_candidate.csv`|Graph Walk candidate LHM|`FF153C83629A4AE81EED2DCBFE97E6B95C6C9526013F505ADECF7808E3A9EDFA`|
+|`semantic-model/LHM/XBRL_GL_Next_LHM_reviewed.csv`|設計者reviewed LHM|`ED7FCB39664C76299BAF29F923B1CE1615658264AB02F29E8198A3154D534BEF`|
+|`semantic-model/LHM_for_taxonomy/XBRL_GL_Next_HMD_AccountingEntries_for_taxonomy.csv`|Accounting Entries HMD|`0730006AAA1F84C9E14F1347BF134F40A02A9F0B660A34849F465F57C8509E2A`|
+|`semantic-model/LHM_for_taxonomy/XBRL_GL_Next_HMD_BusinessTransactions_for_taxonomy.csv`|Business Transactions HMD|`49D54DF6536E37C3911650535E33F55AC5F6FA6E3ED620D6AC355E8ED318BE01`|
+|`semantic-model/LHM_for_taxonomy/manifest.csv`|正式HMD manifest|`9F940D302AFE041CFF3299258A6A28A0EF5077230546F8F554099CC7DC93C605`|
 
 正式処理経路はFSM → Specialisation → BSM → Graph Walk → candidate LHM → human review → Post-Graph Walk → HMD → Taxonomy Generatorである。
 
 ## 正式成果物と実装
 
-- taxonomy: 56生成ファイル
+- taxonomy: 76生成ファイル
 - Tuple entry point: Accounting Entries、Business Transactions
 - OIM entry point: Accounting Entries、Business Transactions
 - sample instance: Tuple 2件、OIM 2件
@@ -39,19 +39,17 @@
 
 ## 検証済み条件
 
-commit `ce18a50...`の受入記録:
+今回のWORK同期後の受入記録:
 
-- Graph Walk／Post-Graph Walk／semantic pipelineを含む全テスト70件成功
-- taxonomy 56ファイルの再生成一致
+- Graph Walk／Post-Graph Walk／semantic pipelineを含むpytest 70件、62 subtests成功
+- 正式FSMからtaxonomyまでの再生成内容・SHA-256一致
+- taxonomy 76ファイル、local reference 6,011件、dimensional locator 1,437件
 - repository checker failure 0、未解決file 0、未解決fragment 0
-- Arelle 2.37.77: taxonomy entry point 4件及びinstance entry point 4件でerror 0、warning 0
+- Arelle 2.23.1: taxonomy entry point 4件及びinstance entry point 4件でerror 0、warning 0
 - canonical `semantic_path`、18列契約、reviewed `local_name`／XPathを維持
-
-上記は既存baselineの検証記録であり、今回の3文書作成時には再実行していない。
 
 ## WORK差分
 
-- 正式semantic LHM/HMD、manifest、主要3実装はGIT baselineとSHA-256一致。
-- WORKのREADME及び`TaxonomyFramework/INVENTORY.md`はGIT baselineと異なる。
-- WORKのtaxonomyは58ファイル、GIT正式baselineは56ファイル。追加2件を正式成果物とみなさず、別途差分確認する。
-- WORKには復旧した`docs/ChatGPT/`及び`docs/Codex/`等の未追跡資料があるため、一括同期しない。
+- WORKの `semantic-model/` 10ファイル及び `taxonomy/` 78ファイルは、GIT側の同一相対パスとSHA-256が全件一致する。
+- 正式taxonomyはXML/XSD 76ファイルで構成し、`README.md`、`README_ja.md`は生成ファイル数に含めない。
+- WORKの対象外ディレクトリは同期していない。

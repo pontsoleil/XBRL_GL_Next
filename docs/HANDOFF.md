@@ -4,17 +4,19 @@
 
 ## 前回作業の結果
 
-- 最新正式baselineは`ce18a50c67c18ac2b5df0d71c429097c210b4f80`である。
-- `semantic_path` termをASCII英字へ正規化し、Association roleとassociated Classを直接連結するcanonical規則を実装した。
-- 空segment、兄弟衝突、Post-Graph Walkの形式・深さ・module・親path不適合をerrorにした。
-- candidate LHM、reviewed LHM、HMD 2件、manifest、Part 1、taxonomyを同期し、テスト・Arelle検証を完了した。
+- WORK側の `semantic-model/` 10ファイルと `taxonomy/` 78ファイルをGIT側の同一相対パスへ同期した。
+- 追加22、更新55、同一11で、WORK/GIT間のSHA-256は全88ファイル一致した。
+- taxonomyの正式モジュール集合へ `ehm` と `muc` を反映し、HMD別module import集合からpackage checkerの期待値を導出するよう更新した。
+- pytest 70件、62 subtests、taxonomy package checker、Arelleによるtaxonomy 4件・instance 4件の検証を完了した。
+- 本書と同一commitを最新正式baselineとし、commit IDは `git rev-parse HEAD` で確認する。
 
 ## 現在の注意事項
 
 - candidate LHMはGraph Walk生成物であり、手修正しない。
 - reviewed LHMでは確定済み`semantic_path`をPost-Graph Walkが修復・再生成しない。
 - XPathは`module`とreviewed `local_name`から生成し、`semantic_path`から独立させる。
-- WORKにはGIT baseline外の復旧資料とtaxonomy追加2件があるため、一括同期しない。
+- 正式moduleは `btx`、`bus`、`cor`、`ehm`、`lnk`、`muc`、`taf` の7件である。
+- 対象外のWORK/GITファイルを一括同期しない。
 
 ## 次の作業
 
@@ -26,6 +28,4 @@
 
 ## 未完了・未確認
 
-- WORK taxonomyの追加2ファイルの用途は未確認。
-- WORK README／inventory差分の採否は未決定。
-- Arelle 2.44.1及びXMLSpy GUIは今回再実行していない。
+- XMLSpy GUIは今回再実行していない。

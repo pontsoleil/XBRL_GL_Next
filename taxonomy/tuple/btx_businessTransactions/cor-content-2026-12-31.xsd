@@ -4,13 +4,17 @@
   xmlns:xbrli="http://www.xbrl.org/2003/instance"
   xmlns:cor="http://www.xbrl.org/int/gl/cor/2026-12-31"
   xmlns:bus="http://www.xbrl.org/int/gl/bus/2026-12-31"
+  xmlns:ehm="http://www.xbrl.org/int/gl/ehm/2026-12-31"
   xmlns:lnk="http://www.xbrl.org/int/gl/lnk/2026-12-31"
+  xmlns:muc="http://www.xbrl.org/int/gl/muc/2026-12-31"
   xmlns:taf="http://www.xbrl.org/int/gl/taf/2026-12-31"
 >
   <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
   <include schemaLocation="../../cor/cor-2026-12-31.xsd"/>
   <import namespace="http://www.xbrl.org/int/gl/bus/2026-12-31" schemaLocation="bus-content-2026-12-31.xsd"/>
+  <import namespace="http://www.xbrl.org/int/gl/ehm/2026-12-31" schemaLocation="ehm-content-2026-12-31.xsd"/>
   <import namespace="http://www.xbrl.org/int/gl/lnk/2026-12-31" schemaLocation="lnk-content-2026-12-31.xsd"/>
+  <import namespace="http://www.xbrl.org/int/gl/muc/2026-12-31" schemaLocation="muc-content-2026-12-31.xsd"/>
   <import namespace="http://www.xbrl.org/int/gl/taf/2026-12-31" schemaLocation="taf-content-2026-12-31.xsd"/>
   <!-- structural ComplexType supplied for the Palette module -->
   <complexType name="transactionDocumentInformationComplexType">
@@ -124,6 +128,110 @@
     </sequence>
     <attribute name="id" type="ID"/>
   </complexType>
+  <complexType name="detailXbrlComplexType">
+    <sequence>
+      <element ref="cor:xbrlAllocation" minOccurs="0"/>
+      <element ref="cor:xbrlSummaryReportingElement" minOccurs="0"/>
+      <element ref="cor:xbrlDetailMatchingElement" minOccurs="0"/>
+      <element ref="cor:xbrlSummaryTuplePath" minOccurs="0"/>
+      <element ref="cor:xbrlDetailedContentFilter" minOccurs="0"/>
+      <element ref="cor:xbrlReportingDateSelector" minOccurs="0"/>
+      <element ref="cor:xbrlSummaryOperator" minOccurs="0"/>
+      <element ref="cor:xbrlSummaryUnitNumerator"/>
+      <element ref="cor:xbrlSummaryUnitDenominator" minOccurs="0"/>
+      <element ref="cor:xbrlSummaryReportingTaxonomyIdReference" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="detailTaxComplexType">
+    <sequence>
+      <element ref="cor:taxAuthority" minOccurs="0"/>
+      <element ref="cor:taxTableCode" minOccurs="0"/>
+      <element ref="cor:taxDescription" minOccurs="0"/>
+      <element ref="cor:amountOfTaxes" minOccurs="0"/>
+      <element ref="cor:basisForTaxation" minOccurs="0"/>
+      <element ref="cor:taxPercentageRate" minOccurs="0"/>
+      <element ref="cor:taxCategory" minOccurs="0"/>
+      <element ref="cor:taxCommentExemptionReason" minOccurs="0"/>
+      <element ref="cor:taxAmountInForeignCurrency" minOccurs="0"/>
+      <element ref="cor:taxForeignCurrency" minOccurs="0"/>
+      <element ref="cor:taxExchangeRateDate" minOccurs="0"/>
+      <element ref="cor:taxExchangeRate" minOccurs="0"/>
+      <element ref="cor:taxExchangeRateSource" minOccurs="0"/>
+      <element ref="cor:taxExchangeRateType" minOccurs="0"/>
+      <element ref="cor:taxExchangeRateComment" minOccurs="0"/>
+      <element ref="cor:taxAmountInTriangulationCurrency" minOccurs="0"/>
+      <element ref="cor:taxTriangulationCurrency" minOccurs="0"/>
+      <element ref="cor:taxTriangulationCurrencyExchangeRate" minOccurs="0"/>
+      <element ref="cor:taxTriangulationCurrencyExchangeRateSource" minOccurs="0"/>
+      <element ref="cor:taxTriangulationCurrencyExchangeRateType" minOccurs="0"/>
+      <element ref="cor:taxForeignToTriangulationCurrencyExchangeRate" minOccurs="0"/>
+      <element ref="cor:taxForeignToTriangulationCurrencyExchangeRateSource" minOccurs="0"/>
+      <element ref="cor:taxForeignToTriangulationCurrencyExchangeRateType" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="detailExternalAuthorityComplexType">
+    <sequence>
+      <element ref="cor:detailExternalAuthorityCode" minOccurs="0"/>
+      <element ref="cor:detailExternalAuthorityName" minOccurs="0"/>
+      <element ref="cor:detailExternalAuthorityVerificationDate" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="detailIdentifierPhoneComplexType">
+    <sequence>
+      <element ref="cor:detailPhoneNumber" minOccurs="0"/>
+      <element ref="cor:detailPhoneNumberDescription" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="detailIdentifierFaxComplexType">
+    <sequence>
+      <element ref="cor:detailFaxNumber" minOccurs="0"/>
+      <element ref="cor:detailFaxNumberUsage" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="detailIdentifierEmailComplexType">
+    <sequence>
+      <element ref="cor:detailEmailAddress" minOccurs="0"/>
+      <element ref="cor:detailEmailAddressUsage" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="detailIdentifierAddressComplexType">
+    <sequence>
+      <element ref="cor:detailIdentifierAddressDescription" minOccurs="0"/>
+      <element ref="cor:detailPurpose" minOccurs="0"/>
+      <element ref="cor:detailLocationId" minOccurs="0"/>
+      <element ref="cor:detailBuildingNumber" minOccurs="0"/>
+      <element ref="cor:detailStreet" minOccurs="0"/>
+      <element ref="cor:detailAddressDetail" minOccurs="0"/>
+      <element ref="cor:detailCity" minOccurs="0"/>
+      <element ref="cor:detailStateOrProvince" minOccurs="0"/>
+      <element ref="cor:detailCountry" minOccurs="0"/>
+      <element ref="cor:detailZipOrPostalCode" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="detailIdentifierContactComplexType">
+    <sequence>
+      <element ref="cor:detailContactPrefix" minOccurs="0"/>
+      <element ref="cor:detailContactLastName" minOccurs="0"/>
+      <element ref="cor:detailContactFirstName" minOccurs="0"/>
+      <element ref="cor:detailContactSuffix" minOccurs="0"/>
+      <element ref="cor:detailContactAttentionLine" minOccurs="0"/>
+      <element ref="cor:detailContactPositionRole" minOccurs="0"/>
+      <element ref="cor:detailContactContactType" minOccurs="0"/>
+      <element ref="cor:detailContactLocationIdCrossReference" minOccurs="0"/>
+      <element ref="cor:detailContactActive" minOccurs="0"/>
+      <element ref="bus:detailContactPhone" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:detailContactFax" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:detailContactEmail" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
   <complexType name="accountingEntriesComplexType">
     <sequence>
       <element ref="cor:documentInformation"/>
@@ -219,6 +327,16 @@
       <element ref="cor:measurableClassDescription" minOccurs="0"/>
       <element ref="cor:geospatialCoordinate" minOccurs="0"/>
       <element ref="taf:detailOriginatingDriginatingDocument" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="muc:detailMulticurrency" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:detailIdentifierReference" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:detailXbrl" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:detailMeasurable" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:detailJob" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:detailDepreciationMortgage" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="ehm:detailSerialOrLot" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:detailTax" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="lnk:detailRichTextComment" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:detailAccountIdentifier" minOccurs="0" maxOccurs="unbounded"/>
       <element ref="cor:detailDescription" minOccurs="0"/>
       <element ref="cor:monetaryAmount" minOccurs="0"/>
       <element ref="cor:currency" minOccurs="0"/>
@@ -243,6 +361,60 @@
   <complexType name="detailDocumentComplexType">
     <sequence>
       <element ref="cor:detailDocumentNumber" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="detailIdentifierReferenceComplexType">
+    <sequence>
+      <element ref="cor:identifierCode" minOccurs="0"/>
+      <element ref="cor:identifierPurpose" minOccurs="0"/>
+      <element ref="cor:identifierActive" minOccurs="0"/>
+      <element ref="cor:identifierOrganizationType" minOccurs="0"/>
+      <element ref="cor:identifierOrganizationTypeDescription" minOccurs="0"/>
+      <element ref="cor:identifierDescription" minOccurs="0"/>
+      <element ref="cor:identifierType" minOccurs="0"/>
+      <element ref="cor:identifierCategory" minOccurs="0"/>
+      <element ref="cor:externalAuthority" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:identifierPhone" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:identifierFax" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:identifierEmail" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:identifierAddress" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:identifierContact" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="detailAccountIdentifierComplexType">
+    <sequence>
+      <element ref="cor:accountNumber" minOccurs="0"/>
+      <element ref="cor:accountDescription" minOccurs="0"/>
+      <element ref="cor:accountClassification" minOccurs="0"/>
+      <element ref="cor:accountClassificationDescription" minOccurs="0"/>
+      <element ref="cor:parentAccountNumber" minOccurs="0"/>
+      <element ref="cor:purposeOfAccount" minOccurs="0"/>
+      <element ref="cor:purposeOfAccountDescription" minOccurs="0"/>
+      <element ref="cor:accountType" minOccurs="0"/>
+      <element ref="cor:accountTypeDescription" minOccurs="0"/>
+      <element ref="cor:accountingMethod" minOccurs="0"/>
+      <element ref="cor:accountingMethodDescription" minOccurs="0"/>
+      <element ref="cor:accountingMethodPurpose" minOccurs="0"/>
+      <element ref="cor:accountingMethodPurposeDescription" minOccurs="0"/>
+      <element ref="cor:accountActive" minOccurs="0"/>
+      <element ref="cor:subaccount" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="subaccountComplexType">
+    <sequence>
+      <element ref="cor:subaccountDescription" minOccurs="0"/>
+      <element ref="cor:subaccountId" minOccurs="0"/>
+      <element ref="cor:type" minOccurs="0"/>
+      <element ref="cor:parentSubaccount" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="parentSubaccountComplexType">
+    <sequence>
+      <element ref="cor:parentSubaccountCode" minOccurs="0"/>
     </sequence>
     <attribute name="id" type="ID"/>
   </complexType>

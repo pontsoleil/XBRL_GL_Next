@@ -3,12 +3,20 @@
   xmlns="http://www.w3.org/2001/XMLSchema"
   xmlns:xbrli="http://www.xbrl.org/2003/instance"
   xmlns:btx="http://www.xbrl.org/int/gl/btx/2026-12-31"
+  xmlns:bus="http://www.xbrl.org/int/gl/bus/2026-12-31"
   xmlns:cor="http://www.xbrl.org/int/gl/cor/2026-12-31"
+  xmlns:ehm="http://www.xbrl.org/int/gl/ehm/2026-12-31"
+  xmlns:lnk="http://www.xbrl.org/int/gl/lnk/2026-12-31"
+  xmlns:muc="http://www.xbrl.org/int/gl/muc/2026-12-31"
   xmlns:taf="http://www.xbrl.org/int/gl/taf/2026-12-31"
 >
   <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
   <include schemaLocation="../../btx/btx-2026-12-31.xsd"/>
+  <import namespace="http://www.xbrl.org/int/gl/bus/2026-12-31" schemaLocation="bus-content-2026-12-31.xsd"/>
   <import namespace="http://www.xbrl.org/int/gl/cor/2026-12-31" schemaLocation="cor-content-2026-12-31.xsd"/>
+  <import namespace="http://www.xbrl.org/int/gl/ehm/2026-12-31" schemaLocation="ehm-content-2026-12-31.xsd"/>
+  <import namespace="http://www.xbrl.org/int/gl/lnk/2026-12-31" schemaLocation="lnk-content-2026-12-31.xsd"/>
+  <import namespace="http://www.xbrl.org/int/gl/muc/2026-12-31" schemaLocation="muc-content-2026-12-31.xsd"/>
   <import namespace="http://www.xbrl.org/int/gl/taf/2026-12-31" schemaLocation="taf-content-2026-12-31.xsd"/>
   <!-- structural ComplexType supplied for the Palette module -->
   <complexType name="businessTransactionsComplexType">
@@ -139,9 +147,37 @@
       <element ref="btx:measurableClassDescription" minOccurs="0"/>
       <element ref="btx:geospatialCoordinate" minOccurs="0"/>
       <element ref="taf:originatingDocument" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="muc:detailMulticurrency" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="btx:detailIdentifierReference" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:detailXbrl" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:detailMeasurable" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:detailJob" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:detailDepreciationMortgage" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="ehm:detailSerialOrLot" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:detailTax" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="lnk:detailRichTextComment" minOccurs="0" maxOccurs="unbounded"/>
       <element ref="btx:detailDescription" minOccurs="0"/>
       <element ref="btx:detailMeasurableClassIdentifier" minOccurs="0"/>
       <element ref="btx:detailAmountStructure" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="detailIdentifierReferenceComplexType">
+    <sequence>
+      <element ref="btx:detailIdentifierCode" minOccurs="0"/>
+      <element ref="btx:detailIdentifierPurpose" minOccurs="0"/>
+      <element ref="btx:detailIdentifierActive" minOccurs="0"/>
+      <element ref="btx:detailIdentifierOrganizationType" minOccurs="0"/>
+      <element ref="btx:detailIdentifierOrganizationTypeDescription" minOccurs="0"/>
+      <element ref="btx:detailIdentifierDescription" minOccurs="0"/>
+      <element ref="btx:detailIdentifierType" minOccurs="0"/>
+      <element ref="btx:detailIdentifierCategory" minOccurs="0"/>
+      <element ref="cor:detailExternalAuthority" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:detailIdentifierPhone" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:detailIdentifierFax" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:detailIdentifierEmail" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:detailIdentifierAddress" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="cor:detailIdentifierContact" minOccurs="0" maxOccurs="unbounded"/>
     </sequence>
     <attribute name="id" type="ID"/>
   </complexType>

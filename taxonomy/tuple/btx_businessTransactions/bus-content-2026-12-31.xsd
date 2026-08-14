@@ -218,4 +218,67 @@
     </sequence>
     <attribute name="id" type="ID"/>
   </complexType>
+  <complexType name="detailMeasurableComplexType">
+    <sequence>
+      <element ref="bus:measurableCode" minOccurs="0"/>
+      <element ref="bus:measurableCodeDescription" minOccurs="0"/>
+      <element ref="bus:measurableCategory" minOccurs="0"/>
+      <element ref="bus:measurableIdentification" minOccurs="0"/>
+      <element ref="bus:schemaForMeasurableIdentification" minOccurs="0"/>
+      <element ref="bus:secondaryMeasurableCode" minOccurs="0"/>
+      <element ref="bus:schemaForSecondaryMeasurableIdentification" minOccurs="0"/>
+      <element ref="bus:measurableDescription" minOccurs="0"/>
+      <element ref="bus:measurableQuantity" minOccurs="0"/>
+      <element ref="bus:measurableQualifier" minOccurs="0"/>
+      <element ref="bus:measurableUnitOfMeasure" minOccurs="0"/>
+      <element ref="bus:measurablePerUnitCostPrice" minOccurs="0"/>
+      <element ref="bus:measurableStartTime" minOccurs="0"/>
+      <element ref="bus:measurableEndTime" minOccurs="0"/>
+      <element ref="bus:measurableActive" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="detailJobComplexType">
+    <sequence>
+      <element ref="bus:jobId" minOccurs="0"/>
+      <element ref="bus:jobDescription" minOccurs="0"/>
+      <element ref="bus:jobPhase" minOccurs="0"/>
+      <element ref="bus:jobPhaseDescription" minOccurs="0"/>
+      <element ref="bus:jobActive" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="detailDepreciationMortgageComplexType">
+    <sequence>
+      <element ref="bus:depreciationMortgageJurisdiction" minOccurs="0"/>
+      <element ref="bus:depreciationMethod" minOccurs="0"/>
+      <element ref="bus:depreciationMortgageLife" minOccurs="0"/>
+      <element ref="bus:depreciationMortgageDescription" minOccurs="0"/>
+      <element ref="bus:depreciationMortgageStartDate" minOccurs="0"/>
+      <element ref="bus:depreciationMortgageEndDate" minOccurs="0"/>
+      <element ref="bus:depreciationMortgageAmount" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="detailContactPhoneComplexType">
+    <sequence>
+      <element ref="bus:detailPhoneNumber" minOccurs="0"/>
+      <element ref="bus:detailPhoneNumberDescription" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="detailContactFaxComplexType">
+    <sequence>
+      <element ref="bus:detailFaxNumber" minOccurs="0"/>
+      <element ref="bus:detailFaxNumberUsage" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="detailContactEmailComplexType">
+    <sequence>
+      <element ref="bus:detailEmailAddress" minOccurs="0"/>
+      <element ref="bus:detailEmailAddressUsage" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
 </schema>
