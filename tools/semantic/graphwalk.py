@@ -128,20 +128,26 @@ def display_association(role: str, associated_class: str) -> str:
     return f"{role}_ {associated_class}" if role else associated_class
 
 
+def normalize_semantic_path_term(term: str) -> str:
+    """Remove every character except ASCII letters from a path term."""
+    normalized = re.sub(r"[^A-Za-z]", "", term or "")
+    if not normalized:
+        raise GraphWalkError(
+            f"semantic_path term contains no ASCII letters: {term!r}"
+        )
+    return normalized
+
+
 def semantic_path_term(module: str, term: str) -> str:
     """Return a module-qualified semantic-model identifier path segment."""
-    collapsed_term = re.sub(r"\s+", "", term)
-    return f"{module_value(module)}_{collapsed_term}"
+    return f"{module_value(module)}_{normalize_semantic_path_term(term)}"
 
 
 def semantic_path_association(
     module: str, role: str, associated_class: str
 ) -> str:
     """Return the Association segment used only in semantic_path."""
-    role_segment = re.sub(r"\s+", "", role)
-    class_segment = re.sub(r"\s+", "", associated_class)
-    term = f"{role_segment}_{class_segment}" if role_segment else class_segment
-    return f"{module_value(module)}_{term}"
+    return semantic_path_term(module, f"{role}{associated_class}")
 
 
 def name_words(value: str) -> list[str]:
@@ -226,11 +232,85 @@ class GraphWalk:
         self.classes: OrderedDict[tuple[str, str], BSMClass] = OrderedDict()
         self.rows: list[dict[str, str]] = []
         self._semantic_paths: dict[str, int] = {}
+        self._normalized_path_terms: dict[
+            tuple[str, str, str], tuple[str, int, str]
+        ] = {}
         self._source_bsm_ids: dict[str, tuple[int, str]] = {}
         self._local_name_occurrences: dict[
             tuple[str, str], list[dict[str, object]]
         ] = {}
         self.diagnostics: list[dict[str, object]] = []
+
+    def semantic_path_segment(
+        self,
+        module: str,
+        normalization_source: str,
+        *,
+        parent_segments: Sequence[str],
+        bsm_line: int,
+        source_bsm_id: str,
+        original_term: str | None = None,
+    ) -> str:
+        """Build one canonical segment and reject lossy sibling collisions."""
+        parent_path = "$" + (
+            "." + ".".join(parent_segments) if parent_segments else ""
+        )
+        source = normalization_source or ""
+        origin = source if original_term is None else original_term
+        module = module_value(module)
+        try:
+            normalized = normalize_semantic_path_term(source)
+        except GraphWalkError as exc:
+            self.diagnostic(
+                "error",
+                "SEMANTIC_PATH_TERM_EMPTY_AFTER_NORMALIZATION",
+                "semantic_path term is empty after ASCII-letter normalization",
+                bsm_line=bsm_line,
+                source_bsm_id=source_bsm_id,
+                original_term=origin,
+                parent_semantic_path=parent_path,
+                module=module,
+            )
+            raise GraphWalkError(
+                f"{self.bsm_file}:{bsm_line}: semantic_path term {origin!r} "
+                f"under parent {parent_path!r} and module {module!r} contains "
+                "no ASCII letters"
+            ) from exc
+
+        key = (parent_path, module, normalized)
+        prior = self._normalized_path_terms.get(key)
+        if prior is not None and prior[0] != origin:
+            prior_origin, prior_line, prior_id = prior
+            semantic_path = f"{parent_path}.{module}_{normalized}"
+            self.diagnostic(
+                "error",
+                "SEMANTIC_PATH_NORMALIZATION_COLLISION",
+                "different source terms normalize to the same semantic_path",
+                bsm_line=bsm_line,
+                source_bsm_id=source_bsm_id,
+                original_term=origin,
+                first_original_term=prior_origin,
+                first_bsm_line=prior_line,
+                first_source_bsm_id=prior_id,
+                parent_semantic_path=parent_path,
+                module=module,
+                normalized_term=normalized,
+                semantic_path=semantic_path,
+            )
+            raise GraphWalkError(
+                f"{self.bsm_file}:{bsm_line}: semantic_path normalization "
+                f"collision under parent {parent_path!r} and module {module!r}: "
+                f"{prior_origin!r} (line {prior_line}, id {prior_id!r}) and "
+                f"{origin!r} (id {source_bsm_id!r}) both produce "
+                f"{semantic_path!r}"
+            )
+        if prior is None:
+            self._normalized_path_terms[key] = (
+                origin,
+                bsm_line,
+                source_bsm_id,
+            )
+        return f"{module}_{normalized}"
 
     def validate_paths(self) -> None:
         paths = [
@@ -595,7 +675,13 @@ class GraphWalk:
                     row,
                     [
                         *segments,
-                        semantic_path_term(values["module"], values["property_term"]),
+                        self.semantic_path_segment(
+                            values["module"],
+                            values["property_term"],
+                            parent_segments=segments,
+                            bsm_line=item.line,
+                            source_bsm_id=values["id"],
+                        ),
                     ],
                 )
                 continue
@@ -606,9 +692,19 @@ class GraphWalk:
             association_name = display_association(
                 values["association_role"], values["associated_class"]
             )
-            association_path_segment = semantic_path_association(
-                values["module"], values["association_role"],
-                values["associated_class"]
+            association_source = (
+                f"{values['association_role']}{values['associated_class']}"
+            )
+            association_path_segment = self.semantic_path_segment(
+                values["module"],
+                association_source,
+                parent_segments=segments,
+                bsm_line=item.line,
+                source_bsm_id=values["id"],
+                original_term=(
+                    f"role={values['association_role']!r}, "
+                    f"associated_class={values['associated_class']!r}"
+                ),
             )
             if kind in COMPOSITION_TYPES:
                 target = self.classes[target_key]
@@ -711,8 +807,12 @@ class GraphWalk:
                     ref,
                     [
                         *reference_segments,
-                        semantic_path_term(
-                            pk_values["module"], pk_values["property_term"]
+                        self.semantic_path_segment(
+                            pk_values["module"],
+                            pk_values["property_term"],
+                            parent_segments=reference_segments,
+                            bsm_line=pk.line,
+                            source_bsm_id=pk_values["id"],
                         ),
                     ],
                 )
@@ -723,7 +823,15 @@ class GraphWalk:
         for root_key in self.resolve_roots():
             definition = self.classes[root_key]
             values = definition.row.values
-            root_segments = [semantic_path_term(root_key[0], root_key[1])]
+            root_segments = [
+                self.semantic_path_segment(
+                    root_key[0],
+                    root_key[1],
+                    parent_segments=[],
+                    bsm_line=definition.row.line,
+                    source_bsm_id=values["id"],
+                )
+            ]
             root = self.base_row(
                 module=root_key[0],
                 level=1,

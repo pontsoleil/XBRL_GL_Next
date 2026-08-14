@@ -430,8 +430,64 @@ class GraphWalkTests(unittest.TestCase):
         self.assertEqual(output[0]["semantic_path"], "$.tst_Root")
         self.assertEqual(output[1]["semantic_path"], "$.tst_Root.tst_RootID")
         self.assertEqual(
-            output[2]["semantic_path"], "$.tst_Root.tst_Child_Child"
+            output[2]["semantic_path"], "$.tst_Root.tst_ChildChild"
         )
+
+    def test_semantic_path_term_normalization_removes_non_ascii_letters(self):
+        cases = {
+            "Entry Header": "EntryHeader",
+            "Entry_Header": "EntryHeader",
+            "Debit/CreditIndicator": "DebitCreditIndicator",
+            "Amount-Type (2)": "AmountType",
+            "Mixed.Case, Value": "MixedCaseValue",
+        }
+        for source, expected in cases.items():
+            with self.subTest(source=source):
+                self.assertEqual(
+                    MODULE.normalize_semantic_path_term(source), expected
+                )
+        self.assertEqual(
+            MODULE.semantic_path_association("cor", "Seller", "Party"),
+            "cor_SellerParty",
+        )
+
+    def test_semantic_path_term_empty_after_normalization_is_rejected(self):
+        for source in ("", "_-/(),. 21378", "売上123"):
+            with self.subTest(source=source):
+                with self.assertRaisesRegex(
+                    MODULE.GraphWalkError, "no ASCII letters"
+                ):
+                    MODULE.normalize_semantic_path_term(source)
+
+        rows = self.model()
+        rows[1]["property_term"] = "_-/ 21378"
+        with self.assertRaisesRegex(
+            MODULE.GraphWalkError,
+            ":3:.*parent '\\$.tst_Root'.*module 'tst'.*no ASCII letters",
+        ):
+            self.run_model(rows)
+
+    def test_semantic_path_normalization_collision_reports_both_terms(self):
+        rows = self.model()
+        rows.insert(
+            2,
+            row(
+                sequence="2a",
+                level="2",
+                property_type="Attribute",
+                module="tst",
+                class_term="Root",
+                property_term="Root_ID",
+                representation_term="Identifier",
+                multiplicity="0..1",
+                id="TS01-01B",
+            ),
+        )
+        with self.assertRaisesRegex(
+            MODULE.GraphWalkError,
+            "normalization collision.*'Root ID'.*'Root_ID'.*tst_RootID",
+        ):
+            self.run_model(rows)
 
     def test_initial_lower_camel_local_names_and_hierarchical_xpaths(self):
         _, output, _ = self.run_model(self.model())
@@ -484,7 +540,7 @@ class GraphWalkTests(unittest.TestCase):
         association = output[2]
         self.assertEqual(association["name"], "Seller Party_ Child")
         self.assertEqual(
-            association["semantic_path"], "$.tst_Root.tst_SellerParty_Child"
+            association["semantic_path"], "$.tst_Root.tst_SellerPartyChild"
         )
 
     def test_duplicate_local_name_is_nonblocking_review_diagnostic(self):

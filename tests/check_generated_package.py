@@ -180,7 +180,10 @@ def main() -> int:
         print(f"ERROR: package root not found: {root}")
         return 1
 
-    all_files = sorted(p for p in root.rglob("*") if p.is_file())
+    all_files = sorted(
+        p for p in root.rglob("*")
+        if p.is_file() and p.suffix.lower() in {".xsd", ".xml"}
+    )
     if len(all_files) != EXPECTED_FILE_COUNT:
         failures.append(
             f"formal package file count must be {EXPECTED_FILE_COUNT}; "

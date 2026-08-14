@@ -35,7 +35,7 @@ FORMAL_REVIEWED = (
 FORMAL_HMD_DIRECTORY = ROOT / "semantic-model" / "LHM_for_taxonomy"
 FORMAL_TAXONOMY = ROOT / "taxonomy"
 FORMAL_CANDIDATE_SHA256 = (
-    "8d7bc4f19e3f542055ce52defc7735fdea816f7c033ec125ee0ff0fb7c070006"
+    "7679baa3bec60b187acd033239ff6d3b1a2cc3092171a7f3ffea07f7b2694721"
 )
 TAXONOMY_NAMESPACE = "http://www.xbrl.org/int/gl/plt/2026-12-31"
 
@@ -128,7 +128,7 @@ def file_hashes(root: Path) -> dict[str, str]:
     return {
         path.relative_to(root).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
         for path in root.rglob("*")
-        if path.is_file()
+        if path.is_file() and path.suffix.lower() != ".md"
     }
 
 

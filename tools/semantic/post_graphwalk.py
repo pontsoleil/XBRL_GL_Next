@@ -45,6 +45,9 @@ ROW_TYPES = {"C", "A", "R"}
 MULTIPLICITIES = {"0..0", "0..1", "0..*", "1", "1..1", "1..*"}
 NCNAME = re.compile(r"^[A-Za-z_][A-Za-z0-9._-]*$")
 IDENTIFIER_WORD = re.compile(r"[A-Za-z0-9]+")
+SEMANTIC_PATH_SEGMENT = re.compile(
+    r"^(?P<module>[A-Za-z][A-Za-z0-9]*)_(?P<term>[A-Za-z]+)$"
+)
 DIAGNOSTIC_CSV_HEADER = [
     "severity", "error_code", "message", "rule", "actual_value",
     "expected_value", "lhm_row", "sequence", "hmd_identifier",
@@ -348,6 +351,91 @@ class PostGraphWalk:
                 local_name, "valid NCName", row,
             )
 
+    def validate_semantic_path(
+        self,
+        row: Mapping[str, str],
+        identifier: str,
+        ancestors: Sequence[tuple[int, str, str]],
+    ) -> None:
+        """Reject noncanonical paths without repairing reviewed values."""
+        semantic_path = row["semantic_path"]
+        if not semantic_path:
+            return
+        if not semantic_path.startswith("$."):
+            self.record_error(
+                "NONCANONICAL_SEMANTIC_PATH",
+                f"semantic_path does not start with '$.': {semantic_path!r}",
+                "semantic_path must start with '$.' and contain canonical segments.",
+                semantic_path,
+                "$.<module>_<ASCII-letters>[.<module>_<ASCII-letters>...]",
+                row,
+                hmd=identifier,
+            )
+            return
+
+        raw_segments = semantic_path[2:].split(".")
+        parsed: list[tuple[str, str]] = []
+        for segment in raw_segments:
+            match = SEMANTIC_PATH_SEGMENT.fullmatch(segment)
+            if match is None:
+                self.record_error(
+                    "NONCANONICAL_SEMANTIC_PATH",
+                    f"semantic_path contains a noncanonical segment: {segment!r}",
+                    "Each segment must be <module>_<term>, where term is one or "
+                    "more ASCII letters and contains no separators or digits.",
+                    semantic_path,
+                    "$.<module>_<ASCII-letters>[.<module>_<ASCII-letters>...]",
+                    row,
+                    hmd=identifier,
+                )
+                return
+            parsed.append((match.group("module"), match.group("term")))
+
+        level = int(row.get("_level_int", "0"))
+        if len(parsed) != level:
+            self.record_error(
+                "SEMANTIC_PATH_DEPTH_MISMATCH",
+                f"semantic_path has {len(parsed)} segment(s) at level {level}",
+                "semantic_path segment count must equal the reviewed hierarchy level.",
+                str(len(parsed)),
+                str(level),
+                row,
+                hmd=identifier,
+            )
+
+        actual_module = parsed[-1][0]
+        expected_module = (
+            ancestors[-1][2]
+            if ancestors and row["type"] in {"C", "R"}
+            else row["module"]
+        )
+        if actual_module != expected_module:
+            self.record_error(
+                "SEMANTIC_PATH_MODULE_MISMATCH",
+                "semantic_path segment module does not match Graph Walk rules",
+                "A root or Attribute segment uses the row module; a non-root C/R "
+                "Association segment uses its immediate parent C/R module.",
+                actual_module,
+                expected_module,
+                row,
+                hmd=identifier,
+            )
+
+        if ancestors and len(parsed) > 1:
+            actual_parent = "$." + ".".join(raw_segments[:-1])
+            expected_parent = ancestors[-1][1]
+            if actual_parent != expected_parent:
+                self.record_error(
+                    "SEMANTIC_PATH_PARENT_MISMATCH",
+                    "semantic_path does not extend its immediate C/R parent path",
+                    "A child semantic_path must equal its immediate parent path plus "
+                    "one canonical segment.",
+                    actual_parent,
+                    expected_parent,
+                    row,
+                    hmd=identifier,
+                )
+
     def split_hmds(self) -> None:
         starts = [index for index, row in enumerate(self.rows)
                   if row.get("_level_int") == "1"]
@@ -403,7 +491,7 @@ class PostGraphWalk:
                 root, hmd=identifier,
             )
 
-        ancestors: list[tuple[int, str]] = []
+        ancestors: list[tuple[int, str, str]] = []
         seen_paths: dict[str, str] = {}
         excluded_level: int | None = None
         effective: list[dict[str, str]] = []
@@ -429,19 +517,22 @@ class PostGraphWalk:
                     "Every reviewed row must have a semantic_path.", "",
                     "nonempty unique semantic_path", row, hmd=identifier,
                 )
-            elif prior_path:
-                hmd["semantic_path_duplicate_count"] = int(
-                    hmd["semantic_path_duplicate_count"]
-                ) + 1
-                self.record_error(
-                    "DUPLICATE_SEMANTIC_PATH",
-                    f"duplicate semantic_path {semantic_path!r}",
-                    "semantic_path must be unique within each HMD.",
-                    semantic_path, "unique semantic_path", row, hmd=identifier,
-                    related_row=prior_path,
-                )
             else:
-                seen_paths[semantic_path] = row["_logical_row"]
+                self.validate_semantic_path(row, identifier, ancestors)
+            if semantic_path:
+                if prior_path:
+                    hmd["semantic_path_duplicate_count"] = int(
+                        hmd["semantic_path_duplicate_count"]
+                    ) + 1
+                    self.record_error(
+                        "DUPLICATE_SEMANTIC_PATH",
+                        f"duplicate semantic_path {semantic_path!r}",
+                        "semantic_path must be unique within each HMD.",
+                        semantic_path, "unique semantic_path", row, hmd=identifier,
+                        related_row=prior_path,
+                    )
+                else:
+                    seen_paths[semantic_path] = row["_logical_row"]
 
             if excluded_level is not None and level <= excluded_level:
                 excluded_level = None
@@ -457,7 +548,7 @@ class PostGraphWalk:
                 effective.append(dict(row))
 
             if row["type"] in {"C", "R"}:
-                ancestors.append((level, row["local_name"]))
+                ancestors.append((level, semantic_path, row["module"]))
 
         if not effective:
             self.record_error(
