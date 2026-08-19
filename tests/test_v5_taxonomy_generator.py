@@ -1012,5 +1012,94 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             self.assertTrue(first)
 
 
+class CliLocationTests(unittest.TestCase):
+    NAMESPACE = "http://www.xbrl.org/int/gl/plt/2026-12-31"
+
+    def parse(self, *arguments: str):
+        return MODULE.create_argument_parser().parse_args(
+            [*arguments, "--namespace", self.NAMESPACE]
+        )
+
+    def test_formal_hmd_and_output_options_are_accepted(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            args = self.parse(
+                "--hmd-dir", str(root / "hmd"),
+                "--output-dir", str(root / "output"),
+            )
+            MODULE.resolve_cli_locations(args)
+            self.assertEqual(args.lhm_for_taxonomy, str(root / "hmd"))
+            self.assertEqual(args.base_dir, str(root / "output"))
+
+    def test_legacy_positional_and_base_dir_are_accepted(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            args = self.parse(
+                str(root / "hmd"), "--base-dir", str(root / "output")
+            )
+            MODULE.resolve_cli_locations(args)
+            self.assertEqual(args.lhm_for_taxonomy, str(root / "hmd"))
+            self.assertEqual(args.base_dir, str(root / "output"))
+
+    def test_equal_legacy_and_formal_locations_are_accepted(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            hmd = str(root / "hmd")
+            output = str(root / "output")
+            args = self.parse(
+                hmd, "--hmd-dir", hmd,
+                "--base-dir", output, "--output-dir", output,
+            )
+            MODULE.resolve_cli_locations(args)
+            self.assertEqual(args.lhm_for_taxonomy, hmd)
+            self.assertEqual(args.base_dir, output)
+
+    def test_conflicting_legacy_and_formal_locations_are_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            args = self.parse(
+                str(root / "old-hmd"),
+                "--hmd-dir", str(root / "new-hmd"),
+                "--base-dir", str(root / "output"),
+            )
+            with self.assertRaisesRegex(ValueError, "Conflicting"):
+                MODULE.resolve_cli_locations(args)
+
+            args = self.parse(
+                "--hmd-dir", str(root / "hmd"),
+                "--base-dir", str(root / "old-output"),
+                "--output-dir", str(root / "new-output"),
+            )
+            with self.assertRaisesRegex(ValueError, "Conflicting"):
+                MODULE.resolve_cli_locations(args)
+
+    def test_missing_legacy_and_formal_locations_are_rejected(self):
+        with self.assertRaisesRegex(ValueError, "--hmd-dir"):
+            MODULE.resolve_cli_locations(self.parse("--output-dir", "output"))
+        with self.assertRaisesRegex(ValueError, "--output-dir"):
+            MODULE.resolve_cli_locations(self.parse("--hmd-dir", "hmd"))
+
+    def test_missing_hmd_directory_and_non_empty_output_are_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            with self.assertRaisesRegex(
+                ValueError, "requires one LHM_for_taxonomy directory"
+            ):
+                MODULE.resolve_lhm_for_taxonomy_input(
+                    str(root / "missing"), "utf-8-sig"
+                )
+
+            output = root / "output"
+            output.mkdir()
+            (output / "existing.txt").write_text("protected", encoding="utf-8")
+            args = self.parse(
+                "--hmd-dir", str(ROOT / "semantic-model" / "LHM_for_taxonomy"),
+                "--output-dir", str(output),
+            )
+            MODULE.resolve_cli_locations(args)
+            with self.assertRaisesRegex(ValueError, "must be empty"):
+                MODULE.generate_formal_hmd_package(args)
+
+
 if __name__ == "__main__":
     unittest.main()

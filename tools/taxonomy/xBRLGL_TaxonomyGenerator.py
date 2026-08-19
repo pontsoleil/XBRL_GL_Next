@@ -2814,9 +2814,45 @@ def generate_formal_hmd_package(args):
     return sorted(package_ids)
 
 
-def main():
-    global DEBUG, TRACE
+def _resolve_cli_location(legacy_value, formal_value, legacy_name, formal_name,
+                          normalizer):
+    """Resolve one legacy/formal CLI location without ambiguous precedence."""
+    if not legacy_value and not formal_value:
+        raise ValueError(
+            f"Either {legacy_name} or {formal_name} must be supplied."
+        )
+    if legacy_value and formal_value:
+        legacy_path = normalizer(legacy_value)
+        formal_path = normalizer(formal_value)
+        if legacy_path != formal_path:
+            raise ValueError(
+                f"Conflicting {legacy_name} and {formal_name} values: "
+                f"{legacy_value!r} != {formal_value!r}."
+            )
+    return formal_value or legacy_value
 
+
+def resolve_cli_locations(args):
+    """Map formal CLI locations to the unchanged legacy generation inputs."""
+    args.lhm_for_taxonomy = _resolve_cli_location(
+        args.lhm_for_taxonomy,
+        args.hmd_dir,
+        "positional lhm_for_taxonomy",
+        "--hmd-dir",
+        lambda value: Path(file_path(str(value))).resolve(),
+    )
+    args.base_dir = _resolve_cli_location(
+        args.base_dir,
+        args.output_dir,
+        "-b/--base-dir",
+        "--output-dir",
+        lambda value: Path(str(value)).resolve(),
+    )
+    return args
+
+
+def create_argument_parser():
+    """Create the backward-compatible formal package CLI parser."""
     parser = argparse.ArgumentParser(
         description=(
             "Generate the XBRL GL Next formal Tuple/OIM taxonomy package "
@@ -2825,13 +2861,25 @@ def main():
     )
     parser.add_argument(
         "lhm_for_taxonomy",
+        nargs="?",
+        help=(
+            "Legacy formal LHM_for_taxonomy directory containing the formal "
+            "HMD-for-taxonomy CSV files"
+        ),
+    )
+    parser.add_argument(
+        "--hmd-dir",
         help=(
             "Formal LHM_for_taxonomy directory containing the formal "
             "HMD-for-taxonomy CSV files"
         ),
     )
     parser.add_argument(
-        "-b", "--base-dir", dest="base_dir", required=True,
+        "-b", "--base-dir", dest="base_dir",
+        help="Legacy empty output directory for the generated package",
+    )
+    parser.add_argument(
+        "--output-dir",
         help="Empty output directory for the generated formal taxonomy package",
     )
     parser.add_argument("-l", "--lang", default="ja")
@@ -2845,12 +2893,19 @@ def main():
     parser.add_argument("-e", "--encoding", default="utf-8-sig")
     parser.add_argument("-t", "--trace", action="store_true")
     parser.add_argument("-d", "--debug", action="store_true")
+    return parser
 
+
+def main():
+    global DEBUG, TRACE
+
+    parser = create_argument_parser()
     args = parser.parse_args()
     DEBUG = args.debug
     TRACE = args.trace
 
     try:
+        resolve_cli_locations(args)
         package_ids = generate_formal_hmd_package(args)
     except (OSError, ValueError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)

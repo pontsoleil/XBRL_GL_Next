@@ -53,6 +53,19 @@ The candidate-to-reviewed LHM transition is a human review boundary. The reviewe
 - `tools/semantic/validate_lhm.py`
 - `tools/taxonomy/xBRLGL_TaxonomyGenerator.py`
 
+## Taxonomy generation
+
+The formal recommended CLI for the Taxonomy Generator is:
+
+```text
+python tools/taxonomy/xBRLGL_TaxonomyGenerator.py \
+  --hmd-dir <HMD_DIRECTORY> \
+  --output-dir <TAXONOMY_OUTPUT_DIRECTORY> \
+  --namespace <NAMESPACE>
+```
+
+The positional `lhm_for_taxonomy` argument and `-b` / `--base-dir` remain available for backward compatibility. New automation should use `--hmd-dir` and `--output-dir`.
+
 ## Canonical tests and validation
 
 - `tests/test_specialization.py`
@@ -67,7 +80,7 @@ py -m pytest tests
 py tests/check_generated_package.py taxonomy
 ```
 
-Arelle 2.44.1 is used separately to validate the four taxonomy entry points and four sample-instance entry points. See `TaxonomyFramework/INVENTORY.md` for the accepted baseline.
+Phase 1 regression validation used Arelle 2.37.77 for all four formal taxonomy entry points (two Tuple and two OIM): 4/4 passed with error 0 and warning 0. See `TaxonomyFramework/INVENTORY.md` for the accepted validation baseline.
 
 ## Repository tree
 
