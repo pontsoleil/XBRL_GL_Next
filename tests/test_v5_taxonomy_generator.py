@@ -32,7 +32,9 @@ def row(**values: str) -> dict[str, str]:
 
 
 class V5TaxonomyGeneratorTests(unittest.TestCase):
-    def make_generator(self, root: Path, rows: list[dict[str, str]]):
+    def make_generator(
+        self, root: Path, rows: list[dict[str, str]], namespace_prefix_map=None
+    ):
         root.mkdir(parents=True, exist_ok=True)
         source = root / "lhm.csv"; output = root / "out"
         with source.open("w", encoding="utf-8-sig", newline="") as handle:
@@ -44,9 +46,69 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             namespace="http://www.xbrl.org/int/gl/plt/2026-08-08",
             encoding="utf-8-sig", trace=False, debug=False, instance=False,
             taxonomy_type="tuple",
+            namespace_prefix_map=namespace_prefix_map,
         )
         generator.load_csv_data()
         return generator
+
+    def test_explicit_xpath_prefix_maps_to_hmd_module_identity(self):
+        with tempfile.TemporaryDirectory() as directory:
+            rows = [
+                row(
+                    sequence="1", module="en16931", level="1", type="C",
+                    name="Invoice", multiplicity="1", local_name="Invoice",
+                    source_bsm_id="BG-00", semantic_path="$.invoice",
+                    class_term="Invoice", xpath="/xbrli:xbrl/en:Invoice",
+                ),
+                row(
+                    sequence="2", module="en16931", level="2", type="A",
+                    name="Invoice number", datatype="String", multiplicity="1..1",
+                    local_name="InvoiceNumber", source_bsm_id="BT-1",
+                    semantic_path="$.invoice.invoiceNumber", class_term="Invoice",
+                    xpath="/xbrli:xbrl/en:Invoice/en:InvoiceNumber",
+                ),
+            ]
+            generator = self.make_generator(
+                Path(directory), rows, {"en": "en16931"}
+            )
+            self.assertEqual(
+                [record["element"] for record in generator.records],
+                ["en16931:Invoice", "en16931:InvoiceNumber"],
+            )
+            self.assertEqual(
+                generator.records[1]["expanded_name"],
+                "{http://www.xbrl.org/int/gl/en16931/2026-08-08}InvoiceNumber",
+            )
+
+    def test_unmapped_non_gl_xpath_prefix_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            rows = [
+                row(
+                    sequence="1", module="en16931", level="1", type="C",
+                    name="Invoice", multiplicity="1", local_name="Invoice",
+                    source_bsm_id="BG-00", semantic_path="$.invoice",
+                    class_term="Invoice", xpath="/xbrli:xbrl/en:Invoice",
+                )
+            ]
+            with self.assertRaises(SystemExit):
+                self.make_generator(Path(directory), rows)
+
+    def test_conventional_gl_prefix_resolution_is_unchanged(self):
+        with tempfile.TemporaryDirectory() as directory:
+            rows = [
+                row(
+                    sequence="1", module="cor", level="1", type="C",
+                    name="Root", multiplicity="1", local_name="root",
+                    source_bsm_id="CO01", semantic_path="$.cor_Root",
+                    class_term="Root", xpath="/xbrli:xbrl/gl-cor:root",
+                )
+            ]
+            generator = self.make_generator(Path(directory), rows)
+            self.assertEqual(generator.records[0]["element"], "cor:root")
+            self.assertEqual(
+                generator.records[0]["expanded_name"],
+                "{http://www.xbrl.org/int/gl/cor/2026-08-08}root",
+            )
 
     def test_zero_zero_row_and_structural_subtree_are_excluded(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -447,6 +509,160 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             ).read_text(encoding="utf-8-sig")
             self.assertNotIn("p_bus_partyReference", bus_oim)
             self.assertNotIn('substitutionGroup="xbrli:tuple"', bus_oim)
+
+    def test_oim_dimensions_follow_occurrence_key_class_lineage(self):
+        rows = [
+            row(sequence="1", module="cor", level="1", type="C",
+                name="Invoice", multiplicity="1", local_name="invoice",
+                source_bsm_id="C1", semantic_path="$.invoice",
+                class_term="Invoice", xpath="/xbrli:xbrl/gl-cor:invoice"),
+            row(sequence="2", module="cor", level="2", type="C",
+                name="Invoice Line", multiplicity="1..*",
+                local_name="invoiceLine", source_bsm_id="C2",
+                semantic_path="$.invoice.invoiceLine", class_term="Invoice Line",
+                xpath="/xbrli:xbrl/gl-cor:invoice/gl-cor:invoiceLine"),
+            row(sequence="3", module="cor", level="3", type="R",
+                name="Item Reference", multiplicity="1..1",
+                local_name="itemReference", source_bsm_id="R1",
+                semantic_path="$.invoice.invoiceLine.itemReference",
+                class_term="Item Information",
+                xpath=("/xbrli:xbrl/gl-cor:invoice/gl-cor:invoiceLine/"
+                       "gl-cor:itemReference")),
+            row(sequence="4", module="cor", level="4", type="C",
+                name="Item Information", multiplicity="1..1",
+                local_name="itemInformation", source_bsm_id="C3",
+                semantic_path=("$.invoice.invoiceLine.itemReference."
+                               "itemInformation"),
+                class_term="Item Information",
+                xpath=("/xbrli:xbrl/gl-cor:invoice/gl-cor:invoiceLine/"
+                       "gl-cor:itemReference/gl-cor:itemInformation")),
+            row(sequence="5", module="cor", level="5", type="C",
+                name="Item Attributes", multiplicity="0..*",
+                local_name="itemAttributes", source_bsm_id="C4",
+                semantic_path=("$.invoice.invoiceLine.itemReference."
+                               "itemInformation.itemAttributes"),
+                class_term="Item Attributes",
+                xpath=("/xbrli:xbrl/gl-cor:invoice/gl-cor:invoiceLine/"
+                       "gl-cor:itemReference/gl-cor:itemInformation/"
+                       "gl-cor:itemAttributes")),
+            row(sequence="6", module="cor", level="6", type="A",
+                name="Item Attribute Name", datatype="String",
+                multiplicity="1", local_name="itemAttributeName",
+                source_bsm_id="A1",
+                semantic_path=("$.invoice.invoiceLine.itemReference."
+                               "itemInformation.itemAttributes."
+                               "itemAttributeName"),
+                class_term="Item Attributes",
+                xpath=("/xbrli:xbrl/gl-cor:invoice/gl-cor:invoiceLine/"
+                       "gl-cor:itemReference/gl-cor:itemInformation/"
+                       "gl-cor:itemAttributes/gl-cor:itemAttributeName")),
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            generator = self.make_generator(Path(directory), rows)
+            generator.taxonomy_type = "oim"
+            generator.process_records()
+
+            classes = {
+                record["element_id"]: record for record in generator.records
+                if record["type"] == "C"
+            }
+            self.assertTrue(generator.is_occurrence_key_class(classes["cor_invoice"]))
+            self.assertTrue(
+                generator.is_occurrence_key_class(classes["cor_invoiceLine"])
+            )
+            self.assertFalse(
+                generator.is_occurrence_key_class(classes["cor_itemInformation"])
+            )
+            self.assertTrue(
+                generator.is_occurrence_key_class(classes["cor_itemAttributes"])
+            )
+
+            generator.generate_taxonomy_files(generator.xbrl_base)
+            palette = (
+                Path(generator.xbrl_base) / "plt" / "plt-oim-2026-08-08.xsd"
+            ).read_text(encoding="utf-8-sig")
+            for class_name in (
+                "cor_invoice", "cor_invoiceLine", "cor_itemInformation",
+                "cor_itemAttributes",
+            ):
+                self.assertIn(f'name="h_{class_name}"', palette)
+                self.assertIn(f'id="link_{class_name}"', palette)
+            for class_name in (
+                "cor_invoice", "cor_invoiceLine", "cor_itemAttributes",
+            ):
+                self.assertIn(f'name="d_{class_name}"', palette)
+            self.assertNotIn('name="d_cor_itemInformation"', palette)
+            self.assertEqual(
+                palette.count('substitutionGroup="xbrldt:dimensionItem"'), 3
+            )
+            self.assertEqual(palette.count('xbrldt:typedDomainRef="#_v"'), 3)
+
+            module_oim = (
+                Path(generator.xbrl_base) / "cor" / "cor-oim-2026-08-08.xsd"
+            ).read_text(encoding="utf-8-sig")
+            for class_name in (
+                "cor_invoice", "cor_invoiceLine", "cor_itemInformation",
+                "cor_itemAttributes",
+            ):
+                self.assertIn(f'name="p_{class_name}"', module_oim)
+
+            definition = (
+                Path(generator.xbrl_base) / "plt" / "plt-def-2026-08-08.xml"
+            ).read_text(encoding="utf-8-sig")
+            role_start = definition.index(
+                'role/link_cor_itemAttributes">'
+            )
+            role_end = definition.index("</link:definitionLink>", role_start)
+            item_attributes_cube = definition[role_start:role_end]
+            dimension_targets = [
+                'xlink:to="d_cor_invoice"',
+                'xlink:to="d_cor_invoiceLine"',
+                'xlink:to="d_cor_itemAttributes"',
+            ]
+            for target in dimension_targets:
+                self.assertEqual(item_attributes_cube.count(target), 1)
+            self.assertNotIn("d_cor_itemInformation", item_attributes_cube)
+            self.assertEqual(
+                item_attributes_cube.count(
+                    'arcrole="http://xbrl.org/int/dim/arcrole/'
+                    'hypercube-dimension"'
+                ),
+                3,
+            )
+            for target_role in (
+                "link_cor_invoiceLine", "link_cor_itemInformation",
+                "link_cor_itemAttributes",
+            ):
+                self.assertIn(f'targetRole="http://www.xbrl.org/xbrl-gl/role/{target_role}"', definition)
+
+    def test_occurrence_key_classifier_rejects_unsupported_class_multiplicity(self):
+        cases = (
+            ("1", "", True),
+            ("1..1", "", True),
+            ("1", "parent", False),
+            ("1..1", "parent", False),
+            ("0..1", "parent", False),
+            ("0..*", "parent", True),
+            ("1..*", "parent", True),
+        )
+        for multiplicity, parent_path_key, expected in cases:
+            with self.subTest(
+                multiplicity=multiplicity, parent_path_key=parent_path_key
+            ):
+                self.assertEqual(
+                    MODULE.xBRLGL_TaxonomyGenerator.is_occurrence_key_class(
+                        {
+                            "type": "C",
+                            "multiplicity": multiplicity,
+                            "parent_path_key": parent_path_key,
+                        }
+                    ),
+                    expected,
+                )
+        with self.assertRaisesRegex(ValueError, "Unsupported Class multiplicity"):
+            MODULE.xBRLGL_TaxonomyGenerator.is_occurrence_key_class(
+                {"type": "C", "multiplicity": "2..4", "parent_path_key": "p"}
+            )
 
     def test_module_schema_owns_structural_declaration_content_schema_owns_type(self):
         rows = [
@@ -1019,6 +1235,22 @@ class CliLocationTests(unittest.TestCase):
         return MODULE.create_argument_parser().parse_args(
             [*arguments, "--namespace", self.NAMESPACE]
         )
+
+    def test_namespace_prefix_map_is_explicit_repeatable_and_unambiguous(self):
+        args = self.parse(
+            "--namespace-prefix-map", "en=en16931",
+            "--namespace-prefix-map", "ubl=invoice",
+        )
+        self.assertEqual(
+            MODULE.normalize_namespace_prefix_map(args.namespace_prefix_map),
+            {"en": "en16931", "ubl": "invoice"},
+        )
+        with self.assertRaisesRegex(ValueError, "Conflicting"):
+            MODULE.normalize_namespace_prefix_map(
+                [("en", "en16931"), ("en", "other")]
+            )
+        with self.assertRaisesRegex(ValueError, "conventional prefix"):
+            MODULE.normalize_namespace_prefix_map({"gl-cor": "bus"})
 
     def test_formal_hmd_and_output_options_are_accepted(self):
         with tempfile.TemporaryDirectory() as directory:

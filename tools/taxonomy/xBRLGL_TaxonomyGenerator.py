@@ -141,6 +141,12 @@ from collections import OrderedDict
 from dataclasses import dataclass, field
 from pathlib import Path
 
+TAXONOMY_TOOLS_DIR = Path(__file__).resolve().parent
+if str(TAXONOMY_TOOLS_DIR) not in sys.path:
+    sys.path.insert(0, str(TAXONOMY_TOOLS_DIR))
+
+from datatype_binding import DatatypeBinding, DatatypeBindingError
+
 TRACE = False
 DEBUG = False
 
@@ -167,6 +173,46 @@ FORMAL_HMD_HEADER = [
     "local_name",
     "xpath",
 ]
+
+NCNAME_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9._-]*$")
+
+
+def parse_namespace_prefix_mapping(value):
+    """Parse one explicit lexical-prefix-to-module CLI mapping."""
+    if value.count("=") != 1:
+        raise argparse.ArgumentTypeError(
+            "namespace prefix mapping must use PREFIX=MODULE syntax"
+        )
+    prefix, module = (part.strip() for part in value.split("=", 1))
+    if not NCNAME_RE.fullmatch(prefix) or not NCNAME_RE.fullmatch(module):
+        raise argparse.ArgumentTypeError(
+            "namespace prefix mapping PREFIX and MODULE must be NCNames"
+        )
+    return prefix, module
+
+
+def normalize_namespace_prefix_map(mappings):
+    """Return a deterministic prefix map and reject ambiguous definitions."""
+    items = mappings.items() if isinstance(mappings, dict) else (mappings or [])
+    resolved = {}
+    for prefix, module in items:
+        if not NCNAME_RE.fullmatch(prefix) or not NCNAME_RE.fullmatch(module):
+            raise ValueError(
+                "Namespace prefix mapping PREFIX and MODULE must be NCNames."
+            )
+        if prefix.startswith("gl-") and prefix[3:] != module:
+            raise ValueError(
+                f"Mapping for conventional prefix {prefix!r} must resolve to "
+                f"module {prefix[3:]!r}, not {module!r}."
+            )
+        previous = resolved.get(prefix)
+        if previous is not None and previous != module:
+            raise ValueError(
+                f"Conflicting namespace prefix mapping for {prefix!r}: "
+                f"{previous!r} and {module!r}."
+            )
+        resolved[prefix] = module
+    return resolved
 
 
 def _formal_hmd_identity(path, encoding="utf-8-sig"):
@@ -296,6 +342,9 @@ class xBRLGL_TaxonomyGenerator:
             debug,
             instance,
             taxonomy_type,
+            namespace_prefix_map=None,
+            datatype_mapping_path=None,
+            datatype_override_path=None,
         ):
 
         self.palette = palette
@@ -303,6 +352,13 @@ class xBRLGL_TaxonomyGenerator:
         self.DEBUG = debug
         self.INSTANCE = instance
         self.taxonomy_type = taxonomy_type
+        self.namespace_prefix_map = normalize_namespace_prefix_map(
+            namespace_prefix_map
+        )
+        self.datatype_binding = DatatypeBinding(
+            mapping_path=datatype_mapping_path,
+            override_path=datatype_override_path,
+        )
 
         self.root = root.strip() if root else None
         self.lang = lang.strip() if lang else "ja"
@@ -403,14 +459,6 @@ class xBRLGL_TaxonomyGenerator:
     def gl_gen_schema_location(self, from_directory):
         target = self.ensure_gl_gen_schema()
         return os.path.relpath(target, from_directory).replace(os.sep, "/")
-
-    def concept_item_type(self, record):
-        element_type = record["element_type"]
-        matches = [x for x in self.gen_types if element_type.endswith(x)]
-        if matches:
-            match = matches[0]
-            return f"gen:{match[0].lower() + match[1:]}"
-        return record.get("datatype") or "xbrli:stringItemType"
 
     def error_print(self, text):
         print(f"** ERROR: {text}")
@@ -580,11 +628,32 @@ class xBRLGL_TaxonomyGenerator:
             return None
         raise ValueError(f'Unsupported HMD row type: {record["type"]!r}')
 
+    @staticmethod
+    def is_occurrence_key_class(record):
+        """Return whether a Class requires explicit OIM occurrence identity.
+
+        The formal HMD root is always an occurrence-key Class.  A non-root
+        Class is an occurrence-key Class only when its effective maximum
+        occurrence is greater than one.  The HMD multiplicity vocabulary is
+        closed and is validated again here so every OIM dimension decision
+        uses one deterministic classifier.
+        """
+        if record.get("type") != "C":
+            return False
+        multiplicity = record.get("multiplicity")
+        if multiplicity not in {"1", "1..1", "0..1", "0..*", "1..*"}:
+            raise ValueError(
+                f"Unsupported Class multiplicity: {multiplicity!r}"
+            )
+        return not record.get("parent_path_key") or multiplicity.endswith("*")
+
     def defineHypercube(self, root):
         dimension_id_list = []
         taxonomy_schema, link_id, href = self.roleRecord(root['element_id'])
         for schema_id in root.get("class_ancestors", [root["element_id"]]):
             if schema_id not in self.roleMap:
+                continue
+            if not self.is_occurrence_key_class(self.roleMap[schema_id]):
                 continue
             dimension_id = f"d_{schema_id}"
             if dimension_id not in dimension_id_list:
@@ -850,6 +919,17 @@ class xBRLGL_TaxonomyGenerator:
     def module_namespace(self, module):
         return f"http://www.xbrl.org/int/gl/{module}/{self.version}"
 
+    def xpath_prefix_module(self, prefix):
+        """Resolve an XPath lexical prefix without changing module identity."""
+        if prefix in self.namespace_prefix_map:
+            return self.namespace_prefix_map[prefix]
+        if prefix.startswith("gl-") and len(prefix) > 3:
+            return prefix[3:]
+        self.error_print(
+            f"Unsupported formal HMD xpath prefix {prefix!r}; provide an "
+            "explicit --namespace-prefix-map PREFIX=MODULE mapping."
+        )
+
     def parse_hmd_xpath(self, xpath):
         """Resolve the formal HMD XPath to ordered expanded QNames."""
         root = "/xbrli:xbrl"
@@ -858,7 +938,6 @@ class xBRLGL_TaxonomyGenerator:
                 f"Formal HMD xpath must start with {root + '/'!r}: {xpath!r}"
             )
         lexical_steps = xpath[len(root) + 1 :].split("/")
-        ncname = re.compile(r"^[A-Za-z_][A-Za-z0-9._-]*$")
         resolved = []
         for lexical_qname in lexical_steps:
             if lexical_qname.count(":") != 1:
@@ -867,16 +946,12 @@ class xBRLGL_TaxonomyGenerator:
                     f"{lexical_qname!r} in {xpath!r}"
                 )
             prefix, local_name = lexical_qname.split(":", 1)
-            if not ncname.fullmatch(prefix) or not ncname.fullmatch(local_name):
+            if not NCNAME_RE.fullmatch(prefix) or not NCNAME_RE.fullmatch(local_name):
                 self.error_print(
                     f"Invalid QName step {lexical_qname!r} in formal HMD "
                     f"xpath {xpath!r}."
                 )
-            if not prefix.startswith("gl-") or len(prefix) == 3:
-                self.error_print(
-                    f"Unsupported formal HMD xpath prefix {prefix!r}."
-                )
-            module = prefix[3:]
+            module = self.xpath_prefix_module(prefix)
             namespace = self.module_namespace(module)
             resolved.append(
                 {
@@ -903,10 +978,9 @@ class xBRLGL_TaxonomyGenerator:
 
         module = record["module"]
         local_name = record["local_name"]
-        ncname = re.compile(r"^[A-Za-z_][A-Za-z0-9._-]*$")
-        if not ncname.fullmatch(module):
+        if not NCNAME_RE.fullmatch(module):
             self.error_print(f"Invalid HMD module: {module!r}")
-        if not ncname.fullmatch(local_name) or ":" in local_name:
+        if not NCNAME_RE.fullmatch(local_name) or ":" in local_name:
             self.error_print(f"Invalid HMD local_name: {local_name!r}")
         xpath_steps = self.parse_hmd_xpath(record["xpath"])
         terminal = xpath_steps[-1]
@@ -950,85 +1024,6 @@ class xBRLGL_TaxonomyGenerator:
         self.presentation_dict = OrderedDict()
 
         header = FORMAL_HMD_HEADER
-        datatype_map = {
-            "DECIMAL": "xbrli:decimalItemType",
-            "FLOAT": "xbrli:floatItemType",
-            "DOUBLE": "xbrli:doubleItemType",
-            "INTEGER": "xbrli:integerItemType",
-            "NONPOSITIVEINTEGER": "xbrli:nonPositiveIntegerItemType",
-            "NEGATIVEINTEGER": "xbrli:negativeIntegerItemType",
-            "LONG": "xbrli:longItemType",
-            "INT": "xbrli:intItemType",
-            "SHORT": "xbrli:shortItemType",
-            "BYTE": "xbrli:byteItemType",
-            "NONNEGATIVEINTEGER": "xbrli:nonNegativeIntegerItemType",
-            "UNSIGNEDLONG": "xbrli:unsignedLongItemType",
-            "UNSIGNEDINT": "xbrli:unsignedIntItemType",
-            "UNSIGNEDSHORT": "xbrli:unsignedShortItemType",
-            "UNSIGNEDBYTE": "xbrli:unsignedByteItemType",
-            "POSITIVEINTEGER": "xbrli:positiveIntegerItemType",
-            "MONETARY": "xbrli:monetaryItemType",
-            "SHARES": "xbrli:sharesItemType",
-            "PURE": "xbrli:pureItemType",
-            "FRACTION": "xbrli:fractionItemType",
-            "STRING": "xbrli:stringItemType",
-            "BOOLEAN": "xbrli:booleanItemType",
-            "HEXBINARY": "xbrli:hexBinaryItemType",
-            "BASE64BINARY": "xbrli:base64BinaryItemType",
-            "ANYURI": "xbrli:anyURIItemType",
-            "QNAME": "xbrli:QNameItemType",
-            "ENUMERATION": "enum:enumerationItemType",
-            "DURATION": "xbrli:durationItemType",
-            "DATETIME": "xbrli:dateTimeItemType",
-            "TIME": "xbrli:timeItemType",
-            "DATE": "xbrli:dateItemType",
-            "GYEARMONTH": "xbrli:gYearMonthItemType",
-            "GYEAR": "xbrli:gYearItemType",
-            "GMONTHDAY": "xbrli:gMonthDayItemType",
-            "GDAY": "xbrli:gDayItemType",
-            "GMONTH": "xbrli:gMonthItemType",
-            "NORMALIZEDSTRING": "xbrli:normalizedStringItemType",
-            "TOKEN": "xbrli:tokenItemType",
-            "LANGUAGE": "xbrli:languageItemType",
-            "NAME": "xbrli:NameItemType",
-            "NCNAME": "xbrli:NCNameItemType",
-            # "anyURI": "xbrli:anyURIItemType",
-            # "Boolean": "xbrli:booleanItemType",
-            # "Date": "xbrli:dateItemType",
-            # "Date Time": "xbrli:dateTimeItemType",
-            # "Decimal": "xbrli:decimalItemType",
-            # "Integer": "xbrli:integerItemType",
-            # "Monetary": "xbrli:monetaryItemType",
-            # "NonNegativeInteger": "xbrli:nonNegativeIntegerItemType",
-            # "Pure": "xbrli:pureItemType",
-            # "QName": "xbrli:QNameItemType",
-            # "String": "xbrli:stringItemType",
-            # "Token": "xbrli:tokenItemType",
-            "": ""
-        }
-        self.gen_types = [
-            "ActiveItemType",
-            "AmountItemType",
-            "BookTaxDifferenceItemType",
-            "DebitCreditCodeItemType",
-            "DocumentTypeItemType", # https://service.unece.org/trade/untdid/d23a/tred/tred1001.htm
-            "EmailAddressItemType",
-            "EmailAddressUsageItemType",
-            "EntriesTypeItemType",
-            "EntryTypeItemType",
-            "FaxNumberItemType",
-            "FaxNumberUsageItemType",
-            "IdentifierOrganizationTypeItemType",
-            "IdentifierTypeItemType",
-            "InvoiceTypeItemType",
-            "PhoneNumberDescriptionItemType",
-            "PhoneNumberItemType",
-            "PostingStatusItemType",
-            "QualifierEntryItemType",
-            "RevisesUniqueIDActionItemType",
-            "SignOfAmountItemType",
-            "SourceJournalIDItemType",
-        ]
         with open(self.core_file, encoding=self.encoding, newline="") as f:
             reader = csv.DictReader(f)
             if not reader.fieldnames:
@@ -1105,14 +1100,19 @@ class xBRLGL_TaxonomyGenerator:
                 else:
                     continue
                 datatype = ''
+                semantic_datatype = record["datatype"]
+                binding = None
                 if _type in ['A']:
-                    datatype_key = record["datatype"].replace(' ','').upper()
-                    if not datatype_key or datatype_key not in datatype_map:
-                        self.error_print(
-                            f"Unknown or blank LHM datatype for {element!r}: "
-                            f"{record['datatype']!r}"
+                    try:
+                        binding = self.datatype_binding.resolve(
+                            hmd_datatype=semantic_datatype,
+                            semantic_path=semantic_path,
+                            module=record["module"],
+                            local_name=record["local_name"],
                         )
-                    datatype = datatype_map[datatype_key]
+                    except DatatypeBindingError as exc:
+                        self.error_print(str(exc))
+                    datatype = binding.xbrl_item_type
                 definition_signature = (_type, datatype)
                 expanded_name = record["expanded_name"]
                 previous_signature = qname_definitions.get(expanded_name)
@@ -1156,6 +1156,9 @@ class xBRLGL_TaxonomyGenerator:
                     "identifier": identifier,
                     "name": name,
                     "datatype": datatype,
+                    "semantic_datatype": semantic_datatype,
+                    "datatype_binding_origin": binding.origin if binding else "",
+                    "datatype_binding_status": binding.status if binding else "",
                     "element": element,
                     "expanded_name": expanded_name,
                     "element_type": element_type,
@@ -2025,7 +2028,9 @@ class xBRLGL_TaxonomyGenerator:
             )
 
         html.append("  <!-- Dimension -->\n")
-        for element_id in self.roleMap.keys():
+        for element_id, record in self.roleMap.items():
+            if not self.is_occurrence_key_class(record):
+                continue
             element_name = element_id
             html.append(
                 f'  <element name="d_{element_name}" id="d_{element_name}" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" abstract="true" xbrli:periodType="instant" xbrldt:typedDomainRef="#_v"/>\n'
@@ -2539,6 +2544,9 @@ def _generator_for_file(in_file, base_dir, args, taxonomy_type):
         debug=args.debug,
         instance=True,
         taxonomy_type=taxonomy_type,
+        namespace_prefix_map=getattr(args, "namespace_prefix_map", None),
+        datatype_mapping_path=getattr(args, "datatype_mapping", None),
+        datatype_override_path=getattr(args, "datatype_override", None),
     )
     generator.load_csv_data()
     return generator
@@ -2888,6 +2896,31 @@ def create_argument_parser():
         help=(
             "Palette namespace ending in the explicit taxonomy version date, "
             "for example http://www.xbrl.org/int/gl/plt/2026-12-31"
+        ),
+    )
+    parser.add_argument(
+        "--namespace-prefix-map",
+        action="append",
+        default=[],
+        type=parse_namespace_prefix_mapping,
+        metavar="PREFIX=MODULE",
+        help=(
+            "Explicit lexical XPath prefix to HMD module mapping; repeat for "
+            "multiple prefixes. Existing gl-<module> prefixes remain implicit."
+        ),
+    )
+    parser.add_argument(
+        "--datatype-mapping",
+        help=(
+            "Semantic HMD datatype to XBRL item-type mapping CSV. "
+            "Defaults to definitions/taxonomy/datatype_mapping.csv."
+        ),
+    )
+    parser.add_argument(
+        "--datatype-override",
+        help=(
+            "Explicit occurrence-level datatype override CSV. Defaults to "
+            "definitions/taxonomy/datatype_override.csv."
         ),
     )
     parser.add_argument("-e", "--encoding", default="utf-8-sig")
