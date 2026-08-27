@@ -1,5 +1,24 @@
 ## 📄 License
 
+### Scope of repository-level grants
+
+The repository-level MIT License applies only to programs that are explicitly
+identified as project-authored and MIT-licensed by their file header, SPDX
+identifier, approved manifest, or an equivalent repository notice.
+
+XBRL GL-derived material, UN/UNCL-derived material, other third-party material,
+external data, and artefacts marked `license-hold`, `confirmation-pending`, or
+`public-release-hold` remain subject to their respective copyright notices,
+attribution requirements, licences, and conditions of use. Inclusion in this
+repository does not grant those materials the MIT License or any other
+repository-level licence.
+
+The documentation and artefact grant below applies only to project-authored
+material that is explicitly designated for that grant. When an individual
+file, directory notice, taxonomy notice, source notice, or third-party notice
+states different or additional conditions, those conditions take precedence
+for the affected material.
+
 ### Scripts — MIT License
 
 MIT License
@@ -26,12 +45,21 @@ SOFTWARE.
 
 ### Documentation and Artifacts — CC BY 4.0 License
 
-This guide and the generated artifacts (e.g., LHM tables, JSON metadata, sample xBRL-CSV files) are licensed under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) license.
+Project-authored documentation and generated artefacts explicitly designated
+for this grant are licensed under the [Creative Commons Attribution 4.0
+International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
+licence.
 
 You are free to:
+
 - **Share** — copy and redistribute the material in any medium or format
-- **Adapt** — remix, transform, and build upon the material for any purpose, even commercially
+- **Adapt** — remix, transform, and build upon the material for any purpose,
+  even commercially
 
 Under the following terms:
-- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+- **Attribution** — You must give appropriate credit, provide a link to the
+  licence, and indicate if changes were made. You may do so in any reasonable
+  manner, but not in any way that suggests the licensor endorses you or your
+  use.
 

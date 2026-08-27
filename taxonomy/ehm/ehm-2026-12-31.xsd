@@ -1,24 +1,35 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2016 XBRL International, Inc. All Rights Reserved.
+This file is part of an independent experimental derivative taxonomy that
+assists implementation of XBRL GL 2017. It is not the official XBRL GL
+taxonomy and is not endorsed or recommended by XBRL International.
+See NOTICE_XBRL_GL.md in this taxonomy package and https://www.xbrl.org/int/gl/2016-12-01/gl-framework-2017-PWD-2016-12-01.html
+-->
 <!-- (c) XBRL International.  See http://www.xbrl.org/legal -->
-<schema targetNamespace="http://www.xbrl.org/int/gl/ehm/2026-12-31" attributeFormDefault="unqualified" elementFormDefault="qualified"
+<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/ehm" attributeFormDefault="unqualified" elementFormDefault="qualified"
   xmlns="http://www.w3.org/2001/XMLSchema"
   xmlns:link="http://www.xbrl.org/2003/linkbase"
   xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:xbrli="http://www.xbrl.org/2003/instance"
   xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
-  xmlns:gen="http://www.xbrl.org/int/gl/gen/2026-12-31"
-  xmlns:ehm="http://www.xbrl.org/int/gl/ehm/2026-12-31"
+  xmlns:enum="http://xbrl.org/2014/extensible-enumerations"
+  xmlns:gen="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/gen"
+  xmlns:ehm="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/ehm"
 >
+  <annotation>
+    <documentation xml:lang="en">This is an experimental XBRL GL Next taxonomy published using a provisional
+namespace under the domain managed by XBRL Japan. It is not an XBRL
+International Recommendation or other final XBRL International specification.
+The namespace and taxonomy may be replaced when an official XBRL International
+namespace is assigned.</documentation>
+  </annotation>
   <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
   <import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>
   <import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
-  <import namespace="http://www.xbrl.org/int/gl/gen/2026-12-31" schemaLocation="../gen/gl-gen-2026-12-31.xsd"/>
+  <import namespace="http://xbrl.org/2014/extensible-enumerations" schemaLocation="http://www.xbrl.org/2014/extensible-enumerations.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/gen" schemaLocation="../gen/gl-gen-2026-12-31.xsd"/>
   <!-- reusable item type -->
-  <complexType name="serialOrLotCodeItemType">
-    <simpleContent>
-      <restriction base="xbrli:tokenItemType"/>
-    </simpleContent>
-  </complexType>
   <complexType name="serialOrLotDescriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
@@ -106,7 +117,7 @@
   </complexType>
   <!-- reusable global element declaration -->
   <element name="detailSerialOrLot" id="ehm_detailSerialOrLot" type="ehm:detailSerialOrLotComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="serialOrLotCode" id="ehm_serialOrLotCode" type="ehm:serialOrLotCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="serialOrLotCode" id="ehm_serialOrLotCode" type="enum:enumerationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" enum:domain="gen:vdSerialLotType" enum:linkrole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/role/value-domain/vdSerialLotType" enum:headUsable="false"/>
   <element name="serialOrLotDescription" id="ehm_serialOrLotDescription" type="ehm:serialOrLotDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="serialOrLotNumber" id="ehm_serialOrLotNumber" type="ehm:serialOrLotNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="nextSerialOrLotNumber" id="ehm_nextSerialOrLotNumber" type="ehm:nextSerialOrLotNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>

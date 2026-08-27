@@ -1,455 +1,341 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2016 XBRL International, Inc. All Rights Reserved.
+This file is part of an independent experimental derivative taxonomy that
+assists implementation of XBRL GL 2017. It is not the official XBRL GL
+taxonomy and is not endorsed or recommended by XBRL International.
+See NOTICE_XBRL_GL.md in this taxonomy package and https://www.xbrl.org/int/gl/2016-12-01/gl-framework-2017-PWD-2016-12-01.html
+-->
 <!-- (c) XBRL International.  See http://www.xbrl.org/legal -->
-<schema targetNamespace="http://www.xbrl.org/int/gl/bus/2026-12-31" attributeFormDefault="unqualified" elementFormDefault="qualified"
+<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/bus" attributeFormDefault="unqualified" elementFormDefault="qualified"
   xmlns="http://www.w3.org/2001/XMLSchema"
   xmlns:link="http://www.xbrl.org/2003/linkbase"
   xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:xbrli="http://www.xbrl.org/2003/instance"
   xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
-  xmlns:gen="http://www.xbrl.org/int/gl/gen/2026-12-31"
-  xmlns:bus="http://www.xbrl.org/int/gl/bus/2026-12-31"
+  xmlns:enum="http://xbrl.org/2014/extensible-enumerations"
+  xmlns:gen="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/gen"
+  xmlns:bus="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/bus"
 >
+  <annotation>
+    <documentation xml:lang="en">This is an experimental XBRL GL Next taxonomy published using a provisional
+namespace under the domain managed by XBRL Japan. It is not an XBRL
+International Recommendation or other final XBRL International specification.
+The namespace and taxonomy may be replaced when an official XBRL International
+namespace is assigned.</documentation>
+  </annotation>
   <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
   <import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>
   <import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
-  <import namespace="http://www.xbrl.org/int/gl/gen/2026-12-31" schemaLocation="../gen/gl-gen-2026-12-31.xsd"/>
+  <import namespace="http://xbrl.org/2014/extensible-enumerations" schemaLocation="http://www.xbrl.org/2014/extensible-enumerations.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/gen" schemaLocation="../gen/gl-gen-2026-12-31.xsd"/>
   <!-- reusable item type -->
-  <complexType name="entityPartyPhoneNumberItemType">
+  <complexType name="entityPhoneNumberItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyPhoneNumberDescriptionItemType">
+  <complexType name="entityFaxNumberItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyFaxNumberItemType">
+  <complexType name="entityFaxNumberUsageItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyFaxNumberUsageItemType">
+  <complexType name="entityEmailAddressItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyEmailAddressItemType">
+  <complexType name="entityEmailAddressUsageItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyEmailAddressUsageItemType">
+  <complexType name="organizationIdentifierCodeItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyRegisteredOrganizationIdentifierCodeItemType">
+  <complexType name="organizationIdentifierDescriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyRegisteredOrganizationIdentifierDescriptionItemType">
+  <complexType name="entityAddressNameItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyAddressNameItemType">
+  <complexType name="entityAddressDescriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyAddressDescriptionItemType">
+  <complexType name="entityAddressLocationIdItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyAddressPurposeItemType">
+  <complexType name="entityAddressBuildingNumberItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyAddressLocationIdItemType">
+  <complexType name="entityAddressStreetItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyAddressBuildingNumberItemType">
+  <complexType name="entityAddressDetailItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyAddressStreetItemType">
+  <complexType name="entityAddressCityItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyAddressAddressDetailItemType">
+  <complexType name="entityAddressStateOrProvinceItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyAddressCityItemType">
+  <complexType name="entityAddressCountryItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyAddressStateOrProvinceItemType">
+  <complexType name="entityAddressZipOrPostalCodeItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyAddressCountryItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entityPartyAddressZipOrPostalCodeItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entityPartyAddressActiveIndicatorItemType">
+  <complexType name="entityAddressActiveIndicatorItemType">
     <simpleContent>
       <restriction base="xbrli:booleanItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyWebSiteUrlItemType">
+  <complexType name="entityWebSiteUrlItemType">
     <simpleContent>
       <restriction base="xbrli:anyURIItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyWebSiteDescriptionItemType">
+  <complexType name="entityWebSiteDescriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyContactPrefixItemType">
+  <complexType name="entityContactPrefixItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyContactLastNameItemType">
+  <complexType name="entityContactLastNameItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyContactFirstNameItemType">
+  <complexType name="entityContactFirstNameItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyContactSuffixItemType">
+  <complexType name="entityContactSuffixItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyContactAttentionLineItemType">
+  <complexType name="entityContactAttentionLineItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyContactPositionRoleItemType">
+  <complexType name="entityContactPositionRoleItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyContactContactTypeItemType">
+  <complexType name="entityContactContactTypeItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyContactLocationIdCrossReferenceItemType">
+  <complexType name="entityContactLocationIdCrossReferenceItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyContactActiveItemType">
+  <complexType name="entityContactActiveItemType">
     <simpleContent>
       <restriction base="xbrli:booleanItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyContactPhoneNumberItemType">
+  <complexType name="entityContactPhoneNumberItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyContactPhoneNumberDescriptionItemType">
+  <complexType name="entityContactFaxNumberItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyContactFaxNumberItemType">
+  <complexType name="entityContactFaxNumberUsageItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyContactFaxNumberUsageItemType">
+  <complexType name="entityContactEmailAddressItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyContactEmailAddressItemType">
+  <complexType name="entityContactEmailAddressUsageItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityPartyContactEmailAddressUsageItemType">
+  <complexType name="accountingMethodDescriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountingMethodItemType">
-    <simpleContent>
-      <restriction base="xbrli:tokenItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entityAccountingMethodDescriptionItemType">
+  <complexType name="accountingMethodPurposeDescriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountingMethodPurposeItemType">
-    <simpleContent>
-      <restriction base="xbrli:tokenItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entityAccountingMethodPurposeDescriptionItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entityAccountingMethodStartDateItemType">
+  <complexType name="accountingMethodStartDateItemType">
     <simpleContent>
       <restriction base="xbrli:dateTimeItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountingMethodEndDateItemType">
+  <complexType name="accountingMethodEndDateItemType">
     <simpleContent>
       <restriction base="xbrli:dateTimeItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantNameItemType">
+  <complexType name="accountantNameItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantTypeOfEngagementItemType">
-    <simpleContent>
-      <restriction base="xbrli:tokenItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entityAccountantTypeOfEngagementDescriptionItemType">
+  <complexType name="accountantTypeOfEngagementDescriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantAddressNameItemType">
+  <complexType name="nameItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantAddressDescriptionItemType">
+  <complexType name="descriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantAddressPurposeItemType">
+  <complexType name="purposeItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantAddressLocationIdItemType">
+  <complexType name="locationIdItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantAddressBuildingNumberItemType">
+  <complexType name="buildingNumberItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantAddressStreetItemType">
+  <complexType name="streetItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantAddressAddressDetailItemType">
+  <complexType name="addressDetailItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantAddressCityItemType">
+  <complexType name="cityItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantAddressStateOrProvinceItemType">
+  <complexType name="stateOrProvinceItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantAddressCountryItemType">
+  <complexType name="countryItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantAddressZipOrPostalCodeItemType">
+  <complexType name="zipOrPostalCodeItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantAddressActiveIndicatorItemType">
+  <complexType name="activeIndicatorItemType">
     <simpleContent>
       <restriction base="xbrli:booleanItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantContactPrefixItemType">
+  <complexType name="contactPrefixItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantContactLastNameItemType">
+  <complexType name="contactLastNameItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantContactFirstNameItemType">
+  <complexType name="contactFirstNameItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantContactSuffixItemType">
+  <complexType name="contactSuffixItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantContactAttentionLineItemType">
+  <complexType name="contactAttentionLineItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantContactPositionRoleItemType">
+  <complexType name="contactPositionRoleItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantContactContactTypeItemType">
+  <complexType name="contactContactTypeItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantContactLocationIdCrossReferenceItemType">
+  <complexType name="contactLocationIdCrossReferenceItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="entityAccountantContactActiveItemType">
+  <complexType name="contactActiveItemType">
     <simpleContent>
       <restriction base="xbrli:booleanItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entityAccountantContactPhoneNumberItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entityAccountantContactPhoneNumberDescriptionItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entityAccountantContactFaxNumberItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entityAccountantContactFaxNumberUsageItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entityAccountantContactEmailAddressItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entityAccountantContactEmailAddressUsageItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entitySpecifiedReportingCalendarCodeItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entitySpecifiedReportingCalendarDescriptionItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entitySpecifiedReportingCalendarTitleItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entitySpecifiedReportingCalendarPeriodTypeItemType">
-    <simpleContent>
-      <restriction base="xbrli:tokenItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entitySpecifiedReportingCalendarPeriodTypeDescriptionItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entitySpecifiedReportingCalendarClosedStatusItemType">
-    <simpleContent>
-      <restriction base="xbrli:tokenItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entitySpecifiedReportingCalendarPurposeItemType">
-    <simpleContent>
-      <restriction base="xbrli:tokenItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entitySpecifiedReportingCalendarPurposeDescriptionItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entitySpecifiedReportingPeriodIdItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entitySpecifiedReportingPeriodDescriptionItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entitySpecifiedReportingPeriodStartDateItemType">
-    <simpleContent>
-      <restriction base="xbrli:dateTimeItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entitySpecifiedReportingPeriodEndDateItemType">
-    <simpleContent>
-      <restriction base="xbrli:dateTimeItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="entitySpecifiedReportingPeportingCalendarPeriodClosedDateItemType">
-    <simpleContent>
-      <restriction base="xbrli:dateTimeItemType"/>
     </simpleContent>
   </complexType>
   <complexType name="phoneNumberItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="phoneNumberDescriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
@@ -474,39 +360,104 @@
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="detailPhoneNumberItemType">
+  <complexType name="reportingCalendarCodeItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="detailPhoneNumberDescriptionItemType">
+  <complexType name="reportingCalendarDescriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="detailFaxNumberItemType">
+  <complexType name="reportingCalendarTitleItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="detailFaxNumberUsageItemType">
+  <complexType name="reportingCalendarPeriodTypeDescriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="detailEmailAddressItemType">
+  <complexType name="reportingCalendarPurposeDescriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="detailEmailAddressUsageItemType">
+  <complexType name="periodIdItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="measurableCodeItemType">
+  <complexType name="periodDescriptionItemType">
     <simpleContent>
-      <restriction base="xbrli:tokenItemType"/>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="periodStartDateItemType">
+    <simpleContent>
+      <restriction base="xbrli:dateTimeItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="periodEndDateItemType">
+    <simpleContent>
+      <restriction base="xbrli:dateTimeItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="reportingCalendarPeriodClosedDateItemType">
+    <simpleContent>
+      <restriction base="xbrli:dateTimeItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="headerIdentifierContactPhoneNumberItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="headerIdentifierContactFaxNumberItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="headerIdentifierContactFaxNumberUsageItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="headerIdentifierContactEmailAddressItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="headerIdentifierContactEmailAddressUsageItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="identifierContactPhoneNumberItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="identifierContactFaxNumberItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="identifierContactFaxNumberUsageItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="identifierContactEmailAddressItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="identifierContactEmailAddressUsageItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
   <complexType name="measurableCodeDescriptionItemType">
@@ -604,11 +555,6 @@
       <restriction base="xbrli:booleanItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="depreciationMortgageJurisdictionItemType">
-    <simpleContent>
-      <restriction base="xbrli:tokenItemType"/>
-    </simpleContent>
-  </complexType>
   <complexType name="depreciationMethodItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
@@ -640,133 +586,133 @@
     </simpleContent>
   </complexType>
   <!-- reusable global element declaration -->
-  <element name="entityPartyPhone" id="bus_entityPartyPhone" type="bus:entityPartyPhoneComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyFax" id="bus_entityPartyFax" type="bus:entityPartyFaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyEmail" id="bus_entityPartyEmail" type="bus:entityPartyEmailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyRegisteredOrganizationIdentifier" id="bus_entityPartyRegisteredOrganizationIdentifier" type="bus:entityPartyRegisteredOrganizationIdentifierComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyAddress" id="bus_entityPartyAddress" type="bus:entityPartyAddressComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyWebSite" id="bus_entityPartyWebSite" type="bus:entityPartyWebSiteComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyContact" id="bus_entityPartyContact" type="bus:entityPartyContactComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entitySpecifiedAccountingMethodStructure" id="bus_entitySpecifiedAccountingMethodStructure" type="bus:entitySpecifiedAccountingMethodStructureComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityAssignedAccountant" id="bus_entityAssignedAccountant" type="bus:entityAssignedAccountantComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entitySpecifiedReportingCalendar" id="bus_entitySpecifiedReportingCalendar" type="bus:entitySpecifiedReportingCalendarComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyPhoneNumber" id="bus_entityPartyPhoneNumber" type="bus:entityPartyPhoneNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyPhoneNumberDescription" id="bus_entityPartyPhoneNumberDescription" type="bus:entityPartyPhoneNumberDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyFaxNumber" id="bus_entityPartyFaxNumber" type="bus:entityPartyFaxNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyFaxNumberUsage" id="bus_entityPartyFaxNumberUsage" type="bus:entityPartyFaxNumberUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyEmailAddress" id="bus_entityPartyEmailAddress" type="bus:entityPartyEmailAddressItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyEmailAddressUsage" id="bus_entityPartyEmailAddressUsage" type="bus:entityPartyEmailAddressUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyRegisteredOrganizationIdentifierCode" id="bus_entityPartyRegisteredOrganizationIdentifierCode" type="bus:entityPartyRegisteredOrganizationIdentifierCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyRegisteredOrganizationIdentifierDescription" id="bus_entityPartyRegisteredOrganizationIdentifierDescription" type="bus:entityPartyRegisteredOrganizationIdentifierDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyAddressName" id="bus_entityPartyAddressName" type="bus:entityPartyAddressNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyAddressDescription" id="bus_entityPartyAddressDescription" type="bus:entityPartyAddressDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyAddressPurpose" id="bus_entityPartyAddressPurpose" type="bus:entityPartyAddressPurposeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyAddressLocationId" id="bus_entityPartyAddressLocationId" type="bus:entityPartyAddressLocationIdItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyAddressBuildingNumber" id="bus_entityPartyAddressBuildingNumber" type="bus:entityPartyAddressBuildingNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyAddressStreet" id="bus_entityPartyAddressStreet" type="bus:entityPartyAddressStreetItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyAddressAddressDetail" id="bus_entityPartyAddressAddressDetail" type="bus:entityPartyAddressAddressDetailItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyAddressCity" id="bus_entityPartyAddressCity" type="bus:entityPartyAddressCityItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyAddressStateOrProvince" id="bus_entityPartyAddressStateOrProvince" type="bus:entityPartyAddressStateOrProvinceItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyAddressCountry" id="bus_entityPartyAddressCountry" type="bus:entityPartyAddressCountryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyAddressZipOrPostalCode" id="bus_entityPartyAddressZipOrPostalCode" type="bus:entityPartyAddressZipOrPostalCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyAddressActiveIndicator" id="bus_entityPartyAddressActiveIndicator" type="bus:entityPartyAddressActiveIndicatorItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyWebSiteUrl" id="bus_entityPartyWebSiteUrl" type="bus:entityPartyWebSiteUrlItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyWebSiteDescription" id="bus_entityPartyWebSiteDescription" type="bus:entityPartyWebSiteDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyContactPrefix" id="bus_entityPartyContactPrefix" type="bus:entityPartyContactPrefixItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyContactLastName" id="bus_entityPartyContactLastName" type="bus:entityPartyContactLastNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyContactFirstName" id="bus_entityPartyContactFirstName" type="bus:entityPartyContactFirstNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyContactSuffix" id="bus_entityPartyContactSuffix" type="bus:entityPartyContactSuffixItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyContactAttentionLine" id="bus_entityPartyContactAttentionLine" type="bus:entityPartyContactAttentionLineItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyContactPositionRole" id="bus_entityPartyContactPositionRole" type="bus:entityPartyContactPositionRoleItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyContactContactType" id="bus_entityPartyContactContactType" type="bus:entityPartyContactContactTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyContactLocationIdCrossReference" id="bus_entityPartyContactLocationIdCrossReference" type="bus:entityPartyContactLocationIdCrossReferenceItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyContactActive" id="bus_entityPartyContactActive" type="bus:entityPartyContactActiveItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyContactPhone" id="bus_entityPartyContactPhone" type="bus:entityPartyContactPhoneComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyContactFax" id="bus_entityPartyContactFax" type="bus:entityPartyContactFaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyContactEmail" id="bus_entityPartyContactEmail" type="bus:entityPartyContactEmailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityPartyContactPhoneNumber" id="bus_entityPartyContactPhoneNumber" type="bus:entityPartyContactPhoneNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyContactPhoneNumberDescription" id="bus_entityPartyContactPhoneNumberDescription" type="bus:entityPartyContactPhoneNumberDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyContactFaxNumber" id="bus_entityPartyContactFaxNumber" type="bus:entityPartyContactFaxNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyContactFaxNumberUsage" id="bus_entityPartyContactFaxNumberUsage" type="bus:entityPartyContactFaxNumberUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyContactEmailAddress" id="bus_entityPartyContactEmailAddress" type="bus:entityPartyContactEmailAddressItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityPartyContactEmailAddressUsage" id="bus_entityPartyContactEmailAddressUsage" type="bus:entityPartyContactEmailAddressUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountingMethod" id="bus_entityAccountingMethod" type="bus:entityAccountingMethodItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountingMethodDescription" id="bus_entityAccountingMethodDescription" type="bus:entityAccountingMethodDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountingMethodPurpose" id="bus_entityAccountingMethodPurpose" type="bus:entityAccountingMethodPurposeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountingMethodPurposeDescription" id="bus_entityAccountingMethodPurposeDescription" type="bus:entityAccountingMethodPurposeDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountingMethodStartDate" id="bus_entityAccountingMethodStartDate" type="bus:entityAccountingMethodStartDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountingMethodEndDate" id="bus_entityAccountingMethodEndDate" type="bus:entityAccountingMethodEndDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantName" id="bus_entityAccountantName" type="bus:entityAccountantNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantTypeOfEngagement" id="bus_entityAccountantTypeOfEngagement" type="bus:entityAccountantTypeOfEngagementItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantTypeOfEngagementDescription" id="bus_entityAccountantTypeOfEngagementDescription" type="bus:entityAccountantTypeOfEngagementDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantAddress" id="bus_entityAccountantAddress" type="bus:entityAccountantAddressComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityAccountantContact" id="bus_entityAccountantContact" type="bus:entityAccountantContactComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityAccountantAddressName" id="bus_entityAccountantAddressName" type="bus:entityAccountantAddressNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantAddressDescription" id="bus_entityAccountantAddressDescription" type="bus:entityAccountantAddressDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantAddressPurpose" id="bus_entityAccountantAddressPurpose" type="bus:entityAccountantAddressPurposeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantAddressLocationId" id="bus_entityAccountantAddressLocationId" type="bus:entityAccountantAddressLocationIdItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantAddressBuildingNumber" id="bus_entityAccountantAddressBuildingNumber" type="bus:entityAccountantAddressBuildingNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantAddressStreet" id="bus_entityAccountantAddressStreet" type="bus:entityAccountantAddressStreetItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantAddressAddressDetail" id="bus_entityAccountantAddressAddressDetail" type="bus:entityAccountantAddressAddressDetailItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantAddressCity" id="bus_entityAccountantAddressCity" type="bus:entityAccountantAddressCityItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantAddressStateOrProvince" id="bus_entityAccountantAddressStateOrProvince" type="bus:entityAccountantAddressStateOrProvinceItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantAddressCountry" id="bus_entityAccountantAddressCountry" type="bus:entityAccountantAddressCountryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantAddressZipOrPostalCode" id="bus_entityAccountantAddressZipOrPostalCode" type="bus:entityAccountantAddressZipOrPostalCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantAddressActiveIndicator" id="bus_entityAccountantAddressActiveIndicator" type="bus:entityAccountantAddressActiveIndicatorItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantContactPrefix" id="bus_entityAccountantContactPrefix" type="bus:entityAccountantContactPrefixItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantContactLastName" id="bus_entityAccountantContactLastName" type="bus:entityAccountantContactLastNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantContactFirstName" id="bus_entityAccountantContactFirstName" type="bus:entityAccountantContactFirstNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantContactSuffix" id="bus_entityAccountantContactSuffix" type="bus:entityAccountantContactSuffixItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantContactAttentionLine" id="bus_entityAccountantContactAttentionLine" type="bus:entityAccountantContactAttentionLineItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantContactPositionRole" id="bus_entityAccountantContactPositionRole" type="bus:entityAccountantContactPositionRoleItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantContactContactType" id="bus_entityAccountantContactContactType" type="bus:entityAccountantContactContactTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantContactLocationIdCrossReference" id="bus_entityAccountantContactLocationIdCrossReference" type="bus:entityAccountantContactLocationIdCrossReferenceItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantContactActive" id="bus_entityAccountantContactActive" type="bus:entityAccountantContactActiveItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="partyPhone" id="bus_partyPhone" type="bus:partyPhoneComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="partyFax" id="bus_partyFax" type="bus:partyFaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="partyEmail" id="bus_partyEmail" type="bus:partyEmailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="registeredOrganizationIdentifier" id="bus_registeredOrganizationIdentifier" type="bus:registeredOrganizationIdentifierComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="partyAddress" id="bus_partyAddress" type="bus:partyAddressComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="partyWebSite" id="bus_partyWebSite" type="bus:partyWebSiteComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="partyContact" id="bus_partyContact" type="bus:partyContactComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="specifiedAccountingMethodStructure" id="bus_specifiedAccountingMethodStructure" type="bus:specifiedAccountingMethodStructureComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="assignedAccountant" id="bus_assignedAccountant" type="bus:assignedAccountantComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="specifiedReportingCalendar" id="bus_specifiedReportingCalendar" type="bus:specifiedReportingCalendarComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityPhoneNumber" id="bus_entityPhoneNumber" type="bus:entityPhoneNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityPhoneNumberDescription" id="bus_entityPhoneNumberDescription" type="enum:enumerationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" enum:domain="gen:vdPhoneNumberType" enum:linkrole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/role/value-domain/vdPhoneNumberType" enum:headUsable="false"/>
+  <element name="entityFaxNumber" id="bus_entityFaxNumber" type="bus:entityFaxNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityFaxNumberUsage" id="bus_entityFaxNumberUsage" type="bus:entityFaxNumberUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityEmailAddress" id="bus_entityEmailAddress" type="bus:entityEmailAddressItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityEmailAddressUsage" id="bus_entityEmailAddressUsage" type="bus:entityEmailAddressUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="organizationIdentifierCode" id="bus_organizationIdentifierCode" type="bus:organizationIdentifierCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="organizationIdentifierDescription" id="bus_organizationIdentifierDescription" type="bus:organizationIdentifierDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityAddressName" id="bus_entityAddressName" type="bus:entityAddressNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityAddressDescription" id="bus_entityAddressDescription" type="bus:entityAddressDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityAddressPurpose" id="bus_entityAddressPurpose" type="enum:enumerationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" enum:domain="gen:vdAddressPurpose" enum:linkrole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/role/value-domain/vdAddressPurpose" enum:headUsable="false"/>
+  <element name="entityAddressLocationId" id="bus_entityAddressLocationId" type="bus:entityAddressLocationIdItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityAddressBuildingNumber" id="bus_entityAddressBuildingNumber" type="bus:entityAddressBuildingNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityAddressStreet" id="bus_entityAddressStreet" type="bus:entityAddressStreetItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityAddressDetail" id="bus_entityAddressDetail" type="bus:entityAddressDetailItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityAddressCity" id="bus_entityAddressCity" type="bus:entityAddressCityItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityAddressStateOrProvince" id="bus_entityAddressStateOrProvince" type="bus:entityAddressStateOrProvinceItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityAddressCountry" id="bus_entityAddressCountry" type="bus:entityAddressCountryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityAddressZipOrPostalCode" id="bus_entityAddressZipOrPostalCode" type="bus:entityAddressZipOrPostalCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityAddressActiveIndicator" id="bus_entityAddressActiveIndicator" type="bus:entityAddressActiveIndicatorItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityWebSiteUrl" id="bus_entityWebSiteUrl" type="bus:entityWebSiteUrlItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityWebSiteDescription" id="bus_entityWebSiteDescription" type="bus:entityWebSiteDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityContactPrefix" id="bus_entityContactPrefix" type="bus:entityContactPrefixItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityContactLastName" id="bus_entityContactLastName" type="bus:entityContactLastNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityContactFirstName" id="bus_entityContactFirstName" type="bus:entityContactFirstNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityContactSuffix" id="bus_entityContactSuffix" type="bus:entityContactSuffixItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityContactAttentionLine" id="bus_entityContactAttentionLine" type="bus:entityContactAttentionLineItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityContactPositionRole" id="bus_entityContactPositionRole" type="bus:entityContactPositionRoleItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityContactContactType" id="bus_entityContactContactType" type="bus:entityContactContactTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityContactLocationIdCrossReference" id="bus_entityContactLocationIdCrossReference" type="bus:entityContactLocationIdCrossReferenceItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityContactActive" id="bus_entityContactActive" type="bus:entityContactActiveItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityContactPhone" id="bus_entityContactPhone" type="bus:entityContactPhoneComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityContactFax" id="bus_entityContactFax" type="bus:entityContactFaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityContactEmail" id="bus_entityContactEmail" type="bus:entityContactEmailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="entityContactPhoneNumber" id="bus_entityContactPhoneNumber" type="bus:entityContactPhoneNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityContactPhoneNumberDescription" id="bus_entityContactPhoneNumberDescription" type="enum:enumerationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" enum:domain="gen:vdPhoneNumberType" enum:linkrole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/role/value-domain/vdPhoneNumberType" enum:headUsable="false"/>
+  <element name="entityContactFaxNumber" id="bus_entityContactFaxNumber" type="bus:entityContactFaxNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityContactFaxNumberUsage" id="bus_entityContactFaxNumberUsage" type="bus:entityContactFaxNumberUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityContactEmailAddress" id="bus_entityContactEmailAddress" type="bus:entityContactEmailAddressItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="entityContactEmailAddressUsage" id="bus_entityContactEmailAddressUsage" type="bus:entityContactEmailAddressUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="accountingMethod" id="bus_accountingMethod" type="enum:enumerationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" enum:domain="gen:vdAccountingMethod" enum:linkrole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/role/value-domain/vdAccountingMethod" enum:headUsable="false"/>
+  <element name="accountingMethodDescription" id="bus_accountingMethodDescription" type="bus:accountingMethodDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="accountingMethodPurpose" id="bus_accountingMethodPurpose" type="enum:enumerationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" enum:domain="gen:vdAccountingPurpose" enum:linkrole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/role/value-domain/vdAccountingPurpose" enum:headUsable="false"/>
+  <element name="accountingMethodPurposeDescription" id="bus_accountingMethodPurposeDescription" type="bus:accountingMethodPurposeDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="accountingMethodStartDate" id="bus_accountingMethodStartDate" type="bus:accountingMethodStartDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="accountingMethodEndDate" id="bus_accountingMethodEndDate" type="bus:accountingMethodEndDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="accountantName" id="bus_accountantName" type="bus:accountantNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="accountantTypeOfEngagement" id="bus_accountantTypeOfEngagement" type="enum:enumerationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" enum:domain="gen:vdAccountantEngagementType" enum:linkrole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/role/value-domain/vdAccountantEngagementType" enum:headUsable="false"/>
+  <element name="accountantTypeOfEngagementDescription" id="bus_accountantTypeOfEngagementDescription" type="bus:accountantTypeOfEngagementDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="accountantAddress" id="bus_accountantAddress" type="bus:accountantAddressComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="accountantContact" id="bus_accountantContact" type="bus:accountantContactComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="name" id="bus_name" type="bus:nameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="description" id="bus_description" type="bus:descriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="purpose" id="bus_purpose" type="bus:purposeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="locationId" id="bus_locationId" type="bus:locationIdItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="buildingNumber" id="bus_buildingNumber" type="bus:buildingNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="street" id="bus_street" type="bus:streetItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="addressDetail" id="bus_addressDetail" type="bus:addressDetailItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="city" id="bus_city" type="bus:cityItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="stateOrProvince" id="bus_stateOrProvince" type="bus:stateOrProvinceItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="country" id="bus_country" type="bus:countryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="zipOrPostalCode" id="bus_zipOrPostalCode" type="bus:zipOrPostalCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="activeIndicator" id="bus_activeIndicator" type="bus:activeIndicatorItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="contactPrefix" id="bus_contactPrefix" type="bus:contactPrefixItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="contactLastName" id="bus_contactLastName" type="bus:contactLastNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="contactFirstName" id="bus_contactFirstName" type="bus:contactFirstNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="contactSuffix" id="bus_contactSuffix" type="bus:contactSuffixItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="contactAttentionLine" id="bus_contactAttentionLine" type="bus:contactAttentionLineItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="contactPositionRole" id="bus_contactPositionRole" type="bus:contactPositionRoleItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="contactContactType" id="bus_contactContactType" type="bus:contactContactTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="contactLocationIdCrossReference" id="bus_contactLocationIdCrossReference" type="bus:contactLocationIdCrossReferenceItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="contactActive" id="bus_contactActive" type="bus:contactActiveItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="entityAccountantContactPhone" id="bus_entityAccountantContactPhone" type="bus:entityAccountantContactPhoneComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="entityAccountantContactFax" id="bus_entityAccountantContactFax" type="bus:entityAccountantContactFaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="entityAccountantContactEmail" id="bus_entityAccountantContactEmail" type="bus:entityAccountantContactEmailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entityAccountantContactPhoneNumber" id="bus_entityAccountantContactPhoneNumber" type="bus:entityAccountantContactPhoneNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantContactPhoneNumberDescription" id="bus_entityAccountantContactPhoneNumberDescription" type="bus:entityAccountantContactPhoneNumberDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantContactFaxNumber" id="bus_entityAccountantContactFaxNumber" type="bus:entityAccountantContactFaxNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantContactFaxNumberUsage" id="bus_entityAccountantContactFaxNumberUsage" type="bus:entityAccountantContactFaxNumberUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantContactEmailAddress" id="bus_entityAccountantContactEmailAddress" type="bus:entityAccountantContactEmailAddressItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entityAccountantContactEmailAddressUsage" id="bus_entityAccountantContactEmailAddressUsage" type="bus:entityAccountantContactEmailAddressUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entitySpecifiedReportingCalendarCode" id="bus_entitySpecifiedReportingCalendarCode" type="bus:entitySpecifiedReportingCalendarCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entitySpecifiedReportingCalendarDescription" id="bus_entitySpecifiedReportingCalendarDescription" type="bus:entitySpecifiedReportingCalendarDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entitySpecifiedReportingCalendarTitle" id="bus_entitySpecifiedReportingCalendarTitle" type="bus:entitySpecifiedReportingCalendarTitleItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entitySpecifiedReportingCalendarPeriodType" id="bus_entitySpecifiedReportingCalendarPeriodType" type="bus:entitySpecifiedReportingCalendarPeriodTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entitySpecifiedReportingCalendarPeriodTypeDescription" id="bus_entitySpecifiedReportingCalendarPeriodTypeDescription" type="bus:entitySpecifiedReportingCalendarPeriodTypeDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entitySpecifiedReportingCalendarClosedStatus" id="bus_entitySpecifiedReportingCalendarClosedStatus" type="bus:entitySpecifiedReportingCalendarClosedStatusItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entitySpecifiedReportingCalendarPurpose" id="bus_entitySpecifiedReportingCalendarPurpose" type="bus:entitySpecifiedReportingCalendarPurposeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entitySpecifiedReportingCalendarPurposeDescription" id="bus_entitySpecifiedReportingCalendarPurposeDescription" type="bus:entitySpecifiedReportingCalendarPurposeDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entitySpecifiedReportingCalendarPeriod" id="bus_entitySpecifiedReportingCalendarPeriod" type="bus:entitySpecifiedReportingCalendarPeriodComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="entitySpecifiedReportingPeriodId" id="bus_entitySpecifiedReportingPeriodId" type="bus:entitySpecifiedReportingPeriodIdItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entitySpecifiedReportingPeriodDescription" id="bus_entitySpecifiedReportingPeriodDescription" type="bus:entitySpecifiedReportingPeriodDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entitySpecifiedReportingPeriodStartDate" id="bus_entitySpecifiedReportingPeriodStartDate" type="bus:entitySpecifiedReportingPeriodStartDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entitySpecifiedReportingPeriodEndDate" id="bus_entitySpecifiedReportingPeriodEndDate" type="bus:entitySpecifiedReportingPeriodEndDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="entitySpecifiedReportingPeportingCalendarPeriodClosedDate" id="bus_entitySpecifiedReportingPeportingCalendarPeriodClosedDate" type="bus:entitySpecifiedReportingPeportingCalendarPeriodClosedDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="contactPhone" id="bus_contactPhone" type="bus:contactPhoneComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="contactFax" id="bus_contactFax" type="bus:contactFaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="contactEmail" id="bus_contactEmail" type="bus:contactEmailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="phoneNumber" id="bus_phoneNumber" type="bus:phoneNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="phoneNumberDescription" id="bus_phoneNumberDescription" type="bus:phoneNumberDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="phoneNumberDescription" id="bus_phoneNumberDescription" type="enum:enumerationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" enum:domain="gen:vdPhoneNumberType" enum:linkrole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/role/value-domain/vdPhoneNumberType" enum:headUsable="false"/>
   <element name="faxNumber" id="bus_faxNumber" type="bus:faxNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="faxNumberUsage" id="bus_faxNumberUsage" type="bus:faxNumberUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="emailAddress" id="bus_emailAddress" type="bus:emailAddressItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="emailAddressUsage" id="bus_emailAddressUsage" type="bus:emailAddressUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="reportingCalendarCode" id="bus_reportingCalendarCode" type="bus:reportingCalendarCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="reportingCalendarDescription" id="bus_reportingCalendarDescription" type="bus:reportingCalendarDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="reportingCalendarTitle" id="bus_reportingCalendarTitle" type="bus:reportingCalendarTitleItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="reportingCalendarPeriodType" id="bus_reportingCalendarPeriodType" type="enum:enumerationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" enum:domain="gen:vdReportingPeriodType" enum:linkrole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/role/value-domain/vdReportingPeriodType" enum:headUsable="false"/>
+  <element name="reportingCalendarPeriodTypeDescription" id="bus_reportingCalendarPeriodTypeDescription" type="bus:reportingCalendarPeriodTypeDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="reportingCalendarClosedStatus" id="bus_reportingCalendarClosedStatus" type="enum:enumerationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" enum:domain="gen:vdReportingCalendarStatus" enum:linkrole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/role/value-domain/vdReportingCalendarStatus" enum:headUsable="false"/>
+  <element name="reportingCalendarPurpose" id="bus_reportingCalendarPurpose" type="enum:enumerationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" enum:domain="gen:vdAccountingPurpose" enum:linkrole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/role/value-domain/vdAccountingPurpose" enum:headUsable="false"/>
+  <element name="reportingCalendarPurposeDescription" id="bus_reportingCalendarPurposeDescription" type="bus:reportingCalendarPurposeDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="reportingCalendarPeriod" id="bus_reportingCalendarPeriod" type="bus:reportingCalendarPeriodComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="periodId" id="bus_periodId" type="bus:periodIdItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="periodDescription" id="bus_periodDescription" type="bus:periodDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="periodStartDate" id="bus_periodStartDate" type="bus:periodStartDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="periodEndDate" id="bus_periodEndDate" type="bus:periodEndDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="reportingCalendarPeriodClosedDate" id="bus_reportingCalendarPeriodClosedDate" type="bus:reportingCalendarPeriodClosedDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="headerIdentifierContactPhone" id="bus_headerIdentifierContactPhone" type="bus:headerIdentifierContactPhoneComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="headerIdentifierContactFax" id="bus_headerIdentifierContactFax" type="bus:headerIdentifierContactFaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="headerIdentifierContactEmail" id="bus_headerIdentifierContactEmail" type="bus:headerIdentifierContactEmailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="headerIdentifierContactPhoneNumber" id="bus_headerIdentifierContactPhoneNumber" type="bus:headerIdentifierContactPhoneNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="headerIdentifierContactPhoneNumberDescription" id="bus_headerIdentifierContactPhoneNumberDescription" type="enum:enumerationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" enum:domain="gen:vdPhoneNumberType" enum:linkrole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/role/value-domain/vdPhoneNumberType" enum:headUsable="false"/>
+  <element name="headerIdentifierContactFaxNumber" id="bus_headerIdentifierContactFaxNumber" type="bus:headerIdentifierContactFaxNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="headerIdentifierContactFaxNumberUsage" id="bus_headerIdentifierContactFaxNumberUsage" type="bus:headerIdentifierContactFaxNumberUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="headerIdentifierContactEmailAddress" id="bus_headerIdentifierContactEmailAddress" type="bus:headerIdentifierContactEmailAddressItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="headerIdentifierContactEmailAddressUsage" id="bus_headerIdentifierContactEmailAddressUsage" type="bus:headerIdentifierContactEmailAddressUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="detailMeasurable" id="bus_detailMeasurable" type="bus:detailMeasurableComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="detailJob" id="bus_detailJob" type="bus:detailJobComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="detailDepreciationMortgage" id="bus_detailDepreciationMortgage" type="bus:detailDepreciationMortgageComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="detailContactPhone" id="bus_detailContactPhone" type="bus:detailContactPhoneComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="detailContactFax" id="bus_detailContactFax" type="bus:detailContactFaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="detailContactEmail" id="bus_detailContactEmail" type="bus:detailContactEmailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="detailPhoneNumber" id="bus_detailPhoneNumber" type="bus:detailPhoneNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="detailPhoneNumberDescription" id="bus_detailPhoneNumberDescription" type="bus:detailPhoneNumberDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="detailFaxNumber" id="bus_detailFaxNumber" type="bus:detailFaxNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="detailFaxNumberUsage" id="bus_detailFaxNumberUsage" type="bus:detailFaxNumberUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="detailEmailAddress" id="bus_detailEmailAddress" type="bus:detailEmailAddressItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="detailEmailAddressUsage" id="bus_detailEmailAddressUsage" type="bus:detailEmailAddressUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="measurableCode" id="bus_measurableCode" type="bus:measurableCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="contactPhone" id="bus_contactPhone" type="bus:contactPhoneComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="contactFax" id="bus_contactFax" type="bus:contactFaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="contactEmail" id="bus_contactEmail" type="bus:contactEmailComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="identifierContactPhoneNumber" id="bus_identifierContactPhoneNumber" type="bus:identifierContactPhoneNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="identifierContactPhoneNumberDescription" id="bus_identifierContactPhoneNumberDescription" type="enum:enumerationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" enum:domain="gen:vdPhoneNumberType" enum:linkrole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/role/value-domain/vdPhoneNumberType" enum:headUsable="false"/>
+  <element name="identifierContactFaxNumber" id="bus_identifierContactFaxNumber" type="bus:identifierContactFaxNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="identifierContactFaxNumberUsage" id="bus_identifierContactFaxNumberUsage" type="bus:identifierContactFaxNumberUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="identifierContactEmailAddress" id="bus_identifierContactEmailAddress" type="bus:identifierContactEmailAddressItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="identifierContactEmailAddressUsage" id="bus_identifierContactEmailAddressUsage" type="bus:identifierContactEmailAddressUsageItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="measurableCode" id="bus_measurableCode" type="enum:enumerationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" enum:domain="gen:vdMeasurableCode" enum:linkrole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/role/value-domain/vdMeasurableCode" enum:headUsable="false"/>
   <element name="measurableCodeDescription" id="bus_measurableCodeDescription" type="bus:measurableCodeDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="measurableCategory" id="bus_measurableCategory" type="bus:measurableCategoryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="measurableIdentification" id="bus_measurableIdentification" type="bus:measurableIdentificationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
@@ -786,7 +732,7 @@
   <element name="jobPhase" id="bus_jobPhase" type="bus:jobPhaseItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="jobPhaseDescription" id="bus_jobPhaseDescription" type="bus:jobPhaseDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="jobActive" id="bus_jobActive" type="bus:jobActiveItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="depreciationMortgageJurisdiction" id="bus_depreciationMortgageJurisdiction" type="bus:depreciationMortgageJurisdictionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="depreciationMortgageJurisdiction" id="bus_depreciationMortgageJurisdiction" type="enum:enumerationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" enum:domain="gen:vdDepreciationJurisdiction" enum:linkrole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/2026-12-31/role/value-domain/vdDepreciationJurisdiction" enum:headUsable="false"/>
   <element name="depreciationMethod" id="bus_depreciationMethod" type="bus:depreciationMethodItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="depreciationMortgageLife" id="bus_depreciationMortgageLife" type="bus:depreciationMortgageLifeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="depreciationMortgageDescription" id="bus_depreciationMortgageDescription" type="bus:depreciationMortgageDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
