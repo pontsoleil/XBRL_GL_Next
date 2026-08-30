@@ -612,41 +612,42 @@ class PostGraphWalk:
                 ancestors.append((level, row["module"], row["local_name"]))
         hmd["output_rows"] = output
 
-    def validate_shared_qnames(self) -> None:
-        occurrences: dict[str, list[tuple[dict[str, object], dict[str, str]]]] = {}
+    def validate_root_scoped_qnames(self) -> None:
+        occurrences: dict[
+            tuple[str, str], list[tuple[dict[str, object], dict[str, str]]]
+        ] = {}
         for hmd in self.hmds:
+            identifier = str(hmd["identifier"])
             for row in hmd["output_rows"]:
                 qname = qualified_name(
                     row["module"], row["local_name"], self.module_prefixes
                 )
-                occurrences.setdefault(qname, []).append((hmd, row))
-        for qname, items in occurrences.items():
-            identifiers = {str(hmd["identifier"]) for hmd, _ in items}
-            if len(identifiers) < 2:
+                occurrences.setdefault((identifier, qname), []).append((hmd, row))
+        for (_, qname), items in occurrences.items():
+            if len(items) < 2:
                 continue
-            self.shared_qname_count += 1
             signatures = {definition_signature(row) for _, row in items}
             if len(signatures) == 1:
                 continue
-            self.shared_qname_definition_mismatch_count += 1
             first_hmd, first_row = items[0]
             for hmd, row in items[1:]:
                 if definition_signature(row) != definition_signature(first_row):
                     self.record_error(
-                        "SHARED_QNAME_DEFINITION_MISMATCH",
-                        f"QName {qname!r} has inconsistent definitions across HMDs",
-                        "A QName shared by HMDs must have one semantic definition.",
+                        "HMD_QNAME_DEFINITION_CONFLICT",
+                        f"QName {qname!r} has conflicting definitions within one HMD",
+                        "Repeated QName use within one HMD is allowed only for the same taxonomy declaration.",
                         repr(definition_signature(row)),
                         repr(definition_signature(first_row)), row,
                         hmd=str(hmd["identifier"]),
-                        related_hmd=str(first_hmd["identifier"]),
                         related_row=first_row.get("_logical_row", ""),
                     )
 
         class_occurrences: dict[
-            str, list[tuple[dict[str, object], dict[str, str], tuple[tuple[str, str, str], ...]]]
+            tuple[str, str],
+            list[tuple[dict[str, object], dict[str, str], tuple[tuple[str, str, str], ...]]],
         ] = {}
         for hmd in self.hmds:
+            identifier = str(hmd["identifier"])
             rows = hmd["output_rows"]
             assert isinstance(rows, list)
             for index, parent in enumerate(rows):
@@ -680,35 +681,23 @@ class PostGraphWalk:
                 parent_qname = qualified_name(
                     parent["module"], parent["local_name"], self.module_prefixes
                 )
-                class_occurrences.setdefault(parent_qname, []).append(
+                class_occurrences.setdefault((identifier, parent_qname), []).append(
                     (hmd, parent, tuple(children))
                 )
 
-        for qname, items in class_occurrences.items():
+        for (_, qname), items in class_occurrences.items():
             if len(items) < 2:
                 continue
             first_hmd, first_row, first_model = items[0]
-            counted_shared_mismatch = False
             for hmd, row, model in items[1:]:
                 if model == first_model:
                     continue
-                identifiers = {
-                    str(first_hmd["identifier"]), str(hmd["identifier"])
-                }
-                code = (
-                    "SHARED_QNAME_CONTENT_MODEL_MISMATCH"
-                    if len(identifiers) > 1 else "QNAME_CONTENT_MODEL_MISMATCH"
-                )
-                if len(identifiers) > 1 and not counted_shared_mismatch:
-                    self.shared_qname_content_model_mismatch_count += 1
-                    counted_shared_mismatch = True
                 self.record_error(
-                    code,
+                    "QNAME_CONTENT_MODEL_MISMATCH",
                     f"Class QName {qname!r} has inconsistent direct-child content models",
-                    "One explicitly reused Class QName must have one ordered content model.",
+                    "One explicitly reused Class QName within one HMD must have one ordered content model.",
                     repr(model), repr(first_model), row,
                     hmd=str(hmd["identifier"]),
-                    related_hmd=str(first_hmd["identifier"]),
                     related_row=first_row.get("_logical_row", ""),
                 )
 
@@ -818,7 +807,7 @@ class PostGraphWalk:
         self.split_hmds()
         for hmd in self.hmds:
             self.validate_hmd(hmd)
-        self.validate_shared_qnames()
+        self.validate_root_scoped_qnames()
         self.raise_errors()
         self.publish()
         self.write_diagnostics("PASS")

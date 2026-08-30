@@ -20,75 +20,554 @@
 19,2,Composition,,btx,Detail_ Identifier_ Contact,,,,bus,Contact_ Phone,0,Contact Phone Number,【担当者電話番号】,担当者の電話番号。
 20,2,Composition,,btx,Detail_ Identifier_ Contact,,,,bus,Contact_ Fax,0,Contact Fax Number Class,【担当者FAX番号】,担当者のFAX番号の構造体。
 21,2,Composition,,btx,Detail_ Identifier_ Contact,,,,bus,Contact_ Email,0,Contact E-mail address class,【担当者Eメールアドレス】,担当者のEメールアドレスの構造体。
-22,1,Class,,btx,Detail_ Identifier Reference,,,,,,0..*,"Identification for customer, vendor, or employee.",【CVE情報】,顧客、仕入先、従業員のための識別子。
-23,2,Specialization,,btx,Detail_ Identifier Reference,,,,cor,Identifier Reference,1,,,
-24,1,Class,,btx,Header_ Identifier Reference,,,,,,0..*,"Identification for customer, vendor, or employee.",【CVE情報】,顧客、仕入先、従業員のための識別子。
-25,2,Specialization,,btx,Header_ Identifier Reference,,,,cor,Identifier Reference,1,,,
-26,1,Class,,btx,Header_ XBRL,,,,,,0..*,This will roll up to XBRL reporting information - this is a parent - repeatable so that the same item can be reported through many taxonomies. Care should be taken to consider what happens if people post to the same account but different XBRL elements.,【取引ヘッダXBRL情報】,XBRLレポート情報へのロールアップ情報。親タグであり、同じ項目が複数のタクソノミを通じて報告されうるように繰り返し可能。同一の勘定科目を異なるXBRL要素に転記した場合にどうなるか、注意深く考慮すべきである。
-27,2,Specialization,,btx,Header_ XBRL,,,,cor,XBRL,1,,,
-28,1,Class,,btx,Header_ Tax,,,,,,0..*,Class for holding tax related information,【税情報】,税関連の情報のタプル。
-29,2,Specialization,,btx,Header_ Tax,,,,cor,Tax,1,,,
-30,2,Attribute,,btx,Header_ Tax,Tax Amount in Triangulation Currency,,Monetary,,,0,"If the tax is in a foreign currency and triangulation is used, the amount of that tax in the triangulation currency",税額トライアンギュレーション通貨換算額,税が外貨建てで、トライアンギュレーション取引の場合の、トライアンギュレーション通貨での税額。
-31,2,Attribute,,btx,Header_ Tax,Tax Triangulation Currency,,QName,,,0,"If the tax is in a foreign currency and triangulation is used, the triangulation currency",税額換算トライアンギュレーション通貨,税が外貨建てで、トライアンギュレーション取引の場合の、トライアンギュレーション通貨。
-32,2,Attribute,,btx,Header_ Tax,Tax Triangulation Currency Exchange Rate,,Pure,,,0,"If the tax is in a foreign currency and triangulation is used, the exchange rate used expressed as national currency divided by triangulation currency",税額トライアンギュレーション通貨換算レート,税が外貨建てで、トライアンギュレーション取引の場合の、換算レート。自国通貨をトライアンギュレーション通貨で割った値。
-33,2,Attribute,,btx,Header_ Tax,Tax Triangulation Currency Exchange Rate Source,,String,,,0,"If the tax is in a foreign currency and triangulation is used, source of exchange rate - for example, Reuters, Bloomberg",税額トライアンギュレーション通貨換算レート情報源,"税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの情報源。たとえば、Reuters, Bloomberg"
-34,2,Attribute,,btx,Header_ Tax,Tax Triangulation Currency Exchange Rate Type,,String,,,0,"If the tax is in a foreign currency and triangulation is used, type of exchange rate - for example, spot rate, forward contract etc.",税額トライアンギュレーション通貨換算レート種別,税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの種別。たとえば、スポット・レート、先物など
-35,2,Attribute,,btx,Header_ Tax,Tax Foreign to Triangulation Currency Exchange Rate,,Pure,,,0,"If the tax is in a foreign currency and triangulation is used,  the exchange rate used expressed as foreign currency divided by triangulation currency",税額外貨トライアンギュレーション通貨換算レート,税が外貨建てで、トライアンギュレーション取引の場合の、換算レート。外貨をトライアンギュレーション通貨で割った値。
-36,2,Attribute,,btx,Header_ Tax,Tax Foreign to Triangulation Currency Exchange Rate Source,,String,,,0,"If the tax is in a foreign currency and triangulation is used, source of exchange rate - for example, Reuters, Bloomberg",税額外貨トライアンギュレーション通貨換算レート情報源,"税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの情報源。たとえば、Reuters, Bloomberg"
-37,2,Attribute,,btx,Header_ Tax,Tax Foreign to Triangulation Currency Exchange Rate Type,,String,,,0,"If the tax is in a foreign currency and triangulation is used, type of exchange rate - for example, spot rate, forward contract etc.",税額外貨トライアンギュレーション通貨換算レート種別,税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの種別。たとえば、スポット・レート、先物など。
-38,1,Class,,btx,Business Transactions,,,,,,1..*,"Economic event represented by one or more business documents and corresponding accounting entries, such as orders, shipments, invoices, and journal entries.",【ビジネス取引】,XBRL GLのルート要素。 注文、出荷、請求書およびそれに対応する仕訳など、1つまたは複数の業務文書と会計仕訳によって表現される経済事象。
-39,2,Composition,,btx,Business Transactions,,,,cor,Document Information,1..1,Parent for descriptive information about the Transaction Entries Class in which it is contained.,【文書情報】,この取引文書に関する情報の親タグ。
-40,2,Composition,,btx,Business Transactions,,,,cor,Entity_ Party,0..1,Holder for entity information - information about the reporting organization.,【事業体情報】,事業体情報（報告組織に関する情報）の入れ物。
-41,2,Composition,,btx,Business Transactions,,,,btx,Transaction_ Header,0..*,Parent class grouping transaction document header records.,【取引ヘッダ】,取引文書のヘッダ・レコードをまとめて保持する親クラス。
-42,1,Class,,btx,Referenced Document,,,,,,0..*,"A tool to capture the flow of related documents in the business process. Some needs of end users require a greater history of the documents that are associated with a transaction, especially in the VAT audit area. Contains a repetitive class of related documents.",【発生元文書情報】,業務プロセス上の、関連文書の流れを捕捉するためのもの。特にVAT監査では、エンドユーザの要求として、取引に関係する文書の履歴が必要とされる。関連文書情報の構造の繰り返しを含む。
-43,2,Specialization,,btx,Referenced Document,,,,cor,Document,1,,,
-44,2,Attribute,,btx,Referenced Document,Received Date,,Date Time,,,0..1,Date/time document was noted as received (if necessary). Represents actual date received. Posting dates are maintained separately.,元文書受領日付,（必要であれば）文書の受領が記録された日付/時刻。実際に受領された日付をあらわす。転記日付は別に管理される。
-45,2,Attribute,,btx,Referenced Document,Document Location,,String,,,0..1,"Document location as URI, file name or other reference. Alternatively, text of document can be placed here.",元文書格納場所,文書の格納場所である、URI、ファイル名またはその他の参照情報。代わりに、文書のテキストも記述可能。
-46,1,Class,,btx,Transaction_ Header,,,,,,0..*,Parent class grouping transaction document header records.,【取引ヘッダ】,取引文書のヘッダ・レコードをまとめて保持する親クラス。
-47,2,Specialization,,btx,Transaction_ Header,,,,cor,Header,1,,,
-48,2,Attribute,,btx,Transaction_ Header,Header_ Entry Date,,Date Time,,,0..1,"Represents the actual date/time of entry into computer (automated from system date, often misrepresented by changing system clock). Posting dates are maintained separately.",入力日付,コンピュータへ入力した実際の日付/時刻(システム日付から自動的に与えられ、システム時計の変更により、しばしば誤った値になる)を示す。 転記日付とは別に管理される。
-49,2,Attribute,,btx,Transaction_ Header,Header_ Type Identifier,,Token,,,0..1,"One of the following enumerated list: adjusting, budget, comparative, external-accountant, standard, passed-adjusting, eliminating, proposed, recurring, reclassifying, simulated, tax, other",種別識別子,"以下の値のうちのひとつ。_x000D_
+22,1,Class,,btx,Registered Identifier,,,,,,0..*,A structured identifier comprising an identifier value and the registration or identification scheme needed to interpret it.,【登録識別子】,識別子の値と、それを解釈するための登録・識別制度を組み合わせて表す構造化された識別子。
+23,2,Attribute,,btx,Registered Identifier,ID,,Token,,,1,The registered identifier value assigned under the specified identification scheme.,識別子,指定された識別制度に基づいて割り当てられた登録識別子の値。
+24,2,Attribute,,btx,Registered Identifier,Identification Scheme,,Token,,,1,The registration or identification scheme under which the identifier is assigned and interpreted.,識別制度,識別子の割当てと解釈の根拠となる登録・識別制度。
+25,1,Class,,btx,Detail_ Identifier Reference,,,,,,0..*,"Identification for customer, vendor, or employee.",【CVE情報】,顧客、仕入先、従業員のための識別子。
+26,2,Specialization,,btx,Detail_ Identifier Reference,,,,cor,Identifier Reference,1,,,
+27,2,Composition,,btx,Detail_ Identifier Reference,,,,btx,Registered Identifier,0..*,A structured identifier comprising an identifier value and the registration or identification scheme needed to interpret it.,【登録識別子】,識別子の値と、それを解釈するための登録・識別制度を組み合わせて表す構造化された識別子。
+28,1,Class,,btx,Header_ Identifier Reference,,,,,,0..*,"Identification for customer, vendor, or employee.",【CVE情報】,顧客、仕入先、従業員のための識別子。
+29,2,Specialization,,btx,Header_ Identifier Reference,,,,cor,Identifier Reference,1,,,
+30,2,Composition,,btx,Header_ Identifier Reference,,,,btx,Registered Identifier,0..*,A structured identifier comprising an identifier value and the registration or identification scheme needed to interpret it.,【登録識別子】,識別子の値と、それを解釈するための登録・識別制度を組み合わせて表す構造化された識別子。
+31,1,Class,,btx,Header_ XBRL,,,,,,0..*,This will roll up to XBRL reporting information - this is a parent - repeatable so that the same item can be reported through many taxonomies. Care should be taken to consider what happens if people post to the same account but different XBRL elements.,【取引ヘッダXBRL情報】,XBRLレポート情報へのロールアップ情報。親タグであり、同じ項目が複数のタクソノミを通じて報告されうるように繰り返し可能。同一の勘定科目を異なるXBRL要素に転記した場合にどうなるか、注意深く考慮すべきである。
+32,2,Specialization,,btx,Header_ XBRL,,,,cor,XBRL,1,,,
+33,1,Class,,btx,Header_ Tax,,,,,,0..*,Class for holding tax related information,【税情報】,税関連の情報のタプル。
+34,2,Specialization,,btx,Header_ Tax,,,,btx,Tax,1,,,
+35,2,Attribute,,btx,Header_ Tax,Tax Amount in Triangulation Currency,,Monetary,,,0,"If the tax is in a foreign currency and triangulation is used, the amount of that tax in the triangulation currency",税額トライアンギュレーション通貨換算額,税が外貨建てで、トライアンギュレーション取引の場合の、トライアンギュレーション通貨での税額。
+36,2,Attribute,,btx,Header_ Tax,Tax Triangulation Currency,,QName,,,0,"If the tax is in a foreign currency and triangulation is used, the triangulation currency",税額換算トライアンギュレーション通貨,税が外貨建てで、トライアンギュレーション取引の場合の、トライアンギュレーション通貨。
+37,2,Attribute,,btx,Header_ Tax,Tax Triangulation Currency Exchange Rate,,Pure,,,0,"If the tax is in a foreign currency and triangulation is used, the exchange rate used expressed as national currency divided by triangulation currency",税額トライアンギュレーション通貨換算レート,税が外貨建てで、トライアンギュレーション取引の場合の、換算レート。自国通貨をトライアンギュレーション通貨で割った値。
+38,2,Attribute,,btx,Header_ Tax,Tax Triangulation Currency Exchange Rate Source,,String,,,0,"If the tax is in a foreign currency and triangulation is used, source of exchange rate - for example, Reuters, Bloomberg",税額トライアンギュレーション通貨換算レート情報源,"税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの情報源。たとえば、Reuters, Bloomberg"
+39,2,Attribute,,btx,Header_ Tax,Tax Triangulation Currency Exchange Rate Type,,String,,,0,"If the tax is in a foreign currency and triangulation is used, type of exchange rate - for example, spot rate, forward contract etc.",税額トライアンギュレーション通貨換算レート種別,税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの種別。たとえば、スポット・レート、先物など
+40,2,Attribute,,btx,Header_ Tax,Tax Foreign to Triangulation Currency Exchange Rate,,Pure,,,0,"If the tax is in a foreign currency and triangulation is used,  the exchange rate used expressed as foreign currency divided by triangulation currency",税額外貨トライアンギュレーション通貨換算レート,税が外貨建てで、トライアンギュレーション取引の場合の、換算レート。外貨をトライアンギュレーション通貨で割った値。
+41,2,Attribute,,btx,Header_ Tax,Tax Foreign to Triangulation Currency Exchange Rate Source,,String,,,0,"If the tax is in a foreign currency and triangulation is used, source of exchange rate - for example, Reuters, Bloomberg",税額外貨トライアンギュレーション通貨換算レート情報源,"税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの情報源。たとえば、Reuters, Bloomberg"
+42,2,Attribute,,btx,Header_ Tax,Tax Foreign to Triangulation Currency Exchange Rate Type,,String,,,0,"If the tax is in a foreign currency and triangulation is used, type of exchange rate - for example, spot rate, forward contract etc.",税額外貨トライアンギュレーション通貨換算レート種別,税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの種別。たとえば、スポット・レート、先物など。
+43,1,Class,,btx,Business Transactions,,,,,,1..*,"Economic event represented by one or more business documents and corresponding accounting entries, such as orders, shipments, invoices, and journal entries.",【ビジネス取引】,XBRL GLのルート要素。 注文、出荷、請求書およびそれに対応する仕訳など、1つまたは複数の業務文書と会計仕訳によって表現される経済事象。
+44,2,Composition,,btx,Business Transactions,,,,cor,Document Information,1..1,Parent for descriptive information about the Transaction Entries Class in which it is contained.,【文書情報】,この取引文書に関する情報の親タグ。
+45,2,Composition,,btx,Business Transactions,,,,cor,Entity_ Party,0..1,Holder for entity information - information about the reporting organization.,【事業体情報】,事業体情報（報告組織に関する情報）の入れ物。
+46,2,Composition,,btx,Business Transactions,,,,btx,Transaction_ Header,0..*,Parent class grouping transaction document header records.,【取引ヘッダ】,取引文書のヘッダ・レコードをまとめて保持する親クラス。
+47,1,Class,,btx,Referenced Document,,,,,,0..*,"A tool to capture the flow of related documents in the business process. Some needs of end users require a greater history of the documents that are associated with a transaction, especially in the VAT audit area. Contains a repetitive class of related documents.",【発生元文書情報】,業務プロセス上の、関連文書の流れを捕捉するためのもの。特にVAT監査では、エンドユーザの要求として、取引に関係する文書の履歴が必要とされる。関連文書情報の構造の繰り返しを含む。
+48,2,Specialization,,btx,Referenced Document,,,,cor,Document,1,,,
+49,2,Attribute,,btx,Referenced Document,Received Date,,Date Time,,,0..1,Date/time document was noted as received (if necessary). Represents actual date received. Posting dates are maintained separately.,元文書受領日付,（必要であれば）文書の受領が記録された日付/時刻。実際に受領された日付をあらわす。転記日付は別に管理される。
+50,2,Attribute,,btx,Referenced Document,Document Location,,String,,,0..1,"Document location as URI, file name or other reference. Alternatively, text of document can be placed here.",元文書格納場所,文書の格納場所である、URI、ファイル名またはその他の参照情報。代わりに、文書のテキストも記述可能。
+51,2,Attribute,,btx,Referenced Document,Reference Purpose,,Token,,,0..1,Semantic purpose or role of the referenced document in this business transaction; distinct from the referenced document's own document type.,参照目的,この業務取引における参照文書の意味上の目的又は役割。参照文書自体の文書種別とは異なる。
+52,2,Composition,,btx,Referenced Document,,,,btx,Document Attachment,0..*,Attachment or external document payload associated with this referenced document.,【文書添付】,この参照文書に関連付けられた添付又は外部文書の内容。
+53,1,Class,,btx,Transaction_ Header,,,,,,0..*,Parent class grouping transaction document header records.,【取引ヘッダ】,取引文書のヘッダ・レコードをまとめて保持する親クラス。
+54,2,Specialization,,btx,Transaction_ Header,,,,cor,Header,1,,,
+55,2,Attribute,,btx,Transaction_ Header,Header_ Entry Date,,Date Time,,,0..1,"Represents the actual date/time of entry into computer (automated from system date, often misrepresented by changing system clock). Posting dates are maintained separately.",入力日付,コンピュータへ入力した実際の日付/時刻(システム日付から自動的に与えられ、システム時計の変更により、しばしば誤った値になる)を示す。 転記日付とは別に管理される。
+56,2,Attribute,,btx,Transaction_ Header,Header_ Type Identifier,,Token,,,0..1,"One of the following enumerated list: adjusting, budget, comparative, external-accountant, standard, passed-adjusting, eliminating, proposed, recurring, reclassifying, simulated, tax, other",種別識別子,"以下の値のうちのひとつ。_x000D_
 整理、予算、比較、外部会計事務所、通常、無視、消去、提案、反復、組替、シミュレーション、税、その他_x000D_
 [設定値のリスト]_x000D_
 (adjusting：整理)、(budget：予算)、(comparative：比較)、(external-accountant：外部会計事務所)、(standard：通常)、(passed-adjusting：無視)、(eliminating：消去)、(proposed：提案)、(recurring：反復)、(reclassifying：組替)、(simulated：シミュレーション)、(tax：税)、(other：その他)"
-50,2,Attribute,,btx,Transaction_ Header,Header Entry Number Counter,,Decimal,,,0..1,Unique reference for the entry - a numeric counter,文書番号カウンタ,文書の一意なリファレンス　　カウンタ
-51,2,Attribute,,btx,Transaction_ Header,Header Document Type,,Token,,,0..1,"An enumerated field describing the original source document, with invoice, voucher, check and other enumerated entries",元文書種別,顧客への請求書、ベンダからの請求書、小切手、その他の列挙値による、元文書の説明。\n[設定値のリスト]\n(check：小切手)、(debit-memo：借方メモ)、(credit-memo：貸方メモ)、(finance-charge：財務費用)、(invoice：顧客への請求書)、(order-customer：顧客オーダ)、(order-vendor：仕入先オーダ)、(payment-other：その他支払い)、(reminder：督促状)、(tegata：手形)、(voucher：ベンダからの請求書)、(shipment：出荷票)、(receipt：受領票)、(manual-adjustment：手修正)、(other：その他)
-52,2,Attribute,,btx,Transaction_ Header,Header Document Type Description,,String,,,0..1,Free format description of the document type,元文書種別説明,元文書の種別の説明。
-53,2,Attribute,,btx,Transaction_ Header,Header Invoice Type,,Token,,,0..1,"Invoice Type  (self-billed, ePoS enumerated values)",請求書種別,請求書の種別。(self-billed、ePoS)\n[設定値のリスト]\n(ePos：POSシステムからの発行)、(self-billed：手動発行)
-54,2,Attribute,,btx,Transaction_ Header,Header Document Number,,String,,,0..1,"Invoice, check, voucher, or other source document identifier",元文書番号,請求書、小切手、証憑、その他の元文書の識別子。
-55,2,Reference Association,,btx,Transaction_ Header,,Applied Invoice,,btx,Referenced Document,0..1,"Document number of primary invoice number, used to offset payments, debits and credits; for an invoice, usually the same as the documentNumber. When calculating open balance on an invoice, or open amount on payments in advance or not fully applied, this permits calculation of the open item.",適用先番号,支払、借方、貸方の相殺に使用される、一次請求書の文書番号。請求書では通常documentNumberと等しい。未決済の請求書残高や、未決済の支払金額の計算時に、利用できる。
-56,2,Aggregation,,btx,Transaction_ Header,,,,btx,Referenced Document,0..*,Reference for the document; number assigned to track the document,元文書参照情報,上の文書のための内部参照情報。文書を追跡するために内部的に割り当てた番号。
-57,2,Attribute,,btx,Transaction_ Header,Header Payment Method,,String,,,0..1,Method used or to be used to make the payment,支払方法,支払いのために使用された、または使用される方法。
-58,2,Attribute,,btx,Transaction_ Header,Header Posting Status,,Token,,,0..1,"deferred: although entered, it cannot be posted until a later time\nposted: already posted\nproposed: a proposed item that must be approved\nsimulated: a simulated item, for what-if\ntax: a tax-specific entry\nunposted:entered but not yet posted or validated\ncancelled:entered and later cancelled\nother:other status - should be described in postingStatusDescription",転記状態,・据置：入力されたが、まだ転記できない。\n・転記済：転記済み。\n・提案済：検証が必要な項目。\n・シミュレーション：仮定のためにシミュレートされた項目。\n・税：税項目。\n・未転記：入力されたが、まだ検証も転記もされていない。\n・取消済：入力されたが、取り消された。\n・その他：その他の状態。postingStatusDescriptionで説明されるべき。\n[設定値のリスト]\n(deferred：据置)、(posted：転記済)、(proposed：提案済)、(simulated：シミュレーション)、(tax：税)、(unposted：未転記)、(cancelled：取消済)、(other：その他)
-59,2,Attribute,,btx,Transaction_ Header,Header Posting Status Description,,String,,,0..1,Free format description of the posting status,転記状態説明,転記状態の説明。
-60,2,Attribute,,btx,Transaction_ Header,Header Acknowledgement Date,,Date Time,,,0..1,Date of acknowledgement of goods/services shipped/received.,承認日付,出荷/受領済みの物品/サービスを承認した日付。
-61,2,Attribute,,btx,Transaction_ Header,Header Confirmation Date,,Date Time,,,0..1,Date of confirmation of shipment/receipt.,確認日付,出荷/受領を確認した日付。
-62,2,Attribute,,btx,Transaction_ Header,Header Ship From,,String,,,0..1,References Organization Address Location Identifier where used. Otherwise free form.,出荷元,使用されていれば住所識別子の参照情報。または自由記述。
-63,2,Attribute,,btx,Transaction_ Header,Header Date Shipped/Received,,Date Time,,,0..1,Date goods/services are shipped/received.,出荷/受領日付,物品/サービスを出荷/受領した日付。
-64,2,Attribute,,btx,Transaction_ Header,Header Maturity Date or Date Due,,Date Time,,,0..1,Due date or other maturity date.,支払期日,支払期日やその他の期日。
-65,2,Attribute,,btx,Transaction_ Header,Header Payment Terms,,String,,,0..1,Discount/payment terms.,支払条件,割引/支払い条件。
-66,2,Composition,,btx,Transaction_ Header,,,,btx,Header_ Identifier Reference,0..*,"Identification for customer, vendor, or employee.",【文書CVE情報】,顧客、仕入先、従業員のための識別子。
-67,2,Composition,,btx,Transaction_ Header,,,,btx,Header_ Tax,0..*,Class for holding tax related information,【税情報】,税関連の情報のタプル。
-68,2,Composition,,btx,Transaction_ Header,,,,btx,Header_ Amount Structure,0..*,"Structure representing monetary amounts and currency information applicable to the document as a whole, such as document-level totals or aggregated tax amounts.",【ヘッダー金額構造】,文書全体に適用される金額や通貨情報（文書レベルの合計額や集計された税額など）を表現する構造。
-69,2,Composition,,btx,Transaction_ Header,,,,btx,Transaction_ Detail,0..*,Parent for document line,【文書明細】,文書明細の親タグ。
-70,2,Attribute,,btx,Transaction_ Header,Entered Date,,Date Time,,,0,"Represents the actual date/time of entry into computer (automated from system date, often misrepresented by changing system clock). Posting dates are maintained separately.",入力日付,コンピュータへ入力した実際の日付/時刻(システム日付から自動的に与えられ、システム時計の変更により、しばしば誤った値になる)を示す。 転記日付とは別に管理される。
-71,2,Attribute,,btx,Transaction_ Header,Type Code,,Token,,,0,"One of the following enumerated list: adjusting, budget, comparative, external-accountant, standard, passed-adjusting, eliminating, proposed, recurring, reclassifying, simulated, tax, other",種別識別子,"以下の値のうちのひとつ。_x000D_
+57,2,Attribute,,btx,Transaction_ Header,Header Entry Number Counter,,Decimal,,,0..1,Unique reference for the entry - a numeric counter,文書番号カウンタ,文書の一意なリファレンス　　カウンタ
+58,2,Attribute,,btx,Transaction_ Header,Header Document Type,,Token,,,0..1,"An enumerated field describing the original source document, with invoice, voucher, check and other enumerated entries",元文書種別,顧客への請求書、ベンダからの請求書、小切手、その他の列挙値による、元文書の説明。\n[設定値のリスト]\n(check：小切手)、(debit-memo：借方メモ)、(credit-memo：貸方メモ)、(finance-charge：財務費用)、(invoice：顧客への請求書)、(order-customer：顧客オーダ)、(order-vendor：仕入先オーダ)、(payment-other：その他支払い)、(reminder：督促状)、(tegata：手形)、(voucher：ベンダからの請求書)、(shipment：出荷票)、(receipt：受領票)、(manual-adjustment：手修正)、(other：その他)
+59,2,Attribute,,btx,Transaction_ Header,Header Document Type Description,,String,,,0..1,Free format description of the document type,元文書種別説明,元文書の種別の説明。
+60,2,Attribute,,btx,Transaction_ Header,Header Invoice Type,,Token,,,0..1,"Invoice Type  (self-billed, ePoS enumerated values)",請求書種別,請求書の種別。(self-billed、ePoS)\n[設定値のリスト]\n(ePos：POSシステムからの発行)、(self-billed：手動発行)
+61,2,Attribute,,btx,Transaction_ Header,Header Document Number,,String,,,0..1,"Invoice, check, voucher, or other source document identifier",元文書番号,請求書、小切手、証憑、その他の元文書の識別子。
+62,2,Reference Association,,btx,Transaction_ Header,,Applied Invoice,,btx,Referenced Document,0..1,"Document number of primary invoice number, used to offset payments, debits and credits; for an invoice, usually the same as the documentNumber. When calculating open balance on an invoice, or open amount on payments in advance or not fully applied, this permits calculation of the open item.",適用先番号,支払、借方、貸方の相殺に使用される、一次請求書の文書番号。請求書では通常documentNumberと等しい。未決済の請求書残高や、未決済の支払金額の計算時に、利用できる。
+63,2,Aggregation,,btx,Transaction_ Header,,,,btx,Referenced Document,0..*,Reference for the document; number assigned to track the document,元文書参照情報,上の文書のための内部参照情報。文書を追跡するために内部的に割り当てた番号。
+64,2,Attribute,,btx,Transaction_ Header,Header Payment Method,,String,,,0..1,Method used or to be used to make the payment,支払方法,支払いのために使用された、または使用される方法。
+65,2,Attribute,,btx,Transaction_ Header,Header Posting Status,,Token,,,0..1,"deferred: although entered, it cannot be posted until a later time\nposted: already posted\nproposed: a proposed item that must be approved\nsimulated: a simulated item, for what-if\ntax: a tax-specific entry\nunposted:entered but not yet posted or validated\ncancelled:entered and later cancelled\nother:other status - should be described in postingStatusDescription",転記状態,・据置：入力されたが、まだ転記できない。\n・転記済：転記済み。\n・提案済：検証が必要な項目。\n・シミュレーション：仮定のためにシミュレートされた項目。\n・税：税項目。\n・未転記：入力されたが、まだ検証も転記もされていない。\n・取消済：入力されたが、取り消された。\n・その他：その他の状態。postingStatusDescriptionで説明されるべき。\n[設定値のリスト]\n(deferred：据置)、(posted：転記済)、(proposed：提案済)、(simulated：シミュレーション)、(tax：税)、(unposted：未転記)、(cancelled：取消済)、(other：その他)
+66,2,Attribute,,btx,Transaction_ Header,Header Posting Status Description,,String,,,0..1,Free format description of the posting status,転記状態説明,転記状態の説明。
+67,2,Attribute,,btx,Transaction_ Header,Header Acknowledgement Date,,Date Time,,,0..1,Date of acknowledgement of goods/services shipped/received.,承認日付,出荷/受領済みの物品/サービスを承認した日付。
+68,2,Attribute,,btx,Transaction_ Header,Header Confirmation Date,,Date Time,,,0..1,Date of confirmation of shipment/receipt.,確認日付,出荷/受領を確認した日付。
+69,2,Attribute,,btx,Transaction_ Header,Header Ship From,,String,,,0..1,References Organization Address Location Identifier where used. Otherwise free form.,出荷元,使用されていれば住所識別子の参照情報。または自由記述。
+70,2,Attribute,,btx,Transaction_ Header,Header Date Shipped/Received,,Date Time,,,0..1,Date goods/services are shipped/received.,出荷/受領日付,物品/サービスを出荷/受領した日付。
+71,2,Attribute,,btx,Transaction_ Header,Header Maturity Date or Date Due,,Date Time,,,0..1,Due date or other maturity date.,支払期日,支払期日やその他の期日。
+72,2,Attribute,,btx,Transaction_ Header,Header Payment Terms,,String,,,0..1,Discount/payment terms.,支払条件,割引/支払い条件。
+73,2,Composition,,btx,Transaction_ Header,,,,btx,Header_ Identifier Reference,0..*,"Identification for customer, vendor, or employee.",【文書CVE情報】,顧客、仕入先、従業員のための識別子。
+74,2,Composition,,btx,Transaction_ Header,,,,btx,Header_ Tax,0..*,Class for holding tax related information,【税情報】,税関連の情報のタプル。
+75,2,Composition,,btx,Transaction_ Header,,,,btx,Header_ Amount Structure,0..*,"Structure representing monetary amounts and currency information applicable to the document as a whole, such as document-level totals or aggregated tax amounts.",【ヘッダー金額構造】,文書全体に適用される金額や通貨情報（文書レベルの合計額や集計された税額など）を表現する構造。
+76,2,Composition,,btx,Transaction_ Header,,,,btx,Transaction_ Detail,0..*,Parent for document line,【文書明細】,文書明細の親タグ。
+77,2,Attribute,,btx,Transaction_ Header,Entered Date,,Date Time,,,0,"Represents the actual date/time of entry into computer (automated from system date, often misrepresented by changing system clock). Posting dates are maintained separately.",入力日付,コンピュータへ入力した実際の日付/時刻(システム日付から自動的に与えられ、システム時計の変更により、しばしば誤った値になる)を示す。 転記日付とは別に管理される。
+78,2,Attribute,,btx,Transaction_ Header,Type Code,,Token,,,0,"One of the following enumerated list: adjusting, budget, comparative, external-accountant, standard, passed-adjusting, eliminating, proposed, recurring, reclassifying, simulated, tax, other",種別識別子,"以下の値のうちのひとつ。_x000D_
 整理、予算、比較、外部会計事務所、通常、無視、消去、提案、反復、組替、シミュレーション、税、その他_x000D_
 [設定値のリスト]_x000D_
 (adjusting：整理)、(budget：予算)、(comparative：比較)、(external-accountant：外部会計事務所)、(standard：通常)、(passed-adjusting：無視)、(eliminating：消去)、(proposed：提案)、(recurring：反復)、(reclassifying：組替)、(simulated：シミュレーション)、(tax：税)、(other：その他)"
-72,1,Class,,btx,Transaction_ Detail,,,,,,0..*,Parent for entry detail,【仕訳明細】,仕訳明細の親タグ。
-73,2,Specialization,,btx,Transaction_ Detail,,,,cor,Detail,1,,,
-74,2,Composition,,btx,Transaction_ Detail,,,,muc,Detail_ Multicurrency,0..*,Class to provide additional information related to home currencies that differ from original currencies and related exchange rates - typically this will be used to record exchange rates and amounts in currencies and/or on dates other than those of the original transaction. This class allows recording of exchange rates using a third currency as a triangulation currency. This is often EUR but is not restricted to being so. This class may be repeated as many times as necessary to record amounts in foreign currencies on the same or different dates.,【多通貨明細】,"原取引時の通貨と異なる、自国通貨と換算レートに関する追加情報のセクション。－現在および原取引時の、換算レートおよび金額の記録に使用される。_x000D_
+79,2,Attribute,,btx,Transaction_ Header,Business Process Type,,Identifier,,,0..1,"Type or context of the business process to which the business transaction belongs; distinct from document type, invoice subtype, and transaction entry type.",ビジネスプロセス種別,この業務取引が属するビジネスプロセス又はプロセス文脈の種別。文書種別、請求書の下位種別及び取引入力種別とは異なる。
+80,2,Composition,,btx,Transaction_ Header,,,,btx,Header_ Rich Text Comment,0..*,Repeatable header note or comment occurrence.,【ヘッダーノート】,反復可能なヘッダーノート又はコメントの出現。
+81,2,Composition,,btx,Transaction_ Header,,Header,,btx,Adjustment,0..*,Document-level allowance or charge adjustment.,【ヘッダー調整】,文書レベルの値引又は追加請求の調整。
+82,1,Class,,btx,Transaction_ Detail,,,,,,0..*,Parent for entry detail,【仕訳明細】,仕訳明細の親タグ。
+83,2,Specialization,,btx,Transaction_ Detail,,,,cor,Detail,1,,,
+84,2,Composition,,btx,Transaction_ Detail,,,,muc,Detail_ Multicurrency,0..*,Class to provide additional information related to home currencies that differ from original currencies and related exchange rates - typically this will be used to record exchange rates and amounts in currencies and/or on dates other than those of the original transaction. This class allows recording of exchange rates using a third currency as a triangulation currency. This is often EUR but is not restricted to being so. This class may be repeated as many times as necessary to record amounts in foreign currencies on the same or different dates.,【多通貨明細】,"原取引時の通貨と異なる、自国通貨と換算レートに関する追加情報のセクション。－現在および原取引時の、換算レートおよび金額の記録に使用される。_x000D_
 トライアンギュレーション通貨としての第三通貨の換算レートを記録できる。EURの場合が多いがそれに限らない。この構造は、同日または異なる日の外貨での金額を記録する必要がある限り、繰り返し指定可能。"
-75,2,Composition,,btx,Transaction_ Detail,,,,btx,Detail_ Identifier Reference,0..*,"Identification for customer, vendor, or employee.",【CVE情報】,顧客、仕入先、従業員のための識別子。
-76,2,Composition,,btx,Transaction_ Detail,,,,cor,Detail_ XBRL,0..*,This will roll up to XBRL reporting information - this is a parent - repeatable so that the same item can be reported through many taxonomies. Care should be taken to consider what happens if people post to the same account but different XBRL elements.,【XBRL情報】,XBRLレポート情報へのロールアップ情報。親タグであり、同じ項目が複数のタクソノミを通じて報告されうるように繰り返し可能。同一の勘定科目を異なるXBRL要素に転記した場合にどうなるか、注意深く考慮すべきである。
-77,2,Composition,,btx,Transaction_ Detail,,,,bus,Detail_ Measurable,0..*,"Parent for information regarding measurable items associated with the enclosing entryDetail line. Primary area used for holding performance measures. Based on needs for tracking inventory transactional detail, but suitable for anything assigned to an ""account"", ""reporting bucket"" or ""code"". Can be used to track any movements.",【計測可能物情報】,明細行に関係付けられた、計測可能物の情報の親タグ。おもにパフォーマンス測定のために使用される。在庫移動の詳細の追跡の必要性に基づき、「科目」、「報告バケット」、「コード」に関係付けられるあらゆるものに適する。あらゆる活動を追跡するために使用可能。
-78,2,Composition,,btx,Transaction_ Detail,,,,bus,Detail_ Job,0..*,"Class for holding job related information, separate from jobs represented in account identifier. Would probably only have one jobinfo class for each entry line, but there may be a need to express more than one.",【ジョブ情報】,科目識別子で表現されるジョブとは別の、ジョブに関係する情報のタプル。個々の明細行に対してひとつだけ存在すると思われるが、複数必要かもしれない。
-79,2,Composition,,btx,Transaction_ Detail,,,,bus,Detail_ Depreciation Mortgage,0..*,"Parent for information related to depreciation, mortgages, etc.",【減価償却/抵当債務情報】,減価償却、抵当債務等に関連する情報の親タグ。
-80,2,Composition,,btx,Transaction_ Detail,,,,ehm,Detail_ Serial or Lot,0..*,"Class for holding information about serial numbers or lots (batches). As a class, this permits multiple serial numbers or multiple lot number batches within a single gl-cor:measurable class.",【シリアル番号・ロット情報】,シリアル番号やロット（バッチ）に関する情報を保持するタプル。単一の構造内に複数のシリアル番号やロット情報を保持可能。
-81,2,Composition,,btx,Transaction_ Detail,,,,cor,Detail_ Tax,0..*,Class for holding tax related information,【税情報】,税関連の情報のタプル。
-82,2,Composition,,btx,Transaction_ Detail,,,,lnk,Detail_ Rich Text Comment,0..*,"Accepts text in rich text format, including XHTML. It can be used for different purposes, such as to create footnotes in XBRL instances or to create a comment for a document or an entry.",【リッチテキストコメント】,XHTMLを含む、リッチテキスト形式のテキストを受け入れる。XBRLインスタンスのフットノートの生成や、文書や伝票のコメントの生成などの、さまざまな目的で利用可能。
-83,2,Attribute,,btx,Transaction_ Detail,Detail_ Description,,String,,,0..1,Description of this line of detail only,説明,この明細行のみに対する説明。
-84,2,Attribute,,btx,Transaction_ Detail,Detail_ Measurable Class Identifier,,Token,,,0..1,"An enumerated code to identify the inventory, fixed asset or other measurable class. Enumerated as: raw material, work-in-process, finished goods, assemblies, supplies, land, building, machinery, furniture, vehicles, other.",測定可能分類コード,在庫、固定資産、その他の測定可能な分類を識別するための列挙コード。列挙例：原材料、仕掛品、製品、組立品、備品、土地、建物、機械、家具、車両、その他。
-85,2,Composition,,btx,Transaction_ Detail,,,,btx,Detail_ Amount Structure,0..*,"Structure representing monetary amounts and currency information applicable to an individual line, such as line-level net amounts, tax calculation bases, allowances, or charges.",【行金額構造】,個々の明細行に適用される金額や通貨情報（行レベルの正味金額、税計算基礎額、値引または追加請求など）を表現する構造。
-86,2,Attribute,,btx,Transaction_ Detail,Measurable Class ID,,Token,,,0,"An enumerated code to identify the inventory, fixed asset or other measurable class. Enumerated as: raw material, work-in-process, finished goods, assemblies, supplies, land, building, machinery, furniture, vehicles, other.",測定可能分類コード,在庫、固定資産、その他の測定可能な分類を識別するための列挙コード。列挙例：原材料、仕掛品、製品、組立品、備品、土地、建物、機械、家具、車両、その他。
+85,2,Composition,,btx,Transaction_ Detail,,,,btx,Detail_ Identifier Reference,0..*,"Identification for customer, vendor, or employee.",【CVE情報】,顧客、仕入先、従業員のための識別子。
+86,2,Composition,,btx,Transaction_ Detail,,,,cor,Detail_ XBRL,0..*,This will roll up to XBRL reporting information - this is a parent - repeatable so that the same item can be reported through many taxonomies. Care should be taken to consider what happens if people post to the same account but different XBRL elements.,【XBRL情報】,XBRLレポート情報へのロールアップ情報。親タグであり、同じ項目が複数のタクソノミを通じて報告されうるように繰り返し可能。同一の勘定科目を異なるXBRL要素に転記した場合にどうなるか、注意深く考慮すべきである。
+87,2,Composition,,btx,Transaction_ Detail,,,,bus,Detail_ Measurable,0..*,"Parent for information regarding measurable items associated with the enclosing entryDetail line. Primary area used for holding performance measures. Based on needs for tracking inventory transactional detail, but suitable for anything assigned to an ""account"", ""reporting bucket"" or ""code"". Can be used to track any movements.",【計測可能物情報】,明細行に関係付けられた、計測可能物の情報の親タグ。おもにパフォーマンス測定のために使用される。在庫移動の詳細の追跡の必要性に基づき、「科目」、「報告バケット」、「コード」に関係付けられるあらゆるものに適する。あらゆる活動を追跡するために使用可能。
+88,2,Composition,,btx,Transaction_ Detail,,,,bus,Detail_ Job,0..*,"Class for holding job related information, separate from jobs represented in account identifier. Would probably only have one jobinfo class for each entry line, but there may be a need to express more than one.",【ジョブ情報】,科目識別子で表現されるジョブとは別の、ジョブに関係する情報のタプル。個々の明細行に対してひとつだけ存在すると思われるが、複数必要かもしれない。
+89,2,Composition,,btx,Transaction_ Detail,,,,bus,Detail_ Depreciation Mortgage,0..*,"Parent for information related to depreciation, mortgages, etc.",【減価償却/抵当債務情報】,減価償却、抵当債務等に関連する情報の親タグ。
+90,2,Composition,,btx,Transaction_ Detail,,,,ehm,Detail_ Serial or Lot,0..*,"Class for holding information about serial numbers or lots (batches). As a class, this permits multiple serial numbers or multiple lot number batches within a single gl-cor:measurable class.",【シリアル番号・ロット情報】,シリアル番号やロット（バッチ）に関する情報を保持するタプル。単一の構造内に複数のシリアル番号やロット情報を保持可能。
+91,2,Composition,,btx,Transaction_ Detail,,,,btx,Detail_ Tax,0..*,Class for holding tax related information,【税情報】,税関連の情報のタプル。
+92,2,Composition,,btx,Transaction_ Detail,,,,lnk,Detail_ Rich Text Comment,0..*,"Accepts text in rich text format, including XHTML. It can be used for different purposes, such as to create footnotes in XBRL instances or to create a comment for a document or an entry.",【リッチテキストコメント】,XHTMLを含む、リッチテキスト形式のテキストを受け入れる。XBRLインスタンスのフットノートの生成や、文書や伝票のコメントの生成などの、さまざまな目的で利用可能。
+93,2,Attribute,,btx,Transaction_ Detail,Detail_ Description,,String,,,0..1,Description of this line of detail only,説明,この明細行のみに対する説明。
+94,2,Attribute,,btx,Transaction_ Detail,Detail_ Measurable Class Identifier,,Token,,,0..1,"An enumerated code to identify the inventory, fixed asset or other measurable class. Enumerated as: raw material, work-in-process, finished goods, assemblies, supplies, land, building, machinery, furniture, vehicles, other.",測定可能分類コード,在庫、固定資産、その他の測定可能な分類を識別するための列挙コード。列挙例：原材料、仕掛品、製品、組立品、備品、土地、建物、機械、家具、車両、その他。
+95,2,Composition,,btx,Transaction_ Detail,,,,btx,Detail_ Amount Structure,0..*,"Structure representing monetary amounts and currency information applicable to an individual line, such as line-level net amounts, tax calculation bases, allowances, or charges.",【行金額構造】,個々の明細行に適用される金額や通貨情報（行レベルの正味金額、税計算基礎額、値引または追加請求など）を表現する構造。
+96,2,Attribute,,btx,Transaction_ Detail,Measurable Class ID,,Token,,,0,"An enumerated code to identify the inventory, fixed asset or other measurable class. Enumerated as: raw material, work-in-process, finished goods, assemblies, supplies, land, building, machinery, furniture, vehicles, other.",測定可能分類コード,在庫、固定資産、その他の測定可能な分類を識別するための列挙コード。列挙例：原材料、仕掛品、製品、組立品、備品、土地、建物、機械、家具、車両、その他。
+97,2,Composition,,btx,Transaction_ Detail,,Detail,,btx,Adjustment,0..*,Line-level allowance or charge adjustment.,【明細調整】,明細レベルの値引又は追加請求の調整。
+98,1,Class,,btx,Tax,,,,,,0..*,Business-transactions Tax specialization that adds transaction-document tax regime and exemption semantics without changing the shared core Tax definition.,【業務取引税情報】,共通の税情報を拡張し、業務取引文書の税制種別及び免税理由を保持する税情報。
+99,2,Specialisation,,btx,Tax,,,,cor,Tax,1,,,
+100,2,Attribute,,btx,Tax,Tax Type,,Token,,,0..1,"Type of tax regime or tax family applicable to this tax occurrence, distinct from its tax category.",税種別,この税出現に適用される税制又は税体系の種別。税区分とは異なる。
+101,2,Attribute,,btx,Tax,Tax Exemption Reason Code,,Token,,,0..1,Code identifying the reason why the tax occurrence is exempt from tax.,免税理由コード,この税出現が免税となる理由を識別するコード。
+102,2,Attribute,,btx,Tax,Tax Exemption Reason Text,,String,,,0..1,Human-readable text describing the reason why the tax occurrence is exempt from tax.,免税理由テキスト,この税出現が免税となる理由を説明する可読テキスト。
+103,1,Class,,btx,Detail_ Tax,,,,,,0..*,Business-transactions detail Tax specialization that adds line-level tax regime and exemption semantics without changing the shared core Detail Tax definition.,【業務取引明細税情報】,共通の明細税情報を拡張し、業務取引明細の税制種別及び免税理由を保持する税情報。
+104,2,Specialisation,,btx,Detail_ Tax,,,,cor,Detail_ Tax,1,,,
+105,2,Attribute,,btx,Detail_ Tax,Tax Type,,Token,,,0..1,"Type of tax regime or tax family applicable to this detail tax occurrence, distinct from its tax category.",明細税種別,この明細税出現に適用される税制又は税体系の種別。税区分とは異なる。
+106,2,Attribute,,btx,Detail_ Tax,Tax Exemption Reason Code,,Token,,,0..1,Code identifying the exemption reason for this detail tax occurrence.,明細免税理由コード,この明細税出現の免税理由を識別するコード。
+107,2,Attribute,,btx,Detail_ Tax,Tax Exemption Reason Text,,String,,,0..1,Human-readable text describing the exemption reason for this detail tax occurrence.,明細免税理由テキスト,この明細税出現の免税理由を説明する可読テキスト。
+108,1,Class,,btx,Document Attachment,,,,,,0..*,"Attachment payload or external location and its metadata, maintained as one repeatable document-attachment occurrence.",【文書添付】,添付内容又は外部所在とそのメタデータを一つの反復可能な文書添付出現として保持する構造。
+109,2,Attribute,,btx,Document Attachment,Binary Content,,Base64Binary,,,0..1,Binary attachment content encoded as base64.,バイナリ内容,Base64で符号化された添付文書のバイナリ内容。
+110,2,Attribute,,btx,Document Attachment,MIME Type,,Token,,,0..1,MIME media type of the attached content.,MIME種別,添付内容のMIMEメディア種別。
+111,2,Attribute,,btx,Document Attachment,File Name,,String,,,0..1,File name associated with the attached content.,ファイル名,添付内容に関連付けられたファイル名。
+112,2,Attribute,,btx,Document Attachment,External URI,,anyURI,,,0..1,External URI at which the referenced document or attachment can be obtained.,外部URI,参照文書又は添付文書を取得できる外部URI。
+113,1,Class,,btx,Header_ Rich Text Comment,,,,,,0..*,Header-scoped reusable rich text comment for a business transaction document.,【ヘッダーリッチテキストコメント】,業務取引文書のヘッダー範囲で再利用するリッチテキストコメント。
+114,2,Specialisation,,btx,Header_ Rich Text Comment,,,,lnk,Rich Text Comment,1,,,
+115,1,Class,,btx,Adjustment,,,,,,0..*,"Repeatable allowance or charge adjustment occurrence combining type, amount, calculation basis, reason, and tax information.",【調整】,種別、金額、計算基礎、理由及び税情報を一つにまとめた反復可能な値引又は追加請求の調整出現。
+116,2,Attribute,,btx,Adjustment,Adjustment Type,,Token,,,0..1,"Type of adjustment, such as an allowance or charge; literal values are defined outside this FSM change.",調整種別,値引又は追加請求などの調整種別。具体的な値はこのFSM変更では定義しない。
+117,2,Attribute,,btx,Adjustment,Amount,,Monetary,,,1,Monetary amount of the adjustment.,調整金額,調整の金額。
+118,2,Attribute,,btx,Adjustment,Base Amount,,Monetary,,,0..1,Monetary base amount used to calculate the adjustment.,調整基礎金額,調整の計算に用いる基礎金額。
+119,2,Attribute,,btx,Adjustment,Percentage,,Pure,,,0..1,"Percentage rate used to calculate the adjustment, represented as a pure numeric value.",調整率,調整の計算に用いる比率。純粋数値として表現する。
+120,2,Attribute,,btx,Adjustment,Reason,,String,,,0..1,Human-readable reason for the adjustment.,調整理由,調整理由の可読テキスト。
+121,2,Attribute,,btx,Adjustment,Reason Code,,Token,,,0..1,Code identifying the reason for the adjustment.,調整理由コード,調整理由を識別するコード。
+122,2,Attribute,,btx,Adjustment,Tax Category,,Token,,,0..1,Tax category applicable to the adjustment.,調整税区分,調整に適用される税区分。
+123,2,Attribute,,btx,Adjustment,Tax Rate,,Pure,,,0..1,Tax percentage rate applicable to the adjustment.,調整税率,調整に適用される税率。
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,

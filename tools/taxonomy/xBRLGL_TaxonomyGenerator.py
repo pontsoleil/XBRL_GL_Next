@@ -215,6 +215,31 @@ def normalize_namespace_prefix_map(mappings):
     return resolved
 
 
+
+def parse_publication_namespace_anchor(namespace):
+    """Split one publication namespace anchor into base and version.
+
+    ``--namespace`` remains the only required publication-namespace CLI input.
+    Its form is ``{namespace-base}/plt/{YYYY-MM-DD}``; sibling module
+    namespaces are then generated as ``{namespace-base}/{module}/{version}``.
+    """
+    value = (namespace or "").strip().rstrip("/")
+    match = re.fullmatch(
+        r"(?P<base>.+)/plt/(?P<version>\d{4}-\d{2}-\d{2})",
+        value,
+    )
+    if not match:
+        raise ValueError(
+            "--namespace must use {namespace-base}/plt/YYYY-MM-DD syntax; "
+            f"got {namespace!r}."
+        )
+    namespace_base = match.group("base").rstrip("/")
+    if not namespace_base:
+        raise ValueError("--namespace resolved to an empty namespace base.")
+    version = match.group("version")
+    return value, namespace_base, version
+
+
 def _formal_hmd_identity(path, encoding="utf-8-sig"):
     """Return the single formal root identifier for one HMD CSV.
 
@@ -363,13 +388,14 @@ class xBRLGL_TaxonomyGenerator:
         self.root = root.strip() if root else None
         self.lang = lang.strip() if lang else "ja"
         self.currency = currency.strip().upper() if currency else "JPY"
-        self.namespace = namespace.strip() if namespace else 'http://www.xbrl.org/xbrl-gl"'
-        self.version = self.namespace[-10:]
-        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", self.version):
-            self.error_print(
-                "Namespace must end in an explicit YYYY-MM-DD version date; "
-                f"got {self.namespace!r}."
-            )
+        try:
+            (
+                self.namespace,
+                self.namespace_base,
+                self.version,
+            ) = parse_publication_namespace_anchor(namespace)
+        except ValueError as exc:
+            self.error_print(str(exc))
         self.encoding = encoding.strip() if encoding else "utf-8-sig"
 
         self.records = []
@@ -450,7 +476,11 @@ class xBRLGL_TaxonomyGenerator:
             text = f.read()
         text = re.sub(r"gl-gen-\d{4}-\d{2}-\d{2}\.xsd", f"gl-gen-{self.version}.xsd", text)
         text = text.replace("2026-MM-DD", self.version)
-        text = re.sub(r"/gen/\d{4}-\d{2}-\d{2}", f"/gen/{self.version}", text)
+        text = re.sub(
+            r'https?://[^"\'\s<>]+/gen/\d{4}-\d{2}-\d{2}',
+            self.module_namespace("gen"),
+            text,
+        )
         with open(target, "w", encoding=self.encoding, newline="") as f:
             f.write(text)
         self.trace_print(f"-- {target}")
@@ -917,7 +947,7 @@ class xBRLGL_TaxonomyGenerator:
         return escaped
 
     def module_namespace(self, module):
-        return f"http://www.xbrl.org/int/gl/{module}/{self.version}"
+        return f"{self.namespace_base}/{module}/{self.version}"
 
     def xpath_prefix_module(self, prefix):
         """Resolve an XPath lexical prefix without changing module identity."""
@@ -1383,15 +1413,15 @@ class xBRLGL_TaxonomyGenerator:
             html = [
                 '<?xml version="1.0" encoding="UTF-8"?>\n',
                 "<!-- (c) XBRL International.  See http://www.xbrl.org/legal -->\n",
-                f'<schema targetNamespace="http://www.xbrl.org/int/gl/{module}/{self.version}" '
+                f'<schema targetNamespace="{self.module_namespace(module)}" '
                 'attributeFormDefault="unqualified" elementFormDefault="qualified"\n',
                 '  xmlns="http://www.w3.org/2001/XMLSchema"\n',
                 '  xmlns:xbrli="http://www.xbrl.org/2003/instance"\n',
-                f'  xmlns:{module}="http://www.xbrl.org/int/gl/{module}/{self.version}"\n',
-                f'  xmlns:gen="http://www.xbrl.org/int/gl/gen/{self.version}">\n',
+                f'  xmlns:{module}="{self.module_namespace(module)}"\n',
+                f'  xmlns:gen="{self.module_namespace("gen")}">\n',
                 '  <import namespace="http://www.xbrl.org/2003/instance" '
                 'schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>\n',
-                f'  <import namespace="http://www.xbrl.org/int/gl/gen/{self.version}" '
+                f'  <import namespace="{self.module_namespace("gen")}" '
                 f'schemaLocation="{self.gl_gen_schema_location(module_directory)}"/>\n',
                 "  <!-- reusable OIM Attribute item type -->\n",
             ]
@@ -1684,17 +1714,17 @@ class xBRLGL_TaxonomyGenerator:
             html = [
                 '<?xml version="1.0" encoding="UTF-8"?>\n',
                 "<!-- (c) XBRL International.  See http://www.xbrl.org/legal -->\n",
-                f'<schema targetNamespace="http://www.xbrl.org/int/gl/{module}/{self.version}" attributeFormDefault="unqualified" elementFormDefault="qualified"\n',
+                f'<schema targetNamespace="{self.module_namespace(module)}" attributeFormDefault="unqualified" elementFormDefault="qualified"\n',
                 '  xmlns="http://www.w3.org/2001/XMLSchema"\n',
                 '  xmlns:link="http://www.xbrl.org/2003/linkbase"\n'
                 '  xmlns:xlink="http://www.w3.org/1999/xlink"\n',
                 '  xmlns:xbrli="http://www.xbrl.org/2003/instance"\n',
                 '  xmlns:xbrldt="http://xbrl.org/2005/xbrldt"\n',
-                f'  xmlns:gen="http://www.xbrl.org/int/gl/gen/{self.version}"\n'
+                f'  xmlns:gen="{self.module_namespace("gen")}"\n'
             ]
             for _module in modules:
                 html.append(
-                    f'  xmlns:{_module}="http://www.xbrl.org/int/gl/{_module}/{self.version}"\n'
+                    f'  xmlns:{_module}="{self.module_namespace(_module)}"\n'
                 )
             html.append(
                 ">\n"
@@ -1704,13 +1734,13 @@ class xBRLGL_TaxonomyGenerator:
                 '  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>\n',
                 '  <import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>\n',
                 '  <import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>\n',
-                f'  <import namespace="http://www.xbrl.org/int/gl/gen/{self.version}" schemaLocation="{self.gl_gen_schema_location(module_directory)}"/>\n'
+                f'  <import namespace="{self.module_namespace("gen")}" schemaLocation="{self.gl_gen_schema_location(module_directory)}"/>\n'
             ]
 
             for _module in modules:
                 if _module != module:
                     html.append(
-                        f'  <import namespace="http://www.xbrl.org/int/gl/{_module}/{self.version}" schemaLocation="../{_module}/{_module}-{self.version}.xsd"/>\n'
+                        f'  <import namespace="{self.module_namespace(_module)}" schemaLocation="../{_module}/{_module}-{self.version}.xsd"/>\n'
                     )
 
             html.append("  <!-- reusable item type -->\n")
@@ -1836,17 +1866,16 @@ class xBRLGL_TaxonomyGenerator:
 
                 html = [
                     '<?xml version="1.0" encoding="UTF-8"?>\n',
-                    f'<schema targetNamespace="http://www.xbrl.org/int/gl/{module}/{self.version}" '
+                    f'<schema targetNamespace="{self.module_namespace(module)}" '
                     'elementFormDefault="qualified" attributeFormDefault="unqualified"\n',
                     '  xmlns="http://www.w3.org/2001/XMLSchema"\n',
                     '  xmlns:xbrli="http://www.xbrl.org/2003/instance"\n',
-                    f'  xmlns:{module}="http://www.xbrl.org/int/gl/{module}/{self.version}"\n',
+                    f'  xmlns:{module}="{self.module_namespace(module)}"\n',
                 ]
                 for dependency in sorted(dependencies):
                     if dependency != module:
                         html.append(
-                            f'  xmlns:{dependency}="http://www.xbrl.org/int/gl/'
-                            f'{dependency}/{self.version}"\n'
+                            f'  xmlns:{dependency}="{self.module_namespace(dependency)}"\n'
                         )
                 html.append(">\n")
                 html.append(
@@ -1859,8 +1888,7 @@ class xBRLGL_TaxonomyGenerator:
                 for dependency in sorted(dependencies):
                     if dependency != module:
                         html.append(
-                            f'  <import namespace="http://www.xbrl.org/int/gl/'
-                            f'{dependency}/{self.version}" '
+                            f'  <import namespace="{self.module_namespace(dependency)}" '
                             f'schemaLocation="{dependency}-content-{self.version}.xsd"/>\n'
                         )
 
@@ -1898,7 +1926,7 @@ class xBRLGL_TaxonomyGenerator:
             )
             palette_lines = [
                 '<?xml version="1.0" encoding="UTF-8"?>\n',
-                f'<schema targetNamespace="http://www.xbrl.org/int/gl/plt/{self.version}" '
+                f'<schema targetNamespace="{self.module_namespace("plt")}" '
                 'elementFormDefault="qualified" attributeFormDefault="unqualified"\n',
                 '  xmlns="http://www.w3.org/2001/XMLSchema"\n',
                 '  xmlns:link="http://www.xbrl.org/2003/linkbase"\n',
@@ -1925,8 +1953,7 @@ class xBRLGL_TaxonomyGenerator:
             palette_lines.append("  </appinfo></annotation>\n")
             for root_module in root_modules:
                 palette_lines.append(
-                    f'  <import namespace="http://www.xbrl.org/int/gl/{root_module}/'
-                    f'{self.version}" schemaLocation="{root_module}-content-{self.version}.xsd"/>\n'
+                    f'  <import namespace="{self.module_namespace(root_module)}" schemaLocation="{root_module}-content-{self.version}.xsd"/>\n'
                 )
             palette_lines.append("</schema>\n")
             palette_file = file_path(
@@ -1952,13 +1979,13 @@ class xBRLGL_TaxonomyGenerator:
         html = [
             '<?xml version="1.0" encoding="UTF-8"?>\n',
             "<!-- (c) XBRL International.  See http://www.xbrl.org/legal -->\n",
-            f'<schema targetNamespace="http://www.xbrl.org/int/gl/plt/{self.version}" attributeFormDefault="unqualified" elementFormDefault="qualified"\n',
+            f'<schema targetNamespace="{self.module_namespace("plt")}" attributeFormDefault="unqualified" elementFormDefault="qualified"\n',
             '  xmlns="http://www.w3.org/2001/XMLSchema"\n',
             '  xmlns:xbrli="http://www.xbrl.org/2003/instance"\n',
             '  xmlns:link="http://www.xbrl.org/2003/linkbase"\n',
             '  xmlns:xlink="http://www.w3.org/1999/xlink"\n',
             '  xmlns:xbrldt="http://xbrl.org/2005/xbrldt"\n',
-            f'  xmlns:plt="http://www.xbrl.org/int/gl/plt/{self.version}">\n'
+            f'  xmlns:plt="{self.module_namespace("plt")}">\n'
         ]
 
         html += [
@@ -1968,7 +1995,7 @@ class xBRLGL_TaxonomyGenerator:
         ]
         for module in sorted(modules):
             html.append(
-                f'  <import namespace="http://www.xbrl.org/int/gl/{module}/{self.version}" '
+                f'  <import namespace="{self.module_namespace(module)}" '
                 f'schemaLocation="../{module}/{module}-oim-{self.version}.xsd"/>\n'
             )
 
@@ -2250,16 +2277,16 @@ class xBRLGL_TaxonomyGenerator:
                     "xbrli": "http://www.xbrl.org/2003/instance",
                     "xbrldi": "http://xbrl.org/2006/xbrldi",
                     "xlink": "http://www.w3.org/1999/xlink",
-                    "gen": f"http://www.xbrl.org/int/gl/gen/{self.version}",
-                    "cor": f"http://www.xbrl.org/int/gl/cor/{self.version}",
-                    "bus": f"http://www.xbrl.org/int/gl/bus/{self.version}",
-                    "muc": f"http://www.xbrl.org/int/gl/muc/{self.version}",
-                    "usk": f"http://www.xbrl.org/int/gl/usk/{self.version}",
-                    "taf": f"http://www.xbrl.org/int/gl/taf/{self.version}",
-                    "ehm": f"http://www.xbrl.org/int/gl/ehm/{self.version}",
-                    "lnk": f"http://www.xbrl.org/int/gl/lnk/{self.version}",
-                    "btx": f"http://www.xbrl.org/int/gl/btx/{self.version}",
-                    "plt": f"http://www.xbrl.org/int/gl/plt/{self.version}"
+                    "gen": self.module_namespace("gen"),
+                    "cor": self.module_namespace("cor"),
+                    "bus": self.module_namespace("bus"),
+                    "muc": self.module_namespace("muc"),
+                    "usk": self.module_namespace("usk"),
+                    "taf": self.module_namespace("taf"),
+                    "ehm": self.module_namespace("ehm"),
+                    "lnk": self.module_namespace("lnk"),
+                    "btx": self.module_namespace("btx"),
+                    "plt": self.module_namespace("plt")
                 },
                 "taxonomy": [
                     taxonomy
@@ -2680,7 +2707,7 @@ def generate_formal_hmd_package(args):
         merged.process_records()
         merged.generate_taxonomy_files(merged.xbrl_base)
         shared_structural_models = collect_shared_structural_type_models(merged)
-        version = merged.namespace[-10:]
+        version = merged.version
         modules = {
             record["element"].split(":", 1)[0]
             for record in merged.records
@@ -2894,8 +2921,11 @@ def create_argument_parser():
     parser.add_argument(
         "-n", "--namespace", required=True,
         help=(
-            "Palette namespace ending in the explicit taxonomy version date, "
-            "for example http://www.xbrl.org/int/gl/plt/2026-12-31"
+            "Publication namespace anchor in "
+            "{namespace-base}/plt/YYYY-MM-DD form. The namespace base and "
+            "version are derived automatically, and sibling module namespaces "
+            "are generated as {namespace-base}/{module}/{version}; for example "
+            "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/plt/2026-12-31"
         ),
     )
     parser.add_argument(
