@@ -1,2 +1,7 @@
 # Preserve canonical CSV bytes; CSV encoding and structure are validated separately.
 *.csv -text
+
+# Generated taxonomy manifests record filesystem SHA-256 for canonical LF bytes.
+# Force the same bytes on every platform so checkout does not invalidate them.
+*.xsd text eol=lf
+*.xml text eol=lf
