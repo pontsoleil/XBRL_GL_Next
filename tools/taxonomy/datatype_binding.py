@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: MIT
 """Deterministic semantic-datatype to XBRL item-type binding."""
 
 from __future__ import annotations
