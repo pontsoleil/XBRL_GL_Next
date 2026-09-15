@@ -149,6 +149,7 @@ from datatype_binding import DatatypeBinding, DatatypeBindingError
 
 TRACE = False
 DEBUG = False
+OUTPUT_ENCODING = "utf-8"
 
 PRESENTATION_ROLE = "http://www.xbrl.org/2003/role/link"
 PARENT_CHILD_ARCROLE = "http://www.xbrl.org/2003/arcrole/parent-child"
@@ -216,27 +217,29 @@ def normalize_namespace_prefix_map(mappings):
 
 
 
-def parse_publication_namespace_anchor(namespace):
-    """Split one publication namespace anchor into base and version.
+def parse_publication_namespace_anchor(namespace, version):
+    """Validate the stable ``plt`` namespace anchor and file-name version.
 
-    ``--namespace`` remains the only required publication-namespace CLI input.
-    Its form is ``{namespace-base}/plt/{YYYY-MM-DD}``; sibling module
-    namespaces are then generated as ``{namespace-base}/{module}/{version}``.
+    Namespace identity is deliberately independent from the dated file-name
+    version.  ``--namespace`` has the form ``{namespace-base}/plt`` and sibling
+    module namespaces are generated as ``{namespace-base}/{module}``.
     """
     value = (namespace or "").strip().rstrip("/")
-    match = re.fullmatch(
-        r"(?P<base>.+)/plt/(?P<version>\d{4}-\d{2}-\d{2})",
-        value,
-    )
+    match = re.fullmatch(r"(?P<base>.+)/plt", value)
     if not match:
         raise ValueError(
-            "--namespace must use {namespace-base}/plt/YYYY-MM-DD syntax; "
+            "--namespace must use the stable {namespace-base}/plt syntax; "
             f"got {namespace!r}."
         )
     namespace_base = match.group("base").rstrip("/")
     if not namespace_base:
         raise ValueError("--namespace resolved to an empty namespace base.")
-    version = match.group("version")
+    version = (version or "").strip()
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", version):
+        raise ValueError(
+            "--version must use YYYY-MM-DD syntax; "
+            f"got {version!r}."
+        )
     return value, namespace_base, version
 
 
@@ -354,7 +357,7 @@ def file_path(pathname):
 
 class xBRLGL_TaxonomyGenerator:
     def __init__(
-            self, 
+            self,
             in_file,
             base_dir,
             palette,
@@ -362,6 +365,7 @@ class xBRLGL_TaxonomyGenerator:
             lang,
             currency,
             namespace,
+            version,
             encoding,
             trace,
             debug,
@@ -393,7 +397,7 @@ class xBRLGL_TaxonomyGenerator:
                 self.namespace,
                 self.namespace_base,
                 self.version,
-            ) = parse_publication_namespace_anchor(namespace)
+            ) = parse_publication_namespace_anchor(namespace, version)
         except ValueError as exc:
             self.error_print(str(exc))
         self.encoding = encoding.strip() if encoding else "utf-8-sig"
@@ -481,7 +485,7 @@ class xBRLGL_TaxonomyGenerator:
             self.module_namespace("gen"),
             text,
         )
-        with open(target, "w", encoding=self.encoding, newline="") as f:
+        with open(target, "w", encoding=OUTPUT_ENCODING, newline="") as f:
             f.write(text)
         self.trace_print(f"-- {target}")
         return target
@@ -601,7 +605,7 @@ class xBRLGL_TaxonomyGenerator:
                 target_name = child_element_id #[1+child_element_id.index('-'):]
                 target_link = f"link_{target_name}"
                 self.debug_print(
-                    f'domain-member: {primary_id} to {target_id} {child["name"]} order={self.count} in {target_link} targetRole="http://www.xbrl.org/xbrl-gl/role/{target_link}'
+                    f'domain-member: {primary_id} to {target_id} {child["name"]} order={self.count} in {target_link} targetRole="{self.namespace_base}/role/{target_link}'
                 )
                 lines.append(f"    <!-- {primary_id} to targetRole {target_link} -->\n")
                 if primary_id not in self.locs_defined:
@@ -618,7 +622,7 @@ class xBRLGL_TaxonomyGenerator:
                 if not arc_id in self.arcs_defined[primary_id]:
                     self.arcs_defined[primary_id].add(arc_id)
                     lines.append(
-                        f'    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/{target_link}" xlink:from="{primary_id}" xlink:to="{target_id}" xlink:title="domain-member: {primary_id} to {target_id} in {target_link}" order="{self.count}"/>\n'
+                        f'    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="{self.namespace_base}/role/{target_link}" xlink:from="{primary_id}" xlink:to="{target_id}" xlink:title="domain-member: {primary_id} to {target_id} in {target_link}" order="{self.count}"/>\n'
                     )
             else:
                 target_id = self.oim_presentation_concept_id(child)
@@ -695,7 +699,7 @@ class xBRLGL_TaxonomyGenerator:
         hypercube_id = f"h_{primary_name}"
         primary_id = f"p_{primary_name}"
         self.lines += [
-            f'  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/{link_id}">\n',
+            f'  <link:definitionLink xlink:type="extended" xlink:role="{self.namespace_base}/role/{link_id}">\n',
             # all (has-hypercube)
             f"    <!-- {primary_id} all (has-hypercube) {hypercube_id} {link_id} -->\n",
             f'    <link:loc xlink:type="locator" xlink:href="{self.oim_module_schema_href(primary_id)}#{primary_id}" xlink:label="{primary_id}" xlink:title="{primary_id}"/>\n',
@@ -947,7 +951,7 @@ class xBRLGL_TaxonomyGenerator:
         return escaped
 
     def module_namespace(self, module):
-        return f"{self.namespace_base}/{module}/{self.version}"
+        return f"{self.namespace_base}/{module}"
 
     def xpath_prefix_module(self, prefix):
         """Resolve an XPath lexical prefix without changing module identity."""
@@ -1364,7 +1368,7 @@ class xBRLGL_TaxonomyGenerator:
                 target = file_path(
                     f"{directory}/{module}-{self.version}-label{suffix}.xml"
                 )
-                with open(target, "w", encoding=self.encoding, newline="") as f:
+                with open(target, "w", encoding=OUTPUT_ENCODING, newline="") as f:
                     f.writelines(lines)
 
         for module, data in element_dict.items():
@@ -1390,7 +1394,7 @@ class xBRLGL_TaxonomyGenerator:
             target = file_path(
                 f"{xbrl_base}/{module}/{module}-{self.version}-presentation.xml"
             )
-            with open(target, "w", encoding=self.encoding, newline="") as f:
+            with open(target, "w", encoding=OUTPUT_ENCODING, newline="") as f:
                 f.writelines(self.lines)
 
     def write_oim_module_components(self, element_dict, xbrl_base):
@@ -1493,7 +1497,7 @@ class xBRLGL_TaxonomyGenerator:
             target = file_path(
                 f"{module_directory}/{module}-oim-{self.version}.xsd"
             )
-            with open(target, "w", encoding=self.encoding, newline="") as f:
+            with open(target, "w", encoding=OUTPUT_ENCODING, newline="") as f:
                 f.writelines(html)
 
             # Binding-specific OIM labels. A labels retain their semantic item
@@ -1560,7 +1564,7 @@ class xBRLGL_TaxonomyGenerator:
                 target = file_path(
                     f"{directory}/{module}-oim-{self.version}-label{suffix}.xml"
                 )
-                with open(target, "w", encoding=self.encoding, newline="") as f:
+                with open(target, "w", encoding=OUTPUT_ENCODING, newline="") as f:
                     f.writelines(lines)
 
         # OIM module presentation forests are generated from Class roots.
@@ -1586,7 +1590,7 @@ class xBRLGL_TaxonomyGenerator:
             target = file_path(
                 f"{xbrl_base}/{module}/{module}-oim-{self.version}-presentation.xml"
             )
-            with open(target, "w", encoding=self.encoding, newline="") as f:
+            with open(target, "w", encoding=OUTPUT_ENCODING, newline="") as f:
                 f.writelines(self.lines)
 
     def generate_taxonomy_files(self, xbrl_base):
@@ -1801,8 +1805,8 @@ class xBRLGL_TaxonomyGenerator:
             directory = os.path.dirname(xsd_file)
             if not os.path.isdir(directory):
                 os.makedirs(directory, exist_ok=True)
-                self.trace_print(f"Created moduke taxonomy schema directory: {directory}")            
-            with open(xsd_file, "w", encoding=self.encoding, newline="") as f:
+                self.trace_print(f"Created moduke taxonomy schema directory: {directory}")
+            with open(xsd_file, "w", encoding=OUTPUT_ENCODING, newline="") as f:
                 f.writelines(html)
             self.trace_print(f"-- {xsd_file}")
 
@@ -1913,7 +1917,7 @@ class xBRLGL_TaxonomyGenerator:
                 target = file_path(
                     f"{content_directory}/{module}-content-{self.version}.xsd"
                 )
-                with open(target, "w", encoding=self.encoding, newline="") as f:
+                with open(target, "w", encoding=OUTPUT_ENCODING, newline="") as f:
                     f.writelines(html)
 
             roots = [record for record in self.records if int(record["level"]) == 1]
@@ -1959,7 +1963,7 @@ class xBRLGL_TaxonomyGenerator:
             palette_file = file_path(
                 f"{xbrl_base}/plt/plt-all-{self.version}.xsd"
             )
-            with open(palette_file, "w", encoding=self.encoding, newline="") as f:
+            with open(palette_file, "w", encoding=OUTPUT_ENCODING, newline="") as f:
                 f.writelines(palette_lines)
 
             self.write_tuple_linkbases(element_dict, xbrl_base)
@@ -2018,7 +2022,7 @@ class xBRLGL_TaxonomyGenerator:
             "      <!-- \n",
             "        role type\n",
             "      -->\n",
-            '      <link:roleType id="xbrl-role" roleURI="http://www.xbrl.org/xbrl-gl/role">\n',
+            f'      <link:roleType id="xbrl-role" roleURI="{self.namespace_base}/role">\n',
             "        <link:definition>link xbrl-gl</link:definition>\n",
             "        <link:usedOn>link:definitionLink</link:usedOn>\n",
             "        <link:usedOn>link:presentationLink</link:usedOn>\n",
@@ -2028,7 +2032,7 @@ class xBRLGL_TaxonomyGenerator:
         for element_id in self.roleMap.keys():
             element_name = element_id
             html += [
-                f'      <link:roleType id="link_{element_name}" roleURI="http://www.xbrl.org/xbrl-gl/role/link_{element_name}">\n',
+                f'      <link:roleType id="link_{element_name}" roleURI="{self.namespace_base}/role/link_{element_name}">\n',
                 "        <link:usedOn>link:definitionLink</link:usedOn>\n",
                 "      </link:roleType>\n"
             ]
@@ -2078,7 +2082,7 @@ class xBRLGL_TaxonomyGenerator:
         xsd_file = file_path(
             f"{xbrl_base}/plt/plt-oim-{self.version}.xsd"
         )
-        with open(xsd_file, "w", encoding=self.encoding, newline="") as f:
+        with open(xsd_file, "w", encoding=OUTPUT_ENCODING, newline="") as f:
             f.writelines(html)
         self.trace_print(f"xBRL-CSV schema file {xsd_file}")
 
@@ -2125,7 +2129,7 @@ class xBRLGL_TaxonomyGenerator:
             label_file = file_path(
                 f"{xbrl_base}/{module}/lang/{module}-{self.version}-label.xml"
             )
-            with open(label_file, "w", encoding=self.encoding, newline="") as f:
+            with open(label_file, "w", encoding=OUTPUT_ENCODING, newline="") as f:
                 f.writelines(self.lines)
             self.trace_print(f"-- {label_file}")
 
@@ -2168,7 +2172,7 @@ class xBRLGL_TaxonomyGenerator:
             label_file = file_path(
                 f"{xbrl_base}/{module}/lang/{module}-{self.version}-label-{self.lang}.xml"
             )
-            with open(label_file, "w", encoding=self.encoding, newline="") as f:
+            with open(label_file, "w", encoding=OUTPUT_ENCODING, newline="") as f:
                 f.writelines(self.lines)
             self.trace_print(f"-- {label_file}")
 
@@ -2213,7 +2217,7 @@ class xBRLGL_TaxonomyGenerator:
             presentation_file = file_path(
                 f"{xbrl_base}/{module}/{module}-{self.version}-presentation.xml"
             )
-            with open(presentation_file, "w", encoding=self.encoding, newline="") as f:
+            with open(presentation_file, "w", encoding=OUTPUT_ENCODING, newline="") as f:
                 f.writelines(self.lines)
             self.trace_print(f"-- {presentation_file}")
 
@@ -2233,11 +2237,11 @@ class xBRLGL_TaxonomyGenerator:
             '\txmlns:xlink="http://www.w3.org/1999/xlink">\n',
         ]
         self.lines.append("  <!-- roleRef -->\n")
-        #   <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_accontingEntries" xlink:type="simple" xlink:href="core.xsd#link_cor_accontingEntries"/>
+        #   <link:roleRef roleURI="{namespace-base}/role/link_cor_accountingEntries" xlink:type="simple" xlink:href="core.xsd#link_cor_accountingEntries"/>
         for record in self.roleMap.values():
             taxonomy_schema, link_id, href = self.roleRecord(record['element_id'])
             self.lines.append(
-                f'  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/{link_id}" xlink:type="simple" xlink:href="plt-oim-{self.version}.xsd#{link_id}"/>\n'
+                f'  <link:roleRef roleURI="{self.namespace_base}/role/{link_id}" xlink:type="simple" xlink:href="plt-oim-{self.version}.xsd#{link_id}"/>\n'
             )
 
         self.lines += [
@@ -2258,7 +2262,7 @@ class xBRLGL_TaxonomyGenerator:
         cor_definition_file = file_path(
             f"{xbrl_base}/plt/plt-def-{self.version}.xml"
         )
-        with open(cor_definition_file, "w", encoding=self.encoding, newline="") as f:
+        with open(cor_definition_file, "w", encoding=OUTPUT_ENCODING, newline="") as f:
             f.writelines(self.lines)
         self.trace_print(f"-- {cor_definition_file}")
 
@@ -2370,7 +2374,7 @@ class xBRLGL_TaxonomyGenerator:
                 f"{xbrl_base}/{out}.json"
             )
             try:
-                with open(json_meta_file, "w", encoding=self.encoding) as file:
+                with open(json_meta_file, "w", encoding=OUTPUT_ENCODING) as file:
                     json.dump(json_meta, file, ensure_ascii=False, indent=4)
                 self.trace_print(f"JSON file '{json_meta_file}'")
             except Exception as e:
@@ -2381,7 +2385,7 @@ class xBRLGL_TaxonomyGenerator:
             )
 
             try:
-                with open(out_file, "w", encoding=self.encoding, newline="") as file:
+                with open(out_file, "w", encoding=OUTPUT_ENCODING, newline="") as file:
                     writer = csv.writer(file)
                     # Write the header and columnname rows
                     writer.writerow(header_columns)
@@ -2566,6 +2570,7 @@ def _generator_for_file(in_file, base_dir, args, taxonomy_type):
         lang=args.lang,
         currency="JPY",
         namespace=args.namespace,
+        version=args.version,
         encoding=args.encoding,
         trace=args.trace,
         debug=args.debug,
@@ -2666,6 +2671,26 @@ def _copy_hmd_content_schema(source, target, module, version):
             )
         ],
     )
+
+
+def normalize_generated_text_tree(root):
+    """Apply the governed byte format to generated project text files."""
+    non_csv_suffixes = {".json", ".md", ".txt", ".xml", ".xsd"}
+    for path in sorted(Path(root).rglob("*")):
+        if not path.is_file():
+            continue
+        suffix = path.suffix.lower()
+        if suffix == ".csv":
+            data = path.read_bytes()
+            if data.startswith(b"\xef\xbb\xbf"):
+                path.write_bytes(data[3:])
+            continue
+        if suffix not in non_csv_suffixes:
+            continue
+        text = path.read_text(encoding="utf-8-sig")
+        text = text.replace("\r\n", "\n").replace("\r", "\n")
+        text = re.sub(r"[ \t]+(?=\n|$)", "", text)
+        path.write_text(text.rstrip("\n") + "\n", encoding="utf-8", newline="\n")
 
 
 def generate_formal_hmd_package(args):
@@ -2839,6 +2864,11 @@ def generate_formal_hmd_package(args):
                 ],
             )
 
+        # Enforce the governed project text format before publishing.  This is
+        # intentionally part of generation so regeneration cannot reintroduce
+        # BOM, CRLF, missing final-LF, or trailing horizontal whitespace.
+        normalize_generated_text_tree(package_root)
+
         # Publish only after every HMD and both bindings have been generated.
         # os.replace is performed on the same filesystem because the staging
         # directory is a sibling of the requested output directory.
@@ -2921,11 +2951,17 @@ def create_argument_parser():
     parser.add_argument(
         "-n", "--namespace", required=True,
         help=(
-            "Publication namespace anchor in "
-            "{namespace-base}/plt/YYYY-MM-DD form. The namespace base and "
-            "version are derived automatically, and sibling module namespaces "
-            "are generated as {namespace-base}/{module}/{version}; for example "
-            "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/plt/2026-12-31"
+            "Stable namespace anchor in {namespace-base}/plt form. Sibling "
+            "module namespaces are generated as {namespace-base}/{module}; "
+            "for example https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt"
+        ),
+    )
+    parser.add_argument(
+        "--version",
+        default="2026-12-31",
+        help=(
+            "YYYY-MM-DD version used in generated file names. It does not form "
+            "part of the stable module namespace (default: 2026-12-31)."
         ),
     )
     parser.add_argument(

@@ -1,12 +1,12 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- (c) XBRL International.  See http://www.xbrl.org/legal -->
-<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/taf/2026-12-31" attributeFormDefault="unqualified" elementFormDefault="qualified"
+<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/taf" attributeFormDefault="unqualified" elementFormDefault="qualified"
   xmlns="http://www.w3.org/2001/XMLSchema"
   xmlns:xbrli="http://www.xbrl.org/2003/instance"
-  xmlns:taf="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/taf/2026-12-31"
-  xmlns:gen="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/gen/2026-12-31">
+  xmlns:taf="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/taf"
+  xmlns:gen="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/gen">
   <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/gen/2026-12-31" schemaLocation="../gen/gl-gen-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/gen" schemaLocation="../gen/gl-gen-2026-12-31.xsd"/>
   <!-- reusable OIM Attribute item type -->
   <complexType name="detailOriginatingDocumentTypeItemType">
     <simpleContent>

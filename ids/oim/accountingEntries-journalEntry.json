@@ -2,18 +2,18 @@
   "documentInfo": {
     "documentType": "https://xbrl.org/2021/xbrl-csv",
     "namespaces": {
-      "plt": "http://www.xbrl.org/int/gl/plt/2026-12-31",
-      "cor": "http://www.xbrl.org/int/gl/cor/2026-12-31",
-      "bus": "http://www.xbrl.org/int/gl/bus/2026-12-31",
-      "btx": "http://www.xbrl.org/int/gl/btx/2026-12-31",
-      "lnk": "http://www.xbrl.org/int/gl/lnk/2026-12-31",
-      "taf": "http://www.xbrl.org/int/gl/taf/2026-12-31",
+      "plt": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
+      "cor": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor",
+      "bus": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/bus",
+      "btx": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/btx",
+      "lnk": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/lnk",
+      "taf": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/taf",
       "xbrli": "http://www.xbrl.org/2003/instance",
       "iso4217": "http://www.xbrl.org/2003/iso4217",
       "ent": "https://example.com/entity/"
     },
     "taxonomy": [
-      "../../taxonomy/oim/cor_accountingEntries/cor-all-oim-2026-12-31.xsd"
+      "../../taxonomy/accounting-entries/oim/cor_accountingEntries/cor-all-oim-2026-12-31.xsd"
     ]
   },
   "dimensions": {
@@ -27,8 +27,12 @@
           "comment": true
         },
         "dAccountingEntries": {},
-        "dDocumentInformation": {},
-        "dEntityParty": {},
+        "dDocumentInformation": {
+          "comment": true
+        },
+        "dEntityParty": {
+          "comment": true
+        },
         "dEntryHeader": {},
         "dEntryDetail": {},
         "documentType": {
@@ -58,17 +62,17 @@
         },
         "entityPartyName": {
           "dimensions": {
-            "concept": "cor:entityPartyName"
+            "concept": "cor:partyName"
           }
         },
         "entityPartyId": {
           "dimensions": {
-            "concept": "cor:entityPartyId"
+            "concept": "cor:partyId"
           }
         },
         "datePosted": {
           "dimensions": {
-            "concept": "cor:datePosted"
+            "concept": "cor:entryDatePosted"
           }
         },
         "headerEntryDate": {
@@ -150,8 +154,6 @@
       },
       "dimensions": {
         "plt:d_cor_accountingEntries": "$dAccountingEntries",
-        "plt:d_cor_documentInformation": "$dDocumentInformation",
-        "plt:d_cor_entityParty": "$dEntityParty",
         "plt:d_cor_entryHeader": "$dEntryHeader",
         "plt:d_cor_entryDetail": "$dEntryDetail"
       }

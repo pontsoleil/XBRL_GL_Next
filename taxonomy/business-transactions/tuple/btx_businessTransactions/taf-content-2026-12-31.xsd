@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/taf/2026-12-31" elementFormDefault="qualified" attributeFormDefault="unqualified"
+<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/taf" elementFormDefault="qualified" attributeFormDefault="unqualified"
   xmlns="http://www.w3.org/2001/XMLSchema"
   xmlns:xbrli="http://www.xbrl.org/2003/instance"
-  xmlns:taf="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/taf/2026-12-31"
+  xmlns:taf="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/taf"
 >
   <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
   <include schemaLocation="../../taf/taf-2026-12-31.xsd"/>

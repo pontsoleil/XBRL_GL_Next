@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <linkbase xmlns="http://www.xbrl.org/2003/linkbase"
   xmlns:xlink="http://www.w3.org/1999/xlink">
   <labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
@@ -463,13 +463,13 @@
     <label xlink:type="resource" xlink:label="lab_p_cor_detailAccountIdentifier" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">【科目識別子】</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_cor_detailAccountIdentifier" xlink:to="lab_p_cor_detailAccountIdentifier"/>
     <label xlink:type="resource" xlink:label="doc_p_cor_detailAccountIdentifier" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">タプル。勘定科目番号と識別子の親コンテナ。 ここには記入されないが、個々の明細行は、異なるGAAPでの報告や、日本の見返勘定や、連結勘定科目に対する個別情報の連結会計システムへの伝達などのための、複数の勘定科目を持ちうる。例えば、勘定科目4783HG-QOWI-192837-1000は、次のように表現されうる。_x000D_
-/account/accountMainID 1000  
-/account/accountMainDescription Cash  
-/account/accountSub/accountSubID 4783HG  
-/account/accountSub/accountSubDescription Department  
-/account/accountSub/accountSubID QOWI  
-/account/accountSub/accountSubDescription Branch  
-/account/accountSub/accountSubID 192837  
+/account/accountMainID 1000
+/account/accountMainDescription Cash
+/account/accountSub/accountSubID 4783HG
+/account/accountSub/accountSubDescription Department
+/account/accountSub/accountSubID QOWI
+/account/accountSub/accountSubDescription Branch
+/account/accountSub/accountSubID 192837
 /account/accountSub/accountSubDescription Division</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_cor_detailAccountIdentifier" xlink:to="doc_p_cor_detailAccountIdentifier"/>
     <loc xlink:type="locator" xlink:href="../cor-oim-2026-12-31.xsd#cor_detailDescription" xlink:label="loc_cor_detailDescription"/>
@@ -874,6 +874,11 @@
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxCategory" xlink:to="lab_cor_taxCategory"/>
     <label xlink:type="resource" xlink:label="doc_cor_taxCategory" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">税のクラス又はカテゴリ。</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxCategory" xlink:to="doc_cor_taxCategory"/>
+    <loc xlink:type="locator" xlink:href="../cor-oim-2026-12-31.xsd#cor_taxType" xlink:label="loc_cor_taxType"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">税種別</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxType" xlink:to="lab_cor_taxType"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">UNCL 5153に基づく税種別。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxType" xlink:to="doc_cor_taxType"/>
     <loc xlink:type="locator" xlink:href="../cor-oim-2026-12-31.xsd#cor_taxCommentExemptionReason" xlink:label="loc_cor_taxCommentExemptionReason"/>
     <label xlink:type="resource" xlink:label="lab_cor_taxCommentExemptionReason" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">税コメント/免税理由</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxCommentExemptionReason" xlink:to="lab_cor_taxCommentExemptionReason"/>
@@ -954,6 +959,11 @@
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxForeignToTriangulationCurrencyExchangeRateType" xlink:to="lab_cor_taxForeignToTriangulationCurrencyExchangeRateType"/>
     <label xlink:type="resource" xlink:label="doc_cor_taxForeignToTriangulationCurrencyExchangeRateType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの種別。たとえば、スポット・レート、先物など。</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxForeignToTriangulationCurrencyExchangeRateType" xlink:to="doc_cor_taxForeignToTriangulationCurrencyExchangeRateType"/>
+    <loc xlink:type="locator" xlink:href="../cor-oim-2026-12-31.xsd#cor_taxTransactionClassification" xlink:label="loc_cor_taxTransactionClassification"/>
+    <label xlink:type="resource" xlink:label="lab_cor_taxTransactionClassification" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">税務取引区分</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxTransactionClassification" xlink:to="lab_cor_taxTransactionClassification"/>
+    <label xlink:type="resource" xlink:label="doc_cor_taxTransactionClassification" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">消費税取引を仕入側又は売上側として分類する。借方・貸方コードとは独立した意味情報である。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_taxTransactionClassification" xlink:to="doc_cor_taxTransactionClassification"/>
     <loc xlink:type="locator" xlink:href="../cor-oim-2026-12-31.xsd#cor_accountNumber" xlink:label="loc_cor_accountNumber"/>
     <label xlink:type="resource" xlink:label="lab_cor_accountNumber" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">主勘定科目コード</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_accountNumber" xlink:to="lab_cor_accountNumber"/>

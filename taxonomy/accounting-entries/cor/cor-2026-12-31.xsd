@@ -1,18 +1,18 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- (c) XBRL International.  See http://www.xbrl.org/legal -->
-<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/cor/2026-12-31" attributeFormDefault="unqualified" elementFormDefault="qualified"
+<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor" attributeFormDefault="unqualified" elementFormDefault="qualified"
   xmlns="http://www.w3.org/2001/XMLSchema"
   xmlns:link="http://www.xbrl.org/2003/linkbase"
   xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:xbrli="http://www.xbrl.org/2003/instance"
   xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
-  xmlns:gen="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/gen/2026-12-31"
-  xmlns:cor="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/cor/2026-12-31"
+  xmlns:gen="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/gen"
+  xmlns:cor="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor"
 >
   <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
   <import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>
   <import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/gen/2026-12-31" schemaLocation="../gen/gl-gen-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/gen" schemaLocation="../gen/gl-gen-2026-12-31.xsd"/>
   <!-- reusable item type -->
   <complexType name="documentTypeItemType">
     <simpleContent>
@@ -764,6 +764,11 @@
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
+  <complexType name="taxTypeItemType">
+    <simpleContent>
+      <restriction base="xbrli:tokenItemType"/>
+    </simpleContent>
+  </complexType>
   <complexType name="taxCommentExemptionReasonItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
@@ -840,6 +845,11 @@
     </simpleContent>
   </complexType>
   <complexType name="taxForeignToTriangulationCurrencyExchangeRateTypeItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="taxTransactionClassificationItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
@@ -1101,6 +1111,7 @@
   <element name="basisForTaxation" id="cor_basisForTaxation" type="cor:basisForTaxationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="taxPercentageRate" id="cor_taxPercentageRate" type="cor:taxPercentageRateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="taxCategory" id="cor_taxCategory" type="cor:taxCategoryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="taxType" id="cor_taxType" type="cor:taxTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="taxCommentExemptionReason" id="cor_taxCommentExemptionReason" type="cor:taxCommentExemptionReasonItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="taxAmountInForeignCurrency" id="cor_taxAmountInForeignCurrency" type="cor:taxAmountInForeignCurrencyItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="taxForeignCurrency" id="cor_taxForeignCurrency" type="cor:taxForeignCurrencyItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
@@ -1117,6 +1128,7 @@
   <element name="taxForeignToTriangulationCurrencyExchangeRate" id="cor_taxForeignToTriangulationCurrencyExchangeRate" type="cor:taxForeignToTriangulationCurrencyExchangeRateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="taxForeignToTriangulationCurrencyExchangeRateSource" id="cor_taxForeignToTriangulationCurrencyExchangeRateSource" type="cor:taxForeignToTriangulationCurrencyExchangeRateSourceItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="taxForeignToTriangulationCurrencyExchangeRateType" id="cor_taxForeignToTriangulationCurrencyExchangeRateType" type="cor:taxForeignToTriangulationCurrencyExchangeRateTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="taxTransactionClassification" id="cor_taxTransactionClassification" type="cor:taxTransactionClassificationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="accountNumber" id="cor_accountNumber" type="cor:accountNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="accountDescription" id="cor_accountDescription" type="cor:accountDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="accountClassification" id="cor_accountClassification" type="cor:accountClassificationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>

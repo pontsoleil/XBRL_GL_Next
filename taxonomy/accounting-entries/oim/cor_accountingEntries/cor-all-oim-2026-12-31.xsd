@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- (c) XBRL International.  See http://www.xbrl.org/legal -->
-<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/plt/2026-12-31" attributeFormDefault="unqualified" elementFormDefault="qualified"
+<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt" attributeFormDefault="unqualified" elementFormDefault="qualified"
   xmlns="http://www.w3.org/2001/XMLSchema"
   xmlns:xbrli="http://www.xbrl.org/2003/instance"
   xmlns:link="http://www.xbrl.org/2003/linkbase"
   xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
-  xmlns:plt="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/plt/2026-12-31">
+  xmlns:plt="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt">
   <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
   <import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>
   <import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/bus/2026-12-31" schemaLocation="../../bus/bus-oim-2026-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/cor/2026-12-31" schemaLocation="../../cor/cor-oim-2026-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/ehm/2026-12-31" schemaLocation="../../ehm/ehm-oim-2026-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/lnk/2026-12-31" schemaLocation="../../lnk/lnk-oim-2026-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/muc/2026-12-31" schemaLocation="../../muc/muc-oim-2026-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/taf/2026-12-31" schemaLocation="../../taf/taf-oim-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/bus" schemaLocation="../../bus/bus-oim-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor" schemaLocation="../../cor/cor-oim-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/ehm" schemaLocation="../../ehm/ehm-oim-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/lnk" schemaLocation="../../lnk/lnk-oim-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/muc" schemaLocation="../../muc/muc-oim-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/taf" schemaLocation="../../taf/taf-oim-2026-12-31.xsd"/>
   <annotation>
     <appinfo>
       <link:linkbaseRef xlink:type="simple" xlink:href="../../cor/label/cor-oim-lab-en-2026-12-31.xml" xlink:title="Label Links, all" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
@@ -31,150 +31,150 @@
       <link:linkbaseRef xlink:type="simple" xlink:href="../../ehm/label/ehm-oim-lab-en-2026-12-31.xml" xlink:title="Label Links, all" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
       <link:linkbaseRef xlink:type="simple" xlink:href="../../ehm/label/ehm-oim-lab-ja-2026-12-31.xml" xlink:title="Label Links, ja" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
       <link:linkbaseRef xlink:type="simple" xlink:href="cor-all-dim-2026-12-31.xml" xlink:title="Definition" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
-      <!-- 
+      <!--
         role type
       -->
-      <link:roleType id="xbrl-role" roleURI="http://www.xbrl.org/xbrl-gl/role">
+      <link:roleType id="xbrl-role" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role">
         <link:definition>link xbrl-gl</link:definition>
         <link:usedOn>link:definitionLink</link:usedOn>
         <link:usedOn>link:presentationLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_cor_accountingEntries" roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_accountingEntries">
+      <link:roleType id="link_cor_accountingEntries" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_accountingEntries">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_cor_documentInformation" roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_documentInformation">
+      <link:roleType id="link_cor_documentInformation" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_documentInformation">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_lnk_documentSummaryReportingTaxonomies" roleURI="http://www.xbrl.org/xbrl-gl/role/link_lnk_documentSummaryReportingTaxonomies">
+      <link:roleType id="link_lnk_documentSummaryReportingTaxonomies" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_lnk_documentSummaryReportingTaxonomies">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_cor_entityParty" roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_entityParty">
+      <link:roleType id="link_cor_entityParty" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_entityParty">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entityPartyPhone" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyPhone">
+      <link:roleType id="link_bus_entityPartyPhone" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyPhone">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entityPartyFax" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyFax">
+      <link:roleType id="link_bus_entityPartyFax" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyFax">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entityPartyEmail" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyEmail">
+      <link:roleType id="link_bus_entityPartyEmail" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyEmail">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entityPartyRegisteredOrganizationIdentifier" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyRegisteredOrganizationIdentifier">
+      <link:roleType id="link_bus_entityPartyRegisteredOrganizationIdentifier" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyRegisteredOrganizationIdentifier">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entityPartyAddress" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyAddress">
+      <link:roleType id="link_bus_entityPartyAddress" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyAddress">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entityPartyWebSite" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyWebSite">
+      <link:roleType id="link_bus_entityPartyWebSite" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyWebSite">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entityPartyContact" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyContact">
+      <link:roleType id="link_bus_entityPartyContact" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyContact">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entityPartyContactPhone" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyContactPhone">
+      <link:roleType id="link_bus_entityPartyContactPhone" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyContactPhone">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entityPartyContactFax" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyContactFax">
+      <link:roleType id="link_bus_entityPartyContactFax" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyContactFax">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entityPartyContactEmail" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyContactEmail">
+      <link:roleType id="link_bus_entityPartyContactEmail" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyContactEmail">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entitySpecifiedAccountingMethodStructure" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entitySpecifiedAccountingMethodStructure">
+      <link:roleType id="link_bus_entitySpecifiedAccountingMethodStructure" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entitySpecifiedAccountingMethodStructure">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entityAssignedAccountant" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAssignedAccountant">
+      <link:roleType id="link_bus_entityAssignedAccountant" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAssignedAccountant">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entityAccountantAddress" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantAddress">
+      <link:roleType id="link_bus_entityAccountantAddress" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantAddress">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entityAccountantContact" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantContact">
+      <link:roleType id="link_bus_entityAccountantContact" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantContact">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entityAccountantContactPhone" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantContactPhone">
+      <link:roleType id="link_bus_entityAccountantContactPhone" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantContactPhone">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entityAccountantContactFax" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantContactFax">
+      <link:roleType id="link_bus_entityAccountantContactFax" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantContactFax">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entityAccountantContactEmail" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantContactEmail">
+      <link:roleType id="link_bus_entityAccountantContactEmail" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantContactEmail">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entitySpecifiedReportingCalendar" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entitySpecifiedReportingCalendar">
+      <link:roleType id="link_bus_entitySpecifiedReportingCalendar" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entitySpecifiedReportingCalendar">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_entitySpecifiedReportingCalendarPeriod" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entitySpecifiedReportingCalendarPeriod">
+      <link:roleType id="link_bus_entitySpecifiedReportingCalendarPeriod" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entitySpecifiedReportingCalendarPeriod">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_cor_entryHeader" roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_entryHeader">
+      <link:roleType id="link_cor_entryHeader" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_entryHeader">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_cor_entryDetail" roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_entryDetail">
+      <link:roleType id="link_cor_entryDetail" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_entryDetail">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_taf_detailOriginatingDriginatingDocument" roleURI="http://www.xbrl.org/xbrl-gl/role/link_taf_detailOriginatingDriginatingDocument">
+      <link:roleType id="link_taf_detailOriginatingDriginatingDocument" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_taf_detailOriginatingDriginatingDocument">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_muc_detailMulticurrency" roleURI="http://www.xbrl.org/xbrl-gl/role/link_muc_detailMulticurrency">
+      <link:roleType id="link_muc_detailMulticurrency" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_muc_detailMulticurrency">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_cor_detailIdentifierReference" roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_detailIdentifierReference">
+      <link:roleType id="link_cor_detailIdentifierReference" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_detailIdentifierReference">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_cor_externalAuthority" roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_externalAuthority">
+      <link:roleType id="link_cor_externalAuthority" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_externalAuthority">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_cor_identifierPhone" roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierPhone">
+      <link:roleType id="link_cor_identifierPhone" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierPhone">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_cor_identifierFax" roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierFax">
+      <link:roleType id="link_cor_identifierFax" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierFax">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_cor_identifierEmail" roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierEmail">
+      <link:roleType id="link_cor_identifierEmail" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierEmail">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_cor_identifierAddress" roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierAddress">
+      <link:roleType id="link_cor_identifierAddress" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierAddress">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_cor_identifierContact" roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierContact">
+      <link:roleType id="link_cor_identifierContact" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierContact">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_contactPhone" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_contactPhone">
+      <link:roleType id="link_bus_contactPhone" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_contactPhone">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_contactFax" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_contactFax">
+      <link:roleType id="link_bus_contactFax" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_contactFax">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_contactEmail" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_contactEmail">
+      <link:roleType id="link_bus_contactEmail" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_contactEmail">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_cor_detailXbrl" roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_detailXbrl">
+      <link:roleType id="link_cor_detailXbrl" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_detailXbrl">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_detailMeasurable" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_detailMeasurable">
+      <link:roleType id="link_bus_detailMeasurable" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_detailMeasurable">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_detailJob" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_detailJob">
+      <link:roleType id="link_bus_detailJob" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_detailJob">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_bus_detailDepreciationMortgage" roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_detailDepreciationMortgage">
+      <link:roleType id="link_bus_detailDepreciationMortgage" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_detailDepreciationMortgage">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_ehm_detailSerialOrLot" roleURI="http://www.xbrl.org/xbrl-gl/role/link_ehm_detailSerialOrLot">
+      <link:roleType id="link_ehm_detailSerialOrLot" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_ehm_detailSerialOrLot">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_cor_detailTax" roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_detailTax">
+      <link:roleType id="link_cor_detailTax" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_detailTax">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_lnk_detailRichTextComment" roleURI="http://www.xbrl.org/xbrl-gl/role/link_lnk_detailRichTextComment">
+      <link:roleType id="link_lnk_detailRichTextComment" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_lnk_detailRichTextComment">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_cor_detailAccountIdentifier" roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_detailAccountIdentifier">
+      <link:roleType id="link_cor_detailAccountIdentifier" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_detailAccountIdentifier">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
-      <link:roleType id="link_cor_subaccount" roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_subaccount">
+      <link:roleType id="link_cor_subaccount" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_subaccount">
         <link:usedOn>link:definitionLink</link:usedOn>
       </link:roleType>
         <link:linkbaseRef xlink:type="simple" xlink:href="../../cor/cor-oim-pre-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/btx/2026-12-31" elementFormDefault="qualified" attributeFormDefault="unqualified"
+<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/btx" elementFormDefault="qualified" attributeFormDefault="unqualified"
   xmlns="http://www.w3.org/2001/XMLSchema"
   xmlns:xbrli="http://www.xbrl.org/2003/instance"
-  xmlns:btx="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/btx/2026-12-31"
-  xmlns:bus="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/bus/2026-12-31"
-  xmlns:cor="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/cor/2026-12-31"
-  xmlns:ehm="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/ehm/2026-12-31"
-  xmlns:lnk="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/lnk/2026-12-31"
-  xmlns:muc="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/muc/2026-12-31"
-  xmlns:taf="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/taf/2026-12-31"
+  xmlns:btx="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/btx"
+  xmlns:bus="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/bus"
+  xmlns:cor="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor"
+  xmlns:ehm="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/ehm"
+  xmlns:lnk="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/lnk"
+  xmlns:muc="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/muc"
+  xmlns:taf="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/taf"
 >
   <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
   <include schemaLocation="../../btx/btx-2026-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/bus/2026-12-31" schemaLocation="bus-content-2026-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/cor/2026-12-31" schemaLocation="cor-content-2026-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/ehm/2026-12-31" schemaLocation="ehm-content-2026-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/lnk/2026-12-31" schemaLocation="lnk-content-2026-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/muc/2026-12-31" schemaLocation="muc-content-2026-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/taf/2026-12-31" schemaLocation="taf-content-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/bus" schemaLocation="bus-content-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor" schemaLocation="cor-content-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/ehm" schemaLocation="ehm-content-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/lnk" schemaLocation="lnk-content-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/muc" schemaLocation="muc-content-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/taf" schemaLocation="taf-content-2026-12-31.xsd"/>
   <!-- structural ComplexType supplied for the Palette module -->
   <complexType name="businessTransactionsComplexType">
     <sequence>

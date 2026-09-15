@@ -1,23 +1,23 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <linkbase xmlns="http://www.xbrl.org/2003/linkbase"
   xmlns:xlink="http://www.w3.org/1999/xlink">
   <labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
     <loc xlink:type="locator" xlink:href="../cor-2026-12-31.xsd#cor_documentType" xlink:label="loc_cor_documentType"/>
     <label xlink:type="resource" xlink:label="lab_cor_documentType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Document Type</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_cor_documentType" xlink:to="lab_cor_documentType"/>
-    <label xlink:type="resource" xlink:label="doc_cor_documentType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">account: information to fill in a chart of accounts file.  
-balance: the results of accumulation of a complete and validated list of entries for an account (or a list of account) in a specific period - sometimes called general ledger  
-entries: a list of individual accounting entries, which might be posted/validated or nonposted/validated   
-journal: a self-balancing (Dr = Cr) list of entries for a specific period including beginning balance for that period.  
-ledger: a complete list of entries for a specific account (or list of accounts) for a specific period; note - debits do not have to equal credits.   
-assets: a listing of open receivables, payables, inventory, fixed assets or other information that can be extracted from but are not necessarily included as part of a journal entry.  
-trialBalance: the self-balancing (Dr = Cr) result of accumulation of a complete and validated list of entries for the entity in a complete list of accounts in a specific period. 
-taxtables: aids automated interpretation of instances that represent tax tables; Tax table are defined by using multiple [taxes] classs to gather the population of codes, authorities and rates; through [taxTableCode] cross-references in the [taxes] class, these "master file" tax tables can be referenced. 
-mapping: a collection of mappings between interrelated data sets, such as a local and related corporate standard chart of accounts or detail data mapped to summarized end reporting concepts.   
-versioning: a collection of changes between two versions of the same class of information, such as updates to a master file like a chart of accounts.   
-master_file: a collection of master files, such as the customer or inventory master file.   
-trade_documents: a collection of trade/transactional documents, such as vendor invoices or customer orders.   
-profile_compliant: the meaning of this collection of information can be determined by understanding an established profile and especially an XBRL GL Profile. Profiles are determined through namespace declarations, schemaRef and conventions of those profiles.   
+    <label xlink:type="resource" xlink:label="doc_cor_documentType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">account: information to fill in a chart of accounts file.
+balance: the results of accumulation of a complete and validated list of entries for an account (or a list of account) in a specific period - sometimes called general ledger
+entries: a list of individual accounting entries, which might be posted/validated or nonposted/validated
+journal: a self-balancing (Dr = Cr) list of entries for a specific period including beginning balance for that period.
+ledger: a complete list of entries for a specific account (or list of accounts) for a specific period; note - debits do not have to equal credits.
+assets: a listing of open receivables, payables, inventory, fixed assets or other information that can be extracted from but are not necessarily included as part of a journal entry.
+trialBalance: the self-balancing (Dr = Cr) result of accumulation of a complete and validated list of entries for the entity in a complete list of accounts in a specific period.
+taxtables: aids automated interpretation of instances that represent tax tables; Tax table are defined by using multiple [taxes] classs to gather the population of codes, authorities and rates; through [taxTableCode] cross-references in the [taxes] class, these "master file" tax tables can be referenced.
+mapping: a collection of mappings between interrelated data sets, such as a local and related corporate standard chart of accounts or detail data mapped to summarized end reporting concepts.
+versioning: a collection of changes between two versions of the same class of information, such as updates to a master file like a chart of accounts.
+master_file: a collection of master files, such as the customer or inventory master file.
+trade_documents: a collection of trade/transactional documents, such as vendor invoices or customer orders.
+profile_compliant: the meaning of this collection of information can be determined by understanding an established profile and especially an XBRL GL Profile. Profiles are determined through namespace declarations, schemaRef and conventions of those profiles.
 other: for all other types of representations.
 
 Often sorted by date or by account, these terms have specific, and sometimes different, meanings in different areas. Common practice will drive accounting method/term matches.</label>

@@ -7,58 +7,58 @@
 	xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
 	xmlns:xlink="http://www.w3.org/1999/xlink">
   <!-- roleRef -->
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_accountingEntries" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_accountingEntries"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_documentInformation" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_documentInformation"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_lnk_documentSummaryReportingTaxonomies" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_lnk_documentSummaryReportingTaxonomies"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_entityParty" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_entityParty"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyPhone" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyPhone"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyFax" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyFax"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyEmail" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyEmail"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyRegisteredOrganizationIdentifier" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyRegisteredOrganizationIdentifier"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyAddress" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyAddress"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyWebSite" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyWebSite"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyContact" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyContact"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyContactPhone" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyContactPhone"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyContactFax" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyContactFax"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyContactEmail" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyContactEmail"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entitySpecifiedAccountingMethodStructure" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entitySpecifiedAccountingMethodStructure"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAssignedAccountant" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityAssignedAccountant"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantAddress" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityAccountantAddress"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantContact" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityAccountantContact"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantContactPhone" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityAccountantContactPhone"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantContactFax" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityAccountantContactFax"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantContactEmail" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityAccountantContactEmail"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entitySpecifiedReportingCalendar" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entitySpecifiedReportingCalendar"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_entitySpecifiedReportingCalendarPeriod" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entitySpecifiedReportingCalendarPeriod"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_entryHeader" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_entryHeader"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_entryDetail" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_entryDetail"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_taf_detailOriginatingDriginatingDocument" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_taf_detailOriginatingDriginatingDocument"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_muc_detailMulticurrency" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_muc_detailMulticurrency"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_detailIdentifierReference" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_detailIdentifierReference"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_externalAuthority" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_externalAuthority"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierPhone" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_identifierPhone"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierFax" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_identifierFax"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierEmail" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_identifierEmail"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierAddress" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_identifierAddress"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierContact" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_identifierContact"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_contactPhone" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_contactPhone"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_contactFax" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_contactFax"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_contactEmail" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_contactEmail"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_detailXbrl" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_detailXbrl"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_detailMeasurable" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_detailMeasurable"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_detailJob" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_detailJob"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_bus_detailDepreciationMortgage" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_detailDepreciationMortgage"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_ehm_detailSerialOrLot" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_ehm_detailSerialOrLot"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_detailTax" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_detailTax"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_lnk_detailRichTextComment" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_lnk_detailRichTextComment"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_detailAccountIdentifier" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_detailAccountIdentifier"/>
-  <link:roleRef roleURI="http://www.xbrl.org/xbrl-gl/role/link_cor_subaccount" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_subaccount"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_accountingEntries" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_accountingEntries"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_documentInformation" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_documentInformation"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_lnk_documentSummaryReportingTaxonomies" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_lnk_documentSummaryReportingTaxonomies"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_entityParty" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_entityParty"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyPhone" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyPhone"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyFax" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyFax"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyEmail" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyEmail"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyRegisteredOrganizationIdentifier" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyRegisteredOrganizationIdentifier"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyAddress" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyAddress"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyWebSite" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyWebSite"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyContact" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyContact"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyContactPhone" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyContactPhone"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyContactFax" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyContactFax"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyContactEmail" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityPartyContactEmail"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entitySpecifiedAccountingMethodStructure" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entitySpecifiedAccountingMethodStructure"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAssignedAccountant" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityAssignedAccountant"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantAddress" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityAccountantAddress"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantContact" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityAccountantContact"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantContactPhone" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityAccountantContactPhone"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantContactFax" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityAccountantContactFax"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantContactEmail" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entityAccountantContactEmail"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entitySpecifiedReportingCalendar" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entitySpecifiedReportingCalendar"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entitySpecifiedReportingCalendarPeriod" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_entitySpecifiedReportingCalendarPeriod"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_entryHeader" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_entryHeader"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_entryDetail" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_entryDetail"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_taf_detailOriginatingDriginatingDocument" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_taf_detailOriginatingDriginatingDocument"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_muc_detailMulticurrency" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_muc_detailMulticurrency"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_detailIdentifierReference" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_detailIdentifierReference"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_externalAuthority" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_externalAuthority"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierPhone" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_identifierPhone"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierFax" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_identifierFax"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierEmail" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_identifierEmail"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierAddress" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_identifierAddress"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierContact" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_identifierContact"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_contactPhone" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_contactPhone"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_contactFax" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_contactFax"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_contactEmail" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_contactEmail"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_detailXbrl" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_detailXbrl"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_detailMeasurable" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_detailMeasurable"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_detailJob" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_detailJob"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_detailDepreciationMortgage" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_bus_detailDepreciationMortgage"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_ehm_detailSerialOrLot" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_ehm_detailSerialOrLot"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_detailTax" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_detailTax"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_lnk_detailRichTextComment" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_lnk_detailRichTextComment"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_detailAccountIdentifier" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_detailAccountIdentifier"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_subaccount" xlink:type="simple" xlink:href="cor-all-oim-2026-12-31.xsd#link_cor_subaccount"/>
   <!-- arcroleRef -->
   <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/all" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all"/>
   <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member"/>
   <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension"/>
   <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain"/>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_cor_accountingEntries">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_accountingEntries">
     <!-- p_cor_accountingEntries all (has-hypercube) h_cor_accountingEntries link_cor_accountingEntries -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_accountingEntries" xlink:label="p_cor_accountingEntries" xlink:title="p_cor_accountingEntries"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_cor_accountingEntries" xlink:label="h_cor_accountingEntries" xlink:title="h_cor_accountingEntries"/>
@@ -69,15 +69,15 @@
     <!-- domain-member -->
     <!-- p_cor_accountingEntries to targetRole link_cor_documentInformation -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_documentInformation" xlink:label="p_cor_documentInformation" xlink:title="p_cor_documentInformation Document Information"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_cor_documentInformation" xlink:from="p_cor_accountingEntries" xlink:to="p_cor_documentInformation" xlink:title="domain-member: p_cor_accountingEntries to p_cor_documentInformation in link_cor_documentInformation" order="2"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_documentInformation" xlink:from="p_cor_accountingEntries" xlink:to="p_cor_documentInformation" xlink:title="domain-member: p_cor_accountingEntries to p_cor_documentInformation in link_cor_documentInformation" order="2"/>
     <!-- p_cor_accountingEntries to targetRole link_cor_entityParty -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_entityParty" xlink:label="p_cor_entityParty" xlink:title="p_cor_entityParty Entity_ Party"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_cor_entityParty" xlink:from="p_cor_accountingEntries" xlink:to="p_cor_entityParty" xlink:title="domain-member: p_cor_accountingEntries to p_cor_entityParty in link_cor_entityParty" order="3"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_entityParty" xlink:from="p_cor_accountingEntries" xlink:to="p_cor_entityParty" xlink:title="domain-member: p_cor_accountingEntries to p_cor_entityParty in link_cor_entityParty" order="3"/>
     <!-- p_cor_accountingEntries to targetRole link_cor_entryHeader -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_entryHeader" xlink:label="p_cor_entryHeader" xlink:title="p_cor_entryHeader Entry_ Header"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_cor_entryHeader" xlink:from="p_cor_accountingEntries" xlink:to="p_cor_entryHeader" xlink:title="domain-member: p_cor_accountingEntries to p_cor_entryHeader in link_cor_entryHeader" order="4"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_entryHeader" xlink:from="p_cor_accountingEntries" xlink:to="p_cor_entryHeader" xlink:title="domain-member: p_cor_accountingEntries to p_cor_entryHeader in link_cor_entryHeader" order="4"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_cor_documentInformation">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_documentInformation">
     <!-- p_cor_documentInformation all (has-hypercube) h_cor_documentInformation link_cor_documentInformation -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_documentInformation" xlink:label="p_cor_documentInformation" xlink:title="p_cor_documentInformation"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_cor_documentInformation" xlink:label="h_cor_documentInformation" xlink:title="h_cor_documentInformation"/>
@@ -120,9 +120,9 @@
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_documentInformation" xlink:to="cor_defaultCurrency" xlink:title="domain-member: p_cor_documentInformation to cor_defaultCurrency Default Currency" order="17"/>
     <!-- p_cor_documentInformation to targetRole link_lnk_documentSummaryReportingTaxonomies -->
     <link:loc xlink:type="locator" xlink:href="../../lnk/lnk-oim-2026-12-31.xsd#p_lnk_documentSummaryReportingTaxonomies" xlink:label="p_lnk_documentSummaryReportingTaxonomies" xlink:title="p_lnk_documentSummaryReportingTaxonomies Summary Reporting Taxonomies"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_lnk_documentSummaryReportingTaxonomies" xlink:from="p_cor_documentInformation" xlink:to="p_lnk_documentSummaryReportingTaxonomies" xlink:title="domain-member: p_cor_documentInformation to p_lnk_documentSummaryReportingTaxonomies in link_lnk_documentSummaryReportingTaxonomies" order="18"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_lnk_documentSummaryReportingTaxonomies" xlink:from="p_cor_documentInformation" xlink:to="p_lnk_documentSummaryReportingTaxonomies" xlink:title="domain-member: p_cor_documentInformation to p_lnk_documentSummaryReportingTaxonomies in link_lnk_documentSummaryReportingTaxonomies" order="18"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_lnk_documentSummaryReportingTaxonomies">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_lnk_documentSummaryReportingTaxonomies">
     <!-- p_lnk_documentSummaryReportingTaxonomies all (has-hypercube) h_lnk_documentSummaryReportingTaxonomies link_lnk_documentSummaryReportingTaxonomies -->
     <link:loc xlink:type="locator" xlink:href="../../lnk/lnk-oim-2026-12-31.xsd#p_lnk_documentSummaryReportingTaxonomies" xlink:label="p_lnk_documentSummaryReportingTaxonomies" xlink:title="p_lnk_documentSummaryReportingTaxonomies"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_lnk_documentSummaryReportingTaxonomies" xlink:label="h_lnk_documentSummaryReportingTaxonomies" xlink:title="h_lnk_documentSummaryReportingTaxonomies"/>
@@ -142,7 +142,7 @@
     <link:loc xlink:type="locator" xlink:href="../../lnk/lnk-oim-2026-12-31.xsd#lnk_documentSummaryReportingTaxonomyDescription" xlink:label="lnk_documentSummaryReportingTaxonomyDescription" xlink:title="lnk_documentSummaryReportingTaxonomyDescription Summary Reporting Taxonomy Description"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_lnk_documentSummaryReportingTaxonomies" xlink:to="lnk_documentSummaryReportingTaxonomyDescription" xlink:title="domain-member: p_lnk_documentSummaryReportingTaxonomies to lnk_documentSummaryReportingTaxonomyDescription Summary Reporting Taxonomy Description" order="6"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_cor_entityParty">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_entityParty">
     <!-- p_cor_entityParty all (has-hypercube) h_cor_entityParty link_cor_entityParty -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_entityParty" xlink:label="p_cor_entityParty" xlink:title="p_cor_entityParty"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_cor_entityParty" xlink:label="h_cor_entityParty" xlink:title="h_cor_entityParty"/>
@@ -159,25 +159,25 @@
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_entityParty" xlink:to="cor_partyBusinessDescription" xlink:title="domain-member: p_cor_entityParty to cor_partyBusinessDescription Party Business Description" order="4"/>
     <!-- p_cor_entityParty to targetRole link_bus_entityPartyPhone -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyPhone" xlink:label="p_bus_entityPartyPhone" xlink:title="p_bus_entityPartyPhone Party_ Phone"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyPhone" xlink:from="p_cor_entityParty" xlink:to="p_bus_entityPartyPhone" xlink:title="domain-member: p_cor_entityParty to p_bus_entityPartyPhone in link_bus_entityPartyPhone" order="5"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyPhone" xlink:from="p_cor_entityParty" xlink:to="p_bus_entityPartyPhone" xlink:title="domain-member: p_cor_entityParty to p_bus_entityPartyPhone in link_bus_entityPartyPhone" order="5"/>
     <!-- p_cor_entityParty to targetRole link_bus_entityPartyFax -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyFax" xlink:label="p_bus_entityPartyFax" xlink:title="p_bus_entityPartyFax Party_ Fax"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyFax" xlink:from="p_cor_entityParty" xlink:to="p_bus_entityPartyFax" xlink:title="domain-member: p_cor_entityParty to p_bus_entityPartyFax in link_bus_entityPartyFax" order="6"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyFax" xlink:from="p_cor_entityParty" xlink:to="p_bus_entityPartyFax" xlink:title="domain-member: p_cor_entityParty to p_bus_entityPartyFax in link_bus_entityPartyFax" order="6"/>
     <!-- p_cor_entityParty to targetRole link_bus_entityPartyEmail -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyEmail" xlink:label="p_bus_entityPartyEmail" xlink:title="p_bus_entityPartyEmail Party_ Email"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyEmail" xlink:from="p_cor_entityParty" xlink:to="p_bus_entityPartyEmail" xlink:title="domain-member: p_cor_entityParty to p_bus_entityPartyEmail in link_bus_entityPartyEmail" order="7"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyEmail" xlink:from="p_cor_entityParty" xlink:to="p_bus_entityPartyEmail" xlink:title="domain-member: p_cor_entityParty to p_bus_entityPartyEmail in link_bus_entityPartyEmail" order="7"/>
     <!-- p_cor_entityParty to targetRole link_bus_entityPartyRegisteredOrganizationIdentifier -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyRegisteredOrganizationIdentifier" xlink:label="p_bus_entityPartyRegisteredOrganizationIdentifier" xlink:title="p_bus_entityPartyRegisteredOrganizationIdentifier Registered_ Organization Identifier"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyRegisteredOrganizationIdentifier" xlink:from="p_cor_entityParty" xlink:to="p_bus_entityPartyRegisteredOrganizationIdentifier" xlink:title="domain-member: p_cor_entityParty to p_bus_entityPartyRegisteredOrganizationIdentifier in link_bus_entityPartyRegisteredOrganizationIdentifier" order="8"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyRegisteredOrganizationIdentifier" xlink:from="p_cor_entityParty" xlink:to="p_bus_entityPartyRegisteredOrganizationIdentifier" xlink:title="domain-member: p_cor_entityParty to p_bus_entityPartyRegisteredOrganizationIdentifier in link_bus_entityPartyRegisteredOrganizationIdentifier" order="8"/>
     <!-- p_cor_entityParty to targetRole link_bus_entityPartyAddress -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyAddress" xlink:label="p_bus_entityPartyAddress" xlink:title="p_bus_entityPartyAddress Party_ Address"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyAddress" xlink:from="p_cor_entityParty" xlink:to="p_bus_entityPartyAddress" xlink:title="domain-member: p_cor_entityParty to p_bus_entityPartyAddress in link_bus_entityPartyAddress" order="9"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyAddress" xlink:from="p_cor_entityParty" xlink:to="p_bus_entityPartyAddress" xlink:title="domain-member: p_cor_entityParty to p_bus_entityPartyAddress in link_bus_entityPartyAddress" order="9"/>
     <!-- p_cor_entityParty to targetRole link_bus_entityPartyWebSite -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyWebSite" xlink:label="p_bus_entityPartyWebSite" xlink:title="p_bus_entityPartyWebSite Party_ Web Site"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyWebSite" xlink:from="p_cor_entityParty" xlink:to="p_bus_entityPartyWebSite" xlink:title="domain-member: p_cor_entityParty to p_bus_entityPartyWebSite in link_bus_entityPartyWebSite" order="10"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyWebSite" xlink:from="p_cor_entityParty" xlink:to="p_bus_entityPartyWebSite" xlink:title="domain-member: p_cor_entityParty to p_bus_entityPartyWebSite in link_bus_entityPartyWebSite" order="10"/>
     <!-- p_cor_entityParty to targetRole link_bus_entityPartyContact -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyContact" xlink:label="p_bus_entityPartyContact" xlink:title="p_bus_entityPartyContact Party_ Contact"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyContact" xlink:from="p_cor_entityParty" xlink:to="p_bus_entityPartyContact" xlink:title="domain-member: p_cor_entityParty to p_bus_entityPartyContact in link_bus_entityPartyContact" order="11"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyContact" xlink:from="p_cor_entityParty" xlink:to="p_bus_entityPartyContact" xlink:title="domain-member: p_cor_entityParty to p_bus_entityPartyContact in link_bus_entityPartyContact" order="11"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_entityDefaultAccountingMethodPurpose" xlink:label="cor_entityDefaultAccountingMethodPurpose" xlink:title="cor_entityDefaultAccountingMethodPurpose Default Accounting Method Purpose"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_entityParty" xlink:to="cor_entityDefaultAccountingMethodPurpose" xlink:title="domain-member: p_cor_entityParty to cor_entityDefaultAccountingMethodPurpose Default Accounting Method Purpose" order="12"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_entityDefaultAccountingMethodPurposeDescription" xlink:label="cor_entityDefaultAccountingMethodPurposeDescription" xlink:title="cor_entityDefaultAccountingMethodPurposeDescription Default Accounting Method Purpose Description"/>
@@ -188,15 +188,15 @@
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_entityParty" xlink:to="cor_entityFiscalYearEnd" xlink:title="domain-member: p_cor_entityParty to cor_entityFiscalYearEnd Fiscal Year End" order="15"/>
     <!-- p_cor_entityParty to targetRole link_bus_entitySpecifiedAccountingMethodStructure -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entitySpecifiedAccountingMethodStructure" xlink:label="p_bus_entitySpecifiedAccountingMethodStructure" xlink:title="p_bus_entitySpecifiedAccountingMethodStructure Specified_ Accounting Method Structure"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entitySpecifiedAccountingMethodStructure" xlink:from="p_cor_entityParty" xlink:to="p_bus_entitySpecifiedAccountingMethodStructure" xlink:title="domain-member: p_cor_entityParty to p_bus_entitySpecifiedAccountingMethodStructure in link_bus_entitySpecifiedAccountingMethodStructure" order="16"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entitySpecifiedAccountingMethodStructure" xlink:from="p_cor_entityParty" xlink:to="p_bus_entitySpecifiedAccountingMethodStructure" xlink:title="domain-member: p_cor_entityParty to p_bus_entitySpecifiedAccountingMethodStructure in link_bus_entitySpecifiedAccountingMethodStructure" order="16"/>
     <!-- p_cor_entityParty to targetRole link_bus_entityAssignedAccountant -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityAssignedAccountant" xlink:label="p_bus_entityAssignedAccountant" xlink:title="p_bus_entityAssignedAccountant Assigned_ Accountant"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAssignedAccountant" xlink:from="p_cor_entityParty" xlink:to="p_bus_entityAssignedAccountant" xlink:title="domain-member: p_cor_entityParty to p_bus_entityAssignedAccountant in link_bus_entityAssignedAccountant" order="17"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAssignedAccountant" xlink:from="p_cor_entityParty" xlink:to="p_bus_entityAssignedAccountant" xlink:title="domain-member: p_cor_entityParty to p_bus_entityAssignedAccountant in link_bus_entityAssignedAccountant" order="17"/>
     <!-- p_cor_entityParty to targetRole link_bus_entitySpecifiedReportingCalendar -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entitySpecifiedReportingCalendar" xlink:label="p_bus_entitySpecifiedReportingCalendar" xlink:title="p_bus_entitySpecifiedReportingCalendar Specified_ Reporting Calendar"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entitySpecifiedReportingCalendar" xlink:from="p_cor_entityParty" xlink:to="p_bus_entitySpecifiedReportingCalendar" xlink:title="domain-member: p_cor_entityParty to p_bus_entitySpecifiedReportingCalendar in link_bus_entitySpecifiedReportingCalendar" order="18"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entitySpecifiedReportingCalendar" xlink:from="p_cor_entityParty" xlink:to="p_bus_entitySpecifiedReportingCalendar" xlink:title="domain-member: p_cor_entityParty to p_bus_entitySpecifiedReportingCalendar in link_bus_entitySpecifiedReportingCalendar" order="18"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyPhone">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyPhone">
     <!-- p_bus_entityPartyPhone all (has-hypercube) h_bus_entityPartyPhone link_bus_entityPartyPhone -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyPhone" xlink:label="p_bus_entityPartyPhone" xlink:title="p_bus_entityPartyPhone"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entityPartyPhone" xlink:label="h_bus_entityPartyPhone" xlink:title="h_bus_entityPartyPhone"/>
@@ -212,7 +212,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_entityPartyPhoneNumberDescription" xlink:label="bus_entityPartyPhoneNumberDescription" xlink:title="bus_entityPartyPhoneNumberDescription Phone Number Description"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entityPartyPhone" xlink:to="bus_entityPartyPhoneNumberDescription" xlink:title="domain-member: p_bus_entityPartyPhone to bus_entityPartyPhoneNumberDescription Phone Number Description" order="4"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyFax">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyFax">
     <!-- p_bus_entityPartyFax all (has-hypercube) h_bus_entityPartyFax link_bus_entityPartyFax -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyFax" xlink:label="p_bus_entityPartyFax" xlink:title="p_bus_entityPartyFax"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entityPartyFax" xlink:label="h_bus_entityPartyFax" xlink:title="h_bus_entityPartyFax"/>
@@ -228,7 +228,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_entityPartyFaxNumberUsage" xlink:label="bus_entityPartyFaxNumberUsage" xlink:title="bus_entityPartyFaxNumberUsage Fax Number Usage"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entityPartyFax" xlink:to="bus_entityPartyFaxNumberUsage" xlink:title="domain-member: p_bus_entityPartyFax to bus_entityPartyFaxNumberUsage Fax Number Usage" order="4"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyEmail">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyEmail">
     <!-- p_bus_entityPartyEmail all (has-hypercube) h_bus_entityPartyEmail link_bus_entityPartyEmail -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyEmail" xlink:label="p_bus_entityPartyEmail" xlink:title="p_bus_entityPartyEmail"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entityPartyEmail" xlink:label="h_bus_entityPartyEmail" xlink:title="h_bus_entityPartyEmail"/>
@@ -244,7 +244,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_entityPartyEmailAddressUsage" xlink:label="bus_entityPartyEmailAddressUsage" xlink:title="bus_entityPartyEmailAddressUsage Email Address Usage"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entityPartyEmail" xlink:to="bus_entityPartyEmailAddressUsage" xlink:title="domain-member: p_bus_entityPartyEmail to bus_entityPartyEmailAddressUsage Email Address Usage" order="4"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyRegisteredOrganizationIdentifier">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyRegisteredOrganizationIdentifier">
     <!-- p_bus_entityPartyRegisteredOrganizationIdentifier all (has-hypercube) h_bus_entityPartyRegisteredOrganizationIdentifier link_bus_entityPartyRegisteredOrganizationIdentifier -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyRegisteredOrganizationIdentifier" xlink:label="p_bus_entityPartyRegisteredOrganizationIdentifier" xlink:title="p_bus_entityPartyRegisteredOrganizationIdentifier"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entityPartyRegisteredOrganizationIdentifier" xlink:label="h_bus_entityPartyRegisteredOrganizationIdentifier" xlink:title="h_bus_entityPartyRegisteredOrganizationIdentifier"/>
@@ -260,7 +260,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_entityPartyRegisteredOrganizationIdentifierDescription" xlink:label="bus_entityPartyRegisteredOrganizationIdentifierDescription" xlink:title="bus_entityPartyRegisteredOrganizationIdentifierDescription Organization Identifier Description"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entityPartyRegisteredOrganizationIdentifier" xlink:to="bus_entityPartyRegisteredOrganizationIdentifierDescription" xlink:title="domain-member: p_bus_entityPartyRegisteredOrganizationIdentifier to bus_entityPartyRegisteredOrganizationIdentifierDescription Organization Identifier Description" order="4"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyAddress">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyAddress">
     <!-- p_bus_entityPartyAddress all (has-hypercube) h_bus_entityPartyAddress link_bus_entityPartyAddress -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyAddress" xlink:label="p_bus_entityPartyAddress" xlink:title="p_bus_entityPartyAddress"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entityPartyAddress" xlink:label="h_bus_entityPartyAddress" xlink:title="h_bus_entityPartyAddress"/>
@@ -296,7 +296,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_entityPartyAddressActiveIndicator" xlink:label="bus_entityPartyAddressActiveIndicator" xlink:title="bus_entityPartyAddressActiveIndicator Active Indicator"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entityPartyAddress" xlink:to="bus_entityPartyAddressActiveIndicator" xlink:title="domain-member: p_bus_entityPartyAddress to bus_entityPartyAddressActiveIndicator Active Indicator" order="14"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyWebSite">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyWebSite">
     <!-- p_bus_entityPartyWebSite all (has-hypercube) h_bus_entityPartyWebSite link_bus_entityPartyWebSite -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyWebSite" xlink:label="p_bus_entityPartyWebSite" xlink:title="p_bus_entityPartyWebSite"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entityPartyWebSite" xlink:label="h_bus_entityPartyWebSite" xlink:title="h_bus_entityPartyWebSite"/>
@@ -312,7 +312,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_entityPartyWebSiteDescription" xlink:label="bus_entityPartyWebSiteDescription" xlink:title="bus_entityPartyWebSiteDescription Web Site Description"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entityPartyWebSite" xlink:to="bus_entityPartyWebSiteDescription" xlink:title="domain-member: p_bus_entityPartyWebSite to bus_entityPartyWebSiteDescription Web Site Description" order="4"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyContact">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyContact">
     <!-- p_bus_entityPartyContact all (has-hypercube) h_bus_entityPartyContact link_bus_entityPartyContact -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyContact" xlink:label="p_bus_entityPartyContact" xlink:title="p_bus_entityPartyContact"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entityPartyContact" xlink:label="h_bus_entityPartyContact" xlink:title="h_bus_entityPartyContact"/>
@@ -343,15 +343,15 @@
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entityPartyContact" xlink:to="bus_entityPartyContactActive" xlink:title="domain-member: p_bus_entityPartyContact to bus_entityPartyContactActive Contact Active" order="11"/>
     <!-- p_bus_entityPartyContact to targetRole link_bus_entityPartyContactPhone -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyContactPhone" xlink:label="p_bus_entityPartyContactPhone" xlink:title="p_bus_entityPartyContactPhone Contact_ Phone"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyContactPhone" xlink:from="p_bus_entityPartyContact" xlink:to="p_bus_entityPartyContactPhone" xlink:title="domain-member: p_bus_entityPartyContact to p_bus_entityPartyContactPhone in link_bus_entityPartyContactPhone" order="12"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyContactPhone" xlink:from="p_bus_entityPartyContact" xlink:to="p_bus_entityPartyContactPhone" xlink:title="domain-member: p_bus_entityPartyContact to p_bus_entityPartyContactPhone in link_bus_entityPartyContactPhone" order="12"/>
     <!-- p_bus_entityPartyContact to targetRole link_bus_entityPartyContactFax -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyContactFax" xlink:label="p_bus_entityPartyContactFax" xlink:title="p_bus_entityPartyContactFax Contact_ Fax"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyContactFax" xlink:from="p_bus_entityPartyContact" xlink:to="p_bus_entityPartyContactFax" xlink:title="domain-member: p_bus_entityPartyContact to p_bus_entityPartyContactFax in link_bus_entityPartyContactFax" order="13"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyContactFax" xlink:from="p_bus_entityPartyContact" xlink:to="p_bus_entityPartyContactFax" xlink:title="domain-member: p_bus_entityPartyContact to p_bus_entityPartyContactFax in link_bus_entityPartyContactFax" order="13"/>
     <!-- p_bus_entityPartyContact to targetRole link_bus_entityPartyContactEmail -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyContactEmail" xlink:label="p_bus_entityPartyContactEmail" xlink:title="p_bus_entityPartyContactEmail Contact_ Email"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyContactEmail" xlink:from="p_bus_entityPartyContact" xlink:to="p_bus_entityPartyContactEmail" xlink:title="domain-member: p_bus_entityPartyContact to p_bus_entityPartyContactEmail in link_bus_entityPartyContactEmail" order="14"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyContactEmail" xlink:from="p_bus_entityPartyContact" xlink:to="p_bus_entityPartyContactEmail" xlink:title="domain-member: p_bus_entityPartyContact to p_bus_entityPartyContactEmail in link_bus_entityPartyContactEmail" order="14"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyContactPhone">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyContactPhone">
     <!-- p_bus_entityPartyContactPhone all (has-hypercube) h_bus_entityPartyContactPhone link_bus_entityPartyContactPhone -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyContactPhone" xlink:label="p_bus_entityPartyContactPhone" xlink:title="p_bus_entityPartyContactPhone"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entityPartyContactPhone" xlink:label="h_bus_entityPartyContactPhone" xlink:title="h_bus_entityPartyContactPhone"/>
@@ -369,7 +369,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_entityPartyContactPhoneNumberDescription" xlink:label="bus_entityPartyContactPhoneNumberDescription" xlink:title="bus_entityPartyContactPhoneNumberDescription Phone Number Description"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entityPartyContactPhone" xlink:to="bus_entityPartyContactPhoneNumberDescription" xlink:title="domain-member: p_bus_entityPartyContactPhone to bus_entityPartyContactPhoneNumberDescription Phone Number Description" order="5"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyContactFax">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyContactFax">
     <!-- p_bus_entityPartyContactFax all (has-hypercube) h_bus_entityPartyContactFax link_bus_entityPartyContactFax -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyContactFax" xlink:label="p_bus_entityPartyContactFax" xlink:title="p_bus_entityPartyContactFax"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entityPartyContactFax" xlink:label="h_bus_entityPartyContactFax" xlink:title="h_bus_entityPartyContactFax"/>
@@ -387,7 +387,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_entityPartyContactFaxNumberUsage" xlink:label="bus_entityPartyContactFaxNumberUsage" xlink:title="bus_entityPartyContactFaxNumberUsage Fax Number Usage"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entityPartyContactFax" xlink:to="bus_entityPartyContactFaxNumberUsage" xlink:title="domain-member: p_bus_entityPartyContactFax to bus_entityPartyContactFaxNumberUsage Fax Number Usage" order="5"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entityPartyContactEmail">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityPartyContactEmail">
     <!-- p_bus_entityPartyContactEmail all (has-hypercube) h_bus_entityPartyContactEmail link_bus_entityPartyContactEmail -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityPartyContactEmail" xlink:label="p_bus_entityPartyContactEmail" xlink:title="p_bus_entityPartyContactEmail"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entityPartyContactEmail" xlink:label="h_bus_entityPartyContactEmail" xlink:title="h_bus_entityPartyContactEmail"/>
@@ -405,7 +405,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_entityPartyContactEmailAddressUsage" xlink:label="bus_entityPartyContactEmailAddressUsage" xlink:title="bus_entityPartyContactEmailAddressUsage Email Address Usage"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entityPartyContactEmail" xlink:to="bus_entityPartyContactEmailAddressUsage" xlink:title="domain-member: p_bus_entityPartyContactEmail to bus_entityPartyContactEmailAddressUsage Email Address Usage" order="5"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entitySpecifiedAccountingMethodStructure">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entitySpecifiedAccountingMethodStructure">
     <!-- p_bus_entitySpecifiedAccountingMethodStructure all (has-hypercube) h_bus_entitySpecifiedAccountingMethodStructure link_bus_entitySpecifiedAccountingMethodStructure -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entitySpecifiedAccountingMethodStructure" xlink:label="p_bus_entitySpecifiedAccountingMethodStructure" xlink:title="p_bus_entitySpecifiedAccountingMethodStructure"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entitySpecifiedAccountingMethodStructure" xlink:label="h_bus_entitySpecifiedAccountingMethodStructure" xlink:title="h_bus_entitySpecifiedAccountingMethodStructure"/>
@@ -429,7 +429,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_entityAccountingMethodEndDate" xlink:label="bus_entityAccountingMethodEndDate" xlink:title="bus_entityAccountingMethodEndDate Accounting Method End Date"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entitySpecifiedAccountingMethodStructure" xlink:to="bus_entityAccountingMethodEndDate" xlink:title="domain-member: p_bus_entitySpecifiedAccountingMethodStructure to bus_entityAccountingMethodEndDate Accounting Method End Date" order="8"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAssignedAccountant">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAssignedAccountant">
     <!-- p_bus_entityAssignedAccountant all (has-hypercube) h_bus_entityAssignedAccountant link_bus_entityAssignedAccountant -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityAssignedAccountant" xlink:label="p_bus_entityAssignedAccountant" xlink:title="p_bus_entityAssignedAccountant"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entityAssignedAccountant" xlink:label="h_bus_entityAssignedAccountant" xlink:title="h_bus_entityAssignedAccountant"/>
@@ -448,12 +448,12 @@
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entityAssignedAccountant" xlink:to="bus_entityAccountantTypeOfEngagementDescription" xlink:title="domain-member: p_bus_entityAssignedAccountant to bus_entityAccountantTypeOfEngagementDescription Accountant Type of Engagement Description" order="5"/>
     <!-- p_bus_entityAssignedAccountant to targetRole link_bus_entityAccountantAddress -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityAccountantAddress" xlink:label="p_bus_entityAccountantAddress" xlink:title="p_bus_entityAccountantAddress Accountant_ Address"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantAddress" xlink:from="p_bus_entityAssignedAccountant" xlink:to="p_bus_entityAccountantAddress" xlink:title="domain-member: p_bus_entityAssignedAccountant to p_bus_entityAccountantAddress in link_bus_entityAccountantAddress" order="6"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantAddress" xlink:from="p_bus_entityAssignedAccountant" xlink:to="p_bus_entityAccountantAddress" xlink:title="domain-member: p_bus_entityAssignedAccountant to p_bus_entityAccountantAddress in link_bus_entityAccountantAddress" order="6"/>
     <!-- p_bus_entityAssignedAccountant to targetRole link_bus_entityAccountantContact -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityAccountantContact" xlink:label="p_bus_entityAccountantContact" xlink:title="p_bus_entityAccountantContact Accountant_ Contact"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantContact" xlink:from="p_bus_entityAssignedAccountant" xlink:to="p_bus_entityAccountantContact" xlink:title="domain-member: p_bus_entityAssignedAccountant to p_bus_entityAccountantContact in link_bus_entityAccountantContact" order="7"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantContact" xlink:from="p_bus_entityAssignedAccountant" xlink:to="p_bus_entityAccountantContact" xlink:title="domain-member: p_bus_entityAssignedAccountant to p_bus_entityAccountantContact in link_bus_entityAccountantContact" order="7"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantAddress">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantAddress">
     <!-- p_bus_entityAccountantAddress all (has-hypercube) h_bus_entityAccountantAddress link_bus_entityAccountantAddress -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityAccountantAddress" xlink:label="p_bus_entityAccountantAddress" xlink:title="p_bus_entityAccountantAddress"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entityAccountantAddress" xlink:label="h_bus_entityAccountantAddress" xlink:title="h_bus_entityAccountantAddress"/>
@@ -491,7 +491,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_entityAccountantAddressActiveIndicator" xlink:label="bus_entityAccountantAddressActiveIndicator" xlink:title="bus_entityAccountantAddressActiveIndicator Active Indicator"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entityAccountantAddress" xlink:to="bus_entityAccountantAddressActiveIndicator" xlink:title="domain-member: p_bus_entityAccountantAddress to bus_entityAccountantAddressActiveIndicator Active Indicator" order="15"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantContact">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantContact">
     <!-- p_bus_entityAccountantContact all (has-hypercube) h_bus_entityAccountantContact link_bus_entityAccountantContact -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityAccountantContact" xlink:label="p_bus_entityAccountantContact" xlink:title="p_bus_entityAccountantContact"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entityAccountantContact" xlink:label="h_bus_entityAccountantContact" xlink:title="h_bus_entityAccountantContact"/>
@@ -524,15 +524,15 @@
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entityAccountantContact" xlink:to="bus_entityAccountantContactActive" xlink:title="domain-member: p_bus_entityAccountantContact to bus_entityAccountantContactActive Contact Active" order="12"/>
     <!-- p_bus_entityAccountantContact to targetRole link_bus_entityAccountantContactPhone -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityAccountantContactPhone" xlink:label="p_bus_entityAccountantContactPhone" xlink:title="p_bus_entityAccountantContactPhone Contact_ Phone"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantContactPhone" xlink:from="p_bus_entityAccountantContact" xlink:to="p_bus_entityAccountantContactPhone" xlink:title="domain-member: p_bus_entityAccountantContact to p_bus_entityAccountantContactPhone in link_bus_entityAccountantContactPhone" order="13"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantContactPhone" xlink:from="p_bus_entityAccountantContact" xlink:to="p_bus_entityAccountantContactPhone" xlink:title="domain-member: p_bus_entityAccountantContact to p_bus_entityAccountantContactPhone in link_bus_entityAccountantContactPhone" order="13"/>
     <!-- p_bus_entityAccountantContact to targetRole link_bus_entityAccountantContactFax -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityAccountantContactFax" xlink:label="p_bus_entityAccountantContactFax" xlink:title="p_bus_entityAccountantContactFax Contact_ Fax"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantContactFax" xlink:from="p_bus_entityAccountantContact" xlink:to="p_bus_entityAccountantContactFax" xlink:title="domain-member: p_bus_entityAccountantContact to p_bus_entityAccountantContactFax in link_bus_entityAccountantContactFax" order="14"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantContactFax" xlink:from="p_bus_entityAccountantContact" xlink:to="p_bus_entityAccountantContactFax" xlink:title="domain-member: p_bus_entityAccountantContact to p_bus_entityAccountantContactFax in link_bus_entityAccountantContactFax" order="14"/>
     <!-- p_bus_entityAccountantContact to targetRole link_bus_entityAccountantContactEmail -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityAccountantContactEmail" xlink:label="p_bus_entityAccountantContactEmail" xlink:title="p_bus_entityAccountantContactEmail Contact_ Email"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantContactEmail" xlink:from="p_bus_entityAccountantContact" xlink:to="p_bus_entityAccountantContactEmail" xlink:title="domain-member: p_bus_entityAccountantContact to p_bus_entityAccountantContactEmail in link_bus_entityAccountantContactEmail" order="15"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantContactEmail" xlink:from="p_bus_entityAccountantContact" xlink:to="p_bus_entityAccountantContactEmail" xlink:title="domain-member: p_bus_entityAccountantContact to p_bus_entityAccountantContactEmail in link_bus_entityAccountantContactEmail" order="15"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantContactPhone">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantContactPhone">
     <!-- p_bus_entityAccountantContactPhone all (has-hypercube) h_bus_entityAccountantContactPhone link_bus_entityAccountantContactPhone -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityAccountantContactPhone" xlink:label="p_bus_entityAccountantContactPhone" xlink:title="p_bus_entityAccountantContactPhone"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entityAccountantContactPhone" xlink:label="h_bus_entityAccountantContactPhone" xlink:title="h_bus_entityAccountantContactPhone"/>
@@ -552,7 +552,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_entityAccountantContactPhoneNumberDescription" xlink:label="bus_entityAccountantContactPhoneNumberDescription" xlink:title="bus_entityAccountantContactPhoneNumberDescription Phone Number Description"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entityAccountantContactPhone" xlink:to="bus_entityAccountantContactPhoneNumberDescription" xlink:title="domain-member: p_bus_entityAccountantContactPhone to bus_entityAccountantContactPhoneNumberDescription Phone Number Description" order="6"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantContactFax">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantContactFax">
     <!-- p_bus_entityAccountantContactFax all (has-hypercube) h_bus_entityAccountantContactFax link_bus_entityAccountantContactFax -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityAccountantContactFax" xlink:label="p_bus_entityAccountantContactFax" xlink:title="p_bus_entityAccountantContactFax"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entityAccountantContactFax" xlink:label="h_bus_entityAccountantContactFax" xlink:title="h_bus_entityAccountantContactFax"/>
@@ -572,7 +572,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_entityAccountantContactFaxNumberUsage" xlink:label="bus_entityAccountantContactFaxNumberUsage" xlink:title="bus_entityAccountantContactFaxNumberUsage Fax Number Usage"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entityAccountantContactFax" xlink:to="bus_entityAccountantContactFaxNumberUsage" xlink:title="domain-member: p_bus_entityAccountantContactFax to bus_entityAccountantContactFaxNumberUsage Fax Number Usage" order="6"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entityAccountantContactEmail">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entityAccountantContactEmail">
     <!-- p_bus_entityAccountantContactEmail all (has-hypercube) h_bus_entityAccountantContactEmail link_bus_entityAccountantContactEmail -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entityAccountantContactEmail" xlink:label="p_bus_entityAccountantContactEmail" xlink:title="p_bus_entityAccountantContactEmail"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entityAccountantContactEmail" xlink:label="h_bus_entityAccountantContactEmail" xlink:title="h_bus_entityAccountantContactEmail"/>
@@ -592,7 +592,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_entityAccountantContactEmailAddressUsage" xlink:label="bus_entityAccountantContactEmailAddressUsage" xlink:title="bus_entityAccountantContactEmailAddressUsage Email Address Usage"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entityAccountantContactEmail" xlink:to="bus_entityAccountantContactEmailAddressUsage" xlink:title="domain-member: p_bus_entityAccountantContactEmail to bus_entityAccountantContactEmailAddressUsage Email Address Usage" order="6"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entitySpecifiedReportingCalendar">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entitySpecifiedReportingCalendar">
     <!-- p_bus_entitySpecifiedReportingCalendar all (has-hypercube) h_bus_entitySpecifiedReportingCalendar link_bus_entitySpecifiedReportingCalendar -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entitySpecifiedReportingCalendar" xlink:label="p_bus_entitySpecifiedReportingCalendar" xlink:title="p_bus_entitySpecifiedReportingCalendar"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entitySpecifiedReportingCalendar" xlink:label="h_bus_entitySpecifiedReportingCalendar" xlink:title="h_bus_entitySpecifiedReportingCalendar"/>
@@ -621,9 +621,9 @@
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entitySpecifiedReportingCalendar" xlink:to="bus_entitySpecifiedReportingCalendarPurposeDescription" xlink:title="domain-member: p_bus_entitySpecifiedReportingCalendar to bus_entitySpecifiedReportingCalendarPurposeDescription Reporting Calendar Purpose Description" order="10"/>
     <!-- p_bus_entitySpecifiedReportingCalendar to targetRole link_bus_entitySpecifiedReportingCalendarPeriod -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entitySpecifiedReportingCalendarPeriod" xlink:label="p_bus_entitySpecifiedReportingCalendarPeriod" xlink:title="p_bus_entitySpecifiedReportingCalendarPeriod Reporting Calendar_ Period"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_entitySpecifiedReportingCalendarPeriod" xlink:from="p_bus_entitySpecifiedReportingCalendar" xlink:to="p_bus_entitySpecifiedReportingCalendarPeriod" xlink:title="domain-member: p_bus_entitySpecifiedReportingCalendar to p_bus_entitySpecifiedReportingCalendarPeriod in link_bus_entitySpecifiedReportingCalendarPeriod" order="11"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entitySpecifiedReportingCalendarPeriod" xlink:from="p_bus_entitySpecifiedReportingCalendar" xlink:to="p_bus_entitySpecifiedReportingCalendarPeriod" xlink:title="domain-member: p_bus_entitySpecifiedReportingCalendar to p_bus_entitySpecifiedReportingCalendarPeriod in link_bus_entitySpecifiedReportingCalendarPeriod" order="11"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_entitySpecifiedReportingCalendarPeriod">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_entitySpecifiedReportingCalendarPeriod">
     <!-- p_bus_entitySpecifiedReportingCalendarPeriod all (has-hypercube) h_bus_entitySpecifiedReportingCalendarPeriod link_bus_entitySpecifiedReportingCalendarPeriod -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_entitySpecifiedReportingCalendarPeriod" xlink:label="p_bus_entitySpecifiedReportingCalendarPeriod" xlink:title="p_bus_entitySpecifiedReportingCalendarPeriod"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_entitySpecifiedReportingCalendarPeriod" xlink:label="h_bus_entitySpecifiedReportingCalendarPeriod" xlink:title="h_bus_entitySpecifiedReportingCalendarPeriod"/>
@@ -647,7 +647,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_entitySpecifiedReportingPeportingCalendarPeriodClosedDate" xlink:label="bus_entitySpecifiedReportingPeportingCalendarPeriodClosedDate" xlink:title="bus_entitySpecifiedReportingPeportingCalendarPeriodClosedDate Reporting Calendar_ Period Closed Date"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_entitySpecifiedReportingCalendarPeriod" xlink:to="bus_entitySpecifiedReportingPeportingCalendarPeriodClosedDate" xlink:title="domain-member: p_bus_entitySpecifiedReportingCalendarPeriod to bus_entitySpecifiedReportingPeportingCalendarPeriodClosedDate Reporting Calendar_ Period Closed Date" order="8"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_cor_entryHeader">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_entryHeader">
     <!-- p_cor_entryHeader all (has-hypercube) h_cor_entryHeader link_cor_entryHeader -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_entryHeader" xlink:label="p_cor_entryHeader" xlink:title="p_cor_entryHeader"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_cor_entryHeader" xlink:label="h_cor_entryHeader" xlink:title="h_cor_entryHeader"/>
@@ -736,9 +736,9 @@
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_entryHeader" xlink:to="cor_entryNumberCounter" xlink:title="domain-member: p_cor_entryHeader to cor_entryNumberCounter Entry Number Counter" order="40"/>
     <!-- p_cor_entryHeader to targetRole link_cor_entryDetail -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_entryDetail" xlink:label="p_cor_entryDetail" xlink:title="p_cor_entryDetail Entry_ Detail"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_cor_entryDetail" xlink:from="p_cor_entryHeader" xlink:to="p_cor_entryDetail" xlink:title="domain-member: p_cor_entryHeader to p_cor_entryDetail in link_cor_entryDetail" order="41"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_entryDetail" xlink:from="p_cor_entryHeader" xlink:to="p_cor_entryDetail" xlink:title="domain-member: p_cor_entryHeader to p_cor_entryDetail in link_cor_entryDetail" order="41"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_cor_entryDetail">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_entryDetail">
     <!-- p_cor_entryDetail all (has-hypercube) h_cor_entryDetail link_cor_entryDetail -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_entryDetail" xlink:label="p_cor_entryDetail" xlink:title="p_cor_entryDetail"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_cor_entryDetail" xlink:label="h_cor_entryDetail" xlink:title="h_cor_entryDetail"/>
@@ -789,37 +789,37 @@
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_entryDetail" xlink:to="cor_geospatialCoordinate" xlink:title="domain-member: p_cor_entryDetail to cor_geospatialCoordinate Geospatial Coordinate" order="22"/>
     <!-- p_cor_entryDetail to targetRole link_taf_detailOriginatingDriginatingDocument -->
     <link:loc xlink:type="locator" xlink:href="../../taf/taf-oim-2026-12-31.xsd#p_taf_detailOriginatingDriginatingDocument" xlink:label="p_taf_detailOriginatingDriginatingDocument" xlink:title="p_taf_detailOriginatingDriginatingDocument Originating Document"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_taf_detailOriginatingDriginatingDocument" xlink:from="p_cor_entryDetail" xlink:to="p_taf_detailOriginatingDriginatingDocument" xlink:title="domain-member: p_cor_entryDetail to p_taf_detailOriginatingDriginatingDocument in link_taf_detailOriginatingDriginatingDocument" order="23"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_taf_detailOriginatingDriginatingDocument" xlink:from="p_cor_entryDetail" xlink:to="p_taf_detailOriginatingDriginatingDocument" xlink:title="domain-member: p_cor_entryDetail to p_taf_detailOriginatingDriginatingDocument in link_taf_detailOriginatingDriginatingDocument" order="23"/>
     <!-- p_cor_entryDetail to targetRole link_muc_detailMulticurrency -->
     <link:loc xlink:type="locator" xlink:href="../../muc/muc-oim-2026-12-31.xsd#p_muc_detailMulticurrency" xlink:label="p_muc_detailMulticurrency" xlink:title="p_muc_detailMulticurrency Detail_ Multicurrency"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_muc_detailMulticurrency" xlink:from="p_cor_entryDetail" xlink:to="p_muc_detailMulticurrency" xlink:title="domain-member: p_cor_entryDetail to p_muc_detailMulticurrency in link_muc_detailMulticurrency" order="24"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_muc_detailMulticurrency" xlink:from="p_cor_entryDetail" xlink:to="p_muc_detailMulticurrency" xlink:title="domain-member: p_cor_entryDetail to p_muc_detailMulticurrency in link_muc_detailMulticurrency" order="24"/>
     <!-- p_cor_entryDetail to targetRole link_cor_detailIdentifierReference -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_detailIdentifierReference" xlink:label="p_cor_detailIdentifierReference" xlink:title="p_cor_detailIdentifierReference Detail_ Identifier Reference"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_cor_detailIdentifierReference" xlink:from="p_cor_entryDetail" xlink:to="p_cor_detailIdentifierReference" xlink:title="domain-member: p_cor_entryDetail to p_cor_detailIdentifierReference in link_cor_detailIdentifierReference" order="25"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_detailIdentifierReference" xlink:from="p_cor_entryDetail" xlink:to="p_cor_detailIdentifierReference" xlink:title="domain-member: p_cor_entryDetail to p_cor_detailIdentifierReference in link_cor_detailIdentifierReference" order="25"/>
     <!-- p_cor_entryDetail to targetRole link_cor_detailXbrl -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_detailXbrl" xlink:label="p_cor_detailXbrl" xlink:title="p_cor_detailXbrl Detail_ XBRL"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_cor_detailXbrl" xlink:from="p_cor_entryDetail" xlink:to="p_cor_detailXbrl" xlink:title="domain-member: p_cor_entryDetail to p_cor_detailXbrl in link_cor_detailXbrl" order="26"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_detailXbrl" xlink:from="p_cor_entryDetail" xlink:to="p_cor_detailXbrl" xlink:title="domain-member: p_cor_entryDetail to p_cor_detailXbrl in link_cor_detailXbrl" order="26"/>
     <!-- p_cor_entryDetail to targetRole link_bus_detailMeasurable -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_detailMeasurable" xlink:label="p_bus_detailMeasurable" xlink:title="p_bus_detailMeasurable Detail_ Measurable"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_detailMeasurable" xlink:from="p_cor_entryDetail" xlink:to="p_bus_detailMeasurable" xlink:title="domain-member: p_cor_entryDetail to p_bus_detailMeasurable in link_bus_detailMeasurable" order="27"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_detailMeasurable" xlink:from="p_cor_entryDetail" xlink:to="p_bus_detailMeasurable" xlink:title="domain-member: p_cor_entryDetail to p_bus_detailMeasurable in link_bus_detailMeasurable" order="27"/>
     <!-- p_cor_entryDetail to targetRole link_bus_detailJob -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_detailJob" xlink:label="p_bus_detailJob" xlink:title="p_bus_detailJob Detail_ Job"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_detailJob" xlink:from="p_cor_entryDetail" xlink:to="p_bus_detailJob" xlink:title="domain-member: p_cor_entryDetail to p_bus_detailJob in link_bus_detailJob" order="28"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_detailJob" xlink:from="p_cor_entryDetail" xlink:to="p_bus_detailJob" xlink:title="domain-member: p_cor_entryDetail to p_bus_detailJob in link_bus_detailJob" order="28"/>
     <!-- p_cor_entryDetail to targetRole link_bus_detailDepreciationMortgage -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_detailDepreciationMortgage" xlink:label="p_bus_detailDepreciationMortgage" xlink:title="p_bus_detailDepreciationMortgage Detail_ Depreciation Mortgage"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_detailDepreciationMortgage" xlink:from="p_cor_entryDetail" xlink:to="p_bus_detailDepreciationMortgage" xlink:title="domain-member: p_cor_entryDetail to p_bus_detailDepreciationMortgage in link_bus_detailDepreciationMortgage" order="29"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_detailDepreciationMortgage" xlink:from="p_cor_entryDetail" xlink:to="p_bus_detailDepreciationMortgage" xlink:title="domain-member: p_cor_entryDetail to p_bus_detailDepreciationMortgage in link_bus_detailDepreciationMortgage" order="29"/>
     <!-- p_cor_entryDetail to targetRole link_ehm_detailSerialOrLot -->
     <link:loc xlink:type="locator" xlink:href="../../ehm/ehm-oim-2026-12-31.xsd#p_ehm_detailSerialOrLot" xlink:label="p_ehm_detailSerialOrLot" xlink:title="p_ehm_detailSerialOrLot Detail_ Serial or Lot"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_ehm_detailSerialOrLot" xlink:from="p_cor_entryDetail" xlink:to="p_ehm_detailSerialOrLot" xlink:title="domain-member: p_cor_entryDetail to p_ehm_detailSerialOrLot in link_ehm_detailSerialOrLot" order="30"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_ehm_detailSerialOrLot" xlink:from="p_cor_entryDetail" xlink:to="p_ehm_detailSerialOrLot" xlink:title="domain-member: p_cor_entryDetail to p_ehm_detailSerialOrLot in link_ehm_detailSerialOrLot" order="30"/>
     <!-- p_cor_entryDetail to targetRole link_cor_detailTax -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_detailTax" xlink:label="p_cor_detailTax" xlink:title="p_cor_detailTax Detail_ Tax"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_cor_detailTax" xlink:from="p_cor_entryDetail" xlink:to="p_cor_detailTax" xlink:title="domain-member: p_cor_entryDetail to p_cor_detailTax in link_cor_detailTax" order="31"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_detailTax" xlink:from="p_cor_entryDetail" xlink:to="p_cor_detailTax" xlink:title="domain-member: p_cor_entryDetail to p_cor_detailTax in link_cor_detailTax" order="31"/>
     <!-- p_cor_entryDetail to targetRole link_lnk_detailRichTextComment -->
     <link:loc xlink:type="locator" xlink:href="../../lnk/lnk-oim-2026-12-31.xsd#p_lnk_detailRichTextComment" xlink:label="p_lnk_detailRichTextComment" xlink:title="p_lnk_detailRichTextComment Detail_ Rich Text Comment"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_lnk_detailRichTextComment" xlink:from="p_cor_entryDetail" xlink:to="p_lnk_detailRichTextComment" xlink:title="domain-member: p_cor_entryDetail to p_lnk_detailRichTextComment in link_lnk_detailRichTextComment" order="32"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_lnk_detailRichTextComment" xlink:from="p_cor_entryDetail" xlink:to="p_lnk_detailRichTextComment" xlink:title="domain-member: p_cor_entryDetail to p_lnk_detailRichTextComment in link_lnk_detailRichTextComment" order="32"/>
     <!-- p_cor_entryDetail to targetRole link_cor_detailAccountIdentifier -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_detailAccountIdentifier" xlink:label="p_cor_detailAccountIdentifier" xlink:title="p_cor_detailAccountIdentifier Detail_ Account Identifier"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_cor_detailAccountIdentifier" xlink:from="p_cor_entryDetail" xlink:to="p_cor_detailAccountIdentifier" xlink:title="domain-member: p_cor_entryDetail to p_cor_detailAccountIdentifier in link_cor_detailAccountIdentifier" order="33"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_detailAccountIdentifier" xlink:from="p_cor_entryDetail" xlink:to="p_cor_detailAccountIdentifier" xlink:title="domain-member: p_cor_entryDetail to p_cor_detailAccountIdentifier in link_cor_detailAccountIdentifier" order="33"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_detailDescription" xlink:label="cor_detailDescription" xlink:title="cor_detailDescription Detail_ Description"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_entryDetail" xlink:to="cor_detailDescription" xlink:title="domain-member: p_cor_entryDetail to cor_detailDescription Detail_ Description" order="34"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_monetaryAmount" xlink:label="cor_monetaryAmount" xlink:title="cor_monetaryAmount Monetary Amount"/>
@@ -857,7 +857,7 @@
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_ucr" xlink:label="cor_ucr" xlink:title="cor_ucr UCR"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_entryDetail" xlink:to="cor_ucr" xlink:title="domain-member: p_cor_entryDetail to cor_ucr UCR" order="51"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_taf_detailOriginatingDriginatingDocument">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_taf_detailOriginatingDriginatingDocument">
     <!-- p_taf_detailOriginatingDriginatingDocument all (has-hypercube) h_taf_detailOriginatingDriginatingDocument link_taf_detailOriginatingDriginatingDocument -->
     <link:loc xlink:type="locator" xlink:href="../../taf/taf-oim-2026-12-31.xsd#p_taf_detailOriginatingDriginatingDocument" xlink:label="p_taf_detailOriginatingDriginatingDocument" xlink:title="p_taf_detailOriginatingDriginatingDocument"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_taf_detailOriginatingDriginatingDocument" xlink:label="h_taf_detailOriginatingDriginatingDocument" xlink:title="h_taf_detailOriginatingDriginatingDocument"/>
@@ -885,7 +885,7 @@
     <link:loc xlink:type="locator" xlink:href="../../taf/taf-oim-2026-12-31.xsd#taf_detailOriginatingDocumentIdentifierTaxCode" xlink:label="taf_detailOriginatingDocumentIdentifierTaxCode" xlink:title="taf_detailOriginatingDocumentIdentifierTaxCode Document Identifier Tax Code"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_taf_detailOriginatingDriginatingDocument" xlink:to="taf_detailOriginatingDocumentIdentifierTaxCode" xlink:title="domain-member: p_taf_detailOriginatingDriginatingDocument to taf_detailOriginatingDocumentIdentifierTaxCode Document Identifier Tax Code" order="10"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_muc_detailMulticurrency">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_muc_detailMulticurrency">
     <!-- p_muc_detailMulticurrency all (has-hypercube) h_muc_detailMulticurrency link_muc_detailMulticurrency -->
     <link:loc xlink:type="locator" xlink:href="../../muc/muc-oim-2026-12-31.xsd#p_muc_detailMulticurrency" xlink:label="p_muc_detailMulticurrency" xlink:title="p_muc_detailMulticurrency"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_muc_detailMulticurrency" xlink:label="h_muc_detailMulticurrency" xlink:title="h_muc_detailMulticurrency"/>
@@ -931,7 +931,7 @@
     <link:loc xlink:type="locator" xlink:href="../../muc/muc-oim-2026-12-31.xsd#muc_multicurrencyComment" xlink:label="muc_multicurrencyComment" xlink:title="muc_multicurrencyComment Multicurrency Comment"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_muc_detailMulticurrency" xlink:to="muc_multicurrencyComment" xlink:title="domain-member: p_muc_detailMulticurrency to muc_multicurrencyComment Multicurrency Comment" order="19"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_cor_detailIdentifierReference">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_detailIdentifierReference">
     <!-- p_cor_detailIdentifierReference all (has-hypercube) h_cor_detailIdentifierReference link_cor_detailIdentifierReference -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_detailIdentifierReference" xlink:label="p_cor_detailIdentifierReference" xlink:title="p_cor_detailIdentifierReference"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_cor_detailIdentifierReference" xlink:label="h_cor_detailIdentifierReference" xlink:title="h_cor_detailIdentifierReference"/>
@@ -964,24 +964,24 @@
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailIdentifierReference" xlink:to="cor_identifierCategory" xlink:title="domain-member: p_cor_detailIdentifierReference to cor_identifierCategory Identifier Category" order="12"/>
     <!-- p_cor_detailIdentifierReference to targetRole link_cor_externalAuthority -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_externalAuthority" xlink:label="p_cor_externalAuthority" xlink:title="p_cor_externalAuthority External Authority"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_cor_externalAuthority" xlink:from="p_cor_detailIdentifierReference" xlink:to="p_cor_externalAuthority" xlink:title="domain-member: p_cor_detailIdentifierReference to p_cor_externalAuthority in link_cor_externalAuthority" order="13"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_externalAuthority" xlink:from="p_cor_detailIdentifierReference" xlink:to="p_cor_externalAuthority" xlink:title="domain-member: p_cor_detailIdentifierReference to p_cor_externalAuthority in link_cor_externalAuthority" order="13"/>
     <!-- p_cor_detailIdentifierReference to targetRole link_cor_identifierPhone -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_identifierPhone" xlink:label="p_cor_identifierPhone" xlink:title="p_cor_identifierPhone Identifier_ Phone"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierPhone" xlink:from="p_cor_detailIdentifierReference" xlink:to="p_cor_identifierPhone" xlink:title="domain-member: p_cor_detailIdentifierReference to p_cor_identifierPhone in link_cor_identifierPhone" order="14"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierPhone" xlink:from="p_cor_detailIdentifierReference" xlink:to="p_cor_identifierPhone" xlink:title="domain-member: p_cor_detailIdentifierReference to p_cor_identifierPhone in link_cor_identifierPhone" order="14"/>
     <!-- p_cor_detailIdentifierReference to targetRole link_cor_identifierFax -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_identifierFax" xlink:label="p_cor_identifierFax" xlink:title="p_cor_identifierFax Identifier_ Fax"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierFax" xlink:from="p_cor_detailIdentifierReference" xlink:to="p_cor_identifierFax" xlink:title="domain-member: p_cor_detailIdentifierReference to p_cor_identifierFax in link_cor_identifierFax" order="15"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierFax" xlink:from="p_cor_detailIdentifierReference" xlink:to="p_cor_identifierFax" xlink:title="domain-member: p_cor_detailIdentifierReference to p_cor_identifierFax in link_cor_identifierFax" order="15"/>
     <!-- p_cor_detailIdentifierReference to targetRole link_cor_identifierEmail -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_identifierEmail" xlink:label="p_cor_identifierEmail" xlink:title="p_cor_identifierEmail Identifier_ Email"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierEmail" xlink:from="p_cor_detailIdentifierReference" xlink:to="p_cor_identifierEmail" xlink:title="domain-member: p_cor_detailIdentifierReference to p_cor_identifierEmail in link_cor_identifierEmail" order="16"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierEmail" xlink:from="p_cor_detailIdentifierReference" xlink:to="p_cor_identifierEmail" xlink:title="domain-member: p_cor_detailIdentifierReference to p_cor_identifierEmail in link_cor_identifierEmail" order="16"/>
     <!-- p_cor_detailIdentifierReference to targetRole link_cor_identifierAddress -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_identifierAddress" xlink:label="p_cor_identifierAddress" xlink:title="p_cor_identifierAddress Identifier_ Address"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierAddress" xlink:from="p_cor_detailIdentifierReference" xlink:to="p_cor_identifierAddress" xlink:title="domain-member: p_cor_detailIdentifierReference to p_cor_identifierAddress in link_cor_identifierAddress" order="17"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierAddress" xlink:from="p_cor_detailIdentifierReference" xlink:to="p_cor_identifierAddress" xlink:title="domain-member: p_cor_detailIdentifierReference to p_cor_identifierAddress in link_cor_identifierAddress" order="17"/>
     <!-- p_cor_detailIdentifierReference to targetRole link_cor_identifierContact -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_identifierContact" xlink:label="p_cor_identifierContact" xlink:title="p_cor_identifierContact Identifier_ Contact"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierContact" xlink:from="p_cor_detailIdentifierReference" xlink:to="p_cor_identifierContact" xlink:title="domain-member: p_cor_detailIdentifierReference to p_cor_identifierContact in link_cor_identifierContact" order="18"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierContact" xlink:from="p_cor_detailIdentifierReference" xlink:to="p_cor_identifierContact" xlink:title="domain-member: p_cor_detailIdentifierReference to p_cor_identifierContact in link_cor_identifierContact" order="18"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_cor_externalAuthority">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_externalAuthority">
     <!-- p_cor_externalAuthority all (has-hypercube) h_cor_externalAuthority link_cor_externalAuthority -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_externalAuthority" xlink:label="p_cor_externalAuthority" xlink:title="p_cor_externalAuthority"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_cor_externalAuthority" xlink:label="h_cor_externalAuthority" xlink:title="h_cor_externalAuthority"/>
@@ -1005,7 +1005,7 @@
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_externalAuthorityVerificationDate" xlink:label="cor_externalAuthorityVerificationDate" xlink:title="cor_externalAuthorityVerificationDate External Authority Verification Date"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_externalAuthority" xlink:to="cor_externalAuthorityVerificationDate" xlink:title="domain-member: p_cor_externalAuthority to cor_externalAuthorityVerificationDate External Authority Verification Date" order="8"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierPhone">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierPhone">
     <!-- p_cor_identifierPhone all (has-hypercube) h_cor_identifierPhone link_cor_identifierPhone -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_identifierPhone" xlink:label="p_cor_identifierPhone" xlink:title="p_cor_identifierPhone"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_cor_identifierPhone" xlink:label="h_cor_identifierPhone" xlink:title="h_cor_identifierPhone"/>
@@ -1027,7 +1027,7 @@
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_identifierPhoneNumberDescription" xlink:label="cor_identifierPhoneNumberDescription" xlink:title="cor_identifierPhoneNumberDescription Phone Number Description"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_identifierPhone" xlink:to="cor_identifierPhoneNumberDescription" xlink:title="domain-member: p_cor_identifierPhone to cor_identifierPhoneNumberDescription Phone Number Description" order="7"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierFax">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierFax">
     <!-- p_cor_identifierFax all (has-hypercube) h_cor_identifierFax link_cor_identifierFax -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_identifierFax" xlink:label="p_cor_identifierFax" xlink:title="p_cor_identifierFax"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_cor_identifierFax" xlink:label="h_cor_identifierFax" xlink:title="h_cor_identifierFax"/>
@@ -1049,7 +1049,7 @@
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_identifierFaxNumberUsage" xlink:label="cor_identifierFaxNumberUsage" xlink:title="cor_identifierFaxNumberUsage Fax Number Usage"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_identifierFax" xlink:to="cor_identifierFaxNumberUsage" xlink:title="domain-member: p_cor_identifierFax to cor_identifierFaxNumberUsage Fax Number Usage" order="7"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierEmail">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierEmail">
     <!-- p_cor_identifierEmail all (has-hypercube) h_cor_identifierEmail link_cor_identifierEmail -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_identifierEmail" xlink:label="p_cor_identifierEmail" xlink:title="p_cor_identifierEmail"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_cor_identifierEmail" xlink:label="h_cor_identifierEmail" xlink:title="h_cor_identifierEmail"/>
@@ -1071,7 +1071,7 @@
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_identifierEmailAddressUsage" xlink:label="cor_identifierEmailAddressUsage" xlink:title="cor_identifierEmailAddressUsage Email Address Usage"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_identifierEmail" xlink:to="cor_identifierEmailAddressUsage" xlink:title="domain-member: p_cor_identifierEmail to cor_identifierEmailAddressUsage Email Address Usage" order="7"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierAddress">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierAddress">
     <!-- p_cor_identifierAddress all (has-hypercube) h_cor_identifierAddress link_cor_identifierAddress -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_identifierAddress" xlink:label="p_cor_identifierAddress" xlink:title="p_cor_identifierAddress"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_cor_identifierAddress" xlink:label="h_cor_identifierAddress" xlink:title="h_cor_identifierAddress"/>
@@ -1109,7 +1109,7 @@
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_zipOrPostalCode" xlink:label="cor_zipOrPostalCode" xlink:title="cor_zipOrPostalCode Zip or Postal Code"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_identifierAddress" xlink:to="cor_zipOrPostalCode" xlink:title="domain-member: p_cor_identifierAddress to cor_zipOrPostalCode Zip or Postal Code" order="15"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_cor_identifierContact">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_identifierContact">
     <!-- p_cor_identifierContact all (has-hypercube) h_cor_identifierContact link_cor_identifierContact -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_identifierContact" xlink:label="p_cor_identifierContact" xlink:title="p_cor_identifierContact"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_cor_identifierContact" xlink:label="h_cor_identifierContact" xlink:title="h_cor_identifierContact"/>
@@ -1146,15 +1146,15 @@
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_identifierContact" xlink:to="cor_contactActive" xlink:title="domain-member: p_cor_identifierContact to cor_contactActive Contact Active" order="14"/>
     <!-- p_cor_identifierContact to targetRole link_bus_contactPhone -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_contactPhone" xlink:label="p_bus_contactPhone" xlink:title="p_bus_contactPhone Contact_ Phone"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_contactPhone" xlink:from="p_cor_identifierContact" xlink:to="p_bus_contactPhone" xlink:title="domain-member: p_cor_identifierContact to p_bus_contactPhone in link_bus_contactPhone" order="15"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_contactPhone" xlink:from="p_cor_identifierContact" xlink:to="p_bus_contactPhone" xlink:title="domain-member: p_cor_identifierContact to p_bus_contactPhone in link_bus_contactPhone" order="15"/>
     <!-- p_cor_identifierContact to targetRole link_bus_contactFax -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_contactFax" xlink:label="p_bus_contactFax" xlink:title="p_bus_contactFax Contact_ Fax"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_contactFax" xlink:from="p_cor_identifierContact" xlink:to="p_bus_contactFax" xlink:title="domain-member: p_cor_identifierContact to p_bus_contactFax in link_bus_contactFax" order="16"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_contactFax" xlink:from="p_cor_identifierContact" xlink:to="p_bus_contactFax" xlink:title="domain-member: p_cor_identifierContact to p_bus_contactFax in link_bus_contactFax" order="16"/>
     <!-- p_cor_identifierContact to targetRole link_bus_contactEmail -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_contactEmail" xlink:label="p_bus_contactEmail" xlink:title="p_bus_contactEmail Contact_ Email"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_bus_contactEmail" xlink:from="p_cor_identifierContact" xlink:to="p_bus_contactEmail" xlink:title="domain-member: p_cor_identifierContact to p_bus_contactEmail in link_bus_contactEmail" order="17"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_contactEmail" xlink:from="p_cor_identifierContact" xlink:to="p_bus_contactEmail" xlink:title="domain-member: p_cor_identifierContact to p_bus_contactEmail in link_bus_contactEmail" order="17"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_contactPhone">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_contactPhone">
     <!-- p_bus_contactPhone all (has-hypercube) h_bus_contactPhone link_bus_contactPhone -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_contactPhone" xlink:label="p_bus_contactPhone" xlink:title="p_bus_contactPhone"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_contactPhone" xlink:label="h_bus_contactPhone" xlink:title="h_bus_contactPhone"/>
@@ -1178,7 +1178,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_identifierContactPhoneNumberDescription" xlink:label="bus_identifierContactPhoneNumberDescription" xlink:title="bus_identifierContactPhoneNumberDescription Phone Number Description"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_contactPhone" xlink:to="bus_identifierContactPhoneNumberDescription" xlink:title="domain-member: p_bus_contactPhone to bus_identifierContactPhoneNumberDescription Phone Number Description" order="8"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_contactFax">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_contactFax">
     <!-- p_bus_contactFax all (has-hypercube) h_bus_contactFax link_bus_contactFax -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_contactFax" xlink:label="p_bus_contactFax" xlink:title="p_bus_contactFax"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_contactFax" xlink:label="h_bus_contactFax" xlink:title="h_bus_contactFax"/>
@@ -1202,7 +1202,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_faxNumberUsage" xlink:label="bus_faxNumberUsage" xlink:title="bus_faxNumberUsage Fax Number Usage"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_contactFax" xlink:to="bus_faxNumberUsage" xlink:title="domain-member: p_bus_contactFax to bus_faxNumberUsage Fax Number Usage" order="8"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_contactEmail">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_contactEmail">
     <!-- p_bus_contactEmail all (has-hypercube) h_bus_contactEmail link_bus_contactEmail -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_contactEmail" xlink:label="p_bus_contactEmail" xlink:title="p_bus_contactEmail"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_contactEmail" xlink:label="h_bus_contactEmail" xlink:title="h_bus_contactEmail"/>
@@ -1226,7 +1226,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_emailAddressUsage" xlink:label="bus_emailAddressUsage" xlink:title="bus_emailAddressUsage Email Address Usage"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_contactEmail" xlink:to="bus_emailAddressUsage" xlink:title="domain-member: p_bus_contactEmail to bus_emailAddressUsage Email Address Usage" order="8"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_cor_detailXbrl">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_detailXbrl">
     <!-- p_cor_detailXbrl all (has-hypercube) h_cor_detailXbrl link_cor_detailXbrl -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_detailXbrl" xlink:label="p_cor_detailXbrl" xlink:title="p_cor_detailXbrl"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_cor_detailXbrl" xlink:label="h_cor_detailXbrl" xlink:title="h_cor_detailXbrl"/>
@@ -1262,7 +1262,7 @@
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_xbrlSummaryReportingTaxonomyIdReference" xlink:label="cor_xbrlSummaryReportingTaxonomyIdReference" xlink:title="cor_xbrlSummaryReportingTaxonomyIdReference XBRL Summary Reporting Taxonomy ID Reference"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailXbrl" xlink:to="cor_xbrlSummaryReportingTaxonomyIdReference" xlink:title="domain-member: p_cor_detailXbrl to cor_xbrlSummaryReportingTaxonomyIdReference XBRL Summary Reporting Taxonomy ID Reference" order="14"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_detailMeasurable">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_detailMeasurable">
     <!-- p_bus_detailMeasurable all (has-hypercube) h_bus_detailMeasurable link_bus_detailMeasurable -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_detailMeasurable" xlink:label="p_bus_detailMeasurable" xlink:title="p_bus_detailMeasurable"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_detailMeasurable" xlink:label="h_bus_detailMeasurable" xlink:title="h_bus_detailMeasurable"/>
@@ -1308,7 +1308,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_measurableActive" xlink:label="bus_measurableActive" xlink:title="bus_measurableActive Measurable Active"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_detailMeasurable" xlink:to="bus_measurableActive" xlink:title="domain-member: p_bus_detailMeasurable to bus_measurableActive Measurable Active" order="19"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_detailJob">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_detailJob">
     <!-- p_bus_detailJob all (has-hypercube) h_bus_detailJob link_bus_detailJob -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_detailJob" xlink:label="p_bus_detailJob" xlink:title="p_bus_detailJob"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_detailJob" xlink:label="h_bus_detailJob" xlink:title="h_bus_detailJob"/>
@@ -1334,7 +1334,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_jobActive" xlink:label="bus_jobActive" xlink:title="bus_jobActive Job Active"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_detailJob" xlink:to="bus_jobActive" xlink:title="domain-member: p_bus_detailJob to bus_jobActive Job Active" order="9"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_bus_detailDepreciationMortgage">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_bus_detailDepreciationMortgage">
     <!-- p_bus_detailDepreciationMortgage all (has-hypercube) h_bus_detailDepreciationMortgage link_bus_detailDepreciationMortgage -->
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#p_bus_detailDepreciationMortgage" xlink:label="p_bus_detailDepreciationMortgage" xlink:title="p_bus_detailDepreciationMortgage"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_bus_detailDepreciationMortgage" xlink:label="h_bus_detailDepreciationMortgage" xlink:title="h_bus_detailDepreciationMortgage"/>
@@ -1364,7 +1364,7 @@
     <link:loc xlink:type="locator" xlink:href="../../bus/bus-oim-2026-12-31.xsd#bus_depreciationMortgageAmount" xlink:label="bus_depreciationMortgageAmount" xlink:title="bus_depreciationMortgageAmount Depreciation Mortgage Amount"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_bus_detailDepreciationMortgage" xlink:to="bus_depreciationMortgageAmount" xlink:title="domain-member: p_bus_detailDepreciationMortgage to bus_depreciationMortgageAmount Depreciation Mortgage Amount" order="11"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_ehm_detailSerialOrLot">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_ehm_detailSerialOrLot">
     <!-- p_ehm_detailSerialOrLot all (has-hypercube) h_ehm_detailSerialOrLot link_ehm_detailSerialOrLot -->
     <link:loc xlink:type="locator" xlink:href="../../ehm/ehm-oim-2026-12-31.xsd#p_ehm_detailSerialOrLot" xlink:label="p_ehm_detailSerialOrLot" xlink:title="p_ehm_detailSerialOrLot"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_ehm_detailSerialOrLot" xlink:label="h_ehm_detailSerialOrLot" xlink:title="h_ehm_detailSerialOrLot"/>
@@ -1416,7 +1416,7 @@
     <link:loc xlink:type="locator" xlink:href="../../ehm/ehm-oim-2026-12-31.xsd#ehm_serialOrLotComment" xlink:label="ehm_serialOrLotComment" xlink:title="ehm_serialOrLotComment Serial or Lot Comment"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_ehm_detailSerialOrLot" xlink:to="ehm_serialOrLotComment" xlink:title="domain-member: p_ehm_detailSerialOrLot to ehm_serialOrLotComment Serial or Lot Comment" order="22"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_cor_detailTax">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_detailTax">
     <!-- p_cor_detailTax all (has-hypercube) h_cor_detailTax link_cor_detailTax -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_detailTax" xlink:label="p_cor_detailTax" xlink:title="p_cor_detailTax"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_cor_detailTax" xlink:label="h_cor_detailTax" xlink:title="h_cor_detailTax"/>
@@ -1445,40 +1445,44 @@
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxPercentageRate" xlink:title="domain-member: p_cor_detailTax to cor_taxPercentageRate Tax Percentage Rate" order="10"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxCategory" xlink:label="cor_taxCategory" xlink:title="cor_taxCategory Tax Category"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxCategory" xlink:title="domain-member: p_cor_detailTax to cor_taxCategory Tax Category" order="11"/>
+    <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxType" xlink:label="cor_taxType" xlink:title="cor_taxType Tax Type"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxType" xlink:title="domain-member: p_cor_detailTax to cor_taxType Tax Type" order="12"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxCommentExemptionReason" xlink:label="cor_taxCommentExemptionReason" xlink:title="cor_taxCommentExemptionReason Tax Comment/Exemption Reason"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxCommentExemptionReason" xlink:title="domain-member: p_cor_detailTax to cor_taxCommentExemptionReason Tax Comment/Exemption Reason" order="12"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxCommentExemptionReason" xlink:title="domain-member: p_cor_detailTax to cor_taxCommentExemptionReason Tax Comment/Exemption Reason" order="13"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxAmountInForeignCurrency" xlink:label="cor_taxAmountInForeignCurrency" xlink:title="cor_taxAmountInForeignCurrency Tax Amount in Foreign Currency"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxAmountInForeignCurrency" xlink:title="domain-member: p_cor_detailTax to cor_taxAmountInForeignCurrency Tax Amount in Foreign Currency" order="13"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxAmountInForeignCurrency" xlink:title="domain-member: p_cor_detailTax to cor_taxAmountInForeignCurrency Tax Amount in Foreign Currency" order="14"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxForeignCurrency" xlink:label="cor_taxForeignCurrency" xlink:title="cor_taxForeignCurrency Tax Foreign Currency"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxForeignCurrency" xlink:title="domain-member: p_cor_detailTax to cor_taxForeignCurrency Tax Foreign Currency" order="14"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxForeignCurrency" xlink:title="domain-member: p_cor_detailTax to cor_taxForeignCurrency Tax Foreign Currency" order="15"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxExchangeRateDate" xlink:label="cor_taxExchangeRateDate" xlink:title="cor_taxExchangeRateDate Tax Exchange Rate Date"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxExchangeRateDate" xlink:title="domain-member: p_cor_detailTax to cor_taxExchangeRateDate Tax Exchange Rate Date" order="15"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxExchangeRateDate" xlink:title="domain-member: p_cor_detailTax to cor_taxExchangeRateDate Tax Exchange Rate Date" order="16"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxExchangeRate" xlink:label="cor_taxExchangeRate" xlink:title="cor_taxExchangeRate Tax Exchange Rate"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxExchangeRate" xlink:title="domain-member: p_cor_detailTax to cor_taxExchangeRate Tax Exchange Rate" order="16"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxExchangeRate" xlink:title="domain-member: p_cor_detailTax to cor_taxExchangeRate Tax Exchange Rate" order="17"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxExchangeRateSource" xlink:label="cor_taxExchangeRateSource" xlink:title="cor_taxExchangeRateSource Tax Exchange Rate Source"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxExchangeRateSource" xlink:title="domain-member: p_cor_detailTax to cor_taxExchangeRateSource Tax Exchange Rate Source" order="17"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxExchangeRateSource" xlink:title="domain-member: p_cor_detailTax to cor_taxExchangeRateSource Tax Exchange Rate Source" order="18"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxExchangeRateType" xlink:label="cor_taxExchangeRateType" xlink:title="cor_taxExchangeRateType Tax Exchange Rate Type"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxExchangeRateType" xlink:title="domain-member: p_cor_detailTax to cor_taxExchangeRateType Tax Exchange Rate Type" order="18"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxExchangeRateType" xlink:title="domain-member: p_cor_detailTax to cor_taxExchangeRateType Tax Exchange Rate Type" order="19"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxExchangeRateComment" xlink:label="cor_taxExchangeRateComment" xlink:title="cor_taxExchangeRateComment Tax Exchange Rate Comment"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxExchangeRateComment" xlink:title="domain-member: p_cor_detailTax to cor_taxExchangeRateComment Tax Exchange Rate Comment" order="19"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxExchangeRateComment" xlink:title="domain-member: p_cor_detailTax to cor_taxExchangeRateComment Tax Exchange Rate Comment" order="20"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxAmountInTriangulationCurrency" xlink:label="cor_taxAmountInTriangulationCurrency" xlink:title="cor_taxAmountInTriangulationCurrency Tax Amount in Triangulation Currency"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxAmountInTriangulationCurrency" xlink:title="domain-member: p_cor_detailTax to cor_taxAmountInTriangulationCurrency Tax Amount in Triangulation Currency" order="20"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxAmountInTriangulationCurrency" xlink:title="domain-member: p_cor_detailTax to cor_taxAmountInTriangulationCurrency Tax Amount in Triangulation Currency" order="21"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxTriangulationCurrency" xlink:label="cor_taxTriangulationCurrency" xlink:title="cor_taxTriangulationCurrency Tax Triangulation Currency"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxTriangulationCurrency" xlink:title="domain-member: p_cor_detailTax to cor_taxTriangulationCurrency Tax Triangulation Currency" order="21"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxTriangulationCurrency" xlink:title="domain-member: p_cor_detailTax to cor_taxTriangulationCurrency Tax Triangulation Currency" order="22"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxTriangulationCurrencyExchangeRate" xlink:label="cor_taxTriangulationCurrencyExchangeRate" xlink:title="cor_taxTriangulationCurrencyExchangeRate Tax Triangulation Currency Exchange Rate"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxTriangulationCurrencyExchangeRate" xlink:title="domain-member: p_cor_detailTax to cor_taxTriangulationCurrencyExchangeRate Tax Triangulation Currency Exchange Rate" order="22"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxTriangulationCurrencyExchangeRate" xlink:title="domain-member: p_cor_detailTax to cor_taxTriangulationCurrencyExchangeRate Tax Triangulation Currency Exchange Rate" order="23"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxTriangulationCurrencyExchangeRateSource" xlink:label="cor_taxTriangulationCurrencyExchangeRateSource" xlink:title="cor_taxTriangulationCurrencyExchangeRateSource Tax Triangulation Currency Exchange Rate Source"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxTriangulationCurrencyExchangeRateSource" xlink:title="domain-member: p_cor_detailTax to cor_taxTriangulationCurrencyExchangeRateSource Tax Triangulation Currency Exchange Rate Source" order="23"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxTriangulationCurrencyExchangeRateSource" xlink:title="domain-member: p_cor_detailTax to cor_taxTriangulationCurrencyExchangeRateSource Tax Triangulation Currency Exchange Rate Source" order="24"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxTriangulationCurrencyExchangeRateType" xlink:label="cor_taxTriangulationCurrencyExchangeRateType" xlink:title="cor_taxTriangulationCurrencyExchangeRateType Tax Triangulation Currency Exchange Rate Type"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxTriangulationCurrencyExchangeRateType" xlink:title="domain-member: p_cor_detailTax to cor_taxTriangulationCurrencyExchangeRateType Tax Triangulation Currency Exchange Rate Type" order="24"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxTriangulationCurrencyExchangeRateType" xlink:title="domain-member: p_cor_detailTax to cor_taxTriangulationCurrencyExchangeRateType Tax Triangulation Currency Exchange Rate Type" order="25"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxForeignToTriangulationCurrencyExchangeRate" xlink:label="cor_taxForeignToTriangulationCurrencyExchangeRate" xlink:title="cor_taxForeignToTriangulationCurrencyExchangeRate Tax Foreign to Triangulation Currency Exchange Rate"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxForeignToTriangulationCurrencyExchangeRate" xlink:title="domain-member: p_cor_detailTax to cor_taxForeignToTriangulationCurrencyExchangeRate Tax Foreign to Triangulation Currency Exchange Rate" order="25"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxForeignToTriangulationCurrencyExchangeRate" xlink:title="domain-member: p_cor_detailTax to cor_taxForeignToTriangulationCurrencyExchangeRate Tax Foreign to Triangulation Currency Exchange Rate" order="26"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxForeignToTriangulationCurrencyExchangeRateSource" xlink:label="cor_taxForeignToTriangulationCurrencyExchangeRateSource" xlink:title="cor_taxForeignToTriangulationCurrencyExchangeRateSource Tax Foreign to Triangulation Currency Exchange Rate Source"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxForeignToTriangulationCurrencyExchangeRateSource" xlink:title="domain-member: p_cor_detailTax to cor_taxForeignToTriangulationCurrencyExchangeRateSource Tax Foreign to Triangulation Currency Exchange Rate Source" order="26"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxForeignToTriangulationCurrencyExchangeRateSource" xlink:title="domain-member: p_cor_detailTax to cor_taxForeignToTriangulationCurrencyExchangeRateSource Tax Foreign to Triangulation Currency Exchange Rate Source" order="27"/>
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxForeignToTriangulationCurrencyExchangeRateType" xlink:label="cor_taxForeignToTriangulationCurrencyExchangeRateType" xlink:title="cor_taxForeignToTriangulationCurrencyExchangeRateType Tax Foreign to Triangulation Currency Exchange Rate Type"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxForeignToTriangulationCurrencyExchangeRateType" xlink:title="domain-member: p_cor_detailTax to cor_taxForeignToTriangulationCurrencyExchangeRateType Tax Foreign to Triangulation Currency Exchange Rate Type" order="27"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxForeignToTriangulationCurrencyExchangeRateType" xlink:title="domain-member: p_cor_detailTax to cor_taxForeignToTriangulationCurrencyExchangeRateType Tax Foreign to Triangulation Currency Exchange Rate Type" order="28"/>
+    <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#cor_taxTransactionClassification" xlink:label="cor_taxTransactionClassification" xlink:title="cor_taxTransactionClassification Tax Transaction Classification"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailTax" xlink:to="cor_taxTransactionClassification" xlink:title="domain-member: p_cor_detailTax to cor_taxTransactionClassification Tax Transaction Classification" order="29"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_lnk_detailRichTextComment">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_lnk_detailRichTextComment">
     <!-- p_lnk_detailRichTextComment all (has-hypercube) h_lnk_detailRichTextComment link_lnk_detailRichTextComment -->
     <link:loc xlink:type="locator" xlink:href="../../lnk/lnk-oim-2026-12-31.xsd#p_lnk_detailRichTextComment" xlink:label="p_lnk_detailRichTextComment" xlink:title="p_lnk_detailRichTextComment"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_lnk_detailRichTextComment" xlink:label="h_lnk_detailRichTextComment" xlink:title="h_lnk_detailRichTextComment"/>
@@ -1502,7 +1506,7 @@
     <link:loc xlink:type="locator" xlink:href="../../lnk/lnk-oim-2026-12-31.xsd#lnk_commentLocator" xlink:label="lnk_commentLocator" xlink:title="lnk_commentLocator Comment Locator"/>
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_lnk_detailRichTextComment" xlink:to="lnk_commentLocator" xlink:title="domain-member: p_lnk_detailRichTextComment to lnk_commentLocator Comment Locator" order="8"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_cor_detailAccountIdentifier">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_detailAccountIdentifier">
     <!-- p_cor_detailAccountIdentifier all (has-hypercube) h_cor_detailAccountIdentifier link_cor_detailAccountIdentifier -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_detailAccountIdentifier" xlink:label="p_cor_detailAccountIdentifier" xlink:title="p_cor_detailAccountIdentifier"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_cor_detailAccountIdentifier" xlink:label="h_cor_detailAccountIdentifier" xlink:title="h_cor_detailAccountIdentifier"/>
@@ -1547,9 +1551,9 @@
     <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_cor_detailAccountIdentifier" xlink:to="cor_accountActive" xlink:title="domain-member: p_cor_detailAccountIdentifier to cor_accountActive Account Active" order="18"/>
     <!-- p_cor_detailAccountIdentifier to targetRole link_cor_subaccount -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_subaccount" xlink:label="p_cor_subaccount" xlink:title="p_cor_subaccount Subaccount"/>
-    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="http://www.xbrl.org/xbrl-gl/role/link_cor_subaccount" xlink:from="p_cor_detailAccountIdentifier" xlink:to="p_cor_subaccount" xlink:title="domain-member: p_cor_detailAccountIdentifier to p_cor_subaccount in link_cor_subaccount" order="19"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_subaccount" xlink:from="p_cor_detailAccountIdentifier" xlink:to="p_cor_subaccount" xlink:title="domain-member: p_cor_detailAccountIdentifier to p_cor_subaccount in link_cor_subaccount" order="19"/>
   </link:definitionLink>
-  <link:definitionLink xlink:type="extended" xlink:role="http://www.xbrl.org/xbrl-gl/role/link_cor_subaccount">
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_cor_subaccount">
     <!-- p_cor_subaccount all (has-hypercube) h_cor_subaccount link_cor_subaccount -->
     <link:loc xlink:type="locator" xlink:href="../../cor/cor-oim-2026-12-31.xsd#p_cor_subaccount" xlink:label="p_cor_subaccount" xlink:title="p_cor_subaccount"/>
     <link:loc xlink:type="locator" xlink:href="cor-all-oim-2026-12-31.xsd#h_cor_subaccount" xlink:label="h_cor_subaccount" xlink:title="h_cor_subaccount"/>

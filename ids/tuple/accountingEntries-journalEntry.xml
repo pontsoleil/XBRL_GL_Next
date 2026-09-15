@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<xbrli:xbrl xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:cor="http://www.xbrl.org/int/gl/cor/2026-12-31" xmlns:bus="http://www.xbrl.org/int/gl/bus/2026-12-31" xmlns:btx="http://www.xbrl.org/int/gl/btx/2026-12-31" xmlns:lnk="http://www.xbrl.org/int/gl/lnk/2026-12-31" xmlns:taf="http://www.xbrl.org/int/gl/taf/2026-12-31" xmlns:plt="http://www.xbrl.org/int/gl/plt/2026-12-31">
-  <link:schemaRef xlink:type="simple" xlink:href="../../taxonomy/tuple/cor_accountingEntries/cor-all-2026-12-31.xsd"/>
+<xbrli:xbrl xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:cor="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor" xmlns:bus="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/bus" xmlns:btx="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/btx" xmlns:lnk="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/lnk" xmlns:taf="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/taf" xmlns:plt="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt">
+  <link:schemaRef xlink:type="simple" xlink:href="../../taxonomy/accounting-entries/tuple/cor_accountingEntries/cor-all-2026-12-31.xsd"/>
   <xbrli:context id="c1">
     <xbrli:entity>
       <xbrli:identifier scheme="https://example.com/entity">EXAMPLE-BUYER-001</xbrli:identifier>
@@ -24,11 +24,11 @@
       <cor:defaultCurrency contextRef="c1">iso4217:JPY</cor:defaultCurrency>
     </cor:documentInformation>
     <cor:entityParty id="AE-ENTITY-001">
-      <cor:entityPartyName contextRef="c1">Example Buyer Co.</cor:entityPartyName>
-      <cor:entityPartyId contextRef="c1">EXAMPLE-BUYER-001</cor:entityPartyId>
+      <cor:partyName contextRef="c1">Example Buyer Co.</cor:partyName>
+      <cor:partyId contextRef="c1">EXAMPLE-BUYER-001</cor:partyId>
     </cor:entityParty>
     <cor:entryHeader id="AE-HDR-001">
-      <cor:datePosted contextRef="c1">2026-08-11T00:00:00</cor:datePosted>
+      <cor:entryDatePosted contextRef="c1">2026-08-11T00:00:00</cor:entryDatePosted>
       <cor:headerEntryDate contextRef="c1">2026-08-11T00:00:00</cor:headerEntryDate>
       <cor:sourceJournal contextRef="c1">AP</cor:sourceJournal>
       <cor:entryId contextRef="c1">JE-2026-0811-001</cor:entryId>
@@ -39,9 +39,9 @@
         <cor:lineNumber contextRef="c1">1</cor:lineNumber>
         <cor:postingDate contextRef="c1">2026-08-11T00:00:00</cor:postingDate>
         <cor:detailDocumentType contextRef="c1">invoice</cor:detailDocumentType>
-        <cor:detailDocument id="AE-DOCREF-1">
+        <cor:document id="AE-DOCREF-1">
           <cor:detailDocumentNumber contextRef="c1">INV-2026-0811-001</cor:detailDocumentNumber>
-        </cor:detailDocument>
+        </cor:document>
         <cor:documentDate contextRef="c1">2026-08-11T00:00:00</cor:documentDate>
         <cor:detailDescription contextRef="c1">Office supplies expense</cor:detailDescription>
         <cor:monetaryAmount contextRef="c1" unitRef="JPY" decimals="0">10000</cor:monetaryAmount>
@@ -52,9 +52,9 @@
         <cor:lineNumber contextRef="c1">2</cor:lineNumber>
         <cor:postingDate contextRef="c1">2026-08-11T00:00:00</cor:postingDate>
         <cor:detailDocumentType contextRef="c1">invoice</cor:detailDocumentType>
-        <cor:detailDocument id="AE-DOCREF-2">
+        <cor:document id="AE-DOCREF-2">
           <cor:detailDocumentNumber contextRef="c1">INV-2026-0811-001</cor:detailDocumentNumber>
-        </cor:detailDocument>
+        </cor:document>
         <cor:documentDate contextRef="c1">2026-08-11T00:00:00</cor:documentDate>
         <cor:detailDescription contextRef="c1">Input consumption tax</cor:detailDescription>
         <cor:monetaryAmount contextRef="c1" unitRef="JPY" decimals="0">1000</cor:monetaryAmount>
@@ -65,9 +65,9 @@
         <cor:lineNumber contextRef="c1">3</cor:lineNumber>
         <cor:postingDate contextRef="c1">2026-08-11T00:00:00</cor:postingDate>
         <cor:detailDocumentType contextRef="c1">invoice</cor:detailDocumentType>
-        <cor:detailDocument id="AE-DOCREF-3">
+        <cor:document id="AE-DOCREF-3">
           <cor:detailDocumentNumber contextRef="c1">INV-2026-0811-001</cor:detailDocumentNumber>
-        </cor:detailDocument>
+        </cor:document>
         <cor:documentDate contextRef="c1">2026-08-11T00:00:00</cor:documentDate>
         <cor:detailDescription contextRef="c1">Accounts payable</cor:detailDescription>
         <cor:monetaryAmount contextRef="c1" unitRef="JPY" decimals="0">11000</cor:monetaryAmount>

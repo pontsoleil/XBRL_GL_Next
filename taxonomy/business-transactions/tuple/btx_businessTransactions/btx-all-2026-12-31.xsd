@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/plt/2026-12-31" elementFormDefault="qualified" attributeFormDefault="unqualified"
+<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt" elementFormDefault="qualified" attributeFormDefault="unqualified"
   xmlns="http://www.w3.org/2001/XMLSchema"
   xmlns:link="http://www.xbrl.org/2003/linkbase"
   xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -21,5 +21,5 @@
     <link:linkbaseRef xlink:type="simple" xlink:href="../../taf/label/taf-lab-ja-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
       <link:linkbaseRef xlink:type="simple" xlink:href="../../btx/btx-pre-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
 </appinfo></annotation>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/btx/2026-12-31" schemaLocation="btx-content-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/btx" schemaLocation="btx-content-2026-12-31.xsd"/>
 </schema>

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/cor/2026-12-31" elementFormDefault="qualified" attributeFormDefault="unqualified"
+<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor" elementFormDefault="qualified" attributeFormDefault="unqualified"
   xmlns="http://www.w3.org/2001/XMLSchema"
   xmlns:xbrli="http://www.xbrl.org/2003/instance"
-  xmlns:cor="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/cor/2026-12-31"
-  xmlns:bus="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/bus/2026-12-31"
-  xmlns:ehm="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/ehm/2026-12-31"
-  xmlns:lnk="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/lnk/2026-12-31"
-  xmlns:muc="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/muc/2026-12-31"
-  xmlns:taf="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/taf/2026-12-31"
+  xmlns:cor="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor"
+  xmlns:bus="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/bus"
+  xmlns:ehm="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/ehm"
+  xmlns:lnk="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/lnk"
+  xmlns:muc="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/muc"
+  xmlns:taf="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/taf"
 >
   <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
   <include schemaLocation="../../cor/cor-2026-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/bus/2026-12-31" schemaLocation="bus-content-2026-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/ehm/2026-12-31" schemaLocation="ehm-content-2026-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/lnk/2026-12-31" schemaLocation="lnk-content-2026-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/muc/2026-12-31" schemaLocation="muc-content-2026-12-31.xsd"/>
-  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/taf/2026-12-31" schemaLocation="taf-content-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/bus" schemaLocation="bus-content-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/ehm" schemaLocation="ehm-content-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/lnk" schemaLocation="lnk-content-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/muc" schemaLocation="muc-content-2026-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/taf" schemaLocation="taf-content-2026-12-31.xsd"/>
   <!-- structural ComplexType supplied for the Palette module -->
   <complexType name="accountingEntriesComplexType">
     <sequence>
@@ -214,6 +214,7 @@
       <element ref="cor:basisForTaxation" minOccurs="0"/>
       <element ref="cor:taxPercentageRate" minOccurs="0"/>
       <element ref="cor:taxCategory" minOccurs="0"/>
+      <element ref="cor:taxType" minOccurs="0"/>
       <element ref="cor:taxCommentExemptionReason" minOccurs="0"/>
       <element ref="cor:taxAmountInForeignCurrency" minOccurs="0"/>
       <element ref="cor:taxForeignCurrency" minOccurs="0"/>
@@ -230,6 +231,7 @@
       <element ref="cor:taxForeignToTriangulationCurrencyExchangeRate" minOccurs="0"/>
       <element ref="cor:taxForeignToTriangulationCurrencyExchangeRateSource" minOccurs="0"/>
       <element ref="cor:taxForeignToTriangulationCurrencyExchangeRateType" minOccurs="0"/>
+      <element ref="cor:taxTransactionClassification" minOccurs="0"/>
     </sequence>
     <attribute name="id" type="ID"/>
   </complexType>

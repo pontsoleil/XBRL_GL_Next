@@ -1,31 +1,16 @@
-# Experimental XBRL GL Next taxonomy
+# XBRL GL Next canonical WORK taxonomy
 
-This is an experimental XBRL GL Next taxonomy published using a provisional
-namespace under the domain managed by XBRL Japan. It is not an XBRL
-International Recommendation or other final XBRL International specification.
-The namespace and taxonomy may be replaced when an official XBRL International
-namespace is assigned.
+The active taxonomy consists of two independently generated DTS trees:
 
-## UN/CEFACT-derived value domains
+- `accounting-entries/` (58 files)
+- `business-transactions/` (67 files)
 
-This XBRL Extensible Enumerations 1.0 value domain implements an identified
-subset of a UN/CEFACT code list for validation and interoperability purposes.
+Every project module uses the exact stable namespace `https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/{module}`. The date `2026-12-31` remains in file names as the planned taxonomy version and is not part of a namespace URI. The project publication and namespace decision is recorded in `PROJECT_PUBLICATION_AND_NAMESPACE_DECISION.md`. That record states the decision maker's project role and does not claim a separate board resolution, domain-administrator delegation, official taxonomy designation, or external endorsement.
 
-The code identifiers, names and descriptions are derived from the identified
-UNECE/UN/CEFACT release. This taxonomy is not an official United Nations
-publication, and no endorsement by the United Nations or UN/CEFACT is implied.
+Accounting Entries and Business Transactions intentionally remain split because each is expanded from a different root HMD. Fourteen shared global declarations have root-HMD-specific type, structure, or multiplicity differences. These differences are accepted characteristics of the separate DTSs, not conflicts or defects. Load each DTS from its corresponding Tuple or OIM entry point; do not overwrite same-named files or mix the DTSs without an explicit integration design. Single-DTS combined use is outside the accepted scope.
 
-Any XBRL GL Next extension member is identified separately from the
-UN/CEFACT-derived members.
+The former root-level single taxonomy tree was moved to `../archive/taxonomy/legacy-single-tree-20260915_1406/`. It is retained for evidence and is outside the active `taxonomy/**` tree.
 
-## UNCL 1001 profile
+Generation evidence and SHA-256 manifests are under `provenance/`. Validation evidence is under `C:\Users\nobuy\GitHub\WORK\XBRL-GL-Next\docs\Codex\2026\202609\20260915\20260915_1406\stable-namespace-work-unification\outputs`.
 
-Source code list: UN/CEFACT UNCL 1001
-Source release: D.24A
-Value-domain type: XBRL Extensible Enumerations 1.0
-Profile: XBRL GL Next invoice and credit-note subset
-Required member: 380 — Commercial invoice
-
-## Rights and namespace records
-
-See `NOTICE_XBRL_GL.md` and `XBRL_JAPAN_EXPERIMENTAL_NAMESPACE_AUTHORIZATION.md`. UNCL-derived EE1 domains are non-official interoperability subsets published with attribution and notice; project extensions are separately identified.
+The XBRL GL source, copyright, licence conditions, attribution, and non-endorsement statement are recorded in `NOTICE_XBRL_GL.md`. Other third-party material retains its own terms.

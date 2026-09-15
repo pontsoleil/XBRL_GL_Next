@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/lnk/2026-12-31" elementFormDefault="qualified" attributeFormDefault="unqualified"
+<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/lnk" elementFormDefault="qualified" attributeFormDefault="unqualified"
   xmlns="http://www.w3.org/2001/XMLSchema"
   xmlns:xbrli="http://www.xbrl.org/2003/instance"
-  xmlns:lnk="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/experimental/lnk/2026-12-31"
+  xmlns:lnk="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/lnk"
 >
   <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
   <include schemaLocation="../../lnk/lnk-2026-12-31.xsd"/>
