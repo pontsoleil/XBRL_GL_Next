@@ -43,7 +43,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
         generator = MODULE.xBRLGL_TaxonomyGenerator(
             in_file=str(source), base_dir=str(output), palette=None, root=None,
             lang="ja", currency="JPY",
-            namespace="http://www.xbrl.org/int/gl/2026-08-08/plt",
+            namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
             encoding="utf-8-sig", trace=False, debug=False, instance=False,
             taxonomy_type="tuple",
             namespace_prefix_map=namespace_prefix_map,
@@ -77,7 +77,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             )
             self.assertEqual(
                 generator.records[1]["expanded_name"],
-                "{http://www.xbrl.org/int/gl/2026-08-08/en16931}InvoiceNumber",
+                "{https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/en16931}InvoiceNumber",
             )
 
     def test_unmapped_non_gl_xpath_prefix_is_rejected(self):
@@ -107,7 +107,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             self.assertEqual(generator.records[0]["element"], "cor:root")
             self.assertEqual(
                 generator.records[0]["expanded_name"],
-                "{http://www.xbrl.org/int/gl/2026-08-08/cor}root",
+                "{https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor}root",
             )
 
     def test_zero_zero_row_and_structural_subtree_are_excluded(self):
@@ -138,7 +138,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             generator = MODULE.xBRLGL_TaxonomyGenerator(
                 in_file=str(source), base_dir=str(output), palette=None, root=None,
                 lang="ja", currency="JPY",
-                namespace="http://www.xbrl.org/int/gl/2026-08-05/plt",
+                namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
                 encoding="utf-8-sig", trace=False, debug=False, instance=False,
                 taxonomy_type="tuple",
             )
@@ -171,7 +171,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             generator = MODULE.xBRLGL_TaxonomyGenerator(
                 in_file=str(source), base_dir=str(output), palette=None, root=None,
                 lang="ja", currency="JPY",
-                namespace="http://www.xbrl.org/int/gl/2026-08-08/plt",
+                namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
                 encoding="utf-8-sig", trace=False, debug=False, instance=False,
                 taxonomy_type="tuple",
             )
@@ -254,7 +254,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             self.assertEqual(generator.records[0]["element"], "cor:root")
             self.assertEqual(
                 generator.records[0]["expanded_name"],
-                "{http://www.xbrl.org/int/gl/2026-08-08/cor}root",
+                "{https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor}root",
             )
         for field, value, message in (
             ("local_name", "different", "terminal local part"),
@@ -633,7 +633,10 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
                 "link_cor_invoiceLine", "link_cor_itemInformation",
                 "link_cor_itemAttributes",
             ):
-                self.assertIn(f'targetRole="http://www.xbrl.org/xbrl-gl/role/{target_role}"', definition)
+                self.assertIn(
+                    f'targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/{target_role}"',
+                    definition,
+                )
 
     def test_occurrence_key_classifier_rejects_unsupported_class_multiplicity(self):
         cases = (
@@ -738,7 +741,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             args = SimpleNamespace(
                 lhm_for_taxonomy=str(input_set), base_dir=str(output),
                 lang="ja",
-                namespace="http://www.xbrl.org/int/gl/2026-12-31/plt",
+                namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
                 encoding="utf-8-sig", trace=False, debug=False,
             )
             identifiers = MODULE.generate_formal_hmd_package(args)
@@ -1106,7 +1109,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             args = SimpleNamespace(
                 lhm_for_taxonomy=str(input_set), base_dir=str(root / "package"),
                 lang="ja",
-                namespace="http://www.xbrl.org/int/gl/2026-12-31/plt",
+                namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
                 encoding="utf-8-sig", trace=False, debug=False,
             )
             identifiers = MODULE.generate_formal_hmd_package(args)
@@ -1200,7 +1203,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
                 args = SimpleNamespace(
                     lhm_for_taxonomy=str(input_set), base_dir=str(output),
                     lang="ja",
-                    namespace="http://www.xbrl.org/int/gl/2026-12-31/plt",
+                    namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
                     encoding="utf-8-sig", trace=False, debug=False,
                 )
                 MODULE.generate_formal_hmd_package(args)
@@ -1236,7 +1239,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
 
 
 class CliLocationTests(unittest.TestCase):
-    NAMESPACE = "http://www.xbrl.org/int/gl/2026-12-31/plt"
+    NAMESPACE = "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt"
 
     def parse(self, *arguments: str):
         return MODULE.create_argument_parser().parse_args(

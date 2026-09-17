@@ -169,7 +169,7 @@ class DatatypeBindingTests(unittest.TestCase):
         args = GENERATOR.create_argument_parser().parse_args([
             "--hmd-dir", "hmd",
             "--output-dir", "out",
-            "--namespace", "http://www.xbrl.org/int/gl/2026-12-31/plt",
+            "--namespace", "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
             "--datatype-mapping", "mapping.csv",
             "--datatype-override", "override.csv",
         ])
@@ -233,7 +233,7 @@ class DatatypeBindingTests(unittest.TestCase):
                 root=None,
                 lang="ja",
                 currency="JPY",
-                namespace="http://www.xbrl.org/int/gl/2026-12-31/plt",
+                namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
                 encoding="utf-8-sig",
                 trace=False,
                 debug=False,

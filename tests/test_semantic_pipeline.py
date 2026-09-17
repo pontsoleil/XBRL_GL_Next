@@ -17,7 +17,7 @@ from xml.etree import ElementTree as ET
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[0]
-SPECIALIZATION = ROOT / "tools" / "semantic" / "specialization.py"
+SPECIALIZATION = ROOT / "tools" / "semantic" / "specialisation.py"
 GRAPHWALK = ROOT / "tools" / "semantic" / "graphwalk.py"
 POST_GRAPHWALK = ROOT / "tools" / "semantic" / "post_graphwalk.py"
 VALIDATE_LHM = ROOT / "tools" / "semantic" / "validate_lhm.py"
@@ -37,7 +37,7 @@ FORMAL_TAXONOMY = ROOT / "taxonomy"
 FORMAL_CANDIDATE_SHA256 = (
     "ff153c83629a4ae81eed2dcbfe97e6b95c6c9526013f505adecf7808e3a9edfa"
 )
-TAXONOMY_NAMESPACE = "http://www.xbrl.org/int/gl/plt/2026-12-31"
+TAXONOMY_NAMESPACE = "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt"
 
 FSM_HEADER = [
     "sequence", "level", "property_type", "identifier", "module",
@@ -309,6 +309,8 @@ class SemanticPipelineTests(unittest.TestCase):
             self.assertEqual(reviewed_reader.fieldnames, BOUND_HEADER)
             with bsm.open(encoding="utf-8-sig", newline="") as handle:
                 bsm_rows = list(csv.DictReader(handle))
+            self.assertEqual(len(bsm_rows), 732)
+            self.assertEqual(len(candidate_rows), 833)
             self.assertFalse(
                 any(
                     item["module"] == "cor"
