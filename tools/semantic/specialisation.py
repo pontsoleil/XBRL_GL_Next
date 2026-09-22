@@ -59,6 +59,7 @@ KNOWN_MODULE_ABBREVIATIONS = {
     "ehm": "EH",
     "taf": "TA",
     "btx": "BT",
+    "ivc": "IV",
 }
 
 
@@ -325,18 +326,12 @@ class Specialization:
                     )
                 source_row.owner = current.key
                 source_row.origin = current.key
-                if row["module"] != current.key[0]:
-                    raise SpecializationError(
-                        f"{source_row.location}: module {row['module']!r} does not match "
-                        f"owning Class module {current.key[0]!r}"
-                    )
                 if row["class_term"] and row["class_term"] != current.key[1]:
                     raise SpecializationError(
                         f"{source_row.location}: class_term {row['class_term']!r} "
                         f"does not match owning Class {current.key[1]!r}"
                     )
                 row["class_term"] = current.key[1]
-                row["module"] = current.key[0]
 
                 if kind == SPECIALISATION_TYPE:
                     self._validate_reference(source_row)
@@ -439,7 +434,6 @@ class Specialization:
         assert child.owner is not None
         merged.owner = child.owner
         merged.origin = child.origin
-        merged.values["module"] = child.owner[0]
         merged.values["class_term"] = child.owner[1]
         merged.source = child.source
         merged.line = child.line
@@ -540,7 +534,6 @@ class Specialization:
             else:
                 direct = copy.deepcopy(item)
                 direct.owner = key
-                direct.values["module"] = key[0]
                 direct.values["class_term"] = key[1]
                 result[identity] = direct
 
@@ -637,7 +630,6 @@ class Specialization:
             width = max(2, len(str(len(valid_properties))))
             for property_number, item in enumerate(valid_properties, start=1):
                 output = {name: item.values.get(name, "") for name in FSM_HEADER}
-                output["module"] = module
                 output["class_term"] = term
                 output["id"] = f"{class_id}-{property_number:0{width}d}"
                 sequence += 1

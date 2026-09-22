@@ -452,6 +452,7 @@ class xBRLGL_TaxonomyGenerator:
 
         candidates = [
             os.path.join(gen_dir, "gl-gen-*.xsd"),
+            os.path.join(os.path.dirname(__file__), "gen", "gl-gen-*.xsd"),
             os.path.join(os.path.dirname(__file__), "taxonomy", "gen", "gl-gen-*.xsd"),
             os.path.join(os.path.dirname(__file__), "gl", "gen", "gl-gen-*.xsd"),
             os.path.join(
@@ -472,8 +473,8 @@ class xBRLGL_TaxonomyGenerator:
         if not source:
             self.error_print(
                 "Required gl-gen schema source was not found. "
-                "Place gl-gen-*.xsd in the output gen directory or in "
-                "taxonomy/gen before generation."
+                "Place gl-gen-*.xsd in the output gen directory, beside the "
+                "generator under gen, or in taxonomy/gen before generation."
             )
 
         with open(source, "r", encoding=self.encoding) as f:
@@ -1331,7 +1332,7 @@ class xBRLGL_TaxonomyGenerator:
                     'xlink:role="http://www.xbrl.org/2003/role/link">\n',
                 ]
                 for record in data:
-                    if record["type"] != "A":
+                    if record["type"] not in {"A", "C", "R"}:
                         continue
                     element = record["element"]
                     element_id = element.replace(":", "_")

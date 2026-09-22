@@ -66,6 +66,7 @@ LHM_HEADER = [
 
 MODULE_PREFIX = {
     "btx": "gl-btx",
+    "ivc": "gl-ivc",
     "bus": "gl-bus",
     "cor": "gl-cor",
     "ehm": "gl-ehm",
@@ -391,14 +392,11 @@ class GraphWalk:
                         f"{self.bsm_file}:{line}: property appears before a Class"
                     )
                 row.owner = current.key
-                if (
-                    values["module"] != current.key[0]
-                    or values["class_term"] != current.key[1]
-                ):
+                if values["class_term"] != current.key[1]:
                     raise GraphWalkError(
-                        f"{self.bsm_file}:{line}: property owner "
-                        f"{(values['module'], values['class_term'])!r} does not match "
-                        f"owning Class {current.key!r}"
+                        f"{self.bsm_file}:{line}: property class_term "
+                        f"{values['class_term']!r} does not match owning Class "
+                        f"{current.key[1]!r}"
                     )
                 if values["property_type"] not in {"Attribute", *ASSOCIATION_TYPES}:
                     raise GraphWalkError(

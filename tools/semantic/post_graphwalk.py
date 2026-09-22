@@ -39,7 +39,7 @@ LHM_HEADER = [
 MODULE_PREFIX = {
     "btx": "gl-btx", "bus": "gl-bus", "cor": "gl-cor",
     "ehm": "gl-ehm", "lnk": "gl-lnk", "muc": "gl-muc",
-    "taf": "gl-taf", "usk": "gl-usk",
+    "taf": "gl-taf", "usk": "gl-usk", "ivc": "gl-ivc",
 }
 ROW_TYPES = {"C", "A", "R"}
 MULTIPLICITIES = {"0..0", "0..1", "0..*", "1", "1..1", "1..*"}
