@@ -17,7 +17,7 @@ from xml.etree import ElementTree as ET
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[0]
-SPECIALIZATION = ROOT / "tools" / "semantic" / "specialisation.py"
+SPECIALISATION = ROOT / "tools" / "semantic" / "specialisation.py"
 GRAPHWALK = ROOT / "tools" / "semantic" / "graphwalk.py"
 POST_GRAPHWALK = ROOT / "tools" / "semantic" / "post_graphwalk.py"
 VALIDATE_LHM = ROOT / "tools" / "semantic" / "validate_lhm.py"
@@ -201,7 +201,7 @@ class SemanticPipelineTests(unittest.TestCase):
                 report_json = root / f"report-{run}.json"
                 report_md = root / f"report-{run}.md"
                 commands = [
-                    [sys.executable, str(SPECIALIZATION), "--in", str(fsm),
+                    [sys.executable, str(SPECIALISATION), "--in", str(fsm),
                      "--out", str(bsm), "--module-abbreviation", "cor=CO"],
                     [sys.executable, str(GRAPHWALK), str(bsm), str(candidate),
                      "--root", "cor:Root"],
@@ -281,7 +281,7 @@ class SemanticPipelineTests(unittest.TestCase):
             extract_fsm_sheet(FORMAL_FSM, "FSM", fsm)
             extract_fsm_sheet(FORMAL_FSM, "FSM_btx", fsm_btx)
             commands = [
-                [sys.executable, str(SPECIALIZATION), "--in", str(fsm),
+                [sys.executable, str(SPECIALISATION), "--in", str(fsm),
                  "--in", str(fsm_btx), "--out", str(bsm)],
                 [sys.executable, str(GRAPHWALK), str(bsm), str(candidate),
                  "--root", "cor:Accounting Entries",

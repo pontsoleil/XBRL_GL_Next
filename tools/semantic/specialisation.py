@@ -40,7 +40,7 @@ BSM_HEADER = [*FSM_HEADER, "id"]
 
 CLASS_TYPES = {"Class", "Abstract Class"}
 SPECIALISATION_TYPE = "Specialisation"
-LEGACY_SPECIALIZATION_TYPE = "Specialization"
+LEGACY_AMERICAN_SPELLING_TYPE = "Specialization"
 ASSOCIATION_TYPES = {
     "Composition",
     "Aggregation",
@@ -63,7 +63,7 @@ KNOWN_MODULE_ABBREVIATIONS = {
 }
 
 
-class SpecializationError(ValueError):
+class SpecialisationError(ValueError):
     """A deterministic canonical BSM cannot be produced."""
 
 
@@ -96,7 +96,7 @@ def normalize_row(row: Mapping[str | None, object]) -> dict[str, str]:
 
 def reject_qname(value: str, *, field_name: str, location: str) -> None:
     if ":" in value:
-        raise SpecializationError(
+        raise SpecialisationError(
             f"{location}: {field_name} must be a logical model value, not QName {value!r}"
         )
 
@@ -111,7 +111,7 @@ def property_identity(row: Mapping[str, str]) -> tuple[str, ...]:
     role = collapse(row.get("association_role", ""))
     if kind == "Attribute":
         if not term:
-            raise SpecializationError("Attribute property_term is required")
+            raise SpecialisationError("Attribute property_term is required")
         return ("Attribute", term)
     if kind in ASSOCIATION_TYPES:
         return (
@@ -120,7 +120,7 @@ def property_identity(row: Mapping[str, str]) -> tuple[str, ...]:
             module_value(row.get("associated_module", "")),
             collapse(row.get("associated_class", "")),
         )
-    raise SpecializationError(f"Unsupported property_type for identity: {kind!r}")
+    raise SpecialisationError(f"Unsupported property_type for identity: {kind!r}")
 
 
 def multiplicity_bounds(value: str) -> tuple[int, int | None]:
@@ -135,7 +135,7 @@ def multiplicity_bounds(value: str) -> tuple[int, int | None]:
         return 1, 1
     if value == "1..*":
         return 1, None
-    raise SpecializationError(f"Unsupported multiplicity: {value!r}")
+    raise SpecialisationError(f"Unsupported multiplicity: {value!r}")
 
 
 def encompassing_multiplicity(left: str, right: str) -> str:
@@ -158,7 +158,7 @@ def encompassing_multiplicity(left: str, right: str) -> str:
         return "1..1"
     if lower == 1 and upper is None:
         return "1..*"
-    raise SpecializationError(
+    raise SpecialisationError(
         f"Cannot represent encompassing multiplicity for {left!r} and {right!r}"
     )
 
@@ -191,7 +191,7 @@ class ClassDefinition:
         return self.row.values["property_type"] == "Abstract Class"
 
 
-class Specialization:
+class Specialisation:
     def __init__(
         self,
         fsm_files: Sequence[str | Path],
@@ -244,12 +244,12 @@ class Specialization:
 
     def _read_file(self, path: Path) -> list[SourceRow]:
         if not path.is_file():
-            raise SpecializationError(f"FSM input does not exist: {path}")
+            raise SpecialisationError(f"FSM input does not exist: {path}")
         with path.open(encoding=self.encoding, newline="") as handle:
             reader = csv.DictReader(handle)
             actual = reader.fieldnames or []
             if actual != FSM_HEADER:
-                raise SpecializationError(
+                raise SpecialisationError(
                     f"{path}: FSM header mismatch; expected {FSM_HEADER!r}, got {actual!r}"
                 )
             rows: list[SourceRow] = []
@@ -261,7 +261,7 @@ class Specialization:
                     continue
                 values = normalize_row(raw_row)
                 source_row = SourceRow(values, path, line)
-                if values["property_type"] == LEGACY_SPECIALIZATION_TYPE:
+                if values["property_type"] == LEGACY_AMERICAN_SPELLING_TYPE:
                     values["property_type"] = SPECIALISATION_TYPE
                     self.diagnostic(
                         "warning",
@@ -270,7 +270,7 @@ class Specialization:
                         "canonical value 'Specialisation' and normalised to "
                         "'Specialisation'.",
                         source_row,
-                        supplied_value=LEGACY_SPECIALIZATION_TYPE,
+                        supplied_value=LEGACY_AMERICAN_SPELLING_TYPE,
                         canonical_value=SPECIALISATION_TYPE,
                     )
                 rows.append(source_row)
@@ -287,17 +287,17 @@ class Specialization:
                 required = ("sequence", "level", "property_type", "module", "class_term", "multiplicity")
                 missing = [name for name in required if not row[name]]
                 if missing:
-                    raise SpecializationError(
+                    raise SpecialisationError(
                         f"{source_row.location}: required field(s) are empty: {missing!r}"
                     )
                 if row["multiplicity"] not in MULTIPLICITIES:
-                    raise SpecializationError(
+                    raise SpecialisationError(
                         f"{source_row.location}: invalid multiplicity "
                         f"{row['multiplicity']!r}; expected one of {sorted(MULTIPLICITIES)!r}"
                     )
                 if kind in CLASS_TYPES:
                     if not row["module"] or not row["class_term"]:
-                        raise SpecializationError(
+                        raise SpecialisationError(
                             f"{source_row.location}: Class requires module and class_term"
                         )
                     reject_qname(row["module"], field_name="module", location=source_row.location)
@@ -309,7 +309,7 @@ class Specialization:
                     key = class_key(row["module"], row["class_term"])
                     if key in all_keys:
                         previous = self.classes[key].row.location
-                        raise SpecializationError(
+                        raise SpecialisationError(
                             f"{source_row.location}: duplicate Class {key!r}; first defined at {previous}"
                         )
                     all_keys.add(key)
@@ -321,13 +321,13 @@ class Specialization:
                     continue
 
                 if current is None:
-                    raise SpecializationError(
+                    raise SpecialisationError(
                         f"{source_row.location}: row appears before a Class boundary"
                     )
                 source_row.owner = current.key
                 source_row.origin = current.key
                 if row["class_term"] and row["class_term"] != current.key[1]:
-                    raise SpecializationError(
+                    raise SpecialisationError(
                         f"{source_row.location}: class_term {row['class_term']!r} "
                         f"does not match owning Class {current.key[1]!r}"
                     )
@@ -336,13 +336,13 @@ class Specialization:
                 if kind == SPECIALISATION_TYPE:
                     self._validate_reference(source_row)
                     if row["representation_term"]:
-                        raise SpecializationError(
+                        raise SpecialisationError(
                             f"{source_row.location}: Specialisation Association "
                             "representation_term must be empty"
                         )
                     parent = class_key(row["associated_module"], row["associated_class"])
                     if parent in current.parents:
-                        raise SpecializationError(
+                        raise SpecialisationError(
                             f"{source_row.location}: duplicate Specialisation {parent!r}"
                         )
                     current.parents.append(parent)
@@ -350,7 +350,7 @@ class Specialization:
                     if kind in ASSOCIATION_TYPES:
                         self._validate_reference(source_row)
                         if row["representation_term"]:
-                            raise SpecializationError(
+                            raise SpecialisationError(
                                 f"{source_row.location}: Association "
                                 "representation_term must be empty"
                             )
@@ -359,18 +359,18 @@ class Specialization:
                         or row["associated_module"]
                         or row["associated_class"]
                     ):
-                        raise SpecializationError(
+                        raise SpecialisationError(
                             f"{source_row.location}: Attribute must not define association_role "
                             "or associated Class"
                         )
                     elif not row["property_term"] or not row["representation_term"]:
-                        raise SpecializationError(
+                        raise SpecialisationError(
                             f"{source_row.location}: Attribute requires property_term "
                             "and representation_term"
                         )
                     current.properties.append(source_row)
                 else:
-                    raise SpecializationError(
+                    raise SpecialisationError(
                         f"{source_row.location}: unsupported property_type {kind!r}"
                     )
 
@@ -379,10 +379,10 @@ class Specialization:
             for item in definition.properties:
                 try:
                     identity = property_identity(item.values)
-                except SpecializationError as exc:
-                    raise SpecializationError(f"{item.location}: {exc}") from exc
+                except SpecialisationError as exc:
+                    raise SpecialisationError(f"{item.location}: {exc}") from exc
                 if identity in seen:
-                    raise SpecializationError(
+                    raise SpecialisationError(
                         f"{item.location}: duplicate property identity {identity!r} in "
                         f"{definition.key!r}; first defined at {seen[identity].location}"
                     )
@@ -391,7 +391,7 @@ class Specialization:
         for definition in self.classes.values():
             for parent in definition.parents:
                 if parent not in self.classes:
-                    raise SpecializationError(
+                    raise SpecialisationError(
                         f"{definition.row.location}: undefined superclass {parent!r} "
                         f"for {definition.key!r}"
                     )
@@ -402,7 +402,7 @@ class Specialization:
                         item.values["associated_class"],
                     )
                     if target not in self.classes:
-                        raise SpecializationError(
+                        raise SpecialisationError(
                             f"{item.location}: undefined associated Class {target!r} "
                             f"from {definition.key!r}"
                         )
@@ -410,7 +410,7 @@ class Specialization:
     def _validate_reference(self, item: SourceRow) -> None:
         row = item.values
         if not row["associated_module"] or not row["associated_class"]:
-            raise SpecializationError(
+            raise SpecialisationError(
                 f"{item.location}: {row['property_type']} requires associated_module "
                 "and associated_class"
             )
@@ -446,7 +446,7 @@ class Specialization:
             return copy.deepcopy(self._resolved[key])
         if key in self._resolving:
             cycle = " -> ".join(f"{module}:{term}" for module, term in [*self._resolving, key])
-            raise SpecializationError(f"Specialisation cycle detected: {cycle}")
+            raise SpecialisationError(f"Specialisation cycle detected: {cycle}")
         self._resolving.append(key)
         definition = self.classes[key]
         result: OrderedDict[tuple[str, ...], SourceRow] = OrderedDict()
@@ -525,7 +525,7 @@ class Specialization:
                         f"in {definition.key!r}"
                     )
                     if self.strict_deletions:
-                        raise SpecializationError(f"{item.location}: {message}")
+                        raise SpecialisationError(f"{item.location}: {message}")
                     self.diagnostic("warning", "unmatched-deletion", message, item)
                 continue
             if identity in result:
@@ -543,7 +543,7 @@ class Specialization:
                 {row.values["representation_term"] for row in rows}
             )
             sources = ", ".join(row.location for row in rows)
-            raise SpecializationError(
+            raise SpecialisationError(
                 f"{definition.row.location}: unresolved inherited Attribute "
                 f"representation_term conflict for {identity!r} in "
                 f"{definition.key!r}: {representations!r}; inherited from {sources}; "
@@ -564,13 +564,13 @@ class Specialization:
         for module in sorted(modules):
             abbreviation = self.module_abbreviations.get(module, "")
             if not re.fullmatch(r"[A-Z]{2}", abbreviation):
-                raise SpecializationError(
+                raise SpecialisationError(
                     f"Module {module!r} requires an explicit two-letter abbreviation; "
                     "use --module-abbreviation module=XX"
                 )
             folded = abbreviation.casefold()
             if folded in used and used[folded] != module:
-                raise SpecializationError(
+                raise SpecialisationError(
                     f"Module abbreviation collision: {abbreviation} is assigned to "
                     f"{used[folded]!r} and {module!r}"
                 )
@@ -588,7 +588,7 @@ class Specialization:
             per_module[module] += 1
             class_number = per_module[module]
             if class_number > 99:
-                raise SpecializationError(
+                raise SpecialisationError(
                     f"Module {module!r} has more than 99 emitted Classes; XXnn is insufficient"
                 )
             class_id = f"{self.module_abbreviations[module]}{class_number:02d}"
@@ -638,7 +638,7 @@ class Specialization:
 
         ids = [row["id"] for row in rows]
         if len(ids) != len(set(ids)):
-            raise SpecializationError("Generated BSM identifiers are not unique")
+            raise SpecialisationError("Generated BSM identifiers are not unique")
         return rows
 
     def _write_diagnostics(self) -> None:
@@ -681,7 +681,7 @@ class Specialization:
             if temporary.exists():
                 temporary.unlink()
 
-    def specialization(self) -> list[dict[str, str]]:
+    def specialisation(self) -> list[dict[str, str]]:
         self.load()
         self.resolve()
         rows = self.build_rows()
@@ -694,14 +694,14 @@ def parse_abbreviations(values: Sequence[str]) -> dict[str, str]:
     result: dict[str, str] = {}
     for value in values:
         if "=" not in value:
-            raise SpecializationError(
+            raise SpecialisationError(
                 f"Invalid module abbreviation {value!r}; expected module=XX"
             )
         module, abbreviation = value.split("=", 1)
         module = module_value(module)
         abbreviation = collapse(abbreviation).upper()
         if not module or not re.fullmatch(r"[A-Z]{2}", abbreviation):
-            raise SpecializationError(
+            raise SpecialisationError(
                 f"Invalid module abbreviation {value!r}; expected module=XX"
             )
         result[module] = abbreviation
@@ -734,7 +734,7 @@ def resolve_cli(args: argparse.Namespace) -> tuple[list[str], str]:
         inputs.extend(part for part in item.split("+") if part)
     output = args.output_option or args.bsm_file
     if not inputs or not output:
-        raise SpecializationError("FSM input(s) and BSM output are required")
+        raise SpecialisationError("FSM input(s) and BSM output are required")
     return inputs, output
 
 
@@ -743,7 +743,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         inputs, output = resolve_cli(args)
-        processor = Specialization(
+        processor = Specialisation(
             inputs,
             output,
             encoding=args.encoding,
@@ -751,9 +751,9 @@ def main(argv: Sequence[str] | None = None) -> int:
             diagnostics_file=args.diagnostics,
             strict_deletions=args.strict_deletions,
         )
-        rows = processor.specialization()
-    except (OSError, csv.Error, SpecializationError) as exc:
-        print(f"specialization.py: error: {exc}", file=sys.stderr)
+        rows = processor.specialisation()
+    except (OSError, csv.Error, SpecialisationError) as exc:
+        print(f"specialisation.py: error: {exc}", file=sys.stderr)
         return 2
     print(
         f"Wrote {len(rows)} BSM row(s) to {output}; "

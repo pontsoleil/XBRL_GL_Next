@@ -61,7 +61,7 @@
 - The abstract `cor:Detail` must not define an Account Identifier association.
 - `cor:Entry_ Detail` explicitly composes `cor:Detail_ Account Identifier` with multiplicity `0..*`.
 - `btx:Transaction_ Detail` must not expose Account Identifier because Business Transactions messages intentionally contain no ledger account codes.
-- A concrete Detail specialization must be selected explicitly where an abstract Detail association is intended to be expanded.
+- A concrete Detail specialisation must be selected explicitly where an abstract Detail association is intended to be expanded.
 - All other abstract-target compositions formerly owned by `cor:Detail` are expressed against concrete `Detail_ ...` classes on `cor:Entry_ Detail` and `btx:Transaction_ Detail`.
 - The abstract `Detail -> Detail` reference is removed and is not replaced with a recursive concrete self-reference because that would reuse one QName as both Class and Reference.
 
