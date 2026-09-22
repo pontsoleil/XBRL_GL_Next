@@ -132,6 +132,7 @@
       <element ref="cor:headerIdentifierEmail" minOccurs="0" maxOccurs="unbounded"/>
       <element ref="cor:headerIdentifierAddress" minOccurs="0" maxOccurs="unbounded"/>
       <element ref="cor:headerIdentifierContact" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="btx:headerIdentifierTradingName" minOccurs="0"/>
       <element ref="btx:registeredIdentifier" minOccurs="0" maxOccurs="unbounded"/>
     </sequence>
     <attribute name="id" type="ID"/>

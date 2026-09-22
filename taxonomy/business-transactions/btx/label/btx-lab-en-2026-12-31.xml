@@ -312,6 +312,11 @@
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_headerIdentifierCategory" xlink:to="lab_btx_headerIdentifierCategory"/>
     <label xlink:type="resource" xlink:label="doc_btx_headerIdentifierCategory" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">For use as Customer, Vendor or Employee Class (such as Residential/Commercial/Institutional/Government or Retail/Wholesale or other classifications used by business).</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_headerIdentifierCategory" xlink:to="doc_btx_headerIdentifierCategory"/>
+    <loc xlink:type="locator" xlink:href="../btx-2026-12-31.xsd#btx_headerIdentifierTradingName" xlink:label="loc_btx_headerIdentifierTradingName"/>
+    <label xlink:type="resource" xlink:label="lab_btx_headerIdentifierTradingName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Trading Name</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_headerIdentifierTradingName" xlink:to="lab_btx_headerIdentifierTradingName"/>
+    <label xlink:type="resource" xlink:label="doc_btx_headerIdentifierTradingName" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Name under which the identified party conducts business or is known in commercial transactions, which may differ from its legal or registered name.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_headerIdentifierTradingName" xlink:to="doc_btx_headerIdentifierTradingName"/>
     <loc xlink:type="locator" xlink:href="../btx-2026-12-31.xsd#btx_registeredIdentifier" xlink:label="loc_btx_registeredIdentifier"/>
     <label xlink:type="resource" xlink:label="lab_btx_registeredIdentifier" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Registered Identifier</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_registeredIdentifier" xlink:to="lab_btx_registeredIdentifier"/>

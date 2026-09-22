@@ -308,6 +308,11 @@
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_headerIdentifierCategory" xlink:to="lab_btx_headerIdentifierCategory"/>
     <label xlink:type="resource" xlink:label="doc_btx_headerIdentifierCategory" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">顧客、仕入先、従業員の分類に使用する。　（住居/商業/機関/政府や、小売/卸や、ビジネスで使用されるその他の分類）。</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_headerIdentifierCategory" xlink:to="doc_btx_headerIdentifierCategory"/>
+    <loc xlink:type="locator" xlink:href="../btx-oim-2026-12-31.xsd#btx_headerIdentifierTradingName" xlink:label="loc_btx_headerIdentifierTradingName"/>
+    <label xlink:type="resource" xlink:label="lab_btx_headerIdentifierTradingName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">取引名称</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_headerIdentifierTradingName" xlink:to="lab_btx_headerIdentifierTradingName"/>
+    <label xlink:type="resource" xlink:label="doc_btx_headerIdentifierTradingName" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">識別対象となる当事者が事業活動または商取引において使用する名称。法的名称または登録名称と異なる場合がある。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_btx_headerIdentifierTradingName" xlink:to="doc_btx_headerIdentifierTradingName"/>
     <loc xlink:type="locator" xlink:href="../btx-oim-2026-12-31.xsd#p_btx_registeredIdentifier" xlink:label="loc_p_btx_registeredIdentifier"/>
     <label xlink:type="resource" xlink:label="lab_p_btx_registeredIdentifier" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">【登録識別子】</label>
     <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_btx_registeredIdentifier" xlink:to="lab_p_btx_registeredIdentifier"/>

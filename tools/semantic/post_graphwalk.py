@@ -707,7 +707,7 @@ class PostGraphWalk:
         writer = csv.DictWriter(buffer, fieldnames=header, lineterminator="\n")
         writer.writeheader()
         writer.writerows({name: row.get(name, "") for name in header} for row in rows)
-        return b"\xef\xbb\xbf" + buffer.getvalue().encode("utf-8")
+        return buffer.getvalue().encode("utf-8")
 
     def manifest_rows(self) -> list[dict[str, str]]:
         result: list[dict[str, str]] = []

@@ -264,6 +264,11 @@
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
+  <complexType name="headerIdentifierTradingNameItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
   <complexType name="headerIdentifierRegisteredOrganizationIdentifierCodeItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
@@ -1007,6 +1012,7 @@
   <element name="headerIdentifierDescription" id="btx_headerIdentifierDescription" type="btx:headerIdentifierDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerIdentifierType" id="btx_headerIdentifierType" type="btx:headerIdentifierTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerIdentifierCategory" id="btx_headerIdentifierCategory" type="btx:headerIdentifierCategoryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="headerIdentifierTradingName" id="btx_headerIdentifierTradingName" type="btx:headerIdentifierTradingNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="registeredIdentifier" id="btx_registeredIdentifier" type="btx:registeredIdentifierComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="headerIdentifierRegisteredOrganizationIdentifierCode" id="btx_headerIdentifierRegisteredOrganizationIdentifierCode" type="btx:headerIdentifierRegisteredOrganizationIdentifierCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerIdentifierRegisteredOrganizationIdentifierDescription" id="btx_headerIdentifierRegisteredOrganizationIdentifierDescription" type="btx:headerIdentifierRegisteredOrganizationIdentifierDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
