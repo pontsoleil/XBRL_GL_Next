@@ -177,12 +177,12 @@ trade_documents: a collection of trade/transactional documents, such as vendor i
 profile_compliant: the meaning of this collection of information can be determined by understanding an established profile and especially an XBRL GL Profile. Profiles are determined through namespace declarations, schemaRef and conventions of those profiles.   
 other: for all other types of representations.
 
-Often sorted by date or by account, these terms have specific, and sometimes different, meanings in different areas. Common practice will drive accounting method/term matches.",文書種別,・科目:科目体系ファイルの情報。_x000D_ ・残高:特定の期間について、勘定科目(または勘定科目リスト)の、完了し検証された仕訳リストの累算結果。時に総勘定元帳と呼ばれる。_x000D_ ・仕訳:個々の勘定記入のリスト。転記/検証されていることもあり、されていないこともある。_x000D_ ・仕訳帳:特定の期間における、その期間の開始残高を含む貸借が一致(Dr=Cr)した仕訳のリスト 。_x000D_ ・元帳:特定の期間における特定の勘定科目(または勘定科目リスト)についての、仕訳の全リスト 。注意－貸借が一致する必要はない。_x000D_ ・資産:仕訳記入の一部として必ずしも含まれていないが、そこから抽出可能な売掛金、買掛金、在庫、固定資産、その他の情報のリスト。_x000D_ ・試算表:事業体に対する、特定期間の全勘定科目リストでの、完了し検証された仕訳リストの、貸借が一致（Dr=Cr)した累算結果。_x000D_ ・税率表:税率表をあらわすデータを自動的に解釈できるようにする。税率表は、コード、税務当局情報、レートをあらわす複数のtaxes構造データを使って定義される。taxTableCodeはtaxes構造データ内で相互に参照されるが、これらのマスタファイルが参照可能。_x000D_ ・マッピング情報:互いに関係があるデータセットの間の対応関係を集めたもの。例えば、企業グループ内の各会社で使用する勘定科目と全社勘定科目との対応付け、または明細データと最終的な報告書上の要約された科目への対応付け。 ・差分情報:同じクラス（種類）で異なるバージョンを持つ項目の変更・差分情報。例えば、勘定科目一覧のようなマスタファイルの特定科目の更新情報など。  ・マスターファイル:マスタファイルの一覧。例えば、顧客マスタ又は在庫/棚卸マスタなど。  ・取引伝票:取引に用いる情報の集合。例えば、納入業者からのインボイス 又は顧客からの受注情報など。  ・プロファイル情報:確立された文書説明情報及び特にXBRL GLプロファイルを理解し決定するこの情報の集合の意味を示す。説明情報は、名前空間宣言、スキーマ参照及びこれらの規約を通して決定する。  ・その他：その他のすべての表現形式  多くの場合、日付または科目によりソートされる。会計処理方法や用語は慣行により適合させる。_x000D_ [設定値のリスト]_x000D_ (account：科目)、(balance：残高)、(entries：仕訳)、(journal：仕訳帳)、(ledger：元帳)、(assets：資産)、(trialbalance：試算表)、(taxtables：税率表)、(other：その他)_x000D_、(Mapping：マッピング情報)、(versioning：差分情報)、(master_file：マスターファイル)、(trade_documents：取引伝票)、(profile_compliant：プロファイル情報)、(other：その他),CO10-01
+Often sorted by date or by account, these terms have specific, and sometimes different, meanings in different areas. Common practice will drive accounting method/term matches.",文書種別,・科目:科目体系ファイルの情報。_x005F_x000D_ ・残高:特定の期間について、勘定科目(または勘定科目リスト)の、完了し検証された仕訳リストの累算結果。時に総勘定元帳と呼ばれる。_x005F_x000D_ ・仕訳:個々の勘定記入のリスト。転記/検証されていることもあり、されていないこともある。_x005F_x000D_ ・仕訳帳:特定の期間における、その期間の開始残高を含む貸借が一致(Dr=Cr)した仕訳のリスト 。_x005F_x000D_ ・元帳:特定の期間における特定の勘定科目(または勘定科目リスト)についての、仕訳の全リスト 。注意－貸借が一致する必要はない。_x005F_x000D_ ・資産:仕訳記入の一部として必ずしも含まれていないが、そこから抽出可能な売掛金、買掛金、在庫、固定資産、その他の情報のリスト。_x005F_x000D_ ・試算表:事業体に対する、特定期間の全勘定科目リストでの、完了し検証された仕訳リストの、貸借が一致（Dr=Cr)した累算結果。_x005F_x000D_ ・税率表:税率表をあらわすデータを自動的に解釈できるようにする。税率表は、コード、税務当局情報、レートをあらわす複数のtaxes構造データを使って定義される。taxTableCodeはtaxes構造データ内で相互に参照されるが、これらのマスタファイルが参照可能。_x005F_x000D_ ・マッピング情報:互いに関係があるデータセットの間の対応関係を集めたもの。例えば、企業グループ内の各会社で使用する勘定科目と全社勘定科目との対応付け、または明細データと最終的な報告書上の要約された科目への対応付け。 ・差分情報:同じクラス（種類）で異なるバージョンを持つ項目の変更・差分情報。例えば、勘定科目一覧のようなマスタファイルの特定科目の更新情報など。  ・マスターファイル:マスタファイルの一覧。例えば、顧客マスタ又は在庫/棚卸マスタなど。  ・取引伝票:取引に用いる情報の集合。例えば、納入業者からのインボイス 又は顧客からの受注情報など。  ・プロファイル情報:確立された文書説明情報及び特にXBRL GLプロファイルを理解し決定するこの情報の集合の意味を示す。説明情報は、名前空間宣言、スキーマ参照及びこれらの規約を通して決定する。  ・その他：その他のすべての表現形式  多くの場合、日付または科目によりソートされる。会計処理方法や用語は慣行により適合させる。_x005F_x000D_ [設定値のリスト]_x005F_x000D_ (account：科目)、(balance：残高)、(entries：仕訳)、(journal：仕訳帳)、(ledger：元帳)、(assets：資産)、(trialbalance：試算表)、(taxtables：税率表)、(other：その他)_x005F_x000D_、(Mapping：マッピング情報)、(versioning：差分情報)、(master_file：マスターファイル)、(trade_documents：取引伝票)、(profile_compliant：プロファイル情報)、(other：その他),CO10-01
 151,2,Attribute,PK,cor,Document Information,Audit Number,,String,,,0..1,Unique identifier for this file.,監査番号,このファイルの一意識別子。,CO10-02
 152,2,Attribute,,cor,Document Information,Revises Audit Number,,String,,,0..1,"If this batch of information revises a previous batch of information, this field identifies the previous batch that is being revised. 'uniqueID' of the previous batch goes here. Developers should consider exception reporting.",改訂前監査番号,この仕訳の束が以前の仕訳の束を改訂する場合に、以前の束を示す。元の文書のuniqueIDが指定される。開発者は、例外報告を考慮すべきである。,CO10-03
-153,2,Attribute,,cor,Document Information,Action to Take with Previous Data,,Token,,,0..1,Provides guidance on action to take with previous set of data: supersedes - old data should be considered as obsolete/overwritten; supplements - belongs with that data as if it was included with it.,改訂前データ処置,"以前のデータの束に対する操作のガイダンス。 取替え-古いデータを無効にし上書きする。_x000D_
-補完-元々含まれていたかのように、そのデータに所属させる。_x000D_
-[設定値のリスト]_x000D_
+153,2,Attribute,,cor,Document Information,Action to Take with Previous Data,,Token,,,0..1,Provides guidance on action to take with previous set of data: supersedes - old data should be considered as obsolete/overwritten; supplements - belongs with that data as if it was included with it.,改訂前データ処置,"以前のデータの束に対する操作のガイダンス。 取替え-古いデータを無効にし上書きする。_x005F_x000D_
+補完-元々含まれていたかのように、そのデータに所属させる。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (supplement：補完)、(supersede：取替え)",CO10-04
 154,2,Attribute,,cor,Document Information,Language,,QName,,,0..1,"Primary language of the intellectual content. Where practical, the content of this field should coincide with ISO 639-1988 language codes.",言語,主要言語。 実用的には、このフィールドの内容はISO639-1988言語コードに一致すべきである。,CO10-05
 155,2,Attribute,,cor,Document Information,Creation Date,,Date Time,,,0..1,Date/time file was created.,作成日付,ファイルが作成された日付/時間。,CO10-06
@@ -191,8 +191,8 @@ Often sorted by date or by account, these terms have specific, and sometimes dif
 158,2,Attribute,,cor,Document Information,Period Covered Start,,Date Time,,,0..1,"Start of date range for contents. Used as basis for many assumptions about data, including the date as of which open balances are open.",対象期間開始日付,内容の日付範囲の開始日。 残高の開始日付などの、データに関する多くの仮定の基礎として使用される。,CO10-09
 159,2,Attribute,,cor,Document Information,Period Covered End,,Date Time,,,0..1,"End of date range for contents. Used as basis for many assumptions about data, including the date as of which open balances are open.",対象期間終了日付,内容の日付範囲の終了日。 残高の開始日付などの、データに関する多くの仮定の基礎として使用される。,CO10-10
 160,2,Attribute,,cor,Document Information,Period Count,,Decimal,,,0..1,"Number of periods or buckets, used by postingCode. Used to interpret posting date. It may be preferable to limit entries by period covered to be by individual reporting period.",期間数,postingCodeで使用される期間又はバケットの数。 転記日付を説明するために使用される。対象期間の仕訳を個々の報告期間に限定することが望ましいかもしれない。,CO10-11
-161,2,Attribute,,cor,Document Information,Period Unit,,Token,,,0..1,"Type of periods covered by periodCount. Enumerated as: daily, weekly, bi-weekly, semi-monthly, monthly, quarterly, thirdly, semiannual, annual, ad-hoc, current-period-only, other.",期間単位,"periodCountで対象とする期間の種別。_x000D_
-[設定値のリスト]_x000D_
+161,2,Attribute,,cor,Document Information,Period Unit,,Token,,,0..1,"Type of periods covered by periodCount. Enumerated as: daily, weekly, bi-weekly, semi-monthly, monthly, quarterly, thirdly, semiannual, annual, ad-hoc, current-period-only, other.",期間単位,"periodCountで対象とする期間の種別。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (daily：日次)、(weekly：週次)、(bi-weekly：隔週)、(semi-monthly：半月ごと)、(monthly：月次)、(quarterly：四半期ごと)、(thirdly：年3回)、(semiannual：半年ごと)、(annual：年次)、(ad-hoc：随時)、(current-period-only：当期)、(other：その他)",CO10-12
 162,2,Attribute,,cor,Document Information,Period Unit Description,,String,,,0..1,Free format description of the period unit,期間単位説明,対象期間単位の説明。,CO10-13
 163,2,Attribute,,cor,Document Information,Source Application,,String,,,0..1,"Product or service that produced this file. Used by many systems (e.g., VAT). Version number can be included or extended.",作成元アプリケーション,このファイルを作り出した製品又はサービス。 多くのシステム(例えば、VATなど)で、使用される。 バージョン番号を含むことも可能。,CO10-14
@@ -252,20 +252,20 @@ Often sorted by date or by account, these terms have specific, and sometimes dif
 217,2,Composition,,bus,Accountant_ Contact,,,,bus,Contact_ Fax,0..*,Contact Fax Number Class,【担当者FAX番号】,担当者のFAX番号の構造体。,BU24-11
 218,2,Composition,,bus,Accountant_ Contact,,,,bus,Contact_ Email,0..*,Contact E-mail address class,【担当者Eメールアドレス】,担当者のEメールアドレスの構造体。,BU24-12
 219,1,Class,,bus,Accounting Method Structure,,,,,,0..*,Class for identifying the methods of accounting used by the entity for different reporting purposes,【会計処理方法】,異なる報告目的に応じて事業体が使用する会計処理方法を識別するためのセクション。,BU25
-220,2,Attribute,,bus,Accounting Method Structure,Accounting Method,,Token,,,0..1,"For this entity, the method of accounting represented - from: accrual, cash, modified cash, modified accrual, encumbrance, special methods, hybrid methods, other",会計処理方法,"事業体の会計処理方法を表す。発生基準、現金基準、修正現金基準、修正発生基準、債務基準、特別な方法、混合方法、その他_x000D_
-[設定値のリスト]_x000D_
+220,2,Attribute,,bus,Accounting Method Structure,Accounting Method,,Token,,,0..1,"For this entity, the method of accounting represented - from: accrual, cash, modified cash, modified accrual, encumbrance, special methods, hybrid methods, other",会計処理方法,"事業体の会計処理方法を表す。発生基準、現金基準、修正現金基準、修正発生基準、債務基準、特別な方法、混合方法、その他_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (accrual：発生基準)、(cash：現金基準)、(modified cash：修正現金基準)、(modified accrual：修正発生基準)、(encumbrance：債務基準)、(special methods：特別な方法)、(hybrid methods：混合方法)、(other：その他)",BU25-01
 221,2,Attribute,,bus,Accounting Method Structure,Accounting Method Description,,String,,,0..1,Free format description of the accounting method,会計処理方法説明,会計処理方法の説明。,BU25-02
-222,2,Attribute,,bus,Accounting Method Structure,Accounting Method Purpose,,Token,,,0..1,"For this entity, the reporting purpose represented - from book, tax, management, statutory, other",会計処理方法目的,"事業体の報告の目的を表す。帳簿、税、管理、スタチュトリ、その他から選択する。_x000D_
-[設定値のリスト]_x000D_
+222,2,Attribute,,bus,Accounting Method Structure,Accounting Method Purpose,,Token,,,0..1,"For this entity, the reporting purpose represented - from book, tax, management, statutory, other",会計処理方法目的,"事業体の報告の目的を表す。帳簿、税、管理、スタチュトリ、その他から選択する。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (book：帳簿)、(tax：税)、(management：管理)、(statutory：スタチュトリ)、(other：その他)",BU25-03
 223,2,Attribute,,bus,Accounting Method Structure,Accounting Method Purpose Description,,String,,,0..1,Free format description of the accounting method purpose,会計処理方法目的説明,会計処理方法の目的の説明。,BU25-04
 224,2,Attribute,,bus,Accounting Method Structure,Accounting Method Start Date,,Date Time,,,0..1,Accounting Method Start Date,会計処理方法開始日付,会計処理方法の開始日。,BU25-05
 225,2,Attribute,,bus,Accounting Method Structure,Accounting Method End Date,,Date Time,,,0..1,Accounting Method End Date,会計処理方法終了日付,会計処理方法の終了日。,BU25-06
 226,1,Class,,bus,Accountant,,,,,,0..*,Information about the relevant external accountant,【会計事務所情報】,関連する外部会計事務所に関する情報。,BU26
 227,2,Attribute,,bus,Accountant,Accountant Name,,String,,,0..1,Name of the accountant,会計事務所名,会計事務所の名前。,BU26-01
-228,2,Attribute,,bus,Accountant,Accountant Type of Engagement,,Token,,,0..1,"Type of engagement being performed by external accountant. Enumerated as: audit, review, compilation, tax, other.",契約種別,"外部会計事務所によって実行される契約の種別。_x000D_
-[設定値のリスト]_x000D_
+228,2,Attribute,,bus,Accountant,Accountant Type of Engagement,,Token,,,0..1,"Type of engagement being performed by external accountant. Enumerated as: audit, review, compilation, tax, other.",契約種別,"外部会計事務所によって実行される契約の種別。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (audit：監査)、(review：検査)、(compilation：帳簿作成)、(tax：税)、(other：その他)",BU26-02
 229,2,Attribute,,bus,Accountant,Accountant Type of Engagement Description,,String,,,0..1,Free format description of the type of engagement,契約種別説明,契約種別の説明。,BU26-03
 230,2,Composition,,bus,Accountant,,,,bus,Accountant_ Address,0..*,Class which contains accountant address information.,【会計事務所住所】,会計事務所の住所情報を含むセクション。,BU26-04
@@ -285,15 +285,15 @@ Often sorted by date or by account, these terms have specific, and sometimes dif
 244,2,Attribute,PK,bus,Reporting Calendar,Reporting Calendar Code,,String,,,0..1,"The code used to identify this specific reporting calendar, unique across periods",報告カレンダーコード,この報告カレンダーを識別するコード。複数期間にわたって一意。,BU29-01
 245,2,Attribute,,bus,Reporting Calendar,Reporting Calendar Description,,String,,,0..1,A description of the reporting calendar (associated with the reportingCalendarCode given),報告カレンダー説明,報告カレンダーの説明（reportingCalendarCodeと関係付けられる）。,BU29-02
 246,2,Attribute,,bus,Reporting Calendar,Reporting Calendar Title,,String,,,0..1,A description of the reporting period. The actual beginning and ending dates are found within the 'reportingCalendarPeriod' class,報告カレンダータイトル,報告期間の説明。実際の開始日及び終了日はreportingCalendarPeriodに記述する。,BU29-03
-247,2,Attribute,,bus,Reporting Calendar,Reporting Calendar Period Type,,Token,,,0..1,"A code for the type of period involved. Enumerated as: monthly, quarterly, semi-annually, 4-5-4, ad-hoc, other.",期間種別コード,"報告期間の種別コード。月次、四半期ごと、半期ごと、4-5-4、随時、その他_x000D_
-[設定値のリスト]_x000D_
+247,2,Attribute,,bus,Reporting Calendar,Reporting Calendar Period Type,,Token,,,0..1,"A code for the type of period involved. Enumerated as: monthly, quarterly, semi-annually, 4-5-4, ad-hoc, other.",期間種別コード,"報告期間の種別コード。月次、四半期ごと、半期ごと、4-5-4、随時、その他_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (monthly：月次)、(quarterly：四半期ごと)、(semi-annually：半期ごと)、(4-5-4：4-5-4)、(ad-hoc：随時)、(other：その他)",BU29-04
 248,2,Attribute,,bus,Reporting Calendar,Reporting Calendar Period Type Description,,String,,,0..1,A description of the type of period involved.,期間種別説明,報告期間の種別の説明。,BU29-05
-249,2,Attribute,,bus,Reporting Calendar,Reporting Calendar Closed Status,,Token,,,0..1,"An identifier on whether the reporting calendar is still open for activity. enumerated, ""open"", ""closed"", ""pending""",締状態,"報告カレンダーがオープンかどうかを示す識別子。オープン、締切り済み、保留中_x000D_
-[設定値のリスト]_x000D_
+249,2,Attribute,,bus,Reporting Calendar,Reporting Calendar Closed Status,,Token,,,0..1,"An identifier on whether the reporting calendar is still open for activity. enumerated, ""open"", ""closed"", ""pending""",締状態,"報告カレンダーがオープンかどうかを示す識別子。オープン、締切り済み、保留中_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (open：オープン)、(closed：締切り済み)、(pending：保留中)",BU29-06
-250,2,Attribute,,bus,Reporting Calendar,Reporting Calendar Purpose,,Token,,,0..1,A description of the accounting set of books involved. Uses enumeration from accounting method purpose.,報告目的,"帳簿の集合の説明。会計処理方法の目的の列挙値を使用する。_x000D_
-[設定値のリスト]_x000D_
+250,2,Attribute,,bus,Reporting Calendar,Reporting Calendar Purpose,,Token,,,0..1,A description of the accounting set of books involved. Uses enumeration from accounting method purpose.,報告目的,"帳簿の集合の説明。会計処理方法の目的の列挙値を使用する。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (book：帳簿)、(tax：税)、(management：管理)、(statutory：スタチュトリ)、(other：その他)",BU29-07
 251,2,Attribute,,bus,Reporting Calendar,Reporting Calendar Purpose Description,,String,,,0..1,Free format description of the reporting purpose,報告目的説明,報告目的の説明。,BU29-08
 252,2,Composition,,bus,Reporting Calendar,,,,bus,Reporting Calendar_ Period,0..*,A tool to collect a specific set of periods used to summarize results from transactions.,【報告カレンダー期間】,取引の結果をまとめるための特定の期間を集めるもの。,BU29-09
@@ -308,12 +308,12 @@ Often sorted by date or by account, these terms have specific, and sometimes dif
 261,2,Attribute,PK,cor,Detail_ Identifier Reference,Identifier Code,,String,,,0..1,Unique ID Number associated with identifierReference,CVE識別番号（内部）,identifierReferenceに関係付けられた、内部ID番号。,CO13-01
 262,2,Attribute,,cor,Detail_ Identifier Reference,Identifier Purpose,,String,,,0..1,"Freeform for codes like purchasing, billing, manufacturing at identifier level.",CVE目的,購買、請求、製造などの、CVE識別子のレベルのコードの自由記述。,CO13-02
 263,2,Attribute,,cor,Detail_ Identifier Reference,Identifier Active,,Boolean,,,0..1,"Boolean to indicate whether the identifier is active (=""true"") or inactive (=""false"")",CVE有効性,CVE識別子が有効か無効かを示すブール値。,CO13-03
-264,2,Attribute,,cor,Detail_ Identifier Reference,Identifier Organization Type,,Token,,,0..1,"Identifier Organization Type. Enumerated as: individual, organization, other.",CVE組織種別,"CVE識別子の組織種別。_x000D_
-[設定値のリスト]_x000D_
+264,2,Attribute,,cor,Detail_ Identifier Reference,Identifier Organization Type,,Token,,,0..1,"Identifier Organization Type. Enumerated as: individual, organization, other.",CVE組織種別,"CVE識別子の組織種別。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (individual：個人)、(organization：組織)、(other：その他)",CO13-04
 265,2,Attribute,,cor,Detail_ Identifier Reference,Identifier Organization Type Description,,String,,,0..1,Free format description of the identifier organization type,CVE組織種別説明,CVE識別子の組織種別の説明。,CO13-05
 266,2,Attribute,,cor,Detail_ Identifier Reference,Identifier Description,,String,,,0..1,Textual description of identifierReference.,CVE説明,identifierReferenceの説明。,CO13-06
-267,2,Attribute,,cor,Detail_ Identifier Reference,Identifier Type,,Token,,,0..1,"Entity type (enumerated): C, customer, E, employee, V, vendor, O, other, I, salesperson-internal, X, salesperson-external, N, contractor.",CVE種別,実体の種別。_x000D_ [設定値のリスト]_x000D_ (C)、(customer：顧客)、(E)、(employee：従業員)、(V)、(vendor：仕入先)、(O)、(other：その他)、(I)、(salesperson-internal：店舗内販売員)、(X)、(salesperson-external：外交販売員)、(N)、(contractor：請負者),CO13-07
+267,2,Attribute,,cor,Detail_ Identifier Reference,Identifier Type,,Token,,,0..1,"Entity type (enumerated): C, customer, E, employee, V, vendor, O, other, I, salesperson-internal, X, salesperson-external, N, contractor.",CVE種別,実体の種別。_x005F_x000D_ [設定値のリスト]_x005F_x000D_ (C)、(customer：顧客)、(E)、(employee：従業員)、(V)、(vendor：仕入先)、(O)、(other：その他)、(I)、(salesperson-internal：店舗内販売員)、(X)、(salesperson-external：外交販売員)、(N)、(contractor：請負者),CO13-07
 268,2,Attribute,,cor,Detail_ Identifier Reference,Identifier Category,,String,,,0..1,"For use as Customer, Vendor or Employee Class (such as Residential/Commercial/Institutional/Government or Retail/Wholesale or other classifications used by business).",CVEカテゴリ,顧客、仕入先、従業員の分類に使用する。　（住居/商業/機関/政府や、小売/卸や、ビジネスで使用されるその他の分類）。,CO13-08
 269,2,Composition,,cor,Detail_ Identifier Reference,,,,cor,External Authority,0..*,Class containing references to an external authority associated with identifier,【外部機関】,識別子と関係付けられる外部機関への参照情報を含む構造体。,CO13-09
 270,2,Composition,,cor,Detail_ Identifier Reference,,,,cor,Identifier_ Phone,0..*,Phone number related to Identifier.,【電話番号】,CVE識別子の電話番号。,CO13-10
@@ -332,8 +332,8 @@ Often sorted by date or by account, these terms have specific, and sometimes dif
 283,2,Composition,,cor,Entity_ Party,,,,bus,Party_ Address,0..*,Address class for the party,【住所】,報告事業体の住所構造体。,CO14-08
 284,2,Composition,,cor,Entity_ Party,,,,bus,Party_ Web Site,0..*,Primary web site of the party.,【事業体Webサイト】,事業体の代表ウェブサイト。,CO14-09
 285,2,Composition,,cor,Entity_ Party,,,,bus,Party_ Contact,0..*,Information about contacts.,【担当者情報】,担当者に関する情報。,CO14-10
-286,2,Attribute,,cor,Entity_ Party,Default Accounting Method Purpose,,Token,,,0..1,"If not stated explicitly at the line level, the default reporting purpose - from book, tax, management, statutory, other",既定会計処理方法目的,"明細レベルで明確に指定しない場合の、既定の報告目的を表す。帳簿、税、管理、スタチュトリ、その他から選択する。_x000D_
-[設定値のリスト]_x000D_
+286,2,Attribute,,cor,Entity_ Party,Default Accounting Method Purpose,,Token,,,0..1,"If not stated explicitly at the line level, the default reporting purpose - from book, tax, management, statutory, other",既定会計処理方法目的,"明細レベルで明確に指定しない場合の、既定の報告目的を表す。帳簿、税、管理、スタチュトリ、その他から選択する。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (book：帳簿)、(tax：税)、(management：管理)、(statutory：スタチュトリ)、(other：その他)",CO14-11
 287,2,Attribute,,cor,Entity_ Party,Default Accounting Method Purpose Description,,String,,,0..1,Free format description of the default accounting method purpose,既定会計処理方法目的説明,既定の会計処理方法目的の説明。,CO14-12
 288,2,Attribute,,cor,Entity_ Party,Fiscal Year Start,,Date,,,0..1,"Start of fiscal year. Where appropriate, corporate year period representation permits non-365 or 366 day years (more appropriate for internal sharing than data from external sources), In Europe, some jurisdictions allow 2 year minus 1 day fiscal years.",会計年度開始日付,会計年度の開始日。妥当であれば、企業の会計年度表示において、366日や365日でない年も許可する（外部ソースからのデータより内部共有のための方が適している）。ヨーロッパでは、2年マイナス1日の会計年度を許可するところもある。,CO14-13
@@ -360,7 +360,7 @@ Often sorted by date or by account, these terms have specific, and sometimes dif
 /account/accountSub/accountSubID QOWI  
 /account/accountSub/accountSubDescription Branch  
 /account/accountSub/accountSubID 192837  
-/account/accountSub/accountSubDescription Division",【科目識別子】,"タプル。勘定科目番号と識別子の親コンテナ。 ここには記入されないが、個々の明細行は、異なるGAAPでの報告や、日本の見返勘定や、連結勘定科目に対する個別情報の連結会計システムへの伝達などのための、複数の勘定科目を持ちうる。例えば、勘定科目4783HG-QOWI-192837-1000は、次のように表現されうる。_x000D_
+/account/accountSub/accountSubDescription Division",【科目識別子】,"タプル。勘定科目番号と識別子の親コンテナ。 ここには記入されないが、個々の明細行は、異なるGAAPでの報告や、日本の見返勘定や、連結勘定科目に対する個別情報の連結会計システムへの伝達などのための、複数の勘定科目を持ちうる。例えば、勘定科目4783HG-QOWI-192837-1000は、次のように表現されうる。_x005F_x000D_
 /account/accountMainID 1000  
 /account/accountMainDescription Cash  
 /account/accountSub/accountSubID 4783HG  
@@ -369,33 +369,33 @@ Often sorted by date or by account, these terms have specific, and sometimes dif
 /account/accountSub/accountSubDescription Branch  
 /account/accountSub/accountSubID 192837  
 /account/accountSub/accountSubDescription Division",CO17
-304,2,Attribute,PK,cor,Detail_ Account Identifier,Account Number,,String,,,0..1,"Main account - the code used to identify the accounting bucket the entry has been assigned to. Examples might be 1000 for Cash, 567GAAZ for Sales Expense or Z for tax payments. Identifiers such as department, branch, division, manager, or other modifiers are noted in the Subaccount area. Before needing to post, account is not necessary. Posting to the general ledger almost always requires an entry here.",主勘定科目コード,"主勘定科目。仕訳が関連する会計バケットを特定するためのコード。例えば、現金を表す1000、販売費を表す567GAAZ、税を表すZ。_x000D_
+304,2,Attribute,PK,cor,Detail_ Account Identifier,Account Number,,String,,,0..1,"Main account - the code used to identify the accounting bucket the entry has been assigned to. Examples might be 1000 for Cash, 567GAAZ for Sales Expense or Z for tax payments. Identifiers such as department, branch, division, manager, or other modifiers are noted in the Subaccount area. Before needing to post, account is not necessary. Posting to the general ledger almost always requires an entry here.",主勘定科目コード,"主勘定科目。仕訳が関連する会計バケットを特定するためのコード。例えば、現金を表す1000、販売費を表す567GAAZ、税を表すZ。_x005F_x000D_
 部門、支店、事業部、マネージャ、その他の識別子は、Subaccount領域に記述される。転記の必要がなければ、勘定科目は必要ではない。総勘定元帳に転記するにはほとんどの場合必要。",CO17-01
 305,2,Attribute,,cor,Detail_ Account Identifier,Account Description,,String,,,0..1,Description of accountMainID - the human readable describer that accompanies the code used in accountMainID,主勘定科目説明,主勘定科目コードの説明。主勘定科目コードとして使用されるコードについての、人が読める記述。,CO17-02
-306,2,Attribute,,cor,Detail_ Account Identifier,Account Classification,,Token,,,0..1,"Account type - FASB Concepts 6 and similar international designs. When xbrlInfo is used to associated other XBRL reporting items, this field is more suited to representing existing systems (audit) than data interchange. Enumerated as: asset, liability, equity, income, gain, expense, loss, contr-to-equity, distr-from-equity, comprehensive-income, other.",主勘定科目区分,"主勘定科目の種別。FASB Concepts 6および、同様の国際的な様式。xbrlInfoが他のXBRL項目と関係付けられる場合、データ交換より現存システム(audit)を示すべき。_x000D_
-[設定値のリスト]_x000D_
+306,2,Attribute,,cor,Detail_ Account Identifier,Account Classification,,Token,,,0..1,"Account type - FASB Concepts 6 and similar international designs. When xbrlInfo is used to associated other XBRL reporting items, this field is more suited to representing existing systems (audit) than data interchange. Enumerated as: asset, liability, equity, income, gain, expense, loss, contr-to-equity, distr-from-equity, comprehensive-income, other.",主勘定科目区分,"主勘定科目の種別。FASB Concepts 6および、同様の国際的な様式。xbrlInfoが他のXBRL項目と関係付けられる場合、データ交換より現存システム(audit)を示すべき。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (asset：資産)、(liability：負債)、(equity：資本)、(income：収益)、(gain：利得)、(expense：費用)、(loss：損失)、(contr-to-equity：資本増加)、(distr-from-equity：資本減少)、(comprehensive-income：包括利益)、(other：その他)",CO17-03
 307,2,Attribute,,cor,Detail_ Account Identifier,Account Classification Description,,String,,,0..1,Free format description of the account classification,主勘定科目区分説明,主勘定科目の区分の説明。,CO17-04
 308,2,Attribute,,cor,Detail_ Account Identifier,Parent Account Number,,String,,,0..1,Roll up item from child natural account to parent natural account.,親勘定科目コード,子勘定科目から親勘定科目に包み込む科目。,CO17-05
-309,2,Attribute,,cor,Detail_ Account Identifier,Purpose of Account,,Token,,,0..1,"Code related to usage for account aggregate - Consolidating, European, IFRS, Offsetting, Primary, Tax, USGAAP, Japanese, Other. Japanese companies will use this for the tax required offsetting entry. If left blank, assumes default accounting method for company.",勘定科目目的,"勘定科目群の使用法を示すコード。連結、European, IFRS, 見返、プライマリ, 税, USGAAP, Japanese,その他。日本企業では、見返仕訳で要求される税務処理に利用するかもしれない。空白の場合、企業の既定の勘定方法とみなす。_x000D_
-[設定値のリスト]_x000D_
+309,2,Attribute,,cor,Detail_ Account Identifier,Purpose of Account,,Token,,,0..1,"Code related to usage for account aggregate - Consolidating, European, IFRS, Offsetting, Primary, Tax, USGAAP, Japanese, Other. Japanese companies will use this for the tax required offsetting entry. If left blank, assumes default accounting method for company.",勘定科目目的,"勘定科目群の使用法を示すコード。連結、European, IFRS, 見返、プライマリ, 税, USGAAP, Japanese,その他。日本企業では、見返仕訳で要求される税務処理に利用するかもしれない。空白の場合、企業の既定の勘定方法とみなす。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (consolidating：連結)、(european：ヨーロッパ)、(ifrs：IFRS)、(offsetting：見返)、(primary：プライマリ)、(tax：税)、(usgaap：US GAAP)、(japanese：日本)、(other：その他)",CO17-06
 310,2,Attribute,,cor,Detail_ Account Identifier,Purpose of Account Description,,String,,,0..1,Description of usage for aggregate account,勘定科目目的説明,勘定科目群の使用法の説明。,CO17-07
-311,2,Attribute,,cor,Detail_ Account Identifier,Account Type,,Token,,,0..1,"Type of account. Enumerated as: account, bank, employee, customer, job, vendor, measurable, statistical, other.",科目種別,"科目の種別。_x000D_
-[設定値のリスト]_x000D_
+311,2,Attribute,,cor,Detail_ Account Identifier,Account Type,,Token,,,0..1,"Type of account. Enumerated as: account, bank, employee, customer, job, vendor, measurable, statistical, other.",科目種別,"科目の種別。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (account：勘定科目)、(bank：銀行)、(employee：従業員)、(customer：顧客)、(job：ジョブ)、(vendor：仕入先)、(measurable：計測可能物)、(statistical：統計)、(other：その他)",CO17-08
 312,2,Attribute,,cor,Detail_ Account Identifier,Account Type Description,,String,,,0..1,Free format description of the account type,科目種別説明,科目の種別の説明。,CO17-09
-313,2,Attribute,,cor,Detail_ Account Identifier,Accounting Method,,Token,,,0..1,"For this entry, the method of accounting represented - from: accrual, cash, modified cash, modified accrual, encumbrance, special methods, hybrid methods, other",仕訳会計処理方法,"この仕訳の会計処理方法を表す。発生基準、現金基準、修正現金基準、修正発生基準、債務基準、特別な方法、混合方法、その他_x000D_
-[設定値のリスト]_x000D_
+313,2,Attribute,,cor,Detail_ Account Identifier,Accounting Method,,Token,,,0..1,"For this entry, the method of accounting represented - from: accrual, cash, modified cash, modified accrual, encumbrance, special methods, hybrid methods, other",仕訳会計処理方法,"この仕訳の会計処理方法を表す。発生基準、現金基準、修正現金基準、修正発生基準、債務基準、特別な方法、混合方法、その他_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (accrual：発生基準)、(cash：現金基準)、(modified cash：修正現金基準)、(modified accrual：修正発生基準)、(encumbrance：債務基準)、(special methods：特別な方法)、(hybrid methods：混合方法)、(other：その他)",CO17-10
 314,2,Attribute,,cor,Detail_ Account Identifier,Accounting Method Description,,String,,,0..1,Free format description of the entry accounting method,仕訳会計処理方法説明,仕訳の会計処理方法の説明。,CO17-11
-315,2,Attribute,,cor,Detail_ Account Identifier,Accounting Method Purpose,,Token,,,0..1,"For this entry, the reporting purpose represented - from book, tax, management, statutory, other",仕訳会計処理方法目的,"仕訳の報告の目的を表す。帳簿、税、管理、スタチュトリ、その他_x000D_
-[設定値のリスト]_x000D_
+315,2,Attribute,,cor,Detail_ Account Identifier,Accounting Method Purpose,,Token,,,0..1,"For this entry, the reporting purpose represented - from book, tax, management, statutory, other",仕訳会計処理方法目的,"仕訳の報告の目的を表す。帳簿、税、管理、スタチュトリ、その他_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (book：帳簿)、(tax：税)、(management：管理)、(statutory：スタチュトリ)、(other：その他)",CO17-12
 316,2,Attribute,,cor,Detail_ Account Identifier,Accounting Method Purpose Description,,String,,,0..1,Free format description of the entry accounting method purpose,仕訳会計処理方法目的説明,仕訳の会計処理方法の目的の説明。,CO17-13
 317,2,Attribute,,cor,Detail_ Account Identifier,Account Active,,Boolean,,,0..1,"Boolean to indicate whether the account is active (=""true"") or inactive (=""false"")",科目有効性,科目が有効か無効かを示すブール値。,CO17-14
 318,2,Composition,,cor,Detail_ Account Identifier,,,,cor,Subaccount,0..*,Class to hold multiple accountSubIDs and Descriptions,【サブ科目情報】,複数のaccountSubIDと説明文を含むタプル。,CO17-15
-319,1,Class,,muc,Detail_ Multicurrency,,,,,,0..*,Class to provide additional information related to home currencies that differ from original currencies and related exchange rates - typically this will be used to record exchange rates and amounts in currencies and/or on dates other than those of the original transaction. This class allows recording of exchange rates using a third currency as a triangulation currency. This is often EUR but is not restricted to being so. This class may be repeated as many times as necessary to record amounts in foreign currencies on the same or different dates.,【多通貨明細】,"原取引時の通貨と異なる、自国通貨と換算レートに関する追加情報のセクション。－現在および原取引時の、換算レートおよび金額の記録に使用される。_x000D_
+319,1,Class,,muc,Detail_ Multicurrency,,,,,,0..*,Class to provide additional information related to home currencies that differ from original currencies and related exchange rates - typically this will be used to record exchange rates and amounts in currencies and/or on dates other than those of the original transaction. This class allows recording of exchange rates using a third currency as a triangulation currency. This is often EUR but is not restricted to being so. This class may be repeated as many times as necessary to record amounts in foreign currencies on the same or different dates.,【多通貨明細】,"原取引時の通貨と異なる、自国通貨と換算レートに関する追加情報のセクション。－現在および原取引時の、換算レートおよび金額の記録に使用される。_x005F_x000D_
 トライアンギュレーション通貨としての第三通貨の換算レートを記録できる。EURの場合が多いがそれに限らない。この構造は、同日または異なる日の外貨での金額を記録する必要がある限り、繰り返し指定可能。",MU01
 320,2,Attribute,,muc,Detail_ Multicurrency,Multicurrency Exchange Rate Date,,Date Time,,,0..1,Date of exchange rate (other than original transaction date) on which amount is expressed as amountRestatedAmount or amountTriangulationAmount,換算レート日付,（原取引の日付ではなく）、amountRestatedAmountまたはamountTriangulationAmountが示された換算レートの日付。,MU01-01
 321,2,Attribute,,muc,Detail_ Multicurrency,Multicurrency Foreign Currency Amount,,Monetary,,,0..1,The amount in the foreign currency identified by amountRestatedCurrency as of multicurrencyDetailExchangeRateDate.,換算額,amountRestatedCurrencyで指定された外貨での、multicurrencyDetailExchangeRateDate時点の、換算額。,MU01-02
@@ -413,8 +413,8 @@ Often sorted by date or by account, these terms have specific, and sometimes dif
 333,2,Attribute,,muc,Detail_ Multicurrency,Multicurrency Cross Triangulation Exchange Rate Type,,String,,,0..1,"Type of Exchange Rate for converting between foreign currency and triangulation currency - for example, spot rate, forward contract etc.",換算通貨トライアンギュレーション通貨換算レート種別,外貨通貨とトライアンギュレーション通貨の間の換算レートの種別。たとえば、スポット・レート、先物など。,MU01-14
 334,2,Attribute,,muc,Detail_ Multicurrency,Multicurrency Comment,,String,,,0..1,Comment describing the enclosing multicurrencyDetail class's contents. May include reason for recording additional exchange rates other than that used at the time of the original transaction.,多通貨明細コメント,multicurrencyDetailの内容のコメント。原取引時以外の、追加の換算レートを記録する理由などを記述。,MU01-15
 335,1,Class,,cor,Detail_ XBRL,,,,,,0..*,This will roll up to XBRL reporting information - this is a parent - repeatable so that the same item can be reported through many taxonomies. Care should be taken to consider what happens if people post to the same account but different XBRL elements.,【XBRL情報】,XBRLレポート情報へのロールアップ情報。親タグであり、同じ項目が複数のタクソノミを通じて報告されうるように繰り返し可能。同一の勘定科目を異なるXBRL要素に転記した場合にどうなるか、注意深く考慮すべきである。,CO18
-336,2,Attribute,,cor,Detail_ XBRL,XBRL Allocation,,Token,,,0..1,"Indicates that the information being given is beginning_balance, ending_balance, period_change.",XBRL割当,"与えられた情報が、期首残高、期末残高、期中増減のいずれであるかを示す。_x000D_
-[設定値のリスト]_x000D_
+336,2,Attribute,,cor,Detail_ XBRL,XBRL Allocation,,Token,,,0..1,"Indicates that the information being given is beginning_balance, ending_balance, period_change.",XBRL割当,"与えられた情報が、期首残高、期末残高、期中増減のいずれであるかを示す。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (beginning_balance：期首残高)、(ending_balance：期末残高)、(period_change：期中増減)",CO18-01
 337,2,Attribute,,cor,Detail_ XBRL,XBRL Summary Reporting Element,,QName,,,0..1,Associated XBRL element or XML element within an XML taxonomy - mapping to an XBRL concept.,集約報告エレメント,関係付けられた、XMLタクソノミ中のXBRL要素または、XML要素。XBRLコンセプトへのマッピング。,CO18-02
 338,2,Attribute,,cor,Detail_ XBRL,XBRL Detail Matching Element,,QName,,,0..1,Associated XBRL element in XBRL-GL instance.,明細対応エレメント,関係付けられた、XBRL-GLインスタンス中のXBRL要素。,CO18-03
@@ -426,8 +426,8 @@ Often sorted by date or by account, these terms have specific, and sometimes dif
 344,2,Attribute,,cor,Detail_ XBRL,XBRL Summary Unit Denominator,,Token,,,0..1,This holds the list of measure information for unit denominator. The value must be a list of QName. Each QName must be resolved to be measure information such as iso4217:usd.,集約ユニット分母,集約のユニットの分母の測定情報のリスト。QNameのリストでなければならない。QNameはiso4217:usdのような、解決される測定情報でなければならない。,CO18-09
 345,2,Attribute,,cor,Detail_ XBRL,XBRL Summary Reporting Taxonomy ID Reference,,String,,,0..1,"Reference to the ID of the relevant target reporting taxonomy, defined in the [summaryReportingTaxonomies] class at [documentInfo] level. Allows consuming applications to identify sets of [xbrlInfo] classs that point to a specific taxonomy.",集約報告タクソノミ識別子参照情報,関連する報告タクソノミの識別子への参照情報。documentInfo内のsummaryReportingTaxonomies構造体で定義される。特定のタクソノミを示すxbrlInfo構造体の集合を、アプリケーションが識別できるようにする。,CO18-10
 346,1,Class,,bus,Detail_ Measurable,,,,,,0..*,"Parent for information regarding measurable items associated with the enclosing entryDetail line. Primary area used for holding performance measures. Based on needs for tracking inventory transactional detail, but suitable for anything assigned to an ""account"", ""reporting bucket"" or ""code"". Can be used to track any movements.",【計測可能物情報】,明細行に関係付けられた、計測可能物の情報の親タグ。おもにパフォーマンス測定のために使用される。在庫移動の詳細の追跡の必要性に基づき、「科目」、「報告バケット」、「コード」に関係付けられるあらゆるものに適する。あらゆる活動を追跡するために使用可能。,BU31
-347,2,Attribute,PK,bus,Detail_ Measurable,Measurable Code,,Token,,,0..1,"Code for measurable item including BP - Business process, FA - Fixed asset/Capitalized item, IN - Inventory, KPI - Metric, NT - Intangible, SP - Supplies, SV-P - Service by employee, vendor or contractor, SV-M - Service by equipment/machinery, OT - Other",計測可能物コード,"計測可能物のコード。ビジネスプロセス、固定資産/資産化項目、在庫、測定基準、無形資産、貯蔵品、従業員/提供元/請負者によるサービス、装置/機械によるサービス、その他_x000D_
-[設定値のリスト]_x000D_
+347,2,Attribute,PK,bus,Detail_ Measurable,Measurable Code,,Token,,,0..1,"Code for measurable item including BP - Business process, FA - Fixed asset/Capitalized item, IN - Inventory, KPI - Metric, NT - Intangible, SP - Supplies, SV-P - Service by employee, vendor or contractor, SV-M - Service by equipment/machinery, OT - Other",計測可能物コード,"計測可能物のコード。ビジネスプロセス、固定資産/資産化項目、在庫、測定基準、無形資産、貯蔵品、従業員/提供元/請負者によるサービス、装置/機械によるサービス、その他_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (BP：ビジネスプロセス)、(FA：固定資産/資産化項目)、(IN：在庫)、(KPI：測定基準)、(NT：無形資産)、(SP：貯蔵品)、(SV-P：従業員/提供元/請負者によるサービス)、(SV-M：装置/機械によるサービス)、(OT：その他)",BU31-01
 348,2,Attribute,,bus,Detail_ Measurable,Measurable Code Description,,String,,,0..1,Free format description of the measurable code,計測可能物コード説明,計測可能物のコードの説明。,BU31-02
 349,2,Attribute,,bus,Detail_ Measurable,Measurable Category,,String,,,0..1,Category of the measurable,計測可能物カテゴリ,計測可能物のカテゴリ。,BU31-03
@@ -439,7 +439,7 @@ Often sorted by date or by account, these terms have specific, and sometimes dif
 355,2,Attribute,,bus,Detail_ Measurable,Measurable Quantity,,Decimal,,,0..1,"Number of units in this transaction; for non-monetary calculations; can be square footage, number of people, etc.",数量,この取引における、単位数量。金額計算用ではない。平方フィート、人数など。,BU31-09
 356,2,Attribute,,bus,Detail_ Measurable,Measurable Qualifier,,Token,,,0..1,"Field that can represent grading, inspection codes, ratings and other qualifiers to properly capture PKI/Balanced Scorecard information",修飾子,PKI又はバランススコアカード情報を適正に把握するための、等級付け、検査コード、格付けその他の修飾子を示す。,BU31-10
 357,2,Attribute,,bus,Detail_ Measurable,Measurable Unit of Measure,,String,,,0..1,"Description of unit: e.g. each, case, dozen, etc. ISO standard coding recommended.",計量単位,単位の説明。たとえば、個、箱、ダースなど。ISO標準のコードを推奨。,BU31-11
-358,2,Attribute,,bus,Detail_ Measurable,Measurable Per Unit Cost/Price,,Monetary,,,0..1,"Per unit price of the measurable. Although one might expect that measurableQuantity * measurableCostPerUnit = amount, this is not mandated except by external rules sets.",単価,"計測可能物の単価。_x000D_
+358,2,Attribute,,bus,Detail_ Measurable,Measurable Per Unit Cost/Price,,Monetary,,,0..1,"Per unit price of the measurable. Although one might expect that measurableQuantity * measurableCostPerUnit = amount, this is not mandated except by external rules sets.",単価,"計測可能物の単価。_x005F_x000D_
 measurableQuantity * measurableCostPerUnit = amountであることを期待するかもしれないが、外部規則がなければ必須ではない。",BU31-12
 359,2,Attribute,,bus,Detail_ Measurable,Measurable Start Time,,Date Time,,,0..1,Start time of the duration being measured,開始日時,計量期間の開始時刻。,BU31-13
 360,2,Attribute,,bus,Detail_ Measurable,Measurable End Time,,Date Time,,,0..1,End time of the duration being measured,終了日時,計量期間の終了時刻。,BU31-14
@@ -451,8 +451,8 @@ measurableQuantity * measurableCostPerUnit = amountであることを期待す�
 366,2,Attribute,,bus,Detail_ Job,Job Phase Description,,String,,,0..1,"Description of Job code, phase, activity",ジョブフェーズ説明,ジョブコード、フェーズ、活動の説明。,BU32-04
 367,2,Attribute,,bus,Detail_ Job,Job Active,,Boolean,,,0..1,"Boolean to indicate whether the job is active (=""true"") or inactive (=""false"")",ジョブ有効性,ジョブが有効か無効かを示すブール値。,BU32-05
 368,1,Class,,bus,Detail_ Depreciation Mortgage,,,,,,0..*,"Parent for information related to depreciation, mortgages, etc.",【減価償却/抵当債務情報】,減価償却、抵当債務等に関連する情報の親タグ。,BU33
-369,2,Attribute,,bus,Detail_ Depreciation Mortgage,Depreciation Mortgage Jurisdiction,,Token,,,0..1,"Jurisdiction (e.g. federal, state, local): e.g. US Federal, Province of Québec, other identifier. Enumerated as: F, federal, S, state, L, local, other.",抵当債務管轄,"管轄地区。（連邦、州、ローカル、等）。たとえば、米国連邦政府、ケベック州、その他の識別子。_x000D_
-[設定値のリスト]_x000D_
+369,2,Attribute,,bus,Detail_ Depreciation Mortgage,Depreciation Mortgage Jurisdiction,,Token,,,0..1,"Jurisdiction (e.g. federal, state, local): e.g. US Federal, Province of Québec, other identifier. Enumerated as: F, federal, S, state, L, local, other.",抵当債務管轄,"管轄地区。（連邦、州、ローカル、等）。たとえば、米国連邦政府、ケベック州、その他の識別子。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (F)、(federal：連邦)、(S)、(state：州)、(L)、(local：地域)、(other：その他)",BU33-01
 370,2,Attribute,,bus,Detail_ Depreciation Mortgage,Depreciation Method,,String,,,0..1,"Type of depreciation method: used for information about the loan percentage for loan or the depreciation method. This is used for informational purposes only. Examples of entries are ""20%"", ""5 year DDB"" (Double Declining Balance).",減価償却方法,減価償却方法のタイプ。ローンのパーセンテージや減価償却方法に関する情報を含む。単なる情報提供を目的とする。たとえば、20%、5年、DDB(倍額定率)。,BU33-02
 371,2,Attribute,,bus,Detail_ Depreciation Mortgage,Depreciation Mortgage Life,,Decimal,,,0..1,Length of life in number of periods.,抵当債務期間,存在する期間数。,BU33-03
@@ -485,7 +485,7 @@ measurableQuantity * measurableCostPerUnit = amountであることを期待す�
 398,2,Attribute,,cor,Detail_ Tax,Tax Description,,String,,,0..1,Description of tax authority,課税庁説明,課税庁の説明。,CO19-03
 399,2,Attribute,,cor,Detail_ Tax,Amount of Taxes,,Monetary,,,0..1,Amount of taxes,税額,税額。,CO19-04
 400,2,Attribute,,cor,Detail_ Tax,Basis for Taxation,,Monetary,,,0..1,Basis for taxation,課税基準,課税基準。,CO19-05
-401,2,Attribute,,cor,Detail_ Tax,Tax Percentage Rate,,Pure,,,0..1,Percent rate for VAT or other taxes normally a number between 0 and 1.0 - e.g. 50% is represented as 0.5,税率,"VAT(物品税)またはその他の税のパーセント比率。_x000D_
+401,2,Attribute,,cor,Detail_ Tax,Tax Percentage Rate,,Pure,,,0..1,Percent rate for VAT or other taxes normally a number between 0 and 1.0 - e.g. 50% is represented as 0.5,税率,"VAT(物品税)またはその他の税のパーセント比率。_x005F_x000D_
 0から1.0の間の値。たとえば50%は0.5とあらわす。",CO19-06
 402,2,Attribute,,cor,Detail_ Tax,Tax Category,,String,,,0..1,A class or category of taxes,税区分,税のクラス又はカテゴリ。,CO19-07
 403,2,Attribute,,cor,Detail_ Tax,Tax Comment/Exemption Reason,,String,,,0..1,Additional text/code for exemption reasons or other comments.,税コメント/免税理由,免税理由やその他のコメントのための、追加の文またはコード。,CO19-08
@@ -508,18 +508,18 @@ measurableQuantity * measurableCostPerUnit = amountであることを期待す�
 420,2,Attribute,,cor,Document,Document Type,,Token,,,0..1,"Document type  check, debit-memo, credit-memo, finance-charge, invoice, order-customer, order-vendor, payment-other, reminder, tegata, voucher, shipment, receipt, manual-adjustment, other.",発生元文書種別,発生元文書の種別。小切手(check)、借方メモ(debit-memo)、貸方メモ(credit-memo)、財務費用(finance-charge)、顧客への請求書(invoice)、顧客オーダ(order-customer)、仕入先オーダ(order-vendor)、その他支払い(payment-other)、督促状(reminder)、手形(tegata)、ベンダからの請求書(voucher)、出荷票(shipment)、受領票(receipt)、手修正(manual-adjustment)、その他(other),CO20-01
 421,2,Attribute,PK,cor,Document,Document Number,,String,,,0..1,Document number,発生元文書番号,発生元文書の番号。,CO20-02
 422,2,Attribute,,cor,Document,Document Date,,Date,,,0..1,Document date,発生元文書日付,発生元文書の日付。,CO20-03
-423,2,Attribute,,cor,Document,Document Identifier Type,,Token,,,0..1,"Document identifier type. Enumerated as: C, customer, E, employee, V, vendor, O, other, I, salesperson-internal, X, salesperson-external, N, contractor.",発生元文書対象CVE種別,発生元文書の対象となるCVEの種別。_x000D_ [設定値のリスト]_x000D_ (C)、(customer：顧客)、(E)、(employee：従業員)、(V)、(vendor：仕入先)、(O)、(other：その他)、(I)、(salesperson-internal：店舗内販売員)、(X)、(salesperson-external：外交販売員)、(N)、(contractor：請負者),CO20-04
+423,2,Attribute,,cor,Document,Document Identifier Type,,Token,,,0..1,"Document identifier type. Enumerated as: C, customer, E, employee, V, vendor, O, other, I, salesperson-internal, X, salesperson-external, N, contractor.",発生元文書対象CVE種別,発生元文書の対象となるCVEの種別。_x005F_x000D_ [設定値のリスト]_x005F_x000D_ (C)、(customer：顧客)、(E)、(employee：従業員)、(V)、(vendor：仕入先)、(O)、(other：その他)、(I)、(salesperson-internal：店舗内販売員)、(X)、(salesperson-external：外交販売員)、(N)、(contractor：請負者),CO20-04
 424,2,Attribute,,cor,Document,Document Identifier Code,,String,,,0..1,Document identifier code,発生元文書対象CVEコード,発生元文書の対象となるCVEのコード。,CO20-05
 425,1,Class,,taf,Originating Document,,,,,,0..*,"A tool to capture the flow of related documents in the business process. Some needs of end users require a greater history of the documents that are associated with a transaction, especially in the VAT audit area. Contains a repetitive class of related documents.",【発生元文書情報】,業務プロセス上の、関連文書の流れを捕捉するためのもの。特にVAT監査では、エンドユーザの要求として、取引に関係する文書の履歴が必要とされる。関連文書情報の構造の繰り返しを含む。,TA01
 426,2,Attribute,,taf,Originating Document,Document Type,,Token,,,0..1,"Document type  check, debit-memo, credit-memo, finance-charge, invoice, order-customer, order-vendor, payment-other, reminder, tegata, voucher, shipment, receipt, manual-adjustment, other.",発生元文書種別,発生元文書の種別。小切手(check)、借方メモ(debit-memo)、貸方メモ(credit-memo)、財務費用(finance-charge)、顧客への請求書(invoice)、顧客オーダ(order-customer)、仕入先オーダ(order-vendor)、その他支払い(payment-other)、督促状(reminder)、手形(tegata)、ベンダからの請求書(voucher)、出荷票(shipment)、受領票(receipt)、手修正(manual-adjustment)、その他(other),TA01-01
 427,2,Attribute,PK,taf,Originating Document,Document Number,,String,,,0..1,Document number,発生元文書番号,発生元文書の番号。,TA01-02
 428,2,Attribute,,taf,Originating Document,Document Date,,Date,,,0..1,Document date,発生元文書日付,発生元文書の日付。,TA01-03
-429,2,Attribute,,taf,Originating Document,Document Identifier Type,,Token,,,0..1,"Document identifier type. Enumerated as: C, customer, E, employee, V, vendor, O, other, I, salesperson-internal, X, salesperson-external, N, contractor.",発生元文書対象CVE種別,発生元文書の対象となるCVEの種別。_x000D_ [設定値のリスト]_x000D_ (C)、(customer：顧客)、(E)、(employee：従業員)、(V)、(vendor：仕入先)、(O)、(other：その他)、(I)、(salesperson-internal：店舗内販売員)、(X)、(salesperson-external：外交販売員)、(N)、(contractor：請負者),TA01-04
+429,2,Attribute,,taf,Originating Document,Document Identifier Type,,Token,,,0..1,"Document identifier type. Enumerated as: C, customer, E, employee, V, vendor, O, other, I, salesperson-internal, X, salesperson-external, N, contractor.",発生元文書対象CVE種別,発生元文書の対象となるCVEの種別。_x005F_x000D_ [設定値のリスト]_x005F_x000D_ (C)、(customer：顧客)、(E)、(employee：従業員)、(V)、(vendor：仕入先)、(O)、(other：その他)、(I)、(salesperson-internal：店舗内販売員)、(X)、(salesperson-external：外交販売員)、(N)、(contractor：請負者),TA01-04
 430,2,Attribute,,taf,Originating Document,Document Identifier Code,,String,,,0..1,Document identifier code,発生元文書対象CVEコード,発生元文書の対象となるCVEのコード。,TA01-05
 431,2,Attribute,,taf,Originating Document,Document Identifier Tax Code,,Token,,,0..1,Originating document identifier tax code,発生元文書対象CVE納税者コード,発生元文書の対象となるCVEの納税者コード。,TA01-06
 432,1,Class,,lnk,Detail_ Rich Text Comment,,,,,,0..*,"Accepts text in rich text format, including XHTML. It can be used for different purposes, such as to create footnotes in XBRL instances or to create a comment for a document or an entry.",【リッチテキストコメント】,XHTMLを含む、リッチテキスト形式のテキストを受け入れる。XBRLインスタンスのフットノートの生成や、文書や伝票のコメントの生成などの、さまざまな目的で利用可能。,LN01
-433,2,Attribute,,lnk,Detail_ Rich Text Comment,Comment Code,,String,,,0..1,"An enumerated code that identifies the purpose of the rich text comment. Enumerated values: link_footnote, footnote, source_document, source_journal, batch, other.",リッチテキストコメントコード,"リッチテキストコメントの用途を識別する、列挙コード。_x000D_
-[設定値のリスト]_x000D_
+433,2,Attribute,,lnk,Detail_ Rich Text Comment,Comment Code,,String,,,0..1,"An enumerated code that identifies the purpose of the rich text comment. Enumerated values: link_footnote, footnote, source_document, source_journal, batch, other.",リッチテキストコメントコード,"リッチテキストコメントの用途を識別する、列挙コード。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 link_footnote：リンクフットノート、footnote：フットノート、source_document：元文書、source_journal：元仕訳帳、batch：仕訳の束、other：その他",LN01-01
 434,2,Attribute,,lnk,Detail_ Rich Text Comment,Comment Description,,String,,,0..1,Free format description of the Rich text Comment Code.,リッチテキストコメント説明,リッチテキストコメントコードの説明。,LN01-02
 435,2,Attribute,,lnk,Detail_ Rich Text Comment,Comment Content,,String,,,0..1,Content of the Rich Text Comment.,リッチテキストコメント内容,リッチテキストコメントの内容。,LN01-03
@@ -529,7 +529,7 @@ link_footnote：リンクフットノート、footnote：フットノート、so
 439,2,Attribute,,cor,Entry_ Detail,Line Number Counter,,Decimal,,,0..1,Unique reference for the line - a numeric counter,明細行番号カウンタ,明細行の一意なリファレンス　　カウンタ,CO21-02
 440,2,Attribute,,cor,Entry_ Detail,Posting Date,,Date Time,,,0..1,"At the detail level, this represents the accounting significance date. No matter what date the document is received, entered, or posted, this signifies the accounting date of the entry. If you want to see the financial results for March 5, 2002 and this entry is given that date, the entry will be part of the results for March 5, 2002. This is different from the postedDate found at the entryHeader level. If you want the accounting significance to be a particular date, it goes here. A single entry could represent multiple dates, but would only be posted on one date.",転記日付,明細レベルで、会計上意義のある日付を示す。ドキュメントの受領、入力、転記の日付に関わらず、仕訳が会計処理された日付を示す。2002.03.05の財務結果を見たいときに、ここにその日付がある場合は、この明細は2002.03.05の結果の一部である。これは、entryHeaderにあるpostedDateとは異なる。特定の日付を会計上意義のある日付にしたいなら、ここに記述する。ひとつの仕訳が複数の日付をあらわせるが、ひとつの日でのみ転記される。,CO21-03
 441,2,Attribute,,cor,Entry_ Detail,Memo Line,,Boolean,,,0..1,A boolean like entry that indicates whether an entryDetail line has been provided solely to provide additional details and that tools should not consider the amount in postings.,メモ行フラグ,明細行が単に追加の詳細を与えるものであり、転記金額に含めるべきでないことを示すブール値。,CO21-04
-442,2,Attribute,,cor,Entry_ Detail,Document Type,,Token,,,0..1,"An enumerated field describing the original source document, with check, debit-memo, credit-memo, finance-charge, invoice, order-customer, order-vendor, payment-other, reminder, tegata, voucher, shipment, receipt, manual-adjustment, other.",元文書種別,小切手、借方メモ、貸方メモ、財務費用、顧客への請求書、顧客オーダー、仕入先オーダー、その他支払い、督促状、手形、ベンダからの請求書、出荷票、受領票、手修正、その他の列挙値による、元文書の説明。[設定値のリスト]_x000D_ (check：小切手)、(debit-memo：借方メモ)、(credit-memo：貸方メモ)、(finance-charge：財務費用)、(invoice：顧客への請求書)、(order-customer：顧客オーダ)、(order-vendor：仕入先オーダ)、(payment-other：その他支払い)、(reminder：督促状)、(tegata：手形)、(voucher：ベンダからの請求書)、(shipment：出荷票)、(receipt：受領票)、(manual-adjustment：手修正)、(other：その他),CO21-05
+442,2,Attribute,,cor,Entry_ Detail,Document Type,,Token,,,0..1,"An enumerated field describing the original source document, with check, debit-memo, credit-memo, finance-charge, invoice, order-customer, order-vendor, payment-other, reminder, tegata, voucher, shipment, receipt, manual-adjustment, other.",元文書種別,小切手、借方メモ、貸方メモ、財務費用、顧客への請求書、顧客オーダー、仕入先オーダー、その他支払い、督促状、手形、ベンダからの請求書、出荷票、受領票、手修正、その他の列挙値による、元文書の説明。[設定値のリスト]_x005F_x000D_ (check：小切手)、(debit-memo：借方メモ)、(credit-memo：貸方メモ)、(finance-charge：財務費用)、(invoice：顧客への請求書)、(order-customer：顧客オーダ)、(order-vendor：仕入先オーダ)、(payment-other：その他支払い)、(reminder：督促状)、(tegata：手形)、(voucher：ベンダからの請求書)、(shipment：出荷票)、(receipt：受領票)、(manual-adjustment：手修正)、(other：その他),CO21-05
 443,2,Attribute,,cor,Entry_ Detail,Document Type Description,,String,,,0..1,Free format description of the document type,元文書種別説明,元文書の種別の説明。,CO21-06
 444,2,Reference Association,,cor,Entry_ Detail,,,,cor,Document,0..1,"Invoice, check, voucher, or other source document identifier",元文書番号,請求書、小切手、証憑、その他の元文書の識別子。,CO21-07
 445,2,Attribute,,cor,Entry_ Detail,Document Date,,Date Time,,,0..1,"Date (and less likely in the paper world but possible in the e-world, time) on actual document (invoice, voucher, check date). Other dates control posting information.",元文書日付,実際の文書（請求書、証憑、小切手）の日付（および、紙の世界ではありそうにないが、電子的には時刻）。 転記の情報は別の日付で管理する。,CO21-08
@@ -542,15 +542,15 @@ simulated: a simulated item, for what-if
 tax: a tax-specific entry
 unposted:entered but not yet posted or validated
 cancelled:entered and later cancelled
-other:other status - should be described in postingStatusDescription",転記状態,"・据置：入力されたが、まだ転記できない。_x000D_
-・転記済：転記済み。_x000D_
-・提案済：検証が必要な項目。_x000D_
-・シミュレーション：仮定のためにシミュレートされた項目。_x000D_
-・税：税項目。_x000D_
-・未転記：入力されたが、まだ検証も転記もされていない。_x000D_
-・取消済：入力されたが、取り消された。_x000D_
-・その他：その他の状態。postingStatusDescriptionで説明されるべき。_x000D_
-[設定値のリスト]_x000D_
+other:other status - should be described in postingStatusDescription",転記状態,"・据置：入力されたが、まだ転記できない。_x005F_x000D_
+・転記済：転記済み。_x005F_x000D_
+・提案済：検証が必要な項目。_x005F_x000D_
+・シミュレーション：仮定のためにシミュレートされた項目。_x005F_x000D_
+・税：税項目。_x005F_x000D_
+・未転記：入力されたが、まだ検証も転記もされていない。_x005F_x000D_
+・取消済：入力されたが、取り消された。_x005F_x000D_
+・その他：その他の状態。postingStatusDescriptionで説明されるべき。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (deferred：据置)、(posted：転記済)、(proposed：提案済)、(simulated：シミュレーション)、(tax：税)、(unposted：未転記)、(cancelled：取消済)、(other：その他)",CO21-11
 449,2,Attribute,,cor,Entry_ Detail,Posting Status Description,,String,,,0..1,Free format description of the posting status,転記状態説明,転記状態の説明。,CO21-12
 450,2,Attribute,,cor,Entry_ Detail,Description,,String,,,0..1,Description of this line of detail only,説明,この明細行のみに対する説明。,CO21-13
@@ -566,7 +566,7 @@ other:other status - should be described in postingStatusDescription",転記状�
 ・度と小数分 (DMM): 41 24.2028, 2 10.4418
 ・10進度 (DD): 41.40338, 2.17403",CO21-18
 456,2,Aggregation,,cor,Entry_ Detail,,,,taf,Originating Document,0..*,"A tool to capture the flow of related documents in the business process. Some needs of end users require a greater history of the documents that are associated with a transaction, especially in the VAT audit area. Contains a repetitive class of related documents.",【発生元文書情報】,業務プロセス上の、関連文書の流れを捕捉するためのもの。特にVAT監査では、エンドユーザの要求として、取引に関係する文書の履歴が必要とされる。関連文書情報の構造の繰り返しを含む。,CO21-19
-457,2,Composition,,cor,Entry_ Detail,,,,muc,Detail_ Multicurrency,0..*,Class to provide additional information related to home currencies that differ from original currencies and related exchange rates - typically this will be used to record exchange rates and amounts in currencies and/or on dates other than those of the original transaction. This class allows recording of exchange rates using a third currency as a triangulation currency. This is often EUR but is not restricted to being so. This class may be repeated as many times as necessary to record amounts in foreign currencies on the same or different dates.,【多通貨明細】,"原取引時の通貨と異なる、自国通貨と換算レートに関する追加情報のセクション。－現在および原取引時の、換算レートおよび金額の記録に使用される。_x000D_
+457,2,Composition,,cor,Entry_ Detail,,,,muc,Detail_ Multicurrency,0..*,Class to provide additional information related to home currencies that differ from original currencies and related exchange rates - typically this will be used to record exchange rates and amounts in currencies and/or on dates other than those of the original transaction. This class allows recording of exchange rates using a third currency as a triangulation currency. This is often EUR but is not restricted to being so. This class may be repeated as many times as necessary to record amounts in foreign currencies on the same or different dates.,【多通貨明細】,"原取引時の通貨と異なる、自国通貨と換算レートに関する追加情報のセクション。－現在および原取引時の、換算レートおよび金額の記録に使用される。_x005F_x000D_
 トライアンギュレーション通貨としての第三通貨の換算レートを記録できる。EURの場合が多いがそれに限らない。この構造は、同日または異なる日の外貨での金額を記録する必要がある限り、繰り返し指定可能。",CO21-20
 458,2,Composition,,cor,Entry_ Detail,,,,cor,Detail_ Identifier Reference,0..*,"Identification for customer, vendor, or employee.",【CVE情報】,顧客、仕入先、従業員のための識別子。,CO21-21
 459,2,Composition,,cor,Entry_ Detail,,,,cor,Detail_ XBRL,0..*,This will roll up to XBRL reporting information - this is a parent - repeatable so that the same item can be reported through many taxonomies. Care should be taken to consider what happens if people post to the same account but different XBRL elements.,【XBRL情報】,XBRLレポート情報へのロールアップ情報。親タグであり、同じ項目が複数のタクソノミを通じて報告されうるように繰り返し可能。同一の勘定科目を異なるXBRL要素に転記した場合にどうなるか、注意深く考慮すべきである。,CO21-22
@@ -585,7 +585,7 @@ other:other status - should be described in postingStatusDescription",転記状�
 /account/accountSub/accountSubID QOWI  
 /account/accountSub/accountSubDescription Branch  
 /account/accountSub/accountSubID 192837  
-/account/accountSub/accountSubDescription Division",【科目識別子】,"タプル。勘定科目番号と識別子の親コンテナ。 ここには記入されないが、個々の明細行は、異なるGAAPでの報告や、日本の見返勘定や、連結勘定科目に対する個別情報の連結会計システムへの伝達などのための、複数の勘定科目を持ちうる。例えば、勘定科目4783HG-QOWI-192837-1000は、次のように表現されうる。_x000D_
+/account/accountSub/accountSubDescription Division",【科目識別子】,"タプル。勘定科目番号と識別子の親コンテナ。 ここには記入されないが、個々の明細行は、異なるGAAPでの報告や、日本の見返勘定や、連結勘定科目に対する個別情報の連結会計システムへの伝達などのための、複数の勘定科目を持ちうる。例えば、勘定科目4783HG-QOWI-192837-1000は、次のように表現されうる。_x005F_x000D_
 /account/accountMainID 1000  
 /account/accountMainDescription Cash  
 /account/accountSub/accountSubID 4783HG  
@@ -597,15 +597,15 @@ other:other status - should be described in postingStatusDescription",転記状�
 467,2,Attribute,,cor,Entry_ Detail,Detail_ Description,,String,,,0..1,Description of this line of detail only,説明,この明細行のみに対する説明。,CO21-30
 468,2,Attribute,,cor,Entry_ Detail,Monetary Amount,,Monetary,,,0..1,"This field (amount) represents the primary monetary amount related to the  subject of the entryDetail line. There is one primary monetary amount per entryDetail class. It may, for example, represent the amount of one line of a journal entry, the balance on a document, or the extended amount of a line item on an invoice. Amount is not required if detailed entry is used for non-financial work and other elements are populated, in particular measurableQuantity. The amount field is a signed number (either positive or negative itself) and used in conjunction with a separate signOfAmount and a separate debitCreditCode, which together are considered for understanding the monetary amount. The unit of measure is determined by amountCurrency if present, and by the default or home currency if amountCurrency is not present.",金額,entryDetailの代表的な金額を示す。entryDetailごとにひとつの値を持つ。たとえば、仕訳帳の行、残高、請求書の行の金額。明細が会計業務用でなく、measurableQuantityなどの他の要素が設定されている場合は不要。符号付数値であり、金額を解釈するために用意されたsignOfAmountおよびdebitCreditCodeとあわせて使用される。通貨単位はamountCurrencyで決定される。amountCurrencyが指定されない場合は、既定または自国の通貨単位となる。,CO21-31
 469,2,Attribute,,cor,Entry_ Detail,Currency,,QName,,,0..1,"The currency related to the amount can be entered here instead of the XBRL instance specified way, especially important in multi-currency situations. Recommend ISO 4217 coding.",通貨,XBRLインスタンス内に指定する方法のかわりに、金額の通貨を指定可能。多通貨環境で特に重要。ISO4217コード体系を推奨。,CO21-32
-470,2,Attribute,,cor,Entry_ Detail,Sign Indication for Amount,,Token,,,0..1,Sign of amount; provides 4 possible fields only when used in conjunction with debitCreditCode; primarily used for correcting entries so total debits and credits after an entry error are not inflated. D + increase DebitsD - decrease debitsC + decreases creditC - increases credit,金額符号,"金額の符号。貸借識別子と関連して使用される場合にだけ、4つの可能なフィールドを提供する。記入エラー後の総貸借が膨張しないように、おもに仕訳の訂正に使用される。 D+は借方を増加させる。D-は借方を減少させる。C+は貸方を減少させる。C-は貸方を増加させる。_x000D_
-[設定値のリスト]_x000D_
+470,2,Attribute,,cor,Entry_ Detail,Sign Indication for Amount,,Token,,,0..1,Sign of amount; provides 4 possible fields only when used in conjunction with debitCreditCode; primarily used for correcting entries so total debits and credits after an entry error are not inflated. D + increase DebitsD - decrease debitsC + decreases creditC - increases credit,金額符号,"金額の符号。貸借識別子と関連して使用される場合にだけ、4つの可能なフィールドを提供する。記入エラー後の総貸借が膨張しないように、おもに仕訳の訂正に使用される。 D+は借方を増加させる。D-は借方を減少させる。C+は貸方を減少させる。C-は貸方を増加させる。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (+)、(-)、(plus：プラス)、(minus：マイナス)",CO21-33
-471,2,Attribute,,cor,Entry_ Detail,Debit/Credit Indicator,,Token,,,0..1,"Optional identifier of whether the amount is a (D)ebit, a (C)redit or Undefined",貸借区分コード,"金額が借方か貸方か不定かを示す識別子。_x000D_
-[設定値のリスト]_x000D_
+471,2,Attribute,,cor,Entry_ Detail,Debit/Credit Indicator,,Token,,,0..1,"Optional identifier of whether the amount is a (D)ebit, a (C)redit or Undefined",貸借区分コード,"金額が借方か貸方か不定かを示す識別子。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (D)、(C)、(debit：借方)、(credit：貸方)、(undefined：不定)",CO21-34
 472,2,Attribute,,cor,Entry_ Detail,Allocation Code,,String,,,0..1,A code that is tied to the Enterprise's allocation system.,配分コード,配賦システムに結びつけるコード。,CO21-35
-473,2,Attribute,,cor,Entry_ Detail,Invoice Type,,Token,,,0..1,"Invoice Type  (self-billed, ePoS enumerated values)",請求書種別,"請求書の種別。(self-billed、ePoS)_x000D_
-[設定値のリスト]_x000D_
+473,2,Attribute,,cor,Entry_ Detail,Invoice Type,,Token,,,0..1,"Invoice Type  (self-billed, ePoS enumerated values)",請求書種別,"請求書の種別。(self-billed、ePoS)_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (ePos：POSシステムからの発行)、(self-billed：手動発行)",CO21-36
 474,2,Attribute,,cor,Entry_ Detail,Chargeable or Reimbursable,,String,,,0..1,"Is this entry chargeable to client, reimbursable? Used by some systems to indicate that account on posting/validation should be posted to a customer or vendor's account.",請求支払可能フラグ,この仕訳は顧客に請求、支払可能か。いくつかのシステムでは転記/検証対象の科目が顧客や仕入先の科目に転記されるべきかどうかを示すために使用される。,CO21-37
 475,2,Attribute,,cor,Entry_ Detail,Payment Method,,String,,,0..1,Method used or to be used to make the payment,支払方法,支払いのために使用された、または使用される方法。,CO21-38
@@ -618,16 +618,16 @@ other:other status - should be described in postingStatusDescription",転記状�
 482,2,Attribute,,cor,Entry_ Detail,Ticking Field,,Boolean,,,0..1,"Signifies that an item has been cleared, finished, finalized. When checking accounts are called for, the tick or letter showing this was done appears in this field. Can also be used for identifying that the
 original document against which a payment or DR/CR memo applies has been reconciled.",チェック欄,項目が消去または完了されたことを示す。勘定のチェックが要求される場合、処理済を示すチェックマークまたは文字が指定される。支払またはDR/CRのメモに対する元文書が、消し込まれたことを確認するためにも使用可能。,CO21-45
 483,2,Attribute,,cor,Entry_ Detail,Document Remaining Balance,,Monetary,,,0..1,Balance remaining on the document,文書上残高,文書上の残高。,CO21-46
-484,2,Attribute,,cor,Entry_ Detail,UCR,,String,,,0..1,"Unique Consignment Reference or UCR. An ""origin to destination"" reference code for international consignments, developed in cooperation with the World Customs Organization and EAN International (EAN). (http://www.wcoomd.org/ie/EN/press/UCR_new_e.pdf)",UCRコード,"Unique Consignment ReferenceまたはUCR。国際委託販売のための""origin to destination""参照コード。World Customs OrganizationとEAN International (EAN)が共同で開発している。_x000D_
+484,2,Attribute,,cor,Entry_ Detail,UCR,,String,,,0..1,"Unique Consignment Reference or UCR. An ""origin to destination"" reference code for international consignments, developed in cooperation with the World Customs Organization and EAN International (EAN). (http://www.wcoomd.org/ie/EN/press/UCR_new_e.pdf)",UCRコード,"Unique Consignment ReferenceまたはUCR。国際委託販売のための""origin to destination""参照コード。World Customs OrganizationとEAN International (EAN)が共同で開発している。_x005F_x000D_
 (http://www.wcoomd.org/ie/EN/press/UCR_new_e.pdf)",CO21-47
 485,1,Class,,cor,Entry_ Header,,,,,,0..*,Parent for entry headers/journal entry headers.,【仕訳情報】,エントリヘッダー/仕訳記入ヘッダーの親タグ。,CO22
 486,2,Attribute,,cor,Entry_ Header,Date Posted,,Date Time,,,0..1,Date this entry was posted (validated) to the general ledger. May not represent the date of accounting significance which is represented by 'postingDate'.,転記済日付,この仕訳が総勘定元帳に転記された(検証された)日付。 postingDateで示されるような会計上意味のある日付を表さないかもしれない。,CO22-01
 487,2,Attribute,,cor,Entry_ Header,Creator,,String,,,0..1,Initials/name of operator originally entering.,仕訳作成者,最初に入力したオペレータのイニシャル/名前。,CO22-02
 488,2,Attribute,,cor,Entry_ Header,Last Modifier,,String,,,0..1,Identification for the last person modifying this entry before posting.,仕訳最終更新者,転記前に最後にこの仕訳を修正した者の識別子。,CO22-03
 489,2,Attribute,,cor,Entry_ Header,Responsible Person,,String,,,0..1,Identifier of person who created or originated or is otherwise responsible for the entry.,責任者,仕訳を作成したか、仕訳に責任を持つ者の識別子。,CO22-04
-490,2,Attribute,,cor,Entry_ Header,Type Code,,Token,,,0..1,"One of the following enumerated list: adjusting, budget, comparative, external-accountant, standard, passed-adjusting, eliminating, proposed, recurring, reclassifying, simulated, tax, other",種別識別子,"以下の値のうちのひとつ。_x000D_
-整理、予算、比較、外部会計事務所、通常、無視、消去、提案、反復、組替、シミュレーション、税、その他_x000D_
-[設定値のリスト]_x000D_
+490,2,Attribute,,cor,Entry_ Header,Type Code,,Token,,,0..1,"One of the following enumerated list: adjusting, budget, comparative, external-accountant, standard, passed-adjusting, eliminating, proposed, recurring, reclassifying, simulated, tax, other",種別識別子,"以下の値のうちのひとつ。_x005F_x000D_
+整理、予算、比較、外部会計事務所、通常、無視、消去、提案、反復、組替、シミュレーション、税、その他_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (adjusting：整理)、(budget：予算)、(comparative：比較)、(external-accountant：外部会計事務所)、(standard：通常)、(passed-adjusting：無視)、(eliminating：消去)、(proposed：提案)、(recurring：反復)、(reclassifying：組替)、(simulated：シミュレーション)、(tax：税)、(other：その他)",CO22-05
 491,2,Attribute,,cor,Entry_ Header,Posting Code,,String,,,0..1,"Code for posting to period, e.g., period 1-13, based on codes in an accounting period file. We do not recommend that software vendors export here, but suggest providing period end numbers for the buckets. Possibilities W1 through W53, M1 through M13, Q1-Q4. Developers and others creating output files are encouraged to supply an actual end date.",転記コード,転記の期間を表すコード。例えば、会計期間ファイルのコードにもとづく期間１～１３。ソフトウエアベンダーが、この値をエクスポートすることは推奨しない。期間の最終番号を提供することを勧める。可能な値としては、W1からW53、M1からM13、Q1からQ4など。開発者や出力ファイルの作成者には、実際の終了日付を提供することを勧める。,CO22-06
 492,2,Attribute,,cor,Entry_ Header,Number of Entries,,Integer,,,0..1,The total number of entries.,仕訳総数,仕訳の総数。,CO22-07
@@ -647,32 +647,32 @@ pl      payroll journal
 sj      sales journal
 se      standard entries
 ud      user defined
-ot      other sources of entries",元仕訳帳種別,"元仕訳帳。仕訳が処理される仕訳帳のコード。コードは仕訳帳に一意な指標であり、以下から選択する。_x000D_
-出金(仕入先への小切手送付)、入金(他者からの小切手受領)、固定資産、振替、一般仕訳帳、在庫管理、個別原価、仕入帳(仕入による負債)、賃金台帳、売上台帳、通常仕訳、ユーザ定義、その他_x000D_
-[設定値のリスト]_x000D_
+ot      other sources of entries",元仕訳帳種別,"元仕訳帳。仕訳が処理される仕訳帳のコード。コードは仕訳帳に一意な指標であり、以下から選択する。_x005F_x000D_
+出金(仕入先への小切手送付)、入金(他者からの小切手受領)、固定資産、振替、一般仕訳帳、在庫管理、個別原価、仕入帳(仕入による負債)、賃金台帳、売上台帳、通常仕訳、ユーザ定義、その他_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (cd：出金)、(cr：入金)、(fa：固定資産)、(gi：振替)、(gj：一般仕訳帳)、(im：在庫管理)、(jc：個別原価)、(pj：仕入帳)、(pl：賃金台帳)、(sj：売上台帳)、(se：通常仕訳)、(ud：ユーザ定義)、(ot：その他)",CO22-10
 496,2,Attribute,,cor,Entry_ Header,Journal Description,,String,,,0..1,"Source journal (full description of general journal, payroll journal, accountant entries). A more easily readable journal indication. The most common journals are: Purchases, Sales, Cash, and General Journal.",元仕訳帳説明,元仕訳帳(一般仕訳、給与台帳、会計事務所入力の完全な説明)。 よりわかりやすい仕訳帳の指標。 最も一般的な仕訳帳は、次の通り。 仕入、売上、現金、一般仕訳。,CO22-11
 497,2,Attribute,,cor,Entry_ Header,Entry Origin,,String,,,0..1,"Origin of entry: accrual, manual entry, imported entry, exchange gain or loss",仕訳起源,仕訳の起源。発生、手入力、インポート入力、為替換算による損益。,CO22-12
 498,2,Attribute,,cor,Entry_ Header,Entry ID,,String,,,0..1,Identifier within source journal,仕訳識別子,元仕訳帳中の識別子。,CO22-13
 499,2,Attribute,,cor,Entry_ Header,Entry Description,,String,,,0..1,Description of entry described by this entry header (e.g. Opening Balance),仕訳説明,このエントリヘッダーによって説明された仕訳の説明(例えば、期首残高),CO22-14
-500,2,Attribute,,cor,Entry_ Header,Entry Qualifier,,Token,,,0..1,"Entry Qualifier - An enumerated field that qualifies the type of entry, specifically useful for general ledger and trial balance environments when it is important to state the values represented are summarized as of the reporting date - opening or closing balances. In accounting systems, this is often known as BBF (balance brought forward.) Permitted values are: standard, balance-brought-forward and other.",仕訳修飾子,"仕訳の修飾子。総勘定元帳や試算表で、開始残高や決算残高のように、記された値が報告日で集約されていることを明示することが重要なときに有用な、仕訳の種別を修飾するもの。会計システムにおいて、BBF（繰越残高）として知られるもの。指定可能な値は以下。標準、繰越残高、その他_x000D_
-[設定値のリスト]_x000D_
+500,2,Attribute,,cor,Entry_ Header,Entry Qualifier,,Token,,,0..1,"Entry Qualifier - An enumerated field that qualifies the type of entry, specifically useful for general ledger and trial balance environments when it is important to state the values represented are summarized as of the reporting date - opening or closing balances. In accounting systems, this is often known as BBF (balance brought forward.) Permitted values are: standard, balance-brought-forward and other.",仕訳修飾子,"仕訳の修飾子。総勘定元帳や試算表で、開始残高や決算残高のように、記された値が報告日で集約されていることを明示することが重要なときに有用な、仕訳の種別を修飾するもの。会計システムにおいて、BBF（繰越残高）として知られるもの。指定可能な値は以下。標準、繰越残高、その他_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (standard：標準)、(balance-brought-forward：繰越残高)、(other：その他)",CO22-15
 501,2,Attribute,,cor,Entry_ Header,Entry Qualifier Description,,String,,,0..1,Free format description of the entry qualifier,仕訳修飾子説明,仕訳の修飾子の説明。,CO22-16
 502,2,Attribute,,cor,Entry_ Header,Batch ID for Entry Group,,String,,,0..1,ID for a batch for this group of entries,仕訳グループ識別子,この仕訳の集合に付ける、束の識別子。,CO22-17
 503,2,Attribute,,cor,Entry_ Header,Batch Description,,String,,,0..1,Description of this batch,仕訳グループ説明,この仕訳の束の説明。,CO22-18
 504,2,Attribute,,cor,Entry_ Header,Total Debits,,Monetary,,,0..1,The total of all debit amounts.,借方合計,借方金額の合計値。,CO22-19
 505,2,Attribute,,cor,Entry_ Header,Total Credits,,Monetary,,,0..1,The total of all credit amounts.,貸方合計,貸方金額の合計値。,CO22-20
-506,2,Attribute,,cor,Entry_ Header,Type of Difference Between Book and Tax,,Token,,,0..1,"Enumerated field with possible values of permanent, temporary or none indicating the type of difference between book and tax accounting methods. Omission of this field is equivalent to ""none""",帳簿価税務簿価差異種別,"帳簿と税務会計処理方法との差異の種別を示す値。永久か一時的かまたは無し。値の省略時は「無し」と同じ。_x000D_
-[設定値のリスト]_x000D_
+506,2,Attribute,,cor,Entry_ Header,Type of Difference Between Book and Tax,,Token,,,0..1,"Enumerated field with possible values of permanent, temporary or none indicating the type of difference between book and tax accounting methods. Omission of this field is equivalent to ""none""",帳簿価税務簿価差異種別,"帳簿と税務会計処理方法との差異の種別を示す値。永久か一時的かまたは無し。値の省略時は「無し」と同じ。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (permanent：永久)、(temporary：一時的)、(none：無し)",CO22-21
 507,2,Attribute,,cor,Entry_ Header,Elimination Code,,String,,,0..1,Informs destination ledger this is an intracompany entry which eliminates in consolidation,相殺消去コード,連結決算時に消去される連結会社間仕訳であることを、受取側の元帳に通知する。,CO22-22
 508,2,Attribute,,cor,Entry_ Header,Budget Scenario Period Start,,Date Time,,,0..1,Start of period covered by associated budgetScenario,予算シナリオ期間開始日付,関係付けられたbudgetScenarioがカバーする期間の開始日。,CO22-23
 509,2,Attribute,,cor,Entry_ Header,Budget Scenario Period End,,Date Time,,,0..1,End of period covered by associated budgetScenario,予算シナリオ期間終了日付,関係付けられたbudgetScenarioがカバーする期間の終了日。,CO22-24
 510,2,Attribute,,cor,Entry_ Header,Scenario Description,,String,,,0..1,Text related to budgetScenario,シナリオ説明,budgetScenarioに関する記述。,CO22-25
 511,2,Attribute,,cor,Entry_ Header,Scenario Code,,String,,,0..1,"Code for a budget scenario identifier (such as PB for 'preliminary budget', or RB for 'revised budget', or other identifier for entryType)",シナリオコード,予算シナリオの識別コード。例えば、「PB」（予備予算）、「RB」（補正予算）、または他の仕訳種別の識別子。,CO22-26
-512,2,Attribute,,cor,Entry_ Header,Budget Allocation Code,,Token,,,0..1,"Code associated with the calculation formula: e.g. (D)ivide by number of periods, (T)otal for period given",予算配分コード,"計算式に関係付けられたコード。例えば、期間数での分割、与えられた期間の合計_x000D_
-[設定値のリスト]_x000D_
+512,2,Attribute,,cor,Entry_ Header,Budget Allocation Code,,Token,,,0..1,"Code associated with the calculation formula: e.g. (D)ivide by number of periods, (T)otal for period given",予算配分コード,"計算式に関係付けられたコード。例えば、期間数での分割、与えられた期間の合計_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
 (D：期間数での分割)、(T：与えられた期間の合計)",CO22-27
 513,2,Attribute,,cor,Entry_ Header,"ID for Reversing, Standard or Master Entry",,String,,,0..1,"For standard, reversing, master, cancelling or other entries an ID associated with those entries.",反対/通常/マスタ仕訳識別子,通常、反対、マスタ、取消または他の仕訳のための、それらの仕訳を関連付けるID。,CO22-28
 514,2,Attribute,,cor,Entry_ Header,Recurring Standard Description,,String,,,0..1,Description to accompany standard or recurring ID,反復通常仕訳説明,通常仕訳または反復仕訳のIDの説明。,CO22-29
@@ -732,289 +732,233 @@ ot      other sources of entries",元仕訳帳種別,"元仕訳帳。仕訳が�
 568,2,Composition,,lnk,Summary Context,,,,lnk,Summary Context Entity,0..1,This class allows to explicitly indicate the entity information for a fact in the FR instance.,【集約エンティティ】,集約のエンティティの記述の指定場所。,LN13-01
 569,2,Composition,,lnk,Summary Context,,,,lnk,Summary Context Period (choice),0..1,"This class allows to explicitly indicate the period information for a fact in the FR instance. Instant, Period Start/End and Forever are alternative.",【集約ピリオド】,集約のピリオドの記述の指定場所。,LN13-02
 570,2,Composition,,lnk,Summary Context,,,,lnk,Summary Context Scenario,0..1,This class allows to explicitly indicate the scenario information for a fact in the FR instance.,【集約シナリオ】,集約のシナリオの記述の指定場所。,LN13-03
-571,1,Class,,btx,Header_ Amount Structure,,,,,,0..*,"Structure representing monetary amounts and currency information applicable to the document as a whole, such as document-level totals or aggregated tax amounts.",【ヘッダー金額構造】,文書全体に適用される金額や通貨情報（文書レベルの合計額や集計された税額など）を表現する構造。,BT01
-572,2,Attribute,,btx,Header_ Amount Structure,Amount,,Monetary,,,1,Numeric value of the monetary amount expressed in the specified currency.,金額,指定された通貨で表現された金額の数値。,BT01-01
-573,2,Attribute,,btx,Header_ Amount Structure,Amount Type,,Token,,,0..1,"Code or text specifying the type or role of the amount, such as tax amount, tax base amount, allowance amount, or charge amount.",金額種別,税額、課税標準額、値引金額、追加請求金額など、金額の種類または役割を指定するコードまたはテキスト。,BT01-02
-574,2,Attribute,,btx,Header_ Amount Structure,Currency Code,,Token,,,0..1,"Code specifying the currency in which the amount is expressed, typically an ISO 4217 currency code.",通貨コード,金額が表現される通貨を指定するコード。通常は ISO 4217 通貨コードを用いる。,BT01-03
-575,2,Attribute,,btx,Header_ Amount Structure,Currency Code Type,,Token,,,0..1,"Code specifying the role of the currency used for the amount, such as functional currency, local currency, reporting currency, or transaction currency.",通貨コード種別,金額に対する通貨の役割（機能通貨、ローカル通貨、報告通貨、取引通貨など）を指定するコード。,BT01-04
-576,2,Attribute,,btx,Header_ Amount Structure,Header_ Amount Type,,String,,,0..1,"Code or text specifying the type or role of the amount, such as tax amount, tax base amount, allowance amount, or charge amount.",金額種別,税額、課税標準額、値引金額、追加請求金額など、金額の種類または役割を指定するコードまたはテキスト。,BT01-05
-577,1,Class,,btx,Detail_ Amount Structure,,,,,,0..*,"Structure representing monetary amounts and currency information applicable to an individual line, such as line-level net amounts, tax calculation bases, allowances, or charges.",【行金額構造】,個々の明細行に適用される金額や通貨情報（行レベルの正味金額、税計算基礎額、値引または追加請求など）を表現する構造。,BT02
-578,2,Attribute,,btx,Detail_ Amount Structure,Amount,,Monetary,,,1,Numeric value of the monetary amount expressed in the specified currency.,金額,指定された通貨で表現された金額の数値。,BT02-01
-579,2,Attribute,,btx,Detail_ Amount Structure,Amount Type,,Token,,,0..1,"Code or text specifying the type or role of the amount, such as tax amount, tax base amount, allowance amount, or charge amount.",金額種別,税額、課税標準額、値引金額、追加請求金額など、金額の種類または役割を指定するコードまたはテキスト。,BT02-02
-580,2,Attribute,,btx,Detail_ Amount Structure,Currency Code,,Token,,,0..1,"Code specifying the currency in which the amount is expressed, typically an ISO 4217 currency code.",通貨コード,金額が表現される通貨を指定するコード。通常は ISO 4217 通貨コードを用いる。,BT02-03
-581,2,Attribute,,btx,Detail_ Amount Structure,Currency Code Type,,Token,,,0..1,"Code specifying the role of the currency used for the amount, such as functional currency, local currency, reporting currency, or transaction currency.",通貨コード種別,金額に対する通貨の役割（機能通貨、ローカル通貨、報告通貨、取引通貨など）を指定するコード。,BT02-04
-582,2,Attribute,,btx,Detail_ Amount Structure,Detail_ Amount Type,,String,,,0..1,"Code or text specifying the type or role of the amount, such as tax amount, tax base amount, allowance amount, or charge amount.",金額種別,税額、課税標準額、値引金額、追加請求金額など、金額の種類または役割を指定するコードまたはテキスト。,BT02-05
-583,1,Class,,btx,Header_ Identifier_ Contact,,,,,,0..*,Identifier Contact Information Class,【CVE担当者情報】,CVE識別子の担当者情報の構造体。,BT03
-584,2,Attribute,,btx,Header_ Identifier_ Contact,Contact Prefix,,String,,,0..1,"Prefix (e.g. Dr., Mr., Mrs.)",敬称,敬称(Dr.、Mr.、Mrs.など),BT03-01
-585,2,Attribute,,btx,Header_ Identifier_ Contact,Contact Last Name,,String,,,0..1,Last or family name,姓,姓,BT03-02
-586,2,Attribute,,btx,Header_ Identifier_ Contact,Contact First Name,,String,,,0..1,First or given name,名,名、クリスチャンネーム,BT03-03
-587,2,Attribute,,btx,Header_ Identifier_ Contact,Contact Suffix,,String,,,0..1,"Suffix (e.g. MD, CPA, Jr.)",付加名称,付加名称(MD、CPA、Jr.など),BT03-04
-588,2,Attribute,,btx,Header_ Identifier_ Contact,Contact Attention Line,,String,,,0..1,Attention Line,アテンションライン,アテンションライン,BT03-05
-589,2,Attribute,,btx,Header_ Identifier_ Contact,Contact Position Role,,String,,,0..1,Position or role,地位/役職,地位や役職。,BT03-06
-590,2,Attribute,,btx,Header_ Identifier_ Contact,Contact Contact Type,,String,,,0..1,"Role of contact. Examples include: Source Service, Sender, Recipient, Invoicer, Auditor, Accountant",担当者役割,担当者の役割。例：ソースサービス、送付元、受取人、請求先、監査人、会計事務所。,BT03-07
-591,2,Attribute,,btx,Header_ Identifier_ Contact,Contact Location ID cross reference,,String,,,0..1,This code is used to associate the contact with a specific location for the Entity. Its value should be the same as that of the organizationAddressLocationIdentifier,所在地相互参照情報,担当者と事業体の位置情報を関係付けるためのコード。organizationAddressLocationIdentifierと同じ値であるべき。,BT03-08
-592,2,Attribute,,btx,Header_ Identifier_ Contact,Contact Active,,Boolean,,,0..1,"Boolean to indicate whether the contact is active (=""true"") or inactive (=""false"")",担当者有効性,担当者が有効か無効かを示すブール値。,BT03-09
-593,1,Class,,btx,Detail_ Identifier_ Contact,,,,,,0..*,Identifier Contact Information Class,【CVE担当者情報】,CVE識別子の担当者情報の構造体。,BT04
-594,2,Attribute,,btx,Detail_ Identifier_ Contact,Contact Prefix,,String,,,0..1,"Prefix (e.g. Dr., Mr., Mrs.)",敬称,敬称(Dr.、Mr.、Mrs.など),BT04-01
-595,2,Attribute,,btx,Detail_ Identifier_ Contact,Contact Last Name,,String,,,0..1,Last or family name,姓,姓,BT04-02
-596,2,Attribute,,btx,Detail_ Identifier_ Contact,Contact First Name,,String,,,0..1,First or given name,名,名、クリスチャンネーム,BT04-03
-597,2,Attribute,,btx,Detail_ Identifier_ Contact,Contact Suffix,,String,,,0..1,"Suffix (e.g. MD, CPA, Jr.)",付加名称,付加名称(MD、CPA、Jr.など),BT04-04
-598,2,Attribute,,btx,Detail_ Identifier_ Contact,Contact Attention Line,,String,,,0..1,Attention Line,アテンションライン,アテンションライン,BT04-05
-599,2,Attribute,,btx,Detail_ Identifier_ Contact,Contact Position Role,,String,,,0..1,Position or role,地位/役職,地位や役職。,BT04-06
-600,2,Attribute,,btx,Detail_ Identifier_ Contact,Contact Contact Type,,String,,,0..1,"Role of contact. Examples include: Source Service, Sender, Recipient, Invoicer, Auditor, Accountant",担当者役割,担当者の役割。例：ソースサービス、送付元、受取人、請求先、監査人、会計事務所。,BT04-07
-601,2,Attribute,,btx,Detail_ Identifier_ Contact,Contact Location ID cross reference,,String,,,0..1,This code is used to associate the contact with a specific location for the Entity. Its value should be the same as that of the organizationAddressLocationIdentifier,所在地相互参照情報,担当者と事業体の位置情報を関係付けるためのコード。organizationAddressLocationIdentifierと同じ値であるべき。,BT04-08
-602,2,Attribute,,btx,Detail_ Identifier_ Contact,Contact Active,,Boolean,,,0..1,"Boolean to indicate whether the contact is active (=""true"") or inactive (=""false"")",担当者有効性,担当者が有効か無効かを示すブール値。,BT04-09
-603,1,Class,,btx,Registered Identifier,,,,,,0..*,A structured identifier comprising an identifier value and the registration or identification scheme needed to interpret it.,【登録識別子】,識別子の値と、それを解釈するための登録・識別制度を組み合わせて表す構造化された識別子。,BT05
-604,2,Attribute,,btx,Registered Identifier,ID,,Token,,,1,The registered identifier value assigned under the specified identification scheme.,識別子,指定された識別制度に基づいて割り当てられた登録識別子の値。,BT05-01
-605,2,Attribute,,btx,Registered Identifier,Identification Scheme,,Token,,,1,The registration or identification scheme under which the identifier is assigned and interpreted.,識別制度,識別子の割当てと解釈の根拠となる登録・識別制度。,BT05-02
-606,1,Class,,btx,Detail_ Identifier Reference,,,,,,0..*,"Identification for customer, vendor, or employee.",【CVE情報】,顧客、仕入先、従業員のための識別子。,BT06
-607,2,Attribute,PK,btx,Detail_ Identifier Reference,Identifier Code,,String,,,0..1,Unique ID Number associated with identifierReference,CVE識別番号（内部）,identifierReferenceに関係付けられた、内部ID番号。,BT06-01
-608,2,Attribute,,btx,Detail_ Identifier Reference,Identifier Purpose,,String,,,0..1,"Freeform for codes like purchasing, billing, manufacturing at identifier level.",CVE目的,購買、請求、製造などの、CVE識別子のレベルのコードの自由記述。,BT06-02
-609,2,Attribute,,btx,Detail_ Identifier Reference,Identifier Active,,Boolean,,,0..1,"Boolean to indicate whether the identifier is active (=""true"") or inactive (=""false"")",CVE有効性,CVE識別子が有効か無効かを示すブール値。,BT06-03
-610,2,Attribute,,btx,Detail_ Identifier Reference,Identifier Organization Type,,Token,,,0..1,"Identifier Organization Type. Enumerated as: individual, organization, other.",CVE組織種別,"CVE識別子の組織種別。_x000D_
-[設定値のリスト]_x000D_
-(individual：個人)、(organization：組織)、(other：その他)",BT06-04
-611,2,Attribute,,btx,Detail_ Identifier Reference,Identifier Organization Type Description,,String,,,0..1,Free format description of the identifier organization type,CVE組織種別説明,CVE識別子の組織種別の説明。,BT06-05
-612,2,Attribute,,btx,Detail_ Identifier Reference,Identifier Description,,String,,,0..1,Textual description of identifierReference.,CVE説明,identifierReferenceの説明。,BT06-06
-613,2,Attribute,,btx,Detail_ Identifier Reference,Identifier Type,,Token,,,0..1,"Entity type (enumerated): C, customer, E, employee, V, vendor, O, other, I, salesperson-internal, X, salesperson-external, N, contractor.",CVE種別,実体の種別。_x000D_ [設定値のリスト]_x000D_ (C)、(customer：顧客)、(E)、(employee：従業員)、(V)、(vendor：仕入先)、(O)、(other：その他)、(I)、(salesperson-internal：店舗内販売員)、(X)、(salesperson-external：外交販売員)、(N)、(contractor：請負者),BT06-07
-614,2,Attribute,,btx,Detail_ Identifier Reference,Identifier Category,,String,,,0..1,"For use as Customer, Vendor or Employee Class (such as Residential/Commercial/Institutional/Government or Retail/Wholesale or other classifications used by business).",CVEカテゴリ,顧客、仕入先、従業員の分類に使用する。　（住居/商業/機関/政府や、小売/卸や、ビジネスで使用されるその他の分類）。,BT06-08
-615,2,Composition,,btx,Detail_ Identifier Reference,,,,cor,External Authority,0..*,Class containing references to an external authority associated with identifier,【外部機関】,識別子と関係付けられる外部機関への参照情報を含む構造体。,BT06-09
-616,2,Composition,,btx,Detail_ Identifier Reference,,,,cor,Identifier_ Phone,0..*,Phone number related to Identifier.,【電話番号】,CVE識別子の電話番号。,BT06-10
-617,2,Composition,,btx,Detail_ Identifier Reference,,,,cor,Identifier_ Fax,0..*,Fax number class related to identifier.,【FAX番号】,CVE識別子のFAX番号の構造体。,BT06-11
-618,2,Composition,,btx,Detail_ Identifier Reference,,,,cor,Identifier_ Email,0..*,Email address for Identifier.,【CVEEメールアドレス】,CVE識別子のEメールアドレス。,BT06-12
-619,2,Composition,,btx,Detail_ Identifier Reference,,,,cor,Identifier_ Address,0..*,"Address (block) of customer, vendor, employee for integration purposes, VAT.",【CVE住所】,統合目的やVATのための、顧客、仕入先、従業員の住所(ブロック)。,BT06-13
-620,2,Composition,,btx,Detail_ Identifier Reference,,,,cor,Identifier_ Contact,0..*,Identifier Contact Information Class,【CVE担当者情報】,CVE識別子の担当者情報の構造体。,BT06-14
-621,2,Composition,,btx,Detail_ Identifier Reference,,,,btx,Registered Identifier,0..*,A structured identifier comprising an identifier value and the registration or identification scheme needed to interpret it.,【登録識別子】,識別子の値と、それを解釈するための登録・識別制度を組み合わせて表す構造化された識別子。,BT06-15
-622,1,Class,,btx,Header_ Identifier Reference,,,,,,0..*,"Identification for customer, vendor, or employee.",【CVE情報】,顧客、仕入先、従業員のための識別子。,BT07
-623,2,Attribute,PK,btx,Header_ Identifier Reference,Identifier Code,,String,,,0..1,Unique ID Number associated with identifierReference,CVE識別番号（内部）,identifierReferenceに関係付けられた、内部ID番号。,BT07-01
-624,2,Attribute,,btx,Header_ Identifier Reference,Identifier Purpose,,String,,,0..1,"Freeform for codes like purchasing, billing, manufacturing at identifier level.",CVE目的,購買、請求、製造などの、CVE識別子のレベルのコードの自由記述。,BT07-02
-625,2,Attribute,,btx,Header_ Identifier Reference,Identifier Active,,Boolean,,,0..1,"Boolean to indicate whether the identifier is active (=""true"") or inactive (=""false"")",CVE有効性,CVE識別子が有効か無効かを示すブール値。,BT07-03
-626,2,Attribute,,btx,Header_ Identifier Reference,Identifier Organization Type,,Token,,,0..1,"Identifier Organization Type. Enumerated as: individual, organization, other.",CVE組織種別,"CVE識別子の組織種別。_x000D_
-[設定値のリスト]_x000D_
-(individual：個人)、(organization：組織)、(other：その他)",BT07-04
-627,2,Attribute,,btx,Header_ Identifier Reference,Identifier Organization Type Description,,String,,,0..1,Free format description of the identifier organization type,CVE組織種別説明,CVE識別子の組織種別の説明。,BT07-05
-628,2,Attribute,,btx,Header_ Identifier Reference,Identifier Description,,String,,,0..1,Textual description of identifierReference.,CVE説明,identifierReferenceの説明。,BT07-06
-629,2,Attribute,,btx,Header_ Identifier Reference,Identifier Type,,Token,,,0..1,"Entity type (enumerated): C, customer, E, employee, V, vendor, O, other, I, salesperson-internal, X, salesperson-external, N, contractor.",CVE種別,実体の種別。_x000D_ [設定値のリスト]_x000D_ (C)、(customer：顧客)、(E)、(employee：従業員)、(V)、(vendor：仕入先)、(O)、(other：その他)、(I)、(salesperson-internal：店舗内販売員)、(X)、(salesperson-external：外交販売員)、(N)、(contractor：請負者),BT07-07
-630,2,Attribute,,btx,Header_ Identifier Reference,Identifier Category,,String,,,0..1,"For use as Customer, Vendor or Employee Class (such as Residential/Commercial/Institutional/Government or Retail/Wholesale or other classifications used by business).",CVEカテゴリ,顧客、仕入先、従業員の分類に使用する。　（住居/商業/機関/政府や、小売/卸や、ビジネスで使用されるその他の分類）。,BT07-08
-631,2,Composition,,btx,Header_ Identifier Reference,,,,cor,External Authority,0..*,Class containing references to an external authority associated with identifier,【外部機関】,識別子と関係付けられる外部機関への参照情報を含む構造体。,BT07-09
-632,2,Composition,,btx,Header_ Identifier Reference,,,,cor,Identifier_ Phone,0..*,Phone number related to Identifier.,【電話番号】,CVE識別子の電話番号。,BT07-10
-633,2,Composition,,btx,Header_ Identifier Reference,,,,cor,Identifier_ Fax,0..*,Fax number class related to identifier.,【FAX番号】,CVE識別子のFAX番号の構造体。,BT07-11
-634,2,Composition,,btx,Header_ Identifier Reference,,,,cor,Identifier_ Email,0..*,Email address for Identifier.,【CVEEメールアドレス】,CVE識別子のEメールアドレス。,BT07-12
-635,2,Composition,,btx,Header_ Identifier Reference,,,,cor,Identifier_ Address,0..*,"Address (block) of customer, vendor, employee for integration purposes, VAT.",【CVE住所】,統合目的やVATのための、顧客、仕入先、従業員の住所(ブロック)。,BT07-13
-636,2,Composition,,btx,Header_ Identifier Reference,,,,cor,Identifier_ Contact,0..*,Identifier Contact Information Class,【CVE担当者情報】,CVE識別子の担当者情報の構造体。,BT07-14
-637,2,Composition,,btx,Header_ Identifier Reference,,,,btx,Registered Identifier,0..*,A structured identifier comprising an identifier value and the registration or identification scheme needed to interpret it.,【登録識別子】,識別子の値と、それを解釈するための登録・識別制度を組み合わせて表す構造化された識別子。,BT07-15
-638,1,Class,,btx,Header_ XBRL,,,,,,0..*,This will roll up to XBRL reporting information - this is a parent - repeatable so that the same item can be reported through many taxonomies. Care should be taken to consider what happens if people post to the same account but different XBRL elements.,【取引ヘッダXBRL情報】,XBRLレポート情報へのロールアップ情報。親タグであり、同じ項目が複数のタクソノミを通じて報告されうるように繰り返し可能。同一の勘定科目を異なるXBRL要素に転記した場合にどうなるか、注意深く考慮すべきである。,BT08
-639,2,Attribute,,btx,Header_ XBRL,XBRL Allocation,,Token,,,0..1,"Indicates that the information being given is beginning_balance, ending_balance, period_change.",XBRL割当,"与えられた情報が、期首残高、期末残高、期中増減のいずれであるかを示す。_x000D_
-[設定値のリスト]_x000D_
-(beginning_balance：期首残高)、(ending_balance：期末残高)、(period_change：期中増減)",BT08-01
-640,2,Attribute,,btx,Header_ XBRL,XBRL Summary Reporting Element,,QName,,,0..1,Associated XBRL element or XML element within an XML taxonomy - mapping to an XBRL concept.,集約報告エレメント,関係付けられた、XMLタクソノミ中のXBRL要素または、XML要素。XBRLコンセプトへのマッピング。,BT08-02
-641,2,Attribute,,btx,Header_ XBRL,XBRL Detail Matching Element,,QName,,,0..1,Associated XBRL element in XBRL-GL instance.,明細対応エレメント,関係付けられた、XBRL-GLインスタンス中のXBRL要素。,BT08-03
-642,2,Attribute,,btx,Header_ XBRL,XBRL Summary Tuple Path,,String,,,0..1,Specific filter for parent class class. This value must be valid XPath. And the result of the XPath must be resolved to a node.,集約タプルパス,親タグ構造を特定するフィルタ。妥当なXPath記述でなければならない。XPathの結果はノードでなければならない。,BT08-04
-643,2,Attribute,,btx,Header_ XBRL,XBRL Detailed Content Filter,,String,,,0..1,"Filtering mechanism. This value must be valid XPath. And the result of the XPath must be resolved to boolean. If the resulting value is false, the entry  must not mapped into specified facts in F/S.",明細コンテントフィルタ,フィルタリング手段。妥当なXPath記述でなければならない。XPathの結果はブール値でなければならない。結果がfalseの場合は、仕訳はF/S内の特定のfactsにマッピングされてはならない。,BT08-05
-644,2,Attribute,,btx,Header_ XBRL,XBRL Reporting Date Selector,,Token,,,0..1,This holds the concepts in GL data to create FS contexts.  The value must be a list of QName. Each QName must be resolved to GL items. Order of the items defines priority to access.,報告日付セレクタ,F/Sのコンテキストを生成するためのGLデータの概念を示す。QNameのリストでなければならない。個々のQNameはGL項目を示さなければならない。項目の並びはアクセスの優先度を示す。,BT08-06
-645,2,Attribute,,btx,Header_ XBRL,XBRL Summary Operator,,String,,,0..1,The operator applied to the amount or quantity when it is rolled up to a summary reporting element.,,,BT08-07
-646,2,Attribute,,btx,Header_ XBRL,XBRL Summary Unit Numerator,,Token,,,1..1,This holds the list of measure information for unit numerator. The value must be a list of QName. Each QName must be resolved to be measure information such as iso4217:usd.,集約ユニット分子,集約のユニットの分子の測定情報のリスト。QNameのリストでなければならない。QNameはiso4217:usdのような、解決される測定情報でなければならない。,BT08-08
-647,2,Attribute,,btx,Header_ XBRL,XBRL Summary Unit Denominator,,Token,,,0..1,This holds the list of measure information for unit denominator. The value must be a list of QName. Each QName must be resolved to be measure information such as iso4217:usd.,集約ユニット分母,集約のユニットの分母の測定情報のリスト。QNameのリストでなければならない。QNameはiso4217:usdのような、解決される測定情報でなければならない。,BT08-09
-648,2,Attribute,,btx,Header_ XBRL,XBRL Summary Reporting Taxonomy ID Reference,,String,,,0..1,"Reference to the ID of the relevant target reporting taxonomy, defined in the [summaryReportingTaxonomies] class at [documentInfo] level. Allows consuming applications to identify sets of [xbrlInfo] classs that point to a specific taxonomy.",集約報告タクソノミ識別子参照情報,関連する報告タクソノミの識別子への参照情報。documentInfo内のsummaryReportingTaxonomies構造体で定義される。特定のタクソノミを示すxbrlInfo構造体の集合を、アプリケーションが識別できるようにする。,BT08-10
-649,1,Class,,btx,Header_ Tax,,,,,,0..*,Class for holding tax related information,【税情報】,税関連の情報のタプル。,BT09
-650,2,Attribute,,btx,Header_ Tax,Tax Authority,,String,,,0..1,Name of the relevant tax authority,課税庁,関係する課税庁の名前。,BT09-01
-651,2,Attribute,,btx,Header_ Tax,Tax Table Code,,String,,,0..1,Tax table code used by the relevant tax authority,税率表コード,関係する課税庁で使用される税率表のコード。,BT09-02
-652,2,Attribute,,btx,Header_ Tax,Tax Description,,String,,,0..1,Description of tax authority,課税庁説明,課税庁の説明。,BT09-03
-653,2,Attribute,,btx,Header_ Tax,Amount of Taxes,,Monetary,,,0..1,Amount of taxes,税額,税額。,BT09-04
-654,2,Attribute,,btx,Header_ Tax,Basis for Taxation,,Monetary,,,0..1,Basis for taxation,課税基準,課税基準。,BT09-05
-655,2,Attribute,,btx,Header_ Tax,Tax Percentage Rate,,Pure,,,0..1,Percent rate for VAT or other taxes normally a number between 0 and 1.0 - e.g. 50% is represented as 0.5,税率,"VAT(物品税)またはその他の税のパーセント比率。_x000D_
-0から1.0の間の値。たとえば50%は0.5とあらわす。",BT09-06
-656,2,Attribute,,btx,Header_ Tax,Tax Category,,String,,,0..1,A class or category of taxes,税区分,税のクラス又はカテゴリ。,BT09-07
-657,2,Attribute,,btx,Header_ Tax,Tax Comment/Exemption Reason,,String,,,0..1,Additional text/code for exemption reasons or other comments.,税コメント/免税理由,免税理由やその他のコメントのための、追加の文またはコード。,BT09-08
-658,2,Attribute,,btx,Header_ Tax,Tax Amount in Foreign Currency,,Monetary,,,0..1,"If the tax is in a foreign currency, the amount of tax in that currency",外貨建税額,税が外貨建ての場合の、税額。,BT09-09
-659,2,Attribute,,btx,Header_ Tax,Tax Foreign Currency,,QName,,,0..1,"If the tax is in a foreign currency, that currency",外貨建税額通貨,税が外貨建ての場合の、通貨。,BT09-10
-660,2,Attribute,,btx,Header_ Tax,Tax Exchange Rate Date,,Date Time,,,0..1,"If the tax is in a foreign currency, the date or date and time of the exchange rate used",税額換算レート日付,税が外貨建ての場合の、換算レートの日付または日付/時刻。,BT09-11
-661,2,Attribute,,btx,Header_ Tax,Tax Exchange Rate,,Pure,,,0..1,"If the tax is in a foreign currency, the exchange rate used expressed as national currency divided by foreign currency",税額換算レート,税が外貨建ての場合の、換算レート。自国通貨を外貨で割った値。,BT09-12
-662,2,Attribute,,btx,Header_ Tax,Tax Exchange Rate Source,,String,,,0..1,"If the tax is in a foreign currency, source of exchange rate - for example, Reuters, Bloomberg",税額換算レート情報源,"税が外貨建ての場合の、換算レートの情報源。たとえば、Reuters, Bloomberg",BT09-13
-663,2,Attribute,,btx,Header_ Tax,Tax Exchange Rate Type,,String,,,0..1,"If the tax is in a foreign currency, type of exchange rate - for example, spot rate, forward contract etc.",税額換算レート種別,税が外貨建ての場合の、換算レートの種別。たとえば、スポット・レート、先物など。,BT09-14
-664,2,Attribute,,btx,Header_ Tax,Tax Exchange Rate Comment,,String,,,0..1,"If the tax is in a foreign currency, comment about exchange rate used",税額換算レートコメント,税が外貨建ての場合の、換算レートに関するコメント。,BT09-15
-665,2,Attribute,,btx,Header_ Tax,Tax Type,,Token,,,0..1,"Type of tax regime or tax family applicable to this tax occurrence, distinct from its tax category.",税種別,この税出現に適用される税制又は税体系の種別。税区分とは異なる。,BT09-16
-666,2,Attribute,,btx,Header_ Tax,Tax Exemption Reason Code,,Token,,,0..1,Code identifying the reason why the tax occurrence is exempt from tax.,免税理由コード,この税出現が免税となる理由を識別するコード。,BT09-17
-667,2,Attribute,,btx,Header_ Tax,Tax Exemption Reason Text,,String,,,0..1,Human-readable text describing the reason why the tax occurrence is exempt from tax.,免税理由テキスト,この税出現が免税となる理由を説明する可読テキスト。,BT09-18
-668,1,Class,,btx,Business Transactions,,,,,,1..*,"Economic event represented by one or more business documents and corresponding accounting entries, such as orders, shipments, invoices, and journal entries.",【ビジネス取引】,XBRL GLのルート要素。 注文、出荷、請求書およびそれに対応する仕訳など、1つまたは複数の業務文書と会計仕訳によって表現される経済事象。,BT10
-669,2,Composition,,btx,Business Transactions,,,,cor,Document Information,1..1,Parent for descriptive information about the Transaction Entries Class in which it is contained.,【文書情報】,この取引文書に関する情報の親タグ。,BT10-01
-670,2,Composition,,btx,Business Transactions,,,,cor,Entity_ Party,0..1,Holder for entity information - information about the reporting organization.,【事業体情報】,事業体情報（報告組織に関する情報）の入れ物。,BT10-02
-671,2,Composition,,btx,Business Transactions,,,,btx,Transaction_ Header,0..*,Parent class grouping transaction document header records.,【取引ヘッダ】,取引文書のヘッダ・レコードをまとめて保持する親クラス。,BT10-03
-672,1,Class,,btx,Referenced Document,,,,,,0..*,"A tool to capture the flow of related documents in the business process. Some needs of end users require a greater history of the documents that are associated with a transaction, especially in the VAT audit area. Contains a repetitive class of related documents.",【発生元文書情報】,業務プロセス上の、関連文書の流れを捕捉するためのもの。特にVAT監査では、エンドユーザの要求として、取引に関係する文書の履歴が必要とされる。関連文書情報の構造の繰り返しを含む。,BT11
-673,2,Attribute,,btx,Referenced Document,Document Type,,Token,,,0..1,"Document type  check, debit-memo, credit-memo, finance-charge, invoice, order-customer, order-vendor, payment-other, reminder, tegata, voucher, shipment, receipt, manual-adjustment, other.",発生元文書種別,発生元文書の種別。小切手(check)、借方メモ(debit-memo)、貸方メモ(credit-memo)、財務費用(finance-charge)、顧客への請求書(invoice)、顧客オーダ(order-customer)、仕入先オーダ(order-vendor)、その他支払い(payment-other)、督促状(reminder)、手形(tegata)、ベンダからの請求書(voucher)、出荷票(shipment)、受領票(receipt)、手修正(manual-adjustment)、その他(other),BT11-01
-674,2,Attribute,PK,btx,Referenced Document,Document Number,,String,,,0..1,Document number,発生元文書番号,発生元文書の番号。,BT11-02
-675,2,Attribute,,btx,Referenced Document,Document Date,,Date,,,0..1,Document date,発生元文書日付,発生元文書の日付。,BT11-03
-676,2,Attribute,,btx,Referenced Document,Document Identifier Type,,Token,,,0..1,"Document identifier type. Enumerated as: C, customer, E, employee, V, vendor, O, other, I, salesperson-internal, X, salesperson-external, N, contractor.",発生元文書対象CVE種別,発生元文書の対象となるCVEの種別。_x000D_ [設定値のリスト]_x000D_ (C)、(customer：顧客)、(E)、(employee：従業員)、(V)、(vendor：仕入先)、(O)、(other：その他)、(I)、(salesperson-internal：店舗内販売員)、(X)、(salesperson-external：外交販売員)、(N)、(contractor：請負者),BT11-04
-677,2,Attribute,,btx,Referenced Document,Document Identifier Code,,String,,,0..1,Document identifier code,発生元文書対象CVEコード,発生元文書の対象となるCVEのコード。,BT11-05
-678,2,Attribute,,btx,Referenced Document,Received Date,,Date Time,,,0..1,Date/time document was noted as received (if necessary). Represents actual date received. Posting dates are maintained separately.,元文書受領日付,（必要であれば）文書の受領が記録された日付/時刻。実際に受領された日付をあらわす。転記日付は別に管理される。,BT11-06
-679,2,Attribute,,btx,Referenced Document,Document Location,,String,,,0..1,"Document location as URI, file name or other reference. Alternatively, text of document can be placed here.",元文書格納場所,文書の格納場所である、URI、ファイル名またはその他の参照情報。代わりに、文書のテキストも記述可能。,BT11-07
-680,2,Attribute,,btx,Referenced Document,Reference Purpose,,Token,,,0..1,Semantic purpose or role of the referenced document in this business transaction; distinct from the referenced document's own document type.,参照目的,この業務取引における参照文書の意味上の目的又は役割。参照文書自体の文書種別とは異なる。,BT11-08
-681,2,Composition,,btx,Referenced Document,,,,btx,Document Attachment,0..*,Attachment or external document payload associated with this referenced document.,【文書添付】,この参照文書に関連付けられた添付又は外部文書の内容。,BT11-09
-682,1,Class,,btx,Transaction_ Header,,,,,,0..*,Parent class grouping transaction document header records.,【取引ヘッダ】,取引文書のヘッダ・レコードをまとめて保持する親クラス。,BT12
-683,2,Attribute,,btx,Transaction_ Header,Date Posted,,Date Time,,,0..1,Date this entry was posted (validated) to the general ledger. May not represent the date of accounting significance which is represented by 'postingDate'.,転記済日付,この仕訳が総勘定元帳に転記された(検証された)日付。 postingDateで示されるような会計上意味のある日付を表さないかもしれない。,BT12-01
-684,2,Attribute,,btx,Transaction_ Header,Creator,,String,,,0..1,Initials/name of operator originally entering.,仕訳作成者,最初に入力したオペレータのイニシャル/名前。,BT12-02
-685,2,Attribute,,btx,Transaction_ Header,Last Modifier,,String,,,0..1,Identification for the last person modifying this entry before posting.,仕訳最終更新者,転記前に最後にこの仕訳を修正した者の識別子。,BT12-03
-686,2,Attribute,,btx,Transaction_ Header,Responsible Person,,String,,,0..1,Identifier of person who created or originated or is otherwise responsible for the entry.,責任者,仕訳を作成したか、仕訳に責任を持つ者の識別子。,BT12-04
-687,2,Attribute,,btx,Transaction_ Header,Posting Code,,String,,,0..1,"Code for posting to period, e.g., period 1-13, based on codes in an accounting period file. We do not recommend that software vendors export here, but suggest providing period end numbers for the buckets. Possibilities W1 through W53, M1 through M13, Q1-Q4. Developers and others creating output files are encouraged to supply an actual end date.",転記コード,転記の期間を表すコード。例えば、会計期間ファイルのコードにもとづく期間１～１３。ソフトウエアベンダーが、この値をエクスポートすることは推奨しない。期間の最終番号を提供することを勧める。可能な値としては、W1からW53、M1からM13、Q1からQ4など。開発者や出力ファイルの作成者には、実際の終了日付を提供することを勧める。,BT12-05
-688,2,Attribute,,btx,Transaction_ Header,Number of Entries,,Integer,,,0..1,The total number of entries.,仕訳総数,仕訳の総数。,BT12-06
-689,2,Attribute,,btx,Transaction_ Header,Comment,,String,,,0..1,Comment of the entry,仕訳摘要,仕訳の摘要,BT12-07
-690,2,Attribute,,btx,Transaction_ Header,Header_ Entry Date,,Date Time,,,0..1,"Represents the actual date/time of entry into computer (automated from system date, often misrepresented by changing system clock). Posting dates are maintained separately.",入力日付,コンピュータへ入力した実際の日付/時刻(システム日付から自動的に与えられ、システム時計の変更により、しばしば誤った値になる)を示す。 転記日付とは別に管理される。,BT12-08
-691,2,Attribute,,btx,Transaction_ Header,Header_ Type Identifier,,Token,,,0..1,"One of the following enumerated list: adjusting, budget, comparative, external-accountant, standard, passed-adjusting, eliminating, proposed, recurring, reclassifying, simulated, tax, other",種別識別子,"以下の値のうちのひとつ。_x000D_
-整理、予算、比較、外部会計事務所、通常、無視、消去、提案、反復、組替、シミュレーション、税、その他_x000D_
-[設定値のリスト]_x000D_
-(adjusting：整理)、(budget：予算)、(comparative：比較)、(external-accountant：外部会計事務所)、(standard：通常)、(passed-adjusting：無視)、(eliminating：消去)、(proposed：提案)、(recurring：反復)、(reclassifying：組替)、(simulated：シミュレーション)、(tax：税)、(other：その他)",BT12-09
-692,2,Attribute,,btx,Transaction_ Header,Header Entry Number Counter,,Decimal,,,0..1,Unique reference for the entry - a numeric counter,文書番号カウンタ,文書の一意なリファレンス　　カウンタ,BT12-10
-693,2,Attribute,,btx,Transaction_ Header,Header Document Type,,Token,,,0..1,"An enumerated field describing the original source document, with invoice, voucher, check and other enumerated entries",元文書種別,顧客への請求書、ベンダからの請求書、小切手、その他の列挙値による、元文書の説明。\n[設定値のリスト]\n(check：小切手)、(debit-memo：借方メモ)、(credit-memo：貸方メモ)、(finance-charge：財務費用)、(invoice：顧客への請求書)、(order-customer：顧客オーダ)、(order-vendor：仕入先オーダ)、(payment-other：その他支払い)、(reminder：督促状)、(tegata：手形)、(voucher：ベンダからの請求書)、(shipment：出荷票)、(receipt：受領票)、(manual-adjustment：手修正)、(other：その他),BT12-11
-694,2,Attribute,,btx,Transaction_ Header,Header Document Type Description,,String,,,0..1,Free format description of the document type,元文書種別説明,元文書の種別の説明。,BT12-12
-695,2,Attribute,,btx,Transaction_ Header,Header Invoice Type,,Token,,,0..1,"Invoice Type  (self-billed, ePoS enumerated values)",請求書種別,請求書の種別。(self-billed、ePoS)\n[設定値のリスト]\n(ePos：POSシステムからの発行)、(self-billed：手動発行),BT12-13
-696,2,Attribute,,btx,Transaction_ Header,Header Document Number,,String,,,0..1,"Invoice, check, voucher, or other source document identifier",元文書番号,請求書、小切手、証憑、その他の元文書の識別子。,BT12-14
-697,2,Reference Association,,btx,Transaction_ Header,,Applied Invoice,,btx,Referenced Document,0..1,"Document number of primary invoice number, used to offset payments, debits and credits; for an invoice, usually the same as the documentNumber. When calculating open balance on an invoice, or open amount on payments in advance or not fully applied, this permits calculation of the open item.",適用先番号,支払、借方、貸方の相殺に使用される、一次請求書の文書番号。請求書では通常documentNumberと等しい。未決済の請求書残高や、未決済の支払金額の計算時に、利用できる。,BT12-15
-698,2,Aggregation,,btx,Transaction_ Header,,,,btx,Referenced Document,0..*,Reference for the document; number assigned to track the document,元文書参照情報,上の文書のための内部参照情報。文書を追跡するために内部的に割り当てた番号。,BT12-16
-699,2,Attribute,,btx,Transaction_ Header,Header Payment Method,,String,,,0..1,Method used or to be used to make the payment,支払方法,支払いのために使用された、または使用される方法。,BT12-17
-700,2,Attribute,,btx,Transaction_ Header,Header Posting Status,,Token,,,0..1,"deferred: although entered, it cannot be posted until a later time\nposted: already posted\nproposed: a proposed item that must be approved\nsimulated: a simulated item, for what-if\ntax: a tax-specific entry\nunposted:entered but not yet posted or validated\ncancelled:entered and later cancelled\nother:other status - should be described in postingStatusDescription",転記状態,・据置：入力されたが、まだ転記できない。\n・転記済：転記済み。\n・提案済：検証が必要な項目。\n・シミュレーション：仮定のためにシミュレートされた項目。\n・税：税項目。\n・未転記：入力されたが、まだ検証も転記もされていない。\n・取消済：入力されたが、取り消された。\n・その他：その他の状態。postingStatusDescriptionで説明されるべき。\n[設定値のリスト]\n(deferred：据置)、(posted：転記済)、(proposed：提案済)、(simulated：シミュレーション)、(tax：税)、(unposted：未転記)、(cancelled：取消済)、(other：その他),BT12-18
-701,2,Attribute,,btx,Transaction_ Header,Header Posting Status Description,,String,,,0..1,Free format description of the posting status,転記状態説明,転記状態の説明。,BT12-19
-702,2,Attribute,,btx,Transaction_ Header,Header Acknowledgement Date,,Date Time,,,0..1,Date of acknowledgement of goods/services shipped/received.,承認日付,出荷/受領済みの物品/サービスを承認した日付。,BT12-20
-703,2,Attribute,,btx,Transaction_ Header,Header Confirmation Date,,Date Time,,,0..1,Date of confirmation of shipment/receipt.,確認日付,出荷/受領を確認した日付。,BT12-21
-704,2,Attribute,,btx,Transaction_ Header,Header Ship From,,String,,,0..1,References Organization Address Location Identifier where used. Otherwise free form.,出荷元,使用されていれば住所識別子の参照情報。または自由記述。,BT12-22
-705,2,Attribute,,btx,Transaction_ Header,Header Date Shipped/Received,,Date Time,,,0..1,Date goods/services are shipped/received.,出荷/受領日付,物品/サービスを出荷/受領した日付。,BT12-23
-706,2,Attribute,,btx,Transaction_ Header,Header Maturity Date or Date Due,,Date Time,,,0..1,Due date or other maturity date.,支払期日,支払期日やその他の期日。,BT12-24
-707,2,Attribute,,btx,Transaction_ Header,Header Payment Terms,,String,,,0..1,Discount/payment terms.,支払条件,割引/支払い条件。,BT12-25
-708,2,Composition,,btx,Transaction_ Header,,,,btx,Header_ Identifier Reference,0..*,"Identification for customer, vendor, or employee.",【文書CVE情報】,顧客、仕入先、従業員のための識別子。,BT12-26
-709,2,Composition,,btx,Transaction_ Header,,,,btx,Header_ Tax,0..*,Class for holding tax related information,【税情報】,税関連の情報のタプル。,BT12-27
-710,2,Composition,,btx,Transaction_ Header,,,,btx,Header_ Amount Structure,0..*,"Structure representing monetary amounts and currency information applicable to the document as a whole, such as document-level totals or aggregated tax amounts.",【ヘッダー金額構造】,文書全体に適用される金額や通貨情報（文書レベルの合計額や集計された税額など）を表現する構造。,BT12-28
-711,2,Composition,,btx,Transaction_ Header,,,,btx,Transaction_ Detail,0..*,Parent for document line,【文書明細】,文書明細の親タグ。,BT12-29
-712,2,Attribute,,btx,Transaction_ Header,Business Process Type,,Identifier,,,0..1,"Type or context of the business process to which the business transaction belongs; distinct from document type, invoice subtype, and transaction entry type.",ビジネスプロセス種別,この業務取引が属するビジネスプロセス又はプロセス文脈の種別。文書種別、請求書の下位種別及び取引入力種別とは異なる。,BT12-30
-713,2,Composition,,btx,Transaction_ Header,,,,btx,Header_ Rich Text Comment,0..*,Repeatable header note or comment occurrence.,【ヘッダーノート】,反復可能なヘッダーノート又はコメントの出現。,BT12-31
-714,2,Composition,,btx,Transaction_ Header,,Header,,btx,Adjustment,0..*,Document-level allowance or charge adjustment.,【ヘッダー調整】,文書レベルの値引又は追加請求の調整。,BT12-32
-715,1,Class,,btx,Transaction_ Detail,,,,,,0..*,Parent for entry detail,【仕訳明細】,仕訳明細の親タグ。,BT13
-716,2,Attribute,PK,btx,Transaction_ Detail,Line Number,,String,,,0..1,Identifier for a particular entry detail,明細行番号,仕訳明細の識別子。,BT13-01
-717,2,Attribute,,btx,Transaction_ Detail,Line Number Counter,,Decimal,,,0..1,Unique reference for the line - a numeric counter,明細行番号カウンタ,明細行の一意なリファレンス　　カウンタ,BT13-02
-718,2,Attribute,,btx,Transaction_ Detail,Posting Date,,Date Time,,,0..1,"At the detail level, this represents the accounting significance date. No matter what date the document is received, entered, or posted, this signifies the accounting date of the entry. If you want to see the financial results for March 5, 2002 and this entry is given that date, the entry will be part of the results for March 5, 2002. This is different from the postedDate found at the entryHeader level. If you want the accounting significance to be a particular date, it goes here. A single entry could represent multiple dates, but would only be posted on one date.",転記日付,明細レベルで、会計上意義のある日付を示す。ドキュメントの受領、入力、転記の日付に関わらず、仕訳が会計処理された日付を示す。2002.03.05の財務結果を見たいときに、ここにその日付がある場合は、この明細は2002.03.05の結果の一部である。これは、entryHeaderにあるpostedDateとは異なる。特定の日付を会計上意義のある日付にしたいなら、ここに記述する。ひとつの仕訳が複数の日付をあらわせるが、ひとつの日でのみ転記される。,BT13-03
-719,2,Attribute,,btx,Transaction_ Detail,Memo Line,,Boolean,,,0..1,A boolean like entry that indicates whether an entryDetail line has been provided solely to provide additional details and that tools should not consider the amount in postings.,メモ行フラグ,明細行が単に追加の詳細を与えるものであり、転記金額に含めるべきでないことを示すブール値。,BT13-04
-720,2,Attribute,,btx,Transaction_ Detail,Document Type,,Token,,,0..1,"An enumerated field describing the original source document, with check, debit-memo, credit-memo, finance-charge, invoice, order-customer, order-vendor, payment-other, reminder, tegata, voucher, shipment, receipt, manual-adjustment, other.",元文書種別,小切手、借方メモ、貸方メモ、財務費用、顧客への請求書、顧客オーダー、仕入先オーダー、その他支払い、督促状、手形、ベンダからの請求書、出荷票、受領票、手修正、その他の列挙値による、元文書の説明。[設定値のリスト]_x000D_ (check：小切手)、(debit-memo：借方メモ)、(credit-memo：貸方メモ)、(finance-charge：財務費用)、(invoice：顧客への請求書)、(order-customer：顧客オーダ)、(order-vendor：仕入先オーダ)、(payment-other：その他支払い)、(reminder：督促状)、(tegata：手形)、(voucher：ベンダからの請求書)、(shipment：出荷票)、(receipt：受領票)、(manual-adjustment：手修正)、(other：その他),BT13-05
-721,2,Attribute,,btx,Transaction_ Detail,Document Type Description,,String,,,0..1,Free format description of the document type,元文書種別説明,元文書の種別の説明。,BT13-06
-722,2,Reference Association,,btx,Transaction_ Detail,,,,cor,Document,0..1,"Invoice, check, voucher, or other source document identifier",元文書番号,請求書、小切手、証憑、その他の元文書の識別子。,BT13-07
-723,2,Attribute,,btx,Transaction_ Detail,Document Date,,Date Time,,,0..1,"Date (and less likely in the paper world but possible in the e-world, time) on actual document (invoice, voucher, check date). Other dates control posting information.",元文書日付,実際の文書（請求書、証憑、小切手）の日付（および、紙の世界ではありそうにないが、電子的には時刻）。 転記の情報は別の日付で管理する。,BT13-08
-724,2,Attribute,,btx,Transaction_ Detail,Received Date,,Date Time,,,0..1,Date/time document was noted as received (if necessary). Represents actual date received. Posting dates are maintained separately.,元文書受領日付,（必要であれば）文書の受領が記録された日付/時刻。実際に受領された日付をあらわす。転記日付は別に管理される。,BT13-09
-725,2,Attribute,,btx,Transaction_ Detail,Document Location,,String,,,0..1,"Document location as URI, file name or other reference. Alternatively, text of document can be placed here.",元文書格納場所,文書の格納場所である、URI、ファイル名またはその他の参照情報。代わりに、文書のテキストも記述可能。,BT13-10
-726,2,Attribute,,btx,Transaction_ Detail,Posting Status,,Token,,,0..1,"deferred: although entered, it cannot be posted until a later time
+571,1,Class,,btx,Party,,,,,,0..*,Business Transactions Party specialization of Core Party that represents a party participating in a business transaction.,【取引当事者】,共通のPartyを拡張し、業務取引に参加する売手、買手、支払先、税務代理人、納入先などの取引当事者を表す構造。,BT01
+572,2,Attribute,,btx,Party,Party Name,,String,,,0..1,Name of the party,,,BT01-01
+573,2,Attribute,,btx,Party,Party ID,,String,,,0..1,ID Number of the party,,,BT01-02
+574,2,Attribute,,btx,Party,Party Business Description,,String,,,0..1,Description of the nature of the business of the party.,業種説明,事業体の事業の種類についての説明。,BT01-03
+575,2,Composition,,btx,Party,,,,bus,Party_ Phone,0..*,Primary phone number of the party.,【事業体電話番号】,事業体の主要電話番号情報。,BT01-04
+576,2,Composition,,btx,Party,,,,bus,Party_ Fax,0..*,Class for holding company fax information.,【事業体FAX番号】,事業体のFAX番号情報のタプル。,BT01-05
+577,2,Composition,,btx,Party,,,,bus,Party_ Email,0..*,Class for holding company email information.,【事業体Eメールアドレス】,事業体のEメールアドレス情報のタプル。,BT01-06
+578,2,Composition,,btx,Party,,Registered,,bus,Organization Identifier,0..*,Class which contains various identifiers for theparty.,【識別子】,組織に関する様々な識別子を含むセクション。,BT01-07
+579,2,Composition,,btx,Party,,,,bus,Party_ Address,0..*,Address class for the party,【住所】,報告事業体の住所構造体。,BT01-08
+580,2,Composition,,btx,Party,,,,bus,Party_ Web Site,0..*,Primary web site of the party.,【事業体Webサイト】,事業体の代表ウェブサイト。,BT01-09
+581,2,Composition,,btx,Party,,,,bus,Party_ Contact,0..*,Information about contacts.,【担当者情報】,担当者に関する情報。,BT01-10
+582,2,Attribute,,btx,Party,Party Role,,Token,,,1,"Role of the party in the business transaction, such as seller, buyer, payee, tax representative, or deliver-to party.",取引当事者役割,業務取引における当事者の役割。売手、買手、支払先、税務代理人、納入先などを識別する。,BT01-11
+583,1,Class,,btx,Header_ Party,,,,,,0..*,Party participating in the business transaction at document-header level.,【ヘッダー取引当事者】,業務取引文書のヘッダーレベルに関係する取引当事者。,BT02
+584,2,Attribute,,btx,Header_ Party,Party Name,,String,,,0..1,Name of the party,,,BT02-01
+585,2,Attribute,,btx,Header_ Party,Party ID,,String,,,0..1,ID Number of the party,,,BT02-02
+586,2,Attribute,,btx,Header_ Party,Party Business Description,,String,,,0..1,Description of the nature of the business of the party.,業種説明,事業体の事業の種類についての説明。,BT02-03
+587,2,Composition,,btx,Header_ Party,,,,bus,Party_ Phone,0..*,Primary phone number of the party.,【事業体電話番号】,事業体の主要電話番号情報。,BT02-04
+588,2,Composition,,btx,Header_ Party,,,,bus,Party_ Fax,0..*,Class for holding company fax information.,【事業体FAX番号】,事業体のFAX番号情報のタプル。,BT02-05
+589,2,Composition,,btx,Header_ Party,,,,bus,Party_ Email,0..*,Class for holding company email information.,【事業体Eメールアドレス】,事業体のEメールアドレス情報のタプル。,BT02-06
+590,2,Composition,,btx,Header_ Party,,Registered,,bus,Organization Identifier,0..*,Class which contains various identifiers for theparty.,【識別子】,組織に関する様々な識別子を含むセクション。,BT02-07
+591,2,Composition,,btx,Header_ Party,,,,bus,Party_ Address,0..*,Address class for the party,【住所】,報告事業体の住所構造体。,BT02-08
+592,2,Composition,,btx,Header_ Party,,,,bus,Party_ Web Site,0..*,Primary web site of the party.,【事業体Webサイト】,事業体の代表ウェブサイト。,BT02-09
+593,2,Composition,,btx,Header_ Party,,,,bus,Party_ Contact,0..*,Information about contacts.,【担当者情報】,担当者に関する情報。,BT02-10
+594,2,Attribute,,btx,Header_ Party,Party Role,,Token,,,1,"Role of the party in the business transaction, such as seller, buyer, payee, tax representative, or deliver-to party.",取引当事者役割,業務取引における当事者の役割。売手、買手、支払先、税務代理人、納入先などを識別する。,BT02-11
+595,1,Class,,btx,Detail_ Party,,,,,,0..*,Party associated with an individual transaction detail line.,【明細行取引当事者】ギョウ,個々の取引明細に関係する取引当事者。,BT03
+596,2,Attribute,,btx,Detail_ Party,Party Name,,String,,,0..1,Name of the party,,,BT03-01
+597,2,Attribute,,btx,Detail_ Party,Party ID,,String,,,0..1,ID Number of the party,,,BT03-02
+598,2,Attribute,,btx,Detail_ Party,Party Business Description,,String,,,0..1,Description of the nature of the business of the party.,業種説明,事業体の事業の種類についての説明。,BT03-03
+599,2,Composition,,btx,Detail_ Party,,,,bus,Party_ Phone,0..*,Primary phone number of the party.,【事業体電話番号】,事業体の主要電話番号情報。,BT03-04
+600,2,Composition,,btx,Detail_ Party,,,,bus,Party_ Fax,0..*,Class for holding company fax information.,【事業体FAX番号】,事業体のFAX番号情報のタプル。,BT03-05
+601,2,Composition,,btx,Detail_ Party,,,,bus,Party_ Email,0..*,Class for holding company email information.,【事業体Eメールアドレス】,事業体のEメールアドレス情報のタプル。,BT03-06
+602,2,Composition,,btx,Detail_ Party,,Registered,,bus,Organization Identifier,0..*,Class which contains various identifiers for theparty.,【識別子】,組織に関する様々な識別子を含むセクション。,BT03-07
+603,2,Composition,,btx,Detail_ Party,,,,bus,Party_ Address,0..*,Address class for the party,【住所】,報告事業体の住所構造体。,BT03-08
+604,2,Composition,,btx,Detail_ Party,,,,bus,Party_ Web Site,0..*,Primary web site of the party.,【事業体Webサイト】,事業体の代表ウェブサイト。,BT03-09
+605,2,Composition,,btx,Detail_ Party,,,,bus,Party_ Contact,0..*,Information about contacts.,【担当者情報】,担当者に関する情報。,BT03-10
+606,2,Attribute,,btx,Detail_ Party,Party Role,,Token,,,1,"Role of the party in the business transaction, such as seller, buyer, payee, tax representative, or deliver-to party.",取引当事者役割,業務取引における当事者の役割。売手、買手、支払先、税務代理人、納入先などを識別する。,BT03-11
+607,1,Class,,btx,Header_ Amount Structure,,,,,,0..*,"Structure representing monetary amounts and currency information applicable to the document as a whole, such as document-level totals or aggregated tax amounts.",【ヘッダー金額構造】,文書全体に適用される金額や通貨情報（文書レベルの合計額や集計された税額など）を表現する構造。,BT04
+608,2,Attribute,,btx,Header_ Amount Structure,Amount,,Monetary,,,1,Numeric value of the monetary amount expressed in the specified currency.,金額,指定された通貨で表現された金額の数値。,BT04-01
+609,2,Attribute,,btx,Header_ Amount Structure,Amount Type,,Token,,,0..1,"Code or text specifying the type or role of the amount, such as tax amount, tax base amount, allowance amount, or charge amount.",金額種別,税額、課税標準額、値引金額、追加請求金額など、金額の種類または役割を指定するコードまたはテキスト。,BT04-02
+610,2,Attribute,,btx,Header_ Amount Structure,Currency Code,,Token,,,0..1,"Code specifying the currency in which the amount is expressed, typically an ISO 4217 currency code.",通貨コード,金額が表現される通貨を指定するコード。通常は ISO 4217 通貨コードを用いる。,BT04-03
+611,2,Attribute,,btx,Header_ Amount Structure,Currency Code Type,,Token,,,0..1,"Code specifying the role of the currency used for the amount, such as functional currency, local currency, reporting currency, or transaction currency.",通貨コード種別,金額に対する通貨の役割（機能通貨、ローカル通貨、報告通貨、取引通貨など）を指定するコード。,BT04-04
+612,2,Attribute,,btx,Header_ Amount Structure,Header_ Amount Type,,String,,,0..1,"Code or text specifying the type or role of the amount, such as tax amount, tax base amount, allowance amount, or charge amount.",金額種別,税額、課税標準額、値引金額、追加請求金額など、金額の種類または役割を指定するコードまたはテキスト。,BT04-05
+613,1,Class,,btx,Detail_ Amount Structure,,,,,,0..*,"Structure representing monetary amounts and currency information applicable to an individual line, such as line-level net amounts, tax calculation bases, allowances, or charges.",【行金額構造】,個々の明細行に適用される金額や通貨情報（行レベルの正味金額、税計算基礎額、値引または追加請求など）を表現する構造。,BT05
+614,2,Attribute,,btx,Detail_ Amount Structure,Amount,,Monetary,,,1,Numeric value of the monetary amount expressed in the specified currency.,金額,指定された通貨で表現された金額の数値。,BT05-01
+615,2,Attribute,,btx,Detail_ Amount Structure,Amount Type,,Token,,,0..1,"Code or text specifying the type or role of the amount, such as tax amount, tax base amount, allowance amount, or charge amount.",金額種別,税額、課税標準額、値引金額、追加請求金額など、金額の種類または役割を指定するコードまたはテキスト。,BT05-02
+616,2,Attribute,,btx,Detail_ Amount Structure,Currency Code,,Token,,,0..1,"Code specifying the currency in which the amount is expressed, typically an ISO 4217 currency code.",通貨コード,金額が表現される通貨を指定するコード。通常は ISO 4217 通貨コードを用いる。,BT05-03
+617,2,Attribute,,btx,Detail_ Amount Structure,Currency Code Type,,Token,,,0..1,"Code specifying the role of the currency used for the amount, such as functional currency, local currency, reporting currency, or transaction currency.",通貨コード種別,金額に対する通貨の役割（機能通貨、ローカル通貨、報告通貨、取引通貨など）を指定するコード。,BT05-04
+618,2,Attribute,,btx,Detail_ Amount Structure,Detail_ Amount Type,,String,,,0..1,"Code or text specifying the type or role of the amount, such as tax amount, tax base amount, allowance amount, or charge amount.",金額種別,税額、課税標準額、値引金額、追加請求金額など、金額の種類または役割を指定するコードまたはテキスト。,BT05-05
+619,1,Class,,btx,Tax,,,,,,0..*,Class for holding tax related information,【税情報】,税関連の情報のタプル。,BT06
+620,2,Attribute,,btx,Tax,Tax Authority,,String,,,0..1,Name of the relevant tax authority,課税庁,関係する課税庁の名前。,BT06-01
+621,2,Attribute,,btx,Tax,Tax Table Code,,String,,,0..1,Tax table code used by the relevant tax authority,税率表コード,関係する課税庁で使用される税率表のコード。,BT06-02
+622,2,Attribute,,btx,Tax,Tax Description,,String,,,0..1,Description of tax authority,課税庁説明,課税庁の説明。,BT06-03
+623,2,Attribute,,btx,Tax,Amount of Taxes,,Monetary,,,0..1,Amount of taxes,税額,税額。,BT06-04
+624,2,Attribute,,btx,Tax,Basis for Taxation,,Monetary,,,0..1,Basis for taxation,課税基準,課税基準。,BT06-05
+625,2,Attribute,,btx,Tax,Tax Percentage Rate,,Pure,,,0..1,Percent rate for VAT or other taxes normally a number between 0 and 1.0 - e.g. 50% is represented as 0.5,税率,"VAT(物品税)またはその他の税のパーセント比率。_x005F_x000D_
+0から1.0の間の値。たとえば50%は0.5とあらわす。",BT06-06
+626,2,Attribute,,btx,Tax,Tax Category,,String,,,0..1,A class or category of taxes,税区分,税のクラス又はカテゴリ。,BT06-07
+627,2,Attribute,,btx,Tax,Tax Comment/Exemption Reason,,String,,,0..1,Additional text/code for exemption reasons or other comments.,税コメント/免税理由,免税理由やその他のコメントのための、追加の文またはコード。,BT06-08
+628,2,Attribute,,btx,Tax,Tax Amount in Document Currency,,Monetary,,,1,Amount of tax expressed in the document currency specified in the Transaction Header.,文書通貨税額,業務取引文書のヘッダーレベルで指定された文書通貨で表した税額。,BT06-09
+629,2,Attribute,,btx,Tax,Tax Amount in Tax Accounting Currency,,Monetary,,,0..1,Amount of tax expressed in the tax accounting or tax reporting currency specified in the Transaction Header.,税申告通貨税額,業務取引文書のヘッダーレベルで指定された税務会計または税申告に使用する通貨で表した税額。,BT06-10
+630,2,Attribute,,btx,Tax,Tax Type,,Token,,,1,"Type of tax regime or tax family applicable to this tax occurrence, distinct from its tax category; for example VAT.",税種別,この税出現に適用される税制又は税体系の種別。税区分とは異なる。例：VAT。,BT06-11
+631,1,Class,,btx,Header_ Tax,,,,,,0..*,"Business-document header-level tax information. Tax amounts may be reported in the document currency and, where applicable, in the tax accounting currency defined by the Transaction Header.",【ヘッダー税情報】,業務取引文書のヘッダーレベルに適用される税情報。税額は文書通貨、および必要な場合にはTransaction Headerで指定された税申告通貨で表す。,BT07
+632,2,Attribute,,btx,Header_ Tax,Tax Authority,,String,,,0..1,Name of the relevant tax authority,課税庁,関係する課税庁の名前。,BT07-01
+633,2,Attribute,,btx,Header_ Tax,Tax Table Code,,String,,,0..1,Tax table code used by the relevant tax authority,税率表コード,関係する課税庁で使用される税率表のコード。,BT07-02
+634,2,Attribute,,btx,Header_ Tax,Tax Description,,String,,,0..1,Description of tax authority,課税庁説明,課税庁の説明。,BT07-03
+635,2,Attribute,,btx,Header_ Tax,Amount of Taxes,,Monetary,,,0..1,Amount of taxes,税額,税額。,BT07-04
+636,2,Attribute,,btx,Header_ Tax,Basis for Taxation,,Monetary,,,0..1,Basis for taxation,課税基準,課税基準。,BT07-05
+637,2,Attribute,,btx,Header_ Tax,Tax Percentage Rate,,Pure,,,0..1,Percent rate for VAT or other taxes normally a number between 0 and 1.0 - e.g. 50% is represented as 0.5,税率,"VAT(物品税)またはその他の税のパーセント比率。_x005F_x000D_
+0から1.0の間の値。たとえば50%は0.5とあらわす。",BT07-06
+638,2,Attribute,,btx,Header_ Tax,Tax Category,,String,,,0..1,A class or category of taxes,税区分,税のクラス又はカテゴリ。,BT07-07
+639,2,Attribute,,btx,Header_ Tax,Tax Comment/Exemption Reason,,String,,,0..1,Additional text/code for exemption reasons or other comments.,税コメント/免税理由,免税理由やその他のコメントのための、追加の文またはコード。,BT07-08
+640,2,Attribute,,btx,Header_ Tax,Tax Amount in Document Currency,,Monetary,,,1,Amount of tax expressed in the document currency specified in the Transaction Header.,文書通貨税額,業務取引文書のヘッダーレベルで指定された文書通貨で表した税額。,BT07-09
+641,2,Attribute,,btx,Header_ Tax,Tax Amount in Tax Accounting Currency,,Monetary,,,0..1,Amount of tax expressed in the tax accounting or tax reporting currency specified in the Transaction Header.,税申告通貨税額,業務取引文書のヘッダーレベルで指定された税務会計または税申告に使用する通貨で表した税額。,BT07-10
+642,2,Attribute,,btx,Header_ Tax,Tax Type,,Token,,,1,"Type of tax regime or tax family applicable to this tax occurrence, distinct from its tax category; for example VAT.",税種別,この税出現に適用される税制又は税体系の種別。税区分とは異なる。例：VAT。,BT07-11
+643,1,Class,,btx,Detail_ Tax,,,,,,0..*,"Tax information applicable to an individual transaction detail line. Tax amounts use the document currency and, where applicable, the tax accounting currency defined by the Transaction Header.",【業務取引明細税情報】,業務取引の明細レベルで使用する税情報。,BT08
+644,2,Attribute,,btx,Detail_ Tax,Tax Authority,,String,,,0..1,Name of the relevant tax authority,課税庁,関係する課税庁の名前。,BT08-01
+645,2,Attribute,,btx,Detail_ Tax,Tax Table Code,,String,,,0..1,Tax table code used by the relevant tax authority,税率表コード,関係する課税庁で使用される税率表のコード。,BT08-02
+646,2,Attribute,,btx,Detail_ Tax,Tax Description,,String,,,0..1,Description of tax authority,課税庁説明,課税庁の説明。,BT08-03
+647,2,Attribute,,btx,Detail_ Tax,Amount of Taxes,,Monetary,,,0..1,Amount of taxes,税額,税額。,BT08-04
+648,2,Attribute,,btx,Detail_ Tax,Basis for Taxation,,Monetary,,,0..1,Basis for taxation,課税基準,課税基準。,BT08-05
+649,2,Attribute,,btx,Detail_ Tax,Tax Percentage Rate,,Pure,,,0..1,Percent rate for VAT or other taxes normally a number between 0 and 1.0 - e.g. 50% is represented as 0.5,税率,"VAT(物品税)またはその他の税のパーセント比率。_x005F_x000D_
+0から1.0の間の値。たとえば50%は0.5とあらわす。",BT08-06
+650,2,Attribute,,btx,Detail_ Tax,Tax Category,,String,,,0..1,A class or category of taxes,税区分,税のクラス又はカテゴリ。,BT08-07
+651,2,Attribute,,btx,Detail_ Tax,Tax Comment/Exemption Reason,,String,,,0..1,Additional text/code for exemption reasons or other comments.,税コメント/免税理由,免税理由やその他のコメントのための、追加の文またはコード。,BT08-08
+652,2,Attribute,,btx,Detail_ Tax,Tax Amount in Document Currency,,Monetary,,,1,Amount of tax expressed in the document currency specified in the Transaction Header.,文書通貨税額,業務取引文書のヘッダーレベルで指定された文書通貨で表した税額。,BT08-09
+653,2,Attribute,,btx,Detail_ Tax,Tax Amount in Tax Accounting Currency,,Monetary,,,0..1,Amount of tax expressed in the tax accounting or tax reporting currency specified in the Transaction Header.,税申告通貨税額,業務取引文書のヘッダーレベルで指定された税務会計または税申告に使用する通貨で表した税額。,BT08-10
+654,2,Attribute,,btx,Detail_ Tax,Tax Type,,Token,,,1,"Type of tax regime or tax family applicable to this tax occurrence, distinct from its tax category; for example VAT.",税種別,この税出現に適用される税制又は税体系の種別。税区分とは異なる。例：VAT。,BT08-11
+655,1,Class,,btx,Header_ XBRL,,,,,,0..*,This will roll up to XBRL reporting information - this is a parent - repeatable so that the same item can be reported through many taxonomies. Care should be taken to consider what happens if people post to the same account but different XBRL elements.,【取引ヘッダXBRL情報】,XBRLレポート情報へのロールアップ情報。親タグであり、同じ項目が複数のタクソノミを通じて報告されうるように繰り返し可能。同一の勘定科目を異なるXBRL要素に転記した場合にどうなるか、注意深く考慮すべきである。,BT09
+656,2,Attribute,,btx,Header_ XBRL,XBRL Allocation,,Token,,,0..1,"Indicates that the information being given is beginning_balance, ending_balance, period_change.",XBRL割当,"与えられた情報が、期首残高、期末残高、期中増減のいずれであるかを示す。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
+(beginning_balance：期首残高)、(ending_balance：期末残高)、(period_change：期中増減)",BT09-01
+657,2,Attribute,,btx,Header_ XBRL,XBRL Summary Reporting Element,,QName,,,0..1,Associated XBRL element or XML element within an XML taxonomy - mapping to an XBRL concept.,集約報告エレメント,関係付けられた、XMLタクソノミ中のXBRL要素または、XML要素。XBRLコンセプトへのマッピング。,BT09-02
+658,2,Attribute,,btx,Header_ XBRL,XBRL Detail Matching Element,,QName,,,0..1,Associated XBRL element in XBRL-GL instance.,明細対応エレメント,関係付けられた、XBRL-GLインスタンス中のXBRL要素。,BT09-03
+659,2,Attribute,,btx,Header_ XBRL,XBRL Summary Tuple Path,,String,,,0..1,Specific filter for parent class class. This value must be valid XPath. And the result of the XPath must be resolved to a node.,集約タプルパス,親タグ構造を特定するフィルタ。妥当なXPath記述でなければならない。XPathの結果はノードでなければならない。,BT09-04
+660,2,Attribute,,btx,Header_ XBRL,XBRL Detailed Content Filter,,String,,,0..1,"Filtering mechanism. This value must be valid XPath. And the result of the XPath must be resolved to boolean. If the resulting value is false, the entry  must not mapped into specified facts in F/S.",明細コンテントフィルタ,フィルタリング手段。妥当なXPath記述でなければならない。XPathの結果はブール値でなければならない。結果がfalseの場合は、仕訳はF/S内の特定のfactsにマッピングされてはならない。,BT09-05
+661,2,Attribute,,btx,Header_ XBRL,XBRL Reporting Date Selector,,Token,,,0..1,This holds the concepts in GL data to create FS contexts.  The value must be a list of QName. Each QName must be resolved to GL items. Order of the items defines priority to access.,報告日付セレクタ,F/Sのコンテキストを生成するためのGLデータの概念を示す。QNameのリストでなければならない。個々のQNameはGL項目を示さなければならない。項目の並びはアクセスの優先度を示す。,BT09-06
+662,2,Attribute,,btx,Header_ XBRL,XBRL Summary Operator,,String,,,0..1,The operator applied to the amount or quantity when it is rolled up to a summary reporting element.,,,BT09-07
+663,2,Attribute,,btx,Header_ XBRL,XBRL Summary Unit Numerator,,Token,,,1..1,This holds the list of measure information for unit numerator. The value must be a list of QName. Each QName must be resolved to be measure information such as iso4217:usd.,集約ユニット分子,集約のユニットの分子の測定情報のリスト。QNameのリストでなければならない。QNameはiso4217:usdのような、解決される測定情報でなければならない。,BT09-08
+664,2,Attribute,,btx,Header_ XBRL,XBRL Summary Unit Denominator,,Token,,,0..1,This holds the list of measure information for unit denominator. The value must be a list of QName. Each QName must be resolved to be measure information such as iso4217:usd.,集約ユニット分母,集約のユニットの分母の測定情報のリスト。QNameのリストでなければならない。QNameはiso4217:usdのような、解決される測定情報でなければならない。,BT09-09
+665,2,Attribute,,btx,Header_ XBRL,XBRL Summary Reporting Taxonomy ID Reference,,String,,,0..1,"Reference to the ID of the relevant target reporting taxonomy, defined in the [summaryReportingTaxonomies] class at [documentInfo] level. Allows consuming applications to identify sets of [xbrlInfo] classs that point to a specific taxonomy.",集約報告タクソノミ識別子参照情報,関連する報告タクソノミの識別子への参照情報。documentInfo内のsummaryReportingTaxonomies構造体で定義される。特定のタクソノミを示すxbrlInfo構造体の集合を、アプリケーションが識別できるようにする。,BT09-10
+666,1,Class,,btx,Referenced Document,,,,,,0..*,"A tool to capture the flow of related documents in the business process. Some needs of end users require a greater history of the documents that are associated with a transaction, especially in the VAT audit area. Contains a repetitive class of related documents.",【発生元文書情報】,業務プロセス上の、関連文書の流れを捕捉するためのもの。特にVAT監査では、エンドユーザの要求として、取引に関係する文書の履歴が必要とされる。関連文書情報の構造の繰り返しを含む。,BT10
+667,2,Attribute,,btx,Referenced Document,Document Type,,Token,,,0..1,"Document type  check, debit-memo, credit-memo, finance-charge, invoice, order-customer, order-vendor, payment-other, reminder, tegata, voucher, shipment, receipt, manual-adjustment, other.",発生元文書種別,発生元文書の種別。小切手(check)、借方メモ(debit-memo)、貸方メモ(credit-memo)、財務費用(finance-charge)、顧客への請求書(invoice)、顧客オーダ(order-customer)、仕入先オーダ(order-vendor)、その他支払い(payment-other)、督促状(reminder)、手形(tegata)、ベンダからの請求書(voucher)、出荷票(shipment)、受領票(receipt)、手修正(manual-adjustment)、その他(other),BT10-01
+668,2,Attribute,PK,btx,Referenced Document,Document Number,,String,,,0..1,Document number,発生元文書番号,発生元文書の番号。,BT10-02
+669,2,Attribute,,btx,Referenced Document,Document Date,,Date,,,0..1,Document date,発生元文書日付,発生元文書の日付。,BT10-03
+670,2,Attribute,,btx,Referenced Document,Document Identifier Type,,Token,,,0..1,"Document identifier type. Enumerated as: C, customer, E, employee, V, vendor, O, other, I, salesperson-internal, X, salesperson-external, N, contractor.",発生元文書対象CVE種別,発生元文書の対象となるCVEの種別。_x005F_x000D_ [設定値のリスト]_x005F_x000D_ (C)、(customer：顧客)、(E)、(employee：従業員)、(V)、(vendor：仕入先)、(O)、(other：その他)、(I)、(salesperson-internal：店舗内販売員)、(X)、(salesperson-external：外交販売員)、(N)、(contractor：請負者),BT10-04
+671,2,Attribute,,btx,Referenced Document,Document Identifier Code,,String,,,0..1,Document identifier code,発生元文書対象CVEコード,発生元文書の対象となるCVEのコード。,BT10-05
+672,2,Attribute,,btx,Referenced Document,Received Date,,Date Time,,,0..1,Date/time document was noted as received (if necessary). Represents actual date received. Posting dates are maintained separately.,元文書受領日付,（必要であれば）文書の受領が記録された日付/時刻。実際に受領された日付をあらわす。転記日付は別に管理される。,BT10-06
+673,2,Attribute,,btx,Referenced Document,Document Location,,String,,,0..1,"Document location as URI, file name or other reference. Alternatively, text of document can be placed here.",元文書格納場所,文書の格納場所である、URI、ファイル名またはその他の参照情報。代わりに、文書のテキストも記述可能。,BT10-07
+674,2,Attribute,,btx,Referenced Document,Reference Purpose,,Token,,,0..1,"Purpose discriminator identifying the business purpose of a Referenced Document occurrence, such as project, contract, or tender/lot reference.",参照目的,参照文書の出現が、プロジェクト、契約、入札・ロット参照など、どの業務目的の参照であるかを識別する区分。,BT10-08
+675,1,Class,,btx,Adjustment,,,,,,0..*,"Repeatable allowance or charge adjustment occurrence combining type, amount, calculation basis, reason, and tax information.",【調整】,種別、金額、計算基礎、理由及び税情報を一つにまとめた反復可能な値引又は追加請求の調整出現。,BT11
+676,2,Attribute,,btx,Adjustment,Adjustment Type,,Token,,,1..1,Type of adjustment. The current semantic discriminator values used by the EN CIUS binding are allowance and charge.,調整種別,調整の種別。現在のEN CIUS Bindingで使用する意味上の識別値は allowance（値引）及び charge（追加請求）。,BT11-01
+677,2,Attribute,,btx,Adjustment,Amount,,Monetary,,,1,Monetary amount of the adjustment.,調整金額,調整の金額。,BT11-02
+678,2,Attribute,,btx,Adjustment,Base Amount,,Monetary,,,0..1,Monetary base amount used to calculate the adjustment.,調整基礎金額,調整の計算に用いる基礎金額。,BT11-03
+679,2,Attribute,,btx,Adjustment,Percentage,,Pure,,,0..1,"Percentage rate used to calculate the adjustment, represented as a pure numeric value.",調整率,調整の計算に用いる比率。純粋数値として表現する。,BT11-04
+680,2,Attribute,,btx,Adjustment,Reason,,String,,,0..1,Human-readable reason for the adjustment.,調整理由,調整理由の可読テキスト。,BT11-05
+681,2,Attribute,,btx,Adjustment,Reason Code,,Token,,,0..1,Code identifying the reason for the adjustment.,調整理由コード,調整理由を識別するコード。,BT11-06
+682,2,Attribute,,btx,Adjustment,Tax Category,,Token,,,0..1,Tax category applicable to the adjustment.,調整税区分,調整に適用される税区分。,BT11-07
+683,2,Attribute,,btx,Adjustment,Tax Rate,,Pure,,,0..1,Tax percentage rate applicable to the adjustment.,調整税率,調整に適用される税率。,BT11-08
+684,1,Class,,btx,Header_ Adjustment,,,,,,0..*,Document-level allowance or charge adjustment.,【ヘッダー調整】,文書レベルの値引又は追加請求の調整。,BT12
+685,2,Attribute,,btx,Header_ Adjustment,Adjustment Type,,Token,,,1..1,Type of adjustment. The current semantic discriminator values used by the EN CIUS binding are allowance and charge.,調整種別,調整の種別。現在のEN CIUS Bindingで使用する意味上の識別値は allowance（値引）及び charge（追加請求）。,BT12-01
+686,2,Attribute,,btx,Header_ Adjustment,Amount,,Monetary,,,1,Monetary amount of the adjustment.,調整金額,調整の金額。,BT12-02
+687,2,Attribute,,btx,Header_ Adjustment,Base Amount,,Monetary,,,0..1,Monetary base amount used to calculate the adjustment.,調整基礎金額,調整の計算に用いる基礎金額。,BT12-03
+688,2,Attribute,,btx,Header_ Adjustment,Percentage,,Pure,,,0..1,"Percentage rate used to calculate the adjustment, represented as a pure numeric value.",調整率,調整の計算に用いる比率。純粋数値として表現する。,BT12-04
+689,2,Attribute,,btx,Header_ Adjustment,Reason,,String,,,0..1,Human-readable reason for the adjustment.,調整理由,調整理由の可読テキスト。,BT12-05
+690,2,Attribute,,btx,Header_ Adjustment,Reason Code,,Token,,,0..1,Code identifying the reason for the adjustment.,調整理由コード,調整理由を識別するコード。,BT12-06
+691,2,Attribute,,btx,Header_ Adjustment,Tax Category,,Token,,,0..1,Tax category applicable to the adjustment.,調整税区分,調整に適用される税区分。,BT12-07
+692,2,Attribute,,btx,Header_ Adjustment,Tax Rate,,Pure,,,0..1,Tax percentage rate applicable to the adjustment.,調整税率,調整に適用される税率。,BT12-08
+693,1,Class,,btx,Detail_ Adjustment,,,,,,0..*,Line-level allowance or charge adjustment.,【明細調整】,明細レベルの値引又は追加請求の調整。,BT13
+694,2,Attribute,,btx,Detail_ Adjustment,Adjustment Type,,Token,,,1..1,Type of adjustment. The current semantic discriminator values used by the EN CIUS binding are allowance and charge.,調整種別,調整の種別。現在のEN CIUS Bindingで使用する意味上の識別値は allowance（値引）及び charge（追加請求）。,BT13-01
+695,2,Attribute,,btx,Detail_ Adjustment,Amount,,Monetary,,,1,Monetary amount of the adjustment.,調整金額,調整の金額。,BT13-02
+696,2,Attribute,,btx,Detail_ Adjustment,Base Amount,,Monetary,,,0..1,Monetary base amount used to calculate the adjustment.,調整基礎金額,調整の計算に用いる基礎金額。,BT13-03
+697,2,Attribute,,btx,Detail_ Adjustment,Percentage,,Pure,,,0..1,"Percentage rate used to calculate the adjustment, represented as a pure numeric value.",調整率,調整の計算に用いる比率。純粋数値として表現する。,BT13-04
+698,2,Attribute,,btx,Detail_ Adjustment,Reason,,String,,,0..1,Human-readable reason for the adjustment.,調整理由,調整理由の可読テキスト。,BT13-05
+699,2,Attribute,,btx,Detail_ Adjustment,Reason Code,,Token,,,0..1,Code identifying the reason for the adjustment.,調整理由コード,調整理由を識別するコード。,BT13-06
+700,2,Attribute,,btx,Detail_ Adjustment,Tax Category,,Token,,,0..1,Tax category applicable to the adjustment.,調整税区分,調整に適用される税区分。,BT13-07
+701,2,Attribute,,btx,Detail_ Adjustment,Tax Rate,,Pure,,,0..1,Tax percentage rate applicable to the adjustment.,調整税率,調整に適用される税率。,BT13-08
+702,1,Class,,btx,Business Transactions,,,,,,1..*,"Economic event represented by one or more business documents and corresponding accounting entries, such as orders, shipments, invoices, and journal entries.",【ビジネス取引】,XBRL GLのルート要素。 注文、出荷、請求書およびそれに対応する仕訳など、1つまたは複数の業務文書と会計仕訳によって表現される経済事象。,BT14
+703,2,Composition,,btx,Business Transactions,,,,cor,Document Information,1..1,Parent for descriptive information about the Transaction Entries Class in which it is contained.,【文書情報】,この取引文書に関する情報の親タグ。,BT14-01
+704,2,Composition,,btx,Business Transactions,,,,cor,Entity_ Party,0..1,Holder for entity information - information about the reporting organization.,【事業体情報】,事業体情報（報告組織に関する情報）の入れ物。,BT14-02
+705,2,Composition,,btx,Business Transactions,,,,btx,Transaction_ Header,0..*,Parent class grouping transaction document header records.,【取引ヘッダ】,取引文書のヘッダ・レコードをまとめて保持する親クラス。,BT14-03
+706,1,Class,,btx,Transaction_ Header,,,,,,0..*,Parent class grouping transaction document header records.,【取引ヘッダ】,取引文書のヘッダ・レコードをまとめて保持する親クラス。,BT15
+707,2,Attribute,,btx,Transaction_ Header,Date Posted,,Date Time,,,0..1,Date this entry was posted (validated) to the general ledger. May not represent the date of accounting significance which is represented by 'postingDate'.,転記済日付,この仕訳が総勘定元帳に転記された(検証された)日付。 postingDateで示されるような会計上意味のある日付を表さないかもしれない。,BT15-01
+708,2,Attribute,,btx,Transaction_ Header,Creator,,String,,,0..1,Initials/name of operator originally entering.,仕訳作成者,最初に入力したオペレータのイニシャル/名前。,BT15-02
+709,2,Attribute,,btx,Transaction_ Header,Last Modifier,,String,,,0..1,Identification for the last person modifying this entry before posting.,仕訳最終更新者,転記前に最後にこの仕訳を修正した者の識別子。,BT15-03
+710,2,Attribute,,btx,Transaction_ Header,Responsible Person,,String,,,0..1,Identifier of person who created or originated or is otherwise responsible for the entry.,責任者,仕訳を作成したか、仕訳に責任を持つ者の識別子。,BT15-04
+711,2,Attribute,,btx,Transaction_ Header,Posting Code,,String,,,0..1,"Code for posting to period, e.g., period 1-13, based on codes in an accounting period file. We do not recommend that software vendors export here, but suggest providing period end numbers for the buckets. Possibilities W1 through W53, M1 through M13, Q1-Q4. Developers and others creating output files are encouraged to supply an actual end date.",転記コード,転記の期間を表すコード。例えば、会計期間ファイルのコードにもとづく期間１～１３。ソフトウエアベンダーが、この値をエクスポートすることは推奨しない。期間の最終番号を提供することを勧める。可能な値としては、W1からW53、M1からM13、Q1からQ4など。開発者や出力ファイルの作成者には、実際の終了日付を提供することを勧める。,BT15-05
+712,2,Attribute,,btx,Transaction_ Header,Number of Entries,,Integer,,,0..1,The total number of entries.,仕訳総数,仕訳の総数。,BT15-06
+713,2,Attribute,,btx,Transaction_ Header,Comment,,String,,,0..1,Comment of the entry,仕訳摘要,仕訳の摘要,BT15-07
+714,2,Attribute,,btx,Transaction_ Header,Header_ Entry Date,,Date Time,,,0..1,"Represents the actual date/time of entry into computer (automated from system date, often misrepresented by changing system clock). Posting dates are maintained separately.",入力日付,コンピュータへ入力した実際の日付/時刻(システム日付から自動的に与えられ、システム時計の変更により、しばしば誤った値になる)を示す。 転記日付とは別に管理される。,BT15-08
+715,2,Attribute,,btx,Transaction_ Header,Header_ Type Identifier,,Token,,,0..1,"One of the following enumerated list: adjusting, budget, comparative, external-accountant, standard, passed-adjusting, eliminating, proposed, recurring, reclassifying, simulated, tax, other",種別識別子,"以下の値のうちのひとつ。_x005F_x000D_
+整理、予算、比較、外部会計事務所、通常、無視、消去、提案、反復、組替、シミュレーション、税、その他_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
+(adjusting：整理)、(budget：予算)、(comparative：比較)、(external-accountant：外部会計事務所)、(standard：通常)、(passed-adjusting：無視)、(eliminating：消去)、(proposed：提案)、(recurring：反復)、(reclassifying：組替)、(simulated：シミュレーション)、(tax：税)、(other：その他)",BT15-09
+716,2,Attribute,,btx,Transaction_ Header,Header Entry Number Counter,,Decimal,,,0..1,Unique reference for the entry - a numeric counter,文書番号カウンタ,文書の一意なリファレンス　　カウンタ,BT15-10
+717,2,Attribute,,btx,Transaction_ Header,Header Document Type,,Token,,,0..1,"An enumerated field describing the original source document, with invoice, voucher, check and other enumerated entries",元文書種別,顧客への請求書、ベンダからの請求書、小切手、その他の列挙値による、元文書の説明。\n[設定値のリスト]\n(check：小切手)、(debit-memo：借方メモ)、(credit-memo：貸方メモ)、(finance-charge：財務費用)、(invoice：顧客への請求書)、(order-customer：顧客オーダ)、(order-vendor：仕入先オーダ)、(payment-other：その他支払い)、(reminder：督促状)、(tegata：手形)、(voucher：ベンダからの請求書)、(shipment：出荷票)、(receipt：受領票)、(manual-adjustment：手修正)、(other：その他),BT15-11
+718,2,Attribute,,btx,Transaction_ Header,Header Document Type Description,,String,,,0..1,Free format description of the document type,元文書種別説明,元文書の種別の説明。,BT15-12
+719,2,Attribute,,btx,Transaction_ Header,Header Invoice Type,,Token,,,0..1,"Invoice Type  (self-billed, ePoS enumerated values)",請求書種別,請求書の種別。(self-billed、ePoS)\n[設定値のリスト]\n(ePos：POSシステムからの発行)、(self-billed：手動発行),BT15-13
+720,2,Attribute,,btx,Transaction_ Header,Document Currency Code,,QName,,,0..1,Currency in which monetary amounts in the business document are expressed.,文書通貨コード,業務取引文書の金額を表すために使用する通貨を識別するコード。,BT15-14
+721,2,Attribute,,btx,Transaction_ Header,Tax Accounting Currency Code,,QName,,,0..1,Currency used for tax accounting or tax reporting when different from the document currency.,税申告通貨コード,文書通貨と異なる場合に、税務会計または税申告で使用する通貨を識別するコード。,BT15-15
+722,2,Attribute,,btx,Transaction_ Header,Header Document Number,,String,,,0..1,"Invoice, check, voucher, or other source document identifier",元文書番号,請求書、小切手、証憑、その他の元文書の識別子。,BT15-16
+723,2,Attribute,,btx,Transaction_ Header,Header Payment Method,,String,,,0..1,Method used or to be used to make the payment,支払方法,支払いのために使用された、または使用される方法。,BT15-17
+724,2,Attribute,,btx,Transaction_ Header,Header Posting Status,,Token,,,0..1,"deferred: although entered, it cannot be posted until a later time\nposted: already posted\nproposed: a proposed item that must be approved\nsimulated: a simulated item, for what-if\ntax: a tax-specific entry\nunposted:entered but not yet posted or validated\ncancelled:entered and later cancelled\nother:other status - should be described in postingStatusDescription",転記状態,・据置：入力されたが、まだ転記できない。\n・転記済：転記済み。\n・提案済：検証が必要な項目。\n・シミュレーション：仮定のためにシミュレートされた項目。\n・税：税項目。\n・未転記：入力されたが、まだ検証も転記もされていない。\n・取消済：入力されたが、取り消された。\n・その他：その他の状態。postingStatusDescriptionで説明されるべき。\n[設定値のリスト]\n(deferred：据置)、(posted：転記済)、(proposed：提案済)、(simulated：シミュレーション)、(tax：税)、(unposted：未転記)、(cancelled：取消済)、(other：その他),BT15-18
+725,2,Attribute,,btx,Transaction_ Header,Header Posting Status Description,,String,,,0..1,Free format description of the posting status,転記状態説明,転記状態の説明。,BT15-19
+726,2,Attribute,,btx,Transaction_ Header,Header Acknowledgement Date,,Date Time,,,0..1,Date of acknowledgement of goods/services shipped/received.,承認日付,出荷/受領済みの物品/サービスを承認した日付。,BT15-20
+727,2,Attribute,,btx,Transaction_ Header,Header Confirmation Date,,Date Time,,,0..1,Date of confirmation of shipment/receipt.,確認日付,出荷/受領を確認した日付。,BT15-21
+728,2,Attribute,,btx,Transaction_ Header,Header Ship From,,String,,,0..1,References Organization Address Location Identifier where used. Otherwise free form.,出荷元,使用されていれば住所識別子の参照情報。または自由記述。,BT15-22
+729,2,Attribute,,btx,Transaction_ Header,Header Date Shipped/Received,,Date Time,,,0..1,Date goods/services are shipped/received.,出荷/受領日付,物品/サービスを出荷/受領した日付。,BT15-23
+730,2,Attribute,,btx,Transaction_ Header,Header Maturity Date or Date Due,,Date Time,,,0..1,Due date or other maturity date.,支払期日,支払期日やその他の期日。,BT15-24
+731,2,Attribute,,btx,Transaction_ Header,Header Payment Terms,,String,,,0..1,Discount/payment terms.,支払条件,割引/支払い条件。,BT15-25
+732,2,Composition,,btx,Transaction_ Header,,,,btx,Header_ Adjustment,0..*,Document-level allowance or charge adjustment.,【ヘッダー調整】,文書レベルの値引又は追加請求の調整。,BT15-26
+733,2,Reference Association,,btx,Transaction_ Header,,Applied Invoice,,btx,Referenced Document,0..1,"Document number of primary invoice number, used to offset payments, debits and credits; for an invoice, usually the same as the documentNumber. When calculating open balance on an invoice, or open amount on payments in advance or not fully applied, this permits calculation of the open item.",適用先番号,支払、借方、貸方の相殺に使用される、一次請求書の文書番号。請求書では通常documentNumberと等しい。未決済の請求書残高や、未決済の支払金額の計算時に、利用できる。,BT15-27
+734,2,Aggregation,,btx,Transaction_ Header,,,,btx,Referenced Document,0..*,Reference for the document; number assigned to track the document,元文書参照情報,上の文書のための内部参照情報。文書を追跡するために内部的に割り当てた番号。,BT15-28
+735,2,Aggregation,,btx,Transaction_ Header,,,,btx,Header_ Party,0..*,Party participating in the transaction document at header level.,【ヘッダー取引当事者】,取引文書のヘッダーレベルに関係する取引当事者。,BT15-29
+736,2,Composition,,btx,Transaction_ Header,,,,btx,Header_ Amount Structure,0..*,"Structure representing monetary amounts and currency information applicable to the document as a whole, such as document-level totals or aggregated tax amounts.",【ヘッダー金額構造】,文書全体に適用される金額や通貨情報（文書レベルの合計額や集計された税額など）を表現する構造。,BT15-30
+737,2,Composition,,btx,Transaction_ Header,,,,btx,Header_ Tax,0..*,Class for holding tax related information,【税情報】,税関連の情報のタプル。,BT15-31
+738,2,Composition,,btx,Transaction_ Header,,,,btx,Transaction_ Detail,0..*,Parent for document line,【文書明細】,文書明細の親タグ。,BT15-32
+739,1,Class,,btx,Transaction_ Detail,,,,,,0..*,Parent for entry detail,【仕訳明細】,仕訳明細の親タグ。,BT16
+740,2,Attribute,PK,btx,Transaction_ Detail,Line Number,,String,,,0..1,Identifier for a particular entry detail,明細行番号,仕訳明細の識別子。,BT16-01
+741,2,Attribute,,btx,Transaction_ Detail,Line Number Counter,,Decimal,,,0..1,Unique reference for the line - a numeric counter,明細行番号カウンタ,明細行の一意なリファレンス　　カウンタ,BT16-02
+742,2,Attribute,,btx,Transaction_ Detail,Posting Date,,Date Time,,,0..1,"At the detail level, this represents the accounting significance date. No matter what date the document is received, entered, or posted, this signifies the accounting date of the entry. If you want to see the financial results for March 5, 2002 and this entry is given that date, the entry will be part of the results for March 5, 2002. This is different from the postedDate found at the entryHeader level. If you want the accounting significance to be a particular date, it goes here. A single entry could represent multiple dates, but would only be posted on one date.",転記日付,明細レベルで、会計上意義のある日付を示す。ドキュメントの受領、入力、転記の日付に関わらず、仕訳が会計処理された日付を示す。2002.03.05の財務結果を見たいときに、ここにその日付がある場合は、この明細は2002.03.05の結果の一部である。これは、entryHeaderにあるpostedDateとは異なる。特定の日付を会計上意義のある日付にしたいなら、ここに記述する。ひとつの仕訳が複数の日付をあらわせるが、ひとつの日でのみ転記される。,BT16-03
+743,2,Attribute,,btx,Transaction_ Detail,Memo Line,,Boolean,,,0..1,A boolean like entry that indicates whether an entryDetail line has been provided solely to provide additional details and that tools should not consider the amount in postings.,メモ行フラグ,明細行が単に追加の詳細を与えるものであり、転記金額に含めるべきでないことを示すブール値。,BT16-04
+744,2,Attribute,,btx,Transaction_ Detail,Document Type,,Token,,,0..1,"An enumerated field describing the original source document, with check, debit-memo, credit-memo, finance-charge, invoice, order-customer, order-vendor, payment-other, reminder, tegata, voucher, shipment, receipt, manual-adjustment, other.",元文書種別,小切手、借方メモ、貸方メモ、財務費用、顧客への請求書、顧客オーダー、仕入先オーダー、その他支払い、督促状、手形、ベンダからの請求書、出荷票、受領票、手修正、その他の列挙値による、元文書の説明。[設定値のリスト]_x005F_x000D_ (check：小切手)、(debit-memo：借方メモ)、(credit-memo：貸方メモ)、(finance-charge：財務費用)、(invoice：顧客への請求書)、(order-customer：顧客オーダ)、(order-vendor：仕入先オーダ)、(payment-other：その他支払い)、(reminder：督促状)、(tegata：手形)、(voucher：ベンダからの請求書)、(shipment：出荷票)、(receipt：受領票)、(manual-adjustment：手修正)、(other：その他),BT16-05
+745,2,Attribute,,btx,Transaction_ Detail,Document Type Description,,String,,,0..1,Free format description of the document type,元文書種別説明,元文書の種別の説明。,BT16-06
+746,2,Reference Association,,btx,Transaction_ Detail,,,,cor,Document,0..1,"Invoice, check, voucher, or other source document identifier",元文書番号,請求書、小切手、証憑、その他の元文書の識別子。,BT16-07
+747,2,Attribute,,btx,Transaction_ Detail,Document Date,,Date Time,,,0..1,"Date (and less likely in the paper world but possible in the e-world, time) on actual document (invoice, voucher, check date). Other dates control posting information.",元文書日付,実際の文書（請求書、証憑、小切手）の日付（および、紙の世界ではありそうにないが、電子的には時刻）。 転記の情報は別の日付で管理する。,BT16-08
+748,2,Attribute,,btx,Transaction_ Detail,Received Date,,Date Time,,,0..1,Date/time document was noted as received (if necessary). Represents actual date received. Posting dates are maintained separately.,元文書受領日付,（必要であれば）文書の受領が記録された日付/時刻。実際に受領された日付をあらわす。転記日付は別に管理される。,BT16-09
+749,2,Attribute,,btx,Transaction_ Detail,Document Location,,String,,,0..1,"Document location as URI, file name or other reference. Alternatively, text of document can be placed here.",元文書格納場所,文書の格納場所である、URI、ファイル名またはその他の参照情報。代わりに、文書のテキストも記述可能。,BT16-10
+750,2,Attribute,,btx,Transaction_ Detail,Posting Status,,Token,,,0..1,"deferred: although entered, it cannot be posted until a later time
 posted: already posted
 proposed: a proposed item that must be approved
 simulated: a simulated item, for what-if
 tax: a tax-specific entry
 unposted:entered but not yet posted or validated
 cancelled:entered and later cancelled
-other:other status - should be described in postingStatusDescription",転記状態,"・据置：入力されたが、まだ転記できない。_x000D_
-・転記済：転記済み。_x000D_
-・提案済：検証が必要な項目。_x000D_
-・シミュレーション：仮定のためにシミュレートされた項目。_x000D_
-・税：税項目。_x000D_
-・未転記：入力されたが、まだ検証も転記もされていない。_x000D_
-・取消済：入力されたが、取り消された。_x000D_
-・その他：その他の状態。postingStatusDescriptionで説明されるべき。_x000D_
-[設定値のリスト]_x000D_
-(deferred：据置)、(posted：転記済)、(proposed：提案済)、(simulated：シミュレーション)、(tax：税)、(unposted：未転記)、(cancelled：取消済)、(other：その他)",BT13-11
-727,2,Attribute,,btx,Transaction_ Detail,Posting Status Description,,String,,,0..1,Free format description of the posting status,転記状態説明,転記状態の説明。,BT13-12
-728,2,Attribute,,btx,Transaction_ Detail,Description,,String,,,0..1,Description of this line of detail only,説明,この明細行のみに対する説明。,BT13-13
-729,2,Attribute,,btx,Transaction_ Detail,Acknowledgement Date,,Date Time,,,0..1,Date of acknowledgement of goods/services shipped/received.,承認日付,出荷/受領済みの物品/サービスを承認した日付。,BT13-14
-730,2,Attribute,,btx,Transaction_ Detail,Confirmation Date,,Date Time,,,0..1,Date of confirmation of shipment/receipt.,確認日付,出荷/受領を確認した日付。,BT13-15
-731,2,Attribute,,btx,Transaction_ Detail,Measurable Class Description,,String,,,0..1,Free format description associated with gl-ehm:measurableClassID to provide specialization or clarification for the enumerated value of other.,測定可能分類の説明,「その他」の列挙値を補足・特定するための自由記述形式の説明。,BT13-16
-732,2,Attribute,,btx,Transaction_ Detail,Geospatial Coordinate,,String,,,0..1,"Enter a relevant location for this item. Format can be either:
+other:other status - should be described in postingStatusDescription",転記状態,"・据置：入力されたが、まだ転記できない。_x005F_x000D_
+・転記済：転記済み。_x005F_x000D_
+・提案済：検証が必要な項目。_x005F_x000D_
+・シミュレーション：仮定のためにシミュレートされた項目。_x005F_x000D_
+・税：税項目。_x005F_x000D_
+・未転記：入力されたが、まだ検証も転記もされていない。_x005F_x000D_
+・取消済：入力されたが、取り消された。_x005F_x000D_
+・その他：その他の状態。postingStatusDescriptionで説明されるべき。_x005F_x000D_
+[設定値のリスト]_x005F_x000D_
+(deferred：据置)、(posted：転記済)、(proposed：提案済)、(simulated：シミュレーション)、(tax：税)、(unposted：未転記)、(cancelled：取消済)、(other：その他)",BT16-11
+751,2,Attribute,,btx,Transaction_ Detail,Posting Status Description,,String,,,0..1,Free format description of the posting status,転記状態説明,転記状態の説明。,BT16-12
+752,2,Attribute,,btx,Transaction_ Detail,Description,,String,,,0..1,Description of this line of detail only,説明,この明細行のみに対する説明。,BT16-13
+753,2,Attribute,,btx,Transaction_ Detail,Acknowledgement Date,,Date Time,,,0..1,Date of acknowledgement of goods/services shipped/received.,承認日付,出荷/受領済みの物品/サービスを承認した日付。,BT16-14
+754,2,Attribute,,btx,Transaction_ Detail,Confirmation Date,,Date Time,,,0..1,Date of confirmation of shipment/receipt.,確認日付,出荷/受領を確認した日付。,BT16-15
+755,2,Attribute,,btx,Transaction_ Detail,Measurable Class ID,,Token,,,0..1,"An enumerated code to identify the inventory, fixed asset or other measurable class. Enumerated as: raw material, work-in-process, finished goods, assemblies, supplies, land, building, machinery, furniture, vehicles, other.",測定可能分類コード,在庫、固定資産、その他の測定可能な分類を識別するための列挙コード。列挙例：原材料、仕掛品、製品、組立品、備品、土地、建物、機械、家具、車両、その他。,BT16-16
+756,2,Attribute,,btx,Transaction_ Detail,Measurable Class Description,,String,,,0..1,Free format description associated with gl-ehm:measurableClassID to provide specialization or clarification for the enumerated value of other.,測定可能分類の説明,「その他」の列挙値を補足・特定するための自由記述形式の説明。,BT16-17
+757,2,Attribute,,btx,Transaction_ Detail,Geospatial Coordinate,,String,,,0..1,"Enter a relevant location for this item. Format can be either:
 - Degrees, minutes, and seconds (DMS): 41°24'12.2""N 2°10'26.5""E
 - Degrees and decimal minutes (DMM): 41 24.2028, 2 10.4418
 - Decimal degrees (DD): 41.40338, 2.17403",地理座標,"本項目の関連位置を入力。形式は以下のいずれか：
 ・度分秒 (DMS): 41°24'12.2""N 2°10'26.5""E
 ・度と小数分 (DMM): 41 24.2028, 2 10.4418
-・10進度 (DD): 41.40338, 2.17403",BT13-17
-733,2,Aggregation,,btx,Transaction_ Detail,,,,taf,Originating Document,0..*,"A tool to capture the flow of related documents in the business process. Some needs of end users require a greater history of the documents that are associated with a transaction, especially in the VAT audit area. Contains a repetitive class of related documents.",【発生元文書情報】,業務プロセス上の、関連文書の流れを捕捉するためのもの。特にVAT監査では、エンドユーザの要求として、取引に関係する文書の履歴が必要とされる。関連文書情報の構造の繰り返しを含む。,BT13-18
-734,2,Composition,,btx,Transaction_ Detail,,,,muc,Detail_ Multicurrency,0..*,Class to provide additional information related to home currencies that differ from original currencies and related exchange rates - typically this will be used to record exchange rates and amounts in currencies and/or on dates other than those of the original transaction. This class allows recording of exchange rates using a third currency as a triangulation currency. This is often EUR but is not restricted to being so. This class may be repeated as many times as necessary to record amounts in foreign currencies on the same or different dates.,【多通貨明細】,"原取引時の通貨と異なる、自国通貨と換算レートに関する追加情報のセクション。－現在および原取引時の、換算レートおよび金額の記録に使用される。_x000D_
-トライアンギュレーション通貨としての第三通貨の換算レートを記録できる。EURの場合が多いがそれに限らない。この構造は、同日または異なる日の外貨での金額を記録する必要がある限り、繰り返し指定可能。",BT13-19
-735,2,Composition,,btx,Transaction_ Detail,,,,btx,Detail_ Identifier Reference,0..*,"Identification for customer, vendor, or employee.",【CVE情報】,顧客、仕入先、従業員のための識別子。,BT13-20
-736,2,Composition,,btx,Transaction_ Detail,,,,cor,Detail_ XBRL,0..*,This will roll up to XBRL reporting information - this is a parent - repeatable so that the same item can be reported through many taxonomies. Care should be taken to consider what happens if people post to the same account but different XBRL elements.,【XBRL情報】,XBRLレポート情報へのロールアップ情報。親タグであり、同じ項目が複数のタクソノミを通じて報告されうるように繰り返し可能。同一の勘定科目を異なるXBRL要素に転記した場合にどうなるか、注意深く考慮すべきである。,BT13-21
-737,2,Composition,,btx,Transaction_ Detail,,,,bus,Detail_ Measurable,0..*,"Parent for information regarding measurable items associated with the enclosing entryDetail line. Primary area used for holding performance measures. Based on needs for tracking inventory transactional detail, but suitable for anything assigned to an ""account"", ""reporting bucket"" or ""code"". Can be used to track any movements.",【計測可能物情報】,明細行に関係付けられた、計測可能物の情報の親タグ。おもにパフォーマンス測定のために使用される。在庫移動の詳細の追跡の必要性に基づき、「科目」、「報告バケット」、「コード」に関係付けられるあらゆるものに適する。あらゆる活動を追跡するために使用可能。,BT13-22
-738,2,Composition,,btx,Transaction_ Detail,,,,bus,Detail_ Job,0..*,"Class for holding job related information, separate from jobs represented in account identifier. Would probably only have one jobinfo class for each entry line, but there may be a need to express more than one.",【ジョブ情報】,科目識別子で表現されるジョブとは別の、ジョブに関係する情報のタプル。個々の明細行に対してひとつだけ存在すると思われるが、複数必要かもしれない。,BT13-23
-739,2,Composition,,btx,Transaction_ Detail,,,,bus,Detail_ Depreciation Mortgage,0..*,"Parent for information related to depreciation, mortgages, etc.",【減価償却/抵当債務情報】,減価償却、抵当債務等に関連する情報の親タグ。,BT13-24
-740,2,Composition,,btx,Transaction_ Detail,,,,ehm,Detail_ Serial or Lot,0..*,"Class for holding information about serial numbers or lots (batches). As a class, this permits multiple serial numbers or multiple lot number batches within a single gl-cor:measurable class.",【シリアル番号・ロット情報】,シリアル番号やロット（バッチ）に関する情報を保持するタプル。単一の構造内に複数のシリアル番号やロット情報を保持可能。,BT13-25
-741,2,Composition,,btx,Transaction_ Detail,,,,btx,Detail_ Tax,0..*,Class for holding tax related information,【税情報】,税関連の情報のタプル。,BT13-26
-742,2,Composition,,btx,Transaction_ Detail,,,,lnk,Detail_ Rich Text Comment,0..*,"Accepts text in rich text format, including XHTML. It can be used for different purposes, such as to create footnotes in XBRL instances or to create a comment for a document or an entry.",【リッチテキストコメント】,XHTMLを含む、リッチテキスト形式のテキストを受け入れる。XBRLインスタンスのフットノートの生成や、文書や伝票のコメントの生成などの、さまざまな目的で利用可能。,BT13-27
-743,2,Attribute,,btx,Transaction_ Detail,Detail_ Description,,String,,,0..1,Description of this line of detail only,説明,この明細行のみに対する説明。,BT13-28
-744,2,Attribute,,btx,Transaction_ Detail,Detail_ Measurable Class Identifier,,Token,,,0..1,"An enumerated code to identify the inventory, fixed asset or other measurable class. Enumerated as: raw material, work-in-process, finished goods, assemblies, supplies, land, building, machinery, furniture, vehicles, other.",測定可能分類コード,在庫、固定資産、その他の測定可能な分類を識別するための列挙コード。列挙例：原材料、仕掛品、製品、組立品、備品、土地、建物、機械、家具、車両、その他。,BT13-29
-745,2,Composition,,btx,Transaction_ Detail,,,,btx,Detail_ Amount Structure,0..*,"Structure representing monetary amounts and currency information applicable to an individual line, such as line-level net amounts, tax calculation bases, allowances, or charges.",【行金額構造】,個々の明細行に適用される金額や通貨情報（行レベルの正味金額、税計算基礎額、値引または追加請求など）を表現する構造。,BT13-30
-746,2,Composition,,btx,Transaction_ Detail,,Detail,,btx,Adjustment,0..*,Line-level allowance or charge adjustment.,【明細調整】,明細レベルの値引又は追加請求の調整。,BT13-31
-747,1,Class,,btx,Tax,,,,,,0..*,Business-transactions Tax specialization that adds transaction-document tax regime and exemption semantics without changing the shared core Tax definition.,【業務取引税情報】,共通の税情報を拡張し、業務取引文書の税制種別及び免税理由を保持する税情報。,BT14
-748,2,Attribute,,btx,Tax,Tax Authority,,String,,,0..1,Name of the relevant tax authority,課税庁,関係する課税庁の名前。,BT14-01
-749,2,Attribute,,btx,Tax,Tax Table Code,,String,,,0..1,Tax table code used by the relevant tax authority,税率表コード,関係する課税庁で使用される税率表のコード。,BT14-02
-750,2,Attribute,,btx,Tax,Tax Description,,String,,,0..1,Description of tax authority,課税庁説明,課税庁の説明。,BT14-03
-751,2,Attribute,,btx,Tax,Amount of Taxes,,Monetary,,,0..1,Amount of taxes,税額,税額。,BT14-04
-752,2,Attribute,,btx,Tax,Basis for Taxation,,Monetary,,,0..1,Basis for taxation,課税基準,課税基準。,BT14-05
-753,2,Attribute,,btx,Tax,Tax Percentage Rate,,Pure,,,0..1,Percent rate for VAT or other taxes normally a number between 0 and 1.0 - e.g. 50% is represented as 0.5,税率,"VAT(物品税)またはその他の税のパーセント比率。_x000D_
-0から1.0の間の値。たとえば50%は0.5とあらわす。",BT14-06
-754,2,Attribute,,btx,Tax,Tax Category,,String,,,0..1,A class or category of taxes,税区分,税のクラス又はカテゴリ。,BT14-07
-755,2,Attribute,,btx,Tax,Tax Comment/Exemption Reason,,String,,,0..1,Additional text/code for exemption reasons or other comments.,税コメント/免税理由,免税理由やその他のコメントのための、追加の文またはコード。,BT14-08
-756,2,Attribute,,btx,Tax,Tax Amount in Foreign Currency,,Monetary,,,0..1,"If the tax is in a foreign currency, the amount of tax in that currency",外貨建税額,税が外貨建ての場合の、税額。,BT14-09
-757,2,Attribute,,btx,Tax,Tax Foreign Currency,,QName,,,0..1,"If the tax is in a foreign currency, that currency",外貨建税額通貨,税が外貨建ての場合の、通貨。,BT14-10
-758,2,Attribute,,btx,Tax,Tax Exchange Rate Date,,Date Time,,,0..1,"If the tax is in a foreign currency, the date or date and time of the exchange rate used",税額換算レート日付,税が外貨建ての場合の、換算レートの日付または日付/時刻。,BT14-11
-759,2,Attribute,,btx,Tax,Tax Exchange Rate,,Pure,,,0..1,"If the tax is in a foreign currency, the exchange rate used expressed as national currency divided by foreign currency",税額換算レート,税が外貨建ての場合の、換算レート。自国通貨を外貨で割った値。,BT14-12
-760,2,Attribute,,btx,Tax,Tax Exchange Rate Source,,String,,,0..1,"If the tax is in a foreign currency, source of exchange rate - for example, Reuters, Bloomberg",税額換算レート情報源,"税が外貨建ての場合の、換算レートの情報源。たとえば、Reuters, Bloomberg",BT14-13
-761,2,Attribute,,btx,Tax,Tax Exchange Rate Type,,String,,,0..1,"If the tax is in a foreign currency, type of exchange rate - for example, spot rate, forward contract etc.",税額換算レート種別,税が外貨建ての場合の、換算レートの種別。たとえば、スポット・レート、先物など。,BT14-14
-762,2,Attribute,,btx,Tax,Tax Exchange Rate Comment,,String,,,0..1,"If the tax is in a foreign currency, comment about exchange rate used",税額換算レートコメント,税が外貨建ての場合の、換算レートに関するコメント。,BT14-15
-763,2,Attribute,,btx,Tax,Tax Amount in Triangulation Currency,,Monetary,,,0..1,"If the tax is in a foreign currency and triangulation is used, the amount of that tax in the triangulation currency",税額トライアンギュレーション通貨換算額,税が外貨建てで、トライアンギュレーション取引の場合の、トライアンギュレーション通貨での税額。,BT14-16
-764,2,Attribute,,btx,Tax,Tax Triangulation Currency,,QName,,,0..1,"If the tax is in a foreign currency and triangulation is used, the triangulation currency",税額換算トライアンギュレーション通貨,税が外貨建てで、トライアンギュレーション取引の場合の、トライアンギュレーション通貨。,BT14-17
-765,2,Attribute,,btx,Tax,Tax Triangulation Currency Exchange Rate,,Pure,,,0..1,"If the tax is in a foreign currency and triangulation is used, the exchange rate used expressed as national currency divided by triangulation currency",税額トライアンギュレーション通貨換算レート,税が外貨建てで、トライアンギュレーション取引の場合の、換算レート。自国通貨をトライアンギュレーション通貨で割った値。,BT14-18
-766,2,Attribute,,btx,Tax,Tax Triangulation Currency Exchange Rate Source,,String,,,0..1,"If the tax is in a foreign currency and triangulation is used, source of exchange rate - for example, Reuters, Bloomberg",税額トライアンギュレーション通貨換算レート情報源,"税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの情報源。たとえば、Reuters, Bloomberg",BT14-19
-767,2,Attribute,,btx,Tax,Tax Triangulation Currency Exchange Rate Type,,String,,,0..1,"If the tax is in a foreign currency and triangulation is used, type of exchange rate - for example, spot rate, forward contract etc.",税額トライアンギュレーション通貨換算レート種別,税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの種別。たとえば、スポット・レート、先物など,BT14-20
-768,2,Attribute,,btx,Tax,Tax Foreign to Triangulation Currency Exchange Rate,,Pure,,,0..1,"If the tax is in a foreign currency and triangulation is used,  the exchange rate used expressed as foreign currency divided by triangulation currency",税額外貨トライアンギュレーション通貨換算レート,税が外貨建てで、トライアンギュレーション取引の場合の、換算レート。外貨をトライアンギュレーション通貨で割った値。,BT14-21
-769,2,Attribute,,btx,Tax,Tax Foreign to Triangulation Currency Exchange Rate Source,,String,,,0..1,"If the tax is in a foreign currency and triangulation is used, source of exchange rate - for example, Reuters, Bloomberg",税額外貨トライアンギュレーション通貨換算レート情報源,"税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの情報源。たとえば、Reuters, Bloomberg",BT14-22
-770,2,Attribute,,btx,Tax,Tax Foreign to Triangulation Currency Exchange Rate Type,,String,,,0..1,"If the tax is in a foreign currency and triangulation is used, type of exchange rate - for example, spot rate, forward contract etc.",税額外貨トライアンギュレーション通貨換算レート種別,税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの種別。たとえば、スポット・レート、先物など。,BT14-23
-771,2,Attribute,,btx,Tax,Tax Type,,Token,,,0..1,"Type of tax regime or tax family applicable to this tax occurrence, distinct from its tax category.",税種別,この税出現に適用される税制又は税体系の種別。税区分とは異なる。,BT14-24
-772,2,Attribute,,btx,Tax,Tax Exemption Reason Code,,Token,,,0..1,Code identifying the reason why the tax occurrence is exempt from tax.,免税理由コード,この税出現が免税となる理由を識別するコード。,BT14-25
-773,2,Attribute,,btx,Tax,Tax Exemption Reason Text,,String,,,0..1,Human-readable text describing the reason why the tax occurrence is exempt from tax.,免税理由テキスト,この税出現が免税となる理由を説明する可読テキスト。,BT14-26
-774,1,Class,,btx,Detail_ Tax,,,,,,0..*,Business-transactions detail Tax specialization that adds line-level tax regime and exemption semantics without changing the shared core Detail Tax definition.,【業務取引明細税情報】,共通の明細税情報を拡張し、業務取引明細の税制種別及び免税理由を保持する税情報。,BT15
-775,2,Attribute,,btx,Detail_ Tax,Tax Authority,,String,,,0..1,Name of the relevant tax authority,課税庁,関係する課税庁の名前。,BT15-01
-776,2,Attribute,,btx,Detail_ Tax,Tax Table Code,,String,,,0..1,Tax table code used by the relevant tax authority,税率表コード,関係する課税庁で使用される税率表のコード。,BT15-02
-777,2,Attribute,,btx,Detail_ Tax,Tax Description,,String,,,0..1,Description of tax authority,課税庁説明,課税庁の説明。,BT15-03
-778,2,Attribute,,btx,Detail_ Tax,Amount of Taxes,,Monetary,,,0..1,Amount of taxes,税額,税額。,BT15-04
-779,2,Attribute,,btx,Detail_ Tax,Basis for Taxation,,Monetary,,,0..1,Basis for taxation,課税基準,課税基準。,BT15-05
-780,2,Attribute,,btx,Detail_ Tax,Tax Percentage Rate,,Pure,,,0..1,Percent rate for VAT or other taxes normally a number between 0 and 1.0 - e.g. 50% is represented as 0.5,税率,"VAT(物品税)またはその他の税のパーセント比率。_x000D_
-0から1.0の間の値。たとえば50%は0.5とあらわす。",BT15-06
-781,2,Attribute,,btx,Detail_ Tax,Tax Category,,String,,,0..1,A class or category of taxes,税区分,税のクラス又はカテゴリ。,BT15-07
-782,2,Attribute,,btx,Detail_ Tax,Tax Comment/Exemption Reason,,String,,,0..1,Additional text/code for exemption reasons or other comments.,税コメント/免税理由,免税理由やその他のコメントのための、追加の文またはコード。,BT15-08
-783,2,Attribute,,btx,Detail_ Tax,Tax Amount in Foreign Currency,,Monetary,,,0..1,"If the tax is in a foreign currency, the amount of tax in that currency",外貨建税額,税が外貨建ての場合の、税額。,BT15-09
-784,2,Attribute,,btx,Detail_ Tax,Tax Foreign Currency,,QName,,,0..1,"If the tax is in a foreign currency, that currency",外貨建税額通貨,税が外貨建ての場合の、通貨。,BT15-10
-785,2,Attribute,,btx,Detail_ Tax,Tax Exchange Rate Date,,Date Time,,,0..1,"If the tax is in a foreign currency, the date or date and time of the exchange rate used",税額換算レート日付,税が外貨建ての場合の、換算レートの日付または日付/時刻。,BT15-11
-786,2,Attribute,,btx,Detail_ Tax,Tax Exchange Rate,,Pure,,,0..1,"If the tax is in a foreign currency, the exchange rate used expressed as national currency divided by foreign currency",税額換算レート,税が外貨建ての場合の、換算レート。自国通貨を外貨で割った値。,BT15-12
-787,2,Attribute,,btx,Detail_ Tax,Tax Exchange Rate Source,,String,,,0..1,"If the tax is in a foreign currency, source of exchange rate - for example, Reuters, Bloomberg",税額換算レート情報源,"税が外貨建ての場合の、換算レートの情報源。たとえば、Reuters, Bloomberg",BT15-13
-788,2,Attribute,,btx,Detail_ Tax,Tax Exchange Rate Type,,String,,,0..1,"If the tax is in a foreign currency, type of exchange rate - for example, spot rate, forward contract etc.",税額換算レート種別,税が外貨建ての場合の、換算レートの種別。たとえば、スポット・レート、先物など。,BT15-14
-789,2,Attribute,,btx,Detail_ Tax,Tax Exchange Rate Comment,,String,,,0..1,"If the tax is in a foreign currency, comment about exchange rate used",税額換算レートコメント,税が外貨建ての場合の、換算レートに関するコメント。,BT15-15
-790,2,Attribute,,btx,Detail_ Tax,Tax Amount in Triangulation Currency,,Monetary,,,0..1,"If the tax is in a foreign currency and triangulation is used, the amount of that tax in the triangulation currency",税額トライアンギュレーション通貨換算額,税が外貨建てで、トライアンギュレーション取引の場合の、トライアンギュレーション通貨での税額。,BT15-16
-791,2,Attribute,,btx,Detail_ Tax,Tax Triangulation Currency,,QName,,,0..1,"If the tax is in a foreign currency and triangulation is used, the triangulation currency",税額換算トライアンギュレーション通貨,税が外貨建てで、トライアンギュレーション取引の場合の、トライアンギュレーション通貨。,BT15-17
-792,2,Attribute,,btx,Detail_ Tax,Tax Triangulation Currency Exchange Rate,,Pure,,,0..1,"If the tax is in a foreign currency and triangulation is used, the exchange rate used expressed as national currency divided by triangulation currency",税額トライアンギュレーション通貨換算レート,税が外貨建てで、トライアンギュレーション取引の場合の、換算レート。自国通貨をトライアンギュレーション通貨で割った値。,BT15-18
-793,2,Attribute,,btx,Detail_ Tax,Tax Triangulation Currency Exchange Rate Source,,String,,,0..1,"If the tax is in a foreign currency and triangulation is used, source of exchange rate - for example, Reuters, Bloomberg",税額トライアンギュレーション通貨換算レート情報源,"税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの情報源。たとえば、Reuters, Bloomberg",BT15-19
-794,2,Attribute,,btx,Detail_ Tax,Tax Triangulation Currency Exchange Rate Type,,String,,,0..1,"If the tax is in a foreign currency and triangulation is used, type of exchange rate - for example, spot rate, forward contract etc.",税額トライアンギュレーション通貨換算レート種別,税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの種別。たとえば、スポット・レート、先物など,BT15-20
-795,2,Attribute,,btx,Detail_ Tax,Tax Foreign to Triangulation Currency Exchange Rate,,Pure,,,0..1,"If the tax is in a foreign currency and triangulation is used,  the exchange rate used expressed as foreign currency divided by triangulation currency",税額外貨トライアンギュレーション通貨換算レート,税が外貨建てで、トライアンギュレーション取引の場合の、換算レート。外貨をトライアンギュレーション通貨で割った値。,BT15-21
-796,2,Attribute,,btx,Detail_ Tax,Tax Foreign to Triangulation Currency Exchange Rate Source,,String,,,0..1,"If the tax is in a foreign currency and triangulation is used, source of exchange rate - for example, Reuters, Bloomberg",税額外貨トライアンギュレーション通貨換算レート情報源,"税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの情報源。たとえば、Reuters, Bloomberg",BT15-22
-797,2,Attribute,,btx,Detail_ Tax,Tax Foreign to Triangulation Currency Exchange Rate Type,,String,,,0..1,"If the tax is in a foreign currency and triangulation is used, type of exchange rate - for example, spot rate, forward contract etc.",税額外貨トライアンギュレーション通貨換算レート種別,税が外貨建てで、トライアンギュレーション取引の場合の、換算レートの種別。たとえば、スポット・レート、先物など。,BT15-23
-798,2,Attribute,,btx,Detail_ Tax,Tax Type,,Token,,,0..1,"Type of tax regime or tax family applicable to this detail tax occurrence, distinct from its tax category.",明細税種別,この明細税出現に適用される税制又は税体系の種別。税区分とは異なる。,BT15-24
-799,2,Attribute,,btx,Detail_ Tax,Tax Exemption Reason Code,,Token,,,0..1,Code identifying the exemption reason for this detail tax occurrence.,明細免税理由コード,この明細税出現の免税理由を識別するコード。,BT15-25
-800,2,Attribute,,btx,Detail_ Tax,Tax Exemption Reason Text,,String,,,0..1,Human-readable text describing the exemption reason for this detail tax occurrence.,明細免税理由テキスト,この明細税出現の免税理由を説明する可読テキスト。,BT15-26
-801,1,Class,,btx,Document Attachment,,,,,,0..*,"Attachment payload or external location and its metadata, maintained as one repeatable document-attachment occurrence.",【文書添付】,添付内容又は外部所在とそのメタデータを一つの反復可能な文書添付出現として保持する構造。,BT16
-802,2,Attribute,,btx,Document Attachment,Binary Content,,Base64Binary,,,0..1,Binary attachment content encoded as base64.,バイナリ内容,Base64で符号化された添付文書のバイナリ内容。,BT16-01
-803,2,Attribute,,btx,Document Attachment,MIME Type,,Token,,,0..1,MIME media type of the attached content.,MIME種別,添付内容のMIMEメディア種別。,BT16-02
-804,2,Attribute,,btx,Document Attachment,File Name,,String,,,0..1,File name associated with the attached content.,ファイル名,添付内容に関連付けられたファイル名。,BT16-03
-805,2,Attribute,,btx,Document Attachment,External URI,,anyURI,,,0..1,External URI at which the referenced document or attachment can be obtained.,外部URI,参照文書又は添付文書を取得できる外部URI。,BT16-04
-806,1,Class,,btx,Header_ Rich Text Comment,,,,,,0..*,Header-scoped reusable rich text comment for a business transaction document.,【ヘッダーリッチテキストコメント】,業務取引文書のヘッダー範囲で再利用するリッチテキストコメント。,BT17
-807,2,Attribute,,btx,Header_ Rich Text Comment,Comment Code,,String,,,0..1,"An enumerated code that identifies the purpose of the rich text comment. Enumerated values: link_footnote, footnote, source_document, source_journal, batch, other.",リッチテキストコメントコード,"リッチテキストコメントの用途を識別する、列挙コード。_x000D_
-[設定値のリスト]_x000D_
-link_footnote：リンクフットノート、footnote：フットノート、source_document：元文書、source_journal：元仕訳帳、batch：仕訳の束、other：その他",BT17-01
-808,2,Attribute,,btx,Header_ Rich Text Comment,Comment Description,,String,,,0..1,Free format description of the Rich text Comment Code.,リッチテキストコメント説明,リッチテキストコメントコードの説明。,BT17-02
-809,2,Attribute,,btx,Header_ Rich Text Comment,Comment Content,,String,,,0..1,Content of the Rich Text Comment.,リッチテキストコメント内容,リッチテキストコメントの内容。,BT17-03
-810,2,Attribute,,btx,Header_ Rich Text Comment,Comment Locator,,String,,,0..1,An XPath expression that identifies the item that the comment relates to.,リッチテキストコメントロケータ,コメントが関係する項目を識別する、XPath表現。,BT17-04
-811,1,Class,,btx,Adjustment,,,,,,0..*,"Repeatable allowance or charge adjustment occurrence combining type, amount, calculation basis, reason, and tax information.",【調整】,種別、金額、計算基礎、理由及び税情報を一つにまとめた反復可能な値引又は追加請求の調整出現。,BT18
-812,2,Attribute,,btx,Adjustment,Adjustment Type,,Token,,,0..1,"Type of adjustment, such as an allowance or charge; literal values are defined outside this FSM change.",調整種別,値引又は追加請求などの調整種別。具体的な値はこのFSM変更では定義しない。,BT18-01
-813,2,Attribute,,btx,Adjustment,Amount,,Monetary,,,1,Monetary amount of the adjustment.,調整金額,調整の金額。,BT18-02
-814,2,Attribute,,btx,Adjustment,Base Amount,,Monetary,,,0..1,Monetary base amount used to calculate the adjustment.,調整基礎金額,調整の計算に用いる基礎金額。,BT18-03
-815,2,Attribute,,btx,Adjustment,Percentage,,Pure,,,0..1,"Percentage rate used to calculate the adjustment, represented as a pure numeric value.",調整率,調整の計算に用いる比率。純粋数値として表現する。,BT18-04
-816,2,Attribute,,btx,Adjustment,Reason,,String,,,0..1,Human-readable reason for the adjustment.,調整理由,調整理由の可読テキスト。,BT18-05
-817,2,Attribute,,btx,Adjustment,Reason Code,,Token,,,0..1,Code identifying the reason for the adjustment.,調整理由コード,調整理由を識別するコード。,BT18-06
-818,2,Attribute,,btx,Adjustment,Tax Category,,Token,,,0..1,Tax category applicable to the adjustment.,調整税区分,調整に適用される税区分。,BT18-07
-819,2,Attribute,,btx,Adjustment,Tax Rate,,Pure,,,0..1,Tax percentage rate applicable to the adjustment.,調整税率,調整に適用される税率。,BT18-08
+・10進度 (DD): 41.40338, 2.17403",BT16-18
+758,2,Aggregation,,btx,Transaction_ Detail,,,,taf,Originating Document,0..*,"A tool to capture the flow of related documents in the business process. Some needs of end users require a greater history of the documents that are associated with a transaction, especially in the VAT audit area. Contains a repetitive class of related documents.",【発生元文書情報】,業務プロセス上の、関連文書の流れを捕捉するためのもの。特にVAT監査では、エンドユーザの要求として、取引に関係する文書の履歴が必要とされる。関連文書情報の構造の繰り返しを含む。,BT16-19
+759,2,Attribute,,btx,Transaction_ Detail,Detail_ Description,,String,,,0..1,Description of this line of detail only,説明,この明細行のみに対する説明。,BT16-20
+760,2,Aggregation,,btx,Transaction_ Detail,,,,btx,Detail_ Party,0..*,Party associated with the transaction detail line.,【明細取引当事者】,取引明細に関係する取引当事者。,BT16-21
+761,2,Aggregation,,btx,Transaction_ Detail,,,,btx,Referenced Document,0..*,Reference for the document; number assigned to track the document,元文書参照情報,上の文書のための内部参照情報。文書を追跡するために内部的に割り当てた番号。,BT16-22
+762,2,Aggregation,,btx,Transaction_ Detail,,,,bus,Detail_ Measurable,0..*,"Parent for information regarding measurable items associated with the enclosing entryDetail line. Primary area used for holding performance measures. Based on needs for tracking inventory transactional detail, but suitable for anything assigned to an ""account"", ""reporting bucket"" or ""code"". Can be used to track any movements.",【計測可能物情報】,明細行に関係付けられた、計測可能物の情報の親タグ。おもにパフォーマンス測定のために使用される。在庫移動の詳細の追跡の必要性に基づき、「科目」、「報告バケット」、「コード」に関係付けられるあらゆるものに適する。あらゆる活動を追跡するために使用可能。,BT16-23
+763,2,Aggregation,,btx,Transaction_ Detail,,,,ehm,Detail_ Serial or Lot,0..*,"Class for holding information about serial numbers or lots (batches). As a class, this permits multiple serial numbers or multiple lot number batches within a single gl-cor:measurable class.",【シリアル番号・ロット情報】,シリアル番号やロット（バッチ）に関する情報を保持するタプル。単一の構造内に複数のシリアル番号やロット情報を保持可能。,BT16-24
+764,2,Aggregation,,btx,Transaction_ Detail,,,,bus,Detail_ Job,0..*,"Class for holding job related information, separate from jobs represented in account identifier. Would probably only have one jobinfo class for each entry line, but there may be a need to express more than one.",【ジョブ情報】,科目識別子で表現されるジョブとは別の、ジョブに関係する情報のタプル。個々の明細行に対してひとつだけ存在すると思われるが、複数必要かもしれない。,BT16-25
+765,2,Composition,,btx,Transaction_ Detail,,,,btx,Detail_ Adjustment,0..*,Line-level allowance or charge adjustment.,【明細調整】,明細レベルの値引又は追加請求の調整。,BT16-26
+766,2,Composition,,btx,Transaction_ Detail,,,,btx,Detail_ Amount Structure,0..*,"Structure representing monetary amounts and currency information applicable to an individual line, such as line-level net amounts, tax calculation bases, allowances, or charges.",【行金額構造】,個々の明細行に適用される金額や通貨情報（行レベルの正味金額、税計算基礎額、値引または追加請求など）を表現する構造。,BT16-27
+767,2,Composition,,btx,Transaction_ Detail,,,,btx,Detail_ Tax,0..*,Class for holding tax related information,【税情報】,税関連の情報のタプル。,BT16-28
+768,2,Composition,,btx,Transaction_ Detail,,,,bus,Detail_ Depreciation Mortgage,0..*,"Parent for information related to depreciation, mortgages, etc.",【減価償却/抵当債務情報】,減価償却、抵当債務等に関連する情報の親タグ。,BT16-29
+769,2,Composition,,btx,Transaction_ Detail,,,,lnk,Detail_ Rich Text Comment,0..*,"Accepts text in rich text format, including XHTML. It can be used for different purposes, such as to create footnotes in XBRL instances or to create a comment for a document or an entry.",【リッチテキストコメント】,XHTMLを含む、リッチテキスト形式のテキストを受け入れる。XBRLインスタンスのフットノートの生成や、文書や伝票のコメントの生成などの、さまざまな目的で利用可能。,BT16-30
+770,2,Composition,,btx,Transaction_ Detail,,,,cor,Detail_ XBRL,0..*,This will roll up to XBRL reporting information - this is a parent - repeatable so that the same item can be reported through many taxonomies. Care should be taken to consider what happens if people post to the same account but different XBRL elements.,【XBRL情報】,XBRLレポート情報へのロールアップ情報。親タグであり、同じ項目が複数のタクソノミを通じて報告されうるように繰り返し可能。同一の勘定科目を異なるXBRL要素に転記した場合にどうなるか、注意深く考慮すべきである。,BT16-31
