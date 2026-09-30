@@ -163,7 +163,7 @@ FORMAL_HMD_HEADER = [
     "name",
     "datatype",
     "multiplicity",
-    "association_role",
+    "value_domain",
     "definition",
     "label_local",
     "definition_local",

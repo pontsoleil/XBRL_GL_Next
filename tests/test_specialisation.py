@@ -163,6 +163,10 @@ class SpecialisationTests(unittest.TestCase):
             )
         )
 
+    def test_output_is_utf8_without_bom(self):
+        _, _, bsm = self.run_model(self.basic_rows())
+        self.assertFalse(bsm.read_bytes().startswith(b"\xef\xbb\xbf"))
+
     def test_legacy_american_spelling_warns_normalises_and_matches_bsm(self):
         canonical_rows = self.basic_rows()
         _, canonical_output, canonical_bsm = self.run_model(canonical_rows)

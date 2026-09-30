@@ -19,7 +19,7 @@
       <restriction base="xbrli:dateTimeItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="transactionCreatorItemType">
+  <complexType name="creatorItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
@@ -29,9 +29,19 @@
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
+  <complexType name="enteredDateItemType">
+    <simpleContent>
+      <restriction base="xbrli:dateTimeItemType"/>
+    </simpleContent>
+  </complexType>
   <complexType name="responsiblePersonItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="typeCodeItemType">
+    <simpleContent>
+      <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
   </complexType>
   <complexType name="postingCodeItemType">
@@ -47,16 +57,6 @@
   <complexType name="commentItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="headerEntryDateItemType">
-    <simpleContent>
-      <restriction base="xbrli:dateTimeItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="headerTypeIdentifierItemType">
-    <simpleContent>
-      <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
   </complexType>
   <complexType name="headerEntryNumberCounterItemType">
@@ -179,47 +179,47 @@
       <restriction base="xbrli:pureItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="transactionDocumentNumberItemType">
+  <complexType name="appliedInvoiceReferencedDocumentNumberItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="referencedDocumentTypeItemType">
+  <complexType name="transactionHeaderReferencedDocumentTypeItemType">
     <simpleContent>
       <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="referencedDocumentNumberItemType">
+  <complexType name="transactionHeaderReferencedDocumentNumberItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="referencedDocumentDateItemType">
+  <complexType name="transactionHeaderReferencedDocumentDateItemType">
     <simpleContent>
       <restriction base="xbrli:dateItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="referencedDocumentIdentifierTypeItemType">
+  <complexType name="transactionHeaderReferencedDocumentIdentifierTypeItemType">
     <simpleContent>
       <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="referencedDocumentIdentifierCodeItemType">
+  <complexType name="transactionHeaderReferencedDocumentIdentifierCodeItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="referencedDocumentReceivedDateItemType">
+  <complexType name="transactionHeaderReferencedDocumentReceivedDateItemType">
     <simpleContent>
       <restriction base="xbrli:dateTimeItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="referencedDocumentLocationItemType">
+  <complexType name="transactionHeaderReferencedDocumentLocationItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="headerReferencePurposeItemType">
+  <complexType name="transactionHeaderReferencedDocumentReferencePurposeItemType">
     <simpleContent>
       <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
@@ -234,17 +234,37 @@
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="headerPartyBusinessDescriptionItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
   <complexType name="headerPartyRoleItemType">
     <simpleContent>
       <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="headerAmountItemType">
+  <complexType name="headerPartyBusinessDescriptionItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="headerPartyOrganizationIdentifierCodeItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="headerPartyOrganizationIdentifierPurposeItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="headerPartyOrganizationIdentifierIssuingAgencyItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="headerPartyOrganizationIdentifierDescriptionItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="headerAmountStructureAmountItemType">
     <simpleContent>
       <restriction base="xbrli:monetaryItemType"/>
     </simpleContent>
@@ -254,12 +274,12 @@
       <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="headerCurrencyCodeItemType">
+  <complexType name="headerAmountStructureCurrencyCodeItemType">
     <simpleContent>
       <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="headerCurrencyCodeTypeItemType">
+  <complexType name="headerAmountStructureCurrencyCodeTypeItemType">
     <simpleContent>
       <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
@@ -284,12 +304,12 @@
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="headerAmountOfTaxesItemType">
+  <complexType name="headerTaxAmountOfTaxesItemType">
     <simpleContent>
       <restriction base="xbrli:monetaryItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="headerBasisForTaxationItemType">
+  <complexType name="headerTaxBasisForTaxationItemType">
     <simpleContent>
       <restriction base="xbrli:monetaryItemType"/>
     </simpleContent>
@@ -344,27 +364,27 @@
       <restriction base="xbrli:booleanItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="detailDeaderDocumentTypeItemType">
+  <complexType name="transactionDetailDocumentTypeItemType">
     <simpleContent>
       <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="detailDeaderDocumentTypeDescriptionItemType">
+  <complexType name="documentTypeDescriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="detailDeaderDocumentDateItemType">
+  <complexType name="transactionDetailDocumentDateItemType">
     <simpleContent>
       <restriction base="xbrli:dateTimeItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="receivedDateItemType">
+  <complexType name="transactionDetailReceivedDateItemType">
     <simpleContent>
       <restriction base="xbrli:dateTimeItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="documentLocationItemType">
+  <complexType name="transactionDetailDocumentLocationItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
@@ -375,11 +395,6 @@
     </simpleContent>
   </complexType>
   <complexType name="postingStatusDescriptionItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="detailDescriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
@@ -409,7 +424,7 @@
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="detailRitchTextDetailDescriptionItemType">
+  <complexType name="descriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
@@ -424,52 +439,72 @@
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="detailPartyBusinessDescriptionItemType">
-    <simpleContent>
-      <restriction base="xbrli:stringItemType"/>
-    </simpleContent>
-  </complexType>
   <complexType name="detailPartyRoleItemType">
     <simpleContent>
       <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="documentTypeItemType">
-    <simpleContent>
-      <restriction base="xbrli:tokenItemType"/>
-    </simpleContent>
-  </complexType>
-  <complexType name="documentNumberItemType">
+  <complexType name="detailPartyBusinessDescriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="documentDateItemType">
+  <complexType name="detailPartyOrganizationIdentifierCodeItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="detailPartyOrganizationIdentifierPurposeItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="detailPartyOrganizationIdentifierIssuingAgencyItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="detailPartyOrganizationIdentifierDescriptionItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="transactionDetailReferencedDocumentTypeItemType">
+    <simpleContent>
+      <restriction base="xbrli:tokenItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="transactionDetailReferencedDocumentNumberItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="transactionDetailReferencedDocumentDateItemType">
     <simpleContent>
       <restriction base="xbrli:dateItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="documentIdentifierTypeItemType">
+  <complexType name="transactionDetailReferencedDocumentIdentifierTypeItemType">
     <simpleContent>
       <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="documentIdentifierCodeItemType">
+  <complexType name="transactionDetailReferencedDocumentIdentifierCodeItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="detailReferencedDocumentReceivedDateItemType">
+  <complexType name="transactionDetailReferencedDocumentReceivedDateItemType">
     <simpleContent>
       <restriction base="xbrli:dateTimeItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="detailReferencedDocumentLocationItemType">
+  <complexType name="transactionDetailReferencedDocumentLocationItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="detailReferencePurposeItemType">
+  <complexType name="transactionDetailReferencedDocumentReferencePurposeItemType">
     <simpleContent>
       <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
@@ -514,7 +549,7 @@
       <restriction base="xbrli:pureItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="amountItemType">
+  <complexType name="detailAmountStructureAmountItemType">
     <simpleContent>
       <restriction base="xbrli:monetaryItemType"/>
     </simpleContent>
@@ -524,47 +559,47 @@
       <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="currencyCodeItemType">
+  <complexType name="detailAmountStructureCurrencyCodeItemType">
     <simpleContent>
       <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="currencyCodeTypeItemType">
+  <complexType name="detailAmountStructureCurrencyCodeTypeItemType">
     <simpleContent>
       <restriction base="xbrli:tokenItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="amountTypeItemType">
+  <complexType name="detailAmountTypeItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="taxAuthorityItemType">
+  <complexType name="detailTaxAuthorityItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="taxTableCodeItemType">
+  <complexType name="detailTaxTableCodeItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="taxDescriptionItemType">
+  <complexType name="detailTaxDescriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="amountOfTaxesItemType">
+  <complexType name="detailTaxAmountOfTaxesItemType">
     <simpleContent>
       <restriction base="xbrli:monetaryItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="basisForTaxationItemType">
+  <complexType name="detailTaxBasisForTaxationItemType">
     <simpleContent>
       <restriction base="xbrli:monetaryItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="taxPercentageRateItemType">
+  <complexType name="detailTaxPercentageRateItemType">
     <simpleContent>
       <restriction base="xbrli:pureItemType"/>
     </simpleContent>
@@ -574,17 +609,17 @@
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="taxCommentExemptionReasonItemType">
+  <complexType name="detailTaxCommentExemptionReasonItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="taxAmountInDocumentCurrencyItemType">
+  <complexType name="detailTaxAmountInDocumentCurrencyItemType">
     <simpleContent>
       <restriction base="xbrli:monetaryItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="taxAmountInTaxAccountingCurrencyItemType">
+  <complexType name="detailTaxAmountInTaxAccountingCurrencyItemType">
     <simpleContent>
       <restriction base="xbrli:monetaryItemType"/>
     </simpleContent>
@@ -598,14 +633,14 @@
   <element name="businessTransactions" id="btx_businessTransactions" type="btx:businessTransactionsComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="transactionHeader" id="btx_transactionHeader" type="btx:transactionHeaderComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="datePosted" id="btx_datePosted" type="btx:datePostedItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="transactionCreator" id="btx_transactionCreator" type="btx:transactionCreatorItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="creator" id="btx_creator" type="btx:creatorItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="lastModifier" id="btx_lastModifier" type="btx:lastModifierItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="enteredDate" id="btx_enteredDate" type="btx:enteredDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="responsiblePerson" id="btx_responsiblePerson" type="btx:responsiblePersonItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="typeCode" id="btx_typeCode" type="btx:typeCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="postingCode" id="btx_postingCode" type="btx:postingCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="numberOfEntries" id="btx_numberOfEntries" type="btx:numberOfEntriesItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="comment" id="btx_comment" type="btx:commentItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="headerEntryDate" id="btx_headerEntryDate" type="btx:headerEntryDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="headerTypeIdentifier" id="btx_headerTypeIdentifier" type="btx:headerTypeIdentifierItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerEntryNumberCounter" id="btx_headerEntryNumberCounter" type="btx:headerEntryNumberCounterItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerDocumentType" id="btx_headerDocumentType" type="btx:headerDocumentTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerDocumentTypeDescription" id="btx_headerDocumentTypeDescription" type="btx:headerDocumentTypeDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
@@ -624,7 +659,7 @@
   <element name="headerPaymentTerms" id="btx_headerPaymentTerms" type="btx:headerPaymentTermsItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerAdjustment" id="btx_headerAdjustment" type="btx:headerAdjustmentComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="appliedInvoiceReferencedDocument" id="btx_appliedInvoiceReferencedDocument" type="btx:appliedInvoiceReferencedDocumentComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="referencedDocument" id="btx_referencedDocument" type="btx:referencedDocumentComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="transactionHeaderReferencedDocument" id="btx_transactionHeaderReferencedDocument" type="btx:transactionHeaderReferencedDocumentComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="headerParty" id="btx_headerParty" type="btx:headerPartyComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="headerAmountStructure" id="btx_headerAmountStructure" type="btx:headerAmountStructureComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="headerTax" id="btx_headerTax" type="btx:headerTaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
@@ -637,29 +672,34 @@
   <element name="headerAdjustmentReasonCode" id="btx_headerAdjustmentReasonCode" type="btx:headerAdjustmentReasonCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerAdjustmentTaxCategory" id="btx_headerAdjustmentTaxCategory" type="btx:headerAdjustmentTaxCategoryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerAdjustmentTaxRate" id="btx_headerAdjustmentTaxRate" type="btx:headerAdjustmentTaxRateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="transactionDocumentNumber" id="btx_transactionDocumentNumber" type="btx:transactionDocumentNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="referencedDocumentType" id="btx_referencedDocumentType" type="btx:referencedDocumentTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="referencedDocumentNumber" id="btx_referencedDocumentNumber" type="btx:referencedDocumentNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="referencedDocumentDate" id="btx_referencedDocumentDate" type="btx:referencedDocumentDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="referencedDocumentIdentifierType" id="btx_referencedDocumentIdentifierType" type="btx:referencedDocumentIdentifierTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="referencedDocumentIdentifierCode" id="btx_referencedDocumentIdentifierCode" type="btx:referencedDocumentIdentifierCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="referencedDocumentReceivedDate" id="btx_referencedDocumentReceivedDate" type="btx:referencedDocumentReceivedDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="referencedDocumentLocation" id="btx_referencedDocumentLocation" type="btx:referencedDocumentLocationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="headerReferencePurpose" id="btx_headerReferencePurpose" type="btx:headerReferencePurposeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="appliedInvoiceReferencedDocumentNumber" id="btx_appliedInvoiceReferencedDocumentNumber" type="btx:appliedInvoiceReferencedDocumentNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionHeaderReferencedDocumentType" id="btx_transactionHeaderReferencedDocumentType" type="btx:transactionHeaderReferencedDocumentTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionHeaderReferencedDocumentNumber" id="btx_transactionHeaderReferencedDocumentNumber" type="btx:transactionHeaderReferencedDocumentNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionHeaderReferencedDocumentDate" id="btx_transactionHeaderReferencedDocumentDate" type="btx:transactionHeaderReferencedDocumentDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionHeaderReferencedDocumentIdentifierType" id="btx_transactionHeaderReferencedDocumentIdentifierType" type="btx:transactionHeaderReferencedDocumentIdentifierTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionHeaderReferencedDocumentIdentifierCode" id="btx_transactionHeaderReferencedDocumentIdentifierCode" type="btx:transactionHeaderReferencedDocumentIdentifierCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionHeaderReferencedDocumentReceivedDate" id="btx_transactionHeaderReferencedDocumentReceivedDate" type="btx:transactionHeaderReferencedDocumentReceivedDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionHeaderReferencedDocumentLocation" id="btx_transactionHeaderReferencedDocumentLocation" type="btx:transactionHeaderReferencedDocumentLocationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionHeaderReferencedDocumentReferencePurpose" id="btx_transactionHeaderReferencedDocumentReferencePurpose" type="btx:transactionHeaderReferencedDocumentReferencePurposeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerPartyName" id="btx_headerPartyName" type="btx:headerPartyNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerPartyId" id="btx_headerPartyId" type="btx:headerPartyIdItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="headerPartyBusinessDescription" id="btx_headerPartyBusinessDescription" type="btx:headerPartyBusinessDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerPartyRole" id="btx_headerPartyRole" type="btx:headerPartyRoleItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="headerAmount" id="btx_headerAmount" type="btx:headerAmountItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="headerPartyBusinessDescription" id="btx_headerPartyBusinessDescription" type="btx:headerPartyBusinessDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="headerPartyOrganizationIdentifier" id="btx_headerPartyOrganizationIdentifier" type="btx:headerPartyOrganizationIdentifierComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="headerPartyOrganizationIdentifierCode" id="btx_headerPartyOrganizationIdentifierCode" type="btx:headerPartyOrganizationIdentifierCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="headerPartyOrganizationIdentifierPurpose" id="btx_headerPartyOrganizationIdentifierPurpose" type="btx:headerPartyOrganizationIdentifierPurposeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="headerPartyOrganizationIdentifierIssuingAgency" id="btx_headerPartyOrganizationIdentifierIssuingAgency" type="btx:headerPartyOrganizationIdentifierIssuingAgencyItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="headerPartyOrganizationIdentifierDescription" id="btx_headerPartyOrganizationIdentifierDescription" type="btx:headerPartyOrganizationIdentifierDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="headerAmountStructureAmount" id="btx_headerAmountStructureAmount" type="btx:headerAmountStructureAmountItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerAmountStructureAmountType" id="btx_headerAmountStructureAmountType" type="btx:headerAmountStructureAmountTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="headerCurrencyCode" id="btx_headerCurrencyCode" type="btx:headerCurrencyCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="headerCurrencyCodeType" id="btx_headerCurrencyCodeType" type="btx:headerCurrencyCodeTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="headerAmountStructureCurrencyCode" id="btx_headerAmountStructureCurrencyCode" type="btx:headerAmountStructureCurrencyCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="headerAmountStructureCurrencyCodeType" id="btx_headerAmountStructureCurrencyCodeType" type="btx:headerAmountStructureCurrencyCodeTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerAmountType" id="btx_headerAmountType" type="btx:headerAmountTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerTaxAuthority" id="btx_headerTaxAuthority" type="btx:headerTaxAuthorityItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerTaxTableCode" id="btx_headerTaxTableCode" type="btx:headerTaxTableCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerTaxDescription" id="btx_headerTaxDescription" type="btx:headerTaxDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="headerAmountOfTaxes" id="btx_headerAmountOfTaxes" type="btx:headerAmountOfTaxesItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="headerBasisForTaxation" id="btx_headerBasisForTaxation" type="btx:headerBasisForTaxationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="headerTaxAmountOfTaxes" id="btx_headerTaxAmountOfTaxes" type="btx:headerTaxAmountOfTaxesItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="headerTaxBasisForTaxation" id="btx_headerTaxBasisForTaxation" type="btx:headerTaxBasisForTaxationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerTaxPercentageRate" id="btx_headerTaxPercentageRate" type="btx:headerTaxPercentageRateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerTaxCategory" id="btx_headerTaxCategory" type="btx:headerTaxCategoryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="headerTaxCommentExemptionReason" id="btx_headerTaxCommentExemptionReason" type="btx:headerTaxCommentExemptionReasonItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
@@ -670,37 +710,41 @@
   <element name="lineNumberCounter" id="btx_lineNumberCounter" type="btx:lineNumberCounterItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="postingDate" id="btx_postingDate" type="btx:postingDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="memoLine" id="btx_memoLine" type="btx:memoLineItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="detailDeaderDocumentType" id="btx_detailDeaderDocumentType" type="btx:detailDeaderDocumentTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="detailDeaderDocumentTypeDescription" id="btx_detailDeaderDocumentTypeDescription" type="btx:detailDeaderDocumentTypeDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="detailDeaderDocumentDate" id="btx_detailDeaderDocumentDate" type="btx:detailDeaderDocumentDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="receivedDate" id="btx_receivedDate" type="btx:receivedDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="documentLocation" id="btx_documentLocation" type="btx:documentLocationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionDetailDocumentType" id="btx_transactionDetailDocumentType" type="btx:transactionDetailDocumentTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="documentTypeDescription" id="btx_documentTypeDescription" type="btx:documentTypeDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionDetailDocumentDate" id="btx_transactionDetailDocumentDate" type="btx:transactionDetailDocumentDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionDetailReceivedDate" id="btx_transactionDetailReceivedDate" type="btx:transactionDetailReceivedDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionDetailDocumentLocation" id="btx_transactionDetailDocumentLocation" type="btx:transactionDetailDocumentLocationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="postingStatus" id="btx_postingStatus" type="btx:postingStatusItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="postingStatusDescription" id="btx_postingStatusDescription" type="btx:postingStatusDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="detailDescription" id="btx_detailDescription" type="btx:detailDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="acknowledgementDate" id="btx_acknowledgementDate" type="btx:acknowledgementDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="confirmationDate" id="btx_confirmationDate" type="btx:confirmationDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="measurableClassId" id="btx_measurableClassId" type="btx:measurableClassIdItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="measurableClassDescription" id="btx_measurableClassDescription" type="btx:measurableClassDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="geospatialCoordinate" id="btx_geospatialCoordinate" type="btx:geospatialCoordinateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="detailRitchTextDetailDescription" id="btx_detailRitchTextDetailDescription" type="btx:detailRitchTextDetailDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="description" id="btx_description" type="btx:descriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="detailParty" id="btx_detailParty" type="btx:detailPartyComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
-  <element name="detailReferencedDocument" id="btx_detailReferencedDocument" type="btx:detailReferencedDocumentComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="transactionDetailReferencedDocument" id="btx_transactionDetailReferencedDocument" type="btx:transactionDetailReferencedDocumentComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="detailAdjustment" id="btx_detailAdjustment" type="btx:detailAdjustmentComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="detailAmountStructure" id="btx_detailAmountStructure" type="btx:detailAmountStructureComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="detailTax" id="btx_detailTax" type="btx:detailTaxComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
   <element name="detailPartyName" id="btx_detailPartyName" type="btx:detailPartyNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="detailPartyId" id="btx_detailPartyId" type="btx:detailPartyIdItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="detailPartyBusinessDescription" id="btx_detailPartyBusinessDescription" type="btx:detailPartyBusinessDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="detailPartyRole" id="btx_detailPartyRole" type="btx:detailPartyRoleItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="documentType" id="btx_documentType" type="btx:documentTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="documentNumber" id="btx_documentNumber" type="btx:documentNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="documentDate" id="btx_documentDate" type="btx:documentDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="documentIdentifierType" id="btx_documentIdentifierType" type="btx:documentIdentifierTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="documentIdentifierCode" id="btx_documentIdentifierCode" type="btx:documentIdentifierCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="detailReferencedDocumentReceivedDate" id="btx_detailReferencedDocumentReceivedDate" type="btx:detailReferencedDocumentReceivedDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="detailReferencedDocumentLocation" id="btx_detailReferencedDocumentLocation" type="btx:detailReferencedDocumentLocationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="detailReferencePurpose" id="btx_detailReferencePurpose" type="btx:detailReferencePurposeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailPartyBusinessDescription" id="btx_detailPartyBusinessDescription" type="btx:detailPartyBusinessDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailPartyOrganizationIdentifier" id="btx_detailPartyOrganizationIdentifier" type="btx:detailPartyOrganizationIdentifierComplexType" substitutionGroup="xbrli:tuple" nillable="false"/>
+  <element name="detailPartyOrganizationIdentifierCode" id="btx_detailPartyOrganizationIdentifierCode" type="btx:detailPartyOrganizationIdentifierCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailPartyOrganizationIdentifierPurpose" id="btx_detailPartyOrganizationIdentifierPurpose" type="btx:detailPartyOrganizationIdentifierPurposeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailPartyOrganizationIdentifierIssuingAgency" id="btx_detailPartyOrganizationIdentifierIssuingAgency" type="btx:detailPartyOrganizationIdentifierIssuingAgencyItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailPartyOrganizationIdentifierDescription" id="btx_detailPartyOrganizationIdentifierDescription" type="btx:detailPartyOrganizationIdentifierDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionDetailReferencedDocumentType" id="btx_transactionDetailReferencedDocumentType" type="btx:transactionDetailReferencedDocumentTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionDetailReferencedDocumentNumber" id="btx_transactionDetailReferencedDocumentNumber" type="btx:transactionDetailReferencedDocumentNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionDetailReferencedDocumentDate" id="btx_transactionDetailReferencedDocumentDate" type="btx:transactionDetailReferencedDocumentDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionDetailReferencedDocumentIdentifierType" id="btx_transactionDetailReferencedDocumentIdentifierType" type="btx:transactionDetailReferencedDocumentIdentifierTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionDetailReferencedDocumentIdentifierCode" id="btx_transactionDetailReferencedDocumentIdentifierCode" type="btx:transactionDetailReferencedDocumentIdentifierCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionDetailReferencedDocumentReceivedDate" id="btx_transactionDetailReferencedDocumentReceivedDate" type="btx:transactionDetailReferencedDocumentReceivedDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionDetailReferencedDocumentLocation" id="btx_transactionDetailReferencedDocumentLocation" type="btx:transactionDetailReferencedDocumentLocationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="transactionDetailReferencedDocumentReferencePurpose" id="btx_transactionDetailReferencedDocumentReferencePurpose" type="btx:transactionDetailReferencedDocumentReferencePurposeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="detailAdjustmentType" id="btx_detailAdjustmentType" type="btx:detailAdjustmentTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="detailAdjustmentAmount" id="btx_detailAdjustmentAmount" type="btx:detailAdjustmentAmountItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="detailAdjustmentBaseAmount" id="btx_detailAdjustmentBaseAmount" type="btx:detailAdjustmentBaseAmountItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
@@ -709,20 +753,20 @@
   <element name="detailAdjustmentReasonCode" id="btx_detailAdjustmentReasonCode" type="btx:detailAdjustmentReasonCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="detailAdjustmentTaxCategory" id="btx_detailAdjustmentTaxCategory" type="btx:detailAdjustmentTaxCategoryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="detailAdjustmentTaxRate" id="btx_detailAdjustmentTaxRate" type="btx:detailAdjustmentTaxRateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="amount" id="btx_amount" type="btx:amountItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailAmountStructureAmount" id="btx_detailAmountStructureAmount" type="btx:detailAmountStructureAmountItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="detailAmountStructureAmountType" id="btx_detailAmountStructureAmountType" type="btx:detailAmountStructureAmountTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="currencyCode" id="btx_currencyCode" type="btx:currencyCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="currencyCodeType" id="btx_currencyCodeType" type="btx:currencyCodeTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="amountType" id="btx_amountType" type="btx:amountTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="taxAuthority" id="btx_taxAuthority" type="btx:taxAuthorityItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="taxTableCode" id="btx_taxTableCode" type="btx:taxTableCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="taxDescription" id="btx_taxDescription" type="btx:taxDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="amountOfTaxes" id="btx_amountOfTaxes" type="btx:amountOfTaxesItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="basisForTaxation" id="btx_basisForTaxation" type="btx:basisForTaxationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="taxPercentageRate" id="btx_taxPercentageRate" type="btx:taxPercentageRateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailAmountStructureCurrencyCode" id="btx_detailAmountStructureCurrencyCode" type="btx:detailAmountStructureCurrencyCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailAmountStructureCurrencyCodeType" id="btx_detailAmountStructureCurrencyCodeType" type="btx:detailAmountStructureCurrencyCodeTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailAmountType" id="btx_detailAmountType" type="btx:detailAmountTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailTaxAuthority" id="btx_detailTaxAuthority" type="btx:detailTaxAuthorityItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailTaxTableCode" id="btx_detailTaxTableCode" type="btx:detailTaxTableCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailTaxDescription" id="btx_detailTaxDescription" type="btx:detailTaxDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailTaxAmountOfTaxes" id="btx_detailTaxAmountOfTaxes" type="btx:detailTaxAmountOfTaxesItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailTaxBasisForTaxation" id="btx_detailTaxBasisForTaxation" type="btx:detailTaxBasisForTaxationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailTaxPercentageRate" id="btx_detailTaxPercentageRate" type="btx:detailTaxPercentageRateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="detailTaxCategory" id="btx_detailTaxCategory" type="btx:detailTaxCategoryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="taxCommentExemptionReason" id="btx_taxCommentExemptionReason" type="btx:taxCommentExemptionReasonItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="taxAmountInDocumentCurrency" id="btx_taxAmountInDocumentCurrency" type="btx:taxAmountInDocumentCurrencyItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="taxAmountInTaxAccountingCurrency" id="btx_taxAmountInTaxAccountingCurrency" type="btx:taxAmountInTaxAccountingCurrencyItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailTaxCommentExemptionReason" id="btx_detailTaxCommentExemptionReason" type="btx:detailTaxCommentExemptionReasonItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailTaxAmountInDocumentCurrency" id="btx_detailTaxAmountInDocumentCurrency" type="btx:detailTaxAmountInDocumentCurrencyItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailTaxAmountInTaxAccountingCurrency" id="btx_detailTaxAmountInTaxAccountingCurrency" type="btx:detailTaxAmountInTaxAccountingCurrencyItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="detailTaxType" id="btx_detailTaxType" type="btx:detailTaxTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
 </schema>

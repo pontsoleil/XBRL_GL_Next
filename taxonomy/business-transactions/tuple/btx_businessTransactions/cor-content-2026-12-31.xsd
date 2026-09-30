@@ -14,7 +14,7 @@
   <complexType name="documentInformationComplexType">
     <sequence>
       <element ref="cor:documentType"/>
-      <element ref="cor:auditNumber" minOccurs="0"/>
+      <element ref="cor:auditNumber"/>
       <element ref="cor:revisesAuditNumber" minOccurs="0"/>
       <element ref="cor:actionToTakeWithPreviousData" minOccurs="0"/>
       <element ref="cor:language" minOccurs="0"/>
@@ -37,14 +37,15 @@
     <sequence>
       <element ref="cor:partyName" minOccurs="0"/>
       <element ref="cor:partyId" minOccurs="0"/>
+      <element ref="cor:partyRole" minOccurs="0"/>
       <element ref="cor:partyBusinessDescription" minOccurs="0"/>
-      <element ref="bus:partyPhone" minOccurs="0" maxOccurs="unbounded"/>
-      <element ref="bus:partyFax" minOccurs="0" maxOccurs="unbounded"/>
-      <element ref="bus:partyEmail" minOccurs="0" maxOccurs="unbounded"/>
-      <element ref="bus:registeredOrganizationIdentifier" minOccurs="0" maxOccurs="unbounded"/>
-      <element ref="bus:partyAddress" minOccurs="0" maxOccurs="unbounded"/>
-      <element ref="bus:partyWebSite" minOccurs="0" maxOccurs="unbounded"/>
-      <element ref="bus:partyContact" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityPartyPhone" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityPartyFax" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityPartyEmail" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:organizationIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityPartyAddress" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityPartyWebSite" minOccurs="0" maxOccurs="unbounded"/>
+      <element ref="bus:entityPartyContact" minOccurs="0" maxOccurs="unbounded"/>
       <element ref="cor:defaultAccountingMethodPurpose" minOccurs="0"/>
       <element ref="cor:defaultAccountingMethodPurposeDescription" minOccurs="0"/>
       <element ref="cor:fiscalYearStart" minOccurs="0"/>
@@ -55,9 +56,9 @@
     </sequence>
     <attribute name="id" type="ID"/>
   </complexType>
-  <complexType name="detailDeaderDocumentComplexType">
+  <complexType name="documentComplexType">
     <sequence>
-      <element ref="cor:detailDeaderDocumentNumber" minOccurs="0"/>
+      <element ref="cor:documentNumber"/>
     </sequence>
     <attribute name="id" type="ID"/>
   </complexType>

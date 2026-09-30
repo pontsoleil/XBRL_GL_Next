@@ -32,7 +32,7 @@ from typing import Mapping, Sequence
 
 LHM_HEADER = [
     "sequence", "module", "level", "type", "identifier", "name",
-    "datatype", "multiplicity", "association_role", "definition",
+    "datatype", "multiplicity", "value_domain", "definition",
     "label_local", "definition_local", "source_bsm_id", "semantic_path",
     "associated_module", "class_term", "local_name", "xpath",
 ]
@@ -83,7 +83,7 @@ def hmd_identifier(row: Mapping[str, str]) -> str:
 def definition_signature(row: Mapping[str, str]) -> tuple[str, ...]:
     fields = list(DEFINITION_FIELDS)
     if row.get("type") in {"C", "R"}:
-        fields.extend(["association_role", "associated_module", "class_term"])
+        fields.extend(["associated_module", "class_term"])
     return tuple(row.get(name, "") for name in fields)
 
 

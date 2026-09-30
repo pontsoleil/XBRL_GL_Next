@@ -21,7 +21,7 @@ SPEC.loader.exec_module(MODULE)
 
 HEADER = [
     "sequence", "module", "level", "type", "identifier", "name", "datatype",
-    "multiplicity", "association_role", "definition", "label_local",
+    "multiplicity", "value_domain", "definition", "label_local",
     "definition_local", "source_bsm_id", "semantic_path", "associated_module",
     "class_term", "local_name", "xpath",
 ]
@@ -44,12 +44,71 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             in_file=str(source), base_dir=str(output), palette=None, root=None,
             lang="ja", currency="JPY",
             namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
+            version="2026-12-31",
             encoding="utf-8-sig", trace=False, debug=False, instance=False,
             taxonomy_type="tuple",
             namespace_prefix_map=namespace_prefix_map,
         )
         generator.load_csv_data()
         return generator
+
+    def test_registered_generator_resolves_sibling_gen_schema(self):
+        with tempfile.TemporaryDirectory() as directory:
+            rows = [
+                row(
+                    sequence="1", module="btx", level="1", type="C",
+                    name="Business Transactions", multiplicity="1",
+                    local_name="businessTransactions", source_bsm_id="BT-ROOT",
+                    semantic_path="$.btx_BusinessTransactions",
+                    class_term="Business Transactions",
+                    xpath="/xbrli:xbrl/gl-btx:businessTransactions",
+                )
+            ]
+            generator = self.make_generator(Path(directory), rows)
+            generated = Path(generator.ensure_gl_gen_schema())
+            self.assertTrue(generated.is_file())
+            self.assertEqual(generated.name, "gl-gen-2026-12-31.xsd")
+
+    def test_tuple_labels_include_class_reference_and_attribute(self):
+        with tempfile.TemporaryDirectory() as directory:
+            rows = [
+                row(
+                    sequence="1", module="btx", level="1", type="C",
+                    name="Root", definition="Root definition",
+                    label_local="【ルート】", definition_local="ルート定義",
+                    multiplicity="1", local_name="root", source_bsm_id="C1",
+                    semantic_path="$.btx_Root", class_term="Root",
+                    xpath="/xbrli:xbrl/gl-btx:root",
+                ),
+                row(
+                    sequence="2", module="btx", level="2", type="R",
+                    name="Relation", definition="Relation definition",
+                    label_local="関係", definition_local="関係定義",
+                    multiplicity="0..1", local_name="relation", source_bsm_id="R1",
+                    semantic_path="$.btx_Root.btx_Relation", class_term="Relation",
+                    xpath="/xbrli:xbrl/gl-btx:root/gl-btx:relation",
+                ),
+                row(
+                    sequence="3", module="btx", level="3", type="A",
+                    name="Value", definition="Value definition",
+                    label_local="値", definition_local="値定義", datatype="String",
+                    multiplicity="0..1", local_name="value", source_bsm_id="A1",
+                    semantic_path="$.btx_Root.btx_Relation.btx_Value",
+                    class_term="Relation",
+                    xpath="/xbrli:xbrl/gl-btx:root/gl-btx:relation/gl-btx:value",
+                ),
+            ]
+            generator = self.make_generator(Path(directory), rows)
+            generator.process_records()
+            generator.generate_taxonomy_files(generator.xbrl_base)
+            rendered = (
+                Path(generator.xbrl_base) / "btx" / "lang" /
+                "btx-2026-12-31-label.xml"
+            ).read_text(encoding="utf-8")
+            for concept_id in ("btx_root", "btx_relation", "btx_value"):
+                self.assertIn(f'#{concept_id}"', rendered)
+                self.assertIn(f'lab_{concept_id}', rendered)
+                self.assertIn(f'doc_{concept_id}', rendered)
 
     def test_explicit_xpath_prefix_maps_to_hmd_module_identity(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -139,6 +198,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
                 in_file=str(source), base_dir=str(output), palette=None, root=None,
                 lang="ja", currency="JPY",
                 namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
+                version="2026-12-31",
                 encoding="utf-8-sig", trace=False, debug=False, instance=False,
                 taxonomy_type="tuple",
             )
@@ -172,6 +232,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
                 in_file=str(source), base_dir=str(output), palette=None, root=None,
                 lang="ja", currency="JPY",
                 namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
+                version="2026-12-31",
                 encoding="utf-8-sig", trace=False, debug=False, instance=False,
                 taxonomy_type="tuple",
             )
@@ -203,7 +264,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             MODULE.merge_hmd_generators(left, [right])
             left.process_records()
             left.generate_taxonomy_files(left.xbrl_base)
-            schema = ET.parse(Path(left.xbrl_base) / "bus" / "bus-2026-08-08.xsd")
+            schema = ET.parse(Path(left.xbrl_base) / "bus" / "bus-2026-12-31.xsd")
             item = schema.findall(
                 "./{http://www.w3.org/2001/XMLSchema}element[@name='partyName']"
             )
@@ -343,20 +404,20 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
 
             cor_pre = (
                 Path(generator.xbrl_base) / "cor" /
-                "cor-2026-08-08-presentation.xml"
+                "cor-2026-12-31-presentation.xml"
             ).read_text(encoding="utf-8")
             bus_pre = (
                 Path(generator.xbrl_base) / "bus" /
-                "bus-2026-08-08-presentation.xml"
+                "bus-2026-12-31-presentation.xml"
             ).read_text(encoding="utf-8")
 
             # C-root traversal continues across a module boundary through R.
-            self.assertIn('cor-2026-08-08.xsd#cor_root', cor_pre)
+            self.assertIn('cor-2026-12-31.xsd#cor_root', cor_pre)
             self.assertIn(
-                '../bus/bus-2026-08-08.xsd#bus_partyReference', cor_pre
+                '../bus/bus-2026-12-31.xsd#bus_partyReference', cor_pre
             )
             self.assertIn(
-                '../bus/bus-2026-08-08.xsd#bus_partyIdentifier', cor_pre
+                '../bus/bus-2026-12-31.xsd#bus_partyIdentifier', cor_pre
             )
             self.assertIn(
                 'xlink:from="cor_root" xlink:to="bus_partyReference"', cor_pre
@@ -369,10 +430,10 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
 
             # R is itself a starting candidate in its owning module forest.
             self.assertIn(
-                'bus-2026-08-08.xsd#bus_partyReference', bus_pre
+                'bus-2026-12-31.xsd#bus_partyReference', bus_pre
             )
             self.assertIn(
-                'bus-2026-08-08.xsd#bus_partyIdentifier', bus_pre
+                'bus-2026-12-31.xsd#bus_partyIdentifier', bus_pre
             )
             self.assertIn(
                 'xlink:from="bus_partyReference" '
@@ -427,11 +488,11 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             rendered = "".join(generator.lines)
 
             self.assertEqual(
-                rendered.count('xlink:href="cor-2026-08-08.xsd#cor_sharedChild"'),
+                rendered.count('xlink:href="cor-2026-12-31.xsd#cor_sharedChild"'),
                 1,
             )
             self.assertEqual(
-                rendered.count('xlink:href="cor-2026-08-08.xsd#cor_leaf"'),
+                rendered.count('xlink:href="cor-2026-12-31.xsd#cor_leaf"'),
                 1,
             )
             self.assertEqual(
@@ -480,21 +541,21 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
 
             cor_oim = (
                 Path(generator.xbrl_base) / "cor" /
-                "cor-oim-2026-08-08.xsd"
+                "cor-oim-2026-12-31.xsd"
             ).read_text(encoding="utf-8-sig")
             self.assertIn('name="p_cor_root"', cor_oim)
             self.assertNotIn('substitutionGroup="xbrli:tuple"', cor_oim)
 
             cor_oim_pre = (
                 Path(generator.xbrl_base) / "cor" /
-                "cor-oim-2026-08-08-presentation.xml"
+                "cor-oim-2026-12-31-presentation.xml"
             ).read_text(encoding="utf-8")
             self.assertIn(
-                'cor-oim-2026-08-08.xsd#p_cor_root',
+                'cor-oim-2026-12-31.xsd#p_cor_root',
                 cor_oim_pre,
             )
             self.assertIn(
-                '../bus/bus-oim-2026-08-08.xsd#bus_partyIdentifier',
+                '../bus/bus-oim-2026-12-31.xsd#bus_partyIdentifier',
                 cor_oim_pre,
             )
             self.assertNotIn("bus_partyReference", cor_oim_pre)
@@ -505,7 +566,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
 
             bus_oim = (
                 Path(generator.xbrl_base) / "bus" /
-                "bus-oim-2026-08-08.xsd"
+                "bus-oim-2026-12-31.xsd"
             ).read_text(encoding="utf-8-sig")
             self.assertNotIn("p_bus_partyReference", bus_oim)
             self.assertNotIn('substitutionGroup="xbrli:tuple"', bus_oim)
@@ -579,7 +640,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
 
             generator.generate_taxonomy_files(generator.xbrl_base)
             palette = (
-                Path(generator.xbrl_base) / "plt" / "plt-oim-2026-08-08.xsd"
+                Path(generator.xbrl_base) / "plt" / "plt-oim-2026-12-31.xsd"
             ).read_text(encoding="utf-8-sig")
             for class_name in (
                 "cor_invoice", "cor_invoiceLine", "cor_itemInformation",
@@ -598,7 +659,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             self.assertEqual(palette.count('xbrldt:typedDomainRef="#_v"'), 3)
 
             module_oim = (
-                Path(generator.xbrl_base) / "cor" / "cor-oim-2026-08-08.xsd"
+                Path(generator.xbrl_base) / "cor" / "cor-oim-2026-12-31.xsd"
             ).read_text(encoding="utf-8-sig")
             for class_name in (
                 "cor_invoice", "cor_invoiceLine", "cor_itemInformation",
@@ -607,7 +668,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
                 self.assertIn(f'name="p_{class_name}"', module_oim)
 
             definition = (
-                Path(generator.xbrl_base) / "plt" / "plt-def-2026-08-08.xml"
+                Path(generator.xbrl_base) / "plt" / "plt-def-2026-12-31.xml"
             ).read_text(encoding="utf-8-sig")
             role_start = definition.index(
                 'role/link_cor_itemAttributes">'
@@ -684,15 +745,15 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
             generator.process_records()
             generator.generate_taxonomy_files(generator.xbrl_base)
             module_schema = (Path(generator.xbrl_base) / "cor" /
-                             "cor-2026-08-08.xsd").read_text(encoding="utf-8-sig")
+                             "cor-2026-12-31.xsd").read_text(encoding="utf-8-sig")
             content_schema = (Path(generator.xbrl_base) / "plt" /
-                              "cor-content-2026-08-08.xsd").read_text(encoding="utf-8")
+                              "cor-content-2026-12-31.xsd").read_text(encoding="utf-8")
             self.assertIn(
                 'name="root" id="cor_root" type="cor:rootComplexType" '
                 'substitutionGroup="xbrli:tuple"', module_schema
             )
             self.assertNotIn('<complexType name="rootComplexType">', module_schema)
-            self.assertIn('<include schemaLocation="../cor/cor-2026-08-08.xsd"/>', content_schema)
+            self.assertIn('<include schemaLocation="../cor/cor-2026-12-31.xsd"/>', content_schema)
             self.assertIn('<complexType name="rootComplexType">', content_schema)
             self.assertNotIn('name="root" id="cor_root"', content_schema)
 
@@ -742,6 +803,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
                 lhm_for_taxonomy=str(input_set), base_dir=str(output),
                 lang="ja",
                 namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
+                version="2026-12-31",
                 encoding="utf-8-sig", trace=False, debug=False,
             )
             identifiers = MODULE.generate_formal_hmd_package(args)
@@ -1110,6 +1172,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
                 lhm_for_taxonomy=str(input_set), base_dir=str(root / "package"),
                 lang="ja",
                 namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
+                version="2026-12-31",
                 encoding="utf-8-sig", trace=False, debug=False,
             )
             identifiers = MODULE.generate_formal_hmd_package(args)
@@ -1147,6 +1210,26 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
                 "execution confirmation only\n", encoding="utf-8"
             )
             with self.assertRaisesRegex(ValueError, "contains no HMD-for-taxonomy"):
+                MODULE.resolve_lhm_for_taxonomy_input(
+                    str(input_set), "utf-8-sig"
+                )
+
+    def test_formal_hmd_contract_uses_value_domain_and_rejects_legacy_header(self):
+        self.assertEqual(MODULE.FORMAL_HMD_HEADER[8], "value_domain")
+        self.assertNotIn("association_role", MODULE.FORMAL_HMD_HEADER)
+        with tempfile.TemporaryDirectory() as directory:
+            input_set = Path(directory) / "LHM_for_taxonomy"
+            input_set.mkdir()
+            legacy_header = list(HEADER)
+            legacy_header[8] = "association_role"
+            source = input_set / "legacy.csv"
+            with source.open("w", encoding="utf-8", newline="") as handle:
+                writer = csv.DictWriter(
+                    handle, fieldnames=legacy_header, lineterminator="\n"
+                )
+                writer.writeheader()
+                writer.writerow({name: "" for name in legacy_header})
+            with self.assertRaisesRegex(ValueError, "Formal HMD header mismatch"):
                 MODULE.resolve_lhm_for_taxonomy_input(
                     str(input_set), "utf-8-sig"
                 )
@@ -1204,6 +1287,7 @@ class V5TaxonomyGeneratorTests(unittest.TestCase):
                     lhm_for_taxonomy=str(input_set), base_dir=str(output),
                     lang="ja",
                     namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
+                    version="2026-12-31",
                     encoding="utf-8-sig", trace=False, debug=False,
                 )
                 MODULE.generate_formal_hmd_package(args)

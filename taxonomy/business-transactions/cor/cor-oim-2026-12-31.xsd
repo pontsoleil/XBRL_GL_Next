@@ -98,6 +98,11 @@
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
   </complexType>
+  <complexType name="partyRoleItemType">
+    <simpleContent>
+      <restriction base="xbrli:tokenItemType"/>
+    </simpleContent>
+  </complexType>
   <complexType name="partyBusinessDescriptionItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
@@ -123,7 +128,7 @@
       <restriction base="xbrli:dateItemType"/>
     </simpleContent>
   </complexType>
-  <complexType name="detailDeaderDocumentNumberItemType">
+  <complexType name="documentNumberItemType">
     <simpleContent>
       <restriction base="xbrli:stringItemType"/>
     </simpleContent>
@@ -197,12 +202,13 @@
   <element name="defaultCurrency" id="cor_defaultCurrency" type="cor:defaultCurrencyItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="partyName" id="cor_partyName" type="cor:partyNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="partyId" id="cor_partyId" type="cor:partyIdItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="partyRole" id="cor_partyRole" type="cor:partyRoleItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="partyBusinessDescription" id="cor_partyBusinessDescription" type="cor:partyBusinessDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="defaultAccountingMethodPurpose" id="cor_defaultAccountingMethodPurpose" type="cor:defaultAccountingMethodPurposeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="defaultAccountingMethodPurposeDescription" id="cor_defaultAccountingMethodPurposeDescription" type="cor:defaultAccountingMethodPurposeDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="fiscalYearStart" id="cor_fiscalYearStart" type="cor:fiscalYearStartItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="fiscalYearEnd" id="cor_fiscalYearEnd" type="cor:fiscalYearEndItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
-  <element name="detailDeaderDocumentNumber" id="cor_detailDeaderDocumentNumber" type="cor:detailDeaderDocumentNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="documentNumber" id="cor_documentNumber" type="cor:documentNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="xbrlAllocation" id="cor_xbrlAllocation" type="cor:xbrlAllocationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="xbrlSummaryReportingElement" id="cor_xbrlSummaryReportingElement" type="cor:xbrlSummaryReportingElementItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
   <element name="xbrlDetailMatchingElement" id="cor_xbrlDetailMatchingElement" type="cor:xbrlDetailMatchingElementItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>

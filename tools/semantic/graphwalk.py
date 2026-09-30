@@ -391,12 +391,15 @@ class GraphWalk:
                     raise GraphWalkError(
                         f"{self.bsm_file}:{line}: property appears before a Class"
                     )
+                property_owner = class_key(
+                    values["module"], values["class_term"]
+                )
                 row.owner = current.key
-                if values["class_term"] != current.key[1]:
+                if property_owner != current.key:
                     raise GraphWalkError(
-                        f"{self.bsm_file}:{line}: property class_term "
-                        f"{values['class_term']!r} does not match owning Class "
-                        f"{current.key[1]!r}"
+                        f"{self.bsm_file}:{line}: property owner "
+                        f"{property_owner!r} does not match owning Class "
+                        f"{current.key!r}"
                     )
                 if values["property_type"] not in {"Attribute", *ASSOCIATION_TYPES}:
                     raise GraphWalkError(
@@ -633,19 +636,11 @@ class GraphWalk:
         *,
         level: int,
         segments: list[str],
-        selected_modules: dict[str, str],
         stack: list[tuple[str, str]],
     ) -> None:
         if key in stack:
             cycle = " -> ".join(f"{m}:{c}" for m, c in [*stack, key])
             raise GraphWalkError(f"Composition cycle detected: {cycle}")
-        selected = selected_modules.get(key[1])
-        if selected is not None and selected != key[0]:
-            raise GraphWalkError(
-                f"One hierarchy selects same-named Class {key[1]!r} from "
-                f"both {selected!r} and {key[0]!r}"
-            )
-        selected_modules[key[1]] = key[0]
         definition = self.classes[key]
         stack.append(key)
 
@@ -734,7 +729,6 @@ class GraphWalk:
                     target_key,
                     level=level + 1,
                     segments=child_segments,
-                    selected_modules=selected_modules,
                     stack=stack,
                 )
                 continue
@@ -854,7 +848,6 @@ class GraphWalk:
                 root_key,
                 level=2,
                 segments=root_segments,
-                selected_modules={},
                 stack=[],
             )
         return self.rows
@@ -869,7 +862,7 @@ class GraphWalk:
         os.close(fd)
         temporary = Path(temporary_name)
         try:
-            with temporary.open("w", encoding=self.encoding, newline="") as handle:
+            with temporary.open("w", encoding="utf-8", newline="") as handle:
                 writer = csv.DictWriter(handle, fieldnames=LHM_HEADER, lineterminator="\n")
                 writer.writeheader()
                 writer.writerows(

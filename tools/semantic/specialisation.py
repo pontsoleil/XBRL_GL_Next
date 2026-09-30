@@ -672,7 +672,7 @@ class Specialisation:
         os.close(fd)
         temporary = Path(temporary_name)
         try:
-            with temporary.open("w", encoding=self.encoding, newline="") as handle:
+            with temporary.open("w", encoding="utf-8", newline="") as handle:
                 writer = csv.DictWriter(handle, fieldnames=BSM_HEADER, lineterminator="\n")
                 writer.writeheader()
                 writer.writerows({name: row.get(name, "") for name in BSM_HEADER} for row in rows)

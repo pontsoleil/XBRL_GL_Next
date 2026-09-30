@@ -97,6 +97,10 @@ class GraphWalkTests(unittest.TestCase):
                             for item in loaded))
         self.assertTrue(all(item["xpath"].startswith("/xbrli:xbrl/") for item in loaded))
 
+    def test_output_is_utf8_without_bom(self):
+        _, _, lhm = self.run_model(self.model())
+        self.assertFalse(lhm.read_bytes().startswith(b"\xef\xbb\xbf"))
+
     def test_repeated_source_bsm_id_on_multiple_paths_is_informational(self):
         rows = self.model()
         rows.insert(
@@ -265,7 +269,7 @@ class GraphWalkTests(unittest.TestCase):
         with self.assertRaisesRegex(MODULE.GraphWalkError, "undefined associated"):
             self.run_model(rows)
 
-    def test_same_named_class_from_two_modules_is_rejected_in_one_hierarchy(self):
+    def test_same_named_class_from_two_modules_is_allowed_in_one_hierarchy(self):
         rows = [
             row(sequence="1", level="1", property_type="Class", module="tst",
                 class_term="Root", multiplicity="1", id="TS01"),
@@ -282,8 +286,17 @@ class GraphWalkTests(unittest.TestCase):
             row(sequence="5", level="1", property_type="Class", module="alt",
                 class_term="Same", multiplicity="1", id="AL01"),
         ]
-        with self.assertRaisesRegex(MODULE.GraphWalkError, "same-named Class"):
-            self.run_model(rows)
+        _, output, _ = self.run_model(rows)
+        same_classes = [
+            item for item in output
+            if item["type"] == "C" and item["class_term"] == "Same"
+        ]
+        self.assertEqual(
+            [(item["module"], item["source_bsm_id"]) for item in same_classes],
+            [("tst", "TS01-01"), ("alt", "TS01-02")],
+        )
+        paths = [item["semantic_path"] for item in same_classes]
+        self.assertEqual(len(paths), len(set(paths)))
 
     def test_header_error_does_not_create_or_overwrite_output(self):
         with tempfile.TemporaryDirectory() as directory:
