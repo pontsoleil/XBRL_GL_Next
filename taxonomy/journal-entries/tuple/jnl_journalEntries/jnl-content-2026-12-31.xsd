@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/jnl" elementFormDefault="qualified" attributeFormDefault="unqualified"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:jnl="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/jnl"
+>
+  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <include schemaLocation="../../jnl/jnl-2026-12-31.xsd"/>
+  <!-- structural ComplexType supplied for the Palette module -->
+  <complexType name="journalEntriesComplexType">
+    <sequence>
+      <element ref="jnl:documentInformation"/>
+      <element ref="jnl:entityParty" minOccurs="0"/>
+      <element ref="jnl:entryHeader" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="documentInformationComplexType">
+    <sequence>
+      <element ref="jnl:documentType"/>
+      <element ref="jnl:auditNumber"/>
+      <element ref="jnl:creationDate" minOccurs="0"/>
+      <element ref="jnl:documentComment" minOccurs="0"/>
+      <element ref="jnl:periodCoveredStart" minOccurs="0"/>
+      <element ref="jnl:periodCoveredEnd" minOccurs="0"/>
+      <element ref="jnl:defaultCurrency" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entityPartyComplexType">
+    <sequence>
+      <element ref="jnl:partyName" minOccurs="0"/>
+      <element ref="jnl:partyId" minOccurs="0"/>
+      <element ref="jnl:partyRole" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entryHeaderComplexType">
+    <sequence>
+      <element ref="jnl:datePosted" minOccurs="0"/>
+      <element ref="jnl:creator" minOccurs="0"/>
+      <element ref="jnl:lastModifier" minOccurs="0"/>
+      <element ref="jnl:responsiblePerson" minOccurs="0"/>
+      <element ref="jnl:typeCode" minOccurs="0"/>
+      <element ref="jnl:postingCode" minOccurs="0"/>
+      <element ref="jnl:numberOfEntries" minOccurs="0"/>
+      <element ref="jnl:comment" minOccurs="0"/>
+      <element ref="jnl:totalDebits" minOccurs="0"/>
+      <element ref="jnl:totalCredits" minOccurs="0"/>
+      <element ref="jnl:entryDetail" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="entryDetailComplexType">
+    <sequence>
+      <element ref="jnl:lineNumber"/>
+      <element ref="jnl:lineNumberCounter" minOccurs="0"/>
+      <element ref="jnl:postingDate" minOccurs="0"/>
+      <element ref="jnl:detailDocumentType" minOccurs="0"/>
+      <element ref="jnl:documentTypeDescription" minOccurs="0"/>
+      <element ref="jnl:detailDescription" minOccurs="0"/>
+      <element ref="jnl:monetaryAmount" minOccurs="0"/>
+      <element ref="jnl:currency" minOccurs="0"/>
+      <element ref="jnl:signIndicationForAmount" minOccurs="0"/>
+      <element ref="jnl:debitCreditIndicator" minOccurs="0"/>
+      <element ref="jnl:journalAccountIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="journalAccountIdentifierComplexType">
+    <sequence>
+      <element ref="jnl:accountNumber"/>
+      <element ref="jnl:accountDescription" minOccurs="0"/>
+      <element ref="jnl:accountClassification" minOccurs="0"/>
+      <element ref="jnl:accountClassificationDescription" minOccurs="0"/>
+      <element ref="jnl:subaccount" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+  <complexType name="subaccountComplexType">
+    <sequence>
+      <element ref="jnl:subaccountDescription" minOccurs="0"/>
+      <element ref="jnl:subaccountId" minOccurs="0"/>
+      <element ref="jnl:type" minOccurs="0"/>
+    </sequence>
+    <attribute name="id" type="ID"/>
+  </complexType>
+</schema>

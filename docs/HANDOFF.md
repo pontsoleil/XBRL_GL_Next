@@ -1,4 +1,44 @@
 # XBRL-GL-Next Handoff
+
+## 2026-10-07 journalEntries publication gate修正
+
+- Official GITへ22件COPY後、独立indexのtext gateでCSV quoted definitionの末尾空白56件が検出されHOLDとなった。ユーザーが対象行末空白の除去を明示承認した。
+- WORK reviewed LHM / HMDの6セルについて行末space/tabだけを除去した。非空白文字・列順・行順・semantic_path・local_name・XPath・multiplicity・datatypeは不変。workbookは保持し、CSV materialisationの承認済み例外をREADMEへ記録した。
+- canonical post_graphwalk / Generatorで再確認し、HMD新SHA `D457A7E9EEFA84524470C41AFB96DB311036E1C4EF131D8D5BDCC0E3A05CF7DA`、taxonomy13ファイルは不変。変更したCSV・SHA関連metadata・3管理文書のみ限定反映する。
+- 現行publication candidateの受入・検証結果と次の具体的な一手は `docs/Codex/2026/202610/20261007/20261007_1831/journalEntries-csv-whitespace-gate/outputs/` の報告を参照する。Official GIT indexを変更せず、stage / commit / pushは最終確認後の別承認。既存COR/BTX/Taviは対象外。
+
+## 2026-10-07 journalEntries WORK canonical promotion
+
+- Current journalEntries candidate has been promoted to WORK canonical. It is independent from the existing Accounting Entries taxonomy. The source authority is the reviewed LHM / generated HMD for journalEntries.
+- 意味入力authorityは登録workbookの `LHM reviewed`。新しいreviewed CSVは正確なmaterialisationとして管理し、二重authorityにしない。HMD/manifest、13 taxonomy files、2 provenance files、authority説明READMEをCOPY_PLANに従って19件ADDし、全SHA一致を確認した。
+- 配置: `semantic-model/LHM/journal-entries/`、`semantic-model/HMD/journal-entries/`、`taxonomy/journal-entries/`、`taxonomy/provenance/journal-entries/`。44行・18列/value_domain、traceability未解決0、Arelle canonical入口Tuple/OIM 0/0、candidate/独立生成SHA 13/13一致。
+- 記録: `docs/Codex/2026/202610/20261007/20261007_1756/journalEntries-canonical-promotion/outputs/`。3管理文書だけを追記し、既存COR/BTX/FSM/BSM/Tavi・workbook・toolsはSHA不変。実データ・秘密情報の公開転記なし。XMLSpy GUI / instance検証は今回対象外。
+- 次の一手はWORK canonicalと `COPY_PLAN_OFFICIAL_GIT.md` のユーザーレビュー。指示書25の停止点に達したためOfficial GIT未アクセス、COPY未実施。stage / commit / push / branch変更なし。publication validationも未実施であり、WORK合格と公開合格を混同しない。
+
+## 2026-10-07 journalEntries reviewed → taxonomy再開結果
+
+- 追加承認によりreviewed workbookのI1だけを `value_domain` に変更した。既に改定済みの `detailDocumentType` / XPathを含め、その他の全シート・全セル値は保持した。authorityは `20261007_1616/JournalEntries_FSM_BSM_LHM_with_reviewed.xlsx` の `LHM reviewed`。
+- canonical post_graphwalkで44行・18列HMD、canonical generatorでTuple/OIMの13ファイルを生成し、RESULT = PASS。全44行×2 targetの追跡未解決0、43親子関係・multiplicity一致、XML/参照/DTS分離PASS、Arelle両入口error/warning 0、独立生成SHA 13/13一致。
+- 追加成果物・記録: `docs/Codex/2026/202610/20261007/20261007_1655/journalEntries-reviewed-taxonomy/outputs/`。I1編集後の保護196ファイルは生成・検証中にSHA不変。終了時に3管理文書だけを記録整合した。実データ・秘密情報の公開転記なし。
+- 次の一手: ユーザーによるtask-local candidate taxonomyの確認。正式配置・publication gateは別承認。synthetic instanceは今回の指示17に従い未追加、XMLSpy GUIは未実施。Tavi・既存モデル・既存taxonomy・Official GITは変更せず、stage/commit/pushなし。下記1642のHOLDは今回解消した履歴として保持する。
+
+## 2026-10-07 journalEntries Candidate LHM
+
+- 2026-10-07後続: reviewed workbookからのtaxonomy生成はHOLD。post_graphwalkへjnl=gl-jnlを登録し11テストPASSだが、reviewedのassociation_role列とcanonical value_domain列が不一致（LHM_HEADER_MISMATCH）。workbookにはdocumentTypeのmodule+local_name重複も1組残る。入力/既存モデルを変更せずHMD・taxonomy未生成。次の一手は正式列契約とreviewed QName重複の確定。記録: `docs/Codex/2026/202610/20261007/20261007_1642/journalEntries-postgraphwalk-registration/outputs/`。公開・Git書込なし。
+
+- `jnl=gl-jnl` のcanonical Graph Walk登録後、`jnl:Journal Entries` rootの25行（Class 5、Attribute 20）のCandidate LHMを生成した。Graph Walk診断0、既存テスト30件PASS、18列・階層・source追跡・multiplicity/datatype・抑止・XPath・独立出力SHA一致を確認した。
+- 成果物は `docs/Codex/2026/202610/20261007/20261007_1352/journalEntries-candidate-lhm/outputs/`。Entry DetailはClassのみでPropertyなし、Account/Cost Center・Referenceは今回の入力root範囲にない。Specialisationのunmatched-deletion warning 36件は診断を保持した。
+- 次工程はユーザーレビュー。local_nameは未改訂。Reviewed LHM、post_graphwalk、HMD、taxonomy、Tavi/OIM、Arelle/XMLSpyへ進んでいない。正式モデル、Official GIT、stage/commit/pushは変更・実施なし。
+
+## 2026-10-06 Tavi PoC COR authority確定・再開
+
+- USER_DECISION: 401行版COR HMD（SHA-256 `6DB8C6AAD8C2FBAEC710DDF104405D22CC13BAD0BA52038DF471F7FE5850AD81`）をcurrent reviewed入力authorityとして使用する。先行HOLDのHMD指定問題は解決した。
+- 指定PDFは `docs/ChatGPT/2026/202610/20261006/20261006_1017/XBRL_Tavi_GL_Next_Slide_Notes_2026-10-05.pdf` に登録された。全文テキストを確認した。
+- CURRENT_BASELINE・DECISIONSは必要最小限のcurrent指定を追記し、旧400行版記録は履歴として保持した。HMD本体は変更していない。
+- 今回の作業記録: `docs/Codex/2026/202610/20261006/20261006_1039/tavi-poc-phase1-cor/`。CORのみ再開し、Official GIT・stage / commit / pushは対象外。
+- 再開結果: COR PoC新規16 files、11検査成功、Arelle実plugin loadで29 facts / 7 occurrences。総合HOLD: 旧QName 9 facts未解決、必須Property不足2件、Reference / association-role / native Tavi serialisation / full conformance等が未完了。詳細は同task `outputs/COMPLETION_REPORT.md` と `outputs/TEST_RESULTS.md`。
+- 次の一手: 旧QNameからcurrent HMDへの明示binding、必須Property及びReference target / native Tavi serialisationをレビューする。既存authorityは変更せず、公開操作なし。
+
 ## 2026-09-15 Tax Transaction Classification and Tax Type successor adoption
 
 - Canonical `taxonomy/accounting-entries/` and both Accounting Entries HMD placements now use the accepted 400-row successor.
@@ -249,3 +289,12 @@
 - Three stale test fixtures and the current documentation were updated to identify the XBRL Japan authority. The affected legacy test harness has unrelated pre-existing generator-signature/EOL failures; no unchanged failed test was rerun.
 - Evidence and raw-byte backup: `docs/Codex/2026/202609/20260917/20260917_132324/xbrl-japan-namespace-migration/outputs/`.
 - Formal GIT, commit, push, and external publication were not performed; publication remains a separate file-specific gate.
+
+## 2026-10-06 Tavi PoC Phase 1 COR 開始前HOLD
+
+- 目的: COR reviewed HMDからTavi候補、CSV instance、Arelle plugin skeleton及び最小validationを新規追加する。
+- RESULT = HOLD。現行COR HMD 2配置・manifestのSHAは `6DB8C6AAD8C2FBAEC710DDF104405D22CC13BAD0BA52038DF471F7FE5850AD81`（manifest 401行）だが、既存3管理文書の受入記録は旧400行版 `CE7FDCB8013CCDB2CF2513107F972F174ACC0BBA5207EEB12DE206DC0B08F500`。指定指示書第5・6節に従ってauthority確定前に停止した。
+- 指定PDF `XBRL_Tavi_GL_Next_Slide_Notes_2026-10-05.pdf` はWORK内ファイル検索で見つからなかった。
+- 作成: `docs/Codex/2026/202610/20261006/20261006_1023/tavi-poc-phase1-cor/outputs/PREFLIGHT_REPORT.md`。変更: 本HANDOFFへの追記のみ。CURRENT_BASELINE・DECISIONSは確認のみ。
+- PoC、mapping、Arelle pluginは未着手。指定7テスト及びOIM比較は未実施（開始前停止）。既存authority、Official GIT、本番・公開状態は変更していない。GitはWORKの読取り確認だけで、stage・commit・pushなし。機密情報・実データは転記していない。
+- 次の一手: 現行401行HMDのreviewed authority designationと旧記録との関係を確定し、指定PDFのWORK内配置及びTavi仕様参照版を確認してから実装を再開する。

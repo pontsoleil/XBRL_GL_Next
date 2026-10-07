@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<linkbase xmlns="http://www.xbrl.org/2003/linkbase"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#p_jnl_journalEntries" xlink:label="loc_p_jnl_journalEntries"/>
+    <label xlink:type="resource" xlink:label="lab_p_jnl_journalEntries" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">Journal Entries</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_jnl_journalEntries" xlink:to="lab_p_jnl_journalEntries"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#p_jnl_documentInformation" xlink:label="loc_p_jnl_documentInformation"/>
+    <label xlink:type="resource" xlink:label="lab_p_jnl_documentInformation" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">【文書情報】</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_jnl_documentInformation" xlink:to="lab_p_jnl_documentInformation"/>
+    <label xlink:type="resource" xlink:label="doc_p_jnl_documentInformation" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">この会計仕訳に関する情報の親タグ。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_jnl_documentInformation" xlink:to="doc_p_jnl_documentInformation"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#p_jnl_entityParty" xlink:label="loc_p_jnl_entityParty"/>
+    <label xlink:type="resource" xlink:label="lab_p_jnl_entityParty" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">【事業体情報】</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_jnl_entityParty" xlink:to="lab_p_jnl_entityParty"/>
+    <label xlink:type="resource" xlink:label="doc_p_jnl_entityParty" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">事業体情報（報告組織に関する情報）の入れ物。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_jnl_entityParty" xlink:to="doc_p_jnl_entityParty"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#p_jnl_entryHeader" xlink:label="loc_p_jnl_entryHeader"/>
+    <label xlink:type="resource" xlink:label="lab_p_jnl_entryHeader" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">【仕訳情報】</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_jnl_entryHeader" xlink:to="lab_p_jnl_entryHeader"/>
+    <label xlink:type="resource" xlink:label="doc_p_jnl_entryHeader" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">エントリヘッダー/仕訳記入ヘッダーの親タグ。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_jnl_entryHeader" xlink:to="doc_p_jnl_entryHeader"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_documentType" xlink:label="loc_jnl_documentType"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_documentType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">文書種別</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_documentType" xlink:to="lab_jnl_documentType"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_documentType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">・科目:科目体系ファイルの情報。_x000D_ ・残高:特定の期間について、勘定科目(または勘定科目リスト)の、完了し検証された仕訳リストの累算結果。時に総勘定元帳と呼ばれる。_x000D_ ・仕訳:個々の勘定記入のリスト。転記/検証されていることもあり、されていないこともある。_x000D_ ・仕訳帳:特定の期間における、その期間の開始残高を含む貸借が一致(Dr=Cr)した仕訳のリスト 。_x000D_ ・元帳:特定の期間における特定の勘定科目(または勘定科目リスト)についての、仕訳の全リスト 。注意－貸借が一致する必要はない。_x000D_ ・資産:仕訳記入の一部として必ずしも含まれていないが、そこから抽出可能な売掛金、買掛金、在庫、固定資産、その他の情報のリスト。_x000D_ ・試算表:事業体に対する、特定期間の全勘定科目リストでの、完了し検証された仕訳リストの、貸借が一致（Dr=Cr)した累算結果。_x000D_ ・税率表:税率表をあらわすデータを自動的に解釈できるようにする。税率表は、コード、税務当局情報、レートをあらわす複数のtaxes構造データを使って定義される。taxTableCodeはtaxes構造データ内で相互に参照されるが、これらのマスタファイルが参照可能。_x000D_ ・マッピング情報:互いに関係があるデータセットの間の対応関係を集めたもの。例えば、企業グループ内の各会社で使用する勘定科目と全社勘定科目との対応付け、または明細データと最終的な報告書上の要約された科目への対応付け。 ・差分情報:同じクラス（種類）で異なるバージョンを持つ項目の変更・差分情報。例えば、勘定科目一覧のようなマスタファイルの特定科目の更新情報など。  ・マスターファイル:マスタファイルの一覧。例えば、顧客マスタ又は在庫/棚卸マスタなど。  ・取引伝票:取引に用いる情報の集合。例えば、納入業者からのインボイス 又は顧客からの受注情報など。  ・プロファイル情報:確立された文書説明情報及び特にXBRL GLプロファイルを理解し決定するこの情報の集合の意味を示す。説明情報は、名前空間宣言、スキーマ参照及びこれらの規約を通して決定する。  ・その他：その他のすべての表現形式  多くの場合、日付または科目によりソートされる。会計処理方法や用語は慣行により適合させる。_x000D_ [設定値のリスト]_x000D_ (account：科目)、(balance：残高)、(entries：仕訳)、(journal：仕訳帳)、(ledger：元帳)、(assets：資産)、(trialbalance：試算表)、(taxtables：税率表)、(other：その他)_x000D_、(Mapping：マッピング情報)、(versioning：差分情報)、(master_file：マスターファイル)、(trade_documents：取引伝票)、(profile_compliant：プロファイル情報)、(other：その他)</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_documentType" xlink:to="doc_jnl_documentType"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_auditNumber" xlink:label="loc_jnl_auditNumber"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_auditNumber" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">監査番号</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_auditNumber" xlink:to="lab_jnl_auditNumber"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_auditNumber" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">このファイルの一意識別子。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_auditNumber" xlink:to="doc_jnl_auditNumber"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_creationDate" xlink:label="loc_jnl_creationDate"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_creationDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">作成日付</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_creationDate" xlink:to="lab_jnl_creationDate"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_creationDate" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">ファイルが作成された日付/時間。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_creationDate" xlink:to="doc_jnl_creationDate"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_documentComment" xlink:label="loc_jnl_documentComment"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_documentComment" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">文書コメント</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_documentComment" xlink:to="lab_jnl_documentComment"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_documentComment" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">文書全体に対する説明文。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_documentComment" xlink:to="doc_jnl_documentComment"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_periodCoveredStart" xlink:label="loc_jnl_periodCoveredStart"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_periodCoveredStart" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">対象期間開始日付</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_periodCoveredStart" xlink:to="lab_jnl_periodCoveredStart"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_periodCoveredStart" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">内容の日付範囲の開始日。 残高の開始日付などの、データに関する多くの仮定の基礎として使用される。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_periodCoveredStart" xlink:to="doc_jnl_periodCoveredStart"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_periodCoveredEnd" xlink:label="loc_jnl_periodCoveredEnd"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_periodCoveredEnd" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">対象期間終了日付</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_periodCoveredEnd" xlink:to="lab_jnl_periodCoveredEnd"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_periodCoveredEnd" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">内容の日付範囲の終了日。 残高の開始日付などの、データに関する多くの仮定の基礎として使用される。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_periodCoveredEnd" xlink:to="doc_jnl_periodCoveredEnd"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_defaultCurrency" xlink:label="loc_jnl_defaultCurrency"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_defaultCurrency" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">既定通貨</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_defaultCurrency" xlink:to="lab_jnl_defaultCurrency"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_defaultCurrency" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">XBRLインスタンス内に指定する方法のかわりに、金額の既定の通貨を指定可能。多通貨環境で特に重要。ISO4217コード体系を推奨。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_defaultCurrency" xlink:to="doc_jnl_defaultCurrency"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_partyName" xlink:label="loc_jnl_partyName"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_partyName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">当事者名</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_partyName" xlink:to="lab_jnl_partyName"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_partyName" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">当事者を識別するための名称。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_partyName" xlink:to="doc_jnl_partyName"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_partyId" xlink:label="loc_jnl_partyId"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_partyId" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">当事者識別子</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_partyId" xlink:to="lab_jnl_partyId"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_partyId" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">当事者を識別するために付与された識別子。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_partyId" xlink:to="doc_jnl_partyId"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_partyRole" xlink:label="loc_jnl_partyRole"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_partyRole" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">取引当事者役割</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_partyRole" xlink:to="lab_jnl_partyRole"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_partyRole" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">業務取引における当事者の役割。売手、買手、支払先、税務代理人、納入先などを識別する。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_partyRole" xlink:to="doc_jnl_partyRole"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_datePosted" xlink:label="loc_jnl_datePosted"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_datePosted" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">転記済日付</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_datePosted" xlink:to="lab_jnl_datePosted"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_datePosted" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">この仕訳が総勘定元帳に転記された(検証された)日付。 postingDateで示されるような会計上意味のある日付を表さないかもしれない。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_datePosted" xlink:to="doc_jnl_datePosted"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_creator" xlink:label="loc_jnl_creator"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_creator" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">仕訳作成者</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_creator" xlink:to="lab_jnl_creator"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_creator" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">最初に入力したオペレータのイニシャル/名前。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_creator" xlink:to="doc_jnl_creator"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_lastModifier" xlink:label="loc_jnl_lastModifier"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_lastModifier" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">仕訳最終更新者</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_lastModifier" xlink:to="lab_jnl_lastModifier"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_lastModifier" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">転記前に最後にこの仕訳を修正した者の識別子。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_lastModifier" xlink:to="doc_jnl_lastModifier"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_responsiblePerson" xlink:label="loc_jnl_responsiblePerson"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_responsiblePerson" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">責任者</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_responsiblePerson" xlink:to="lab_jnl_responsiblePerson"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_responsiblePerson" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">仕訳を作成したか、仕訳に責任を持つ者の識別子。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_responsiblePerson" xlink:to="doc_jnl_responsiblePerson"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_typeCode" xlink:label="loc_jnl_typeCode"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_typeCode" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">種別識別子</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_typeCode" xlink:to="lab_jnl_typeCode"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_typeCode" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">以下の値のうちのひとつ。_x000D_
+整理、予算、比較、外部会計事務所、通常、無視、消去、提案、反復、組替、シミュレーション、税、その他_x000D_
+[設定値のリスト]_x000D_
+(adjusting：整理)、(budget：予算)、(comparative：比較)、(external-accountant：外部会計事務所)、(standard：通常)、(passed-adjusting：無視)、(eliminating：消去)、(proposed：提案)、(recurring：反復)、(reclassifying：組替)、(simulated：シミュレーション)、(tax：税)、(other：その他)</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_typeCode" xlink:to="doc_jnl_typeCode"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_postingCode" xlink:label="loc_jnl_postingCode"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_postingCode" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">転記コード</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_postingCode" xlink:to="lab_jnl_postingCode"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_postingCode" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">転記の期間を表すコード。例えば、会計期間ファイルのコードにもとづく期間１～１３。ソフトウエアベンダーが、この値をエクスポートすることは推奨しない。期間の最終番号を提供することを勧める。可能な値としては、W1からW53、M1からM13、Q1からQ4など。開発者や出力ファイルの作成者には、実際の終了日付を提供することを勧める。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_postingCode" xlink:to="doc_jnl_postingCode"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_numberOfEntries" xlink:label="loc_jnl_numberOfEntries"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_numberOfEntries" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">仕訳総数</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_numberOfEntries" xlink:to="lab_jnl_numberOfEntries"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_numberOfEntries" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">仕訳の総数。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_numberOfEntries" xlink:to="doc_jnl_numberOfEntries"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_comment" xlink:label="loc_jnl_comment"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_comment" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">仕訳摘要</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_comment" xlink:to="lab_jnl_comment"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_comment" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">仕訳の摘要</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_comment" xlink:to="doc_jnl_comment"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_totalDebits" xlink:label="loc_jnl_totalDebits"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_totalDebits" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">借方合計</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_totalDebits" xlink:to="lab_jnl_totalDebits"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_totalDebits" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">借方金額の合計値。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_totalDebits" xlink:to="doc_jnl_totalDebits"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_totalCredits" xlink:label="loc_jnl_totalCredits"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_totalCredits" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">貸方合計</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_totalCredits" xlink:to="lab_jnl_totalCredits"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_totalCredits" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">貸方金額の合計値。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_totalCredits" xlink:to="doc_jnl_totalCredits"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#p_jnl_entryDetail" xlink:label="loc_p_jnl_entryDetail"/>
+    <label xlink:type="resource" xlink:label="lab_p_jnl_entryDetail" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">【仕訳明細】</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_jnl_entryDetail" xlink:to="lab_p_jnl_entryDetail"/>
+    <label xlink:type="resource" xlink:label="doc_p_jnl_entryDetail" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">仕訳明細の親タグ。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_jnl_entryDetail" xlink:to="doc_p_jnl_entryDetail"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_lineNumber" xlink:label="loc_jnl_lineNumber"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_lineNumber" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">明細行番号</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_lineNumber" xlink:to="lab_jnl_lineNumber"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_lineNumber" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">仕訳明細の識別子。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_lineNumber" xlink:to="doc_jnl_lineNumber"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_lineNumberCounter" xlink:label="loc_jnl_lineNumberCounter"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_lineNumberCounter" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">明細行番号カウンタ</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_lineNumberCounter" xlink:to="lab_jnl_lineNumberCounter"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_lineNumberCounter" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">明細行の一意なリファレンス　　カウンタ</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_lineNumberCounter" xlink:to="doc_jnl_lineNumberCounter"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_postingDate" xlink:label="loc_jnl_postingDate"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_postingDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">転記日付</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_postingDate" xlink:to="lab_jnl_postingDate"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_postingDate" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">明細レベルで、会計上意義のある日付を示す。ドキュメントの受領、入力、転記の日付に関わらず、仕訳が会計処理された日付を示す。2002.03.05の財務結果を見たいときに、ここにその日付がある場合は、この明細は2002.03.05の結果の一部である。これは、entryHeaderにあるpostedDateとは異なる。特定の日付を会計上意義のある日付にしたいなら、ここに記述する。ひとつの仕訳が複数の日付をあらわせるが、ひとつの日でのみ転記される。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_postingDate" xlink:to="doc_jnl_postingDate"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_detailDocumentType" xlink:label="loc_jnl_detailDocumentType"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_detailDocumentType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">元文書種別</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_detailDocumentType" xlink:to="lab_jnl_detailDocumentType"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_detailDocumentType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">小切手、借方メモ、貸方メモ、財務費用、顧客への請求書、顧客オーダー、仕入先オーダー、その他支払い、督促状、手形、ベンダからの請求書、出荷票、受領票、手修正、その他の列挙値による、元文書の説明。[設定値のリスト]_x000D_ (check：小切手)、(debit-memo：借方メモ)、(credit-memo：貸方メモ)、(finance-charge：財務費用)、(invoice：顧客への請求書)、(order-customer：顧客オーダ)、(order-vendor：仕入先オーダ)、(payment-other：その他支払い)、(reminder：督促状)、(tegata：手形)、(voucher：ベンダからの請求書)、(shipment：出荷票)、(receipt：受領票)、(manual-adjustment：手修正)、(other：その他)</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_detailDocumentType" xlink:to="doc_jnl_detailDocumentType"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_documentTypeDescription" xlink:label="loc_jnl_documentTypeDescription"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_documentTypeDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">元文書種別説明</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_documentTypeDescription" xlink:to="lab_jnl_documentTypeDescription"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_documentTypeDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">元文書の種別の説明。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_documentTypeDescription" xlink:to="doc_jnl_documentTypeDescription"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_detailDescription" xlink:label="loc_jnl_detailDescription"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_detailDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">説明</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_detailDescription" xlink:to="lab_jnl_detailDescription"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_detailDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">この明細行のみに対する説明。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_detailDescription" xlink:to="doc_jnl_detailDescription"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_monetaryAmount" xlink:label="loc_jnl_monetaryAmount"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_monetaryAmount" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">金額</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_monetaryAmount" xlink:to="lab_jnl_monetaryAmount"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_monetaryAmount" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">entryDetailの代表的な金額を示す。entryDetailごとにひとつの値を持つ。たとえば、仕訳帳の行、残高、請求書の行の金額。明細が会計業務用でなく、measurableQuantityなどの他の要素が設定されている場合は不要。符号付数値であり、金額を解釈するために用意されたsignOfAmountおよびdebitCreditCodeとあわせて使用される。通貨単位はamountCurrencyで決定される。amountCurrencyが指定されない場合は、既定または自国の通貨単位となる。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_monetaryAmount" xlink:to="doc_jnl_monetaryAmount"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_currency" xlink:label="loc_jnl_currency"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_currency" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">通貨</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_currency" xlink:to="lab_jnl_currency"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_currency" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">XBRLインスタンス内に指定する方法のかわりに、金額の通貨を指定可能。多通貨環境で特に重要。ISO4217コード体系を推奨。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_currency" xlink:to="doc_jnl_currency"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_signIndicationForAmount" xlink:label="loc_jnl_signIndicationForAmount"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_signIndicationForAmount" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">金額符号</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_signIndicationForAmount" xlink:to="lab_jnl_signIndicationForAmount"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_signIndicationForAmount" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">金額の符号。貸借識別子と関連して使用される場合にだけ、4つの可能なフィールドを提供する。記入エラー後の総貸借が膨張しないように、おもに仕訳の訂正に使用される。 D+は借方を増加させる。D-は借方を減少させる。C+は貸方を減少させる。C-は貸方を増加させる。_x000D_
+[設定値のリスト]_x000D_
+(+)、(-)、(plus：プラス)、(minus：マイナス)</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_signIndicationForAmount" xlink:to="doc_jnl_signIndicationForAmount"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_debitCreditIndicator" xlink:label="loc_jnl_debitCreditIndicator"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_debitCreditIndicator" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">貸借区分コード</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_debitCreditIndicator" xlink:to="lab_jnl_debitCreditIndicator"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_debitCreditIndicator" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">金額が借方か貸方か不定かを示す識別子。_x000D_
+[設定値のリスト]_x000D_
+(D)、(C)、(debit：借方)、(credit：貸方)、(undefined：不定)</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_debitCreditIndicator" xlink:to="doc_jnl_debitCreditIndicator"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#p_jnl_journalAccountIdentifier" xlink:label="loc_p_jnl_journalAccountIdentifier"/>
+    <label xlink:type="resource" xlink:label="lab_p_jnl_journalAccountIdentifier" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">【科目識別子】</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_jnl_journalAccountIdentifier" xlink:to="lab_p_jnl_journalAccountIdentifier"/>
+    <label xlink:type="resource" xlink:label="doc_p_jnl_journalAccountIdentifier" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">タプル。勘定科目番号と識別子の親コンテナ。 ここには記入されないが、個々の明細行は、異なるGAAPでの報告や、日本の見返勘定や、連結勘定科目に対する個別情報の連結会計システムへの伝達などのための、複数の勘定科目を持ちうる。例えば、勘定科目4783HG-QOWI-192837-1000は、次のように表現されうる。_x000D_
+/account/accountMainID 1000
+/account/accountMainDescription Cash
+/account/accountSub/accountSubID 4783HG
+/account/accountSub/accountSubDescription Department
+/account/accountSub/accountSubID QOWI
+/account/accountSub/accountSubDescription Branch
+/account/accountSub/accountSubID 192837
+/account/accountSub/accountSubDescription Division</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_jnl_journalAccountIdentifier" xlink:to="doc_p_jnl_journalAccountIdentifier"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_accountNumber" xlink:label="loc_jnl_accountNumber"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_accountNumber" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">主勘定科目コード</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_accountNumber" xlink:to="lab_jnl_accountNumber"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_accountNumber" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">主勘定科目。仕訳が関連する会計バケットを特定するためのコード。例えば、現金を表す1000、販売費を表す567GAAZ、税を表すZ。_x000D_
+部門、支店、事業部、マネージャ、その他の識別子は、Subaccount領域に記述される。転記の必要がなければ、勘定科目は必要ではない。総勘定元帳に転記するにはほとんどの場合必要。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_accountNumber" xlink:to="doc_jnl_accountNumber"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_accountDescription" xlink:label="loc_jnl_accountDescription"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_accountDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">主勘定科目説明</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_accountDescription" xlink:to="lab_jnl_accountDescription"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_accountDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">主勘定科目コードの説明。主勘定科目コードとして使用されるコードについての、人が読める記述。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_accountDescription" xlink:to="doc_jnl_accountDescription"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_accountClassification" xlink:label="loc_jnl_accountClassification"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_accountClassification" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">主勘定科目区分</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_accountClassification" xlink:to="lab_jnl_accountClassification"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_accountClassification" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">主勘定科目の種別。FASB Concepts 6および、同様の国際的な様式。xbrlInfoが他のXBRL項目と関係付けられる場合、データ交換より現存システム(audit)を示すべき。_x000D_
+[設定値のリスト]_x000D_
+(asset：資産)、(liability：負債)、(equity：資本)、(income：収益)、(gain：利得)、(expense：費用)、(loss：損失)、(contr-to-equity：資本増加)、(distr-from-equity：資本減少)、(comprehensive-income：包括利益)、(other：その他)</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_accountClassification" xlink:to="doc_jnl_accountClassification"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_accountClassificationDescription" xlink:label="loc_jnl_accountClassificationDescription"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_accountClassificationDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">主勘定科目区分説明</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_accountClassificationDescription" xlink:to="lab_jnl_accountClassificationDescription"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_accountClassificationDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">主勘定科目の区分の説明。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_accountClassificationDescription" xlink:to="doc_jnl_accountClassificationDescription"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#p_jnl_subaccount" xlink:label="loc_p_jnl_subaccount"/>
+    <label xlink:type="resource" xlink:label="lab_p_jnl_subaccount" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">【サブ科目情報】</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_jnl_subaccount" xlink:to="lab_p_jnl_subaccount"/>
+    <label xlink:type="resource" xlink:label="doc_p_jnl_subaccount" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">複数のaccountSubIDと説明文を含むタプル。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_p_jnl_subaccount" xlink:to="doc_p_jnl_subaccount"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_subaccountDescription" xlink:label="loc_jnl_subaccountDescription"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_subaccountDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">補助勘定科目説明</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_subaccountDescription" xlink:to="lab_jnl_subaccountDescription"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_subaccountDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">accountSubIDに関する説明。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_subaccountDescription" xlink:to="doc_jnl_subaccountDescription"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_subaccountId" xlink:label="loc_jnl_subaccountId"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_subaccountId" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">補助勘定科目コード</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_subaccountId" xlink:to="lab_jnl_subaccountId"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_subaccountId" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">主勘定科目をaccountMainIDに指定したときに、各プロフィットセンタ、事業部、事業体、基金、プログラム、支店、プロジェクト、クラス、su-クラス又は他の修飾子に使用されるコードはここに指定する。</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_subaccountId" xlink:to="doc_jnl_subaccountId"/>
+    <loc xlink:type="locator" xlink:href="../jnl-oim-2026-12-31.xsd#jnl_type" xlink:label="loc_jnl_type"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_type" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="ja">補助勘定科目種別</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_type" xlink:to="lab_jnl_type"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_type" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="ja">小勘定科目の種別。プロフィットセンタ、事業部、事業体、基金、プログラム、支店、プロジェクト、クラス、su-クラス又は他の修飾子がここに配置される。 例えば、責任単位、事業単位、クラス、部、プロジェクト、基金、プログラム、ジョブ、プロフィットセンター、支店、セットアップクラス、部門、ユニット</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_type" xlink:to="doc_jnl_type"/>
+  </labelLink>
+</linkbase>

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- (c) XBRL International.  See http://www.xbrl.org/legal -->
+<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/jnl" attributeFormDefault="unqualified" elementFormDefault="qualified"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:jnl="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/jnl"
+  xmlns:gen="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/gen">
+  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/gen" schemaLocation="../gen/gl-gen-2026-12-31.xsd"/>
+  <!-- reusable OIM Attribute item type -->
+  <complexType name="documentTypeItemType">
+    <simpleContent>
+      <restriction base="xbrli:tokenItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="auditNumberItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="creationDateItemType">
+    <simpleContent>
+      <restriction base="xbrli:dateTimeItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="documentCommentItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="periodCoveredStartItemType">
+    <simpleContent>
+      <restriction base="xbrli:dateTimeItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="periodCoveredEndItemType">
+    <simpleContent>
+      <restriction base="xbrli:dateTimeItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="defaultCurrencyItemType">
+    <simpleContent>
+      <restriction base="xbrli:QNameItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="partyNameItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="partyIdItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="partyRoleItemType">
+    <simpleContent>
+      <restriction base="xbrli:tokenItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="datePostedItemType">
+    <simpleContent>
+      <restriction base="xbrli:dateTimeItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="creatorItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="lastModifierItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="responsiblePersonItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="typeCodeItemType">
+    <simpleContent>
+      <restriction base="xbrli:tokenItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="postingCodeItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="numberOfEntriesItemType">
+    <simpleContent>
+      <restriction base="xbrli:integerItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="commentItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="totalDebitsItemType">
+    <simpleContent>
+      <restriction base="xbrli:monetaryItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="totalCreditsItemType">
+    <simpleContent>
+      <restriction base="xbrli:monetaryItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="lineNumberItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="lineNumberCounterItemType">
+    <simpleContent>
+      <restriction base="xbrli:decimalItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="postingDateItemType">
+    <simpleContent>
+      <restriction base="xbrli:dateTimeItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="detailDocumentTypeItemType">
+    <simpleContent>
+      <restriction base="xbrli:tokenItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="documentTypeDescriptionItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="detailDescriptionItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="monetaryAmountItemType">
+    <simpleContent>
+      <restriction base="xbrli:monetaryItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="currencyItemType">
+    <simpleContent>
+      <restriction base="xbrli:QNameItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="signIndicationForAmountItemType">
+    <simpleContent>
+      <restriction base="xbrli:tokenItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="debitCreditIndicatorItemType">
+    <simpleContent>
+      <restriction base="xbrli:tokenItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="accountNumberItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="accountDescriptionItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="accountClassificationItemType">
+    <simpleContent>
+      <restriction base="xbrli:tokenItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="accountClassificationDescriptionItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="subaccountDescriptionItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="subaccountIdItemType">
+    <simpleContent>
+      <restriction base="xbrli:stringItemType"/>
+    </simpleContent>
+  </complexType>
+  <complexType name="typeItemType">
+    <simpleContent>
+      <restriction base="xbrli:tokenItemType"/>
+    </simpleContent>
+  </complexType>
+  <!-- reusable OIM Attribute item element -->
+  <element name="documentType" id="jnl_documentType" type="jnl:documentTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="auditNumber" id="jnl_auditNumber" type="jnl:auditNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="creationDate" id="jnl_creationDate" type="jnl:creationDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="documentComment" id="jnl_documentComment" type="jnl:documentCommentItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="periodCoveredStart" id="jnl_periodCoveredStart" type="jnl:periodCoveredStartItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="periodCoveredEnd" id="jnl_periodCoveredEnd" type="jnl:periodCoveredEndItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="defaultCurrency" id="jnl_defaultCurrency" type="jnl:defaultCurrencyItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="partyName" id="jnl_partyName" type="jnl:partyNameItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="partyId" id="jnl_partyId" type="jnl:partyIdItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="partyRole" id="jnl_partyRole" type="jnl:partyRoleItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="datePosted" id="jnl_datePosted" type="jnl:datePostedItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="creator" id="jnl_creator" type="jnl:creatorItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="lastModifier" id="jnl_lastModifier" type="jnl:lastModifierItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="responsiblePerson" id="jnl_responsiblePerson" type="jnl:responsiblePersonItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="typeCode" id="jnl_typeCode" type="jnl:typeCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="postingCode" id="jnl_postingCode" type="jnl:postingCodeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="numberOfEntries" id="jnl_numberOfEntries" type="jnl:numberOfEntriesItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="comment" id="jnl_comment" type="jnl:commentItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="totalDebits" id="jnl_totalDebits" type="jnl:totalDebitsItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="totalCredits" id="jnl_totalCredits" type="jnl:totalCreditsItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="lineNumber" id="jnl_lineNumber" type="jnl:lineNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="lineNumberCounter" id="jnl_lineNumberCounter" type="jnl:lineNumberCounterItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="postingDate" id="jnl_postingDate" type="jnl:postingDateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailDocumentType" id="jnl_detailDocumentType" type="jnl:detailDocumentTypeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="documentTypeDescription" id="jnl_documentTypeDescription" type="jnl:documentTypeDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="detailDescription" id="jnl_detailDescription" type="jnl:detailDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="monetaryAmount" id="jnl_monetaryAmount" type="jnl:monetaryAmountItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="currency" id="jnl_currency" type="jnl:currencyItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="signIndicationForAmount" id="jnl_signIndicationForAmount" type="jnl:signIndicationForAmountItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="debitCreditIndicator" id="jnl_debitCreditIndicator" type="jnl:debitCreditIndicatorItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="accountNumber" id="jnl_accountNumber" type="jnl:accountNumberItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="accountDescription" id="jnl_accountDescription" type="jnl:accountDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="accountClassification" id="jnl_accountClassification" type="jnl:accountClassificationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="accountClassificationDescription" id="jnl_accountClassificationDescription" type="jnl:accountClassificationDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="subaccountDescription" id="jnl_subaccountDescription" type="jnl:subaccountDescriptionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="subaccountId" id="jnl_subaccountId" type="jnl:subaccountIdItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="type" id="jnl_type" type="jnl:typeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <!-- reusable OIM Class primary-item anchor -->
+  <element name="p_jnl_journalEntries" id="p_jnl_journalEntries" substitutionGroup="xbrli:item" type="xbrli:stringItemType" nillable="true" xbrli:periodType="instant"/>
+  <element name="p_jnl_documentInformation" id="p_jnl_documentInformation" substitutionGroup="xbrli:item" type="xbrli:stringItemType" nillable="true" xbrli:periodType="instant"/>
+  <element name="p_jnl_entityParty" id="p_jnl_entityParty" substitutionGroup="xbrli:item" type="xbrli:stringItemType" nillable="true" xbrli:periodType="instant"/>
+  <element name="p_jnl_entryHeader" id="p_jnl_entryHeader" substitutionGroup="xbrli:item" type="xbrli:stringItemType" nillable="true" xbrli:periodType="instant"/>
+  <element name="p_jnl_entryDetail" id="p_jnl_entryDetail" substitutionGroup="xbrli:item" type="xbrli:stringItemType" nillable="true" xbrli:periodType="instant"/>
+  <element name="p_jnl_journalAccountIdentifier" id="p_jnl_journalAccountIdentifier" substitutionGroup="xbrli:item" type="xbrli:stringItemType" nillable="true" xbrli:periodType="instant"/>
+  <element name="p_jnl_subaccount" id="p_jnl_subaccount" substitutionGroup="xbrli:item" type="xbrli:stringItemType" nillable="true" xbrli:periodType="instant"/>
+</schema>

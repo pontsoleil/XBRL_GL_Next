@@ -1,4 +1,41 @@
 # XBRL-GL-Next Current Baseline
+
+## 2026-10-07 journalEntries CSV publication successor
+
+- USER_DECISION: Reviewed LHM / HMDのquoted CSV field内の行末空白のみ除去を承認。定義の非空白文字、列・行順、semantic_path、local_name、XPath、multiplicity、datatype等は保持した。workbook自体は変更していない。
+- canonical reviewed CSV / HMDの新SHA-256: `D457A7E9EEFA84524470C41AFB96DB311036E1C4EF131D8D5BDCC0E3A05CF7DA`（2026-10-07 JST取得）。44行・18列/value_domainを維持。manifest / provenance / materialisation説明を本SHAへ整合した。
+- canonical post_graphwalkとGeneratorで後段を再生成し、taxonomyは既存13/13 SHA不変。publication gate及びOfficial GIT再検証の現行結果は `docs/Codex/2026/202610/20261007/20261007_1831/journalEntries-csv-whitespace-gate/outputs/` に記録する。stage / commit / pushは別の最終確認待ち。
+
+## 2026-10-07 journalEntries WORK canonical昇格
+
+- USER_DECISION: 1750の昇格指示により、journalEntriesをpurpose-specific COR specializationの独立rootとしてWORKへ正式配置した。Accounting Entries / BTXの既存authorityは置換しない。
+- 意味入力authorityは `20261007_1616/JournalEntries_FSM_BSM_LHM_with_reviewed.xlsx` の `LHM reviewed`（44行・18列、9列目value_domain）。`semantic-model/LHM/journal-entries/XBRL_GL_Next_LHM_reviewed.csv` は同シートの正確なcanonical materialisationであり、独立編集authorityではない。
+- HMD: `semantic-model/HMD/journal-entries/XBRL_GL_Next_HMD_JournalEntries_for_taxonomy.csv`、44行・18列、SHA-256（2026-10-07 JST取得）`F109A96D3923B91A60F001B1F41C00E23619BF9C9D86B29833A5AB0D7E767FDD`。同directoryのmanifestを配置した。既存LHM_for_taxonomyの2 HMD+manifestセットは変更していない。
+- Taxonomy: `taxonomy/journal-entries/`、Tuple/OIM 13生成ファイル。既存candidate・独立生成とSHA 13/13一致、canonical配置後traceability 44/44（両target、未解決0）、Arelle 2.37.77両入口error/warning 0。namespace `https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/jnl`を維持した。
+- provenance / taxonomy manifestは `taxonomy/provenance/journal-entries/`。受入記録: `docs/Codex/2026/202610/20261007/20261007_1756/journalEntries-canonical-promotion/outputs/`。WORK canonicalのみ受入済み。Git HEADは変更せず、Official GIT COPY・stage・commit・push前のユーザー確認待ち。
+
+## 2026-10-07 journalEntries reviewed入力・task-local taxonomy（WORKのみ）
+
+- USER_DECISION: `docs/ChatGPT/2026/202610/20261007/20261007_1616/JournalEntries_FSM_BSM_LHM_with_reviewed.xlsx` の `LHM reviewed` を入力authorityとする。追加承認によりI1だけを `association_role` から `value_domain` へ変更し、その他のセルは保持した。SHA-256（2026-10-07 JST取得）: `1C18AEE97DA64E3DA55D3603B900CA4F1AB882483D0C9713496F31515277DAC5`。
+- canonical post_graphwalk / taxonomy generatorで44行・18列HMD、Tuple/OIMの13ファイルをtask-local生成した。HMD SHA-256: `F109A96D3923B91A60F001B1F41C00E23619BF9C9D86B29833A5AB0D7E767FDD`。全行追跡、Arelle 2.37.77両入口error/warning 0、独立生成13/13 SHA一致を確認した。
+- 記録: `docs/Codex/2026/202610/20261007/20261007_1655/journalEntries-reviewed-taxonomy/outputs/`。正式モデル・既存taxonomy baselineは変更せず、candidateの昇格・公開は行っていない。下記1642のHOLDは履歴であり、今回の入力では解消した。
+
+## 2026-10-07 journalEntries Candidate LHM（WORKのみ）
+
+- 2026-10-07追加USER_DECISION: `tools/semantic/post_graphwalk.py` にも `jnl=gl-jnl` を登録した。11件の既存テストPASS。現行reviewed入力は9列目association_role/value_domainの契約不一致でHMD未生成（記録: `docs/Codex/2026/202610/20261007/20261007_1642/journalEntries-postgraphwalk-registration/outputs/`）。
+
+- USER_DECISION: `jnl`追加指示に基づき、canonical Graph Walkのprefixを `jnl=gl-jnl` として登録した。
+- 指定 `FSM_jnl.csv`（SHA-256 `2AAB9C59F91AE3392A48B7BE55AA24E015F398A0164B85D4243CE93AE530CE0E`）から生成した一時BSMを再利用し、`jnl:Journal Entries` rootのCandidate LHM 25行・18列をtask-localに生成した。
+- 成果物・検証: `docs/Codex/2026/202610/20261007/20261007_1352/journalEntries-candidate-lhm/outputs/`。既存COR/BTX authority、正式モデル、taxonomyは変更していない。Reviewed昇格・Official GIT反映・stage/commit/pushなし。
+
+## 2026-10-06 Current reviewed COR HMD authority
+
+- USER_DECISION: 今回の明示指示により401行版をcurrent reviewed COR HMD authorityとして採用する。
+- 正式入力: `semantic-model/HMD/accounting-entries/XBRL_GL_Next_HMD_AccountingEntries_for_taxonomy.csv`、SHA-256 `6DB8C6AAD8C2FBAEC710DDF104405D22CC13BAD0BA52038DF471F7FE5850AD81`。
+- `semantic-model/LHM_for_taxonomy/` の同名ファイルも同一SHAで、現行manifestもこの401行版を参照する。2026-10-06に実ファイルSHAを確認した。
+- 下記の旧400行版受入記録は履歴として保持し、current COR authorityの指定は本項を優先する。HMD内容は変更していない。
+- Tavi PoCはHMD後段の候補表現であり、semantic authorityではない。既存taxonomyの再検証・新たな受入を本記録で主張しない。stage / commit / pushなし。
+
 ## 2026-09-15 Tax Transaction Classification and Tax Type successor baseline
 
 - The canonical Accounting Entries successor is based on the validated 2026-09-04 taxonomy and adds the distinct `cor:taxType` concept from the UADC authoritative HMD.

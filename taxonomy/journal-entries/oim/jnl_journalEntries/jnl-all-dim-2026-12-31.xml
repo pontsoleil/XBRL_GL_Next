@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- (c) XBRL International.  See http://www.xbrl.org/legal -->
+<link:linkbase
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"
+	xmlns:link="http://www.xbrl.org/2003/linkbase"
+	xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- roleRef -->
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_journalEntries" xlink:type="simple" xlink:href="jnl-all-oim-2026-12-31.xsd#link_jnl_journalEntries"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_documentInformation" xlink:type="simple" xlink:href="jnl-all-oim-2026-12-31.xsd#link_jnl_documentInformation"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_entityParty" xlink:type="simple" xlink:href="jnl-all-oim-2026-12-31.xsd#link_jnl_entityParty"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_entryHeader" xlink:type="simple" xlink:href="jnl-all-oim-2026-12-31.xsd#link_jnl_entryHeader"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_entryDetail" xlink:type="simple" xlink:href="jnl-all-oim-2026-12-31.xsd#link_jnl_entryDetail"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_journalAccountIdentifier" xlink:type="simple" xlink:href="jnl-all-oim-2026-12-31.xsd#link_jnl_journalAccountIdentifier"/>
+  <link:roleRef roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_subaccount" xlink:type="simple" xlink:href="jnl-all-oim-2026-12-31.xsd#link_jnl_subaccount"/>
+  <!-- arcroleRef -->
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/all" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain"/>
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_journalEntries">
+    <!-- p_jnl_journalEntries all (has-hypercube) h_jnl_journalEntries link_jnl_journalEntries -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#p_jnl_journalEntries" xlink:label="p_jnl_journalEntries" xlink:title="p_jnl_journalEntries"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#h_jnl_journalEntries" xlink:label="h_jnl_journalEntries" xlink:title="h_jnl_journalEntries"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="p_jnl_journalEntries" xlink:to="h_jnl_journalEntries" xlink:title="all (has-hypercube): p_jnl_journalEntries to h_jnl_journalEntries" order="1" xbrldt:closed="true" xbrldt:contextElement="segment"/>
+    <!-- hypercube-dimension -->
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_journalEntries" xlink:label="d_jnl_journalEntries" xlink:title="d_jnl_journalEntries"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_journalEntries" xlink:to="d_jnl_journalEntries" xlink:title="hypercube-dimension: h_jnl_journalEntries to d_jnl_journalEntries" order="1"/>
+    <!-- domain-member -->
+    <!-- p_jnl_journalEntries to targetRole link_jnl_documentInformation -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#p_jnl_documentInformation" xlink:label="p_jnl_documentInformation" xlink:title="p_jnl_documentInformation Document Information"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_documentInformation" xlink:from="p_jnl_journalEntries" xlink:to="p_jnl_documentInformation" xlink:title="domain-member: p_jnl_journalEntries to p_jnl_documentInformation in link_jnl_documentInformation" order="2"/>
+    <!-- p_jnl_journalEntries to targetRole link_jnl_entityParty -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#p_jnl_entityParty" xlink:label="p_jnl_entityParty" xlink:title="p_jnl_entityParty Entity_ Party"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_entityParty" xlink:from="p_jnl_journalEntries" xlink:to="p_jnl_entityParty" xlink:title="domain-member: p_jnl_journalEntries to p_jnl_entityParty in link_jnl_entityParty" order="3"/>
+    <!-- p_jnl_journalEntries to targetRole link_jnl_entryHeader -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#p_jnl_entryHeader" xlink:label="p_jnl_entryHeader" xlink:title="p_jnl_entryHeader Entry_ Header"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_entryHeader" xlink:from="p_jnl_journalEntries" xlink:to="p_jnl_entryHeader" xlink:title="domain-member: p_jnl_journalEntries to p_jnl_entryHeader in link_jnl_entryHeader" order="4"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_documentInformation">
+    <!-- p_jnl_documentInformation all (has-hypercube) h_jnl_documentInformation link_jnl_documentInformation -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#p_jnl_documentInformation" xlink:label="p_jnl_documentInformation" xlink:title="p_jnl_documentInformation"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#h_jnl_documentInformation" xlink:label="h_jnl_documentInformation" xlink:title="h_jnl_documentInformation"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="p_jnl_documentInformation" xlink:to="h_jnl_documentInformation" xlink:title="all (has-hypercube): p_jnl_documentInformation to h_jnl_documentInformation" order="1" xbrldt:closed="true" xbrldt:contextElement="segment"/>
+    <!-- hypercube-dimension -->
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_journalEntries" xlink:label="d_jnl_journalEntries" xlink:title="d_jnl_journalEntries"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_documentInformation" xlink:to="d_jnl_journalEntries" xlink:title="hypercube-dimension: h_jnl_documentInformation to d_jnl_journalEntries" order="1"/>
+    <!-- domain-member -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_documentType" xlink:label="jnl_documentType" xlink:title="jnl_documentType Document Type"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_documentInformation" xlink:to="jnl_documentType" xlink:title="domain-member: p_jnl_documentInformation to jnl_documentType Document Type" order="2"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_auditNumber" xlink:label="jnl_auditNumber" xlink:title="jnl_auditNumber Audit Number"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_documentInformation" xlink:to="jnl_auditNumber" xlink:title="domain-member: p_jnl_documentInformation to jnl_auditNumber Audit Number" order="3"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_creationDate" xlink:label="jnl_creationDate" xlink:title="jnl_creationDate Creation Date"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_documentInformation" xlink:to="jnl_creationDate" xlink:title="domain-member: p_jnl_documentInformation to jnl_creationDate Creation Date" order="4"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_documentComment" xlink:label="jnl_documentComment" xlink:title="jnl_documentComment Document Comment"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_documentInformation" xlink:to="jnl_documentComment" xlink:title="domain-member: p_jnl_documentInformation to jnl_documentComment Document Comment" order="5"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_periodCoveredStart" xlink:label="jnl_periodCoveredStart" xlink:title="jnl_periodCoveredStart Period Covered Start"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_documentInformation" xlink:to="jnl_periodCoveredStart" xlink:title="domain-member: p_jnl_documentInformation to jnl_periodCoveredStart Period Covered Start" order="6"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_periodCoveredEnd" xlink:label="jnl_periodCoveredEnd" xlink:title="jnl_periodCoveredEnd Period Covered End"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_documentInformation" xlink:to="jnl_periodCoveredEnd" xlink:title="domain-member: p_jnl_documentInformation to jnl_periodCoveredEnd Period Covered End" order="7"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_defaultCurrency" xlink:label="jnl_defaultCurrency" xlink:title="jnl_defaultCurrency Default Currency"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_documentInformation" xlink:to="jnl_defaultCurrency" xlink:title="domain-member: p_jnl_documentInformation to jnl_defaultCurrency Default Currency" order="8"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_entityParty">
+    <!-- p_jnl_entityParty all (has-hypercube) h_jnl_entityParty link_jnl_entityParty -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#p_jnl_entityParty" xlink:label="p_jnl_entityParty" xlink:title="p_jnl_entityParty"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#h_jnl_entityParty" xlink:label="h_jnl_entityParty" xlink:title="h_jnl_entityParty"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="p_jnl_entityParty" xlink:to="h_jnl_entityParty" xlink:title="all (has-hypercube): p_jnl_entityParty to h_jnl_entityParty" order="1" xbrldt:closed="true" xbrldt:contextElement="segment"/>
+    <!-- hypercube-dimension -->
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_journalEntries" xlink:label="d_jnl_journalEntries" xlink:title="d_jnl_journalEntries"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_entityParty" xlink:to="d_jnl_journalEntries" xlink:title="hypercube-dimension: h_jnl_entityParty to d_jnl_journalEntries" order="1"/>
+    <!-- domain-member -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_partyName" xlink:label="jnl_partyName" xlink:title="jnl_partyName Party Name"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entityParty" xlink:to="jnl_partyName" xlink:title="domain-member: p_jnl_entityParty to jnl_partyName Party Name" order="2"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_partyId" xlink:label="jnl_partyId" xlink:title="jnl_partyId Party ID"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entityParty" xlink:to="jnl_partyId" xlink:title="domain-member: p_jnl_entityParty to jnl_partyId Party ID" order="3"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_partyRole" xlink:label="jnl_partyRole" xlink:title="jnl_partyRole Party Role"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entityParty" xlink:to="jnl_partyRole" xlink:title="domain-member: p_jnl_entityParty to jnl_partyRole Party Role" order="4"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_entryHeader">
+    <!-- p_jnl_entryHeader all (has-hypercube) h_jnl_entryHeader link_jnl_entryHeader -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#p_jnl_entryHeader" xlink:label="p_jnl_entryHeader" xlink:title="p_jnl_entryHeader"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#h_jnl_entryHeader" xlink:label="h_jnl_entryHeader" xlink:title="h_jnl_entryHeader"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="p_jnl_entryHeader" xlink:to="h_jnl_entryHeader" xlink:title="all (has-hypercube): p_jnl_entryHeader to h_jnl_entryHeader" order="1" xbrldt:closed="true" xbrldt:contextElement="segment"/>
+    <!-- hypercube-dimension -->
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_journalEntries" xlink:label="d_jnl_journalEntries" xlink:title="d_jnl_journalEntries"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_entryHeader" xlink:to="d_jnl_journalEntries" xlink:title="hypercube-dimension: h_jnl_entryHeader to d_jnl_journalEntries" order="1"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_entryHeader" xlink:label="d_jnl_entryHeader" xlink:title="d_jnl_entryHeader"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_entryHeader" xlink:to="d_jnl_entryHeader" xlink:title="hypercube-dimension: h_jnl_entryHeader to d_jnl_entryHeader" order="2"/>
+    <!-- domain-member -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_datePosted" xlink:label="jnl_datePosted" xlink:title="jnl_datePosted Date Posted"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryHeader" xlink:to="jnl_datePosted" xlink:title="domain-member: p_jnl_entryHeader to jnl_datePosted Date Posted" order="3"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_creator" xlink:label="jnl_creator" xlink:title="jnl_creator Creator"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryHeader" xlink:to="jnl_creator" xlink:title="domain-member: p_jnl_entryHeader to jnl_creator Creator" order="4"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_lastModifier" xlink:label="jnl_lastModifier" xlink:title="jnl_lastModifier Last Modifier"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryHeader" xlink:to="jnl_lastModifier" xlink:title="domain-member: p_jnl_entryHeader to jnl_lastModifier Last Modifier" order="5"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_responsiblePerson" xlink:label="jnl_responsiblePerson" xlink:title="jnl_responsiblePerson Responsible Person"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryHeader" xlink:to="jnl_responsiblePerson" xlink:title="domain-member: p_jnl_entryHeader to jnl_responsiblePerson Responsible Person" order="6"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_typeCode" xlink:label="jnl_typeCode" xlink:title="jnl_typeCode Type Code"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryHeader" xlink:to="jnl_typeCode" xlink:title="domain-member: p_jnl_entryHeader to jnl_typeCode Type Code" order="7"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_postingCode" xlink:label="jnl_postingCode" xlink:title="jnl_postingCode Posting Code"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryHeader" xlink:to="jnl_postingCode" xlink:title="domain-member: p_jnl_entryHeader to jnl_postingCode Posting Code" order="8"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_numberOfEntries" xlink:label="jnl_numberOfEntries" xlink:title="jnl_numberOfEntries Number of Entries"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryHeader" xlink:to="jnl_numberOfEntries" xlink:title="domain-member: p_jnl_entryHeader to jnl_numberOfEntries Number of Entries" order="9"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_comment" xlink:label="jnl_comment" xlink:title="jnl_comment Comment"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryHeader" xlink:to="jnl_comment" xlink:title="domain-member: p_jnl_entryHeader to jnl_comment Comment" order="10"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_totalDebits" xlink:label="jnl_totalDebits" xlink:title="jnl_totalDebits Total Debits"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryHeader" xlink:to="jnl_totalDebits" xlink:title="domain-member: p_jnl_entryHeader to jnl_totalDebits Total Debits" order="11"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_totalCredits" xlink:label="jnl_totalCredits" xlink:title="jnl_totalCredits Total Credits"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryHeader" xlink:to="jnl_totalCredits" xlink:title="domain-member: p_jnl_entryHeader to jnl_totalCredits Total Credits" order="12"/>
+    <!-- p_jnl_entryHeader to targetRole link_jnl_entryDetail -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#p_jnl_entryDetail" xlink:label="p_jnl_entryDetail" xlink:title="p_jnl_entryDetail Entry_ Detail"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_entryDetail" xlink:from="p_jnl_entryHeader" xlink:to="p_jnl_entryDetail" xlink:title="domain-member: p_jnl_entryHeader to p_jnl_entryDetail in link_jnl_entryDetail" order="13"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_entryDetail">
+    <!-- p_jnl_entryDetail all (has-hypercube) h_jnl_entryDetail link_jnl_entryDetail -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#p_jnl_entryDetail" xlink:label="p_jnl_entryDetail" xlink:title="p_jnl_entryDetail"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#h_jnl_entryDetail" xlink:label="h_jnl_entryDetail" xlink:title="h_jnl_entryDetail"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="p_jnl_entryDetail" xlink:to="h_jnl_entryDetail" xlink:title="all (has-hypercube): p_jnl_entryDetail to h_jnl_entryDetail" order="1" xbrldt:closed="true" xbrldt:contextElement="segment"/>
+    <!-- hypercube-dimension -->
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_journalEntries" xlink:label="d_jnl_journalEntries" xlink:title="d_jnl_journalEntries"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_entryDetail" xlink:to="d_jnl_journalEntries" xlink:title="hypercube-dimension: h_jnl_entryDetail to d_jnl_journalEntries" order="1"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_entryHeader" xlink:label="d_jnl_entryHeader" xlink:title="d_jnl_entryHeader"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_entryDetail" xlink:to="d_jnl_entryHeader" xlink:title="hypercube-dimension: h_jnl_entryDetail to d_jnl_entryHeader" order="2"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_entryDetail" xlink:label="d_jnl_entryDetail" xlink:title="d_jnl_entryDetail"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_entryDetail" xlink:to="d_jnl_entryDetail" xlink:title="hypercube-dimension: h_jnl_entryDetail to d_jnl_entryDetail" order="3"/>
+    <!-- domain-member -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_lineNumber" xlink:label="jnl_lineNumber" xlink:title="jnl_lineNumber Line Number"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryDetail" xlink:to="jnl_lineNumber" xlink:title="domain-member: p_jnl_entryDetail to jnl_lineNumber Line Number" order="4"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_lineNumberCounter" xlink:label="jnl_lineNumberCounter" xlink:title="jnl_lineNumberCounter Line Number Counter"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryDetail" xlink:to="jnl_lineNumberCounter" xlink:title="domain-member: p_jnl_entryDetail to jnl_lineNumberCounter Line Number Counter" order="5"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_postingDate" xlink:label="jnl_postingDate" xlink:title="jnl_postingDate Posting Date"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryDetail" xlink:to="jnl_postingDate" xlink:title="domain-member: p_jnl_entryDetail to jnl_postingDate Posting Date" order="6"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_detailDocumentType" xlink:label="jnl_detailDocumentType" xlink:title="jnl_detailDocumentType Document Type"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryDetail" xlink:to="jnl_detailDocumentType" xlink:title="domain-member: p_jnl_entryDetail to jnl_detailDocumentType Document Type" order="7"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_documentTypeDescription" xlink:label="jnl_documentTypeDescription" xlink:title="jnl_documentTypeDescription Document Type Description"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryDetail" xlink:to="jnl_documentTypeDescription" xlink:title="domain-member: p_jnl_entryDetail to jnl_documentTypeDescription Document Type Description" order="8"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_detailDescription" xlink:label="jnl_detailDescription" xlink:title="jnl_detailDescription Detail_ Description"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryDetail" xlink:to="jnl_detailDescription" xlink:title="domain-member: p_jnl_entryDetail to jnl_detailDescription Detail_ Description" order="9"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_monetaryAmount" xlink:label="jnl_monetaryAmount" xlink:title="jnl_monetaryAmount Monetary Amount"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryDetail" xlink:to="jnl_monetaryAmount" xlink:title="domain-member: p_jnl_entryDetail to jnl_monetaryAmount Monetary Amount" order="10"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_currency" xlink:label="jnl_currency" xlink:title="jnl_currency Currency"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryDetail" xlink:to="jnl_currency" xlink:title="domain-member: p_jnl_entryDetail to jnl_currency Currency" order="11"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_signIndicationForAmount" xlink:label="jnl_signIndicationForAmount" xlink:title="jnl_signIndicationForAmount Sign Indication for Amount"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryDetail" xlink:to="jnl_signIndicationForAmount" xlink:title="domain-member: p_jnl_entryDetail to jnl_signIndicationForAmount Sign Indication for Amount" order="12"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_debitCreditIndicator" xlink:label="jnl_debitCreditIndicator" xlink:title="jnl_debitCreditIndicator Debit/Credit Indicator"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_entryDetail" xlink:to="jnl_debitCreditIndicator" xlink:title="domain-member: p_jnl_entryDetail to jnl_debitCreditIndicator Debit/Credit Indicator" order="13"/>
+    <!-- p_jnl_entryDetail to targetRole link_jnl_journalAccountIdentifier -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#p_jnl_journalAccountIdentifier" xlink:label="p_jnl_journalAccountIdentifier" xlink:title="p_jnl_journalAccountIdentifier Journal_ Account Identifier"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_journalAccountIdentifier" xlink:from="p_jnl_entryDetail" xlink:to="p_jnl_journalAccountIdentifier" xlink:title="domain-member: p_jnl_entryDetail to p_jnl_journalAccountIdentifier in link_jnl_journalAccountIdentifier" order="14"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_journalAccountIdentifier">
+    <!-- p_jnl_journalAccountIdentifier all (has-hypercube) h_jnl_journalAccountIdentifier link_jnl_journalAccountIdentifier -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#p_jnl_journalAccountIdentifier" xlink:label="p_jnl_journalAccountIdentifier" xlink:title="p_jnl_journalAccountIdentifier"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#h_jnl_journalAccountIdentifier" xlink:label="h_jnl_journalAccountIdentifier" xlink:title="h_jnl_journalAccountIdentifier"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="p_jnl_journalAccountIdentifier" xlink:to="h_jnl_journalAccountIdentifier" xlink:title="all (has-hypercube): p_jnl_journalAccountIdentifier to h_jnl_journalAccountIdentifier" order="1" xbrldt:closed="true" xbrldt:contextElement="segment"/>
+    <!-- hypercube-dimension -->
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_journalEntries" xlink:label="d_jnl_journalEntries" xlink:title="d_jnl_journalEntries"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_journalAccountIdentifier" xlink:to="d_jnl_journalEntries" xlink:title="hypercube-dimension: h_jnl_journalAccountIdentifier to d_jnl_journalEntries" order="1"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_entryHeader" xlink:label="d_jnl_entryHeader" xlink:title="d_jnl_entryHeader"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_journalAccountIdentifier" xlink:to="d_jnl_entryHeader" xlink:title="hypercube-dimension: h_jnl_journalAccountIdentifier to d_jnl_entryHeader" order="2"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_entryDetail" xlink:label="d_jnl_entryDetail" xlink:title="d_jnl_entryDetail"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_journalAccountIdentifier" xlink:to="d_jnl_entryDetail" xlink:title="hypercube-dimension: h_jnl_journalAccountIdentifier to d_jnl_entryDetail" order="3"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_journalAccountIdentifier" xlink:label="d_jnl_journalAccountIdentifier" xlink:title="d_jnl_journalAccountIdentifier"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_journalAccountIdentifier" xlink:to="d_jnl_journalAccountIdentifier" xlink:title="hypercube-dimension: h_jnl_journalAccountIdentifier to d_jnl_journalAccountIdentifier" order="4"/>
+    <!-- domain-member -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_accountNumber" xlink:label="jnl_accountNumber" xlink:title="jnl_accountNumber Account Number"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_journalAccountIdentifier" xlink:to="jnl_accountNumber" xlink:title="domain-member: p_jnl_journalAccountIdentifier to jnl_accountNumber Account Number" order="5"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_accountDescription" xlink:label="jnl_accountDescription" xlink:title="jnl_accountDescription Account Description"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_journalAccountIdentifier" xlink:to="jnl_accountDescription" xlink:title="domain-member: p_jnl_journalAccountIdentifier to jnl_accountDescription Account Description" order="6"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_accountClassification" xlink:label="jnl_accountClassification" xlink:title="jnl_accountClassification Account Classification"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_journalAccountIdentifier" xlink:to="jnl_accountClassification" xlink:title="domain-member: p_jnl_journalAccountIdentifier to jnl_accountClassification Account Classification" order="7"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_accountClassificationDescription" xlink:label="jnl_accountClassificationDescription" xlink:title="jnl_accountClassificationDescription Account Classification Description"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_journalAccountIdentifier" xlink:to="jnl_accountClassificationDescription" xlink:title="domain-member: p_jnl_journalAccountIdentifier to jnl_accountClassificationDescription Account Classification Description" order="8"/>
+    <!-- p_jnl_journalAccountIdentifier to targetRole link_jnl_subaccount -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#p_jnl_subaccount" xlink:label="p_jnl_subaccount" xlink:title="p_jnl_subaccount Subaccount"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xbrldt:targetRole="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_subaccount" xlink:from="p_jnl_journalAccountIdentifier" xlink:to="p_jnl_subaccount" xlink:title="domain-member: p_jnl_journalAccountIdentifier to p_jnl_subaccount in link_jnl_subaccount" order="9"/>
+  </link:definitionLink>
+  <link:definitionLink xlink:type="extended" xlink:role="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_subaccount">
+    <!-- p_jnl_subaccount all (has-hypercube) h_jnl_subaccount link_jnl_subaccount -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#p_jnl_subaccount" xlink:label="p_jnl_subaccount" xlink:title="p_jnl_subaccount"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#h_jnl_subaccount" xlink:label="h_jnl_subaccount" xlink:title="h_jnl_subaccount"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="p_jnl_subaccount" xlink:to="h_jnl_subaccount" xlink:title="all (has-hypercube): p_jnl_subaccount to h_jnl_subaccount" order="1" xbrldt:closed="true" xbrldt:contextElement="segment"/>
+    <!-- hypercube-dimension -->
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_journalEntries" xlink:label="d_jnl_journalEntries" xlink:title="d_jnl_journalEntries"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_subaccount" xlink:to="d_jnl_journalEntries" xlink:title="hypercube-dimension: h_jnl_subaccount to d_jnl_journalEntries" order="1"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_entryHeader" xlink:label="d_jnl_entryHeader" xlink:title="d_jnl_entryHeader"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_subaccount" xlink:to="d_jnl_entryHeader" xlink:title="hypercube-dimension: h_jnl_subaccount to d_jnl_entryHeader" order="2"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_entryDetail" xlink:label="d_jnl_entryDetail" xlink:title="d_jnl_entryDetail"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_subaccount" xlink:to="d_jnl_entryDetail" xlink:title="hypercube-dimension: h_jnl_subaccount to d_jnl_entryDetail" order="3"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_journalAccountIdentifier" xlink:label="d_jnl_journalAccountIdentifier" xlink:title="d_jnl_journalAccountIdentifier"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_subaccount" xlink:to="d_jnl_journalAccountIdentifier" xlink:title="hypercube-dimension: h_jnl_subaccount to d_jnl_journalAccountIdentifier" order="4"/>
+    <link:loc xlink:type="locator" xlink:href="jnl-all-oim-2026-12-31.xsd#d_jnl_subaccount" xlink:label="d_jnl_subaccount" xlink:title="d_jnl_subaccount"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="h_jnl_subaccount" xlink:to="d_jnl_subaccount" xlink:title="hypercube-dimension: h_jnl_subaccount to d_jnl_subaccount" order="5"/>
+    <!-- domain-member -->
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_subaccountDescription" xlink:label="jnl_subaccountDescription" xlink:title="jnl_subaccountDescription Subaccount Description"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_subaccount" xlink:to="jnl_subaccountDescription" xlink:title="domain-member: p_jnl_subaccount to jnl_subaccountDescription Subaccount Description" order="6"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_subaccountId" xlink:label="jnl_subaccountId" xlink:title="jnl_subaccountId Subaccount ID"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_subaccount" xlink:to="jnl_subaccountId" xlink:title="domain-member: p_jnl_subaccount to jnl_subaccountId Subaccount ID" order="7"/>
+    <link:loc xlink:type="locator" xlink:href="../../jnl/jnl-oim-2026-12-31.xsd#jnl_type" xlink:label="jnl_type" xlink:title="jnl_type Type"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="p_jnl_subaccount" xlink:to="jnl_type" xlink:title="domain-member: p_jnl_subaccount to jnl_type Type" order="8"/>
+  </link:definitionLink>
+</link:linkbase>

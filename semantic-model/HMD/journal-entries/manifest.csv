@@ -1,0 +1,2 @@
+hmd_identifier,hmd_name,file,input_row_count,zero_zero_row_count,excluded_descendant_count,excluded_row_count,output_row_count,semantic_path_duplicate_count,qname_duplicate_count,xpath_duplicate_count,sha256
+JournalEntries,Journal Entries,XBRL_GL_Next_HMD_JournalEntries_for_taxonomy.csv,44,0,0,0,44,0,0,0,D457A7E9EEFA84524470C41AFB96DB311036E1C4EF131D8D5BDCC0E3A05CF7DA

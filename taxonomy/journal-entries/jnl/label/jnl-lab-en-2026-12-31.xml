@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<linkbase xmlns="http://www.xbrl.org/2003/linkbase"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_journalEntries" xlink:label="loc_jnl_journalEntries"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_journalEntries" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Journal Entries</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_journalEntries" xlink:to="lab_jnl_journalEntries"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_documentInformation" xlink:label="loc_jnl_documentInformation"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_documentInformation" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Document Information</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_documentInformation" xlink:to="lab_jnl_documentInformation"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_documentInformation" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Parent for descriptive information about the accountingEntries Class in which it is contained.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_documentInformation" xlink:to="doc_jnl_documentInformation"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_entityParty" xlink:label="loc_jnl_entityParty"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_entityParty" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Entity_ Party</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_entityParty" xlink:to="lab_jnl_entityParty"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_entityParty" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Holder for entity information - information about the reporting organization.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_entityParty" xlink:to="doc_jnl_entityParty"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_entryHeader" xlink:label="loc_jnl_entryHeader"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_entryHeader" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Entry_ Header</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_entryHeader" xlink:to="lab_jnl_entryHeader"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_entryHeader" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Parent for entry headers/journal entry headers.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_entryHeader" xlink:to="doc_jnl_entryHeader"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_documentType" xlink:label="loc_jnl_documentType"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_documentType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Document Type</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_documentType" xlink:to="lab_jnl_documentType"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_documentType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">account: information to fill in a chart of accounts file.
+balance: the results of accumulation of a complete and validated list of entries for an account (or a list of account) in a specific period - sometimes called general ledger
+entries: a list of individual accounting entries, which might be posted/validated or nonposted/validated
+journal: a self-balancing (Dr = Cr) list of entries for a specific period including beginning balance for that period.
+ledger: a complete list of entries for a specific account (or list of accounts) for a specific period; note - debits do not have to equal credits.
+assets: a listing of open receivables, payables, inventory, fixed assets or other information that can be extracted from but are not necessarily included as part of a journal entry.
+trialBalance: the self-balancing (Dr = Cr) result of accumulation of a complete and validated list of entries for the entity in a complete list of accounts in a specific period.
+taxtables: aids automated interpretation of instances that represent tax tables; Tax table are defined by using multiple [taxes] classs to gather the population of codes, authorities and rates; through [taxTableCode] cross-references in the [taxes] class, these "master file" tax tables can be referenced.
+mapping: a collection of mappings between interrelated data sets, such as a local and related corporate standard chart of accounts or detail data mapped to summarized end reporting concepts.
+versioning: a collection of changes between two versions of the same class of information, such as updates to a master file like a chart of accounts.
+master_file: a collection of master files, such as the customer or inventory master file.
+trade_documents: a collection of trade/transactional documents, such as vendor invoices or customer orders.
+profile_compliant: the meaning of this collection of information can be determined by understanding an established profile and especially an XBRL GL Profile. Profiles are determined through namespace declarations, schemaRef and conventions of those profiles.
+other: for all other types of representations.
+
+Often sorted by date or by account, these terms have specific, and sometimes different, meanings in different areas. Common practice will drive accounting method/term matches.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_documentType" xlink:to="doc_jnl_documentType"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_auditNumber" xlink:label="loc_jnl_auditNumber"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_auditNumber" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Audit Number</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_auditNumber" xlink:to="lab_jnl_auditNumber"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_auditNumber" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Unique identifier for this file.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_auditNumber" xlink:to="doc_jnl_auditNumber"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_creationDate" xlink:label="loc_jnl_creationDate"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_creationDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Creation Date</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_creationDate" xlink:to="lab_jnl_creationDate"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_creationDate" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Date/time file was created.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_creationDate" xlink:to="doc_jnl_creationDate"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_documentComment" xlink:label="loc_jnl_documentComment"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_documentComment" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Document Comment</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_documentComment" xlink:to="lab_jnl_documentComment"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_documentComment" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Text for entire document.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_documentComment" xlink:to="doc_jnl_documentComment"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_periodCoveredStart" xlink:label="loc_jnl_periodCoveredStart"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_periodCoveredStart" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Period Covered Start</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_periodCoveredStart" xlink:to="lab_jnl_periodCoveredStart"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_periodCoveredStart" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Start of date range for contents. Used as basis for many assumptions about data, including the date as of which open balances are open.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_periodCoveredStart" xlink:to="doc_jnl_periodCoveredStart"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_periodCoveredEnd" xlink:label="loc_jnl_periodCoveredEnd"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_periodCoveredEnd" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Period Covered End</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_periodCoveredEnd" xlink:to="lab_jnl_periodCoveredEnd"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_periodCoveredEnd" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">End of date range for contents. Used as basis for many assumptions about data, including the date as of which open balances are open.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_periodCoveredEnd" xlink:to="doc_jnl_periodCoveredEnd"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_defaultCurrency" xlink:label="loc_jnl_defaultCurrency"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_defaultCurrency" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Default Currency</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_defaultCurrency" xlink:to="lab_jnl_defaultCurrency"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_defaultCurrency" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">The default currency related to the amount can be entered here instead of the XBRL instance specified way, especially important in multi-currency situations. Recommend ISO 4217 coding</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_defaultCurrency" xlink:to="doc_jnl_defaultCurrency"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_partyName" xlink:label="loc_jnl_partyName"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_partyName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Party Name</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_partyName" xlink:to="lab_jnl_partyName"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_partyName" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Name by which the party is identified.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_partyName" xlink:to="doc_jnl_partyName"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_partyId" xlink:label="loc_jnl_partyId"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_partyId" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Party ID</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_partyId" xlink:to="lab_jnl_partyId"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_partyId" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Identifier assigned to the party.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_partyId" xlink:to="doc_jnl_partyId"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_partyRole" xlink:label="loc_jnl_partyRole"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_partyRole" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Party Role</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_partyRole" xlink:to="lab_jnl_partyRole"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_partyRole" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Role of the party in the business transaction, such as seller, buyer, payee, tax representative, or deliver-to party.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_partyRole" xlink:to="doc_jnl_partyRole"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_datePosted" xlink:label="loc_jnl_datePosted"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_datePosted" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Date Posted</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_datePosted" xlink:to="lab_jnl_datePosted"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_datePosted" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Date this entry was posted (validated) to the general ledger. May not represent the date of accounting significance which is represented by 'postingDate'.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_datePosted" xlink:to="doc_jnl_datePosted"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_creator" xlink:label="loc_jnl_creator"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_creator" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Creator</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_creator" xlink:to="lab_jnl_creator"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_creator" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Initials/name of operator originally entering.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_creator" xlink:to="doc_jnl_creator"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_lastModifier" xlink:label="loc_jnl_lastModifier"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_lastModifier" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Last Modifier</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_lastModifier" xlink:to="lab_jnl_lastModifier"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_lastModifier" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Identification for the last person modifying this entry before posting.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_lastModifier" xlink:to="doc_jnl_lastModifier"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_responsiblePerson" xlink:label="loc_jnl_responsiblePerson"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_responsiblePerson" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Responsible Person</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_responsiblePerson" xlink:to="lab_jnl_responsiblePerson"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_responsiblePerson" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Identifier of person who created or originated or is otherwise responsible for the entry.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_responsiblePerson" xlink:to="doc_jnl_responsiblePerson"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_typeCode" xlink:label="loc_jnl_typeCode"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_typeCode" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Type Code</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_typeCode" xlink:to="lab_jnl_typeCode"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_typeCode" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">One of the following enumerated list: adjusting, budget, comparative, external-accountant, standard, passed-adjusting, eliminating, proposed, recurring, reclassifying, simulated, tax, other</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_typeCode" xlink:to="doc_jnl_typeCode"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_postingCode" xlink:label="loc_jnl_postingCode"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_postingCode" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Posting Code</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_postingCode" xlink:to="lab_jnl_postingCode"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_postingCode" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Code for posting to period, e.g., period 1-13, based on codes in an accounting period file. We do not recommend that software vendors export here, but suggest providing period end numbers for the buckets. Possibilities W1 through W53, M1 through M13, Q1-Q4. Developers and others creating output files are encouraged to supply an actual end date.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_postingCode" xlink:to="doc_jnl_postingCode"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_numberOfEntries" xlink:label="loc_jnl_numberOfEntries"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_numberOfEntries" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Number of Entries</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_numberOfEntries" xlink:to="lab_jnl_numberOfEntries"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_numberOfEntries" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">The total number of entries.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_numberOfEntries" xlink:to="doc_jnl_numberOfEntries"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_comment" xlink:label="loc_jnl_comment"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_comment" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Comment</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_comment" xlink:to="lab_jnl_comment"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_comment" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Comment of the entry</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_comment" xlink:to="doc_jnl_comment"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_totalDebits" xlink:label="loc_jnl_totalDebits"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_totalDebits" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Total Debits</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_totalDebits" xlink:to="lab_jnl_totalDebits"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_totalDebits" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">The total of all debit amounts.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_totalDebits" xlink:to="doc_jnl_totalDebits"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_totalCredits" xlink:label="loc_jnl_totalCredits"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_totalCredits" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Total Credits</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_totalCredits" xlink:to="lab_jnl_totalCredits"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_totalCredits" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">The total of all credit amounts.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_totalCredits" xlink:to="doc_jnl_totalCredits"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_entryDetail" xlink:label="loc_jnl_entryDetail"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_entryDetail" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Entry_ Detail</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_entryDetail" xlink:to="lab_jnl_entryDetail"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_entryDetail" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Parent for entry detail</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_entryDetail" xlink:to="doc_jnl_entryDetail"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_lineNumber" xlink:label="loc_jnl_lineNumber"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_lineNumber" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Line Number</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_lineNumber" xlink:to="lab_jnl_lineNumber"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_lineNumber" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Identifier for a particular entry detail</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_lineNumber" xlink:to="doc_jnl_lineNumber"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_lineNumberCounter" xlink:label="loc_jnl_lineNumberCounter"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_lineNumberCounter" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Line Number Counter</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_lineNumberCounter" xlink:to="lab_jnl_lineNumberCounter"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_lineNumberCounter" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Unique reference for the line - a numeric counter</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_lineNumberCounter" xlink:to="doc_jnl_lineNumberCounter"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_postingDate" xlink:label="loc_jnl_postingDate"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_postingDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Posting Date</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_postingDate" xlink:to="lab_jnl_postingDate"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_postingDate" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">At the detail level, this represents the accounting significance date. No matter what date the document is received, entered, or posted, this signifies the accounting date of the entry. If you want to see the financial results for March 5, 2002 and this entry is given that date, the entry will be part of the results for March 5, 2002. This is different from the postedDate found at the entryHeader level. If you want the accounting significance to be a particular date, it goes here. A single entry could represent multiple dates, but would only be posted on one date.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_postingDate" xlink:to="doc_jnl_postingDate"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_detailDocumentType" xlink:label="loc_jnl_detailDocumentType"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_detailDocumentType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Document Type</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_detailDocumentType" xlink:to="lab_jnl_detailDocumentType"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_detailDocumentType" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">An enumerated field describing the original source document, with check, debit-memo, credit-memo, finance-charge, invoice, order-customer, order-vendor, payment-other, reminder, tegata, voucher, shipment, receipt, manual-adjustment, other.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_detailDocumentType" xlink:to="doc_jnl_detailDocumentType"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_documentTypeDescription" xlink:label="loc_jnl_documentTypeDescription"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_documentTypeDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Document Type Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_documentTypeDescription" xlink:to="lab_jnl_documentTypeDescription"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_documentTypeDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Free format description of the document type</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_documentTypeDescription" xlink:to="doc_jnl_documentTypeDescription"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_detailDescription" xlink:label="loc_jnl_detailDescription"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_detailDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Detail_ Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_detailDescription" xlink:to="lab_jnl_detailDescription"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_detailDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Description of this line of detail only</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_detailDescription" xlink:to="doc_jnl_detailDescription"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_monetaryAmount" xlink:label="loc_jnl_monetaryAmount"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_monetaryAmount" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Monetary Amount</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_monetaryAmount" xlink:to="lab_jnl_monetaryAmount"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_monetaryAmount" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">This field (amount) represents the primary monetary amount related to the  subject of the entryDetail line. There is one primary monetary amount per entryDetail class. It may, for example, represent the amount of one line of a journal entry, the balance on a document, or the extended amount of a line item on an invoice. Amount is not required if detailed entry is used for non-financial work and other elements are populated, in particular measurableQuantity. The amount field is a signed number (either positive or negative itself) and used in conjunction with a separate signOfAmount and a separate debitCreditCode, which together are considered for understanding the monetary amount. The unit of measure is determined by amountCurrency if present, and by the default or home currency if amountCurrency is not present.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_monetaryAmount" xlink:to="doc_jnl_monetaryAmount"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_currency" xlink:label="loc_jnl_currency"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_currency" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Currency</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_currency" xlink:to="lab_jnl_currency"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_currency" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">The currency related to the amount can be entered here instead of the XBRL instance specified way, especially important in multi-currency situations. Recommend ISO 4217 coding.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_currency" xlink:to="doc_jnl_currency"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_signIndicationForAmount" xlink:label="loc_jnl_signIndicationForAmount"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_signIndicationForAmount" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Sign Indication for Amount</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_signIndicationForAmount" xlink:to="lab_jnl_signIndicationForAmount"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_signIndicationForAmount" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Sign of amount; provides 4 possible fields only when used in conjunction with debitCreditCode; primarily used for correcting entries so total debits and credits after an entry error are not inflated. D + increase DebitsD - decrease debitsC + decreases creditC - increases credit</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_signIndicationForAmount" xlink:to="doc_jnl_signIndicationForAmount"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_debitCreditIndicator" xlink:label="loc_jnl_debitCreditIndicator"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_debitCreditIndicator" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Debit/Credit Indicator</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_debitCreditIndicator" xlink:to="lab_jnl_debitCreditIndicator"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_debitCreditIndicator" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Optional identifier of whether the amount is a (D)ebit, a (C)redit or Undefined</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_debitCreditIndicator" xlink:to="doc_jnl_debitCreditIndicator"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_journalAccountIdentifier" xlink:label="loc_jnl_journalAccountIdentifier"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_journalAccountIdentifier" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Journal_ Account Identifier</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_journalAccountIdentifier" xlink:to="lab_jnl_journalAccountIdentifier"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_journalAccountIdentifier" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Class: parent container for account numbers and identifiers. No entry is made here, but each detail line may have multiple accounts assigned to it for reporting in different GAAPs, offsetting accounts in Japan, passing along information to consolidation systems about local versus consolidating accounts, etc. For example, the account 4783HG-QOWI-192837-1000 may be expressed so:
+
+/account/accountMainID 1000
+/account/accountMainDescription Cash
+/account/accountSub/accountSubID 4783HG
+/account/accountSub/accountSubDescription Department
+/account/accountSub/accountSubID QOWI
+/account/accountSub/accountSubDescription Branch
+/account/accountSub/accountSubID 192837
+/account/accountSub/accountSubDescription Division</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_journalAccountIdentifier" xlink:to="doc_jnl_journalAccountIdentifier"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_accountNumber" xlink:label="loc_jnl_accountNumber"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_accountNumber" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Account Number</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_accountNumber" xlink:to="lab_jnl_accountNumber"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_accountNumber" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Main account - the code used to identify the accounting bucket the entry has been assigned to. Examples might be 1000 for Cash, 567GAAZ for Sales Expense or Z for tax payments. Identifiers such as department, branch, division, manager, or other modifiers are noted in the Subaccount area. Before needing to post, account is not necessary. Posting to the general ledger almost always requires an entry here.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_accountNumber" xlink:to="doc_jnl_accountNumber"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_accountDescription" xlink:label="loc_jnl_accountDescription"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_accountDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Account Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_accountDescription" xlink:to="lab_jnl_accountDescription"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_accountDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Description of accountMainID - the human readable describer that accompanies the code used in accountMainID</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_accountDescription" xlink:to="doc_jnl_accountDescription"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_accountClassification" xlink:label="loc_jnl_accountClassification"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_accountClassification" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Account Classification</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_accountClassification" xlink:to="lab_jnl_accountClassification"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_accountClassification" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Account type - FASB Concepts 6 and similar international designs. When xbrlInfo is used to associated other XBRL reporting items, this field is more suited to representing existing systems (audit) than data interchange. Enumerated as: asset, liability, equity, income, gain, expense, loss, contr-to-equity, distr-from-equity, comprehensive-income, other.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_accountClassification" xlink:to="doc_jnl_accountClassification"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_accountClassificationDescription" xlink:label="loc_jnl_accountClassificationDescription"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_accountClassificationDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Account Classification Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_accountClassificationDescription" xlink:to="lab_jnl_accountClassificationDescription"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_accountClassificationDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Free format description of the account classification</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_accountClassificationDescription" xlink:to="doc_jnl_accountClassificationDescription"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_subaccount" xlink:label="loc_jnl_subaccount"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_subaccount" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Subaccount</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_subaccount" xlink:to="lab_jnl_subaccount"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_subaccount" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Class to hold multiple accountSubIDs and Descriptions</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_subaccount" xlink:to="doc_jnl_subaccount"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_subaccountDescription" xlink:label="loc_jnl_subaccountDescription"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_subaccountDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Subaccount Description</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_subaccountDescription" xlink:to="lab_jnl_subaccountDescription"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_subaccountDescription" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">The description that accompanies accountSubID belongs here.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_subaccountDescription" xlink:to="doc_jnl_subaccountDescription"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_subaccountId" xlink:label="loc_jnl_subaccountId"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_subaccountId" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Subaccount ID</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_subaccountId" xlink:to="lab_jnl_subaccountId"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_subaccountId" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Where the primary account was placed in accountMainID, the code used for each profit center, division, business unit, fund, program, branch, project, class, su-class or other modifier is placed here.</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_subaccountId" xlink:to="doc_jnl_subaccountId"/>
+    <loc xlink:type="locator" xlink:href="../jnl-2026-12-31.xsd#jnl_type" xlink:label="loc_jnl_type"/>
+    <label xlink:type="resource" xlink:label="lab_jnl_type" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en">Type</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_type" xlink:to="lab_jnl_type"/>
+    <label xlink:type="resource" xlink:label="doc_jnl_type" xlink:role="http://www.xbrl.org/2003/role/documentation" xml:lang="en">Type of sub-account - profit center, division, business unit, fund, program, branch, project, class, su-class or other modifier is placed here. For example:: Accountability center: Business unit: Class:Department: Project: Fund: Program:Job: Profit center: Branch: Setup class: Division: Unit</label>
+    <labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_jnl_type" xlink:to="doc_jnl_type"/>
+  </labelLink>
+</linkbase>

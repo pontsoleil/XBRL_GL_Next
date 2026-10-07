@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- (c) XBRL International.  See http://www.xbrl.org/legal -->
+<schema targetNamespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt" attributeFormDefault="unqualified" elementFormDefault="qualified"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+  xmlns:plt="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt">
+  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>
+  <import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
+  <import namespace="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/jnl" schemaLocation="../../jnl/jnl-oim-2026-12-31.xsd"/>
+  <annotation>
+    <appinfo>
+      <link:linkbaseRef xlink:type="simple" xlink:href="../../jnl/label/jnl-oim-lab-en-2026-12-31.xml" xlink:title="Label Links, all" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="../../jnl/label/jnl-oim-lab-ja-2026-12-31.xml" xlink:title="Label Links, ja" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:linkbaseRef xlink:type="simple" xlink:href="jnl-all-dim-2026-12-31.xml" xlink:title="Definition" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <!--
+        role type
+      -->
+      <link:roleType id="xbrl-role" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role">
+        <link:definition>link xbrl-gl</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="link_jnl_journalEntries" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_journalEntries">
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="link_jnl_documentInformation" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_documentInformation">
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="link_jnl_entityParty" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_entityParty">
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="link_jnl_entryHeader" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_entryHeader">
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="link_jnl_entryDetail" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_entryDetail">
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="link_jnl_journalAccountIdentifier" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_journalAccountIdentifier">
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="link_jnl_subaccount" roleURI="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/role/link_jnl_subaccount">
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+        <link:linkbaseRef xlink:type="simple" xlink:href="../../jnl/jnl-oim-pre-2026-12-31.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+</appinfo>
+  </annotation>
+  <!-- typed dimension referenced element -->
+  <element name="_v" id="_v">
+    <simpleType>
+    <restriction base="string"/>
+    </simpleType>
+  </element>
+  <!-- Hypercube -->
+  <element name="h_jnl_journalEntries" id="h_jnl_journalEntries" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" nillable="true" abstract="true" xbrli:periodType="instant"/>
+  <element name="h_jnl_documentInformation" id="h_jnl_documentInformation" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" nillable="true" abstract="true" xbrli:periodType="instant"/>
+  <element name="h_jnl_entityParty" id="h_jnl_entityParty" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" nillable="true" abstract="true" xbrli:periodType="instant"/>
+  <element name="h_jnl_entryHeader" id="h_jnl_entryHeader" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" nillable="true" abstract="true" xbrli:periodType="instant"/>
+  <element name="h_jnl_entryDetail" id="h_jnl_entryDetail" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" nillable="true" abstract="true" xbrli:periodType="instant"/>
+  <element name="h_jnl_journalAccountIdentifier" id="h_jnl_journalAccountIdentifier" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" nillable="true" abstract="true" xbrli:periodType="instant"/>
+  <element name="h_jnl_subaccount" id="h_jnl_subaccount" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" nillable="true" abstract="true" xbrli:periodType="instant"/>
+  <!-- Dimension -->
+  <element name="d_jnl_journalEntries" id="d_jnl_journalEntries" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" abstract="true" xbrli:periodType="instant" xbrldt:typedDomainRef="#_v"/>
+  <element name="d_jnl_entryHeader" id="d_jnl_entryHeader" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" abstract="true" xbrli:periodType="instant" xbrldt:typedDomainRef="#_v"/>
+  <element name="d_jnl_entryDetail" id="d_jnl_entryDetail" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" abstract="true" xbrli:periodType="instant" xbrldt:typedDomainRef="#_v"/>
+  <element name="d_jnl_journalAccountIdentifier" id="d_jnl_journalAccountIdentifier" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" abstract="true" xbrli:periodType="instant" xbrldt:typedDomainRef="#_v"/>
+  <element name="d_jnl_subaccount" id="d_jnl_subaccount" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" abstract="true" xbrli:periodType="instant" xbrldt:typedDomainRef="#_v"/>
+  <!-- Class primary-item anchors are declared in module-level OIM schemas -->
+</schema>

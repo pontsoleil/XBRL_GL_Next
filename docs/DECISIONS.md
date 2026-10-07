@@ -1,5 +1,38 @@
 # XBRL-GL-Next Decisions
 
+## 2026-10-07 journalEntries quoted CSV行末空白の限定除去
+
+- USER_DECISION: publication text/EOL gate修正のため、canonical Reviewed LHM / HMDのquoted CSV field内の行末space/tabだけを除去する。これをworkbook由来materialisationへの明示的な限定例外とする。
+- 非空白文字、その他の空白、行・列順、全識別子・path・datatype・multiplicityは保持し、workbook・FSM・BSM・candidateを変更しない。HMDの変更に伴うmanifest / provenance / 説明のSHA連鎖だけを更新する。
+- taxonomyはcanonical再生成で13/13 SHA不変。publication gateは独立task-local indexで実施し、Official GITのstage / commit / pushは最終確認まで行わない。
+
+## 2026-10-07 journalEntriesの独立WORK canonical root
+
+- USER_DECISION: journalEntriesをpurpose-specific COR specializationとして、独自のreviewed materialisation、HMD、Tuple/OIM taxonomyとともに維持する。一般Accounting Entries modelは置換しない。
+- canonical配置先を `semantic-model/LHM/journal-entries/`、`semantic-model/HMD/journal-entries/`、`taxonomy/journal-entries/` とし、provenanceを `taxonomy/provenance/journal-entries/` へ分離する。既存COR/BTXのroot及び2 HMD+manifestセットへ混在させない。
+- workbookの `LHM reviewed` が意味入力authority。canonical reviewed CSVは正確なmaterialisationであり、独立手修正authorityではない。18列/value_domain、reviewed local_name/XPath、namespaceを保持する。
+- 現行WORK baselineは44 HMD rows・13生成taxonomy filesであり、両canonical入口のArelle検証済み。Official GIT COPY・publication・stage・commit・pushは別の明示承認を必要とする。
+
+## 2026-10-07 reviewed LHMの9列目契約
+
+- USER_DECISION: LHMでは `association_role` を使用せず、9列目を `value_domain` とする。今回の変更対象はreviewed workbookの `LHM reviewed!I1` のみ。44行の値がすべて空欄でも列名を保持する。
+- ユーザー改定済みの `local_name` / `xpath` をauthorityとして使用し、その他のセルを変更せずcanonical post_graphwalk → HMD → taxonomy → validationへ進める。FSM/BSM/candidateの変更やsemantic再レビューは本承認に含めない。
+- task-local生成・検証までを対象とし、正式配置・Official GIT COPY・stage・commit・pushは承認されていない。
+
+## 2026-10-07 Graph Walkのjnl prefix登録
+
+- 追加USER_DECISION: 「jnl 登録して」によりcanonical post_graphwalkのMODULE_PREFIXにもjnl=gl-jnlを登録する。列契約やreviewed semantic値の変更は今回の登録に含めない。
+
+- USER_DECISION: ユーザーの「jnl追加して」に基づき、`tools/semantic/graphwalk.py` のMODULE_PREFIXへ `jnl: gl-jnl` を追加する。既存moduleと同じprefix命名規則を適用する。
+- 本登録はCandidate LHMのQName/XPath生成用であり、namespace URI、taxonomy、HMD及びreviewed authorityの新設・変更を意味しない。
+
+## 2026-10-06 Current COR HMD designation
+
+- USER_DECISION: 401行版COR reviewed HMDをcurrent authorityとして採用する。対象は `semantic-model/HMD/accounting-entries/XBRL_GL_Next_HMD_AccountingEntries_for_taxonomy.csv`、SHA-256 `6DB8C6AAD8C2FBAEC710DDF104405D22CC13BAD0BA52038DF471F7FE5850AD81`。
+- 同名のLHM_for_taxonomy配置と現行manifestも同版を参照する。D-021の400行版の指定はhistorical acceptanceとして保持し、current COR入力の指定は本決定で置換する。
+- Tavi PoCはこのHMD後段へbindingする。FSM / BSM / LHM / HMD及び既存taxonomy・OIMは変更せず、Tavi都合で意味階層・ownership・multiplicityを再定義しない。
+
+
 ## 2026-08-30 Phase 1 canonical publication paths
 
 - Use DTS-specific LHM and HMD directories under `semantic-model/LHM/{accounting-entries,business-transactions}/` and `semantic-model/HMD/{accounting-entries,business-transactions}/`.
