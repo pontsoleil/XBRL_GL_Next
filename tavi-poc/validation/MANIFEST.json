@@ -1,0 +1,249 @@
+{
+  "public_arelle_base_sha": "0c773d6f79681caf598aded5ccb3812bbb0b9b28",
+  "accepted_target_sha": "d19d2e7ad369f3356746252d1f63d808ed4281cc",
+  "cumulative_patch_sha256": "e27804957bad2ff26d92d86b6639e9fc55413a7677efcb89e870a215e737ae01",
+  "creation_date": "2026-10-11T15:32:20.140058+09:00",
+  "status": "FIRST_PUBLICATION_DOCUMENTATION_CANDIDATE",
+  "first_publication": true,
+  "installation_scope": "fresh checkout at specified base",
+  "file_count": 16,
+  "hashed_file_count": 15,
+  "registration_file_count": 5,
+  "registration_paths": [
+    "taxonomy/tavi-tax.json",
+    "taxonomy/XBRL_GL_Next_Tavi_AccountingEntries_v3.json",
+    "arelle/patches/arelle-oimtaxonomy-tavi-poc.patch",
+    "arelle/patches/0010-oim-taxonomy-structured-tidy-transposed-view.patch",
+    "arelle/patches/arelle-oimtaxonomy-label-language-additional.patch"
+  ],
+  "manifest_self_exclusion": "validation/MANIFEST.json excluded from its own hash inventory; candidate hash recorded in task-local evidence",
+  "files": [
+    {
+      "relative_path": "taxonomy/tavi-tax.json",
+      "bytes": 4837,
+      "sha256": "19121e5b7938ef59f42960910aea1923dbf5297195bbc5369137aeb325559da3",
+      "category": "registration"
+    },
+    {
+      "relative_path": "taxonomy/XBRL_GL_Next_Tavi_AccountingEntries_v3.json",
+      "bytes": 405277,
+      "sha256": "c5a22efd355f3184a6b308f7e6a052621bae401f955c619df8f5c783804db5b1",
+      "category": "registration"
+    },
+    {
+      "relative_path": "arelle/patches/arelle-oimtaxonomy-tavi-poc.patch",
+      "bytes": 41779,
+      "sha256": "e27804957bad2ff26d92d86b6639e9fc55413a7677efcb89e870a215e737ae01",
+      "category": "registration"
+    },
+    {
+      "relative_path": "arelle/patches/0010-oim-taxonomy-structured-tidy-transposed-view.patch",
+      "bytes": 7736,
+      "sha256": "7e123da44b2a3e32d3d654dd52f131809c46c9ef75328168d4200100167d5eeb",
+      "category": "registration"
+    },
+    {
+      "relative_path": "arelle/patches/arelle-oimtaxonomy-label-language-additional.patch",
+      "bytes": 731,
+      "sha256": "bd00e31dbd38e2c9dabd6f41e3b5362aef904863c0fcb2a2832efe4d3d30cefd",
+      "category": "registration"
+    },
+    {
+      "relative_path": "README.md",
+      "bytes": 4308,
+      "sha256": "e1bf84eb0040976b3848ba089981d5b79d445279f21d4963f80e0df1e70e1ad4",
+      "category": "documentation_candidate"
+    },
+    {
+      "relative_path": "arelle/APPLY_PATCH.md",
+      "bytes": 10676,
+      "sha256": "61fdcd165864cb2544ed122136eeae456ddf88d38c79e4ff58ac369648cc4254",
+      "category": "documentation_candidate"
+    },
+    {
+      "relative_path": "instance/tavi-inst.json",
+      "bytes": 1596,
+      "sha256": "025e69db95aad2e037c2f35dff980f2073afea8d937727ba9f78a94f50894886",
+      "category": "existing_support"
+    },
+    {
+      "relative_path": "instance/tavi-inst.csv",
+      "bytes": 279,
+      "sha256": "63c6103e07f0f0d5ae57a6c7bec5325d83b7ad837b0bd9f69da7b63b7f8cbcec",
+      "category": "existing_support"
+    },
+    {
+      "relative_path": "expected/STRUCTURED_TIDY_DATA.md",
+      "bytes": 1078,
+      "sha256": "6b00268732650f2573ce39b24988d0e01ca4f68ebd85e7f1f8cf21309606318e",
+      "category": "existing_support"
+    },
+    {
+      "relative_path": "validation/ACCEPTANCE.md",
+      "bytes": 1804,
+      "sha256": "daab281ad8dce2426eaa523ced13f12ce8145fafcf56ae724d264d132a6f9f26",
+      "category": "existing_support"
+    },
+    {
+      "relative_path": "arelle/ENVIRONMENT.md",
+      "bytes": 2736,
+      "sha256": "49a495dc24c0c6964402fa710f559ea15cc51bed8c2382f9a30b938c56d3549e",
+      "category": "existing_support"
+    },
+    {
+      "relative_path": "validation/TAVI_ACCOUNTING_ENTRIES_MANIFEST_v3.json",
+      "bytes": 17604,
+      "sha256": "487c6edc696a85297f92a02edeb7fa9e7e5aaa7911738121590bcb9a77ccfa03",
+      "category": "existing_support"
+    },
+    {
+      "relative_path": "validation/REVIEW_REPORT_v3.md",
+      "bytes": 2094,
+      "sha256": "4f3f9b848cf50448c776ab54092f4732b73e3612eb5a0c9e9e6a594f379ae550",
+      "category": "existing_support"
+    },
+    {
+      "relative_path": "validation/FULL_HMD_TAVI_V3_ARELLE_ACCEPTANCE.md",
+      "bytes": 2440,
+      "sha256": "7a78102bb1c97e0f496974582e37c4bd3ca918dccac0cb74c989d10bbe8f1114",
+      "category": "existing_support"
+    }
+  ],
+  "patch_application_order": [
+    {
+      "order": 1,
+      "relative_path": "arelle/patches/arelle-oimtaxonomy-tavi-poc.patch",
+      "bytes": 41779,
+      "sha256": "e27804957bad2ff26d92d86b6639e9fc55413a7677efcb89e870a215e737ae01",
+      "development_commit_with_equivalent_sources": "f8f50ee1d06a12f2e9798437c66e2d360514d6be",
+      "patch_generation_base": "0c773d6f79681caf598aded5ccb3812bbb0b9b28",
+      "format": "git-style unified diff; a/ and b/ paths",
+      "source_paths": [
+        "arelle/ModelDocument.py",
+        "arelle/oim/Load.py",
+        "arelle/plugin/OimTaxonomy/ValidateDTS.py",
+        "arelle/plugin/OimTaxonomy/ViewStructuredTidyData.py",
+        "arelle/plugin/OimTaxonomy/XbrlCube.py",
+        "arelle/plugin/OimTaxonomy/XbrlDts.py",
+        "arelle/plugin/OimTaxonomy/XbrlReport.py",
+        "arelle/plugin/OimTaxonomy/__init__.py"
+      ]
+    },
+    {
+      "order": 2,
+      "relative_path": "arelle/patches/0010-oim-taxonomy-structured-tidy-transposed-view.patch",
+      "bytes": 7736,
+      "sha256": "7e123da44b2a3e32d3d654dd52f131809c46c9ef75328168d4200100167d5eeb",
+      "development_commit_with_equivalent_sources": "7fe66c11cda8f23d60149cb119e3646f4a508fe3",
+      "patch_generation_base": "f8f50ee1d06a12f2e9798437c66e2d360514d6be",
+      "format": "git-style unified diff; a/ and b/ paths",
+      "source_paths": [
+        "arelle/plugin/OimTaxonomy/ViewStructuredTidyData.py"
+      ]
+    },
+    {
+      "order": 3,
+      "relative_path": "arelle/patches/arelle-oimtaxonomy-label-language-additional.patch",
+      "bytes": 731,
+      "sha256": "bd00e31dbd38e2c9dabd6f41e3b5362aef904863c0fcb2a2832efe4d3d30cefd",
+      "development_commit_with_equivalent_sources": "d19d2e7ad369f3356746252d1f63d808ed4281cc",
+      "patch_generation_base": "f8f50ee1d06a12f2e9798437c66e2d360514d6be",
+      "format": "git-style unified diff; a/ and b/ paths",
+      "source_paths": [
+        "arelle/plugin/OimTaxonomy/ViewXbrlTxmyObj.py"
+      ]
+    }
+  ],
+  "post_apply_source_hashes": [
+    {
+      "relative_path": "arelle/ModelDocument.py",
+      "sha256": "ea176e2d5a0d7c6f98b324993ccb834dc7a241ab0213573c0d754660e9c0b207"
+    },
+    {
+      "relative_path": "arelle/oim/Load.py",
+      "sha256": "771a2b3e057e814df6e91d44e94f452f0c6c5462743a3c2f6ca0d93d662c5456"
+    },
+    {
+      "relative_path": "arelle/plugin/OimTaxonomy/ValidateDTS.py",
+      "sha256": "4691515e84f191186bbe5ac82a9ddd294ec83f660363e30084cf9418c7945851"
+    },
+    {
+      "relative_path": "arelle/plugin/OimTaxonomy/ViewStructuredTidyData.py",
+      "sha256": "90e0fb6ea4ac95a39d22b6a395085afcca9855c2dd7c963d6e541227a53487e3"
+    },
+    {
+      "relative_path": "arelle/plugin/OimTaxonomy/ViewXbrlTxmyObj.py",
+      "sha256": "f6a548b74d7f21cfe8bdea2bbb98937cebd781da4a99a4b759fd2a7eb967c68d"
+    },
+    {
+      "relative_path": "arelle/plugin/OimTaxonomy/XbrlCube.py",
+      "sha256": "caab04f4b1be0d9a2f59fd17b470ffb4b283c58ced279c992057b6a9aeff5a07"
+    },
+    {
+      "relative_path": "arelle/plugin/OimTaxonomy/XbrlDts.py",
+      "sha256": "9c9a2df5d9c1974501003f3adab989b3654f7e2d93c81231a5e782ac36fdb52b"
+    },
+    {
+      "relative_path": "arelle/plugin/OimTaxonomy/XbrlReport.py",
+      "sha256": "d3c899e0871545cef68300ba8ba59585fb93ca0e0612db2e06c17fba36be8bcf"
+    },
+    {
+      "relative_path": "arelle/plugin/OimTaxonomy/__init__.py",
+      "sha256": "4b2df7c4f3cca20cbc12f27ac27a7fc89c92c7ae8387fbfea02e4d6730ecd4bc"
+    }
+  ],
+  "source_equivalence_semantics": "Matching affected source contents and SHA-256; applying patches does not create development commit IDs",
+  "development_baseline": {
+    "repository": "/Users/pontsoleil/GitHub/Arelle",
+    "branch": "work/oim-taxonomy-tavi",
+    "head": "d19d2e7ad369f3356746252d1f63d808ed4281cc",
+    "environment": {
+      "python": "3.10.1",
+      "architecture": "arm64",
+      "tcl_tk": "8.6.12"
+    },
+    "environment_scope": "verified MacBook environment; not a universal compatibility claim"
+  },
+  "acceptance_evidence": [
+    {
+      "stage": "cumulative",
+      "result": "PASS_REUSED",
+      "path": "validation/ACCEPTANCE.md"
+    },
+    {
+      "stage": "v3 full DTS",
+      "result": "PASS_REUSED",
+      "path": "validation/FULL_HMD_TAVI_V3_ARELLE_ACCEPTANCE.md"
+    },
+    {
+      "stage": "0010",
+      "result": "PASS_REUSED",
+      "work_record": "docs/Codex/2026/202610/20261011/20261011_1019/0010-item-properties-investigation/outputs/REVIEW_REPORT.md",
+      "basis": "saved headless/native mapping and user manual Item amount/description Properties acceptance"
+    },
+    {
+      "stage": "Labels",
+      "result": "ACCEPTED_AND_COMMITTED",
+      "work_record": "docs/Codex/2026/202610/20261011/20261011_1216/oim-label-language-web-patch/outputs/ACCEPTED_CANDIDATE.md",
+      "basis": "saved syntax/static checks and user manual v3 Cubes English-label acceptance"
+    },
+    {
+      "stage": "development adoption",
+      "result": "PASS_REUSED",
+      "work_record": "docs/Codex/2026/202610/20261011/20261011_1523/arelle-0010-labels-independent-commits/outputs/FINAL_REPORT.md"
+    }
+  ],
+  "v3_manifest_role": {
+    "path": "validation/TAVI_ACCOUNTING_ENTRIES_MANIFEST_v3.json",
+    "purpose": "v3 taxonomy datatype mapping/provenance, separate from package integrity and patch order"
+  },
+  "verification_scope": "documentation and manifest static consistency only; no new native/GUI execution",
+  "excluded": [
+    "v1/v2 taxonomy",
+    "old generator",
+    "old plugin",
+    "archive",
+    "task-local helper"
+  ],
+  "publication_authorized": false
+}

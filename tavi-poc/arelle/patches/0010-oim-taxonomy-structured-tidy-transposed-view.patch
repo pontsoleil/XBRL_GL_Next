@@ -1,0 +1,168 @@
+diff --git a/arelle/plugin/OimTaxonomy/ViewStructuredTidyData.py b/arelle/plugin/OimTaxonomy/ViewStructuredTidyData.py
+index edb80c2..1914068 100644
+--- a/arelle/plugin/OimTaxonomy/ViewStructuredTidyData.py
++++ b/arelle/plugin/OimTaxonomy/ViewStructuredTidyData.py
+@@ -77,7 +77,9 @@ class ViewStructuredTidyData(ViewWinTree.ViewTree):
+         self.blockViewModelObject = 0
+         self.cellFacts = {}
+         self.factCells = defaultdict(list)
++        self.rowHeaderObjects = {}
+         self.displayColumns = []
++        self.occurrenceColumns = []
+ 
+     @staticmethod
+     def _domainMembers(domain):
+@@ -191,6 +193,7 @@ class ViewStructuredTidyData(ViewWinTree.ViewTree):
+         columns, dimensionColumns, conceptColumns = templateDefinition
+         self.displayColumns = columns
+         self.dimensionColumnNames = {columnName: dimensionName for dimensionName, columnName in dimensionColumns.items()}
++        self.conceptColumnNames = {columnName: conceptName for conceptName, columnName in conceptColumns.items()}
+         occurrenceColumns = [columnName for columnName in columns if columnName in self.dimensionColumnNames]
+         if not occurrenceColumns:
+             self.xbrlDts.error(
+@@ -248,6 +251,37 @@ class ViewStructuredTidyData(ViewWinTree.ViewTree):
+ 
+         return sorted(rows.values(), key=self._rowSortKey)
+ 
++    @staticmethod
++    def _cubeDisplayName(cube):
++        localName = getattr(getattr(cube, "name", None), "localName", None) or str(getattr(cube, "name", "Occurrence"))
++        if localName.endswith("Cube"):
++            localName = localName[:-4]
++        if localName.startswith("entry") and len(localName) > 5:
++            localName = localName[5:]
++        return localName[:1].upper() + localName[1:] if localName else "Occurrence"
++
++    def _occurrenceHeading(self, row):
++        values = []
++        for columnName in self.displayColumns:
++            dimensionName = self.dimensionColumnNames.get(columnName)
++            if dimensionName is None:
++                continue
++            value = row["dimensions"].get(dimensionName)
++            if value not in (None, ""):
++                values.append(str(value))
++        suffix = "-".join(values)
++        label = self._cubeDisplayName(row["cube"])
++        return f"{label} {suffix}" if suffix else label
++
++    def _rowHeaderObject(self, columnName):
++        dimensionName = self.dimensionColumnNames.get(columnName)
++        if dimensionName is not None:
++            return self.xbrlDts.namedObjects.get(dimensionName)
++        conceptName = self.conceptColumnNames.get(columnName)
++        if conceptName is not None:
++            return self.xbrlDts.namedObjects.get(conceptName)
++        return None
++
+     def view(self):
+         rows = self._reconstructRows()
+         if rows is None:
+@@ -255,40 +289,44 @@ class ViewStructuredTidyData(ViewWinTree.ViewTree):
+         self.clearTreeView()
+         self.cellFacts.clear()
+         self.factCells.clear()
++        self.rowHeaderObjects.clear()
++
++        self.occurrenceColumns = [f"occurrence_{index}" for index in range(1, len(rows) + 1)]
++        self.treeView["columns"] = tuple(self.occurrenceColumns)
++        self.treeView.heading("#0", text="Item")
++        self.treeView.column("#0", width=180, anchor="w")
++        for occurrenceColumn, row in zip(self.occurrenceColumns, rows):
++            self.treeView.heading(occurrenceColumn, text=self._occurrenceHeading(row))
++            self.treeView.column(occurrenceColumn, width=150, anchor="w")
++        self.treeView["displaycolumns"] = tuple(self.occurrenceColumns)
++
++        itemNodes = {}
++        for itemNumber, columnName in enumerate(self.displayColumns, start=1):
++            node = self.treeView.insert(
++                "",
++                "end",
++                f"structuredTidyItem_{itemNumber}",
++                text=columnName,
++                tags=("odd" if itemNumber & 1 else "even",),
++            )
++            itemNodes[columnName] = node
++            headerObject = self._rowHeaderObject(columnName)
++            if headerObject is not None:
++                self.rowHeaderObjects[node] = headerObject
+ 
+-        firstColumn = self.displayColumns[0]
+-        remainingColumns = tuple(self.displayColumns[1:])
+-        self.treeView["columns"] = remainingColumns
+-        self.treeView.heading("#0", text=firstColumn)
+-        self.treeView.column("#0", width=110, anchor="w")
+-        for columnName in remainingColumns:
+-            self.treeView.heading(columnName, text=columnName)
+-            self.treeView.column(columnName, width=140, anchor="w")
+-        self.treeView["displaycolumns"] = remainingColumns
+-
+-        for rowNumber, row in enumerate(rows, start=1):
+-            values = {}
++        for occurrenceColumn, row in zip(self.occurrenceColumns, rows):
+             for columnName in self.displayColumns:
++                node = itemNodes[columnName]
+                 dimensionName = self.dimensionColumnNames.get(columnName)
+                 if dimensionName is not None:
+                     value = row["dimensions"].get(dimensionName, "")
+                 else:
+                     fact = row["facts"].get(columnName)
+                     value = "" if fact is None or fact.value is None else fact.value
+-                values[columnName] = value
+-
+-            node = self.treeView.insert(
+-                "",
+-                "end",
+-                f"structuredTidy_{rowNumber}",
+-                text=str(values[firstColumn]),
+-                tags=("odd" if rowNumber & 1 else "even",),
+-            )
+-            for columnName in remainingColumns:
+-                self.treeView.set(node, columnName, str(values[columnName]))
+-            for columnName, fact in row["facts"].items():
+-                self.cellFacts[(node, columnName)] = fact
+-                self.factCells[fact.dtsObjectIndex].append((node, columnName))
++                    if fact is not None:
++                        self.cellFacts[(node, occurrenceColumn)] = fact
++                        self.factCells[fact.dtsObjectIndex].append((node, occurrenceColumn))
++                self.treeView.set(node, occurrenceColumn, str(value))
+ 
+     def cellSelect(self, event):
+         if self.blockViewModelObject:
+@@ -298,16 +336,18 @@ class ViewStructuredTidyData(ViewWinTree.ViewTree):
+         if not node or not columnId:
+             return
+         if columnId == "#0":
+-            columnIndex = 0
+-        else:
+-            try:
+-                columnIndex = int(columnId[1:])
+-            except (TypeError, ValueError):
+-                return
+-        if columnIndex >= len(self.displayColumns):
++            txmyObj = self.rowHeaderObjects.get(node)
++            if txmyObj is not None:
++                self.xbrlDts.viewTaxonomyObject(txmyObj)
++            return
++        try:
++            columnIndex = int(columnId[1:]) - 1
++        except (TypeError, ValueError):
++            return
++        if columnIndex < 0 or columnIndex >= len(self.occurrenceColumns):
+             return
+-        columnName = self.displayColumns[columnIndex]
+-        fact = self.cellFacts.get((node, columnName))
++        occurrenceColumn = self.occurrenceColumns[columnIndex]
++        fact = self.cellFacts.get((node, occurrenceColumn))
+         if fact is not None:
+             self.xbrlDts.viewTaxonomyObject(fact)
+ 
+@@ -317,7 +357,7 @@ class ViewStructuredTidyData(ViewWinTree.ViewTree):
+         cells = self.factCells.get(txmyObj.dtsObjectIndex)
+         if not cells:
+             return
+-        node, _columnName = cells[0]
++        node, _occurrenceColumn = cells[0]
+         if not self.treeView.exists(node):
+             return
+         self.blockViewModelObject += 1

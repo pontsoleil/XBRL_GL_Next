@@ -1,0 +1,196 @@
+{
+  "documentInfo": {
+    "documentType": "https://xbrl.org/2025/taxonomy",
+    "namespaces": {
+      "cor": "https://xbrl.org/gl-next/cor",
+      "xbrl": "https://xbrl.org/2025",
+      "xs": "http://www.w3.org/2001/XMLSchema"
+    },
+    "documentNamespace": "cor"
+  },
+  "taxonomy": {
+    "name": "cor:structuredTidyHeaderDetailSharedDHeaderTaxonomy",
+    "frameworkName": "XBRL GL Next PoC",
+    "version": "2026-10-10-shared-dHeader-detail-order-dc-account-amount-description",
+    "resolved": false,
+    "concepts": [
+      {
+        "name": "cor:entryNumber",
+        "dataType": "xs:string",
+        "periodType": "instant"
+      },
+      {
+        "name": "cor:entryDate",
+        "dataType": "xs:date",
+        "periodType": "instant"
+      },
+      {
+        "name": "cor:accountCode",
+        "dataType": "xs:string",
+        "periodType": "instant"
+      },
+      {
+        "name": "cor:accountName",
+        "dataType": "xs:string",
+        "periodType": "instant"
+      },
+      {
+        "name": "cor:drCrIndicator",
+        "dataType": "xs:string",
+        "periodType": "instant"
+      },
+      {
+        "name": "cor:amount",
+        "dataType": "xs:decimal",
+        "periodType": "instant"
+      },
+      {
+        "name": "cor:description",
+        "dataType": "xs:string",
+        "periodType": "instant"
+      }
+    ],
+    "dimensions": [
+      {
+        "name": "cor:dHeader",
+        "domainDataType": "xs:integer"
+      },
+      {
+        "name": "cor:dDetail",
+        "domainDataType": "xs:integer"
+      }
+    ],
+    "domains": [
+      {
+        "name": "cor:headerConceptDomain",
+        "root": "xbrl:conceptDomain",
+        "relationships": [
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:entryNumber",
+            "order": 1
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:entryDate",
+            "order": 2
+          }
+        ]
+      },
+      {
+        "name": "cor:detailConceptDomain",
+        "root": "xbrl:conceptDomain",
+        "relationships": [
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:drCrIndicator",
+            "order": 1
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:accountCode",
+            "order": 2
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:accountName",
+            "order": 3
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:amount",
+            "order": 4
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:description",
+            "order": 5
+          }
+        ]
+      }
+    ],
+    "cubes": [
+      {
+        "name": "cor:entryHeaderCube",
+        "cubeDimensions": [
+          {
+            "dimensionName": "xbrl:concept",
+            "domainName": "cor:headerConceptDomain"
+          },
+          {
+            "dimensionName": "cor:dHeader",
+            "typedSort": "asc",
+            "allowDomainFacts": false
+          }
+        ]
+      },
+      {
+        "name": "cor:entryDetailCube",
+        "cubeDimensions": [
+          {
+            "dimensionName": "xbrl:concept",
+            "domainName": "cor:detailConceptDomain"
+          },
+          {
+            "dimensionName": "cor:dHeader",
+            "typedSort": "asc",
+            "allowDomainFacts": false
+          },
+          {
+            "dimensionName": "cor:dDetail",
+            "typedSort": "asc",
+            "allowDomainFacts": false
+          }
+        ]
+      }
+    ],
+    "tableTemplates": [
+      {
+        "name": "cor:structuredTidyHeaderDetailSharedDHeaderTemplate",
+        "columns": {
+          "dHeader": {},
+          "dDetail": {},
+          "entryNumber": {
+            "dimensions": {
+              "xbrl:concept": "cor:entryNumber"
+            }
+          },
+          "entryDate": {
+            "dimensions": {
+              "xbrl:concept": "cor:entryDate"
+            }
+          },
+          "drCrIndicator": {
+            "dimensions": {
+              "xbrl:concept": "cor:drCrIndicator"
+            }
+          },
+          "accountCode": {
+            "dimensions": {
+              "xbrl:concept": "cor:accountCode"
+            }
+          },
+          "accountName": {
+            "dimensions": {
+              "xbrl:concept": "cor:accountName"
+            }
+          },
+          "amount": {
+            "dimensions": {
+              "xbrl:concept": "cor:amount"
+            }
+          },
+          "description": {
+            "dimensions": {
+              "xbrl:concept": "cor:description"
+            }
+          }
+        },
+        "dimensions": {
+          "cor:dHeader": "$dHeader",
+          "cor:dDetail": "$dDetail"
+        }
+      }
+    ]
+  }
+}
