@@ -33,6 +33,26 @@ This is a first-publication candidate for a fresh installation at the specified 
 
 The taxonomy, instance and patch bytes are preserved. The final minimal report view has nine Item rows and six occurrence columns, with native fact/Properties links.
 
+## Tavi PoC — Structured Tidy Data Viewer
+
+The Tavi PoC demonstrates how the same Structured Tidy Data CSV can be displayed using two different Tavi taxonomy definitions.
+
+### Online Viewers
+
+- **[Simple Tavi Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst.html)** — A basic example illustrating the relationship between a Tavi taxonomy, a Table Template, and a CSV instance.
+- **[HMD View Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html)** — An example based on the XBRL GL Next HMD View, using the same CSV with a different taxonomy definition.
+
+Each viewer provides two panels:
+
+- **Left:** The original Table Template and Tavi taxonomy JSON sources, accessible through tabs.
+- **Right:** The Structured Tidy Data CSV displayed in transposed form.
+
+The pages are generated from Tavi instance JSON metadata using `tavi_inst_json_to_html.py`.
+
+**Phase 1** provides self-contained static HTML without JavaScript. **Phase 2** is planned to introduce interactive Properties display based on the Table Template and taxonomy definitions.
+
+These viewers are intended for demonstration and do not perform formal XBRL/Tavi validation.
+
 ## Development baseline
 
 The accepted development repository used branch `work/oim-taxonomy-tavi` and these commits:
