@@ -1,0 +1,75 @@
+name: Deploy Tavi viewers to GitHub Pages
+
+'on':
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/tavi-pages.yml
+      - tavi-poc/viewer/tavi-inst.html
+      - tavi-poc/viewer/tavi-inst-hmd-view.html
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: false
+
+      - name: Prepare the two accepted HTML files
+        shell: bash
+        run: |
+          set -euo pipefail
+          site="${RUNNER_TEMP}/tavi-pages"
+          test ! -e "${site}"
+          mkdir -p "${site}"
+          for file in tavi-inst.html tavi-inst-hmd-view.html; do
+            source="tavi-poc/viewer/${file}"
+            test -f "${source}"
+            test ! -L "${source}"
+            cp "${source}" "${site}/${file}"
+          done
+          cd "${site}"
+          printf '%s\n' \
+            '6cbd7ef8cf66dc930fb65e358c8c1311d25e72ec0c26c34b22759b6cd2f989ff  tavi-inst.html' \
+            '11b58bc99561e6f80b9c1e60f2cb364f6a81704a74f0662be0d40fe249c5c691  tavi-inst-hmd-view.html' \
+            | sha256sum --check -
+          actual="$(find . -mindepth 1 -print | LC_ALL=C sort)"
+          expected="$(printf '%s\n' './tavi-inst-hmd-view.html' './tavi-inst.html')"
+          test "${actual}" = "${expected}"
+          test -z "$(find . -type l -print)"
+          test -z "$(find . -type f -links +1 -print)"
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ runner.temp }}/tavi-pages
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
