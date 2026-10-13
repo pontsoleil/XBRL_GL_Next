@@ -1,0 +1,515 @@
+{
+  "documentInfo": {
+    "documentType": "https://xbrl.org/2025/taxonomy",
+    "namespaces": {
+      "bus": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/bus",
+      "cor": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor",
+      "ehm": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/ehm",
+      "lnk": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/lnk",
+      "muc": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/muc",
+      "taf": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/taf",
+      "plt": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
+      "xbrl": "https://xbrl.org/2025",
+      "xbrli": "https://xbrl.org/2025/instance",
+      "xs": "http://www.w3.org/2001/XMLSchema",
+      "view": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/view/journal-entries-single-account"
+    },
+    "documentNamespace": "view"
+  },
+  "taxonomy": {
+    "name": "view:journalEntriesSingleAccountTaxonomy",
+    "frameworkName": "XBRL GL Next — standalone restricted HMD view",
+    "version": "2026-10-12-single-account-Date-r2-candidate",
+    "resolved": false,
+    "dataTypes": [
+      {
+        "name": "cor:headerEntryDateItemType",
+        "baseType": "xs:date"
+      },
+      {
+        "name": "cor:entryIdItemType",
+        "baseType": "xs:string"
+      },
+      {
+        "name": "cor:entryDetailDescriptionItemType",
+        "baseType": "xs:string"
+      },
+      {
+        "name": "cor:accountNumberItemType",
+        "baseType": "xs:string"
+      },
+      {
+        "name": "cor:accountDescriptionItemType",
+        "baseType": "xs:string"
+      },
+      {
+        "name": "cor:monetaryAmountItemType",
+        "baseType": "xbrli:monetary"
+      },
+      {
+        "name": "cor:debitCreditIndicatorItemType",
+        "baseType": "xs:token"
+      }
+    ],
+    "concepts": [
+      {
+        "name": "cor:p_cor_accountingEntries",
+        "dataType": "xs:string",
+        "periodType": "instant",
+        "nillable": true
+      },
+      {
+        "name": "cor:p_cor_entryHeader",
+        "dataType": "xs:string",
+        "periodType": "instant",
+        "nillable": true
+      },
+      {
+        "name": "cor:headerEntryDate",
+        "dataType": "cor:headerEntryDateItemType",
+        "periodType": "instant",
+        "nillable": true
+      },
+      {
+        "name": "cor:entryId",
+        "dataType": "cor:entryIdItemType",
+        "periodType": "instant",
+        "nillable": true
+      },
+      {
+        "name": "cor:p_cor_entryDetail",
+        "dataType": "xs:string",
+        "periodType": "instant",
+        "nillable": true
+      },
+      {
+        "name": "cor:entryDetailDescription",
+        "dataType": "cor:entryDetailDescriptionItemType",
+        "periodType": "instant",
+        "nillable": true
+      },
+      {
+        "name": "cor:accountNumber",
+        "dataType": "cor:accountNumberItemType",
+        "periodType": "instant",
+        "nillable": true
+      },
+      {
+        "name": "cor:accountDescription",
+        "dataType": "cor:accountDescriptionItemType",
+        "periodType": "instant",
+        "nillable": true
+      },
+      {
+        "name": "cor:monetaryAmount",
+        "dataType": "cor:monetaryAmountItemType",
+        "periodType": "instant",
+        "nillable": true
+      },
+      {
+        "name": "cor:debitCreditIndicator",
+        "dataType": "cor:debitCreditIndicatorItemType",
+        "periodType": "instant",
+        "nillable": true
+      }
+    ],
+    "dimensions": [
+      {
+        "name": "plt:d_cor_entryHeader",
+        "domainDataType": "xs:string"
+      },
+      {
+        "name": "plt:d_cor_entryDetail",
+        "domainDataType": "xs:string"
+      }
+    ],
+    "domains": [
+      {
+        "name": "view:domain_cor_entryHeader",
+        "root": "xbrl:conceptDomain",
+        "relationships": [
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:headerEntryDate",
+            "order": 1
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:entryId",
+            "order": 2
+          }
+        ]
+      },
+      {
+        "name": "view:domain_cor_entryDetail",
+        "root": "xbrl:conceptDomain",
+        "relationships": [
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:entryDetailDescription",
+            "order": 1
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:accountNumber",
+            "order": 2
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:accountDescription",
+            "order": 3
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:monetaryAmount",
+            "order": 4
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:debitCreditIndicator",
+            "order": 5
+          }
+        ]
+      }
+    ],
+    "cubes": [
+      {
+        "name": "view:h_cor_entryHeader",
+        "cubeDimensions": [
+          {
+            "dimensionName": "xbrl:concept",
+            "domainName": "view:domain_cor_entryHeader"
+          },
+          {
+            "dimensionName": "plt:d_cor_entryHeader",
+            "typedSort": "asc",
+            "allowDomainFacts": false
+          }
+        ],
+        "cubeNetworks": [
+          "view:journalEntriesHierarchy"
+        ]
+      },
+      {
+        "name": "view:h_cor_entryDetail",
+        "cubeDimensions": [
+          {
+            "dimensionName": "xbrl:concept",
+            "domainName": "view:domain_cor_entryDetail"
+          },
+          {
+            "dimensionName": "plt:d_cor_entryHeader",
+            "typedSort": "asc",
+            "allowDomainFacts": false
+          },
+          {
+            "dimensionName": "plt:d_cor_entryDetail",
+            "typedSort": "asc",
+            "allowDomainFacts": false
+          }
+        ],
+        "cubeNetworks": [
+          "view:journalEntriesHierarchy"
+        ]
+      }
+    ],
+    "networks": [
+      {
+        "name": "view:journalEntriesHierarchy",
+        "relationshipTypeName": "xbrl:parent-child",
+        "roots": [
+          "cor:p_cor_accountingEntries"
+        ],
+        "relationships": [
+          {
+            "source": "cor:p_cor_accountingEntries",
+            "target": "cor:p_cor_entryHeader",
+            "order": 1
+          },
+          {
+            "source": "cor:p_cor_entryHeader",
+            "target": "cor:headerEntryDate",
+            "order": 1
+          },
+          {
+            "source": "cor:p_cor_entryHeader",
+            "target": "cor:entryId",
+            "order": 2
+          },
+          {
+            "source": "cor:p_cor_entryHeader",
+            "target": "cor:p_cor_entryDetail",
+            "order": 3
+          },
+          {
+            "source": "cor:p_cor_entryDetail",
+            "target": "cor:entryDetailDescription",
+            "order": 1
+          },
+          {
+            "source": "cor:p_cor_entryDetail",
+            "target": "cor:accountNumber",
+            "order": 2
+          },
+          {
+            "source": "cor:p_cor_entryDetail",
+            "target": "cor:accountDescription",
+            "order": 3
+          },
+          {
+            "source": "cor:p_cor_entryDetail",
+            "target": "cor:monetaryAmount",
+            "order": 4
+          },
+          {
+            "source": "cor:p_cor_entryDetail",
+            "target": "cor:debitCreditIndicator",
+            "order": 5
+          }
+        ]
+      }
+    ],
+    "labels": [
+      {
+        "relatedName": "cor:p_cor_accountingEntries",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Accounting Entries"
+      },
+      {
+        "relatedName": "cor:p_cor_accountingEntries",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "【会計仕訳】"
+      },
+      {
+        "relatedName": "cor:p_cor_entryHeader",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Entry_ Header"
+      },
+      {
+        "relatedName": "cor:p_cor_entryHeader",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "【仕訳情報】"
+      },
+      {
+        "relatedName": "cor:headerEntryDate",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Header_ Entry Date"
+      },
+      {
+        "relatedName": "cor:headerEntryDate",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "仕訳日付"
+      },
+      {
+        "relatedName": "cor:entryId",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Entry ID"
+      },
+      {
+        "relatedName": "cor:entryId",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "仕訳識別子"
+      },
+      {
+        "relatedName": "cor:p_cor_entryDetail",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Entry_ Detail"
+      },
+      {
+        "relatedName": "cor:p_cor_entryDetail",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "【仕訳明細】"
+      },
+      {
+        "relatedName": "cor:entryDetailDescription",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Description"
+      },
+      {
+        "relatedName": "cor:entryDetailDescription",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "説明"
+      },
+      {
+        "relatedName": "cor:accountNumber",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Account Number"
+      },
+      {
+        "relatedName": "cor:accountNumber",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "主勘定科目コード"
+      },
+      {
+        "relatedName": "cor:accountDescription",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Account Description"
+      },
+      {
+        "relatedName": "cor:accountDescription",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "主勘定科目説明"
+      },
+      {
+        "relatedName": "cor:monetaryAmount",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Monetary Amount"
+      },
+      {
+        "relatedName": "cor:monetaryAmount",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "金額"
+      },
+      {
+        "relatedName": "cor:debitCreditIndicator",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Debit/Credit Indicator"
+      },
+      {
+        "relatedName": "cor:debitCreditIndicator",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "貸借区分コード"
+      },
+      {
+        "relatedName": "cor:p_cor_accountingEntries",
+        "labelType": "xbrl:documentation",
+        "language": "en",
+        "value": "Root for XBRL GL. No entry made here."
+      },
+      {
+        "relatedName": "cor:p_cor_accountingEntries",
+        "labelType": "xbrl:documentation",
+        "language": "ja",
+        "value": "XBRL GLのルート要素。 この要素にはデータは登録されない。"
+      },
+      {
+        "relatedName": "cor:p_cor_entryHeader",
+        "labelType": "xbrl:documentation",
+        "language": "en",
+        "value": "Parent for entry headers/journal entry headers."
+      },
+      {
+        "relatedName": "cor:p_cor_entryHeader",
+        "labelType": "xbrl:documentation",
+        "language": "ja",
+        "value": "エントリヘッダー/仕訳記入ヘッダーの親タグ。"
+      },
+      {
+        "relatedName": "cor:headerEntryDate",
+        "labelType": "xbrl:documentation",
+        "language": "en",
+        "value": "The accounting date on which the journal entry as a whole is recognised in the accounting records. This date applies to all detail lines within the entry."
+      },
+      {
+        "relatedName": "cor:headerEntryDate",
+        "labelType": "xbrl:documentation",
+        "language": "ja",
+        "value": "仕訳全体を会計帳簿上認識する会計日付。仕訳内のすべての明細行に適用する。"
+      },
+      {
+        "relatedName": "cor:entryId",
+        "labelType": "xbrl:documentation",
+        "language": "en",
+        "value": "Identifier within source journal"
+      },
+      {
+        "relatedName": "cor:entryId",
+        "labelType": "xbrl:documentation",
+        "language": "ja",
+        "value": "元仕訳帳中の識別子。"
+      },
+      {
+        "relatedName": "cor:p_cor_entryDetail",
+        "labelType": "xbrl:documentation",
+        "language": "en",
+        "value": "Parent for entry detail"
+      },
+      {
+        "relatedName": "cor:p_cor_entryDetail",
+        "labelType": "xbrl:documentation",
+        "language": "ja",
+        "value": "仕訳明細の親タグ。"
+      },
+      {
+        "relatedName": "cor:entryDetailDescription",
+        "labelType": "xbrl:documentation",
+        "language": "en",
+        "value": "Description of this line of detail only"
+      },
+      {
+        "relatedName": "cor:entryDetailDescription",
+        "labelType": "xbrl:documentation",
+        "language": "ja",
+        "value": "この明細行のみに対する説明。"
+      },
+      {
+        "relatedName": "cor:accountNumber",
+        "labelType": "xbrl:documentation",
+        "language": "en",
+        "value": "Main account - the code used to identify the accounting bucket the entry has been assigned to. Examples might be 1000 for Cash, 567GAAZ for Sales Expense or Z for tax payments. Identifiers such as department, branch, division, manager, or other modifiers are noted in the Subaccount area. Before needing to post, account is not necessary. Posting to the general ledger almost always requires an entry here."
+      },
+      {
+        "relatedName": "cor:accountNumber",
+        "labelType": "xbrl:documentation",
+        "language": "ja",
+        "value": "主勘定科目。仕訳が関連する会計バケットを特定するためのコード。例えば、現金を表す1000、販売費を表す567GAAZ、税を表すZ。_x005F_x000D_\n部門、支店、事業部、マネージャ、その他の識別子は、Subaccount領域に記述される。転記の必要がなければ、勘定科目は必要ではない。総勘定元帳に転記するにはほとんどの場合必要。"
+      },
+      {
+        "relatedName": "cor:accountDescription",
+        "labelType": "xbrl:documentation",
+        "language": "en",
+        "value": "Description of accountMainID - the human readable describer that accompanies the code used in accountMainID"
+      },
+      {
+        "relatedName": "cor:accountDescription",
+        "labelType": "xbrl:documentation",
+        "language": "ja",
+        "value": "主勘定科目コードの説明。主勘定科目コードとして使用されるコードについての、人が読める記述。"
+      },
+      {
+        "relatedName": "cor:monetaryAmount",
+        "labelType": "xbrl:documentation",
+        "language": "en",
+        "value": "This field (amount) represents the primary monetary amount related to the  subject of the entryDetail line. There is one primary monetary amount per entryDetail class. It may, for example, represent the amount of one line of a journal entry, the balance on a document, or the extended amount of a line item on an invoice. Amount is not required if detailed entry is used for non-financial work and other elements are populated, in particular measurableQuantity. The amount field is a signed number (either positive or negative itself) and used in conjunction with a separate signOfAmount and a separate debitCreditCode, which together are considered for understanding the monetary amount. The unit of measure is determined by amountCurrency if present, and by the default or home currency if amountCurrency is not present."
+      },
+      {
+        "relatedName": "cor:monetaryAmount",
+        "labelType": "xbrl:documentation",
+        "language": "ja",
+        "value": "entryDetailの代表的な金額を示す。entryDetailごとにひとつの値を持つ。たとえば、仕訳帳の行、残高、請求書の行の金額。明細が会計業務用でなく、measurableQuantityなどの他の要素が設定されている場合は不要。符号付数値であり、金額を解釈するために用意されたsignOfAmountおよびdebitCreditCodeとあわせて使用される。通貨単位はamountCurrencyで決定される。amountCurrencyが指定されない場合は、既定または自国の通貨単位となる。"
+      },
+      {
+        "relatedName": "cor:debitCreditIndicator",
+        "labelType": "xbrl:documentation",
+        "language": "en",
+        "value": "Optional identifier of whether the amount is a (D)ebit, a (C)redit or Undefined"
+      },
+      {
+        "relatedName": "cor:debitCreditIndicator",
+        "labelType": "xbrl:documentation",
+        "language": "ja",
+        "value": "金額が借方か貸方か不定かを示す識別子。_x005F_x000D_\n[設定値のリスト]_x005F_x000D_\n(D)、(C)、(debit：借方)、(credit：貸方)、(undefined：不定)"
+      }
+    ]
+  }
+}
