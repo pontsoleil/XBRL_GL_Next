@@ -1,0 +1,21 @@
+{
+  "profile": "nonrepeating-detail-occurrences-v1",
+  "scope": "Instance View serialization only; formal HMD and DTS unchanged",
+  "hmd_sha256": "d0fa07a8165a0dac782ad38af78e5593527a09b2dd541d7807bf07c846488f6e",
+  "rules": [
+    {
+      "sourceRef": "$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailTax",
+      "targetRef": "$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail",
+      "omitColumn": "dDetailTax",
+      "occurrenceDimension": "plt:d_cor_detailTax",
+      "maxOccurrencesPerTarget": 1
+    },
+    {
+      "sourceRef": "$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailMeasurable",
+      "targetRef": "$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail",
+      "omitColumn": "dDetailMeasurable",
+      "occurrenceDimension": "plt:d_bus_detailMeasurable",
+      "maxOccurrencesPerTarget": 1
+    }
+  ]
+}

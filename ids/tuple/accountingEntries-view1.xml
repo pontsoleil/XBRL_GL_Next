@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbrli:xbrl xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:cor="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor" xmlns:bus="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/bus" xmlns:plt="https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt">
+  <link:schemaRef xlink:type="simple" xlink:href="../../taxonomy/accounting-entries/tuple/cor_accountingEntries/cor-all-2026-12-31.xsd" />
+  <xbrli:context id="c1">
+    <xbrli:entity>
+      <xbrli:identifier scheme="https://www.example.com">EX-PRTY-1</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2026-10-11T00:00:00</xbrli:instant>
+    </xbrli:period>
+  </xbrli:context>
+  <xbrli:unit id="uCurrency">
+    <xbrli:measure>iso4217:JPY</xbrli:measure>
+  </xbrli:unit>
+  <xbrli:unit id="uPure">
+    <xbrli:measure>xbrli:pure</xbrli:measure>
+  </xbrli:unit>
+  <cor:accountingEntries>
+    <cor:documentInformation>
+      <cor:documentInformationDocumentType contextRef="c1" id="f1">ABC</cor:documentInformationDocumentType>
+      <cor:auditNumber contextRef="c1" id="f2">ABC-001</cor:auditNumber>
+      <cor:defaultCurrency contextRef="c1" id="f3">iso4217:JPY</cor:defaultCurrency>
+    </cor:documentInformation>
+    <cor:entityParty>
+      <cor:entityPartyId contextRef="c1" id="f4">EX-PRTY-1</cor:entityPartyId>
+      <bus:partyWebSite>
+        <bus:webSiteUrl contextRef="c1" id="f5">www.example.com</bus:webSiteUrl>
+      </bus:partyWebSite>
+    </cor:entityParty>
+    <cor:entryHeader>
+      <cor:headerPostingDate contextRef="c1" id="f6">2026-10-10</cor:headerPostingDate>
+      <cor:headerTypeCode contextRef="c1" id="f7">Journal Entry</cor:headerTypeCode>
+      <cor:headerComment contextRef="c1" id="f8">Sales of Goods</cor:headerComment>
+      <cor:entryId contextRef="c1" id="f9">JE001</cor:entryId>
+      <cor:totalDebits contextRef="c1" id="f10" unitRef="uCurrency" decimals="INF">5500</cor:totalDebits>
+      <cor:totalCredits contextRef="c1" id="f11" unitRef="uCurrency" decimals="INF">5500</cor:totalCredits>
+      <cor:entryDetail>
+        <cor:lineNumber contextRef="c1" id="f12">1</cor:lineNumber>
+        <cor:detailDescription contextRef="c1" id="f15">Receipt</cor:detailDescription>
+        <cor:monetaryAmount contextRef="c1" id="f18" unitRef="uCurrency" decimals="INF">5500</cor:monetaryAmount>
+        <cor:debitCreditIndicator contextRef="c1" id="f21">D</cor:debitCreditIndicator>
+        <cor:detailAccountIdentifier>
+          <cor:accountNumber contextRef="c1" id="f24">400</cor:accountNumber>
+          <cor:accountDescription contextRef="c1" id="f27">Account Receivable</cor:accountDescription>
+        </cor:detailAccountIdentifier>
+      </cor:entryDetail>
+      <cor:entryDetail>
+        <cor:lineNumber contextRef="c1" id="f13">2</cor:lineNumber>
+        <cor:detailDescription contextRef="c1" id="f16">Sales</cor:detailDescription>
+        <cor:monetaryAmount contextRef="c1" id="f19" unitRef="uCurrency" decimals="INF">5000</cor:monetaryAmount>
+        <cor:debitCreditIndicator contextRef="c1" id="f22">C</cor:debitCreditIndicator>
+        <cor:detailAccountIdentifier>
+          <cor:accountNumber contextRef="c1" id="f25">100</cor:accountNumber>
+          <cor:accountDescription contextRef="c1" id="f28">Sales Revenue</cor:accountDescription>
+        </cor:detailAccountIdentifier>
+      </cor:entryDetail>
+      <cor:entryDetail>
+        <cor:lineNumber contextRef="c1" id="f14">3</cor:lineNumber>
+        <cor:detailDescription contextRef="c1" id="f17">Tax</cor:detailDescription>
+        <cor:monetaryAmount contextRef="c1" id="f20" unitRef="uCurrency" decimals="INF">500</cor:monetaryAmount>
+        <cor:debitCreditIndicator contextRef="c1" id="f23">C</cor:debitCreditIndicator>
+        <cor:detailAccountIdentifier>
+          <cor:accountNumber contextRef="c1" id="f26">800</cor:accountNumber>
+          <cor:accountDescription contextRef="c1" id="f29">Consumption Tax Received (Output Tax Payable)</cor:accountDescription>
+        </cor:detailAccountIdentifier>
+        <cor:detailTax>
+          <cor:detailTaxTableCode contextRef="c1" id="f30">VAT</cor:detailTaxTableCode>
+          <cor:detailTaxDescription contextRef="c1" id="f31">Consumption Tax</cor:detailTaxDescription>
+          <cor:detailTaxPercentageRate contextRef="c1" id="f32" unitRef="uPure" decimals="INF">0.1</cor:detailTaxPercentageRate>
+          <cor:detailTaxCategory contextRef="c1" id="f33">S</cor:detailTaxCategory>
+        </cor:detailTax>
+        <bus:detailMeasurable>
+          <bus:measurableCode contextRef="c1" id="f34">WD010</bus:measurableCode>
+          <bus:measurableCodeDescription contextRef="c1" id="f35">Paper</bus:measurableCodeDescription>
+          <bus:measurableQuantity contextRef="c1" id="f36" unitRef="uPure" decimals="INF">1</bus:measurableQuantity>
+          <bus:measurableUnitOfMeasure contextRef="c1" id="f37">Box</bus:measurableUnitOfMeasure>
+          <bus:measurablePerUnitCostPrice contextRef="c1" id="f38" unitRef="uCurrency" decimals="INF">5000</bus:measurablePerUnitCostPrice>
+        </bus:detailMeasurable>
+      </cor:entryDetail>
+    </cor:entryHeader>
+  </cor:accountingEntries>
+</xbrli:xbrl>

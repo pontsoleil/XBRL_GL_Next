@@ -1,0 +1,40 @@
+sequence,module,level,type,identifier,name,datatype,multiplicity,value_domain,semantic_path,local_name,,,,
+,,,,,,,,,,dEntryHeader,1,1,1,1
+,,,,,,,,,,dEntryDetail,,1,2,3
+,,,,,,,,,,dDetailTax,,,,
+,,,,,,,,,,dDetailMeasurable,,,,
+1,cor,1,C,,Accounting Entries,,1..*,,$.cor_AccountingEntries,accountingEntries,,,,
+2,cor,2,C,,Document Information,,0..1,,$.cor_AccountingEntries.cor_DocumentInformation,documentInformation,,,,
+3,cor,3,A,PK,Document Type,Token,1,,$.cor_AccountingEntries.cor_DocumentInformation.cor_DocumentType,documentInformationDocumentType,ABC,,,
+4,cor,3,A,PK,Audit Number,String,1,,$.cor_AccountingEntries.cor_DocumentInformation.cor_AuditNumber,auditNumber,ABC-001,,,
+18,cor,3,A,,Default Currency,QName,0..1,,$.cor_AccountingEntries.cor_DocumentInformation.cor_DefaultCurrency,defaultCurrency,JPY,,,
+25,cor,2,C,,Entity_ Party,,0..1,,$.cor_AccountingEntries.cor_EntityParty,entityParty,,,,
+26,cor,3,A,PK,Party ID,String,0..1,,$.cor_AccountingEntries.cor_EntityParty.cor_PartyID,entityPartyId,EX-PRTY-1,,,
+57,bus,3,C,,Party_ Web Site,,0..*,,$.cor_AccountingEntries.cor_EntityParty.cor_PartyWebSite,partyWebSite,,,,
+58,bus,4,A,PK,Web Site URL,anyURI,1,,$.cor_AccountingEntries.cor_EntityParty.cor_PartyWebSite.bus_WebSiteURL,webSiteUrl,www.example.com,,,
+141,cor,2,C,,Entry_ Header,,0..*,,$.cor_AccountingEntries.cor_EntryHeader,entryHeader,,,,
+143,cor,3,A,,Posting Date,Date,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_PostingDate,headerPostingDate,2026-10-10,,,
+149,cor,3,A,,Type Code,Token,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_TypeCode,headerTypeCode,Journal Entry,,,
+152,cor,3,A,,Comment,String,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_Comment,headerComment,Sales of Goods,,,
+156,cor,3,A,,Entry ID,String,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryID,entryId,JE001,,,
+162,cor,3,A,,Total Debits,Monetary,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_TotalDebits,totalDebits,5500,,,
+163,cor,3,A,,Total Credits,Monetary,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_TotalCredits,totalCredits,5500,,,
+232,cor,3,C,,Entry_ Detail,,0..*,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail,entryDetail,,,,
+233,cor,4,A,PK,Line Number,String,1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_LineNumber,lineNumber,,1,2,3
+260,cor,4,A,,Detail_ Description,String,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailDescription,detailDescription,,Receipt,Sales,Tax
+261,cor,4,A,,Monetary Amount,Monetary,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_MonetaryAmount,monetaryAmount,,5500,5000,500
+265,cor,4,A,,Debit/Credit Indicator,Token,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DebitCreditIndicator,debitCreditIndicator,,D,C,C
+282,cor,4,C,,Detail_ Account Identifier,,1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailAccountIdentifier,detailAccountIdentifier,,,,
+283,cor,5,A,PK,Account Number,String,1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailAccountIdentifier.cor_AccountNumber,accountNumber,,400,100,800
+284,cor,5,A,,Account Description,String,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailAccountIdentifier.cor_AccountDescription,accountDescription,,Account Receivable,Sales Revenue,Consumption Tax Received (Output Tax Payable)
+319,cor,4,C,,Detail_ Tax,,0..*,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailTax,detailTax,,,,
+321,cor,5,A,,Tax Table Code,String,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailTax.cor_TaxTableCode,detailTaxTableCode,,,,VAT
+322,cor,5,A,,Tax Description,String,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailTax.cor_TaxDescription,detailTaxDescription,,,,Consumption Tax
+325,cor,5,A,,Tax Percentage Rate,Pure,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailTax.cor_TaxPercentageRate,detailTaxPercentageRate,,,,0.1
+326,cor,5,A,,Tax Category,String,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailTax.cor_TaxCategory,detailTaxCategory,,,,S
+395,bus,4,C,,Detail_ Measurable,,0..*,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailMeasurable,detailMeasurable,,,,
+396,bus,5,A,PK,Measurable Code,Token,1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailMeasurable.bus_MeasurableCode,measurableCode,,,,WD010
+397,bus,5,A,,Measurable Name,String,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailMeasurable.bus_MeasurableName,measurableCodeDescription,,,,Paper
+406,bus,5,A,,Measurable Quantity,Decimal,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailMeasurable.bus_MeasurableQuantity,measurableQuantity,,,,1
+407,bus,5,A,,Measurable Unit of Measure,String,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailMeasurable.bus_MeasurableUnitofMeasure,measurableUnitOfMeasure,,,,Box
+408,bus,5,A,,Measurable Per Unit Cost/Price,Monetary,0..1,,$.cor_AccountingEntries.cor_EntryHeader.cor_EntryDetail.cor_DetailMeasurable.bus_MeasurablePerUnitCostPrice,measurablePerUnitCostPrice,,,,5000

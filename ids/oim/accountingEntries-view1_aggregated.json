@@ -1,0 +1,192 @@
+{
+  "documentInfo": {
+    "documentType": "https://xbrl.org/2021/xbrl-csv",
+    "namespaces": {
+      "xbrli": "http://www.xbrl.org/2003/instance",
+      "link": "http://www.xbrl.org/2003/linkbase",
+      "xlink": "http://www.w3.org/1999/xlink",
+      "iso4217": "http://www.xbrl.org/2003/iso4217",
+      "bus": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/bus",
+      "cor": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor",
+      "plt": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
+      "ent": "https://www.example.com"
+    },
+    "taxonomy": [
+      "../../taxonomy/accounting-entries/oim/cor_accountingEntries/cor-all-oim-2026-12-31.xsd"
+    ]
+  },
+  "dimensions": {
+    "entity": "ent:EX-PRTY-1",
+    "period": "2026-10-11T00:00:00"
+  },
+  "tableTemplates": {
+    "structured": {
+      "columns": {
+        "dAccountingEntries": {},
+        "dEntryHeader": {},
+        "dEntryDetail": {},
+        "documentInformationDocumentType": {
+          "dimensions": {
+            "concept": "cor:documentInformationDocumentType"
+          }
+        },
+        "auditNumber": {
+          "dimensions": {
+            "concept": "cor:auditNumber"
+          }
+        },
+        "defaultCurrency": {
+          "dimensions": {
+            "concept": "cor:defaultCurrency"
+          }
+        },
+        "entityPartyId": {
+          "dimensions": {
+            "concept": "cor:entityPartyId"
+          }
+        },
+        "webSiteUrl": {
+          "dimensions": {
+            "concept": "bus:webSiteUrl",
+            "plt:d_bus_partyWebSite": "www.example.com"
+          }
+        },
+        "headerPostingDate": {
+          "dimensions": {
+            "concept": "cor:headerPostingDate"
+          }
+        },
+        "headerTypeCode": {
+          "dimensions": {
+            "concept": "cor:headerTypeCode"
+          }
+        },
+        "headerComment": {
+          "dimensions": {
+            "concept": "cor:headerComment"
+          }
+        },
+        "entryId": {
+          "dimensions": {
+            "concept": "cor:entryId"
+          }
+        },
+        "totalDebits": {
+          "dimensions": {
+            "concept": "cor:totalDebits",
+            "unit": "iso4217:JPY"
+          },
+          "decimals": "#none"
+        },
+        "totalCredits": {
+          "dimensions": {
+            "concept": "cor:totalCredits",
+            "unit": "iso4217:JPY"
+          },
+          "decimals": "#none"
+        },
+        "lineNumber": {
+          "dimensions": {
+            "concept": "cor:lineNumber"
+          }
+        },
+        "detailDescription": {
+          "dimensions": {
+            "concept": "cor:detailDescription"
+          }
+        },
+        "monetaryAmount": {
+          "dimensions": {
+            "concept": "cor:monetaryAmount",
+            "unit": "iso4217:JPY"
+          },
+          "decimals": "#none"
+        },
+        "debitCreditIndicator": {
+          "dimensions": {
+            "concept": "cor:debitCreditIndicator"
+          }
+        },
+        "accountNumber": {
+          "dimensions": {
+            "concept": "cor:accountNumber"
+          }
+        },
+        "accountDescription": {
+          "dimensions": {
+            "concept": "cor:accountDescription"
+          }
+        },
+        "detailTaxTableCode": {
+          "dimensions": {
+            "concept": "cor:detailTaxTableCode",
+            "plt:d_cor_detailTax": "1"
+          }
+        },
+        "detailTaxDescription": {
+          "dimensions": {
+            "concept": "cor:detailTaxDescription",
+            "plt:d_cor_detailTax": "1"
+          }
+        },
+        "detailTaxPercentageRate": {
+          "dimensions": {
+            "concept": "cor:detailTaxPercentageRate",
+            "plt:d_cor_detailTax": "1"
+          },
+          "decimals": "#none"
+        },
+        "detailTaxCategory": {
+          "dimensions": {
+            "concept": "cor:detailTaxCategory",
+            "plt:d_cor_detailTax": "1"
+          }
+        },
+        "measurableCode": {
+          "dimensions": {
+            "concept": "bus:measurableCode",
+            "plt:d_bus_detailMeasurable": "1"
+          }
+        },
+        "measurableCodeDescription": {
+          "dimensions": {
+            "concept": "bus:measurableCodeDescription",
+            "plt:d_bus_detailMeasurable": "1"
+          }
+        },
+        "measurableQuantity": {
+          "dimensions": {
+            "concept": "bus:measurableQuantity",
+            "plt:d_bus_detailMeasurable": "1"
+          },
+          "decimals": "#none"
+        },
+        "measurableUnitOfMeasure": {
+          "dimensions": {
+            "concept": "bus:measurableUnitOfMeasure",
+            "plt:d_bus_detailMeasurable": "1"
+          }
+        },
+        "measurablePerUnitCostPrice": {
+          "dimensions": {
+            "concept": "bus:measurablePerUnitCostPrice",
+            "plt:d_bus_detailMeasurable": "1",
+            "unit": "iso4217:JPY"
+          },
+          "decimals": "#none"
+        }
+      },
+      "dimensions": {
+        "plt:d_cor_accountingEntries": "$dAccountingEntries",
+        "plt:d_cor_entryHeader": "$dEntryHeader",
+        "plt:d_cor_entryDetail": "$dEntryDetail"
+      }
+    }
+  },
+  "tables": {
+    "structured": {
+      "template": "structured",
+      "url": "accountingEntries-view1_aggregated.csv"
+    }
+  }
+}

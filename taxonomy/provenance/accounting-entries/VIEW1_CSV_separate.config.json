@@ -1,0 +1,65 @@
+{
+  "status": "USER_APPROVED_VIEW_CSV_SUCCESSOR",
+  "binding_confirmed": true,
+  "workbook_sha256": "599104c9ef7d70e6232e5c9863b315befa33ae763e7942070318780e545e4d67",
+  "hmd": "../../../semantic-model/HMD/accounting-entries/XBRL_GL_Next_HMD_AccountingEntries_for_taxonomy.csv",
+  "taxonomy_root": "../../../taxonomy/accounting-entries",
+  "tuple_entry": "../../../taxonomy/accounting-entries/tuple/cor_accountingEntries/cor-all-2026-12-31.xsd",
+  "oim_entry": "../../../taxonomy/accounting-entries/oim/cor_accountingEntries/cor-all-oim-2026-12-31.xsd",
+  "entity_scheme": "https://www.example.com",
+  "entity_identifier": "EX-PRTY-1",
+  "instant": "2026-10-11T00:00:00",
+  "currency": "JPY",
+  "decimals": "INF",
+  "qname_values": {
+    "JPY": "iso4217:JPY"
+  },
+  "cell_overrides": {},
+  "column_occurrences": {
+    "L": {
+      "cor:entryHeader": "1",
+      "cor:accountingEntries": "1",
+      "cor:documentInformation": "1",
+      "cor:entityParty": "1",
+      "bus:partyWebSite": "www.example.com"
+    },
+    "M": {
+      "cor:entryHeader": "1",
+      "cor:entryDetail": "1",
+      "cor:accountingEntries": "1",
+      "cor:documentInformation": "1",
+      "cor:entityParty": "1",
+      "cor:detailAccountIdentifier": "1"
+    },
+    "N": {
+      "cor:entryHeader": "1",
+      "cor:entryDetail": "2",
+      "cor:accountingEntries": "1",
+      "cor:documentInformation": "1",
+      "cor:entityParty": "1",
+      "cor:detailAccountIdentifier": "1"
+    },
+    "O": {
+      "cor:entryHeader": "1",
+      "cor:entryDetail": "3",
+      "cor:accountingEntries": "1",
+      "cor:documentInformation": "1",
+      "cor:entityParty": "1",
+      "cor:detailAccountIdentifier": "1",
+      "cor:detailTax": "1",
+      "bus:detailMeasurable": "1"
+    }
+  },
+  "approval": "User explicitly requested adding the two mandatory rows with provisional values such as ABC; preceding entity/period/JPY/occurrence settings retained",
+  "period_note": "2026-10-10 date instant maps to the next midnight 2026-10-11T00:00:00 in OIM; both profiles use the same instant",
+  "placeholder_values": {
+    "cor:documentInformationDocumentType": "ABC",
+    "cor:auditNumber": "ABC-001"
+  },
+  "view_definition": "VIEW1_SOURCE_view.current.json",
+  "oim_basename": "accountingEntries-view1_rows",
+  "view_row_mode": "separate",
+  "csv_sha256": "3b2296aba9b18cf47df276373eb920bdd5b286ed041cea4a002ed880c837078b",
+  "csv_comparison_sha256": "3b2296aba9b18cf47df276373eb920bdd5b286ed041cea4a002ed880c837078b",
+  "csv_comparison_profile": "CRLF-to-LF-record-separators-only;quoted-values-preserved"
+}

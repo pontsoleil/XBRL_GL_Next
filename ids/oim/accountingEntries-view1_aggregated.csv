@@ -1,0 +1,6 @@
+dAccountingEntries,dEntryHeader,dEntryDetail,documentInformationDocumentType,auditNumber,defaultCurrency,entityPartyId,webSiteUrl,headerPostingDate,headerTypeCode,headerComment,entryId,totalDebits,totalCredits,lineNumber,detailDescription,monetaryAmount,debitCreditIndicator,accountNumber,accountDescription,detailTaxTableCode,detailTaxDescription,detailTaxPercentageRate,detailTaxCategory,measurableCode,measurableCodeDescription,measurableQuantity,measurableUnitOfMeasure,measurablePerUnitCostPrice
+1,,,ABC,ABC-001,iso4217:JPY,EX-PRTY-1,www.example.com,,,,,,,,,,,,,,,,,,,,,
+1,1,,,,,,,2026-10-10,Journal Entry,Sales of Goods,JE001,5500,5500,,,,,,,,,,,,,,,
+1,1,1,,,,,,,,,,,,1,Receipt,5500,D,400,Account Receivable,,,,,,,,,
+1,1,2,,,,,,,,,,,,2,Sales,5000,C,100,Sales Revenue,,,,,,,,,
+1,1,3,,,,,,,,,,,,3,Tax,500,C,800,Consumption Tax Received (Output Tax Payable),VAT,Consumption Tax,0.1,S,WD010,Paper,1,Box,5000
