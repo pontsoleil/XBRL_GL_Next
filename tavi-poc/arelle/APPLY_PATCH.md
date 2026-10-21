@@ -28,7 +28,7 @@ Table 2 — Source correspondence with the development history
 |0010|`7fe66c11cda8f23d60149cb119e3646f4a508fe3`|
 |Labels|`d19d2e7ad369f3356746252d1f63d808ed4281cc`|
 
-Table 2 describes source-content and SHA equivalence. Patch application leaves the new checkout's HEAD at the public base; it does not create these development commits.
+Table 2 records the historical source correspondence. Patch application leaves the new checkout's HEAD at the public base; it does not create these development commits.
 
 ## Patch scope
 
@@ -68,7 +68,21 @@ HEAD must be exactly `0c773d6f79681caf598aded5ccb3812bbb0b9b28` and status must 
 
 ## Apply the patches
 
-Keep this shell at the new Arelle repository root. For each step, proceed only if the check and application both succeed.
+Keep this shell at the new Arelle repository root.
+
+### Patch application verification
+
+Apply the three published patches in the specified order to the designated Arelle base commit.
+
+For each patch, both `git apply --check` and `git apply` must complete successfully with exit code 0.
+
+If either command fails, stop the procedure. Do not modify the published patches to make them apply.
+
+Raw SHA-256 verification of the resulting nine source files is not required for patch application.
+
+Line-ending differences between platforms do not affect the patch application acceptance criteria.
+
+After all three patches have been successfully applied, proceed to the documented dependency setup and functional verification steps.
 
 ### 1. Cumulative implementation
 
@@ -77,7 +91,7 @@ git apply --check "$TAVI_POC_DIR/arelle/patches/arelle-oimtaxonomy-tavi-poc.patc
 git apply "$TAVI_POC_DIR/arelle/patches/arelle-oimtaxonomy-tavi-poc.patch"
 ```
 
-The resulting eight source files correspond to `f8f50ee1d`. At this stage `ViewStructuredTidyData.py` has SHA-256 `e255c0bc3b5a8c8e2b7e0454b63e9579468b4349e221ed3c1edacf1182210b65`.
+The cumulative patch supplies the loader, DTS, native CSV and Structured Tidy implementation across eight source files, corresponding to `f8f50ee1d`.
 
 ### 2. 0010 transposed Structured Tidy view
 
@@ -86,7 +100,7 @@ git apply --check "$TAVI_POC_DIR/arelle/patches/0010-oim-taxonomy-structured-tid
 git apply "$TAVI_POC_DIR/arelle/patches/0010-oim-taxonomy-structured-tidy-transposed-view.patch"
 ```
 
-`ViewStructuredTidyData.py` now has SHA-256 `90e0fb6ea4ac95a39d22b6a395085afcca9855c2dd7c963d6e541227a53487e3`, corresponding to `7fe66c11`. The Labels source still has its pre-Labels content.
+This patch updates `ViewStructuredTidyData.py` with the transposed view and selection links, corresponding to `7fe66c11`. The Labels source still has its pre-Labels content.
 
 ### 3. Labels
 
@@ -95,28 +109,29 @@ git apply --check "$TAVI_POC_DIR/arelle/patches/arelle-oimtaxonomy-label-languag
 git apply "$TAVI_POC_DIR/arelle/patches/arelle-oimtaxonomy-label-language-additional.patch"
 ```
 
-`ViewXbrlTxmyObj.py` now has SHA-256 `f6a548b74d7f21cfe8bdea2bbb98937cebd781da4a99a4b759fd2a7eb967c68d`, corresponding to `d19d2e7a`.
+This patch updates `ViewXbrlTxmyObj.py` to use the controller-selected label language, corresponding to `d19d2e7a`.
 
-## Verify all nine final source hashes
+## Check the nine changed source files
+
+The three patches affect these nine distinct source files:
+
+- `arelle/ModelDocument.py`
+- `arelle/oim/Load.py`
+- `arelle/plugin/OimTaxonomy/ValidateDTS.py`
+- `arelle/plugin/OimTaxonomy/ViewStructuredTidyData.py`
+- `arelle/plugin/OimTaxonomy/ViewXbrlTxmyObj.py`
+- `arelle/plugin/OimTaxonomy/XbrlCube.py`
+- `arelle/plugin/OimTaxonomy/XbrlDts.py`
+- `arelle/plugin/OimTaxonomy/XbrlReport.py`
+- `arelle/plugin/OimTaxonomy/__init__.py`
 
 Run this at the Arelle repository root:
 
 ```bash
-shasum -a 256 -c <<'EXPECTED_SOURCE_SHA256'
-ea176e2d5a0d7c6f98b324993ccb834dc7a241ab0213573c0d754660e9c0b207  arelle/ModelDocument.py
-771a2b3e057e814df6e91d44e94f452f0c6c5462743a3c2f6ca0d93d662c5456  arelle/oim/Load.py
-4691515e84f191186bbe5ac82a9ddd294ec83f660363e30084cf9418c7945851  arelle/plugin/OimTaxonomy/ValidateDTS.py
-90e0fb6ea4ac95a39d22b6a395085afcca9855c2dd7c963d6e541227a53487e3  arelle/plugin/OimTaxonomy/ViewStructuredTidyData.py
-f6a548b74d7f21cfe8bdea2bbb98937cebd781da4a99a4b759fd2a7eb967c68d  arelle/plugin/OimTaxonomy/ViewXbrlTxmyObj.py
-caab04f4b1be0d9a2f59fd17b470ffb4b283c58ced279c992057b6a9aeff5a07  arelle/plugin/OimTaxonomy/XbrlCube.py
-9c9a2df5d9c1974501003f3adab989b3654f7e2d93c81231a5e782ac36fdb52b  arelle/plugin/OimTaxonomy/XbrlDts.py
-d3c899e0871545cef68300ba8ba59585fb93ca0e0612db2e06c17fba36be8bcf  arelle/plugin/OimTaxonomy/XbrlReport.py
-4b2df7c4f3cca20cbc12f27ac27a7fc89c92c7ae8387fbfea02e4d6730ecd4bc  arelle/plugin/OimTaxonomy/__init__.py
-EXPECTED_SOURCE_SHA256
 git status --short --untracked-files=all
 ```
 
-All nine hash checks must report `OK`. The status must identify exactly the nine source paths listed above: eight modified tracked files and one new, untracked `ViewStructuredTidyData.py` introduced by the cumulative patch. `git apply` does not stage that new file; `git diff --name-only` alone would omit it. The checkout has patch changes in its working tree; a clean status is required before applying patches, not after applying them.
+The status must identify exactly the nine source paths listed above: eight modified tracked files and one new, untracked `ViewStructuredTidyData.py` introduced by the cumulative patch. `git apply` does not stage that new file; `git diff --name-only` alone would omit it. The checkout has patch changes in its working tree; a clean status is required before applying patches, not after applying them.
 
 The saved base-to-cumulative reproduction and additional-patch static reconstruction checks establish the source correspondence. Existing acceptance records are reused; a new native or GUI test was not run for this guide.
 
@@ -126,7 +141,7 @@ The public base requires Python >= 3.10 in `pyproject.toml`. Choose a Python dis
 
 The verified MacBook development environment is Python 3.10.1, arm64, with Tcl/Tk 8.6.12. This is a recorded environment, not a requirement for those exact versions or proof that other combinations work. Dependency versions are not locked by this package.
 
-After patch and source verification, create a fresh virtual environment from the selected Tk-enabled Python:
+After successful patch application, create a fresh virtual environment from the selected Tk-enabled Python:
 
 ```bash
 python3 -m venv .venv
@@ -153,13 +168,13 @@ Before using tabs on macOS, make the Arelle window active by clicking inside it.
 
 ## Manifest and saved acceptance
 
-[MANIFEST.json](../validation/MANIFEST.json) identifies the five registration files, supporting package files, patch order, final source hashes and development acceptance references. The [v3-specific manifest](../validation/TAVI_ACCOUNTING_ENTRIES_MANIFEST_v3.json) retains its separate datatype mapping/provenance role.
+[MANIFEST.json](../validation/MANIFEST.json) identifies the five registration files, supporting package files, patch order, final source hashes and development acceptance references. Recorded source hashes remain provenance identifiers; they are not additional patch-application acceptance conditions. The [v3-specific manifest](../validation/TAVI_ACCOUNTING_ENTRIES_MANIFEST_v3.json) retains its separate datatype mapping/provenance role.
 
 The [cumulative acceptance](../validation/ACCEPTANCE.md) records the pre-0010 layout. The final minimal view is transposed: nine Item rows and six occurrence columns. 0010 headless/native mapping and user manual Properties acceptance, and Labels user manual English-label acceptance, are documented as reused evidence in the distribution manifest.
 
 ## Stop conditions
 
-Stop at the first failed checkout, hash, patch check/application, dependency or source-scope check. Record the failing command and output. Do not continue to the next patch, edit a patch, use `--3way`/`--reject`, resolve conflicts manually or change the expected hashes and claim the documented result.
+Stop at the first failed checkout, public-package hash check, patch check/application, dependency or source-scope check. Record the failing command and output. Do not continue to the next patch, edit a patch, use `--3way`/`--reject`, resolve conflicts manually or change the expected hashes and claim the documented result.
 
 Stop if a package file or plug-in is missing, or taxonomy loading reports an error. Do not treat an empty v3 Groups tab alone as an error. No reset, cleanup or automatic recovery command is prescribed.
 
