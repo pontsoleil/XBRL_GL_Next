@@ -1,0 +1,7 @@
+dHeader,dDetail,entryNumber,entryDate,drCrIndicator,accountCode,accountName,amount,description
+1,,JE001,2026-10-10,,,,,
+1,1,,,Dr,100,Cash,1000,Receipt
+1,2,,,Cr,400,Sales,1000,Sale
+2,,JE002,2026-10-10,,,,,
+2,1,,,Dr,120,AccountsReceivable,2000,Invoice
+2,2,,,Cr,400,Sales,2000,Sale

@@ -18,7 +18,7 @@ Table 1 — Taviタクソノミとレポートの提供状況
 | --- | --- | --- | --- |
 | Simple Tavi | [tavi-tax.json](taxonomy/tavi-tax.json) | 公開済みの[tavi-inst.json](instance/tavi-inst.json)と[tavi-inst.csv](instance/tavi-inst.csv) | [Simple Tavi Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst.html) |
 | COR Full Accounting Entries | [XBRL_GL_Next_Tavi_AccountingEntries_v3.json](taxonomy/XBRL_GL_Next_Tavi_AccountingEntries_v3.json) | **なし** | **なし** |
-| HMD View — Single Account Date r2 | [Tavi_JournalEntries_SingleAccount_Date_r2_candidate.json](taxonomy/Tavi_JournalEntries_SingleAccount_Date_r2_candidate.json) | Canonical登録済みの`tavi-inst-hmd-view.json`とSimple Tavi共通のCSV。メタデータは**独立したGitHubファイルとしては未公開** | [HMD View Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html) |
+| HMD View — Single Account Date r2 | [Tavi_JournalEntries_SingleAccount_Date_r2_candidate.json](profiles/single-account-date-r2/taxonomy/Tavi_JournalEntries_SingleAccount_Date_r2_candidate.json) | Canonical登録済みの`tavi-inst-hmd-view.json`とSimple Tavi共通のCSV。メタデータは**独立したGitHubファイルとしては未公開** | [HMD View Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html) |
 
 Simple TaviはタクソノミとTable Templateの基本的な定義を示します。COR FullはCOR Accounting EntriesのFull HMD由来タクソノミを表し、HMD Viewは用途別に選択したビューを表します。
 
@@ -51,9 +51,9 @@ SimpleとHMD Viewは、同じStructured Tidy Data CSVを使う2種類のメタ�
 - [taxonomy/XBRL_GL_Next_Tavi_AccountingEntries_v3.json](taxonomy/XBRL_GL_Next_Tavi_AccountingEntries_v3.json)：Full HMD由来のAccounting Entriesタクソノミで、399 concepts、44 dimensions、45 domains、46 cubes、1 networkを持ちます。Groups定義とTable Templatesはありません。
 - [instance/tavi-inst.json](instance/tavi-inst.json)と[instance/tavi-inst.csv](instance/tavi-inst.csv)：既存の最小レポート例です。メタデータJSONを開いてください。
 - [パッチガイド](arelle/APPLY_PATCH.md)：3つのパッチすべてを新規インストールへ適用する手順です。
-- [Manifest](validation/MANIFEST.json)：初回公開候補の整合性、パッチ順序、source hash、受入参照を記録しています。
-- [v3 manifest](validation/TAVI_ACCOUNTING_ENTRIES_MANIFEST_v3.json)と[v3受入記録](validation/FULL_HMD_TAVI_V3_ARELLE_ACCEPTANCE.md)：大規模タクソノミのdatatype来歴と保存済みFull DTS受入記録です。
-- [累積パッチ受入記録](validation/ACCEPTANCE.md)と[当初の期待結果](expected/STRUCTURED_TIDY_DATA.md)：0010以前の歴史的受入記録です。当初の9列配置は、最終的な転置配置とは異なります。
+- 過去の整合性・受入記録はWORKに保持しており、実行入力ではありません。パッチ順序とsource hash条件は[パッチガイド](arelle/APPLY_PATCH.md)を参照してください。
+- v3のdatatype来歴と保存済みFull DTS受入記録は、タクソノミ本体とは区別してWORKに保全しています。
+- [当初の期待結果](expected/STRUCTURED_TIDY_DATA.md)は0010以前の歴史的な配置を示します。当初の9列配置は、最終的な転置配置とは異なります。累積パッチの過去受入記録はWORKに保持しています。
 
 タクソノミ、インスタンス、パッチのバイト列は保持されています。最終的な最小レポート表示は、9つのItem行と6つの出現列を持ち、native fact／Propertiesへの対応があります。
 
@@ -71,7 +71,7 @@ Tavi PoCでは、同じStructured Tidy Data CSVを、2種類のTaviタクソノ�
 - **左側：** Table TemplateとTaviタクソノミのJSON原文をタブで切り替えて表示します。
 - **右側：** Structured Tidy Data CSVを行列転置して表示します。
 
-ページは、TaviインスタンスJSONメタデータから`tavi_inst_json_to_html.py`を使って生成されています。
+これらは過去に生成された静的HTMLです。旧ローカルHTML生成スクリプトは現行Canonicalには含まれず、本案内はその実行を要求しません。公開HTMLを表示することと、ローカル生成処理は別です。
 
 **Phase 1**は、JavaScriptを使わない自己完結型の静的HTMLです。**Phase 2**では、Table Templateとタクソノミ定義に基づく対話的なProperties表示を導入する予定です。
 

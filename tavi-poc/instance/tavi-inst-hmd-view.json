@@ -1,0 +1,73 @@
+{
+  "documentInfo": {
+    "documentType": "https://xbrl.org/2021/xbrl-csv",
+    "namespaces": {
+      "cor": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor",
+      "plt": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
+      "xbrl": "https://xbrl.org/2021",
+      "xbrli": "http://www.xbrl.org/2003/instance",
+      "iso4217": "http://www.xbrl.org/2003/iso4217",
+      "test": "https://example.com/entities/test"
+    },
+    "taxonomy": [
+      "../profiles/single-account-date-r2/taxonomy/Tavi_JournalEntries_SingleAccount_Date_r2_candidate.json"
+    ]
+  },
+  "tableTemplates": {
+    "journalEntriesSingleAccount": {
+      "columns": {
+        "dHeader": {},
+        "dDetail": {},
+        "entryNumber": {
+          "dimensions": {
+            "concept": "cor:entryId"
+          }
+        },
+        "entryDate": {
+          "dimensions": {
+            "concept": "cor:headerEntryDate"
+          }
+        },
+        "drCrIndicator": {
+          "dimensions": {
+            "concept": "cor:debitCreditIndicator"
+          }
+        },
+        "accountCode": {
+          "dimensions": {
+            "concept": "cor:accountNumber"
+          }
+        },
+        "accountName": {
+          "dimensions": {
+            "concept": "cor:accountDescription"
+          }
+        },
+        "amount": {
+          "dimensions": {
+            "concept": "cor:monetaryAmount",
+            "unit": "iso4217:JPY"
+          },
+          "decimals": 0
+        },
+        "description": {
+          "dimensions": {
+            "concept": "cor:entryDetailDescription"
+          }
+        }
+      },
+      "dimensions": {
+        "entity": "test:ENTITY",
+        "period": "2026-10-10T00:00:00",
+        "plt:d_cor_entryHeader": "$dHeader",
+        "plt:d_cor_entryDetail": "$dDetail"
+      }
+    }
+  },
+  "tables": {
+    "journalEntriesSingleAccount": {
+      "template": "journalEntriesSingleAccount",
+      "url": "tavi-inst.csv"
+    }
+  }
+}

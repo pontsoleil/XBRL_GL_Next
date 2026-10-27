@@ -8,4 +8,4 @@ The currently selected classes `documentInformation` (`0..1`), `entityParty` (`0
 
 The user's decision to permit changes to `local_name` and `multiplicity` at both the Candidate and Reviewed stages is recorded. However, because no specific replacement values have been provided, the current model is not changed.
 
-The detailed CLI commands, SHA values and dependencies for the CSV-input version are documented in `README_COR_VIEW1.md` and `COR_VIEW1_SOURCE_REGISTRATION.json`. No new model-definition columns or inferred hierarchy are added.
+For the CSV-input CLI, inputs, output profiles and dependencies, see `README_COR_VIEW1.md`. Historical registration hashes remain in WORK evidence and are not runtime inputs. No new model-definition columns or inferred hierarchy are added.

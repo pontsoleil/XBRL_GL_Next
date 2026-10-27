@@ -1,0 +1,3 @@
+# Four-model Tavi taxonomy addendum
+
+The current public `tavi-poc/README.md` describes the historical Simple Tavi, COR Full v3 and HMD View cases, which must **not** be relabelled as the four-model acceptance package. For the 2026-10-26 accepted WORK candidates COR/COR-JPN/BTX/BTX-PINT, read [the full reproduction guide](README_REPRODUCE_4_MODELS.md). The final generator and model inputs/outputs must first be Canonical-registered and published under the approved set before clone-only reproduction can be claimed. View-defined *instance* automation remains a separate unverified workstream. This addendum is meant to be linked from existing public Tavi README after review; it does not modify older v3 artifacts.

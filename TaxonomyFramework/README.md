@@ -1,3 +1,5 @@
+**English** | [日本語](README_ja.md)
+
 # TaxonomyFramework
 
 This directory contains the XBRL GL Next requirements specification, Taxonomy Framework documents, and the Phase 1 inventory.
@@ -13,5 +15,6 @@ This directory contains the XBRL GL Next requirements specification, Taxonomy Fr
 - `XBRL_GL_Next_Taxonomy_Framework_Part_2_Tuple_palette_taxonomy.docx`
 - `XBRL_GL_Next_Taxonomy_Framework_Part_3_OIM_palette_taxonomy.docx`
 - `XBRL_GL_Next_Taxonomy_Framework_Part_4_Aligned_pool_for_extension.docx`
+- `XBRL_GL_Next_Taxonomy_Framework_Part_5_Tavi_palette_taxonomy.docx`
 
 The Phase 1 sample inventory was completed on 2026-08-12. This does not constitute public-release approval.

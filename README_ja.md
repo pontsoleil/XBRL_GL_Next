@@ -1,111 +1,40 @@
 [English](README.md) | **日本語**
-
 # XBRL GL Next
 
-## 目的
+XBRL GL Nextは、共通意味モデル（COR／BTX／AAAという絵具箱）から目的別HMDパレットを構成し、Tuple／OIM／Taviなどで表現する取組です。共同レビュー用資料であり、規格としての正式な承認を示すものではありません。
 
-このリポジトリには、XBRL GL Next Taxonomy Framework、正規のセマンティックモデル・パイプライン、用途別HMDパレット、生成済みTuple／OIMサンプルタクソノミ、サンプルインスタンス、再現・検証のためのツールとテスト、およびTavi PoCを収録しています。
+## プロジェクトの段階と公開状態
 
-COR、BTX、AAAは再利用可能な意味定義を備えた**絵具箱（semantic paint boxes）**であり、用途別HMDは必要な意味を選択・構成する**パレット**です。共通の意味モデルに基づき、XBRL 2.1 Tuple、OIM、Taviという異なるタクソノミ実現方式を検討しています。実装・受入状況は方式ごとに区別します。
+本リポジトリは共同レビュー用であり、標準団体の公式公開版・承認済み標準を主張しません。プロジェクトのPhaseとTavi PoCのPhaseは別の区分です。
 
-## 状態
+- **Phase 1 — 再現可能なサンプルパッケージ：** Requirements、Part 1–4、意味モデル、Tuple/OIMサンプル、当時のツール・テストを対象とする共同レビュー用パッケージ。後のPart 5やTavi PoCを当時の受入範囲へ遡及的に追加しません。
+- **Phase 2 — 外部共同レビュー：** 意味モデル、Specialisation、Graph Walk、拡張とTuple/OIM bindingなどを議論します。
+- **Phase 3 — 公開候補：** レビューを反映してバージョン、名前空間、ライセンスと公開構成を整備します。
+- **Phase 4 — 正式公開と維持管理：** 正式な公開と、以後の更新・拡張・保守を対象とします。
 
-現在のリポジトリのパッケージは共同レビュー用です。**正式な公開版、標準、またはいかなる組織の公式見解としても承認されていません。**
+第三者ライセンス等は[日本語の注意事項](THIRD_PARTY_NOTICES_ja.md)、Framework概要は[日本語の案内](TaxonomyFramework/README_ja.md)を参照してください（参照先のWORK／公開登録状況は別途確認）。
 
-正規のプロジェクト・モジュール名前空間は `https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/{module}` です。予定するタクソノミの版日付 `2026-12-31` は物理ファイル名のみに含まれ、名前空間URIには含まれません。この日付は正式公開の承認を意味しません。
+## 仕様と処理工程
 
-来歴とライセンス上の境界は [THIRD_PARTY_NOTICES_ja.md](THIRD_PARTY_NOTICES_ja.md) を参照してください。
+[Taxonomy Framework](TaxonomyFramework/README.md)（現状維持）を参照してください。Part 1は共通意味モデルとHMD、Part 2はTuple、Part 3はOIM、Part 4はAligned extensionを扱います。CORとBTXはShared、COR-JPNはCORクラスのSpecialisation、BTX-PINTはBTXクラスのSpecialisationによるAligned extensionです。
 
-## プロジェクトの段階
+**FSM → Specialisation／BSM → Graph Walk → Candidate LHM → Reviewed LHM → Post-Graph Walk → Formal HMD → Taxonomy**。Tavi生成器はFormal HMDから先を担当します。
 
-以下はプロジェクト全体のレビュー・公開ライフサイクルであり、**Tavi PoC固有のPhase 1／2とは別**です。
+## ディレクトリ案内
 
-### Phase 1 — 再現可能なサンプルパッケージ
+- [semantic-model/](semantic-model/README.md)：FSM、BSM、Reviewed LHM、HMDと意味モデルのauthority
+- [taxonomy/](taxonomy/README.md)：Tuple／OIMの独立DTSとTavi候補
+- [ids/](ids/README.md)：**Instance Documents（インスタンス文書）**の略。識別子のディレクトリではありません。`ids/tuple/`はXML、`ids/oim/`はCSVとJSONメタデータの組で、JSONがレポートの入口です。
+- [tavi-poc/](tavi-poc/README.md)：Simple／HMD Viewなど既存PoCと新しい4モデルの区別
+- [tools/](tools/README.md)：各スクリプトとFramework Partとの関係
+- [tests/](tests/README.md)：第三者による既存テストの再現ガイド
+- [definitions/](definitions/README.md)：datatype等の参照定義
 
-共同レビュー用に整理した最初の再現可能なXBRL GL Nextサンプルパッケージです。次を含みます。
+## 再現性と公開状態
 
-- Requirements Specificationおよび当初の受入済みサンプルパッケージに対応するTaxonomy Framework Part 1〜4
-- FSM → BSM → LHM → HMD-for-taxonomyの意味モデル処理
-- 生成済みTuple／OIMパレットタクソノミ
-- Tuple／OIMサンプルインスタンス
-- パッケージの再現・検証に必要な正規ツールとテスト
+[Tavi 4モデルの再現ガイド](tavi-poc/README_REPRODUCE_4_MODELS.md)を参照してください。2026年10月26日のWORK受入PASSは、公開GitHubのcloneだけで再現可能であることを意味しません。内部Codex証跡はWORKに保全します。公開の必要があるmanifestや依存資料は個別に判断します。
 
-後から追加されたPart 5とTavi PoCは、過去のTuple／OIM検証の受入範囲を遡って拡張するものではありません。Phase 1は共同レビュー用であり、正式公開の承認を意味しません。
-
-### Phase 2 — 外部共同レビュー
-
-Phase 1の成果物を基礎に、XBRLコミュニティその他の関係者とレビュー・調整する段階です。主な論点は次のとおりです。
-
-- セマンティックモデルのアーキテクチャ
-- Specialisation、Graph Walk、LHM／HMDの処理モデル
-- Tuple／OIMタクソノミのバインディング
-- Extension方式とAligned Pool
-- 実装の再現性と検証
-
-Part 5とTavi PoCは、別途対象範囲を明示したレビュー資料として追加されています。
-
-### Phase 3 — 公開候補版
-
-外部レビュー結果を反映し、Framework、タクソノミパッケージ、版管理、名前空間、ライセンス、公開手続を整理して公開候補版を準備します。
-
-### Phase 4 — 正式公開と保守
-
-正式公開とその後の版更新、拡張、Aligned Poolの保守および適合性関連の更新を想定します。
-
-## Framework文書
-
-[`TaxonomyFramework/`](TaxonomyFramework/) にはRequirements Specification、Taxonomy Framework Part 1〜5、および登録済みサンプル成果物のinventoryがあります。
-
-- **Part 1 — General rules：** シリアライゼーション非依存の意味モデル処理と正式HMDの契約
-- **Part 2 — Tuple palette taxonomy：** 正式HMDからのXBRL 2.1 Tuple実現
-- **Part 3 — OIM palette taxonomy：** 正式HMDからのOIM実現
-- **Part 4 — Aligned Pool and extension governance：** 意味拡張の分類、整合、登録、公開の管理
-- **Part 5 — Tavi palette taxonomy：** 用途別HMDビューとTaviタクソノミ／Table Templateの実現
-
-Part 2、3、5はPart 1の共通意味基盤に基づく異なるタクソノミ実現方式です。拡張に関してはPart 4のガバナンスが適用されます。これは各実現方式の検証・公開状態が同じことを意味しません。
-
-正式なFramework文書は英語で管理し、[`TaxonomyFramework/README_ja.md`](TaxonomyFramework/README_ja.md) で日本語の案内を提供します。
-
-## 正規semantic pipeline
-
-意味処理の順序は **FSM → BSM → Candidate LHM → Reviewed LHM → 正式HMD → タクソノミBinding** です。Candidate LHMからReviewed LHMへの移行には、管理された人による意味レビューが必要であり、Reviewed LHMを自動再生成で上書きしません。
-
-公開済みFSM／BSMには `semantic-model/FSM/FSM.csv`、`semantic-model/FSM/FSM_btx.csv`、`semantic-model/BSM/BSM.csv` があります。Candidate／Reviewed LHMは `semantic-model/LHM/` 配下のroot別ディレクトリに配置され、Accounting EntriesとBusiness Transactionsには両CSVが存在します。Journal Entriesには、受入済みworkbookを意味上のauthorityとするReviewed CSVがあります。Accounting EntriesとBusiness Transactionsの正式HMDセットとmanifestは `semantic-model/LHM_for_taxonomy/` に、Journal Entriesの独立したHMDとmanifestは `semantic-model/HMD/journal-entries/` にあります。ファイルの存在・登録SHA一致だけで、現行構成の一括再生成や検証PASSを主張しないでください。実行前に対象rootの受入済み入力と証拠を確認してください。
-
-## サンプルtaxonomyとinstance
-
-公開taxonomyにはroot別の独立したDTSが3組あり、それぞれにTupleとOIMの入口があります（taxonomy入口は計6件。ただし6件のvalidation PASSを意味しません）。
-
-- `taxonomy/accounting-entries/`：Accounting EntriesのTuple／OIM入口
-- `taxonomy/business-transactions/`：Business TransactionsのTuple／OIM入口
-- `taxonomy/journal-entries/`：Journal EntriesのTuple／OIM入口
-
-`ids/tuple/`にはTupleサンプルインスタンス2件、`ids/oim/`には各JSONメタデータをレポート入口とするxBRL-CSVサンプル2件があります。サンプル数とtaxonomy入口数を混同しないでください。
-
-## Tavi PoC — Structured Tidy Data Viewer
-
-[Tavi PoC](tavi-poc/) では、同一のStructured Tidy Data CSVを2種類のTavi定義を用いて表示します。
-
-- [Simple Tavi Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst.html)
-- [HMD View Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html)
-
-自己完結型のPhase 1 HTMLでは、左側のタブにTable TemplateとTaviタクソノミのJSONソースを、右側に転置したCSVを表示します。**Tavi PoC Phase 1**はプロジェクト全体のPhase 1とは別です。Tavi PoC Phase 2では、JavaScriptによるProperties連動表示を予定しています。Viewerは正式なXBRL／Tavi検証を行いません。個別のタクソノミファイルの公開状態などの詳細は[`tavi-poc/README.md`](tavi-poc/README.md)を参照してください。
-
-## 正規ツール
-
-次のツールは公開リポジトリ内で実在し、登録ファイルと一致しています。ただし、この一覧だけで現行テスト一式のPASSを示すものではありません。
-
-- `tools/semantic/specialisation.py`
-- `tools/semantic/graphwalk.py`
-- `tools/semantic/post_graphwalk.py`
-- `tools/semantic/validate_lhm.py`
-- `tools/taxonomy/xBRLGL_TaxonomyGenerator.py`
-
-最後のファイルが確認済みのTuple／OIM Taxonomy Generator実装です。`src/`への移行根拠はありません。実行前に対応するプログラム仕様・入力authority・受入証拠を確認してください。
-
-## Taxonomy generation
-
-公開されているGeneratorでは次のCLI構文を利用できます（実装上の確認であり、新たな実行PASSではありません）。
+## Tuple／OIM生成CLI（既存実装）
 
 ```text
 python tools/taxonomy/xBRLGL_TaxonomyGenerator.py \
@@ -114,20 +43,8 @@ python tools/taxonomy/xBRLGL_TaxonomyGenerator.py \
   --namespace <NAMESPACE>
 ```
 
-必須引数`--namespace`には、例えば `https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt` の名前空間anchorを指定します。位置引数`lhm_for_taxonomy`と`-b`／`--base-dir`は後方互換のため利用できます。新しい自動処理では確認済みGeneratorの`--hmd-dir`と`--output-dir`を使用してください。
+`--namespace` は名前空間anchor（例 `https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt`）です。既存の位置引数および `-b`／`--base-dir` は後方互換の範囲で説明されています。
 
-## 正規テストと検証
+## 検証baselineの注意
 
-再現・受入に用いるテスト一覧は、受入済みinventoryと個々の実行証拠で確認してください。過去の検証記録には、Arelleの版数、入力セット、エントリーポイントの対象範囲が異なるものがあります。実行ID、入力SHA-256、入口一覧、検証結果の対応が確定するまで、**Phase 1のArelle検証baselineは確認中であり、本READMEでは単一の数値的な受入baselineを断定しません**。歴史的記録を現在の受入結果と読み替えず、実際に検証された構成に対応するinventoryと実行報告を参照してください。
-
-## Repository tree
-
-```text
-TaxonomyFramework/  Requirements Specification、Framework文書、inventory
-semantic-model/     FSM／BSMおよびroot別LHM／HMD
-taxonomy/           Accounting Entries、Business Transactions、Journal EntriesのTuple／OIM DTS
-ids/                Tuple／xBRL-CSVサンプルインスタンス
-tavi-poc/           Tavi例、タクソノミ定義、静的HTML Viewer
-tools/              公開済みsemantic toolsと確認済みTuple／OIM Generator（受入は対象別）
-tests/              正規回帰テストとパッケージチェッカー
-```
+Phase 1のArelle受入baselineは対象入力・エントリーポイント・検証記録の対応を引き続き確認する必要があり、全版共通の単一数値PASSをここでは主張しません。

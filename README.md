@@ -2,116 +2,56 @@
 
 # XBRL GL Next
 
-## Purpose
+XBRL GL Next explores a common semantic foundation and purpose-specific **HMD palettes** that can be realised as XBRL 2.1 Tuple, OIM, or experimental Tavi JSON taxonomies. COR, BTX and AAA are reusable semantic **paint boxes**, not interchangeable instance formats. This repository is material for collaborative review, not a claim of formal adoption by any standards organisation.
 
-This repository contains the XBRL GL Next Taxonomy Framework, the canonical semantic-model pipeline, purpose-specific HMD palettes, generated Tuple/OIM taxonomy samples, sample instances, and the tools and tests used to reproduce and validate the accepted packages. It also includes a Tavi proof of concept (PoC).
+## Status and project phases
 
-COR, BTX and AAA serve as reusable semantic **paint boxes**. A purpose-specific HMD is a **palette** that selects and organises semantics for a particular use. The Framework explores alternative taxonomy realisations—including XBRL 2.1 Tuple, OIM and Tavi—based on a common semantic foundation. Their implementation and acceptance states are distinct.
+This is a collaborative-review package, not an approved standard, a public release endorsement or an official position of any organisation. The project-level phases below are **not** the Tavi PoC's own phases.
 
-## Status
+- **Phase 1 — Reproducible sample package:** Requirements and Parts 1–4, semantic pipeline, Tuple/OIM taxonomies, samples, tools and tests for the accepted scope. Part 5 is a separately registered Tavi collaborative draft and does not retroactively expand the earlier Phase 1 acceptance.
+- **Phase 2 — External collaborative review:** Review of semantic architecture, Specialisation, Graph Walk, extension governance and Tuple/OIM bindings.
+- **Phase 3 — Publication candidate:** Incorporation of review findings and preparation of versioning, namespace, licensing and publication arrangements.
+- **Phase 4 — Public release and maintenance:** Approved publication followed by maintenance, future versions and aligned extensions.
 
-The current repository package is prepared for collaborative review. It has **not** been approved as a public release, standard, or official position of any organization.
+See [third-party notices](THIRD_PARTY_NOTICES.md) for attribution and licence boundaries.
 
-The canonical project module namespace is `https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/{module}`. The planned taxonomy version date `2026-12-31` remains in physical file names only and is not part of the namespace URI. The version date does not indicate that public release has already been approved.
+## Read the specification first
 
-See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for provenance and licence boundaries.
+- [Taxonomy Framework](TaxonomyFramework/README.md): Requirements Specification and Parts 1–5 (each with its own draft and acceptance status).
+- **Part 1 — General rules:** semantic pipeline and the formal HMD contract.
+- **Part 2 — Tuple palette taxonomy:** XBRL 2.1 Tuple binding.
+- **Part 3 — OIM palette taxonomy:** dimensional/OIM binding and xBRL-CSV representation.
+- **Part 4 — Aligned Pool:** governance for extensions of the Shared semantic models.
+- **Part 5 — Tavi palette taxonomy:** purpose-specific HMD views and Tavi binding. Its registered draft does not by itself establish implementation conformance; consult the separate PoC evidence.
 
-## Project phases
+## Semantic processing
 
-These project-level phases describe the overall review and publication lifecycle; they are **not** the implementation phases of the Tavi PoC.
+Shared COR classes are specialised by the COR-JPN Aligned extension; Shared BTX classes are specialised by the BTX-PINT Aligned extension. These four HMD/taxonomy results remain independent. The processing sequence is **FSM → Specialisation / BSM → Graph Walk → Candidate LHM → human Reviewed LHM → Post-Graph Walk → formal HMD → taxonomy generation**. The Tavi generator reads formal HMD and does not implement upstream Specialisation or Graph Walk.
 
-### Phase 1 — Reproducible sample package
+See [semantic-model/README.md](semantic-model/README.md) for authority boundaries and [tools/README.md](tools/README.md) for implementations.
 
-Phase 1 provides the first curated and reproducible XBRL GL Next sample package for collaborative review.
+## Taxonomies and examples
 
-It includes:
+- [taxonomy/README.md](taxonomy/README.md) — separate Accounting Entries, Business Transactions and Journal Entries Tuple/OIM DTS trees, plus the four-model Tavi acceptance candidates (publication status must be checked).
+- [ids/README.md](ids/README.md) — **`ids` stands for XBRL Instance Documents**, not identifier definitions. `ids/tuple/` contains XBRL 2.1 XML sample instances; `ids/oim/` contains xBRL-CSV reports with corresponding JSON metadata. **The JSON metadata is the report entry point**, and the data CSV and metadata are a pair.
+- [tavi-poc/README.md](tavi-poc/README.md) — existing Simple and HMD View demos and experimental Tavi taxonomy work. These are distinct from the four current taxonomy-only candidates.
 
-- the Requirements Specification and the original Taxonomy Framework Parts 1–4 scope of the accepted sample package;
-- the semantic-model pipeline from FSM through BSM, LHM and HMD-for-taxonomy;
-- generated Tuple and OIM palette taxonomies;
-- sample Tuple and OIM instances;
-- the canonical tools and tests required to reproduce and validate that package.
+## Reproduce and validate
 
-The subsequent addition of Part 5 and the Tavi PoC does not retroactively extend the Phase 1 Tuple/OIM validation baseline. Phase 1 is a collaborative-review package and does not constitute approval for public release.
+- [tools/README.md](tools/README.md) — scripts, applicable Framework parts and actual input/output contracts.
+- [tests/README.md](tests/README.md) — existing tests, how to identify dependencies and why historical acceptance must not be assumed to be a current test PASS.
+- [Tavi four-model reproduction](tavi-poc/README_REPRODUCE_4_MODELS.md) — Python, Arelle patches, exact generation commands, expected SHA and platform-EOL limitations.
+- [definitions/README.md](definitions/README.md) — code lists, datatype and overlay definitions (only when the consuming tool explicitly reads them).
 
-### Phase 2 — External collaborative review
+## Publication status and evidence
 
-Phase 2 is intended to use the Phase 1 package as the basis for review and coordination with relevant XBRL communities and other stakeholders.
+At the snapshot examined for this documentation candidate (GitHub main `6bc592a227193f1b0a2463604bee6ffe50b3fe8c`), the final four-model Tavi generator, corresponding four HMDs and four JSON taxonomies are **not** a complete published clone-reproducible set. WORK acceptance PASS is distinct from third-party clean-clone execution and GitHub publication. Historical audit/Codex task evidence is preserved in WORK; published validation manifests that are dependencies must be evaluated individually rather than removed solely because they are evidence-like.
 
-The review is expected to cover, in particular:
+[Third-party notices](THIRD_PARTY_NOTICES.md)
 
-- the semantic-model architecture;
-- Specialisation, Graph Walk and the LHM/HMD processing model;
-- the Tuple and OIM taxonomy bindings;
-- the extension model and Aligned Pool;
-- implementation reproducibility and validation.
+## Tuple/OIM taxonomy generator CLI
 
-Part 5 and the Tavi PoC provide additional, separately scoped material for review.
-
-### Phase 3 — Publication candidate
-
-Phase 3 is intended to incorporate the results of external review and prepare a publication candidate.
-
-The Framework, taxonomy package, versioning, namespace usage, licensing and publication arrangements are expected to be stabilised for publication.
-
-### Phase 4 — Public release and maintenance
-
-Phase 4 is intended to cover public release and subsequent maintenance, including future versions, extensions, Aligned Pool maintenance and conformance-related updates.
-
-## Framework documents
-
-[`TaxonomyFramework/`](TaxonomyFramework/) contains the Requirements Specification, Taxonomy Framework Parts 1–5, and the inventory of registered sample artifacts. The five Parts have distinct roles:
-
-- **Part 1 — General rules:** The serialisation-independent semantic pipeline and formal HMD contract.
-- **Part 2 — Tuple palette taxonomy:** The XBRL 2.1 Tuple realisation from formal HMDs.
-- **Part 3 — OIM palette taxonomy:** The OIM realisation from formal HMDs.
-- **Part 4 — Aligned Pool and extension governance:** Semantic extension classification, alignment, registration and publication governance.
-- **Part 5 — Tavi palette taxonomy:** Purpose-specific HMD views and their Tavi taxonomy and Table Template realisation.
-
-Parts 2, 3 and 5 describe alternative taxonomy realisations rooted in the semantic foundation of Part 1 and governed, for extensions, by Part 4. This architectural relationship does not imply that all bindings share the same test or release status.
-
-The formal Framework documents are maintained in English. [`TaxonomyFramework/README_ja.md`](TaxonomyFramework/README_ja.md) provides a Japanese guide.
-
-## Canonical semantic pipeline
-
-The semantic processing sequence is **FSM → BSM → Candidate LHM → Reviewed LHM → formal HMD → taxonomy bindings**. The transition from Candidate LHM to Reviewed LHM requires controlled human review; the reviewed source is not overwritten by automatic regeneration.
-
-The published FSM and BSM sources include `semantic-model/FSM/FSM.csv`, `semantic-model/FSM/FSM_btx.csv` and `semantic-model/BSM/BSM.csv`. Candidate and reviewed LHM files are organised in root-specific directories under `semantic-model/LHM/`; the Accounting Entries and Business Transactions roots have both CSVs, while Journal Entries has a reviewed CSV governed by its accepted workbook. The formal Accounting Entries and Business Transactions HMD set and its manifest are in `semantic-model/LHM_for_taxonomy/`; Journal Entries has a separate HMD and manifest under `semantic-model/HMD/journal-entries/`. File existence and registered hashes do not by themselves establish a complete end-to-end reproduction or validation PASS. Select the accepted root-specific input and evidence before running the pipeline.
-
-## Sample taxonomy and instances
-
-The published taxonomy has three separate DTS trees, each with a Tuple and an OIM entry point (six taxonomy entry points in total; their existence does not assert six validation PASS results):
-
-- `taxonomy/accounting-entries/`: Accounting Entries Tuple and OIM entry points
-- `taxonomy/business-transactions/`: Business Transactions Tuple and OIM entry points
-- `taxonomy/journal-entries/`: Journal Entries Tuple and OIM entry points
-
-The sample instances under `ids/` comprise two Tuple instances in `ids/tuple/` and two xBRL-CSV reports in `ids/oim/`; each xBRL-CSV report uses its corresponding JSON metadata as the entry point. The number of sample reports is not the number of taxonomy entry points.
-
-## Tavi PoC — Structured Tidy Data viewers
-
-The [Tavi PoC](tavi-poc/) demonstrates two representations of the same Structured Tidy Data CSV using different Tavi definitions:
-
-- [Simple Tavi Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst.html)
-- [HMD View Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html)
-
-Both self-contained Phase 1 HTML viewers display Table Template and Tavi taxonomy JSON sources in tabs on the left, and a transposed CSV on the right. This **Tavi PoC Phase 1** is separate from the repository's project-level Phase 1. JavaScript-based interactive Properties are planned for Tavi PoC Phase 2. The viewers do **not** perform formal XBRL/Tavi validation. See [`tavi-poc/README.md`](tavi-poc/README.md) for details and the current publication status of individual taxonomy files.
-
-## Canonical tools
-
-The following tools are present in the published repository and match the registered files; listing their paths does not assert that an entire current regression suite has passed:
-
-- `tools/semantic/specialisation.py`
-- `tools/semantic/graphwalk.py`
-- `tools/semantic/post_graphwalk.py`
-- `tools/semantic/validate_lhm.py`
-- `tools/taxonomy/xBRLGL_TaxonomyGenerator.py`
-
-The last file is the confirmed Tuple/OIM Taxonomy Generator implementation. No migration to `src/` has been substantiated. Verify applicable program specifications, input authority and acceptance evidence before execution.
-
-## Taxonomy generation
-
-The currently published generator supports this CLI syntax (implementation verified; this statement is not a new execution PASS):
+The existing generator has this documented interface (a description, not evidence of a new run):
 
 ```text
 python tools/taxonomy/xBRLGL_TaxonomyGenerator.py \
@@ -120,20 +60,8 @@ python tools/taxonomy/xBRLGL_TaxonomyGenerator.py \
   --namespace <NAMESPACE>
 ```
 
-The required `--namespace` argument takes a namespace anchor, for example `https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt`. The positional `lhm_for_taxonomy` argument and `-b` / `--base-dir` remain available for backward compatibility. New automation should use `--hmd-dir` and `--output-dir` with the confirmed implementation.
+The required namespace anchor may be `https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt`. The positional HMD input and `-b`/`--base-dir` are retained for compatibility in the verified older contract.
 
-## Canonical tests and validation
+## Scope of validation evidence
 
-The accepted test inventory and relevant execution evidence must be checked before reproducing a package. Historical validation records reference different Arelle versions, input sets and entry-point scopes. **The Phase 1 Arelle validation baseline remains under review; no single numerical acceptance baseline is asserted in this README pending an evidence-based reconciliation** of execution IDs, input SHA-256 hashes, entry-point lists and results. Historical claims are not interchangeable with current acceptance. Consult the applicable package inventory and execution reports for the specifically tested configuration.
-
-## Repository tree
-
-```text
-TaxonomyFramework/  Requirements Specification, Framework documents and inventory
-semantic-model/     FSM and BSM; root-specific LHM and HMD resources
-taxonomy/           Accounting Entries, Business Transactions and Journal Entries Tuple/OIM DTS trees
-ids/                Tuple and xBRL-CSV sample instances
-tavi-poc/           Tavi examples, taxonomy definitions and static HTML viewers
-tools/              published semantic tools and confirmed Tuple/OIM generator (acceptance scoped per package)
-tests/              canonical regression tests and package checker
-```
+The Phase 1 Arelle baseline remains under review for reconciled execution IDs, input hashes, entry-point lists and result scopes; no single universal numerical acceptance baseline is asserted. Historical results do not amount to a new test execution.

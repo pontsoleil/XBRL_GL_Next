@@ -168,9 +168,9 @@ Before using tabs on macOS, make the Arelle window active by clicking inside it.
 
 ## Manifest and saved acceptance
 
-[MANIFEST.json](../validation/MANIFEST.json) identifies the five registration files, supporting package files, patch order, final source hashes and development acceptance references. Recorded source hashes remain provenance identifiers; they are not additional patch-application acceptance conditions. The [v3-specific manifest](../validation/TAVI_ACCOUNTING_ENTRIES_MANIFEST_v3.json) retains its separate datatype mapping/provenance role.
+The patch order, final source hashes and installation conditions are stated in this guide. Historical registration, integrity and datatype-provenance records are preserved in WORK; they are not patch-application inputs or additional acceptance conditions.
 
-The [cumulative acceptance](../validation/ACCEPTANCE.md) records the pre-0010 layout. The final minimal view is transposed: nine Item rows and six occurrence columns. 0010 headless/native mapping and user manual Properties acceptance, and Labels user manual English-label acceptance, are documented as reused evidence in the distribution manifest.
+Saved historical acceptance records describe the pre-0010 layout. The final minimal view is transposed: nine Item rows and six occurrence columns. The 0010 headless/native mapping, user manual Properties acceptance and Labels user manual English-label acceptance are historical evidence retained in WORK; they are not new executions by the reader.
 
 ## Stop conditions
 

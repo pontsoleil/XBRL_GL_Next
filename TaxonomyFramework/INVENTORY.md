@@ -1,5 +1,7 @@
 # Phase 1 Sample Inventory
 
+> **Historical inventory (14 August 2026).** The SHA-256 entries, manifest and test filenames below document the Phase 1 sample, not the current Canonical contents. Some listed files were subsequently retired from Canonical under approved cleanup. For current publication candidates, consult the current registered Canonical set and its acceptance records; do not use these historical hashes for the current Word documents.
+
 ## Status
 
 - Inventory date: 2026-08-14
