@@ -1,16 +1,31 @@
-# XBRL GL Next Canonical WORK タクソノミ
+[English](README.md) | **日本語**
 
-有効なタクソノミは、独立生成した次の2つのDTSです。
+# 公開タクソノミ
 
-- `accounting-entries/`（58ファイル）
-- `business-transactions/`（67ファイル）
+`taxonomy/`は、`semantic-model/HMD/`にあるモデル別の正式HMDを共通の意味的入力として、XBRL 2.1 Tuple、OIM、Taviの3種類のタクソノミを公開する領域です。各モデルに対応する3形式はそのモデルの正式HMDに基づきます。ただし、過去の各生成実行でHMDの同一ファイル版を使用したことまで、この案内だけで保証しません。共通ViewシートからTuple XML、OIM CSV＋JSONメタデータ、Tavi CSV＋JSONメタデータの3種類のインスタンスを生成する統一工程は、次の開発段階です。
 
-各プロジェクトmoduleのnamespaceは `https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/{module}` に完全一致します。`2026-12-31` は予定版を示すファイル名に残し、namespace URIには含めません。現在のプロジェクト公開・namespace判断は `PROJECT_PUBLICATION_AND_NAMESPACE_DECISION.md` に記録しています。同記録は、判断者のプロジェクト上の役割を明示しますが、別途の理事会決議、ドメイン管理者による技術的委任、公式タクソノミ指定又は外部機関のendorsementを主張しません。
+`tavi-poc/`は、Taviのタクソノミとインスタンスを独立に試作・評価する環境です。`taxonomy/`で使用する正式HMDや生成工程を共有するものではありません。Simple、Full v3、HMD View等の試作例は、`taxonomy/tavi/`の4モデルと同一の成果物ではありません。
 
-Accounting EntriesとBusiness Transactionsは、異なるルートHMDから階層展開されるためsplit構成を維持します。共有global declarationのうち14件には、ルートHMD別の型・構造・多重度の差異があります。これは各DTS固有の受入済み特性であり、競合又は不具合とは判定しません。利用側はAE又はBTに対応するTuple／OIM entry pointを選択し、同名ファイルの相互上書きや設計なしのDTS混載を行わないでください。単一DTSとしての統合利用は受入範囲外です。
 
-旧root単一ツリーは `../archive/taxonomy/legacy-single-tree-20260915_1406/` に退避し、有効な `taxonomy/**` の外に保持しています。
+このディレクトリには、独立したXBRL 2.1 Tuple／OIMタクソノミと、実験的なTavi JSONタクソノミを収録しています。
 
-生成証跡とSHA-256 manifestは `provenance/`、検証証跡は `C:\Users\nobuy\GitHub\WORK\XBRL-GL-Next\docs\Codex\2026\202609\20260915\20260915_1406\stable-namespace-work-unification\outputs` にあります。
+## Tuple／OIM
 
-XBRL GLの出典、著作権、ライセンス条件、帰属表示及び非endorsement表示は `NOTICE_XBRL_GL.md` に記録しています。その他の第三者由来資料には、それぞれの条件が引き続き適用されます。
+- [`accounting-entries/`](accounting-entries/) — Accounting Entries（COR）
+- [`business-transactions/`](business-transactions/) — Business Transactions（BTX）
+- [`journal-entries/`](journal-entries/) — 独立した仕訳モデル
+
+用途とbindingに合うentry pointを選択してください。同名conceptがあることを理由に、独立生成されたDTSを無条件に統合しないでください。module namespaceは`https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/{module}`形式であり、ファイル名の日付をnamespace URIに含めません。
+
+## Tavi JSON
+
+[`tavi/`](tavi/)には、次の独立したtaxonomyを公開しています。
+
+- [COR](tavi/accounting-entries/taxonomy.json)
+- [COR-JPN](tavi/accounting-entries-jpn/taxonomy.json)
+- [BTX](tavi/business-transactions/taxonomy.json)
+- [BTX-PINT](tavi/business-transactions-pint/taxonomy.json)
+
+Tavi JSON taxonomyはXBRL 2.1のXSD entry pointでもインスタンス文書でもありません。生成器と入力については、[Tavi生成器の説明](../tools/tavi/README_Tavi_4models_datatypes_candidate_ja.md)と[再現ガイド（英語）](../tavi-poc/README_REPRODUCE_4_MODELS.md)を参照してください。
+
+公開条件と出所については[第三者資料の注意事項](../THIRD_PARTY_NOTICES_ja.md)を参照してください。

@@ -1,65 +1,27 @@
-# Full HMD → Tavi taxonomy generator（4モデル・datatype追加対応候補）
+**English** | [日本語](README_Tavi_4models_datatypes_candidate_ja.md)
 
-## 目的・変更の境界
+# HMD-to-Tavi taxonomy generator: four models
 
-この文書は、既存の `hmd_to_tavi.py`（元 SHA-256 `6be8b3e35bfdea6ce3683b065cf308154db89dd9de2c23ccaa0f9e75a1953714`）を基礎とする、4つの独立したHMD rootへの対応候補を説明する。対象は **Tavi taxonomy JSONの生成のみ**。インスタンス、Table Template、Viewerの生成・検証を追加しない。
+The current [`hmd_to_tavi.py`](../../tavi-poc/tools/hmd_to_tavi.py) generates one Tavi taxonomy JSON file from one accepted, 18-column HMD CSV. It uses Python 3.10 or later and the standard library. It does not generate instances, table templates or viewers, nor does it perform Specialisation or Graph Walk.
 
-対象rootは次のとおり。
 
-| モデル | HMD root | 付加的なmodule |
-| --- | --- | --- |
-| COR | `cor:accountingEntries` | なし |
-| COR-JPN | `jpn:accountingEntries` | `jpn` |
-| BTX | `btx:businessTransactions` | `btx` |
-| BTX-PINT | `pint:businessTransactions` | `btx`, `pint` |
+This describes the HMD-to-Tavi generator used for the `taxonomy/tavi/` four-model output collection, not the independent Simple or HMD-view taxonomy and instance experiments in `tavi-poc/`. The common View-to-three-instance workflow is planned, not implemented here.
 
-各HMDは独立したタクソノミとして処理する。モデル間の意味定義・構造一致は要求しない。
+## Published models
 
-## 改訂範囲
+| Model | HMD root | HMD input | Taxonomy JSON |
+| --- | --- | --- | --- |
+| COR | `cor:accountingEntries` | [`accounting-entries`](../../semantic-model/HMD/accounting-entries/XBRL_GL_Next_HMD_AccountingEntries_for_taxonomy.csv) | [`taxonomy.json`](../../taxonomy/tavi/accounting-entries/taxonomy.json) |
+| COR-JPN | `jpn:accountingEntries` | [`accounting-entries-jpn`](../../semantic-model/HMD/accounting-entries-jpn/XBRL_GL_Next_HMD_AccountingEntries_for_taxonomy.csv) | [`taxonomy.json`](../../taxonomy/tavi/accounting-entries-jpn/taxonomy.json) |
+| BTX | `btx:businessTransactions` | [`business-transactions`](../../semantic-model/HMD/business-transactions/XBRL_GL_Next_HMD_BusinessTransactions_for_taxonomy.csv) | [`taxonomy.json`](../../taxonomy/tavi/business-transactions/taxonomy.json) |
+| BTX-PINT | `pint:businessTransactions` | [`business-transactions-pint`](../../semantic-model/HMD/business-transactions-pint/XBRL_GL_Next_HMD_BusinessTransactions_for_taxonomy.csv) | [`taxonomy.json`](../../taxonomy/tavi/business-transactions-pint/taxonomy.json) |
 
-- HMDの18列 `value_domain` 契約と既存CLIの `--hmd`、`--output`、`--version`、`--include-documentation`、`--documentation-target` を保持する。
-- 単一root必須とし、rootの`module`・`local_name`をHMDのC行から識別する。従来の `cor:accountingEntries` 固定条件を外す。
-- 使用された追加moduleを `https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/{module}` により解決する。従来のnamespace集合・順序は保持し、未登録moduleのみHMD出現順に追加する。
-- taxonomy名とnetwork名をrootのmodule/local_nameから作成する。CORの既存名・frameworkName・namespace辞書の順序は維持する。
-- HMDの `semantic_path`、`local_name`、`datatype`、`multiplicity`、`value_domain`、定義、行順は変更しない。既存のC/A/R処理とdocumentation labels出力を変更しない。
-- BTX-PINTで新たに出現した4つのsemantic representation termについて、既存Part 1で確認された対応に基づき `BASE_TYPES` に限って追加する（次表）。
+Each model is generated independently. Do not assume identical structure or types across roots. The input must be a formal HMD with the accepted 18 columns, including `value_domain`; a Reviewed LHM is not an alternative input.
 
-| HMD `datatype` | Tavi `baseType` | 根拠 |
-| --- | --- | --- |
-| `Identifier` | `xs:string` | Part 1 5.4.4 の確認済みIdentifier binding |
-| `Code` | `xs:token` | Part 1 5.4.4 の確認済みCode binding |
-| `Text` | `xs:string` | Part 1 5.4.4 の確認済みText binding |
-| `Amount` | `xbrli:monetary` | Part 1のAmount monetary item binding、および旧 `Monetary` のTavi表現 |
+## Interface and types
 
-`BASE_TYPES` のこの4件以外にdatatype対応を追加・変更しない。未知のdatatypeは従来どおり明示エラーとする。`value_domain`の解決方法、EE1、その他のBinding規則を変更するものではない。4件の型対応はWeb版の改訂候補であり、今回の正式HMDによる生成およびArelleでの受入判定はCodex実行結果を要する。
+The command accepts `--hmd PATH`, `--output PATH`, `--version TEXT`, `--include-documentation` and optional `--documentation-target QName`. Specify a new output file: existing output files are not overwritten. The generator preserves HMD semantic paths, module identities, row order and available labels and documentation, and rejects unsupported datatypes or invalid roots.
 
-## 必要な入力
+The Tavi base-type mapping includes `Identifier` → `xs:string`, `Code` → `xs:token`, `Text` → `xs:string`, and `Amount` → `xbrli:monetary`, alongside the generator's other supported datatype mappings. Module namespaces follow `https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/{module}`.
 
-- 対象モデルの正式な **18列 HMD for taxonomy CSV** を1件ずつ指定する。Reviewed LHMや候補LHMを直接入力にしない。
-- HMDのrootおよび各moduleは承認済み上流定義と照合する。単一rootでない入力は受理しない。
-- Python 3.10以上・標準ライブラリ。出力ファイルが既に存在する場合、上書きせず停止する。
-
-## 実行例（リポジトリのルートで）
-
-以下はコマンドの形を示す例であり、`${HMD_COR}` 等は実在する受入済みHMD CSVへのパスに置換する。PowerShellの場合は環境に合った変数記法を用いる。正確なHMDパスとSHA-256はCodexが現行Candidateから記録する。
-
-```bash
-python -B tavi-poc/tools/hmd_to_tavi.py --hmd "$HMD_COR" --output "$TASK_OUTPUT/COR/taxonomy.json" --version 2026-10-26-candidate --include-documentation
-python -B tavi-poc/tools/hmd_to_tavi.py --hmd "$HMD_COR_JPN" --output "$TASK_OUTPUT/COR-JPN/taxonomy.json" --version 2026-10-26-candidate --include-documentation
-python -B tavi-poc/tools/hmd_to_tavi.py --hmd "$HMD_BTX" --output "$TASK_OUTPUT/BTX/taxonomy.json" --version 2026-10-26-candidate --include-documentation
-python -B tavi-poc/tools/hmd_to_tavi.py --hmd "$HMD_PINT" --output "$TASK_OUTPUT/PINT/taxonomy.json" --version 2026-10-26-candidate --include-documentation
-```
-
-生成器は`--output`で指定したパスの親ディレクトリを作成する。既存の成果物を上書きしない。
-
-## 非回帰・受入の扱い
-
-- 元スクリプトのCOR生成内容との一致を確認する。原版対応HMD・versionを指定した場合の既存受入JSONとの一致は、既存基準・適用authorityに従ってCodexが確認する。
-- 4モデルについて、生成されたTavi taxonomy JSONを既存のArelle OimTaxonomy環境で検証する。旧受入実績を今回の実行PASSとみなさない。
-- `verify_hmd_to_tavi.py` は旧401行の3セル変更とラベル数を固定した専用検証器であるため、4モデルの共通検証器として流用しない。既存ファイルは無変更とする。
-- 作業はWORK Candidateと検証・報告の範囲。Canonical登録・Official GIT反映・commit・pushは別の承認工程による。
-- スクリプト改訂後に追加の不適合が判明した場合、Codexはコードを独自改訂せず、実行条件・エラーメッセージ・対象を報告する。
-
-## 状態
-
-前候補ではCOR、COR-JPN、BTXの生成とArelle error 0／warning 0がCodexから報告された。BTX-PINTだけは `Unsupported datatype: Identifier` で停止したため、Web版が上表の4型に限って改訂した。改訂後候補のBTX-PINT生成・Arelle検証・第三者clone再現は未実施であり、正式受入前。
+For exact commands, input identities, validation scope and environment requirements, consult the [four-model reproduction guide](../../tavi-poc/README_REPRODUCE_4_MODELS.md). Its dated execution evidence must not be mistaken for a fresh-clone verification.

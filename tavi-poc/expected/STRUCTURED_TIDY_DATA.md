@@ -1,19 +1,7 @@
-# Expected Structured Tidy Data
+# Structured Tidy Data — example and display scope
 
-24 native facts reconstruct as two Header rows and four Detail rows: six Structured Tidy rows in total, with nine columns ordered by the Table Template.
+The Simple Tavi example uses [JSON report metadata](../instance/tavi-inst.json), a [CSV report](../instance/tavi-inst.csv) and the [minimal taxonomy](../taxonomy/tavi-tax.json). Open the JSON metadata in the documented patched Arelle environment.
 
-```csv
-dHeader,dDetail,entryNumber,entryDate,drCrIndicator,accountCode,accountName,amount,description
-1,,JE001,2026-10-10,,,,,
-1,1,,,Dr,100,Cash,1000,Receipt
-1,2,,,Cr,400,Sales,1000,Sale
-2,,JE002,2026-10-10,,,,,
-2,1,,,Dr,120,AccountsReceivable,2000,Invoice
-2,2,,,Cr,400,Sales,2000,Sale
-```
+The OimTaxonomy Structured Tidy Data presentation is a **transposed view reconstructed from loaded native facts**, with nine Item rows and six occurrence columns for the Simple example. Fact selection is linked to the native fact and its Properties, including dimensions, unit and decimals where applicable. This view is not a literal reformatting of the CSV and must not be interpreted as an independent source of facts.
 
-Header row identity is cube name + dHeader, using cor:entryHeaderCube. Detail row identity is cube name + dHeader + dDetail, using cor:entryDetailCube. Header and Detail share the same dHeader value.
-
-The view uses loaded native facts and their dimensions and concepts. It does not reread the source CSV, use fact IDs as row identity, or use tableId as semantic identity. It does not introduce headerRef, targetRef or concept-refDimension.
-
-An amount cell maps to its native XbrlFact. The amount facts retain JPY units and decimals=0; selecting the cell links the native fact to the Properties pane.
+The [static HTML demonstrations](../README.md#arelle-and-static-viewers) display Table Template and taxonomy JSON with a transposed CSV. Static HTML viewing is separate from native Arelle fact selection and from formal Tavi validation.
