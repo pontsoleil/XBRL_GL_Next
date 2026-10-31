@@ -2,9 +2,9 @@
 
 # 公開タクソノミ
 
-`taxonomy/`は、`semantic-model/HMD/`にあるモデル別の正式HMDを共通の意味的入力として、XBRL 2.1 Tuple、OIM、Taviの3種類のタクソノミを公開する領域です。各モデルに対応する3形式はそのモデルの正式HMDに基づきます。ただし、過去の各生成実行でHMDの同一ファイル版を使用したことまで、この案内だけで保証しません。共通ViewシートからTuple XML、OIM CSV＋JSONメタデータ、Tavi CSV＋JSONメタデータの3種類のインスタンスを生成する統一工程は、次の開発段階です。
+`taxonomy/`はモデル別の正式HMDに基づくTuple／OIMの独立タクソノミを収録します。Journal Entry Tavi議論用候補は`tavi-poc/`の別scopeです。共通Viewから3形式のインスタンスを生成する統一工程は今後の対象です。
 
-`tavi-poc/`は、Taviのタクソノミとインスタンスを独立に試作・評価する環境です。`taxonomy/`で使用する正式HMDや生成工程を共有するものではありません。Simple、Full v3、HMD View等の試作例は、`taxonomy/tavi/`の4モデルと同一の成果物ではありません。
+
 
 
 このディレクトリには、独立したXBRL 2.1 Tuple／OIMタクソノミと、実験的なTavi JSONタクソノミを収録しています。
@@ -19,13 +19,6 @@
 
 ## Tavi JSON
 
-[`tavi/`](tavi/)には、次の独立したtaxonomyを公開しています。
-
-- [COR](tavi/accounting-entries/taxonomy.json)
-- [COR-JPN](tavi/accounting-entries-jpn/taxonomy.json)
-- [BTX](tavi/business-transactions/taxonomy.json)
-- [BTX-PINT](tavi/business-transactions-pint/taxonomy.json)
-
-Tavi JSON taxonomyはXBRL 2.1のXSD entry pointでもインスタンス文書でもありません。生成器と入力については、[Tavi生成器の説明](../tools/tavi/README_Tavi_4models_datatypes_candidate_ja.md)と[再現ガイド（英語）](../tavi-poc/README_REPRODUCE_4_MODELS.md)を参照してください。
+Tavi PWD 2026-09-01を参照した議論用試作。正式適合性は未確認。 唯一のTavi公開対象は[Journal Entry JSON](../tavi-poc/taxonomy/Tavi_JournalEntries_SingleAccount_Date_r2_candidate.json)です。Table Templateを内包します。[静的Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html)は正式な適合性検証器ではありません。
 
 公開条件と出所については[第三者資料の注意事項](../THIRD_PARTY_NOTICES_ja.md)を参照してください。

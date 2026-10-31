@@ -13,6 +13,5 @@ The Framework defines requirements, while these scripts implement particular ste
 | `instance/instance_core.py` | Part 1 view concepts; Parts 2, 3 | Approved View CSV/workbook → scoped Tuple/OIM instances |
 | `instance/structured_oim.py` | Part 3 | Structured xBRL-CSV report serialization |
 | `instance/tuple_binding.py` | Parts 1, 2 | Structured CSV/HMD/overlay-based Tuple conversion, distinct from instance_core View path |
-| `tavi-poc/tools/hmd_to_tavi.py` | Part 1 input, experimental Tavi PoC | Formal HMD → Tavi JSON taxonomy; does not implement Specialisation, Graph Walk, instances or viewers |
 
-Run tools from an explicitly chosen project root and with accepted source version; use a new WORK output path. Details: [semantic model](../semantic-model/README.md), [Tavi reproduction](../tavi-poc/README_REPRODUCE_4_MODELS.md), [COR View1](instance/README_COR_VIEW1.md). Never apply old 401-row Tavi verifier universally to four-model HMDs.
+Run tools from an explicitly chosen project root and with accepted source version; use a new WORK output path. Details: [semantic model](../semantic-model/README.md), [Tavi discussion draft](../tavi-poc/README.md), [COR View1](instance/README_COR_VIEW1.md). Experimental discussion draft based on Tavi PWD 2026-09-01; formal conformance has not been established.

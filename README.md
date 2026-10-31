@@ -26,26 +26,25 @@ See [third-party notices](THIRD_PARTY_NOTICES.md) for attribution and licence bo
 
 ## Semantic processing
 
-Shared COR classes are specialised by the COR-JPN Aligned extension; Shared BTX classes are specialised by the BTX-PINT Aligned extension. These four HMD/taxonomy results remain independent. The processing sequence is **FSM → Specialisation / BSM → Graph Walk → Candidate LHM → human Reviewed LHM → Post-Graph Walk → formal HMD → taxonomy generation**. The Tavi generator reads formal HMD and does not implement upstream Specialisation or Graph Walk.
+Shared COR classes are specialised by the COR-JPN Aligned extension; Shared BTX classes are specialised by the BTX-PINT Aligned extension. These four HMD/taxonomy results remain independent. The processing sequence is **FSM → Specialisation / BSM → Graph Walk → Candidate LHM → human Reviewed LHM → Post-Graph Walk → formal HMD → taxonomy generation**. The Journal Entry Tavi discussion candidate is a separately scoped HMD view.
 
 See [semantic-model/README.md](semantic-model/README.md) for authority boundaries and [tools/README.md](tools/README.md) for implementations.
 
 ## Taxonomies and examples
 
-- [taxonomy/README.md](taxonomy/README.md) — separate Accounting Entries, Business Transactions and Journal Entries Tuple/OIM DTS trees, plus the four-model Tavi acceptance candidates (publication status must be checked).
+- [taxonomy/README.md](taxonomy/README.md) — separate Accounting Entries, Business Transactions and Journal Entries Tuple/OIM DTS trees, and the separately scoped Journal Entry Tavi discussion draft.
 - [ids/README.md](ids/README.md) — **`ids` stands for XBRL Instance Documents**, not identifier definitions. `ids/tuple/` contains XBRL 2.1 XML sample instances; `ids/oim/` contains xBRL-CSV reports with corresponding JSON metadata. **The JSON metadata is the report entry point**, and the data CSV and metadata are a pair.
-- [tavi-poc/README.md](tavi-poc/README.md) — existing Simple and HMD View demos and experimental Tavi taxonomy work. These are distinct from the four current taxonomy-only candidates.
+- [tavi-poc/README.md](tavi-poc/README.md) — the Journal Entry PWD discussion taxonomy and its static viewer. Experimental discussion draft based on Tavi PWD 2026-09-01; formal conformance has not been established.
 
 ## Reproduce and validate
 
 - [tools/README.md](tools/README.md) — scripts, applicable Framework parts and actual input/output contracts.
 - [tests/README.md](tests/README.md) — existing tests, how to identify dependencies and why historical acceptance must not be assumed to be a current test PASS.
-- [Tavi four-model reproduction](tavi-poc/README_REPRODUCE_4_MODELS.md) — Python, Arelle patches, exact generation commands, expected SHA and platform-EOL limitations.
 - [definitions/README.md](definitions/README.md) — code lists, datatype and overlay definitions (only when the consuming tool explicitly reads them).
 
 ## Publication status and evidence
 
-At the snapshot examined for this documentation candidate (GitHub main `6bc592a227193f1b0a2463604bee6ffe50b3fe8c`), the final four-model Tavi generator, corresponding four HMDs and four JSON taxonomies are **not** a complete published clone-reproducible set. WORK acceptance PASS is distinct from third-party clean-clone execution and GitHub publication. Historical audit/Codex task evidence is preserved in WORK; published validation manifests that are dependencies must be evaluated individually rather than removed solely because they are evidence-like.
+Experimental discussion draft based on Tavi PWD 2026-09-01; formal conformance has not been established. The only published Tavi taxonomy is the [Journal Entry JSON](tavi-poc/taxonomy/Tavi_JournalEntries_SingleAccount_Date_r2_candidate.json), with its Table Template embedded. The [Journal Entry viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html) is a static display, not a conformance validator. Earlier Tavi models, report metadata and Arelle patches are withdrawn; originals and historical evidence remain in WORK.
 
 [Third-party notices](THIRD_PARTY_NOTICES.md)
 
@@ -53,12 +52,12 @@ At the snapshot examined for this documentation candidate (GitHub main `6bc592a2
 
 The existing generator has this documented interface (a description, not evidence of a new run):
 
-```text
+``text
 python tools/taxonomy/xBRLGL_TaxonomyGenerator.py \
   --hmd-dir <HMD_DIRECTORY> \
   --output-dir <TAXONOMY_OUTPUT_DIRECTORY> \
   --namespace <NAMESPACE>
-```
+``
 
 The required namespace anchor may be `https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt`. The positional HMD input and `-b`/`--base-dir` are retained for compatibility in the verified older contract.
 

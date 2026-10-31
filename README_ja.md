@@ -18,30 +18,30 @@ XBRL GL Nextは、共通意味モデル（COR／BTX／AAAという絵具箱）�
 
 [Taxonomy Framework](TaxonomyFramework/README.md)（現状維持）を参照してください。Part 1は共通意味モデルとHMD、Part 2はTuple、Part 3はOIM、Part 4はAligned extensionを扱います。CORとBTXはShared、COR-JPNはCORクラスのSpecialisation、BTX-PINTはBTXクラスのSpecialisationによるAligned extensionです。
 
-**FSM → Specialisation／BSM → Graph Walk → Candidate LHM → Reviewed LHM → Post-Graph Walk → Formal HMD → Taxonomy**。Tavi生成器はFormal HMDから先を担当します。
+**FSM → Specialisation／BSM → Graph Walk → Candidate LHM → Reviewed LHM → Post-Graph Walk → Formal HMD → Taxonomy**。Journal Entry Tavi議論用候補は独立したHMD Viewを対象とします。
 
 ## ディレクトリ案内
 
 - [semantic-model/](semantic-model/README.md)：FSM、BSM、Reviewed LHM、HMDと意味モデルのauthority
 - [taxonomy/](taxonomy/README.md)：Tuple／OIMの独立DTSとTavi候補
 - [ids/](ids/README.md)：**Instance Documents（インスタンス文書）**の略。識別子のディレクトリではありません。`ids/tuple/`はXML、`ids/oim/`はCSVとJSONメタデータの組で、JSONがレポートの入口です。
-- [tavi-poc/](tavi-poc/README.md)：Simple／HMD Viewなど既存PoCと新しい4モデルの区別
+- [tavi-poc/](tavi-poc/README.md)：Journal Entry PWD議論用JSONと静的Viewer
 - [tools/](tools/README.md)：各スクリプトとFramework Partとの関係
 - [tests/](tests/README.md)：第三者による既存テストの再現ガイド
 - [definitions/](definitions/README.md)：datatype等の参照定義
 
 ## 再現性と公開状態
 
-[Tavi 4モデルの再現ガイド](tavi-poc/README_REPRODUCE_4_MODELS.md)を参照してください。2026年10月26日のWORK受入PASSは、公開GitHubのcloneだけで再現可能であることを意味しません。内部Codex証跡はWORKに保全します。公開の必要があるmanifestや依存資料は個別に判断します。
+Tavi PWD 2026-09-01を参照した議論用試作。正式適合性は未確認。 公開するTaviタクソノミは[Journal Entry JSON](tavi-poc/taxonomy/Tavi_JournalEntries_SingleAccount_Date_r2_candidate.json)1件で、Table Templateを内包します。[Journal Entry Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html)は静的表示例です。旧モデル・旧メタデータ・パッチの原本と証跡はWORKで保全します。
 
 ## Tuple／OIM生成CLI（既存実装）
 
-```text
+``text
 python tools/taxonomy/xBRLGL_TaxonomyGenerator.py \
   --hmd-dir <HMD_DIRECTORY> \
   --output-dir <TAXONOMY_OUTPUT_DIRECTORY> \
   --namespace <NAMESPACE>
-```
+``
 
 `--namespace` は名前空間anchor（例 `https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt`）です。既存の位置引数および `-b`／`--base-dir` は後方互換の範囲で説明されています。
 

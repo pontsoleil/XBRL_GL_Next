@@ -6,6 +6,5 @@
 - Part 1／4：`semantic/specialisation.py` はSharedクラスのAligned extensionへのSpecialisation、Part 1の`graphwalk.py`はBSM→Candidate LHM、`post_graphwalk.py`はReviewed LHM→Formal HMD。
 - Part 1／2／3：`taxonomy/xBRLGL_TaxonomyGenerator.py` はHMDからTuple／OIM DTSを生成。`datatype_binding.py`等は対応するBindingを実装。
 - Part 2／3：`instance/instance_core.py`と`structured_oim.py`は受入済みView等に基づくインスタンス処理（対応範囲は各仕様で確認）。
-- Tavi PoC：`tavi-poc/tools/hmd_to_tavi.py` はFormal HMDからJSONタクソノミを生成。上流のSpecialisation／Graph Walkやインスタンスは生成しません。
 
-[英語版の一覧表](README.md)と[4モデル再現ガイド](../tavi-poc/README_REPRODUCE_4_MODELS.md)を参照してください。
+[英語版の一覧表](README.md)と[Journal Entry議論用候補](../tavi-poc/README_ja.md)を参照してください。旧4モデル生成器は公開から撤回しました。
