@@ -6,8 +6,11 @@ Experimental discussion draft based on Tavi PWD 2026-09-01; formal conformance h
 
 ## Published scope
 
-- [Journal Entry JSON](taxonomy/Tavi_JournalEntries_SingleAccount_Date_r2_candidate.json): the sole Tavi taxonomy, including its Table Template in `xbrlModel.tableTemplates`.
-- [Journal Entry viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html): the existing UI, tabs and nine-column CSV transpose, with the discussion-candidate sources in its source tabs.
+This three-cube Journal Entry PoC precedes any formal semantic-model revision. The reused filename `tavi-tax.json` identifies this new PoC, not the withdrawn Simple taxonomy.
+
+- [Journal Entry JSON](taxonomy/tavi-tax.json): the sole Tavi taxonomy, including its Table Template in `xbrlModel.tableTemplates`.
+- [Structured Tidy Data CSV](instance/tavi-ins.csv): 18 columns and seven occurrence records.
+- [Journal Entry viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html): the existing UI, tabs and 18-column, seven-record CSV transpose, with the discussion-candidate sources in its source tabs.
 
 The Simple, Full v3 and four-model taxonomies, Arelle patches and old-specification report metadata are withdrawn. Originals and historical evidence remain in WORK. Shared CSV data is retained; a standalone CSV is neither a complete xBRL-CSV report nor a verified PWD instance.
 

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'none'; connect-src 'none'">
-<title>Tavi Structured Tidy Data · tavi-inst-hmd-view.json</title><style>
+<title>Tavi Structured Tidy Data · tavi-ins.csv</title><style>
 :root { color-scheme: dark; --bg:#101419; --panel:#1a2028; --edge:#343d48; --muted:#aab7c6; --text:#eef2f6; --accent:#a9c7e8; }
 * { box-sizing:border-box; }
 html,body { height:100%; margin:0; }
@@ -38,70 +38,122 @@ tbody td { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; bac
 tbody tr:nth-child(even) td { background:#202933; }
 .footer { color:var(--muted); font-size:11px; }
 </style></head>
-<body><main class="app"><header class="top"><div><div class="eyebrow">Tavi instance viewer · Phase 1</div><h1>Structured Tidy Data</h1></div><div class="file">Journal Entry · PWD discussion draft</div></header>
+<body><main class="app"><header class="top"><div><div class="eyebrow">Tavi instance viewer · Phase 1</div><h1>Structured Tidy Data</h1></div><div class="file">Journal Entry · 3-Cube PoC · 18 fields / 7 records</div></header>
 <div class="panes"><aside class="pane" aria-labelledby="properties-heading"><div class="pane-head"><h2 id="properties-heading">Properties</h2><div class="subtitle">Experimental discussion draft based on Tavi PWD 2026-09-01; formal conformance has not been established.</div></div>
 <input class="tab-choice" id="tab-template" type="radio" name="source-tab" aria-label="Table Template" checked>
 <input class="tab-choice" id="tab-taxonomy" type="radio" name="source-tab" aria-label="Tavi Taxonomy">
 <div class="tabs"><label for="tab-template">Table Template</label><label for="tab-taxonomy">Tavi Taxonomy</label></div>
-<div class="source-panels"><div class="scroll tab-panel template-panel"><section class="source-block"><div class="source-label">/xbrlModel/tableTemplates/0</div><pre data-template-source="/xbrlModel/tableTemplates/0">{
-  &quot;name&quot;: &quot;view:journalEntriesSingleAccountDateR2Template&quot;,
-  &quot;columns&quot;: [
-    {
-      &quot;columnName&quot;: &quot;dHeader&quot;
-    },
-    {
-      &quot;columnName&quot;: &quot;dDetail&quot;
-    },
-    {
-      &quot;columnName&quot;: &quot;entryNumber&quot;,
-      &quot;factDimensions&quot;: {
-        &quot;xbrl:concept&quot;: &quot;cor:entryId&quot;
-      }
-    },
-    {
-      &quot;columnName&quot;: &quot;entryDate&quot;,
-      &quot;factDimensions&quot;: {
-        &quot;xbrl:concept&quot;: &quot;cor:headerEntryDate&quot;
-      }
-    },
-    {
-      &quot;columnName&quot;: &quot;drCrIndicator&quot;,
-      &quot;factDimensions&quot;: {
-        &quot;xbrl:concept&quot;: &quot;cor:debitCreditIndicator&quot;
-      }
-    },
-    {
-      &quot;columnName&quot;: &quot;accountCode&quot;,
-      &quot;factDimensions&quot;: {
-        &quot;xbrl:concept&quot;: &quot;cor:accountNumber&quot;
-      }
-    },
-    {
-      &quot;columnName&quot;: &quot;accountName&quot;,
-      &quot;factDimensions&quot;: {
-        &quot;xbrl:concept&quot;: &quot;cor:accountDescription&quot;
-      }
-    },
-    {
-      &quot;columnName&quot;: &quot;amount&quot;,
-      &quot;factDimensions&quot;: {
-        &quot;xbrl:concept&quot;: &quot;cor:monetaryAmount&quot;
-      },
-      &quot;decimals&quot;: 0
-    },
-    {
-      &quot;columnName&quot;: &quot;description&quot;,
-      &quot;factDimensions&quot;: {
-        &quot;xbrl:concept&quot;: &quot;cor:entryDetailDescription&quot;
-      }
-    }
-  ],
-  &quot;factDimensions&quot;: {
-    &quot;plt:d_cor_entryHeader&quot;: &quot;$dHeader&quot;,
-    &quot;plt:d_cor_entryDetail&quot;: &quot;$dDetail&quot;
-  }
-}</pre></section></div>
-<div class="scroll tab-panel taxonomy-panel"><section class="source-block"><div class="source-label">Tavi_JournalEntries_SingleAccount_Date_r2_candidate.json</div><pre data-source-kind="taxonomy">{
+<div class="source-panels"><div class="scroll tab-panel template-panel"><section class="source-block"><div class="source-label">/xbrlModel/tableTemplates/0<br>Source: tavi-poc/taxonomy/tavi-tax.json<br>SHA-256: 0d9b9910399bcd3a91f03a20eaa9dc2524b3db9cc562155a58822a4346c22f7d</div><pre data-template-source="/xbrlModel/tableTemplates/0">{
+        &quot;name&quot;: &quot;view:accountingEntriesJournalPoC18Columns&quot;,
+        &quot;columns&quot;: [
+          {
+            &quot;columnName&quot;: &quot;dAccountingEntries&quot;
+          },
+          {
+            &quot;columnName&quot;: &quot;dEntryHeader&quot;
+          },
+          {
+            &quot;columnName&quot;: &quot;dEntryDetail&quot;
+          },
+          {
+            &quot;columnName&quot;: &quot;documentInformationDocumentType&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:documentInformationDocumentType&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;auditNumber&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:auditNumber&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;defaultCurrency&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:defaultCurrency&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;periodCoveredStart&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:periodCoveredStart&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;periodCoveredEnd&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:periodCoveredEnd&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;periodType&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:periodType&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;entityPartyId&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:entityPartyId&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;entityPartyName&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:entityPartyName&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;entryNumber&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:entryId&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;entryDate&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:headerEntryDate&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;drCrIndicator&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:debitCreditIndicator&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;accountCode&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:accountNumber&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;accountName&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:accountDescription&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;amount&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:monetaryAmount&quot;
+            },
+            &quot;decimals&quot;: 0
+          },
+          {
+            &quot;columnName&quot;: &quot;description&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:entryDetailDescription&quot;
+            }
+          }
+        ],
+        &quot;factDimensions&quot;: {
+          &quot;plt:dAccountingEntries&quot;: &quot;$dAccountingEntries&quot;,
+          &quot;plt:dEntryHeader&quot;: &quot;$dEntryHeader&quot;,
+          &quot;plt:dEntryDetail&quot;: &quot;$dEntryDetail&quot;
+        }
+      }</pre></section></div>
+<div class="scroll tab-panel taxonomy-panel"><section class="source-block"><div class="source-label">tavi-poc/taxonomy/tavi-tax.json<br>SHA-256: 0d9b9910399bcd3a91f03a20eaa9dc2524b3db9cc562155a58822a4346c22f7d</div><pre data-source-kind="taxonomy">{
   &quot;documentInfo&quot;: {
     &quot;documentType&quot;: &quot;https://xbrl.org/PWD/2026-09-01/compiled&quot;,
     &quot;namespaces&quot;: {
@@ -117,13 +169,14 @@ tbody tr:nth-child(even) td { background:#202933; }
       &quot;xs&quot;: &quot;https://www.w3.org/2001/XMLSchema&quot;,
       &quot;view&quot;: &quot;https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/view/journal-entries-single-account&quot;,
       &quot;xbrlr&quot;: &quot;https://xbrl.org/PWD/2026-09-01/report&quot;,
-      &quot;iso4217&quot;: &quot;http://www.xbrl.org/2003/iso4217&quot;
+      &quot;iso4217&quot;: &quot;http://www.xbrl.org/2003/iso4217&quot;,
+      &quot;ent&quot;: &quot;http://example.com&quot;
     }
   },
   &quot;xbrlModel&quot;: {
-    &quot;name&quot;: &quot;view:journalEntriesSingleAccountTaxonomy&quot;,
-    &quot;frameworkName&quot;: &quot;XBRL GL Next — standalone restricted HMD view&quot;,
-    &quot;version&quot;: &quot;2026-10-12-single-account-Date-r2-candidate&quot;,
+    &quot;name&quot;: &quot;view:accountingEntriesJournalPoC&quot;,
+    &quot;frameworkName&quot;: &quot;XBRL GL Next — isolated Tavi PWD 2026-09-01 Journal Entry PoC (candidate)&quot;,
+    &quot;version&quot;: &quot;2026-11-01-18-column-three-level-candidate&quot;,
     &quot;dataTypes&quot;: [
       {
         &quot;name&quot;: &quot;cor:headerEntryDateItemType&quot;,
@@ -158,85 +211,199 @@ tbody tr:nth-child(even) td { background:#202933; }
       {
         &quot;name&quot;: &quot;cor:p_cor_accountingEntries&quot;,
         &quot;dataType&quot;: &quot;xs:string&quot;,
-        &quot;periodType&quot;: &quot;instant&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
         &quot;nillable&quot;: true
       },
       {
         &quot;name&quot;: &quot;cor:p_cor_entryHeader&quot;,
         &quot;dataType&quot;: &quot;xs:string&quot;,
-        &quot;periodType&quot;: &quot;instant&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
         &quot;nillable&quot;: true
       },
       {
         &quot;name&quot;: &quot;cor:headerEntryDate&quot;,
         &quot;dataType&quot;: &quot;cor:headerEntryDateItemType&quot;,
-        &quot;periodType&quot;: &quot;instant&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
         &quot;nillable&quot;: true
       },
       {
         &quot;name&quot;: &quot;cor:entryId&quot;,
         &quot;dataType&quot;: &quot;cor:entryIdItemType&quot;,
-        &quot;periodType&quot;: &quot;instant&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
         &quot;nillable&quot;: true
       },
       {
         &quot;name&quot;: &quot;cor:p_cor_entryDetail&quot;,
         &quot;dataType&quot;: &quot;xs:string&quot;,
-        &quot;periodType&quot;: &quot;instant&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
         &quot;nillable&quot;: true
       },
       {
         &quot;name&quot;: &quot;cor:entryDetailDescription&quot;,
         &quot;dataType&quot;: &quot;cor:entryDetailDescriptionItemType&quot;,
-        &quot;periodType&quot;: &quot;instant&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
         &quot;nillable&quot;: true
       },
       {
         &quot;name&quot;: &quot;cor:accountNumber&quot;,
         &quot;dataType&quot;: &quot;cor:accountNumberItemType&quot;,
-        &quot;periodType&quot;: &quot;instant&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
         &quot;nillable&quot;: true
       },
       {
         &quot;name&quot;: &quot;cor:accountDescription&quot;,
         &quot;dataType&quot;: &quot;cor:accountDescriptionItemType&quot;,
-        &quot;periodType&quot;: &quot;instant&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
         &quot;nillable&quot;: true
       },
       {
         &quot;name&quot;: &quot;cor:monetaryAmount&quot;,
         &quot;dataType&quot;: &quot;cor:monetaryAmountItemType&quot;,
-        &quot;periodType&quot;: &quot;instant&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
         &quot;nillable&quot;: true
       },
       {
         &quot;name&quot;: &quot;cor:debitCreditIndicator&quot;,
         &quot;dataType&quot;: &quot;cor:debitCreditIndicatorItemType&quot;,
-        &quot;periodType&quot;: &quot;instant&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
+        &quot;nillable&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;cor:documentInformationDocumentType&quot;,
+        &quot;dataType&quot;: &quot;xs:token&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
+        &quot;nillable&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;cor:auditNumber&quot;,
+        &quot;dataType&quot;: &quot;xs:string&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
+        &quot;nillable&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;cor:defaultCurrency&quot;,
+        &quot;dataType&quot;: &quot;xs:QName&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
+        &quot;nillable&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;cor:periodCoveredStart&quot;,
+        &quot;dataType&quot;: &quot;xs:date&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
+        &quot;nillable&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;cor:periodCoveredEnd&quot;,
+        &quot;dataType&quot;: &quot;xs:date&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
+        &quot;nillable&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;cor:periodType&quot;,
+        &quot;dataType&quot;: &quot;xs:token&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
+        &quot;nillable&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;cor:entityPartyId&quot;,
+        &quot;dataType&quot;: &quot;xs:string&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
+        &quot;nillable&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;cor:entityPartyName&quot;,
+        &quot;dataType&quot;: &quot;xs:string&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
+        &quot;nillable&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;cor:p_cor_documentInformation&quot;,
+        &quot;dataType&quot;: &quot;xs:string&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
+        &quot;nillable&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;cor:p_cor_entityParty&quot;,
+        &quot;dataType&quot;: &quot;xs:string&quot;,
+        &quot;periodType&quot;: &quot;duration&quot;,
         &quot;nillable&quot;: true
       }
     ],
     &quot;domainClasses&quot;: [
       {
-        &quot;name&quot;: &quot;plt:d_cor_entryHeaderDomainClass&quot;,
-        &quot;allowedDomainItem&quot;: &quot;xs:string&quot;
+        &quot;name&quot;: &quot;plt:dEntryHeaderDomainClass&quot;,
+        &quot;allowedDomainItem&quot;: &quot;xs:integer&quot;
       },
       {
-        &quot;name&quot;: &quot;plt:d_cor_entryDetailDomainClass&quot;,
-        &quot;allowedDomainItem&quot;: &quot;xs:string&quot;
+        &quot;name&quot;: &quot;plt:dEntryDetailDomainClass&quot;,
+        &quot;allowedDomainItem&quot;: &quot;xs:integer&quot;
+      },
+      {
+        &quot;name&quot;: &quot;plt:dAccountingEntriesDomainClass&quot;,
+        &quot;allowedDomainItem&quot;: &quot;xs:integer&quot;
       }
     ],
     &quot;dimensions&quot;: [
       {
-        &quot;name&quot;: &quot;plt:d_cor_entryHeader&quot;,
-        &quot;domainClass&quot;: &quot;plt:d_cor_entryHeaderDomainClass&quot;
+        &quot;name&quot;: &quot;plt:dAccountingEntries&quot;,
+        &quot;domainClass&quot;: &quot;plt:dAccountingEntriesDomainClass&quot;
       },
       {
-        &quot;name&quot;: &quot;plt:d_cor_entryDetail&quot;,
-        &quot;domainClass&quot;: &quot;plt:d_cor_entryDetailDomainClass&quot;
+        &quot;name&quot;: &quot;plt:dEntryHeader&quot;,
+        &quot;domainClass&quot;: &quot;plt:dEntryHeaderDomainClass&quot;
+      },
+      {
+        &quot;name&quot;: &quot;plt:dEntryDetail&quot;,
+        &quot;domainClass&quot;: &quot;plt:dEntryDetailDomainClass&quot;
       }
     ],
     &quot;domainNetworks&quot;: [
+      {
+        &quot;name&quot;: &quot;view:domain_cor_accountingEntries&quot;,
+        &quot;root&quot;: &quot;xbrl:conceptDomain&quot;,
+        &quot;relationships&quot;: [
+          {
+            &quot;source&quot;: &quot;xbrl:conceptDomain&quot;,
+            &quot;target&quot;: &quot;cor:documentInformationDocumentType&quot;,
+            &quot;order&quot;: 1
+          },
+          {
+            &quot;source&quot;: &quot;xbrl:conceptDomain&quot;,
+            &quot;target&quot;: &quot;cor:auditNumber&quot;,
+            &quot;order&quot;: 2
+          },
+          {
+            &quot;source&quot;: &quot;xbrl:conceptDomain&quot;,
+            &quot;target&quot;: &quot;cor:defaultCurrency&quot;,
+            &quot;order&quot;: 3
+          },
+          {
+            &quot;source&quot;: &quot;xbrl:conceptDomain&quot;,
+            &quot;target&quot;: &quot;cor:periodCoveredStart&quot;,
+            &quot;order&quot;: 4
+          },
+          {
+            &quot;source&quot;: &quot;xbrl:conceptDomain&quot;,
+            &quot;target&quot;: &quot;cor:periodCoveredEnd&quot;,
+            &quot;order&quot;: 5
+          },
+          {
+            &quot;source&quot;: &quot;xbrl:conceptDomain&quot;,
+            &quot;target&quot;: &quot;cor:periodType&quot;,
+            &quot;order&quot;: 6
+          },
+          {
+            &quot;source&quot;: &quot;xbrl:conceptDomain&quot;,
+            &quot;target&quot;: &quot;cor:entityPartyId&quot;,
+            &quot;order&quot;: 7
+          },
+          {
+            &quot;source&quot;: &quot;xbrl:conceptDomain&quot;,
+            &quot;target&quot;: &quot;cor:entityPartyName&quot;,
+            &quot;order&quot;: 8
+          }
+        ]
+      },
       {
         &quot;name&quot;: &quot;view:domain_cor_entryHeader&quot;,
         &quot;root&quot;: &quot;xbrl:conceptDomain&quot;,
@@ -287,6 +454,35 @@ tbody tr:nth-child(even) td { background:#202933; }
     ],
     &quot;cubes&quot;: [
       {
+        &quot;name&quot;: &quot;view:h_cor_accountingEntries&quot;,
+        &quot;cubeDimensions&quot;: [
+          {
+            &quot;dimension&quot;: &quot;xbrl:concept&quot;,
+            &quot;domainNetwork&quot;: &quot;view:domain_cor_accountingEntries&quot;
+          },
+          {
+            &quot;dimension&quot;: &quot;plt:dAccountingEntries&quot;,
+            &quot;domainDataType&quot;: &quot;xs:integer&quot;,
+            &quot;typedSort&quot;: &quot;asc&quot;,
+            &quot;optional&quot;: false
+          },
+          {
+            &quot;dimension&quot;: &quot;xbrl:period&quot;,
+            &quot;optional&quot;: false
+          },
+          {
+            &quot;dimension&quot;: &quot;xbrl:entity&quot;
+          },
+          {
+            &quot;dimension&quot;: &quot;xbrl:unit&quot;,
+            &quot;optional&quot;: true
+          }
+        ],
+        &quot;cubeNetworks&quot;: [
+          &quot;view:journalEntriesHierarchy&quot;
+        ]
+      },
+      {
         &quot;name&quot;: &quot;view:h_cor_entryHeader&quot;,
         &quot;cubeDimensions&quot;: [
           {
@@ -294,13 +490,20 @@ tbody tr:nth-child(even) td { background:#202933; }
             &quot;domainNetwork&quot;: &quot;view:domain_cor_entryHeader&quot;
           },
           {
-            &quot;dimension&quot;: &quot;plt:d_cor_entryHeader&quot;,
-            &quot;domainDataType&quot;: &quot;xs:string&quot;,
+            &quot;dimension&quot;: &quot;plt:dAccountingEntries&quot;,
+            &quot;domainDataType&quot;: &quot;xs:integer&quot;,
             &quot;typedSort&quot;: &quot;asc&quot;,
             &quot;optional&quot;: false
           },
           {
-            &quot;dimension&quot;: &quot;xbrl:period&quot;
+            &quot;dimension&quot;: &quot;plt:dEntryHeader&quot;,
+            &quot;domainDataType&quot;: &quot;xs:integer&quot;,
+            &quot;typedSort&quot;: &quot;asc&quot;,
+            &quot;optional&quot;: false
+          },
+          {
+            &quot;dimension&quot;: &quot;xbrl:period&quot;,
+            &quot;optional&quot;: false
           },
           {
             &quot;dimension&quot;: &quot;xbrl:entity&quot;
@@ -322,19 +525,26 @@ tbody tr:nth-child(even) td { background:#202933; }
             &quot;domainNetwork&quot;: &quot;view:domain_cor_entryDetail&quot;
           },
           {
-            &quot;dimension&quot;: &quot;plt:d_cor_entryHeader&quot;,
-            &quot;domainDataType&quot;: &quot;xs:string&quot;,
+            &quot;dimension&quot;: &quot;plt:dAccountingEntries&quot;,
+            &quot;domainDataType&quot;: &quot;xs:integer&quot;,
             &quot;typedSort&quot;: &quot;asc&quot;,
             &quot;optional&quot;: false
           },
           {
-            &quot;dimension&quot;: &quot;plt:d_cor_entryDetail&quot;,
-            &quot;domainDataType&quot;: &quot;xs:string&quot;,
+            &quot;dimension&quot;: &quot;plt:dEntryHeader&quot;,
+            &quot;domainDataType&quot;: &quot;xs:integer&quot;,
             &quot;typedSort&quot;: &quot;asc&quot;,
             &quot;optional&quot;: false
           },
           {
-            &quot;dimension&quot;: &quot;xbrl:period&quot;
+            &quot;dimension&quot;: &quot;plt:dEntryDetail&quot;,
+            &quot;domainDataType&quot;: &quot;xs:integer&quot;,
+            &quot;typedSort&quot;: &quot;asc&quot;,
+            &quot;optional&quot;: false
+          },
+          {
+            &quot;dimension&quot;: &quot;xbrl:period&quot;,
+            &quot;optional&quot;: false
           },
           {
             &quot;dimension&quot;: &quot;xbrl:entity&quot;
@@ -361,8 +571,18 @@ tbody tr:nth-child(even) td { background:#202933; }
           },
           {
             &quot;source&quot;: &quot;cor:p_cor_accountingEntries&quot;,
-            &quot;target&quot;: &quot;cor:p_cor_entryHeader&quot;,
+            &quot;target&quot;: &quot;cor:p_cor_documentInformation&quot;,
             &quot;order&quot;: 1
+          },
+          {
+            &quot;source&quot;: &quot;cor:p_cor_accountingEntries&quot;,
+            &quot;target&quot;: &quot;cor:p_cor_entityParty&quot;,
+            &quot;order&quot;: 2
+          },
+          {
+            &quot;source&quot;: &quot;cor:p_cor_accountingEntries&quot;,
+            &quot;target&quot;: &quot;cor:p_cor_entryHeader&quot;,
+            &quot;order&quot;: 3
           },
           {
             &quot;source&quot;: &quot;cor:p_cor_entryHeader&quot;,
@@ -403,6 +623,46 @@ tbody tr:nth-child(even) td { background:#202933; }
             &quot;source&quot;: &quot;cor:p_cor_entryDetail&quot;,
             &quot;target&quot;: &quot;cor:debitCreditIndicator&quot;,
             &quot;order&quot;: 5
+          },
+          {
+            &quot;source&quot;: &quot;cor:p_cor_documentInformation&quot;,
+            &quot;target&quot;: &quot;cor:documentInformationDocumentType&quot;,
+            &quot;order&quot;: 1
+          },
+          {
+            &quot;source&quot;: &quot;cor:p_cor_documentInformation&quot;,
+            &quot;target&quot;: &quot;cor:auditNumber&quot;,
+            &quot;order&quot;: 2
+          },
+          {
+            &quot;source&quot;: &quot;cor:p_cor_documentInformation&quot;,
+            &quot;target&quot;: &quot;cor:defaultCurrency&quot;,
+            &quot;order&quot;: 3
+          },
+          {
+            &quot;source&quot;: &quot;cor:p_cor_documentInformation&quot;,
+            &quot;target&quot;: &quot;cor:periodCoveredStart&quot;,
+            &quot;order&quot;: 4
+          },
+          {
+            &quot;source&quot;: &quot;cor:p_cor_documentInformation&quot;,
+            &quot;target&quot;: &quot;cor:periodCoveredEnd&quot;,
+            &quot;order&quot;: 5
+          },
+          {
+            &quot;source&quot;: &quot;cor:p_cor_documentInformation&quot;,
+            &quot;target&quot;: &quot;cor:periodType&quot;,
+            &quot;order&quot;: 6
+          },
+          {
+            &quot;source&quot;: &quot;cor:p_cor_entityParty&quot;,
+            &quot;target&quot;: &quot;cor:entityPartyId&quot;,
+            &quot;order&quot;: 1
+          },
+          {
+            &quot;source&quot;: &quot;cor:p_cor_entityParty&quot;,
+            &quot;target&quot;: &quot;cor:entityPartyName&quot;,
+            &quot;order&quot;: 2
           }
         ]
       }
@@ -527,137 +787,68 @@ tbody tr:nth-child(even) td { background:#202933; }
         &quot;labelType&quot;: &quot;xbrl:label&quot;,
         &quot;language&quot;: &quot;ja&quot;,
         &quot;value&quot;: &quot;貸借区分コード&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:p_cor_accountingEntries&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;en&quot;,
-        &quot;value&quot;: &quot;Root for XBRL GL. No entry made here.&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:p_cor_accountingEntries&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;ja&quot;,
-        &quot;value&quot;: &quot;XBRL GLのルート要素。 この要素にはデータは登録されない。&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:p_cor_entryHeader&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;en&quot;,
-        &quot;value&quot;: &quot;Parent for entry headers/journal entry headers.&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:p_cor_entryHeader&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;ja&quot;,
-        &quot;value&quot;: &quot;エントリヘッダー/仕訳記入ヘッダーの親タグ。&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:headerEntryDate&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;en&quot;,
-        &quot;value&quot;: &quot;The accounting date on which the journal entry as a whole is recognised in the accounting records. This date applies to all detail lines within the entry.&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:headerEntryDate&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;ja&quot;,
-        &quot;value&quot;: &quot;仕訳全体を会計帳簿上認識する会計日付。仕訳内のすべての明細行に適用する。&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:entryId&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;en&quot;,
-        &quot;value&quot;: &quot;Identifier within source journal&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:entryId&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;ja&quot;,
-        &quot;value&quot;: &quot;元仕訳帳中の識別子。&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:p_cor_entryDetail&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;en&quot;,
-        &quot;value&quot;: &quot;Parent for entry detail&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:p_cor_entryDetail&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;ja&quot;,
-        &quot;value&quot;: &quot;仕訳明細の親タグ。&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:entryDetailDescription&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;en&quot;,
-        &quot;value&quot;: &quot;Description of this line of detail only&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:entryDetailDescription&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;ja&quot;,
-        &quot;value&quot;: &quot;この明細行のみに対する説明。&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:accountNumber&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;en&quot;,
-        &quot;value&quot;: &quot;Main account - the code used to identify the accounting bucket the entry has been assigned to. Examples might be 1000 for Cash, 567GAAZ for Sales Expense or Z for tax payments. Identifiers such as department, branch, division, manager, or other modifiers are noted in the Subaccount area. Before needing to post, account is not necessary. Posting to the general ledger almost always requires an entry here.&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:accountNumber&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;ja&quot;,
-        &quot;value&quot;: &quot;主勘定科目。仕訳が関連する会計バケットを特定するためのコード。例えば、現金を表す1000、販売費を表す567GAAZ、税を表すZ。_x005F_x000D_\n部門、支店、事業部、マネージャ、その他の識別子は、Subaccount領域に記述される。転記の必要がなければ、勘定科目は必要ではない。総勘定元帳に転記するにはほとんどの場合必要。&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:accountDescription&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;en&quot;,
-        &quot;value&quot;: &quot;Description of accountMainID - the human readable describer that accompanies the code used in accountMainID&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:accountDescription&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;ja&quot;,
-        &quot;value&quot;: &quot;主勘定科目コードの説明。主勘定科目コードとして使用されるコードについての、人が読める記述。&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:monetaryAmount&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;en&quot;,
-        &quot;value&quot;: &quot;This field (amount) represents the primary monetary amount related to the  subject of the entryDetail line. There is one primary monetary amount per entryDetail class. It may, for example, represent the amount of one line of a journal entry, the balance on a document, or the extended amount of a line item on an invoice. Amount is not required if detailed entry is used for non-financial work and other elements are populated, in particular measurableQuantity. The amount field is a signed number (either positive or negative itself) and used in conjunction with a separate signOfAmount and a separate debitCreditCode, which together are considered for understanding the monetary amount. The unit of measure is determined by amountCurrency if present, and by the default or home currency if amountCurrency is not present.&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:monetaryAmount&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;ja&quot;,
-        &quot;value&quot;: &quot;entryDetailの代表的な金額を示す。entryDetailごとにひとつの値を持つ。たとえば、仕訳帳の行、残高、請求書の行の金額。明細が会計業務用でなく、measurableQuantityなどの他の要素が設定されている場合は不要。符号付数値であり、金額を解釈するために用意されたsignOfAmountおよびdebitCreditCodeとあわせて使用される。通貨単位はamountCurrencyで決定される。amountCurrencyが指定されない場合は、既定または自国の通貨単位となる。&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:debitCreditIndicator&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;en&quot;,
-        &quot;value&quot;: &quot;Optional identifier of whether the amount is a (D)ebit, a (C)redit or Undefined&quot;
-      },
-      {
-        &quot;forObject&quot;: &quot;cor:debitCreditIndicator&quot;,
-        &quot;labelType&quot;: &quot;xbrl:documentation&quot;,
-        &quot;language&quot;: &quot;ja&quot;,
-        &quot;value&quot;: &quot;金額が借方か貸方か不定かを示す識別子。_x005F_x000D_\n[設定値のリスト]_x005F_x000D_\n(D)、(C)、(debit：借方)、(credit：貸方)、(undefined：不定)&quot;
       }
     ],
     &quot;tableTemplates&quot;: [
       {
-        &quot;name&quot;: &quot;view:journalEntriesSingleAccountDateR2Template&quot;,
+        &quot;name&quot;: &quot;view:accountingEntriesJournalPoC18Columns&quot;,
         &quot;columns&quot;: [
           {
-            &quot;columnName&quot;: &quot;dHeader&quot;
+            &quot;columnName&quot;: &quot;dAccountingEntries&quot;
           },
           {
-            &quot;columnName&quot;: &quot;dDetail&quot;
+            &quot;columnName&quot;: &quot;dEntryHeader&quot;
+          },
+          {
+            &quot;columnName&quot;: &quot;dEntryDetail&quot;
+          },
+          {
+            &quot;columnName&quot;: &quot;documentInformationDocumentType&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:documentInformationDocumentType&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;auditNumber&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:auditNumber&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;defaultCurrency&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:defaultCurrency&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;periodCoveredStart&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:periodCoveredStart&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;periodCoveredEnd&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:periodCoveredEnd&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;periodType&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:periodType&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;entityPartyId&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:entityPartyId&quot;
+            }
+          },
+          {
+            &quot;columnName&quot;: &quot;entityPartyName&quot;,
+            &quot;factDimensions&quot;: {
+              &quot;xbrl:concept&quot;: &quot;cor:entityPartyName&quot;
+            }
           },
           {
             &quot;columnName&quot;: &quot;entryNumber&quot;,
@@ -704,13 +895,14 @@ tbody tr:nth-child(even) td { background:#202933; }
           }
         ],
         &quot;factDimensions&quot;: {
-          &quot;plt:d_cor_entryHeader&quot;: &quot;$dHeader&quot;,
-          &quot;plt:d_cor_entryDetail&quot;: &quot;$dDetail&quot;
+          &quot;plt:dAccountingEntries&quot;: &quot;$dAccountingEntries&quot;,
+          &quot;plt:dEntryHeader&quot;: &quot;$dEntryHeader&quot;,
+          &quot;plt:dEntryDetail&quot;: &quot;$dEntryDetail&quot;
         }
       }
     ]
   }
 }
 </pre></section></div></div></aside>
-<section class="pane" aria-labelledby="data-heading"><div class="pane-head"><h2 id="data-heading">Structured Tidy Data</h2><div class="subtitle">CSV fields as rows · CSV records as columns</div></div><div class="scroll data-scroll"><div class="table-label">journalEntriesSingleAccount · 9 fields · 6 records</div><table data-table-id="journalEntriesSingleAccount"><thead><tr><th scope="col">Field</th><th scope="col" data-csv-data-row="1" data-html-column="2">Record 1</th><th scope="col" data-csv-data-row="2" data-html-column="3">Record 2</th><th scope="col" data-csv-data-row="3" data-html-column="4">Record 3</th><th scope="col" data-csv-data-row="4" data-html-column="5">Record 4</th><th scope="col" data-csv-data-row="5" data-html-column="6">Record 5</th><th scope="col" data-csv-data-row="6" data-html-column="7">Record 6</th></tr></thead><tbody><tr data-html-row="1"><th scope="row" data-csv-column="1" data-html-row="1" data-html-column="1">dHeader</th><td data-csv-column="1" data-csv-data-row="1" data-html-row="1" data-html-column="2">1</td><td data-csv-column="1" data-csv-data-row="2" data-html-row="1" data-html-column="3">1</td><td data-csv-column="1" data-csv-data-row="3" data-html-row="1" data-html-column="4">1</td><td data-csv-column="1" data-csv-data-row="4" data-html-row="1" data-html-column="5">2</td><td data-csv-column="1" data-csv-data-row="5" data-html-row="1" data-html-column="6">2</td><td data-csv-column="1" data-csv-data-row="6" data-html-row="1" data-html-column="7">2</td></tr><tr data-html-row="2"><th scope="row" data-csv-column="2" data-html-row="2" data-html-column="1">dDetail</th><td data-csv-column="2" data-csv-data-row="1" data-html-row="2" data-html-column="2"></td><td data-csv-column="2" data-csv-data-row="2" data-html-row="2" data-html-column="3">1</td><td data-csv-column="2" data-csv-data-row="3" data-html-row="2" data-html-column="4">2</td><td data-csv-column="2" data-csv-data-row="4" data-html-row="2" data-html-column="5"></td><td data-csv-column="2" data-csv-data-row="5" data-html-row="2" data-html-column="6">1</td><td data-csv-column="2" data-csv-data-row="6" data-html-row="2" data-html-column="7">2</td></tr><tr data-html-row="3"><th scope="row" data-csv-column="3" data-html-row="3" data-html-column="1">entryNumber</th><td data-csv-column="3" data-csv-data-row="1" data-html-row="3" data-html-column="2">JE001</td><td data-csv-column="3" data-csv-data-row="2" data-html-row="3" data-html-column="3"></td><td data-csv-column="3" data-csv-data-row="3" data-html-row="3" data-html-column="4"></td><td data-csv-column="3" data-csv-data-row="4" data-html-row="3" data-html-column="5">JE002</td><td data-csv-column="3" data-csv-data-row="5" data-html-row="3" data-html-column="6"></td><td data-csv-column="3" data-csv-data-row="6" data-html-row="3" data-html-column="7"></td></tr><tr data-html-row="4"><th scope="row" data-csv-column="4" data-html-row="4" data-html-column="1">entryDate</th><td data-csv-column="4" data-csv-data-row="1" data-html-row="4" data-html-column="2">2026-10-10</td><td data-csv-column="4" data-csv-data-row="2" data-html-row="4" data-html-column="3"></td><td data-csv-column="4" data-csv-data-row="3" data-html-row="4" data-html-column="4"></td><td data-csv-column="4" data-csv-data-row="4" data-html-row="4" data-html-column="5">2026-10-10</td><td data-csv-column="4" data-csv-data-row="5" data-html-row="4" data-html-column="6"></td><td data-csv-column="4" data-csv-data-row="6" data-html-row="4" data-html-column="7"></td></tr><tr data-html-row="5"><th scope="row" data-csv-column="5" data-html-row="5" data-html-column="1">drCrIndicator</th><td data-csv-column="5" data-csv-data-row="1" data-html-row="5" data-html-column="2"></td><td data-csv-column="5" data-csv-data-row="2" data-html-row="5" data-html-column="3">Dr</td><td data-csv-column="5" data-csv-data-row="3" data-html-row="5" data-html-column="4">Cr</td><td data-csv-column="5" data-csv-data-row="4" data-html-row="5" data-html-column="5"></td><td data-csv-column="5" data-csv-data-row="5" data-html-row="5" data-html-column="6">Dr</td><td data-csv-column="5" data-csv-data-row="6" data-html-row="5" data-html-column="7">Cr</td></tr><tr data-html-row="6"><th scope="row" data-csv-column="6" data-html-row="6" data-html-column="1">accountCode</th><td data-csv-column="6" data-csv-data-row="1" data-html-row="6" data-html-column="2"></td><td data-csv-column="6" data-csv-data-row="2" data-html-row="6" data-html-column="3">100</td><td data-csv-column="6" data-csv-data-row="3" data-html-row="6" data-html-column="4">400</td><td data-csv-column="6" data-csv-data-row="4" data-html-row="6" data-html-column="5"></td><td data-csv-column="6" data-csv-data-row="5" data-html-row="6" data-html-column="6">120</td><td data-csv-column="6" data-csv-data-row="6" data-html-row="6" data-html-column="7">400</td></tr><tr data-html-row="7"><th scope="row" data-csv-column="7" data-html-row="7" data-html-column="1">accountName</th><td data-csv-column="7" data-csv-data-row="1" data-html-row="7" data-html-column="2"></td><td data-csv-column="7" data-csv-data-row="2" data-html-row="7" data-html-column="3">Cash</td><td data-csv-column="7" data-csv-data-row="3" data-html-row="7" data-html-column="4">Sales</td><td data-csv-column="7" data-csv-data-row="4" data-html-row="7" data-html-column="5"></td><td data-csv-column="7" data-csv-data-row="5" data-html-row="7" data-html-column="6">AccountsReceivable</td><td data-csv-column="7" data-csv-data-row="6" data-html-row="7" data-html-column="7">Sales</td></tr><tr data-html-row="8"><th scope="row" data-csv-column="8" data-html-row="8" data-html-column="1">amount</th><td data-csv-column="8" data-csv-data-row="1" data-html-row="8" data-html-column="2"></td><td data-csv-column="8" data-csv-data-row="2" data-html-row="8" data-html-column="3">1000</td><td data-csv-column="8" data-csv-data-row="3" data-html-row="8" data-html-column="4">1000</td><td data-csv-column="8" data-csv-data-row="4" data-html-row="8" data-html-column="5"></td><td data-csv-column="8" data-csv-data-row="5" data-html-row="8" data-html-column="6">2000</td><td data-csv-column="8" data-csv-data-row="6" data-html-row="8" data-html-column="7">2000</td></tr><tr data-html-row="9"><th scope="row" data-csv-column="9" data-html-row="9" data-html-column="1">description</th><td data-csv-column="9" data-csv-data-row="1" data-html-row="9" data-html-column="2"></td><td data-csv-column="9" data-csv-data-row="2" data-html-row="9" data-html-column="3">Receipt</td><td data-csv-column="9" data-csv-data-row="3" data-html-row="9" data-html-column="4">Sale</td><td data-csv-column="9" data-csv-data-row="4" data-html-row="9" data-html-column="5"></td><td data-csv-column="9" data-csv-data-row="5" data-html-row="9" data-html-column="6">Invoice</td><td data-csv-column="9" data-csv-data-row="6" data-html-row="9" data-html-column="7">Sale</td></tr></tbody></table></div></section></div>
+<section class="pane" aria-labelledby="data-heading"><div class="pane-head"><h2 id="data-heading">Structured Tidy Data</h2><div class="subtitle">CSV fields as rows · CSV records as columns</div></div><div class="scroll data-scroll"><div class="table-label">view:accountingEntriesJournalPoC18Columns · 18 fields · 7 records<br>Source: tavi-poc/instance/tavi-ins.csv<br>SHA-256: 0ceb038e83a1a975f9111e4b3afc25a870766642a381b649971e31e912a541af</div><table data-table-id="view:accountingEntriesJournalPoC18Columns"><thead><tr><th scope="col">Field</th><th scope="col" data-csv-data-row="1" data-html-column="2">Record 1</th><th scope="col" data-csv-data-row="2" data-html-column="3">Record 2</th><th scope="col" data-csv-data-row="3" data-html-column="4">Record 3</th><th scope="col" data-csv-data-row="4" data-html-column="5">Record 4</th><th scope="col" data-csv-data-row="5" data-html-column="6">Record 5</th><th scope="col" data-csv-data-row="6" data-html-column="7">Record 6</th><th scope="col" data-csv-data-row="7" data-html-column="8">Record 7</th></tr></thead><tbody><tr data-html-row="1"><th scope="row" data-csv-column="1" data-html-row="1" data-html-column="1">dAccountingEntries</th><td data-csv-column="1" data-csv-data-row="1" data-html-row="1" data-html-column="2">1</td><td data-csv-column="1" data-csv-data-row="2" data-html-row="1" data-html-column="3">1</td><td data-csv-column="1" data-csv-data-row="3" data-html-row="1" data-html-column="4">1</td><td data-csv-column="1" data-csv-data-row="4" data-html-row="1" data-html-column="5">1</td><td data-csv-column="1" data-csv-data-row="5" data-html-row="1" data-html-column="6">1</td><td data-csv-column="1" data-csv-data-row="6" data-html-row="1" data-html-column="7">1</td><td data-csv-column="1" data-csv-data-row="7" data-html-row="1" data-html-column="8">1</td></tr><tr data-html-row="2"><th scope="row" data-csv-column="2" data-html-row="2" data-html-column="1">dEntryHeader</th><td data-csv-column="2" data-csv-data-row="1" data-html-row="2" data-html-column="2"></td><td data-csv-column="2" data-csv-data-row="2" data-html-row="2" data-html-column="3">1</td><td data-csv-column="2" data-csv-data-row="3" data-html-row="2" data-html-column="4">1</td><td data-csv-column="2" data-csv-data-row="4" data-html-row="2" data-html-column="5">1</td><td data-csv-column="2" data-csv-data-row="5" data-html-row="2" data-html-column="6">2</td><td data-csv-column="2" data-csv-data-row="6" data-html-row="2" data-html-column="7">2</td><td data-csv-column="2" data-csv-data-row="7" data-html-row="2" data-html-column="8">2</td></tr><tr data-html-row="3"><th scope="row" data-csv-column="3" data-html-row="3" data-html-column="1">dEntryDetail</th><td data-csv-column="3" data-csv-data-row="1" data-html-row="3" data-html-column="2"></td><td data-csv-column="3" data-csv-data-row="2" data-html-row="3" data-html-column="3"></td><td data-csv-column="3" data-csv-data-row="3" data-html-row="3" data-html-column="4">1</td><td data-csv-column="3" data-csv-data-row="4" data-html-row="3" data-html-column="5">2</td><td data-csv-column="3" data-csv-data-row="5" data-html-row="3" data-html-column="6"></td><td data-csv-column="3" data-csv-data-row="6" data-html-row="3" data-html-column="7">1</td><td data-csv-column="3" data-csv-data-row="7" data-html-row="3" data-html-column="8">2</td></tr><tr data-html-row="4"><th scope="row" data-csv-column="4" data-html-row="4" data-html-column="1">documentInformationDocumentType</th><td data-csv-column="4" data-csv-data-row="1" data-html-row="4" data-html-column="2"></td><td data-csv-column="4" data-csv-data-row="2" data-html-row="4" data-html-column="3"></td><td data-csv-column="4" data-csv-data-row="3" data-html-row="4" data-html-column="4"></td><td data-csv-column="4" data-csv-data-row="4" data-html-row="4" data-html-column="5"></td><td data-csv-column="4" data-csv-data-row="5" data-html-row="4" data-html-column="6"></td><td data-csv-column="4" data-csv-data-row="6" data-html-row="4" data-html-column="7"></td><td data-csv-column="4" data-csv-data-row="7" data-html-row="4" data-html-column="8"></td></tr><tr data-html-row="5"><th scope="row" data-csv-column="5" data-html-row="5" data-html-column="1">auditNumber</th><td data-csv-column="5" data-csv-data-row="1" data-html-row="5" data-html-column="2"></td><td data-csv-column="5" data-csv-data-row="2" data-html-row="5" data-html-column="3"></td><td data-csv-column="5" data-csv-data-row="3" data-html-row="5" data-html-column="4"></td><td data-csv-column="5" data-csv-data-row="4" data-html-row="5" data-html-column="5"></td><td data-csv-column="5" data-csv-data-row="5" data-html-row="5" data-html-column="6"></td><td data-csv-column="5" data-csv-data-row="6" data-html-row="5" data-html-column="7"></td><td data-csv-column="5" data-csv-data-row="7" data-html-row="5" data-html-column="8"></td></tr><tr data-html-row="6"><th scope="row" data-csv-column="6" data-html-row="6" data-html-column="1">defaultCurrency</th><td data-csv-column="6" data-csv-data-row="1" data-html-row="6" data-html-column="2">iso4217:JPY</td><td data-csv-column="6" data-csv-data-row="2" data-html-row="6" data-html-column="3"></td><td data-csv-column="6" data-csv-data-row="3" data-html-row="6" data-html-column="4"></td><td data-csv-column="6" data-csv-data-row="4" data-html-row="6" data-html-column="5"></td><td data-csv-column="6" data-csv-data-row="5" data-html-row="6" data-html-column="6"></td><td data-csv-column="6" data-csv-data-row="6" data-html-row="6" data-html-column="7"></td><td data-csv-column="6" data-csv-data-row="7" data-html-row="6" data-html-column="8"></td></tr><tr data-html-row="7"><th scope="row" data-csv-column="7" data-html-row="7" data-html-column="1">periodCoveredStart</th><td data-csv-column="7" data-csv-data-row="1" data-html-row="7" data-html-column="2">2026-04-01</td><td data-csv-column="7" data-csv-data-row="2" data-html-row="7" data-html-column="3"></td><td data-csv-column="7" data-csv-data-row="3" data-html-row="7" data-html-column="4"></td><td data-csv-column="7" data-csv-data-row="4" data-html-row="7" data-html-column="5"></td><td data-csv-column="7" data-csv-data-row="5" data-html-row="7" data-html-column="6"></td><td data-csv-column="7" data-csv-data-row="6" data-html-row="7" data-html-column="7"></td><td data-csv-column="7" data-csv-data-row="7" data-html-row="7" data-html-column="8"></td></tr><tr data-html-row="8"><th scope="row" data-csv-column="8" data-html-row="8" data-html-column="1">periodCoveredEnd</th><td data-csv-column="8" data-csv-data-row="1" data-html-row="8" data-html-column="2">2027-03-31</td><td data-csv-column="8" data-csv-data-row="2" data-html-row="8" data-html-column="3"></td><td data-csv-column="8" data-csv-data-row="3" data-html-row="8" data-html-column="4"></td><td data-csv-column="8" data-csv-data-row="4" data-html-row="8" data-html-column="5"></td><td data-csv-column="8" data-csv-data-row="5" data-html-row="8" data-html-column="6"></td><td data-csv-column="8" data-csv-data-row="6" data-html-row="8" data-html-column="7"></td><td data-csv-column="8" data-csv-data-row="7" data-html-row="8" data-html-column="8"></td></tr><tr data-html-row="9"><th scope="row" data-csv-column="9" data-html-row="9" data-html-column="1">periodType</th><td data-csv-column="9" data-csv-data-row="1" data-html-row="9" data-html-column="2">duration</td><td data-csv-column="9" data-csv-data-row="2" data-html-row="9" data-html-column="3"></td><td data-csv-column="9" data-csv-data-row="3" data-html-row="9" data-html-column="4"></td><td data-csv-column="9" data-csv-data-row="4" data-html-row="9" data-html-column="5"></td><td data-csv-column="9" data-csv-data-row="5" data-html-row="9" data-html-column="6"></td><td data-csv-column="9" data-csv-data-row="6" data-html-row="9" data-html-column="7"></td><td data-csv-column="9" data-csv-data-row="7" data-html-row="9" data-html-column="8"></td></tr><tr data-html-row="10"><th scope="row" data-csv-column="10" data-html-row="10" data-html-column="1">entityPartyId</th><td data-csv-column="10" data-csv-data-row="1" data-html-row="10" data-html-column="2">ABC123</td><td data-csv-column="10" data-csv-data-row="2" data-html-row="10" data-html-column="3"></td><td data-csv-column="10" data-csv-data-row="3" data-html-row="10" data-html-column="4"></td><td data-csv-column="10" data-csv-data-row="4" data-html-row="10" data-html-column="5"></td><td data-csv-column="10" data-csv-data-row="5" data-html-row="10" data-html-column="6"></td><td data-csv-column="10" data-csv-data-row="6" data-html-row="10" data-html-column="7"></td><td data-csv-column="10" data-csv-data-row="7" data-html-row="10" data-html-column="8"></td></tr><tr data-html-row="11"><th scope="row" data-csv-column="11" data-html-row="11" data-html-column="1">entityPartyName</th><td data-csv-column="11" data-csv-data-row="1" data-html-row="11" data-html-column="2">Example Co.</td><td data-csv-column="11" data-csv-data-row="2" data-html-row="11" data-html-column="3"></td><td data-csv-column="11" data-csv-data-row="3" data-html-row="11" data-html-column="4"></td><td data-csv-column="11" data-csv-data-row="4" data-html-row="11" data-html-column="5"></td><td data-csv-column="11" data-csv-data-row="5" data-html-row="11" data-html-column="6"></td><td data-csv-column="11" data-csv-data-row="6" data-html-row="11" data-html-column="7"></td><td data-csv-column="11" data-csv-data-row="7" data-html-row="11" data-html-column="8"></td></tr><tr data-html-row="12"><th scope="row" data-csv-column="12" data-html-row="12" data-html-column="1">entryNumber</th><td data-csv-column="12" data-csv-data-row="1" data-html-row="12" data-html-column="2"></td><td data-csv-column="12" data-csv-data-row="2" data-html-row="12" data-html-column="3">JE001</td><td data-csv-column="12" data-csv-data-row="3" data-html-row="12" data-html-column="4"></td><td data-csv-column="12" data-csv-data-row="4" data-html-row="12" data-html-column="5"></td><td data-csv-column="12" data-csv-data-row="5" data-html-row="12" data-html-column="6">JE002</td><td data-csv-column="12" data-csv-data-row="6" data-html-row="12" data-html-column="7"></td><td data-csv-column="12" data-csv-data-row="7" data-html-row="12" data-html-column="8"></td></tr><tr data-html-row="13"><th scope="row" data-csv-column="13" data-html-row="13" data-html-column="1">entryDate</th><td data-csv-column="13" data-csv-data-row="1" data-html-row="13" data-html-column="2"></td><td data-csv-column="13" data-csv-data-row="2" data-html-row="13" data-html-column="3">2026-10-10</td><td data-csv-column="13" data-csv-data-row="3" data-html-row="13" data-html-column="4"></td><td data-csv-column="13" data-csv-data-row="4" data-html-row="13" data-html-column="5"></td><td data-csv-column="13" data-csv-data-row="5" data-html-row="13" data-html-column="6">2026-10-10</td><td data-csv-column="13" data-csv-data-row="6" data-html-row="13" data-html-column="7"></td><td data-csv-column="13" data-csv-data-row="7" data-html-row="13" data-html-column="8"></td></tr><tr data-html-row="14"><th scope="row" data-csv-column="14" data-html-row="14" data-html-column="1">drCrIndicator</th><td data-csv-column="14" data-csv-data-row="1" data-html-row="14" data-html-column="2"></td><td data-csv-column="14" data-csv-data-row="2" data-html-row="14" data-html-column="3"></td><td data-csv-column="14" data-csv-data-row="3" data-html-row="14" data-html-column="4">Dr</td><td data-csv-column="14" data-csv-data-row="4" data-html-row="14" data-html-column="5">Cr</td><td data-csv-column="14" data-csv-data-row="5" data-html-row="14" data-html-column="6"></td><td data-csv-column="14" data-csv-data-row="6" data-html-row="14" data-html-column="7">Dr</td><td data-csv-column="14" data-csv-data-row="7" data-html-row="14" data-html-column="8">Cr</td></tr><tr data-html-row="15"><th scope="row" data-csv-column="15" data-html-row="15" data-html-column="1">accountCode</th><td data-csv-column="15" data-csv-data-row="1" data-html-row="15" data-html-column="2"></td><td data-csv-column="15" data-csv-data-row="2" data-html-row="15" data-html-column="3"></td><td data-csv-column="15" data-csv-data-row="3" data-html-row="15" data-html-column="4">100</td><td data-csv-column="15" data-csv-data-row="4" data-html-row="15" data-html-column="5">400</td><td data-csv-column="15" data-csv-data-row="5" data-html-row="15" data-html-column="6"></td><td data-csv-column="15" data-csv-data-row="6" data-html-row="15" data-html-column="7">120</td><td data-csv-column="15" data-csv-data-row="7" data-html-row="15" data-html-column="8">400</td></tr><tr data-html-row="16"><th scope="row" data-csv-column="16" data-html-row="16" data-html-column="1">accountName</th><td data-csv-column="16" data-csv-data-row="1" data-html-row="16" data-html-column="2"></td><td data-csv-column="16" data-csv-data-row="2" data-html-row="16" data-html-column="3"></td><td data-csv-column="16" data-csv-data-row="3" data-html-row="16" data-html-column="4">Cash</td><td data-csv-column="16" data-csv-data-row="4" data-html-row="16" data-html-column="5">Sales</td><td data-csv-column="16" data-csv-data-row="5" data-html-row="16" data-html-column="6"></td><td data-csv-column="16" data-csv-data-row="6" data-html-row="16" data-html-column="7">AccountsReceivable</td><td data-csv-column="16" data-csv-data-row="7" data-html-row="16" data-html-column="8">Sales</td></tr><tr data-html-row="17"><th scope="row" data-csv-column="17" data-html-row="17" data-html-column="1">amount</th><td data-csv-column="17" data-csv-data-row="1" data-html-row="17" data-html-column="2"></td><td data-csv-column="17" data-csv-data-row="2" data-html-row="17" data-html-column="3"></td><td data-csv-column="17" data-csv-data-row="3" data-html-row="17" data-html-column="4">1000</td><td data-csv-column="17" data-csv-data-row="4" data-html-row="17" data-html-column="5">1000</td><td data-csv-column="17" data-csv-data-row="5" data-html-row="17" data-html-column="6"></td><td data-csv-column="17" data-csv-data-row="6" data-html-row="17" data-html-column="7">2000</td><td data-csv-column="17" data-csv-data-row="7" data-html-row="17" data-html-column="8">2000</td></tr><tr data-html-row="18"><th scope="row" data-csv-column="18" data-html-row="18" data-html-column="1">description</th><td data-csv-column="18" data-csv-data-row="1" data-html-row="18" data-html-column="2"></td><td data-csv-column="18" data-csv-data-row="2" data-html-row="18" data-html-column="3"></td><td data-csv-column="18" data-csv-data-row="3" data-html-row="18" data-html-column="4">Receipt</td><td data-csv-column="18" data-csv-data-row="4" data-html-row="18" data-html-column="5">Sale</td><td data-csv-column="18" data-csv-data-row="5" data-html-row="18" data-html-column="6"></td><td data-csv-column="18" data-csv-data-row="6" data-html-row="18" data-html-column="7">Invoice</td><td data-csv-column="18" data-csv-data-row="7" data-html-row="18" data-html-column="8">Sale</td></tr></tbody></table></div></section></div>
 <footer class="footer">Source view only · No fact selection or linked Properties in Phase 1</footer></main></body></html>

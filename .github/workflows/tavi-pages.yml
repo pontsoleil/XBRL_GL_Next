@@ -43,7 +43,7 @@ jobs:
           cp "${source}" "${site}/tavi-inst-hmd-view.html"
           cd "${site}"
           printf '%s\n' \
-            '85229c898db0a6741a0cd09081df7b9433389ca89fc408391c80e8107e124154  tavi-inst-hmd-view.html' \
+            '5c295807ebd20b95cf4ebfaa44a2fbc35072c527b2b94413606a8c52ff3310b8  tavi-inst-hmd-view.html' \
             | sha256sum --check -
           actual="$(find . -mindepth 1 -print | LC_ALL=C sort)"
           expected="$(printf '%s\n' './tavi-inst-hmd-view.html')"

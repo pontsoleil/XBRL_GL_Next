@@ -18,7 +18,7 @@ XBRL GL Nextは、共通意味モデル（COR／BTX／AAAという絵具箱）�
 
 [Taxonomy Framework](TaxonomyFramework/README.md)（現状維持）を参照してください。Part 1は共通意味モデルとHMD、Part 2はTuple、Part 3はOIM、Part 4はAligned extensionを扱います。CORとBTXはShared、COR-JPNはCORクラスのSpecialisation、BTX-PINTはBTXクラスのSpecialisationによるAligned extensionです。
 
-**FSM → Specialisation／BSM → Graph Walk → Candidate LHM → Reviewed LHM → Post-Graph Walk → Formal HMD → Taxonomy**。Journal Entry Tavi議論用候補は独立したHMD Viewを対象とします。
+**FSM → Specialisation／BSM → Graph Walk → Candidate LHM → Reviewed LHM → Post-Graph Walk → Formal HMD → Taxonomy**。Journal Entry Tavi議論用候補は独立した3-Cube PoCです。正式Semantic Modelの改訂は後続作業です。
 
 ## ディレクトリ案内
 
@@ -32,7 +32,7 @@ XBRL GL Nextは、共通意味モデル（COR／BTX／AAAという絵具箱）�
 
 ## 再現性と公開状態
 
-Tavi PWD 2026-09-01を参照した議論用試作。正式適合性は未確認。 公開するTaviタクソノミは[Journal Entry JSON](tavi-poc/taxonomy/Tavi_JournalEntries_SingleAccount_Date_r2_candidate.json)1件で、Table Templateを内包します。[Journal Entry Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html)は静的表示例です。旧モデル・旧メタデータ・パッチの原本と証跡はWORKで保全します。
+Tavi PWD 2026-09-01を参照した議論用試作。正式適合性は未確認。 公開するTaviタクソノミは[Journal Entry JSON](tavi-poc/taxonomy/tavi-tax.json)1件で、Table Templateを内包します。[Journal Entry Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html)は静的表示例です。旧モデル・旧メタデータ・パッチの原本と証跡はWORKで保全します。
 
 ## Tuple／OIM生成CLI（既存実装）
 

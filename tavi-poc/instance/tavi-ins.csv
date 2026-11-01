@@ -1,0 +1,8 @@
+dAccountingEntries,dEntryHeader,dEntryDetail,documentInformationDocumentType,auditNumber,defaultCurrency,periodCoveredStart,periodCoveredEnd,periodType,entityPartyId,entityPartyName,entryNumber,entryDate,drCrIndicator,accountCode,accountName,amount,description
+1,,,,,iso4217:JPY,2026-04-01,2027-03-31,duration,ABC123,Example Co.,,,,,,,
+1,1,,,,,,,,,,JE001,2026-10-10,,,,,
+1,1,1,,,,,,,,,,,Dr,100,Cash,1000,Receipt
+1,1,2,,,,,,,,,,,Cr,400,Sales,1000,Sale
+1,2,,,,,,,,,,JE002,2026-10-10,,,,,
+1,2,1,,,,,,,,,,,Dr,120,AccountsReceivable,2000,Invoice
+1,2,2,,,,,,,,,,,Cr,400,Sales,2000,Sale

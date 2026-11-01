@@ -26,7 +26,7 @@ See [third-party notices](THIRD_PARTY_NOTICES.md) for attribution and licence bo
 
 ## Semantic processing
 
-Shared COR classes are specialised by the COR-JPN Aligned extension; Shared BTX classes are specialised by the BTX-PINT Aligned extension. These four HMD/taxonomy results remain independent. The processing sequence is **FSM → Specialisation / BSM → Graph Walk → Candidate LHM → human Reviewed LHM → Post-Graph Walk → formal HMD → taxonomy generation**. The Journal Entry Tavi discussion candidate is a separately scoped HMD view.
+Shared COR classes are specialised by the COR-JPN Aligned extension; Shared BTX classes are specialised by the BTX-PINT Aligned extension. These four HMD/taxonomy results remain independent. The processing sequence is **FSM → Specialisation / BSM → Graph Walk → Candidate LHM → human Reviewed LHM → Post-Graph Walk → formal HMD → taxonomy generation**. The Journal Entry Tavi discussion candidate is a separately scoped three-cube PoC; formal semantic-model revision is deferred.
 
 See [semantic-model/README.md](semantic-model/README.md) for authority boundaries and [tools/README.md](tools/README.md) for implementations.
 
@@ -44,7 +44,7 @@ See [semantic-model/README.md](semantic-model/README.md) for authority boundarie
 
 ## Publication status and evidence
 
-Experimental discussion draft based on Tavi PWD 2026-09-01; formal conformance has not been established. The only published Tavi taxonomy is the [Journal Entry JSON](tavi-poc/taxonomy/Tavi_JournalEntries_SingleAccount_Date_r2_candidate.json), with its Table Template embedded. The [Journal Entry viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html) is a static display, not a conformance validator. Earlier Tavi models, report metadata and Arelle patches are withdrawn; originals and historical evidence remain in WORK.
+Experimental discussion draft based on Tavi PWD 2026-09-01; formal conformance has not been established. The only published Tavi taxonomy is the [Journal Entry JSON](tavi-poc/taxonomy/tavi-tax.json), with its Table Template embedded. The [Journal Entry viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html) is a static display, not a conformance validator. Earlier Tavi models, report metadata and Arelle patches are withdrawn; originals and historical evidence remain in WORK.
 
 [Third-party notices](THIRD_PARTY_NOTICES.md)
 

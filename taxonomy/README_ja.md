@@ -19,6 +19,6 @@
 
 ## Tavi JSON
 
-Tavi PWD 2026-09-01を参照した議論用試作。正式適合性は未確認。 唯一のTavi公開対象は[Journal Entry JSON](../tavi-poc/taxonomy/Tavi_JournalEntries_SingleAccount_Date_r2_candidate.json)です。Table Templateを内包します。[静的Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html)は正式な適合性検証器ではありません。
+Tavi PWD 2026-09-01を参照した議論用試作。正式適合性は未確認。 唯一のTavi公開対象は[Journal Entry JSON](../tavi-poc/taxonomy/tavi-tax.json)です。Table Templateを内包します。[静的Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html)は正式な適合性検証器ではありません。
 
 公開条件と出所については[第三者資料の注意事項](../THIRD_PARTY_NOTICES_ja.md)を参照してください。
