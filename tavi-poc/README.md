@@ -21,11 +21,13 @@ The independent [`tavi-schema.json`](taxonomy/tavi-schema.json) is a review-time
 
 ## Tavi Viewer
 
-**[Tavi Viewer source (HTML)](viewer/tavi-viewer.html)** · [JavaScript](viewer/tavi-viewer.js)
+**[Open the common Tavi Viewer](https://pontsoleil.github.io/XBRL_GL_Next/viewer/tavi-viewer.html)**
+
+[HTML source](viewer/tavi-viewer.html) · [JavaScript source](viewer/tavi-viewer.js)
 
 The common viewer supports both listed review variants. Select an Instance JSON to display the corresponding Table Template, Tavi taxonomy and JSON Schema in the left-hand **Properties** tabs, and the **transposed Structured Tidy Data CSV** in the right-hand pane.
 
-The current viewer uses an explicit, hard-coded list of approved Instance–Taxonomy–CSV pairings in `tavi-viewer.js`. Although it loads the selected Instance JSON, it does **not** yet derive the file pairing from its `importMapping` and `sourceMappings`. GitHub repository discovery may list additional JSON files without establishing a supported pairing.
+The viewer uses an explicit, hard-coded list of supported Instance–Taxonomy–CSV pairings in `tavi-viewer.js`. Although it loads the selected Instance JSON, it does **not** yet derive the file pairing from its `importMapping` and `sourceMappings`. GitHub repository discovery may list additional JSON files without establishing a supported pairing.
 
 ### Viewing locally
 
@@ -35,9 +37,7 @@ Serve the `tavi-poc/` directory over HTTP; do not rely on opening the HTML as a 
 python -m http.server 8765 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8765/tavi-poc/viewer/tavi-viewer.html`. Keep `tavi-viewer.html` and `tavi-viewer.js` next to each other, with the `taxonomy/` and `instance/` directories at their repository-relative locations.
-
-**GitHub Pages status:** The new common viewer is present in the GitHub repository, but is **not currently deployed to GitHub Pages**. The existing Pages workflow still publishes only the historical [`Journal Entry static viewer`](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html). The source link above is not a live hosted viewer.
+Open `http://127.0.0.1:8765/tavi-poc/viewer/tavi-viewer.html`. Keep `tavi-viewer.html` and `tavi-viewer.js` together, with `taxonomy/` and `instance/` at their repository-relative locations.
 
 The viewer is for static source inspection and CSV presentation. It is not a JSON Schema validation engine, a native Tavi processor, or a semantic conformance validator.
 
@@ -45,4 +45,4 @@ The viewer is for static source inspection and CSV presentation. It is not a JSO
 
 The Simple, Full v3 and four-model taxonomies, Arelle patches and older report-metadata paths were withdrawn from the current published PoC. Originals and historical evidence remain in WORK. Historical materials or residual files must not be presented as currently supported instance formats.
 
-The November 2, 2026 review publication completed Canonical registration, Official Git publication and push for the nine-file review set (seven additions and two existing files retained), without changing the Pages workflow. JSON syntax, external Draft-07 structural validation, CSV/Table Template alignment, local references and Windows Chrome viewer display were checked for this review set. These checks do not establish Tavi PWD conformance, native import semantics, parent-occurrence constraints or fact reconstruction.
+The November 2, 2026 review publication completed Canonical registration, Official Git publication and push for the nine-file review set (seven additions and two existing files retained). JSON syntax, external Draft-07 structural validation, CSV/Table Template alignment, local references and Windows Chrome viewer display were checked for this review set. These checks do not establish Tavi PWD conformance, native import semantics, parent-occurrence constraints or fact reconstruction.

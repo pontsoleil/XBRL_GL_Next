@@ -7,6 +7,15 @@ name: Deploy Tavi Journal Entry viewer to GitHub Pages
     paths:
       - .github/workflows/tavi-pages.yml
       - tavi-poc/viewer/tavi-inst-hmd-view.html
+      - tavi-poc/viewer/tavi-viewer.html
+      - tavi-poc/viewer/tavi-viewer.js
+      - tavi-poc/taxonomy/tavi-tax.json
+      - tavi-poc/taxonomy/tavi-uuid-tax.json
+      - tavi-poc/taxonomy/tavi-schema.json
+      - tavi-poc/instance/tavi-ins.json
+      - tavi-poc/instance/tavi-ins.csv
+      - tavi-poc/instance/tavi-uuid-ins.json
+      - tavi-poc/instance/tavi-uuid-ins.csv
   workflow_dispatch:
 
 permissions:
@@ -30,23 +39,55 @@ jobs:
         with:
           enablement: false
 
-      - name: Prepare the one accepted HTML file
+      - name: Prepare approved historical and common viewers
         shell: bash
         run: |
           set -euo pipefail
           site="${RUNNER_TEMP}/tavi-pages"
           test ! -e "${site}"
-          mkdir -p "${site}"
-          source="tavi-poc/viewer/tavi-inst-hmd-view.html"
-          test -f "${source}"
-          test ! -L "${source}"
-          cp "${source}" "${site}/tavi-inst-hmd-view.html"
-          cd "${site}"
+          mkdir -p "${site}/viewer" "${site}/instance" "${site}/taxonomy"
+          sources=(
+            "tavi-poc/viewer/tavi-viewer.html"
+            "tavi-poc/viewer/tavi-viewer.js"
+            "tavi-poc/instance/tavi-ins.json"
+            "tavi-poc/instance/tavi-ins.csv"
+            "tavi-poc/instance/tavi-uuid-ins.json"
+            "tavi-poc/instance/tavi-uuid-ins.csv"
+            "tavi-poc/taxonomy/tavi-tax.json"
+            "tavi-poc/taxonomy/tavi-uuid-tax.json"
+            "tavi-poc/taxonomy/tavi-schema.json"
+          )
+          old="tavi-poc/viewer/tavi-inst-hmd-view.html"
+          test -f "${old}"
+          test ! -L "${old}"
+          cp "${old}" "${site}/tavi-inst-hmd-view.html"
           printf '%s\n' \
             '5c295807ebd20b95cf4ebfaa44a2fbc35072c527b2b94413606a8c52ff3310b8  tavi-inst-hmd-view.html' \
-            | sha256sum --check -
+            | (cd "${site}" && sha256sum --check -)
+          for src in "${sources[@]}"; do
+            test -f "${src}"
+            test ! -L "${src}"
+            rel="${src#tavi-poc/}"
+            cp "${src}" "${site}/${rel}"
+            cmp -s "${src}" "${site}/${rel}"
+          done
+          cd "${site}"
+          expected="$(printf '%s\n' \
+            './instance' \
+            './instance/tavi-ins.csv' \
+            './instance/tavi-ins.json' \
+            './instance/tavi-uuid-ins.csv' \
+            './instance/tavi-uuid-ins.json' \
+            './tavi-inst-hmd-view.html' \
+            './taxonomy' \
+            './taxonomy/tavi-schema.json' \
+            './taxonomy/tavi-tax.json' \
+            './taxonomy/tavi-uuid-tax.json' \
+            './viewer' \
+            './viewer/tavi-viewer.html' \
+            './viewer/tavi-viewer.js')"
           actual="$(find . -mindepth 1 -print | LC_ALL=C sort)"
-          expected="$(printf '%s\n' './tavi-inst-hmd-view.html')"
+          expected="$(printf '%s\n' "${expected}" | LC_ALL=C sort)"
           test "${actual}" = "${expected}"
           test -z "$(find . -type l -print)"
           test -z "$(find . -type f -links +1 -print)"
