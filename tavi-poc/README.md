@@ -4,6 +4,10 @@
 
 Experimental discussion draft based on Tavi PWD 2026-09-01. Formal Tavi conformance has not been established.
 
+## Technical handout
+
+[**Understanding Tavi Taxonomies — Journal Entry PoC (PDF)**](Understanding_Tavi_Taxonomies.pdf) — an eight-page technical handout explaining the current integer-key and UUIDv7 Journal Entry taxonomy review examples, Structured Tidy Data and the recorded validation limits. This review document does not establish formal Tavi PWD conformance.
+
 ## Journal Entry PoC — current review files
 
 The review set provides a three-cube Journal Entry example with two occurrence-key variants. These are discussion candidates and do not change the formal semantic model, HMD, or Part 5.

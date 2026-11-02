@@ -4,6 +4,10 @@
 
 Tavi PWD 2026-09-01に基づく議論用試作です。正式なTavi適合性は確認されていません。
 
+## 技術解説資料
+
+[**Understanding Tavi Taxonomies — Journal Entry PoC（PDF）**](Understanding_Tavi_Taxonomies.pdf) — 整数版・UUIDv7版のJournal Entryタクソノミ、Structured Tidy Dataと検証の範囲を説明する8ページの技術配布資料です。正式なTavi PWD適合性を宣言するものではありません。
+
 ## Journal Entry PoC — 現行レビュー用ファイル
 
 3-CubeのJournal Entryを、出現識別子が整数の版とUUIDv7の版で示します。いずれもレビュー用候補であり、正式なSemantic Model、HMD、Part 5を改訂するものではありません。
