@@ -1,0 +1,757 @@
+{
+  "documentInfo": {
+    "documentType": "https://xbrl.org/PWD/2026-09-01/compiled",
+    "namespaces": {
+      "bus": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/bus",
+      "cor": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor",
+      "ehm": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/ehm",
+      "lnk": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/lnk",
+      "muc": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/muc",
+      "taf": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/taf",
+      "plt": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
+      "xbrl": "https://xbrl.org/PWD/2026-09-01",
+      "xbrli": "https://xbrl.org/2025/instance",
+      "xs": "http://www.w3.org/2001/XMLSchema",
+      "view": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/view/journal-entries-single-account",
+      "xbrlr": "https://xbrl.org/PWD/2026-09-01/report",
+      "iso4217": "http://www.xbrl.org/2003/iso4217",
+      "ent": "http://example.com"
+    }
+  },
+  "xbrlModel": {
+    "name": "view:accountingEntriesJournalPoC",
+    "frameworkName": "XBRL GL Next — isolated Tavi PWD 2026-09-01 Journal Entry PoC (candidate)",
+    "version": "2026-11-01-18-column-three-level-candidate",
+    "dataTypes": [
+      {
+        "name": "cor:headerEntryDateItemType",
+        "baseType": "xs:date"
+      },
+      {
+        "name": "cor:entryIdItemType",
+        "baseType": "xs:string"
+      },
+      {
+        "name": "cor:entryDetailDescriptionItemType",
+        "baseType": "xs:string"
+      },
+      {
+        "name": "cor:accountNumberItemType",
+        "baseType": "xs:string"
+      },
+      {
+        "name": "cor:accountDescriptionItemType",
+        "baseType": "xs:string"
+      },
+      {
+        "name": "cor:monetaryAmountItemType",
+        "baseType": "xbrlr:monetary"
+      },
+      {
+        "name": "cor:debitCreditIndicatorItemType",
+        "baseType": "xs:token"
+      },
+      {
+        "name": "plt:UUIDv7Type",
+        "baseType": "xs:string",
+        "patterns": [
+          "[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}"
+        ]
+      }
+    ],
+    "concepts": [
+      {
+        "name": "cor:p_cor_accountingEntries",
+        "dataType": "xs:string",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:p_cor_entryHeader",
+        "dataType": "xs:string",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:headerEntryDate",
+        "dataType": "cor:headerEntryDateItemType",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:entryId",
+        "dataType": "cor:entryIdItemType",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:p_cor_entryDetail",
+        "dataType": "xs:string",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:entryDetailDescription",
+        "dataType": "cor:entryDetailDescriptionItemType",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:accountNumber",
+        "dataType": "cor:accountNumberItemType",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:accountDescription",
+        "dataType": "cor:accountDescriptionItemType",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:monetaryAmount",
+        "dataType": "cor:monetaryAmountItemType",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:debitCreditIndicator",
+        "dataType": "cor:debitCreditIndicatorItemType",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:documentInformationDocumentType",
+        "dataType": "xs:token",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:auditNumber",
+        "dataType": "xs:string",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:defaultCurrency",
+        "dataType": "xs:QName",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:periodCoveredStart",
+        "dataType": "xs:date",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:periodCoveredEnd",
+        "dataType": "xs:date",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:periodType",
+        "dataType": "xs:token",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:entityPartyId",
+        "dataType": "xs:string",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:entityPartyName",
+        "dataType": "xs:string",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:p_cor_documentInformation",
+        "dataType": "xs:string",
+        "periodType": "duration",
+        "nillable": true
+      },
+      {
+        "name": "cor:p_cor_entityParty",
+        "dataType": "xs:string",
+        "periodType": "duration",
+        "nillable": true
+      }
+    ],
+    "domainClasses": [
+      {
+        "name": "plt:dEntryHeaderDomainClass",
+        "allowedDomainItem": "plt:UUIDv7Type"
+      },
+      {
+        "name": "plt:dEntryDetailDomainClass",
+        "allowedDomainItem": "plt:UUIDv7Type"
+      },
+      {
+        "name": "plt:dAccountingEntriesDomainClass",
+        "allowedDomainItem": "plt:UUIDv7Type"
+      }
+    ],
+    "dimensions": [
+      {
+        "name": "plt:dAccountingEntries",
+        "domainClass": "plt:dAccountingEntriesDomainClass"
+      },
+      {
+        "name": "plt:dEntryHeader",
+        "domainClass": "plt:dEntryHeaderDomainClass"
+      },
+      {
+        "name": "plt:dEntryDetail",
+        "domainClass": "plt:dEntryDetailDomainClass"
+      }
+    ],
+    "domainNetworks": [
+      {
+        "name": "view:domain_cor_accountingEntries",
+        "root": "xbrl:conceptDomain",
+        "relationships": [
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:documentInformationDocumentType",
+            "order": 1
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:auditNumber",
+            "order": 2
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:defaultCurrency",
+            "order": 3
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:periodCoveredStart",
+            "order": 4
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:periodCoveredEnd",
+            "order": 5
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:periodType",
+            "order": 6
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:entityPartyId",
+            "order": 7
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:entityPartyName",
+            "order": 8
+          }
+        ]
+      },
+      {
+        "name": "view:domain_cor_entryHeader",
+        "root": "xbrl:conceptDomain",
+        "relationships": [
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:headerEntryDate",
+            "order": 1
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:entryId",
+            "order": 2
+          }
+        ]
+      },
+      {
+        "name": "view:domain_cor_entryDetail",
+        "root": "xbrl:conceptDomain",
+        "relationships": [
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:entryDetailDescription",
+            "order": 1
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:accountNumber",
+            "order": 2
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:accountDescription",
+            "order": 3
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:monetaryAmount",
+            "order": 4
+          },
+          {
+            "source": "xbrl:conceptDomain",
+            "target": "cor:debitCreditIndicator",
+            "order": 5
+          }
+        ]
+      }
+    ],
+    "cubes": [
+      {
+        "name": "view:h_cor_accountingEntries",
+        "cubeDimensions": [
+          {
+            "dimension": "xbrl:concept",
+            "domainNetwork": "view:domain_cor_accountingEntries"
+          },
+          {
+            "dimension": "plt:dAccountingEntries",
+            "domainDataType": "plt:UUIDv7Type",
+            "typedSort": "asc",
+            "optional": false
+          },
+          {
+            "dimension": "xbrl:period",
+            "optional": false
+          },
+          {
+            "dimension": "xbrl:entity"
+          },
+          {
+            "dimension": "xbrl:unit",
+            "optional": true
+          }
+        ],
+        "cubeNetworks": [
+          "view:journalEntriesHierarchy"
+        ]
+      },
+      {
+        "name": "view:h_cor_entryHeader",
+        "cubeDimensions": [
+          {
+            "dimension": "xbrl:concept",
+            "domainNetwork": "view:domain_cor_entryHeader"
+          },
+          {
+            "dimension": "plt:dAccountingEntries",
+            "domainDataType": "plt:UUIDv7Type",
+            "typedSort": "asc",
+            "optional": false
+          },
+          {
+            "dimension": "plt:dEntryHeader",
+            "domainDataType": "plt:UUIDv7Type",
+            "typedSort": "asc",
+            "optional": false
+          },
+          {
+            "dimension": "xbrl:period",
+            "optional": false
+          },
+          {
+            "dimension": "xbrl:entity"
+          },
+          {
+            "dimension": "xbrl:unit",
+            "optional": true
+          }
+        ],
+        "cubeNetworks": [
+          "view:journalEntriesHierarchy"
+        ]
+      },
+      {
+        "name": "view:h_cor_entryDetail",
+        "cubeDimensions": [
+          {
+            "dimension": "xbrl:concept",
+            "domainNetwork": "view:domain_cor_entryDetail"
+          },
+          {
+            "dimension": "plt:dAccountingEntries",
+            "domainDataType": "plt:UUIDv7Type",
+            "typedSort": "asc",
+            "optional": false
+          },
+          {
+            "dimension": "plt:dEntryHeader",
+            "domainDataType": "plt:UUIDv7Type",
+            "typedSort": "asc",
+            "optional": false
+          },
+          {
+            "dimension": "plt:dEntryDetail",
+            "domainDataType": "plt:UUIDv7Type",
+            "typedSort": "asc",
+            "optional": false
+          },
+          {
+            "dimension": "xbrl:period",
+            "optional": false
+          },
+          {
+            "dimension": "xbrl:entity"
+          },
+          {
+            "dimension": "xbrl:unit",
+            "optional": true
+          }
+        ],
+        "cubeNetworks": [
+          "view:journalEntriesHierarchy"
+        ]
+      }
+    ],
+    "networks": [
+      {
+        "name": "view:journalEntriesHierarchy",
+        "relationshipTypeName": "xbrl:parent-child",
+        "relationships": [
+          {
+            "source": "xbrl:rootSource",
+            "target": "cor:p_cor_accountingEntries",
+            "order": 1
+          },
+          {
+            "source": "cor:p_cor_accountingEntries",
+            "target": "cor:p_cor_documentInformation",
+            "order": 1
+          },
+          {
+            "source": "cor:p_cor_accountingEntries",
+            "target": "cor:p_cor_entityParty",
+            "order": 2
+          },
+          {
+            "source": "cor:p_cor_accountingEntries",
+            "target": "cor:p_cor_entryHeader",
+            "order": 3
+          },
+          {
+            "source": "cor:p_cor_entryHeader",
+            "target": "cor:headerEntryDate",
+            "order": 1
+          },
+          {
+            "source": "cor:p_cor_entryHeader",
+            "target": "cor:entryId",
+            "order": 2
+          },
+          {
+            "source": "cor:p_cor_entryHeader",
+            "target": "cor:p_cor_entryDetail",
+            "order": 3
+          },
+          {
+            "source": "cor:p_cor_entryDetail",
+            "target": "cor:entryDetailDescription",
+            "order": 1
+          },
+          {
+            "source": "cor:p_cor_entryDetail",
+            "target": "cor:accountNumber",
+            "order": 2
+          },
+          {
+            "source": "cor:p_cor_entryDetail",
+            "target": "cor:accountDescription",
+            "order": 3
+          },
+          {
+            "source": "cor:p_cor_entryDetail",
+            "target": "cor:monetaryAmount",
+            "order": 4
+          },
+          {
+            "source": "cor:p_cor_entryDetail",
+            "target": "cor:debitCreditIndicator",
+            "order": 5
+          },
+          {
+            "source": "cor:p_cor_documentInformation",
+            "target": "cor:documentInformationDocumentType",
+            "order": 1
+          },
+          {
+            "source": "cor:p_cor_documentInformation",
+            "target": "cor:auditNumber",
+            "order": 2
+          },
+          {
+            "source": "cor:p_cor_documentInformation",
+            "target": "cor:defaultCurrency",
+            "order": 3
+          },
+          {
+            "source": "cor:p_cor_documentInformation",
+            "target": "cor:periodCoveredStart",
+            "order": 4
+          },
+          {
+            "source": "cor:p_cor_documentInformation",
+            "target": "cor:periodCoveredEnd",
+            "order": 5
+          },
+          {
+            "source": "cor:p_cor_documentInformation",
+            "target": "cor:periodType",
+            "order": 6
+          },
+          {
+            "source": "cor:p_cor_entityParty",
+            "target": "cor:entityPartyId",
+            "order": 1
+          },
+          {
+            "source": "cor:p_cor_entityParty",
+            "target": "cor:entityPartyName",
+            "order": 2
+          }
+        ]
+      }
+    ],
+    "labels": [
+      {
+        "forObject": "cor:p_cor_accountingEntries",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Accounting Entries"
+      },
+      {
+        "forObject": "cor:p_cor_accountingEntries",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "【会計仕訳】"
+      },
+      {
+        "forObject": "cor:p_cor_entryHeader",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Entry_ Header"
+      },
+      {
+        "forObject": "cor:p_cor_entryHeader",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "【仕訳情報】"
+      },
+      {
+        "forObject": "cor:headerEntryDate",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Header_ Entry Date"
+      },
+      {
+        "forObject": "cor:headerEntryDate",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "仕訳日付"
+      },
+      {
+        "forObject": "cor:entryId",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Entry ID"
+      },
+      {
+        "forObject": "cor:entryId",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "仕訳識別子"
+      },
+      {
+        "forObject": "cor:p_cor_entryDetail",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Entry_ Detail"
+      },
+      {
+        "forObject": "cor:p_cor_entryDetail",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "【仕訳明細】"
+      },
+      {
+        "forObject": "cor:entryDetailDescription",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Description"
+      },
+      {
+        "forObject": "cor:entryDetailDescription",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "説明"
+      },
+      {
+        "forObject": "cor:accountNumber",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Account Number"
+      },
+      {
+        "forObject": "cor:accountNumber",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "主勘定科目コード"
+      },
+      {
+        "forObject": "cor:accountDescription",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Account Description"
+      },
+      {
+        "forObject": "cor:accountDescription",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "主勘定科目説明"
+      },
+      {
+        "forObject": "cor:monetaryAmount",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Monetary Amount"
+      },
+      {
+        "forObject": "cor:monetaryAmount",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "金額"
+      },
+      {
+        "forObject": "cor:debitCreditIndicator",
+        "labelType": "xbrl:label",
+        "language": "en",
+        "value": "Debit/Credit Indicator"
+      },
+      {
+        "forObject": "cor:debitCreditIndicator",
+        "labelType": "xbrl:label",
+        "language": "ja",
+        "value": "貸借区分コード"
+      }
+    ],
+    "tableTemplates": [
+      {
+        "name": "view:accountingEntriesJournalPoC18Columns",
+        "columns": [
+          {
+            "columnName": "dAccountingEntries"
+          },
+          {
+            "columnName": "dEntryHeader"
+          },
+          {
+            "columnName": "dEntryDetail"
+          },
+          {
+            "columnName": "documentInformationDocumentType",
+            "factDimensions": {
+              "xbrl:concept": "cor:documentInformationDocumentType"
+            }
+          },
+          {
+            "columnName": "auditNumber",
+            "factDimensions": {
+              "xbrl:concept": "cor:auditNumber"
+            }
+          },
+          {
+            "columnName": "defaultCurrency",
+            "factDimensions": {
+              "xbrl:concept": "cor:defaultCurrency"
+            }
+          },
+          {
+            "columnName": "periodCoveredStart",
+            "factDimensions": {
+              "xbrl:concept": "cor:periodCoveredStart"
+            }
+          },
+          {
+            "columnName": "periodCoveredEnd",
+            "factDimensions": {
+              "xbrl:concept": "cor:periodCoveredEnd"
+            }
+          },
+          {
+            "columnName": "periodType",
+            "factDimensions": {
+              "xbrl:concept": "cor:periodType"
+            }
+          },
+          {
+            "columnName": "entityPartyId",
+            "factDimensions": {
+              "xbrl:concept": "cor:entityPartyId"
+            }
+          },
+          {
+            "columnName": "entityPartyName",
+            "factDimensions": {
+              "xbrl:concept": "cor:entityPartyName"
+            }
+          },
+          {
+            "columnName": "entryNumber",
+            "factDimensions": {
+              "xbrl:concept": "cor:entryId"
+            }
+          },
+          {
+            "columnName": "entryDate",
+            "factDimensions": {
+              "xbrl:concept": "cor:headerEntryDate"
+            }
+          },
+          {
+            "columnName": "drCrIndicator",
+            "factDimensions": {
+              "xbrl:concept": "cor:debitCreditIndicator"
+            }
+          },
+          {
+            "columnName": "accountCode",
+            "factDimensions": {
+              "xbrl:concept": "cor:accountNumber"
+            }
+          },
+          {
+            "columnName": "accountName",
+            "factDimensions": {
+              "xbrl:concept": "cor:accountDescription"
+            }
+          },
+          {
+            "columnName": "amount",
+            "factDimensions": {
+              "xbrl:concept": "cor:monetaryAmount"
+            },
+            "decimals": 0
+          },
+          {
+            "columnName": "description",
+            "factDimensions": {
+              "xbrl:concept": "cor:entryDetailDescription"
+            }
+          }
+        ],
+        "factDimensions": {
+          "plt:dAccountingEntries": "$dAccountingEntries",
+          "plt:dEntryHeader": "$dEntryHeader",
+          "plt:dEntryDetail": "$dEntryDetail"
+        }
+      }
+    ]
+  }
+}

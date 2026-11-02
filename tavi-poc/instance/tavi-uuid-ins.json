@@ -1,0 +1,51 @@
+{
+  "documentInfo": {
+    "documentType": "https://xbrl.org/PWD/2026-09-01/module",
+    "namespaces": {
+      "bus": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/bus",
+      "cor": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/cor",
+      "ehm": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/ehm",
+      "lnk": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/lnk",
+      "muc": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/muc",
+      "taf": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/taf",
+      "plt": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
+      "xbrl": "https://xbrl.org/PWD/2026-09-01",
+      "xbrli": "https://xbrl.org/2025/instance",
+      "xs": "https://www.w3.org/2001/XMLSchema",
+      "view": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/view/journal-entries-single-account",
+      "xbrlr": "https://xbrl.org/PWD/2026-09-01/report",
+      "iso4217": "http://www.xbrl.org/2003/iso4217",
+      "ent": "http://example.com"
+    },
+    "documentNamespacePrefix": "view",
+    "importMapping": {
+      "view:accountingEntriesJournalPoC": "../taxonomy/tavi-uuid-tax.json"
+    },
+    "sourceMappings": [
+      {
+        "sourceName": "view:accountingEntriesJournalUUIDCSVSource",
+        "url": "tavi-uuid-ins.csv"
+      }
+    ]
+  },
+  "xbrlModel": {
+    "name": "view:accountingEntriesJournalUUIDCSVInstance",
+    "importedTaxonomies": [
+      {
+        "xbrlModelName": "view:accountingEntriesJournalPoC"
+      }
+    ],
+    "factMaps": [
+      {
+        "name": "view:accountingEntriesJournalUUIDCSVMap",
+        "templateName": "view:accountingEntriesJournalPoC18Columns"
+      }
+    ],
+    "factSources": [
+      {
+        "name": "view:accountingEntriesJournalUUIDCSVSource",
+        "factMapName": "view:accountingEntriesJournalUUIDCSVMap"
+      }
+    ]
+  }
+}

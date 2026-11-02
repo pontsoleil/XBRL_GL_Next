@@ -1,0 +1,8 @@
+dAccountingEntries,dEntryHeader,dEntryDetail,documentInformationDocumentType,auditNumber,defaultCurrency,periodCoveredStart,periodCoveredEnd,periodType,entityPartyId,entityPartyName,entryNumber,entryDate,drCrIndicator,accountCode,accountName,amount,description
+01a1968f-3f1d-7068-abd8-1dc77951735a,,,,,iso4217:JPY,2026-04-01,2027-03-31,duration,ABC123,Example Co.,,,,,,,
+01a1968f-3f1d-7068-abd8-1dc77951735a,01a1968f-3f1d-7069-b25d-32201499c08d,,,,,,,,,,JE001,2026-10-10,,,,,
+01a1968f-3f1d-7068-abd8-1dc77951735a,01a1968f-3f1d-7069-b25d-32201499c08d,01a1968f-3f1d-706a-a7a9-55e21b541115,,,,,,,,,,,Dr,100,Cash,1000,Receipt
+01a1968f-3f1d-7068-abd8-1dc77951735a,01a1968f-3f1d-7069-b25d-32201499c08d,01a1968f-3f1d-706b-9eab-23bb686ca3c8,,,,,,,,,,,Cr,400,Sales,1000,Sale
+01a1968f-3f1d-7068-abd8-1dc77951735a,01a1968f-3f1d-706c-acb4-9044aa70f6f9,,,,,,,,,,JE002,2026-10-10,,,,,
+01a1968f-3f1d-7068-abd8-1dc77951735a,01a1968f-3f1d-706c-acb4-9044aa70f6f9,01a1968f-3f1d-706d-9851-a4e31da6fb0a,,,,,,,,,,,Dr,120,AccountsReceivable,2000,Invoice
+01a1968f-3f1d-7068-abd8-1dc77951735a,01a1968f-3f1d-706c-acb4-9044aa70f6f9,01a1968f-3f1d-706e-a64c-f3c161c28ee9,,,,,,,,,,,Cr,400,Sales,2000,Sale
