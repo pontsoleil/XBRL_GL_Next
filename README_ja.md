@@ -32,7 +32,7 @@ XBRL GL Nextは、共通意味モデル（COR／BTX／AAAという絵具箱）�
 
 ## 再現性と公開状態
 
-Tavi PWD 2026-09-01を参照した議論用試作。正式適合性は未確認。 公開するTaviタクソノミは[Journal Entry JSON](tavi-poc/taxonomy/tavi-tax.json)1件で、Table Templateを内包します。[Journal Entry Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html)は静的表示例です。旧モデル・旧メタデータ・パッチの原本と証跡はWORKで保全します。
+Tavi PWD 2026-09-01を参照した議論用試作。正式適合性は未確認。 公開するTaviタクソノミは[Journal Entry JSON](tavi-poc/taxonomy/tavi-tax.json)1件で、Table Templateを内包します。[Journal Entry Viewer](https://pontsoleil.github.io/XBRL_GL_Next/viewer/tavi-viewer.html)は静的表示例です。旧モデル・旧メタデータ・パッチの原本と証跡はWORKで保全します。
 
 ## Tuple／OIM生成CLI（既存実装）
 

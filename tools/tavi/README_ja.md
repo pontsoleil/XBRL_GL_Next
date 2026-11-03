@@ -4,7 +4,7 @@
 
 Tavi関連データを表示する静的HTMLのデモを公開しています。公開済みページは直接閲覧できます。現行の公開ツールには、ローカルHTML Viewer生成プログラムは含まれません。
 
-- [HMD View Viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html)
+- [Tavi Viewer](https://pontsoleil.github.io/XBRL_GL_Next/viewer/tavi-viewer.html)
 
 これらは表示用デモであり、正式なTavi検証ツールではありません。taxonomyの意味解釈、factの選択、Propertiesとの連動は行いません。
 

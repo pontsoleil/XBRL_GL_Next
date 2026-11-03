@@ -4,7 +4,7 @@
 
 The project provides static HTML demonstrations for viewing Tavi-related report data. The HTML pages can be opened directly; no local viewer-generation program is included in the current published toolset.
 
-- [HMD View viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html)
+- [Tavi Viewer](https://pontsoleil.github.io/XBRL_GL_Next/viewer/tavi-viewer.html)
 
 These pages are visual demonstrations, not formal Tavi validation tools. They do not provide taxonomy interpretation, fact selection or linked Properties functionality.
 

@@ -11,7 +11,7 @@
       "plt": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/plt",
       "xbrl": "https://xbrl.org/PWD/2026-09-01",
       "xbrli": "https://xbrl.org/2025/instance",
-      "xs": "https://www.w3.org/2001/XMLSchema",
+      "xs": "http://www.w3.org/2001/XMLSchema",
       "view": "https://www.xbrl.or.jp/taxonomy/xbrl-gl-next/view/journal-entries-single-account",
       "xbrlr": "https://xbrl.org/PWD/2026-09-01/report",
       "iso4217": "http://www.xbrl.org/2003/iso4217",

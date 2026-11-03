@@ -44,7 +44,7 @@ See [semantic-model/README.md](semantic-model/README.md) for authority boundarie
 
 ## Publication status and evidence
 
-Experimental discussion draft based on Tavi PWD 2026-09-01; formal conformance has not been established. The only published Tavi taxonomy is the [Journal Entry JSON](tavi-poc/taxonomy/tavi-tax.json), with its Table Template embedded. The [Journal Entry viewer](https://pontsoleil.github.io/XBRL_GL_Next/tavi-inst-hmd-view.html) is a static display, not a conformance validator. Earlier Tavi models, report metadata and Arelle patches are withdrawn; originals and historical evidence remain in WORK.
+Experimental discussion draft based on Tavi PWD 2026-09-01; formal conformance has not been established. The only published Tavi taxonomy is the [Journal Entry JSON](tavi-poc/taxonomy/tavi-tax.json), with its Table Template embedded. The [Journal Entry viewer](https://pontsoleil.github.io/XBRL_GL_Next/viewer/tavi-viewer.html) is a static display, not a conformance validator. Earlier Tavi models, report metadata and Arelle patches are withdrawn; originals and historical evidence remain in WORK.
 
 [Third-party notices](THIRD_PARTY_NOTICES.md)
 
