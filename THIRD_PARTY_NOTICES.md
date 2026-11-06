@@ -35,9 +35,9 @@ Any future reuse must retain source and release provenance and must be supported
 
 ## Project documents and inventory
 
-The five Framework DOCX files are registered in `TaxonomyFramework/` as the current collaborative-review documents. Registration and possession do not by themselves constitute public-release approval.
+The six Framework documents (DOCX and PDF pairs) are registered in `TaxonomyFramework/` as the current collaborative-review documents. Registration and possession do not by themselves constitute public-release approval.
 
-Phase 0 inventories, manifests, historical scripts, and working materials have been removed from the curated package. The current Phase 1 artifact inventory is `TaxonomyFramework/INVENTORY.md`.
+Phase 0 inventories, manifests, historical scripts, and working materials have been removed from the curated package. The historical Phase 1 artifact inventory is `TaxonomyFramework/INVENTORY.md`.
 
 ## Release rule
 

@@ -18,11 +18,11 @@ See [third-party notices](THIRD_PARTY_NOTICES.md) for attribution and licence bo
 ## Read the specification first
 
 - [Taxonomy Framework](TaxonomyFramework/README.md): Requirements Specification and Parts 1–5 (each with its own draft and acceptance status).
-- **Part 1 — General rules:** semantic pipeline and the formal HMD contract.
-- **Part 2 — Tuple palette taxonomy:** XBRL 2.1 Tuple binding.
-- **Part 3 — OIM palette taxonomy:** dimensional/OIM binding and xBRL-CSV representation.
-- **Part 4 — Aligned Pool:** governance for extensions of the Shared semantic models.
-- **Part 5 — Tavi palette taxonomy:** purpose-specific HMD views and Tavi binding. Its registered draft does not by itself establish implementation conformance; consult the separate PoC evidence.
+- **Part 1 — Semantic Modelling and Taxonomy Foundations:** semantic pipeline and the formal HMD contract.
+- **Part 2 — Tuple Palette Taxonomy:** XBRL 2.1 Tuple binding.
+- **Part 3 — OIM Palette Taxonomy:** dimensional/OIM binding and xBRL-CSV representation.
+- **Part 4 — Aligned Pool and Extension Governance:** governance for extensions of the Shared semantic models.
+- **Part 5 — Tavi Palette Taxonomy:** purpose-specific HMD views and Tavi binding. Its registered draft does not by itself establish implementation conformance; consult the separate PoC evidence.
 
 ## Semantic processing
 

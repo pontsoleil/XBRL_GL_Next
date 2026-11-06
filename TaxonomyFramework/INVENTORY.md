@@ -1,5 +1,7 @@
 # Phase 1 Sample Inventory
 
+> **Current-document boundary (6 November 2026).** This is a historical Phase 1 record. All filenames, raw SHA-256 values and validation results below are retained unchanged. They do not describe the replacement DOCX/PDF documents published on 6 November 2026. See [the current document list](README.md) for those documents.
+
 > **Historical inventory (14 August 2026).** The SHA-256 entries, manifest and test filenames below document the Phase 1 sample, not the current Canonical contents. Some listed files were subsequently retired from Canonical under approved cleanup. For current publication candidates, consult the current registered Canonical set and its acceptance records; do not use these historical hashes for the current Word documents.
 
 ## Status

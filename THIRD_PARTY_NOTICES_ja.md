@@ -35,9 +35,9 @@ UN/CEFACT標準及びsource分析は過去のproject作業で参照しました�
 
 ## Project文書及び台帳
 
-Framework DOCX 5件は、現在のcollaborative-review文書として`TaxonomyFramework/`へ登録済みです。登録又は保有だけでpublic-release承認を意味しません。
+Framework文書6件（DOCX・PDF各6件）は、現在のcollaborative-review文書として`TaxonomyFramework/`へ登録済みです。登録又は保有だけでpublic-release承認を意味しません。
 
-Phase 0 inventory/manifest、historical script及びworking materialはcurated packageから削除済みです。現在のPhase 1成果物台帳は`TaxonomyFramework/INVENTORY.md`です。
+Phase 0 inventory/manifest、historical script及びworking materialはcurated packageから削除済みです。Phase 1の履歴成果物台帳は`TaxonomyFramework/INVENTORY.md`です。
 
 ## Release規則
 

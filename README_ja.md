@@ -16,7 +16,7 @@ XBRL GL Nextは、共通意味モデル（COR／BTX／AAAという絵具箱）�
 
 ## 仕様と処理工程
 
-[Taxonomy Framework](TaxonomyFramework/README.md)（現状維持）を参照してください。Part 1は共通意味モデルとHMD、Part 2はTuple、Part 3はOIM、Part 4はAligned extensionを扱います。CORとBTXはShared、COR-JPNはCORクラスのSpecialisation、BTX-PINTはBTXクラスのSpecialisationによるAligned extensionです。
+[Taxonomy Framework](TaxonomyFramework/README.md)の2026年11月6日版を参照してください。Part 1（Semantic Modelling and Taxonomy Foundations）は意味モデリングとタクソノミの基盤、Part 2はTuple Palette Taxonomy、Part 3はOIM Palette Taxonomy、Part 4はAligned Pool and Extension Governance、Part 5はTavi Palette Taxonomyを扱います。CORとBTXはShared、COR-JPNはCORクラスのSpecialisation、BTX-PINTはBTXクラスのSpecialisationによるAligned extensionです。
 
 **FSM → Specialisation／BSM → Graph Walk → Candidate LHM → Reviewed LHM → Post-Graph Walk → Formal HMD → Taxonomy**。Journal Entry Tavi議論用候補は独立した3-Cube PoCです。正式Semantic Modelの改訂は後続作業です。
 
