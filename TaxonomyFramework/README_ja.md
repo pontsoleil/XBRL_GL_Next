@@ -4,13 +4,13 @@
 
 このディレクトリには、2026年11月6日版のXBRL GL Next Taxonomy Framework要求仕様書とPart 1–5を、DOCX・PDF各6件で収録しています。
 
-Framework文書本文は英語の共同レビュー用公開草案です。本案内は本文の日本語訳ではありません。公開はXBRL International、XBRL Japan等による標準としての承認・支持を意味しません。要求仕様書のファイル名は指定された単数形 `Requirement_Specification`、本文タイトルは Requirements Specification です。
+Framework文書本文は英語の共同レビュー用公開草案です。本案内は本文の日本語訳ではありません。公開はXBRL International、XBRL Japan等による標準としての承認・支持を意味しません。要求仕様書のファイル名は複数形 `Requirements_Specification`、本文タイトルは Requirements Specification です。
 
 ## Framework文書
 
 | 文書 | DOCX | PDF |
 | --- | --- | --- |
-| Requirements Specification | [DOCX](XBRL_GL_Next_Taxonomy_Framework_Requirement_Specification.docx) | [PDF](XBRL_GL_Next_Taxonomy_Framework_Requirement_Specification.pdf) |
+| Requirements Specification | [DOCX](XBRL_GL_Next_Taxonomy_Framework_Requirements_Specification.docx) | [PDF](XBRL_GL_Next_Taxonomy_Framework_Requirements_Specification.pdf) |
 | Part 1: Semantic Modelling and Taxonomy Foundations | [DOCX](XBRL_GL_Next_Taxonomy_Framework_Part1_Semantic_Modelling_and_Taxonomy_Foundations.docx) | [PDF](XBRL_GL_Next_Taxonomy_Framework_Part1_Semantic_Modelling_and_Taxonomy_Foundations.pdf) |
 | Part 2: Tuple Palette Taxonomy | [DOCX](XBRL_GL_Next_Taxonomy_Framework_Part2_Tuple_Palette_Taxonomy.docx) | [PDF](XBRL_GL_Next_Taxonomy_Framework_Part2_Tuple_Palette_Taxonomy.pdf) |
 | Part 3: OIM Palette Taxonomy | [DOCX](XBRL_GL_Next_Taxonomy_Framework_Part3_OIM_Palette_Taxonomy.docx) | [PDF](XBRL_GL_Next_Taxonomy_Framework_Part3_OIM_Palette_Taxonomy.pdf) |
